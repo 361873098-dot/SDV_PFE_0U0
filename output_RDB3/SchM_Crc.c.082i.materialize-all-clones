@@ -1,0 +1,15 @@
+Crc_schm_read_msr ()
+{
+  register uint32 reg_tmp;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_1);
+  # DEBUG reg_tmp => reg_tmp_1
+  # DEBUG BEGIN_STMT
+  return reg_tmp_1;
+
+}
+
+

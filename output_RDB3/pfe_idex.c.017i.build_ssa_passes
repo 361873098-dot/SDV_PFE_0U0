@@ -1,0 +1,1552 @@
+pfe_idex_down ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pfe_idex.is_up = 0;
+  return;
+
+}
+
+
+pfe_idex_set_rpc_ret_val (errno_t retval, void * resp, uint16_t resp_len)
+{
+  errno_t ret;
+  void * payload;
+  struct pfe_idex_msg_rpc_t * rpc_resp;
+  struct pfe_remote_client_t * client;
+  errno_t D.12036;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  client = idex_current_client;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rpc_resp = &pfe_idex_response_frame.msg_rpc;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_idex_response_frame, 0, 1538);
+  # DEBUG BEGIN_STMT
+  _1 = client->rpc_msg.rpc_id;
+  rpc_resp->rpc_id = _1;
+  # DEBUG BEGIN_STMT
+  _2 = resp_len r>> 8;
+  rpc_resp->plen = _2;
+  # DEBUG BEGIN_STMT
+  retval.17_3 = (long unsigned int) retval;
+  _4 = retval.17_3 >> 24;
+  retval.18_5 = (long unsigned int) retval;
+  _6 = retval.18_5 >> 8;
+  _7 = _6 & 65280;
+  _8 = _4 | _7;
+  retval.19_9 = (long unsigned int) retval;
+  _10 = retval.19_9 << 8;
+  _11 = _10 & 16711680;
+  _12 = _8 | _11;
+  retval.20_13 = (long unsigned int) retval;
+  _14 = retval.20_13 << 24;
+  _15 = _12 | _14;
+  _16 = (int) _15;
+  rpc_resp->rpc_ret = _16;
+  # DEBUG BEGIN_STMT
+  rpc_resp.21_17 = (unsigned int) rpc_resp;
+  _18 = rpc_resp.21_17 + 10;
+  payload = (void *) _18;
+  # DEBUG BEGIN_STMT
+  _19 = (long unsigned int) resp_len;
+  autolibc_memcpy (payload, resp, _19);
+  # DEBUG BEGIN_STMT
+  _20 = client->phy_id;
+  _21 = client->seqnum;
+  _22 = resp_len + 10;
+  ret = pfe_idex_send_response (_20, 1, _21, _22);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] IDEX RPC response failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1534, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.12036 = ret;
+  return D.12036;
+
+}
+
+
+pfe_idex_rpc (pfe_ct_phy_if_id_t dst_phy, uint32_t id, const void * buf, uint16_t buf_len, void * resp, uint16_t resp_len)
+{
+  struct pfe_idex_msg_rpc_t * msg_resp;
+  struct pfe_idex_msg_rpc_t * msg_req;
+  const uint32_t resend_count;
+  void * payload;
+  const uint16_t response_buf_size;
+  const uint16_t request_buf_size;
+  errno_t ret;
+  errno_t D.12011;
+  const uint32_t iftmp.12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  request_buf_size = buf_len + 10;
+  # DEBUG BEGIN_STMT
+  response_buf_size = resp_len + 10;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_idex.remote.server.version;
+  if (_1 > 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (id == 4294967295)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.12 = 40;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.12 = 1;
+
+  <bb 6> :
+  resend_count = iftmp.12;
+  # DEBUG BEGIN_STMT
+  _2 = (unsigned int) request_buf_size;
+  _3 = _2 + 39;
+  if (_3 > 1522)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _4 = (unsigned int) response_buf_size;
+  _5 = _4 + 39;
+  if (_5 > 1522)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Buffers too big for request/response transport\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1406, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 11;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _6 = (long unsigned int) response_buf_size;
+  autolibc_memset (&pfe_idex_response_frame.msg_rpc, 0, _6);
+  # DEBUG BEGIN_STMT
+  _7 = (long unsigned int) request_buf_size;
+  autolibc_memset (&pfe_idex_request_frame.msg, 0, _7);
+  # DEBUG BEGIN_STMT
+  msg_req = &pfe_idex_request_frame.msg;
+  # DEBUG BEGIN_STMT
+  msg_resp = &pfe_idex_response_frame.msg_rpc;
+  # DEBUG BEGIN_STMT
+  _8 = id >> 24;
+  _9 = id >> 8;
+  _10 = _9 & 65280;
+  _11 = _8 | _10;
+  _12 = id << 8;
+  _13 = _12 & 16711680;
+  _14 = _11 | _13;
+  _15 = id << 24;
+  _16 = _14 | _15;
+  msg_req->rpc_id = _16;
+  # DEBUG BEGIN_STMT
+  _17 = buf_len r>> 8;
+  msg_req->plen = _17;
+  # DEBUG BEGIN_STMT
+  msg_req->rpc_ret = 0;
+  # DEBUG BEGIN_STMT
+  msg_resp->plen = resp_len;
+  # DEBUG BEGIN_STMT
+  pfe_idex.remote.server.rpc_msg = msg_resp;
+  # DEBUG BEGIN_STMT
+  msg_req.13_18 = (unsigned int) msg_req;
+  _19 = msg_req.13_18 + 10;
+  payload = (void *) _19;
+  # DEBUG BEGIN_STMT
+  _20 = (long unsigned int) buf_len;
+  autolibc_memcpy (payload, buf, _20);
+  # DEBUG BEGIN_STMT
+  ret = pfe_idex_request_send (dst_phy, 1, resend_count, request_buf_size);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] RPC transport failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1445, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _21 = msg_resp->rpc_id;
+  if (id != _21)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 18>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  ret = msg_resp->rpc_ret;
+  # DEBUG BEGIN_STMT
+  _22 = msg_resp->plen;
+  if (_22 == 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _23 = msg_resp->plen;
+  if (resp_len < _23)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Caller\'s buffer is too small\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1469, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 11;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  msg_resp.14_24 = (unsigned int) msg_resp;
+  _25 = msg_resp.14_24 + 10;
+  payload = (void *) _25;
+  # DEBUG BEGIN_STMT
+  _26 = msg_resp->plen;
+  _27 = (long unsigned int) _26;
+  autolibc_memcpy (resp, payload, _27);
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  pfe_idex.remote.server.rpc_msg = 0B;
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  D.12011 = ret;
+  return D.12011;
+
+}
+
+
+pfe_idex_master_rpc (uint32_t id, const void * buf, uint16_t buf_len, void * resp, uint16_t resp_len)
+{
+  errno_t ret;
+  const struct pfe_idex_t * idex;
+  errno_t D.11987;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  idex = &pfe_idex;
+  # DEBUG BEGIN_STMT
+  ret = 115;
+  # DEBUG BEGIN_STMT
+  _1 = idex->is_server;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = idex->remote.server.phy_id;
+  ret = pfe_idex_rpc (_2, id, buf, buf_len, resp, resp_len);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  D.11987 = ret;
+  return D.11987;
+
+}
+
+
+pfe_idex_fini ()
+{
+  struct pfe_idex_response_t D.11844 = {};
+  uint8_t i;
+  struct pfe_idex_t * idex;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  idex = &pfe_idex;
+  # DEBUG BEGIN_STMT
+  idex->is_up = 0;
+  # DEBUG BEGIN_STMT
+  _1 = idex->hif;
+  pfe_hif_clear_master_up (_1);
+  # DEBUG BEGIN_STMT
+  idex->hif = 0B;
+  # DEBUG BEGIN_STMT
+  idex->rpc_cbk = 0B;
+  # DEBUG BEGIN_STMT
+  idex->rpc_cbk_arg = 0B;
+  # DEBUG BEGIN_STMT
+  idex->txc_free_cbk = 0B;
+  # DEBUG BEGIN_STMT
+  _2 = idex->ihc_client;
+  if (_2 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = idex->ihc_client;
+  pfe_hif_drv_client_unregister (_3);
+  # DEBUG BEGIN_STMT
+  idex->ihc_client = 0B;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = idex->is_server;
+  if (_4 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _5 = (int) i;
+  _6 = idex->remote.clients[_5].response;
+  if (_6 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _7 = (int) i;
+  _8 = idex->remote.clients[_7].response;
+  *_8 = {};
+  # DEBUG BEGIN_STMT
+  _9 = (int) i;
+  idex->remote.clients[_9].response = 0B;
+  D.11844 = {CLOBBER};
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  i.11_10 = i;
+  i = i.11_10 + 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (i <= 3)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  idex->rpc_req_lock_init = 0;
+  return;
+
+}
+
+
+pfe_idex_init (struct pfe_hif_drv_t * hif_drv, pfe_ct_phy_if_id_t master, struct pfe_hif_t * hif, void (*pfe_idex_rpc_cbk_t) (pfe_ct_phy_if_id_t, uint32_t, void *, uint16_t, void *) cbk, void * arg, void (*pfe_idex_tx_conf_free_cbk_t) (void *) txcf_cbk)
+{
+  errno_t ret;
+  struct pfe_idex_t * idex;
+  errno_t D.11918;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  idex = &pfe_idex;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (idex, 0, 180);
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_idex_dummy_frame, 0, 80);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  idex->is_server = 1;
+  # DEBUG BEGIN_STMT
+  idex->hif = hif;
+  # DEBUG BEGIN_STMT
+  idex->txc_free_cbk = txcf_cbk;
+  # DEBUG BEGIN_STMT
+  idex->rpc_req_lock_init = 1;
+  # DEBUG BEGIN_STMT
+  _1 = pfe_hif_drv_ihc_client_register (hif_drv, pfe_idex_ihc_handler, 0B);
+  idex->ihc_client = _1;
+  # DEBUG BEGIN_STMT
+  _2 = idex->ihc_client;
+  if (_2 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t register IHC client\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1261, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_idex_fini ();
+  # DEBUG BEGIN_STMT
+  ret = 117;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_idex_set_rpc_cbk (cbk, arg);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  idex->is_up = 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.11918 = ret;
+  return D.11918;
+
+}
+
+
+pfe_idex_set_rpc_cbk (void (*pfe_idex_rpc_cbk_t) (pfe_ct_phy_if_id_t, uint32_t, void *, uint16_t, void *) cbk, void * arg)
+{
+  struct pfe_idex_t * idex;
+  errno_t D.11977;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  idex = &pfe_idex;
+  # DEBUG BEGIN_STMT
+  idex->rpc_cbk_arg = arg;
+  # DEBUG BEGIN_STMT
+  idex->rpc_cbk = cbk;
+  # DEBUG BEGIN_STMT
+  D.11977 = 0;
+  return D.11977;
+
+}
+
+
+pfe_idex_send_frame (pfe_ct_phy_if_id_t dst_phy, pfe_idex_frame_type_t type, const void * data, uint16_t data_len)
+{
+  struct pfe_hif_chnl_t * hif_chnl;
+  struct pfe_hif_drv_t * hif_drv;
+  struct hif_drv_sg_list_t sg_list;
+  errno_t ret;
+  struct pfe_idex_frame_header_t * idex_hdr_pa;
+  struct pfe_idex_frame_header_t * idex_hdr;
+  errno_t D.11904;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  sg_list = {};
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_idex.is_up;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = pfe_idex.stats.tx_skips;
+  _3 = _2 + 1;
+  pfe_idex.stats.tx_skips = _3;
+  # DEBUG BEGIN_STMT
+  ret = 22;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = pfe_idex.ihc_client;
+  hif_drv = pfe_hif_drv_client_get_drv (_4);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  if (hif_drv == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Get hif_drv instance associated with the client failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1100, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  goto <bb 13>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  hif_chnl = pfe_hif_drv_get_chnl (hif_drv);
+  # DEBUG BEGIN_STMT
+  if (hif_chnl == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Get channel associated with the hif_drv instance failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1108, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  data.0_5 = (unsigned int) data;
+  _6 = data.0_5 + 4294967294;
+  idex_hdr = (struct pfe_idex_frame_header_t *) _6;
+  # DEBUG BEGIN_STMT
+  idex_hdr->dst_phy_if = dst_phy;
+  # DEBUG BEGIN_STMT
+  idex_hdr->type = type;
+  # DEBUG BEGIN_STMT
+  idex_hdr.1_7 = (unsigned int) idex_hdr;
+  _8 = idex_hdr.1_7 + 4294967280;
+  idex_hdr = (struct pfe_idex_frame_header_t *) _8;
+  # DEBUG BEGIN_STMT
+  idex_hdr_pa = oal_mm_virt_to_phys_contig (idex_hdr);
+  # DEBUG BEGIN_STMT
+  if (idex_hdr_pa == 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] VA to PA conversion failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1155, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 11;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  sg_list.size = 1;
+  # DEBUG BEGIN_STMT
+  sg_list.dst_phy = dst_phy;
+  # DEBUG BEGIN_STMT
+  sg_list.items[0].data_va = idex_hdr;
+  # DEBUG BEGIN_STMT
+  sg_list.items[0].data_pa = idex_hdr_pa;
+  # DEBUG BEGIN_STMT
+  _9 = (long unsigned int) data_len;
+  _10 = _9 + 18;
+  sg_list.items[0].len = _10;
+  # DEBUG BEGIN_STMT
+  ret = pfe_idex_prep_tx_header_xmit (idex_hdr, sg_list, hif_chnl);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  D.11904 = ret;
+  sg_list = {CLOBBER};
+  return D.11904;
+
+}
+
+
+pfe_idex_prep_tx_header_xmit (struct pfe_idex_frame_header_t * idex_hdr, struct hif_drv_sg_list_t sg_list, struct pfe_hif_chnl_t * hif_chnl)
+{
+  struct pfe_ct_hif_tx_hdr_t * tx_hdr;
+  errno_t ret;
+  errno_t D.11910;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  tx_hdr = idex_hdr;
+  # DEBUG BEGIN_STMT
+  _1 = hif_chnl->id;
+  _2 = (unsigned char) _1;
+  tx_hdr->chid = _2;
+  # DEBUG BEGIN_STMT
+  _3 = sg_list.dst_phy;
+  _4 = (int) _3;
+  _5 = 1 << _4;
+  _6 = _5 >> 24;
+  _7 = sg_list.dst_phy;
+  _8 = (int) _7;
+  _9 = 1 << _8;
+  _10 = _9 >> 8;
+  _11 = _10 & 65280;
+  _12 = _6 | _11;
+  _13 = sg_list.dst_phy;
+  _14 = (int) _13;
+  _15 = 1 << _14;
+  _16 = _15 << 8;
+  _17 = _16 & 16711680;
+  _18 = _12 | _17;
+  _19 = sg_list.dst_phy;
+  _20 = (int) _19;
+  _21 = 1 << _20;
+  _22 = _21 << 24;
+  _23 = _18 | _22;
+  tx_hdr->e_phy_ifs = _23;
+  # DEBUG BEGIN_STMT
+  tx_hdr->flags = 192;
+  # DEBUG BEGIN_STMT
+  _24 = pfe_idex.ihc_client;
+  ret = pfe_hif_drv_client_xmit_sg_pkt (_24, 0, &sg_list, idex_hdr);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] IDEX frame TX failed. Err %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1056, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.11910 = ret;
+  return D.11910;
+
+}
+
+
+pfe_idex_request_send (pfe_ct_phy_if_id_t dst_phy, pfe_idex_request_type_t type, const uint32_t resend_count, uint16_t data_len)
+{
+  struct pfe_idex_request_t D.11804 = {};
+  struct pfe_idex_request_t D.11800 = {};
+  bool_t end_sending;
+  errno_t ret;
+  struct pfe_idex_request_t * request;
+  uint32_t sending_counter;
+  uint32_t timeout_ms;
+  struct pfe_remote_server_t * server;
+  errno_t D.12022;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  server = &pfe_idex.remote.server;
+  # DEBUG BEGIN_STMT
+  timeout_ms = 100;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  end_sending = 0;
+  # DEBUG BEGIN_STMT
+  request = &pfe_idex_request_frame.req;
+  # DEBUG BEGIN_STMT
+  *request = {};
+  # DEBUG BEGIN_STMT
+  _1 = server->seqnum;
+  _2 = _1 >> 24;
+  _3 = server->seqnum;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = server->seqnum;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = server->seqnum;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  request->seqnum = _13;
+  # DEBUG BEGIN_STMT
+  request->type = type;
+  # DEBUG BEGIN_STMT
+  request->dst_phy_id = dst_phy;
+  # DEBUG BEGIN_STMT
+  request->state = 0;
+  # DEBUG BEGIN_STMT
+  server->request = request;
+  # DEBUG BEGIN_STMT
+  request->state = 1;
+  # DEBUG BEGIN_STMT
+  sending_counter = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _14 = data_len + 37;
+  ret = pfe_idex_send_frame (dst_phy, 0, request, _14);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] IDEX request TX failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 991, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _15 = pfe_idex.stats.tx_count;
+  _16 = _15 + 1;
+  pfe_idex.stats.tx_count = _16;
+  # DEBUG BEGIN_STMT
+  ret = check_time_out (&timeout_ms, &end_sending, request);
+  # DEBUG BEGIN_STMT
+  end_sending.15_17 = end_sending;
+  if (end_sending.15_17 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = pfe_idex.stats.tx_retries;
+  _19 = _18 + 1;
+  pfe_idex.stats.tx_retries = _19;
+  # DEBUG BEGIN_STMT
+  _20 = pfe_idex.stats.tx_max_retries;
+  _21 = sending_counter + 1;
+  _22 = MAX_EXPR <_20, _21>;
+  pfe_idex.stats.tx_max_retries = _22;
+  # DEBUG BEGIN_STMT
+  sending_counter = sending_counter + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (sending_counter < resend_count)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  timeout_ms.16_23 = timeout_ms;
+  if (timeout_ms.16_23 == 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  if (resend_count == sending_counter)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 110;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _24 = server->seqnum;
+  _25 = _24 + 1;
+  server->seqnum = _25;
+  # DEBUG BEGIN_STMT
+  *request = {};
+  # DEBUG BEGIN_STMT
+  server->request = 0B;
+  D.11804 = {CLOBBER};
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  pfe_idex_down ();
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  D.12022 = ret;
+  timeout_ms = {CLOBBER};
+  end_sending = {CLOBBER};
+  D.11800 = {CLOBBER};
+  return D.12022;
+
+}
+
+
+check_time_out (uint32_t * timeout_ms, bool_t * end_sending, struct pfe_idex_request_t * request)
+{
+  errno_t ret;
+  errno_t D.12032;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  *timeout_ms = 100;
+  goto <bb 11>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = request->state;
+  if (_1 == 2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  *end_sending = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _2 = request->state;
+  if (_2 == 255)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret = 117;
+  # DEBUG BEGIN_STMT
+  *end_sending = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _3 = oal_irq_in_atomic ();
+  if (_3 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  oal_time_msleep (1);
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  oal_time_mdelay (1);
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _4 = *timeout_ms;
+  _5 = _4 + 4294967295;
+  *timeout_ms = _5;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _6 = *timeout_ms;
+  if (_6 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  D.12032 = ret;
+  return D.12032;
+
+}
+
+
+pfe_idex_send_response (pfe_ct_phy_if_id_t dst_phy, pfe_idex_response_type_t type, pfe_idex_seqnum_t seqnum, uint16_t data_len)
+{
+  struct pfe_idex_response_t D.11777 = {};
+  struct pfe_idex_response_t D.11778 = {};
+  errno_t ret;
+  struct pfe_idex_response_t * resp;
+  errno_t D.11959;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  idex_current_client.7_1 = idex_current_client;
+  _2 = idex_current_client.7_1->response;
+  if (_2 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  idex_current_client.8_3 = idex_current_client;
+  _4 = idex_current_client.8_3->response;
+  *_4 = {};
+  # DEBUG BEGIN_STMT
+  idex_current_client.9_5 = idex_current_client;
+  idex_current_client.9_5->response = 0B;
+  D.11777 = {CLOBBER};
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  resp = &pfe_idex_response_frame.resp;
+  # DEBUG BEGIN_STMT
+  *resp = {};
+  # DEBUG BEGIN_STMT
+  _6 = seqnum >> 24;
+  _7 = seqnum >> 8;
+  _8 = _7 & 65280;
+  _9 = _6 | _8;
+  _10 = seqnum << 8;
+  _11 = _10 & 16711680;
+  _12 = _9 | _11;
+  _13 = seqnum << 24;
+  _14 = _12 | _13;
+  resp->seqnum = _14;
+  # DEBUG BEGIN_STMT
+  resp->type = type;
+  # DEBUG BEGIN_STMT
+  _15 = data_len r>> 8;
+  resp->plen = _15;
+  # DEBUG BEGIN_STMT
+  _16 = data_len + 7;
+  ret = pfe_idex_send_frame (dst_phy, 1, resp, _16);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _17 = pfe_idex.stats.tx_count;
+  _18 = _17 + 1;
+  pfe_idex.stats.tx_count = _18;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  idex_current_client.10_19 = idex_current_client;
+  idex_current_client.10_19->response = resp;
+  # DEBUG BEGIN_STMT
+  D.11959 = ret;
+  D.11778 = {CLOBBER};
+  return D.11959;
+
+}
+
+
+pfe_idex_send_dummy_frame (pfe_ct_phy_if_id_t dst_phy)
+{
+  errno_t D.11888;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  D.11888 = pfe_idex_send_frame (dst_phy, 100, &pfe_idex_dummy_frame.dummy_data, 62);
+  return D.11888;
+
+}
+
+
+pfe_idex_do_rx (struct pfe_hif_drv_client_t * hif_client, struct pfe_idex_t * idex)
+{
+  pfe_ct_phy_if_id_t i_phy_id;
+  struct pfe_idex_frame_header_t * idex_header;
+  struct pfe_hif_pkt_t * pkt;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pkt = pfe_hif_drv_client_receive_pkt (hif_client, 0);
+  # DEBUG BEGIN_STMT
+  if (pkt == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = pfe_idex.stats.rx_count;
+  _2 = _1 + 1;
+  pfe_idex.stats.rx_count = _2;
+  # DEBUG BEGIN_STMT
+  _3 = pfe_hif_pkt_get_data (pkt);
+  _4 = _3 + 16;
+  idex_header = (struct pfe_idex_frame_header_t *) _4;
+  # DEBUG BEGIN_STMT
+  i_phy_id = pfe_hif_pkt_get_ingress_phy_id (pkt);
+  # DEBUG BEGIN_STMT
+  _5 = i_phy_id + 250;
+  if (_5 > 3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  if (i_phy_id != 4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = pfe_idex.stats.rx_aliens;
+  _7 = _6 + 1;
+  pfe_idex.stats.rx_aliens = _7;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _8 = idex_header->type;
+  _9 = (int) _8;
+  if (_9 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  process_idex_request (idex, idex_header, i_phy_id, pkt);
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  pfe_hif_pkt_free (pkt);
+  # DEBUG BEGIN_STMT
+  goto <bb 2>; [INV]
+
+  <bb 9> :
+  return;
+
+}
+
+
+process_idex_request (struct pfe_idex_t * idex, struct pfe_idex_frame_header_t * idex_header, pfe_ct_phy_if_id_t i_phy_id, const struct pfe_hif_pkt_t * const pkt)
+{
+  bool_t break_switch;
+  pfe_idex_seqnum_t seqnum;
+  struct pfe_idex_msg_reset_t * reset_req;
+  void * rpc_msg_payload_ptr;
+  uint32_t rpc_id;
+  struct pfe_idex_msg_rpc_t * rpc_req;
+  errno_t ret;
+  uint32_t client_index;
+  struct pfe_idex_request_t * idex_req;
+  struct pfe_remote_client_t * client;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  client_index = 0;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  rpc_req = 0B;
+  # DEBUG BEGIN_STMT
+  rpc_id = 0;
+  # DEBUG BEGIN_STMT
+  rpc_msg_payload_ptr = 0B;
+  # DEBUG BEGIN_STMT
+  reset_req = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = get_client_index (i_phy_id, &client_index);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = (unsigned int) i_phy_id;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid HIF ID: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 553, _2, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  idex_header.2_3 = (unsigned int) idex_header;
+  _4 = idex_header.2_3 + 2;
+  idex_req = (struct pfe_idex_request_t *) _4;
+  # DEBUG BEGIN_STMT
+  _5 = idex_req->seqnum;
+  _6 = _5 >> 24;
+  _7 = idex_req->seqnum;
+  _8 = _7 >> 8;
+  _9 = _8 & 65280;
+  _10 = _6 | _9;
+  _11 = idex_req->seqnum;
+  _12 = _11 << 8;
+  _13 = _12 & 16711680;
+  _14 = _10 | _13;
+  _15 = idex_req->seqnum;
+  _16 = _15 << 24;
+  seqnum = _14 | _16;
+  # DEBUG BEGIN_STMT
+  client_index.3_17 = client_index;
+  client = &idex->remote.clients[client_index.3_17];
+  # DEBUG BEGIN_STMT
+  client->phy_id = i_phy_id;
+  # DEBUG BEGIN_STMT
+  idex_current_client = client;
+  # DEBUG BEGIN_STMT
+  _18 = idex_req->type;
+  _19 = (int) _18;
+  if (_19 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  _20 = pfe_hif_pkt_get_data_len (pkt);
+  if (_20 <= 64)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _21 = pfe_idex.stats.rx_fails;
+  _22 = _21 + 1;
+  pfe_idex.stats.rx_fails = _22;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  idex_req.4_23 = (unsigned int) idex_req;
+  _24 = idex_req.4_23 + 37;
+  rpc_req = (struct pfe_idex_msg_rpc_t *) _24;
+  # DEBUG BEGIN_STMT
+  _25 = rpc_req->rpc_id;
+  _26 = _25 >> 24;
+  _27 = rpc_req->rpc_id;
+  _28 = _27 >> 8;
+  _29 = _28 & 65280;
+  _30 = _26 | _29;
+  _31 = rpc_req->rpc_id;
+  _32 = _31 << 8;
+  _33 = _32 & 16711680;
+  _34 = _30 | _33;
+  _35 = rpc_req->rpc_id;
+  _36 = _35 << 24;
+  rpc_id = _34 | _36;
+  # DEBUG BEGIN_STMT
+  rpc_req.5_37 = (unsigned int) rpc_req;
+  _38 = rpc_req.5_37 + 10;
+  rpc_msg_payload_ptr = (void *) _38;
+  # DEBUG BEGIN_STMT
+  if (rpc_id == 4294967295)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  reset_req = rpc_msg_payload_ptr;
+  # DEBUG BEGIN_STMT
+  _39 = reset_req->seqnum;
+  _40 = _39 >> 24;
+  _41 = reset_req->seqnum;
+  _42 = _41 >> 8;
+  _43 = _42 & 65280;
+  _44 = _40 | _43;
+  _45 = reset_req->seqnum;
+  _46 = _45 << 8;
+  _47 = _46 & 16711680;
+  _48 = _44 | _47;
+  _49 = reset_req->seqnum;
+  _50 = _49 << 24;
+  _51 = _48 | _50;
+  client->seqnum = _51;
+  # DEBUG BEGIN_STMT
+  _52 = reset_req->version;
+  client->version = _52;
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (&pfe_idex_response_frame.msg_rpc, rpc_req, 15);
+  # DEBUG BEGIN_STMT
+  _53 = client->phy_id;
+  ret = pfe_idex_send_response (_53, 1, seqnum, 15);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  break_switch = 0;
+  # DEBUG BEGIN_STMT
+  ret = set_idex_sequence_number (client, seqnum, &break_switch);
+  # DEBUG BEGIN_STMT
+  break_switch.6_54 = break_switch;
+  if (break_switch.6_54 == 1)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  break_switch = {CLOBBER};
+  # DEBUG BEGIN_STMT
+  _55 = idex->rpc_cbk;
+  if (_55 != 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 12> :
+  break_switch = {CLOBBER};
+  goto <bb 15>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _56 = &client->rpc_msg;
+  autolibc_memcpy (_56, rpc_req, 10);
+  # DEBUG BEGIN_STMT
+  _57 = idex->rpc_cbk;
+  _58 = rpc_req->plen;
+  _59 = _58 r>> 8;
+  _60 = idex->rpc_cbk_arg;
+  _57 (i_phy_id, rpc_id, rpc_msg_payload_ptr, _59, _60);
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+<L16>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _61 = pfe_idex.stats.rx_unknowns;
+  _62 = _61 + 1;
+  pfe_idex.stats.rx_unknowns = _62;
+  # DEBUG BEGIN_STMT
+
+  <bb 15> :
+  client_index = {CLOBBER};
+  return;
+
+}
+
+
+set_idex_sequence_number (struct pfe_remote_client_t * client, pfe_idex_seqnum_t seqnum, bool_t * break_switch)
+{
+  errno_t ret;
+  errno_t D.11975;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  *break_switch = 0;
+  # DEBUG BEGIN_STMT
+  _1 = client->version;
+  if (_1 > 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = client->seqnum;
+  if (seqnum == _2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = pfe_idex.stats.rx_dups;
+  _4 = _3 + 1;
+  pfe_idex.stats.rx_dups = _4;
+  # DEBUG BEGIN_STMT
+  _5 = client->response;
+  if (_5 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _6 = client->phy_id;
+  _7 = client->response;
+  _8 = client->response;
+  _9 = _8->plen;
+  _10 = _9 r>> 8;
+  _11 = _10 + 7;
+  ret = pfe_idex_send_frame (_6, 1, _7, _11);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *break_switch = 1;
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _12 = client->seqnum;
+  _13 = _12 + 1;
+  if (seqnum == _13)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  client->seqnum = seqnum;
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = pfe_idex.stats.rx_fails;
+  _15 = _14 + 1;
+  pfe_idex.stats.rx_fails = _15;
+  # DEBUG BEGIN_STMT
+  *break_switch = 1;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  client->seqnum = seqnum;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  D.11975 = ret;
+  return D.11975;
+
+}
+
+
+get_client_index (pfe_ct_phy_if_id_t i_phy_id, uint32_t * const p_client_index)
+{
+  bool_t ret;
+  bool_t D.11950;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 1;
+  # DEBUG BEGIN_STMT
+  _1 = i_phy_id + 250;
+  if (_1 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) i_phy_id;
+  _3 = _2 + 4294967290;
+  *p_client_index = _3;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.11950 = ret;
+  return D.11950;
+
+}
+
+
+pfe_idex_ihc_handler (struct pfe_hif_drv_client_t * client, void * arg, uint32_t event, uint32_t qno)
+{
+  errno_t ret;
+  errno_t D.11920;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  if (event == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  pfe_idex_do_rx (client, &pfe_idex);
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.11920 = ret;
+  return D.11920;
+
+}
+
+
+pfe_hif_pkt_get_ingress_phy_id (const struct pfe_hif_pkt_t * pkt)
+{
+  pfe_ct_phy_if_id_t ret;
+  pfe_ct_phy_if_id_t D.11929;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = pkt->i_phy_if;
+  # DEBUG BEGIN_STMT
+  D.11929 = ret;
+  return D.11929;
+
+}
+
+
+pfe_hif_pkt_get_data_len (const struct pfe_hif_pkt_t * pkt)
+{
+  uint32_t ret;
+  uint32_t D.11952;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pkt->len;
+  ret = (uint32_t) _1;
+  # DEBUG BEGIN_STMT
+  D.11952 = ret;
+  return D.11952;
+
+}
+
+
+pfe_hif_pkt_get_data (const struct pfe_hif_pkt_t * pkt)
+{
+  addr_t ret;
+  addr_t D.11927;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = pkt->data;
+  # DEBUG BEGIN_STMT
+  D.11927 = ret;
+  return D.11927;
+
+}
+
+

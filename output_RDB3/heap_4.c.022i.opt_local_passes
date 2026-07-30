@@ -1,0 +1,854 @@
+vPortGetHeapStats (struct HeapStats_t * pxHeapStats)
+{
+  size_t xMinSize;
+  size_t xMaxSize;
+  size_t xBlocks;
+  struct BlockLink_t * pxBlock;
+  unsigned int _1;
+  unsigned int _2;
+  struct BlockLink_t * pxEnd.26_3;
+  unsigned int xFreeBytesRemaining.27_4;
+  unsigned int xNumberOfSuccessfulAllocations.28_5;
+  unsigned int xNumberOfSuccessfulFrees.29_6;
+  unsigned int xMinimumEverFreeBytesRemaining.30_7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xBlocks_17 = 0;
+  # DEBUG xBlocks => xBlocks_17
+  xMaxSize_18 = 0;
+  # DEBUG xMaxSize => xMaxSize_18
+  xMinSize_19 = 4294967295;
+  # DEBUG xMinSize => xMinSize_19
+  # DEBUG BEGIN_STMT
+  vTaskSuspendAll ();
+  # DEBUG BEGIN_STMT
+  pxBlock_22 = xStart.pxNextFreeBlock;
+  # DEBUG pxBlock => pxBlock_22
+  # DEBUG BEGIN_STMT
+  if (pxBlock_22 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # pxBlock_8 = PHI <pxBlock_22(2), pxBlock_26(7)>
+  # xBlocks_9 = PHI <xBlocks_17(2), xBlocks_23(7)>
+  # xMaxSize_11 = PHI <xMaxSize_18(2), xMaxSize_12(7)>
+  # xMinSize_14 = PHI <xMinSize_19(2), xMinSize_15(7)>
+  # DEBUG xMinSize => xMinSize_14
+  # DEBUG xMaxSize => xMaxSize_11
+  # DEBUG xBlocks => xBlocks_9
+  # DEBUG pxBlock => pxBlock_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xBlocks_23 = xBlocks_9 + 1;
+  # DEBUG xBlocks => xBlocks_23
+  # DEBUG BEGIN_STMT
+  _1 = pxBlock_8->xBlockSize;
+  if (xMaxSize_11 < _1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  xMaxSize_24 = pxBlock_8->xBlockSize;
+  # DEBUG xMaxSize => xMaxSize_24
+
+  <bb 5> :
+  # xMaxSize_12 = PHI <xMaxSize_11(3), xMaxSize_24(4)>
+  # DEBUG xMaxSize => xMaxSize_12
+  # DEBUG BEGIN_STMT
+  _2 = pxBlock_8->xBlockSize;
+  if (xMinSize_14 > _2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xMinSize_25 = pxBlock_8->xBlockSize;
+  # DEBUG xMinSize => xMinSize_25
+
+  <bb 7> :
+  # xMinSize_15 = PHI <xMinSize_14(5), xMinSize_25(6)>
+  # DEBUG xMinSize => xMinSize_15
+  # DEBUG BEGIN_STMT
+  pxBlock_26 = pxBlock_8->pxNextFreeBlock;
+  # DEBUG pxBlock => pxBlock_26
+  # DEBUG BEGIN_STMT
+  pxEnd.26_3 = pxEnd;
+  if (pxBlock_26 != pxEnd.26_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # xBlocks_10 = PHI <xBlocks_17(2), xBlocks_23(7)>
+  # xMaxSize_13 = PHI <xMaxSize_18(2), xMaxSize_12(7)>
+  # xMinSize_16 = PHI <xMinSize_19(2), xMinSize_15(7)>
+  # DEBUG xMinSize => xMinSize_16
+  # DEBUG xMaxSize => xMaxSize_13
+  # DEBUG xBlocks => xBlocks_10
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  # DEBUG BEGIN_STMT
+  pxHeapStats_28(D)->xSizeOfLargestFreeBlockInBytes = xMaxSize_13;
+  # DEBUG BEGIN_STMT
+  pxHeapStats_28(D)->xSizeOfSmallestFreeBlockInBytes = xMinSize_16;
+  # DEBUG BEGIN_STMT
+  pxHeapStats_28(D)->xNumberOfFreeBlocks = xBlocks_10;
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  xFreeBytesRemaining.27_4 = xFreeBytesRemaining;
+  pxHeapStats_28(D)->xAvailableHeapSpaceInBytes = xFreeBytesRemaining.27_4;
+  # DEBUG BEGIN_STMT
+  xNumberOfSuccessfulAllocations.28_5 = xNumberOfSuccessfulAllocations;
+  pxHeapStats_28(D)->xNumberOfSuccessfulAllocations = xNumberOfSuccessfulAllocations.28_5;
+  # DEBUG BEGIN_STMT
+  xNumberOfSuccessfulFrees.29_6 = xNumberOfSuccessfulFrees;
+  pxHeapStats_28(D)->xNumberOfSuccessfulFrees = xNumberOfSuccessfulFrees.29_6;
+  # DEBUG BEGIN_STMT
+  xMinimumEverFreeBytesRemaining.30_7 = xMinimumEverFreeBytesRemaining;
+  pxHeapStats_28(D)->xMinimumEverFreeBytesRemaining = xMinimumEverFreeBytesRemaining.30_7;
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  return;
+
+}
+
+
+prvInsertBlockIntoFreeList (struct BlockLink_t * pxBlockToInsert)
+{
+  uint8_t * puc;
+  struct BlockLink_t * pxIterator;
+  struct A_BLOCK_LINK * _1;
+  unsigned int _2;
+  uint8_t * _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  uint8_t * _8;
+  struct A_BLOCK_LINK * _9;
+  struct A_BLOCK_LINK * _10;
+  struct BlockLink_t * pxEnd.19_11;
+  unsigned int _12;
+  struct A_BLOCK_LINK * _13;
+  unsigned int _14;
+  unsigned int _15;
+  struct A_BLOCK_LINK * _16;
+  struct A_BLOCK_LINK * _17;
+  struct BlockLink_t * pxEnd.20_18;
+  struct A_BLOCK_LINK * _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxIterator_25 = &xStart;
+  # DEBUG pxIterator => pxIterator_25
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxIterator_37 = pxIterator_21->pxNextFreeBlock;
+  # DEBUG pxIterator => pxIterator_37
+
+  <bb 4> :
+  # pxIterator_21 = PHI <pxIterator_25(2), pxIterator_37(3)>
+  # DEBUG pxIterator => pxIterator_21
+  # DEBUG BEGIN_STMT
+  _1 = pxIterator_21->pxNextFreeBlock;
+  if (pxBlockToInsert_27(D) > _1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  puc_28 = pxIterator_21;
+  # DEBUG puc => puc_28
+  # DEBUG BEGIN_STMT
+  _2 = pxIterator_21->xBlockSize;
+  _3 = puc_28 + _2;
+  if (pxBlockToInsert_27(D) == _3)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _4 = pxIterator_21->xBlockSize;
+  _5 = pxBlockToInsert_27(D)->xBlockSize;
+  _6 = _4 + _5;
+  pxIterator_21->xBlockSize = _6;
+  # DEBUG BEGIN_STMT
+  pxBlockToInsert_30 = pxIterator_21;
+  # DEBUG pxBlockToInsert => pxBlockToInsert_30
+
+  <bb 7> :
+  # pxBlockToInsert_20 = PHI <pxBlockToInsert_27(D)(5), pxBlockToInsert_30(6)>
+  # DEBUG pxBlockToInsert => pxBlockToInsert_20
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  puc_31 = pxBlockToInsert_20;
+  # DEBUG puc => puc_31
+  # DEBUG BEGIN_STMT
+  _7 = pxBlockToInsert_20->xBlockSize;
+  _8 = puc_31 + _7;
+  _9 = pxIterator_21->pxNextFreeBlock;
+  if (_8 == _9)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _10 = pxIterator_21->pxNextFreeBlock;
+  pxEnd.19_11 = pxEnd;
+  if (_10 != pxEnd.19_11)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _12 = pxBlockToInsert_20->xBlockSize;
+  _13 = pxIterator_21->pxNextFreeBlock;
+  _14 = _13->xBlockSize;
+  _15 = _12 + _14;
+  pxBlockToInsert_20->xBlockSize = _15;
+  # DEBUG BEGIN_STMT
+  _16 = pxIterator_21->pxNextFreeBlock;
+  _17 = _16->pxNextFreeBlock;
+  pxBlockToInsert_20->pxNextFreeBlock = _17;
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  pxEnd.20_18 = pxEnd;
+  pxBlockToInsert_20->pxNextFreeBlock = pxEnd.20_18;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _19 = pxIterator_21->pxNextFreeBlock;
+  pxBlockToInsert_20->pxNextFreeBlock = _19;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  if (pxIterator_21 != pxBlockToInsert_20)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  pxIterator_21->pxNextFreeBlock = pxBlockToInsert_20;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+prvHeapInit ()
+{
+  size_t xTotalHeapSize;
+  size_t uxAddress;
+  uint8_t * pucAlignedHeap;
+  struct BlockLink_t * pxFirstFreeBlock;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int ucHeap.12_3;
+  unsigned int pucAlignedHeap.13_4;
+  struct BlockLink_t * uxAddress.14_5;
+  struct BlockLink_t * pxEnd.15_6;
+  struct BlockLink_t * pxEnd.16_7;
+  unsigned int pxFirstFreeBlock.17_8;
+  unsigned int _9;
+  struct BlockLink_t * pxEnd.18_10;
+  unsigned int _11;
+  unsigned int _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTotalHeapSize_15 = 16384;
+  # DEBUG xTotalHeapSize => xTotalHeapSize_15
+  # DEBUG BEGIN_STMT
+  uxAddress_16 = (size_t) &ucHeap;
+  # DEBUG uxAddress => uxAddress_16
+  # DEBUG BEGIN_STMT
+  _1 = uxAddress_16 & 7;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  uxAddress_17 = uxAddress_16 + 7;
+  # DEBUG uxAddress => uxAddress_17
+  # DEBUG BEGIN_STMT
+  uxAddress_18 = uxAddress_17 & 4294967288;
+  # DEBUG uxAddress => uxAddress_18
+  # DEBUG BEGIN_STMT
+  _2 = xTotalHeapSize_15 - uxAddress_18;
+  ucHeap.12_3 = (unsigned int) &ucHeap;
+  xTotalHeapSize_19 = _2 + ucHeap.12_3;
+  # DEBUG xTotalHeapSize => xTotalHeapSize_19
+
+  <bb 4> :
+  # uxAddress_13 = PHI <uxAddress_16(2), uxAddress_18(3)>
+  # xTotalHeapSize_14 = PHI <xTotalHeapSize_15(2), xTotalHeapSize_19(3)>
+  # DEBUG xTotalHeapSize => xTotalHeapSize_14
+  # DEBUG uxAddress => uxAddress_13
+  # DEBUG BEGIN_STMT
+  pucAlignedHeap_20 = (uint8_t *) uxAddress_13;
+  # DEBUG pucAlignedHeap => pucAlignedHeap_20
+  # DEBUG BEGIN_STMT
+  xStart.pxNextFreeBlock = pucAlignedHeap_20;
+  # DEBUG BEGIN_STMT
+  xStart.xBlockSize = 0;
+  # DEBUG BEGIN_STMT
+  pucAlignedHeap.13_4 = (unsigned int) pucAlignedHeap_20;
+  uxAddress_24 = xTotalHeapSize_14 + pucAlignedHeap.13_4;
+  # DEBUG uxAddress => uxAddress_24
+  # DEBUG BEGIN_STMT
+  uxAddress_25 = uxAddress_24 + 4294967288;
+  # DEBUG uxAddress => uxAddress_25
+  # DEBUG BEGIN_STMT
+  uxAddress_26 = uxAddress_25 & 4294967288;
+  # DEBUG uxAddress => uxAddress_26
+  # DEBUG BEGIN_STMT
+  uxAddress.14_5 = (struct BlockLink_t *) uxAddress_26;
+  pxEnd = uxAddress.14_5;
+  # DEBUG BEGIN_STMT
+  pxEnd.15_6 = pxEnd;
+  pxEnd.15_6->xBlockSize = 0;
+  # DEBUG BEGIN_STMT
+  pxEnd.16_7 = pxEnd;
+  pxEnd.16_7->pxNextFreeBlock = 0B;
+  # DEBUG BEGIN_STMT
+  pxFirstFreeBlock_30 = pucAlignedHeap_20;
+  # DEBUG pxFirstFreeBlock => pxFirstFreeBlock_30
+  # DEBUG BEGIN_STMT
+  pxFirstFreeBlock.17_8 = (unsigned int) pxFirstFreeBlock_30;
+  _9 = uxAddress_26 - pxFirstFreeBlock.17_8;
+  pxFirstFreeBlock_30->xBlockSize = _9;
+  # DEBUG BEGIN_STMT
+  pxEnd.18_10 = pxEnd;
+  pxFirstFreeBlock_30->pxNextFreeBlock = pxEnd.18_10;
+  # DEBUG BEGIN_STMT
+  _11 = pxFirstFreeBlock_30->xBlockSize;
+  xMinimumEverFreeBytesRemaining = _11;
+  # DEBUG BEGIN_STMT
+  _12 = pxFirstFreeBlock_30->xBlockSize;
+  xFreeBytesRemaining = _12;
+  # DEBUG BEGIN_STMT
+  xBlockAllocatedBit = 2147483648;
+  return;
+
+}
+
+
+vPortInitialiseBlocks ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+xPortGetMinimumEverFreeHeapSize ()
+{
+  size_t _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _2 = xMinimumEverFreeBytesRemaining;
+  return _2;
+
+}
+
+
+xPortGetFreeHeapSize ()
+{
+  size_t _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _2 = xFreeBytesRemaining;
+  return _2;
+
+}
+
+
+vPortFree (void * pv)
+{
+  struct BlockLink_t * pxLink;
+  uint8_t * puc;
+  unsigned int _1;
+  unsigned int xBlockAllocatedBit.21_2;
+  unsigned int _3;
+  struct A_BLOCK_LINK * _4;
+  unsigned int _5;
+  unsigned int xBlockAllocatedBit.22_6;
+  unsigned int _7;
+  struct A_BLOCK_LINK * _8;
+  unsigned int _9;
+  unsigned int xBlockAllocatedBit.23_10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int xFreeBytesRemaining.24_14;
+  unsigned int _15;
+  unsigned int xNumberOfSuccessfulFrees.25_16;
+  unsigned int _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  puc_20 = pv_19(D);
+  # DEBUG puc => puc_20
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pv_19(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  puc_22 = puc_20 + 4294967288;
+  # DEBUG puc => puc_22
+  # DEBUG BEGIN_STMT
+  pxLink_23 = puc_22;
+  # DEBUG pxLink => pxLink_23
+  # DEBUG BEGIN_STMT
+  _1 = pxLink_23->xBlockSize;
+  xBlockAllocatedBit.21_2 = xBlockAllocatedBit;
+  _3 = _1 & xBlockAllocatedBit.21_2;
+  if (_3 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = pxLink_23->pxNextFreeBlock;
+  if (_4 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = pxLink_23->xBlockSize;
+  xBlockAllocatedBit.22_6 = xBlockAllocatedBit;
+  _7 = _5 & xBlockAllocatedBit.22_6;
+  if (_7 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _8 = pxLink_23->pxNextFreeBlock;
+  if (_8 == 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _9 = pxLink_23->xBlockSize;
+  xBlockAllocatedBit.23_10 = xBlockAllocatedBit;
+  _11 = ~xBlockAllocatedBit.23_10;
+  _12 = _9 & _11;
+  pxLink_23->xBlockSize = _12;
+  # DEBUG BEGIN_STMT
+  vTaskSuspendAll ();
+  # DEBUG BEGIN_STMT
+  _13 = pxLink_23->xBlockSize;
+  xFreeBytesRemaining.24_14 = xFreeBytesRemaining;
+  _15 = _13 + xFreeBytesRemaining.24_14;
+  xFreeBytesRemaining = _15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  prvInsertBlockIntoFreeList (pxLink_23);
+  # DEBUG BEGIN_STMT
+  xNumberOfSuccessfulFrees.25_16 = xNumberOfSuccessfulFrees;
+  _17 = xNumberOfSuccessfulFrees.25_16 + 1;
+  xNumberOfSuccessfulFrees = _17;
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pvPortMalloc (size_t xWantedSize)
+{
+  void * pvReturn;
+  struct BlockLink_t * pxNewBlockLink;
+  struct BlockLink_t * pxPreviousBlock;
+  struct BlockLink_t * pxBlock;
+  struct BlockLink_t * pxEnd.0_1;
+  unsigned int xBlockAllocatedBit.1_2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned int xFreeBytesRemaining.2_10;
+  unsigned int _11;
+  struct A_BLOCK_LINK * _12;
+  struct BlockLink_t * pxEnd.3_13;
+  struct A_BLOCK_LINK * _14;
+  struct A_BLOCK_LINK * _15;
+  unsigned int _16;
+  unsigned int _17;
+  unsigned int pxNewBlockLink.4_18;
+  unsigned int _19;
+  unsigned int _20;
+  unsigned int _21;
+  unsigned int xFreeBytesRemaining.5_22;
+  unsigned int _23;
+  unsigned int _24;
+  unsigned int xFreeBytesRemaining.6_25;
+  unsigned int xMinimumEverFreeBytesRemaining.7_26;
+  unsigned int xFreeBytesRemaining.8_27;
+  unsigned int _28;
+  unsigned int xBlockAllocatedBit.9_29;
+  unsigned int _30;
+  unsigned int xNumberOfSuccessfulAllocations.10_31;
+  unsigned int _32;
+  unsigned int pvReturn.11_33;
+  unsigned int _34;
+  void * _70;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pvReturn_43 = 0B;
+  # DEBUG pvReturn => pvReturn_43
+  # DEBUG BEGIN_STMT
+  vTaskSuspendAll ();
+  # DEBUG BEGIN_STMT
+  pxEnd.0_1 = pxEnd;
+  if (pxEnd.0_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  prvHeapInit ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xBlockAllocatedBit.1_2 = xBlockAllocatedBit;
+  _3 = xWantedSize_47(D) & xBlockAllocatedBit.1_2;
+  if (_3 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = xWantedSize_47(D) + 4294967295;
+  if (_4 <= 4294967286)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xWantedSize_49 = xWantedSize_47(D) + 8;
+  # DEBUG xWantedSize => xWantedSize_49
+  # DEBUG BEGIN_STMT
+  _5 = xWantedSize_49 & 7;
+  if (_5 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _6 = xWantedSize_49 & 4294967288;
+  _7 = _6 + 8;
+  if (xWantedSize_49 < _7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _8 = xWantedSize_49 & 4294967288;
+  xWantedSize_51 = _8 + 8;
+  # DEBUG xWantedSize => xWantedSize_51
+  # DEBUG BEGIN_STMT
+  _9 = xWantedSize_51 & 7;
+  if (_9 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  xWantedSize_50 = 0;
+  # DEBUG xWantedSize => xWantedSize_50
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  xWantedSize_48 = 0;
+  # DEBUG xWantedSize => xWantedSize_48
+
+  <bb 13> :
+  # xWantedSize_35 = PHI <xWantedSize_50(11), xWantedSize_48(12), xWantedSize_49(6), xWantedSize_51(8)>
+  # DEBUG xWantedSize => xWantedSize_35
+  # DEBUG BEGIN_STMT
+  if (xWantedSize_35 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 14> :
+  xFreeBytesRemaining.2_10 = xFreeBytesRemaining;
+  if (xWantedSize_35 <= xFreeBytesRemaining.2_10)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  pxPreviousBlock_53 = &xStart;
+  # DEBUG pxPreviousBlock => pxPreviousBlock_53
+  # DEBUG BEGIN_STMT
+  pxBlock_54 = xStart.pxNextFreeBlock;
+  # DEBUG pxBlock => pxBlock_54
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  pxPreviousBlock_55 = pxBlock_36;
+  # DEBUG pxPreviousBlock => pxPreviousBlock_55
+  # DEBUG BEGIN_STMT
+  pxBlock_56 = pxBlock_36->pxNextFreeBlock;
+  # DEBUG pxBlock => pxBlock_56
+
+  <bb 17> :
+  # pxBlock_36 = PHI <pxBlock_54(15), pxBlock_56(16)>
+  # pxPreviousBlock_37 = PHI <pxPreviousBlock_53(15), pxPreviousBlock_55(16)>
+  # DEBUG pxPreviousBlock => pxPreviousBlock_37
+  # DEBUG pxBlock => pxBlock_36
+  # DEBUG BEGIN_STMT
+  _11 = pxBlock_36->xBlockSize;
+  if (xWantedSize_35 > _11)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  _12 = pxBlock_36->pxNextFreeBlock;
+  if (_12 != 0B)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  pxEnd.3_13 = pxEnd;
+  if (pxBlock_36 != pxEnd.3_13)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  _14 = pxPreviousBlock_37->pxNextFreeBlock;
+  pvReturn_57 = _14 + 8;
+  # DEBUG pvReturn => pvReturn_57
+  # DEBUG BEGIN_STMT
+  _15 = pxBlock_36->pxNextFreeBlock;
+  pxPreviousBlock_37->pxNextFreeBlock = _15;
+  # DEBUG BEGIN_STMT
+  _16 = pxBlock_36->xBlockSize;
+  _17 = _16 - xWantedSize_35;
+  if (_17 > 16)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  pxNewBlockLink_59 = pxBlock_36 + xWantedSize_35;
+  # DEBUG pxNewBlockLink => pxNewBlockLink_59
+  # DEBUG BEGIN_STMT
+  pxNewBlockLink.4_18 = (unsigned int) pxNewBlockLink_59;
+  _19 = pxNewBlockLink.4_18 & 7;
+  if (_19 != 0)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 23>; [INV]
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = pxBlock_36->xBlockSize;
+  _21 = _20 - xWantedSize_35;
+  pxNewBlockLink_59->xBlockSize = _21;
+  # DEBUG BEGIN_STMT
+  pxBlock_36->xBlockSize = xWantedSize_35;
+  # DEBUG BEGIN_STMT
+  prvInsertBlockIntoFreeList (pxNewBlockLink_59);
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xFreeBytesRemaining.5_22 = xFreeBytesRemaining;
+  _23 = pxBlock_36->xBlockSize;
+  _24 = xFreeBytesRemaining.5_22 - _23;
+  xFreeBytesRemaining = _24;
+  # DEBUG BEGIN_STMT
+  xFreeBytesRemaining.6_25 = xFreeBytesRemaining;
+  xMinimumEverFreeBytesRemaining.7_26 = xMinimumEverFreeBytesRemaining;
+  if (xFreeBytesRemaining.6_25 < xMinimumEverFreeBytesRemaining.7_26)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  # DEBUG BEGIN_STMT
+  xFreeBytesRemaining.8_27 = xFreeBytesRemaining;
+  xMinimumEverFreeBytesRemaining = xFreeBytesRemaining.8_27;
+
+  <bb 27> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _28 = pxBlock_36->xBlockSize;
+  xBlockAllocatedBit.9_29 = xBlockAllocatedBit;
+  _30 = _28 | xBlockAllocatedBit.9_29;
+  pxBlock_36->xBlockSize = _30;
+  # DEBUG BEGIN_STMT
+  pxBlock_36->pxNextFreeBlock = 0B;
+  # DEBUG BEGIN_STMT
+  xNumberOfSuccessfulAllocations.10_31 = xNumberOfSuccessfulAllocations;
+  _32 = xNumberOfSuccessfulAllocations.10_31 + 1;
+  xNumberOfSuccessfulAllocations = _32;
+
+  <bb 28> :
+  # pvReturn_38 = PHI <pvReturn_43(4), pvReturn_43(14), pvReturn_43(13), pvReturn_43(19), pvReturn_57(27)>
+  # DEBUG pvReturn => pvReturn_38
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  # DEBUG BEGIN_STMT
+  pvReturn.11_33 = (unsigned int) pvReturn_38;
+  _34 = pvReturn.11_33 & 7;
+  if (_34 != 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 29> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 30> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 30>; [INV]
+
+  <bb 31> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _70 = pvReturn_38;
+  return _70;
+
+}
+
+
+__attribute__((always_inline))
+vPortRaiseBASEPRI ()
+{
+  uint32_t ulNewBASEPRI;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_3 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_3
+  return;
+
+}
+
+

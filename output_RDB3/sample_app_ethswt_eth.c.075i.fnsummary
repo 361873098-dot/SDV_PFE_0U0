@@ -1,0 +1,593 @@
+
+Analyzing function: SampleAppEthInit/20
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 1 }
+
+Analyzing function body size: SampleAppEthInit
+
+IPA function summary for SampleAppEthInit/20 inlinable
+  global time:     31.000000
+  self size:       12
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:5.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    Eth_43_PFE_SetControllerMode/29 function body not available
+      loop depth: 1 freq:1.00 size: 4 time: 13
+       op0 is compile time invariant
+       op1 is compile time invariant
+    Eth_43_PFE_Init/28 function body not available
+      loop depth: 0 freq:1.00 size: 2 time: 11
+       op0 is compile time invariant
+
+
+Analyzing function: Tst_Pfe_SendDummyFrame/19
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9 10 11 12 13
+;; 2 succs { 4 3 }
+;; 3 succs { 4 }
+;; 4 succs { 5 13 }
+;; 5 succs { 8 6 }
+;; 6 succs { 8 7 }
+;; 7 succs { 8 }
+;; 8 succs { 9 10 }
+;; 9 succs { 11 }
+;; 10 succs { 11 }
+;; 11 succs { 12 13 }
+;; 12 succs { 13 }
+;; 13 succs { 1 }
+
+Analyzing function body size: Tst_Pfe_SendDummyFrame
+
+IPA function summary for Tst_Pfe_SendDummyFrame/19 inlinable
+  global time:     138.920000
+  self size:       135
+  global size:     0
+  min size:       0
+  self stack:      28
+  global stack:    28
+    size:41.000000, time:25.750000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:6.000000, time:4.000000,  nonconst if:(op2 changed)
+    size:2.000000, time:0.660000,  executed if:(op2 != 1),  nonconst if:(op0 changed) && (op2 != 1)
+    size:1.000000, time:0.330000,  executed if:(op2 != 1)
+    size:3.000000, time:0.510000,  executed if:(op2 == 1)
+  calls:
+    Eth_43_PFE_Transmit/26 function body not available
+      loop depth: 0 freq:0.50 size: 8 time: 17
+       op3 is compile time invariant
+    autolibc_memcpy/24 function body not available
+      loop depth: 0 freq:0.33 size: 4 time: 13 predicate: (op2 != 1)
+       op1 is compile time invariant
+       op2 is compile time invariant
+    autolibc_memcpy/24 function body not available
+      loop depth: 0 freq:0.33 size: 4 time: 13 predicate: (op2 != 1)
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op2 is compile time invariant
+    Eth_43_PFE_GetPhysAddr/25 function body not available
+      loop depth: 0 freq:0.33 size: 3 time: 12 predicate: (op2 != 1)
+       op1 is compile time invariant
+    autolibc_memcpy/24 function body not available
+      loop depth: 0 freq:0.33 size: 4 time: 13 predicate: (op2 != 1)
+       op1 is compile time invariant
+       op2 is compile time invariant
+    autolibc_memcpy/24 function body not available
+      loop depth: 0 freq:0.33 size: 4 time: 13 predicate: (op2 != 1)
+       op1 is compile time invariant
+       op2 is compile time invariant
+    autolibc_memcpy/24 function body not available
+      loop depth: 0 freq:0.17 size: 4 time: 13 predicate: (op2 == 1)
+       op1 is compile time invariant
+       op2 is compile time invariant
+    autolibc_memcpy/24 function body not available
+      loop depth: 0 freq:0.17 size: 4 time: 13 predicate: (op2 == 1)
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op2 is compile time invariant
+    autolibc_memcpy/24 function body not available
+      loop depth: 0 freq:0.17 size: 4 time: 13 predicate: (op2 == 1)
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op2 is compile time invariant
+    autolibc_memcpy/24 function body not available
+      loop depth: 0 freq:0.17 size: 4 time: 13 predicate: (op2 == 1)
+       op1 is compile time invariant
+       op2 is compile time invariant
+    autolibc_memcpy/24 function body not available
+      loop depth: 0 freq:0.17 size: 4 time: 13 predicate: (op2 == 1)
+       op1 is compile time invariant
+       op2 is compile time invariant
+    ipv4_string_to_int/23 function body not available
+      loop depth: 0 freq:0.50 size: 3 time: 12
+    ipv4_string_to_int/23 function body not available
+      loop depth: 0 freq:0.50 size: 3 time: 12
+    ipv4_string_to_int/23 function body not available
+      loop depth: 0 freq:0.50 size: 3 time: 12
+    ipv4_string_to_int/23 function body not available
+      loop depth: 0 freq:0.50 size: 3 time: 12
+    ipv4_string_to_int/23 function body not available
+      loop depth: 0 freq:0.50 size: 3 time: 12
+    ipv4_string_to_int/23 function body not available
+      loop depth: 0 freq:0.50 size: 3 time: 12
+    ipv4_string_to_int/23 function body not available
+      loop depth: 0 freq:0.50 size: 3 time: 12
+    ipv4_string_to_int/23 function body not available
+      loop depth: 0 freq:0.50 size: 3 time: 12
+    Eth_43_PFE_ProvideTxBuffer/22 function body not available
+      loop depth: 0 freq:1.00 size: 7 time: 16
+       op2 is compile time invariant
+       op3 is compile time invariant
+       op4 is compile time invariant
+
+Symbol table:
+
+Eth_43_PFE_SetControllerMode/29 (Eth_43_PFE_SetControllerMode) @085f0380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SampleAppEthInit/20 (536870913 (estimated locally),1.00 per call) 
+  Calls: 
+Eth_43_PFE_Init/28 (Eth_43_PFE_Init) @085f02a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SampleAppEthInit/20 (536870913 (estimated locally),1.00 per call) 
+  Calls: 
+pfeTxErrorCtr/27 (pfeTxErrorCtr) @085ef288
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Tst_Pfe_SendDummyFrame/19 (read)
+  Availability: not_available
+  Varpool flags:
+Eth_43_PFE_Transmit/26 (Eth_43_PFE_Transmit) @085f00e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Tst_Pfe_SendDummyFrame/19 (536870913 (estimated locally),0.50 per call) 
+  Calls: 
+Eth_43_PFE_GetPhysAddr/25 (Eth_43_PFE_GetPhysAddr) @085f0000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Tst_Pfe_SendDummyFrame/19 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+autolibc_memcpy/24 (autolibc_memcpy) @085daa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Tst_Pfe_SendDummyFrame/19 (354334802 (estimated locally),0.33 per call) Tst_Pfe_SendDummyFrame/19 (354334802 (estimated locally),0.33 per call) Tst_Pfe_SendDummyFrame/19 (354334802 (estimated locally),0.33 per call) Tst_Pfe_SendDummyFrame/19 (354334802 (estimated locally),0.33 per call) Tst_Pfe_SendDummyFrame/19 (182536110 (estimated locally),0.17 per call) Tst_Pfe_SendDummyFrame/19 (182536110 (estimated locally),0.17 per call) Tst_Pfe_SendDummyFrame/19 (182536110 (estimated locally),0.17 per call) Tst_Pfe_SendDummyFrame/19 (182536110 (estimated locally),0.17 per call) Tst_Pfe_SendDummyFrame/19 (182536110 (estimated locally),0.17 per call) 
+  Calls: 
+ipv4_string_to_int/23 (ipv4_string_to_int) @085da7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Tst_Pfe_SendDummyFrame/19 (536870913 (estimated locally),0.50 per call) Tst_Pfe_SendDummyFrame/19 (536870913 (estimated locally),0.50 per call) Tst_Pfe_SendDummyFrame/19 (536870913 (estimated locally),0.50 per call) Tst_Pfe_SendDummyFrame/19 (536870913 (estimated locally),0.50 per call) Tst_Pfe_SendDummyFrame/19 (536870913 (estimated locally),0.50 per call) Tst_Pfe_SendDummyFrame/19 (536870913 (estimated locally),0.50 per call) Tst_Pfe_SendDummyFrame/19 (536870913 (estimated locally),0.50 per call) Tst_Pfe_SendDummyFrame/19 (536870913 (estimated locally),0.50 per call) 
+  Calls: 
+Eth_43_PFE_ProvideTxBuffer/22 (Eth_43_PFE_ProvideTxBuffer) @085da620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Tst_Pfe_SendDummyFrame/19 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfeTxCtr/21 (pfeTxCtr) @085e5ca8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Tst_Pfe_SendDummyFrame/19 (read)
+  Availability: not_available
+  Varpool flags:
+SampleAppEthInit/20 (SampleAppEthInit) @085dac40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:536870913 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Eth_43_PFE_SetControllerMode/29 (536870913 (estimated locally),1.00 per call) Eth_43_PFE_Init/28 (536870913 (estimated locally),1.00 per call) 
+Tst_Pfe_SendDummyFrame/19 (Tst_Pfe_SendDummyFrame) @085da9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pfeTxCtr/21 (read)Priority/18 (read)tst_ipv4_tcp_frm_data/16 (addr)tst_ipv4_tcp_frm_data/16 (addr)tst_ipv4_tcp_frm_data/16 (addr)tst_ipv4_tcp_frm_data/16 (addr)tst_ipv4_tcp_frm_data/16 (addr)tst_arp_frm_data/15 (addr)tst_arp_frm_data/15 (addr)tst_arp_frm_data/15 (addr)tst_arp_frm_data/15 (addr)pfeTxErrorCtr/27 (read)Priority/18 (read)Priority/18 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Eth_43_PFE_Transmit/26 (536870913 (estimated locally),0.50 per call) autolibc_memcpy/24 (354334802 (estimated locally),0.33 per call) autolibc_memcpy/24 (354334802 (estimated locally),0.33 per call) Eth_43_PFE_GetPhysAddr/25 (354334802 (estimated locally),0.33 per call) autolibc_memcpy/24 (354334802 (estimated locally),0.33 per call) autolibc_memcpy/24 (354334802 (estimated locally),0.33 per call) autolibc_memcpy/24 (182536110 (estimated locally),0.17 per call) autolibc_memcpy/24 (182536110 (estimated locally),0.17 per call) autolibc_memcpy/24 (182536110 (estimated locally),0.17 per call) autolibc_memcpy/24 (182536110 (estimated locally),0.17 per call) autolibc_memcpy/24 (182536110 (estimated locally),0.17 per call) ipv4_string_to_int/23 (536870913 (estimated locally),0.50 per call) ipv4_string_to_int/23 (536870913 (estimated locally),0.50 per call) ipv4_string_to_int/23 (536870913 (estimated locally),0.50 per call) ipv4_string_to_int/23 (536870913 (estimated locally),0.50 per call) ipv4_string_to_int/23 (536870913 (estimated locally),0.50 per call) ipv4_string_to_int/23 (536870913 (estimated locally),0.50 per call) ipv4_string_to_int/23 (536870913 (estimated locally),0.50 per call) ipv4_string_to_int/23 (536870913 (estimated locally),0.50 per call) Eth_43_PFE_ProvideTxBuffer/22 (1073741824 (estimated locally),1.00 per call) 
+Priority/18 (Priority) @085d4900
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: Tst_Pfe_SendDummyFrame/19 (read)Tst_Pfe_SendDummyFrame/19 (read)Tst_Pfe_SendDummyFrame/19 (write)
+  Availability: available
+  Varpool flags: initialized
+p_shared_status/17 (p_shared_status) @085d48b8
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+tst_ipv4_tcp_frm_data/16 (tst_ipv4_tcp_frm_data) @085d4558
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Tst_Pfe_SendDummyFrame/19 (addr)Tst_Pfe_SendDummyFrame/19 (addr)Tst_Pfe_SendDummyFrame/19 (addr)Tst_Pfe_SendDummyFrame/19 (addr)Tst_Pfe_SendDummyFrame/19 (addr)
+  Availability: available
+  Varpool flags: initialized
+tst_arp_frm_data/15 (tst_arp_frm_data) @085d4480
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Tst_Pfe_SendDummyFrame/19 (addr)Tst_Pfe_SendDummyFrame/19 (addr)Tst_Pfe_SendDummyFrame/19 (addr)Tst_Pfe_SendDummyFrame/19 (addr)
+  Availability: available
+  Varpool flags: initialized
+SampleAppEthInit ()
+{
+  uint8 pfeCtrlIndex;
+  Std_ReturnType stdRet;
+  unsigned char _8;
+
+  <bb 2> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG stdRet => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG pfeCtrlIndex => 0
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_Init (0B);
+  # DEBUG BEGIN_STMT
+  # DEBUG pfeCtrlIndex => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _8 = Eth_43_PFE_SetControllerMode (0, 1);
+  stdRet_9 = stdRet_2 | _8;
+  # DEBUG stdRet => stdRet_9
+  # DEBUG BEGIN_STMT
+  # DEBUG pfeCtrlIndex => 1
+
+  <bb 4> [local count: 1073741824]:
+  # stdRet_2 = PHI <0(2), stdRet_9(3)>
+  # pfeCtrlIndex_3 = PHI <0(2), 1(3)>
+  # DEBUG pfeCtrlIndex => pfeCtrlIndex_3
+  # DEBUG stdRet => stdRet_2
+  # DEBUG BEGIN_STMT
+  if (pfeCtrlIndex_3 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+  # stdRet_1 = PHI <stdRet_2(4)>
+  # DEBUG BEGIN_STMT
+  return stdRet_1;
+
+}
+
+
+Tst_Pfe_SendDummyFrame (uint8 srcCtrlIndex, uint8 * dstMacAddr, frame_type_t frmType)
+{
+  Eth_FrameType frameType;
+  uint16 u16DesPort;
+  uint16 u16SrcPort;
+  uint8 u8DesIpOffset;
+  uint8 u8SrcIpOffset;
+  uint8 srcMac[6];
+  char * pDstIpAddr;
+  char * pSrcIpAddr;
+  uint32 dstIpAddr;
+  uint32 srcIpAddr;
+  BufReq_ReturnType ProvideTxBufferResult;
+  uint16 u16TempLengthInBytes;
+  uint16 LengthInBytes;
+  Eth_BufIdxType BufferIndex;
+  Eth_DataType * bufPtr;
+  Std_ReturnType tempRet;
+  volatile uint32_t * pfeTxCtr.0_1;
+  unsigned int _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned char Priority.1_7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  int _34;
+  uint8_t * _35;
+  int _36;
+  uint8_t * _37;
+  Eth_DataType * bufPtr.2_38;
+  int _39;
+  uint8_t * _40;
+  int _41;
+  uint8_t * _42;
+  Eth_DataType * bufPtr.3_43;
+  long unsigned int BufferIndex.4_44;
+  volatile uint32_t * pfeTxErrorCtr.5_45;
+  volatile uint32_t * _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  unsigned char Priority.6_49;
+  int _50;
+  int _51;
+  unsigned int _52;
+  unsigned int _53;
+  unsigned char _54;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG tempRet => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG pSrcIpAddr => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG pDstIpAddr => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG u8SrcIpOffset => 14
+  # DEBUG BEGIN_STMT
+  # DEBUG u8DesIpOffset => 24
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG frameType => 2054
+  # DEBUG BEGIN_STMT
+  pfeTxCtr.0_1 = pfeTxCtr;
+  _2 = (unsigned int) srcCtrlIndex_65(D);
+  _3 = _2 * 4;
+  _4 = pfeTxCtr.0_1 + _3;
+  _5 ={v} *_4;
+  _6 = _5 + 1;
+  *_4 ={v} _6;
+  # DEBUG BEGIN_STMT
+  if (frmType_67(D) == 1)
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 3>; [66.00%]
+
+  <bb 3> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  # DEBUG LengthInBytes => 28
+
+  <bb 4> [local count: 1073741824]:
+  # LengthInBytes_56 = PHI <52(2), 28(3)>
+  # DEBUG LengthInBytes => LengthInBytes_56
+  # DEBUG BEGIN_STMT
+  u16TempLengthInBytes = LengthInBytes_56;
+  # DEBUG BEGIN_STMT
+  Priority.1_7 = Priority;
+  ProvideTxBufferResult_70 = Eth_43_PFE_ProvideTxBuffer (srcCtrlIndex_65(D), Priority.1_7, &BufferIndex, &bufPtr, &u16TempLengthInBytes);
+  # DEBUG ProvideTxBufferResult => ProvideTxBufferResult_70
+  # DEBUG BEGIN_STMT
+  if (ProvideTxBufferResult_70 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  if (frmType_67(D) == 1)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 6> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  if (srcCtrlIndex_65(D) == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pSrcIpAddr => ""
+  # DEBUG BEGIN_STMT
+  # DEBUG pDstIpAddr => ""
+
+  <bb 8> [local count: 536870913]:
+  # pSrcIpAddr_57 = PHI <"11.41.48.100"(5), "192.168.21.23"(6), ""(7)>
+  # pDstIpAddr_58 = PHI <"12.41.48.100"(5), "192.168.21.23"(6), ""(7)>
+  # u8SrcIpOffset_59 = PHI <12(5), 14(6), 14(7)>
+  # u8DesIpOffset_60 = PHI <16(5), 24(6), 24(7)>
+  # frameType_61 = PHI <2048(5), 2054(6), 2054(7)>
+  # DEBUG frameType => frameType_61
+  # DEBUG u8DesIpOffset => u8DesIpOffset_60
+  # DEBUG u8SrcIpOffset => u8SrcIpOffset_59
+  # DEBUG pDstIpAddr => pDstIpAddr_58
+  # DEBUG pSrcIpAddr => pSrcIpAddr_57
+  # DEBUG BEGIN_STMT
+  _8 = ipv4_string_to_int (pSrcIpAddr_57);
+  _9 = _8 >> 24;
+  _10 = ipv4_string_to_int (pSrcIpAddr_57);
+  _11 = _10 >> 8;
+  _12 = _11 & 65280;
+  _13 = _9 | _12;
+  _14 = ipv4_string_to_int (pSrcIpAddr_57);
+  _15 = _14 << 8;
+  _16 = _15 & 16711680;
+  _17 = _13 | _16;
+  _18 = ipv4_string_to_int (pSrcIpAddr_57);
+  _19 = _18 << 24;
+  _20 = _17 | _19;
+  srcIpAddr = _20;
+  # DEBUG BEGIN_STMT
+  _21 = ipv4_string_to_int (pDstIpAddr_58);
+  _22 = _21 >> 24;
+  _23 = ipv4_string_to_int (pDstIpAddr_58);
+  _24 = _23 >> 8;
+  _25 = _24 & 65280;
+  _26 = _22 | _25;
+  _27 = ipv4_string_to_int (pDstIpAddr_58);
+  _28 = _27 << 8;
+  _29 = _28 & 16711680;
+  _30 = _26 | _29;
+  _31 = ipv4_string_to_int (pDstIpAddr_58);
+  _32 = _31 << 24;
+  _33 = _30 | _32;
+  dstIpAddr = _33;
+  # DEBUG BEGIN_STMT
+  if (frmType_67(D) == 1)
+    goto <bb 9>; [34.00%]
+  else
+    goto <bb 10>; [66.00%]
+
+  <bb 9> [local count: 182536110]:
+  # DEBUG BEGIN_STMT
+  _34 = (int) u8SrcIpOffset_59;
+  _35 = &tst_ipv4_tcp_frm_data[_34];
+  autolibc_memcpy (_35, &srcIpAddr, 4);
+  # DEBUG BEGIN_STMT
+  _36 = (int) u8DesIpOffset_60;
+  _37 = &tst_ipv4_tcp_frm_data[_36];
+  autolibc_memcpy (_37, &dstIpAddr, 4);
+  # DEBUG BEGIN_STMT
+  u16SrcPort = 2816;
+  # DEBUG BEGIN_STMT
+  u16DesPort = 3072;
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (&tst_ipv4_tcp_frm_data[20], &u16SrcPort, 2);
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (&tst_ipv4_tcp_frm_data[22], &u16DesPort, 2);
+  # DEBUG BEGIN_STMT
+  bufPtr.2_38 = bufPtr;
+  autolibc_memcpy (bufPtr.2_38, &tst_ipv4_tcp_frm_data, 52);
+  goto <bb 11>; [100.00%]
+
+  <bb 10> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _39 = (int) u8SrcIpOffset_59;
+  _40 = &tst_arp_frm_data[_39];
+  autolibc_memcpy (_40, &srcIpAddr, 4);
+  # DEBUG BEGIN_STMT
+  _41 = (int) u8DesIpOffset_60;
+  _42 = &tst_arp_frm_data[_41];
+  autolibc_memcpy (_42, &dstIpAddr, 4);
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_GetPhysAddr (srcCtrlIndex_65(D), &srcMac[0]);
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (&tst_arp_frm_data[8], &srcMac[0], 6);
+  # DEBUG BEGIN_STMT
+  bufPtr.3_43 = bufPtr;
+  autolibc_memcpy (bufPtr.3_43, &tst_arp_frm_data, 28);
+
+  <bb 11> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  BufferIndex.4_44 = BufferIndex;
+  tempRet_95 = Eth_43_PFE_Transmit (srcCtrlIndex_65(D), BufferIndex.4_44, frameType_61, 1, LengthInBytes_56, dstMacAddr_93(D));
+  # DEBUG tempRet => tempRet_95
+  # DEBUG BEGIN_STMT
+  if (tempRet_95 != 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 12> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  pfeTxErrorCtr.5_45 = pfeTxErrorCtr;
+  _46 = pfeTxErrorCtr.5_45 + _3;
+  _47 ={v} *_46;
+  _48 = _47 + 1;
+  *_46 ={v} _48;
+
+  <bb 13> [local count: 1073741824]:
+  # tempRet_55 = PHI <1(4), tempRet_95(11), tempRet_95(12)>
+  # DEBUG tempRet => tempRet_55
+  # DEBUG BEGIN_STMT
+  Priority.6_49 = Priority;
+  _50 = (int) Priority.6_49;
+  _51 = _50 + 1;
+  _52 = (unsigned int) _51;
+  _53 = _52 % 7;
+  _54 = (unsigned char) _53;
+  Priority = _54;
+  # DEBUG BEGIN_STMT
+  bufPtr ={v} {CLOBBER};
+  BufferIndex ={v} {CLOBBER};
+  u16TempLengthInBytes ={v} {CLOBBER};
+  srcIpAddr ={v} {CLOBBER};
+  dstIpAddr ={v} {CLOBBER};
+  srcMac ={v} {CLOBBER};
+  u16SrcPort ={v} {CLOBBER};
+  u16DesPort ={v} {CLOBBER};
+  return tempRet_55;
+
+}
+
+

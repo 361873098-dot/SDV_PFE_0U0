@@ -1,0 +1,629 @@
+IPA function summary for ethernet_output/4 inlinable
+  global time:     12988.561005
+  self size:       37
+  global size:     37
+  min size:       42
+  self stack:      0
+  global stack:    0
+    size:11.500000, time:12930.259201
+    size:4.500000, time:1.853136,  executed if:(not inlined)
+  calls:
+    memcpy/13 function body not available
+      loop depth: 0 freq:0.98 size: 4 time: 13
+       op2 is compile time invariant
+    memcpy/13 function body not available
+      loop depth: 0 freq:0.98 size: 4 time: 13
+       op2 is compile time invariant
+    pbuf_add_header/12 function body not available
+      loop depth: 0 freq:1.00 size: 4 time: 13
+       op1 is compile time invariant
+    lwip_htons/11 function body not available
+      loop depth: 0 freq:1.00 size: 3 time: 12
+    indirect call loop depth: 0 freq:0.33 size: 6 time: 18
+
+IPA function summary for ethernet_input/3 inlinable
+  global time:     39.743066
+  self size:       97
+  global size:     97
+  min size:       4
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:1.999868,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 80] changed) && (not inlined)
+    size:2.500000, time:2.500000,  nonconst if:(op0[ref offset: 80] changed)
+    size:0.500000, time:0.330000,  executed if:(op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op0[ref offset: 120] changed) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:2.500000, time:1.650000,  executed if:(op0[ref offset: 80] > 14),  nonconst if:(op0[ref offset: 120] changed) && (op0[ref offset: 80] > 14)
+    size:0.500000, time:0.165000,  executed if:(op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op1[ref offset: 416] changed) && (op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:1.500000, time:0.495000,  executed if:(op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14),  nonconst if:(op1[ref offset: 416] changed) && (op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14)
+    size:0.500000, time:0.165000,  executed if:(op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:0.500000, time:0.165000,  executed if:(op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14)
+    size:0.500000, time:0.330000,  executed if:(op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op0[ref offset: 32] changed) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:0.500000, time:0.330000,  executed if:(op0[ref offset: 80] > 14),  nonconst if:(op0[ref offset: 32] changed) && (op0[ref offset: 80] > 14)
+    size:38.500000, time:8.474246,  executed if:(op0[ref offset: 80] > 14)
+    size:1.000000, time:0.063987,  executed if:(op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op0[ref offset: 104] changed) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:3.000000, time:0.191961,  executed if:(op0[ref offset: 80] > 14),  nonconst if:(op0[ref offset: 104] changed) && (op0[ref offset: 80] > 14)
+    size:1.500000, time:0.173976,  executed if:(op0[ref offset: 80] > 14) && (not inlined)
+    size:1.000000, time:0.219978,  executed if:(op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op1[ref offset: 392] changed) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:7.000000, time:1.539846,  executed if:(op0[ref offset: 80] > 14),  nonconst if:(op1[ref offset: 392] changed) && (op0[ref offset: 80] > 14)
+    size:0.500000, time:0.109989,  executed if:(op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op1[ref offset: 672] changed) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:1.500000, time:0.329967,  executed if:(op0[ref offset: 80] > 14),  nonconst if:(op1[ref offset: 672] changed) && (op0[ref offset: 80] > 14)
+    size:6.500000, time:2.210000,  executed if:(op0[ref offset: 80] <= 14)
+    size:0.500000, time:0.170000,  executed if:(op0[ref offset: 80] <= 14) && (not inlined),  nonconst if:(op1[ref offset: 640] changed) && (op0[ref offset: 80] <= 14) && (not inlined)
+    size:1.500000, time:0.510000,  executed if:(op0[ref offset: 80] <= 14),  nonconst if:(op1[ref offset: 640] changed) && (op0[ref offset: 80] <= 14)
+    size:0.500000, time:0.170000,  executed if:(op0[ref offset: 80] <= 14) && (not inlined)
+  calls:
+    pbuf_free/10 function body not available
+      loop depth: 0 freq:0.89 size: 2 time: 11
+    etharp_input/9 function body not available
+      loop depth: 0 freq:0.05 size: 3 time: 12 predicate: (op0[ref offset: 80] > 14)
+    pbuf_remove_header/7 function body not available
+      loop depth: 0 freq:0.11 size: 4 time: 13 predicate: (op0[ref offset: 80] > 14)
+       op1 is compile time invariant
+    ip4_input/8 function body not available
+      loop depth: 0 freq:0.05 size: 3 time: 12 predicate: (op0[ref offset: 80] > 14)
+    pbuf_remove_header/7 function body not available
+      loop depth: 0 freq:0.11 size: 4 time: 13 predicate: (op0[ref offset: 80] > 14)
+       op1 is compile time invariant
+    memcmp/6 function body not available
+      loop depth: 0 freq:0.22 size: 5 time: 14 predicate: (op0[ref offset: 80] > 14)
+       op1 is compile time invariant
+       op2 is compile time invariant
+
+
+Flattening functions:
+Overall time estimate: 13028.304077 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+Enqueueing calls in ethernet_output/4.
+Enqueueing calls in ethernet_input/3.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 13028.304077 weighted by profile: 0.000000
+
+Why inlining failed?
+function body not available                       :       10 calls, 5.390982 freq, 0 count
+IPA function summary for ethernet_output/4 inlinable
+  global time:     12988.561005
+  self size:       37
+  global size:     37
+  min size:       42
+  self stack:      0
+  global stack:    0
+    size:11.500000, time:12930.259201
+    size:4.500000, time:1.853136,  executed if:(not inlined)
+  calls:
+    memcpy/13 function body not available
+      loop depth: 0 freq:0.98 size: 4 time: 13
+       op2 is compile time invariant
+    memcpy/13 function body not available
+      loop depth: 0 freq:0.98 size: 4 time: 13
+       op2 is compile time invariant
+    pbuf_add_header/12 function body not available
+      loop depth: 0 freq:1.00 size: 4 time: 13
+       op1 is compile time invariant
+    lwip_htons/11 function body not available
+      loop depth: 0 freq:1.00 size: 3 time: 12
+    indirect call loop depth: 0 freq:0.33 size: 6 time: 18
+
+IPA function summary for ethernet_input/3 inlinable
+  global time:     39.743066
+  self size:       97
+  global size:     97
+  min size:       4
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:1.999868,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 80] changed) && (not inlined)
+    size:2.500000, time:2.500000,  nonconst if:(op0[ref offset: 80] changed)
+    size:0.500000, time:0.330000,  executed if:(op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op0[ref offset: 120] changed) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:2.500000, time:1.650000,  executed if:(op0[ref offset: 80] > 14),  nonconst if:(op0[ref offset: 120] changed) && (op0[ref offset: 80] > 14)
+    size:0.500000, time:0.165000,  executed if:(op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op1[ref offset: 416] changed) && (op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:1.500000, time:0.495000,  executed if:(op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14),  nonconst if:(op1[ref offset: 416] changed) && (op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14)
+    size:0.500000, time:0.165000,  executed if:(op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:0.500000, time:0.165000,  executed if:(op0[ref offset: 120] == 0) && (op0[ref offset: 80] > 14)
+    size:0.500000, time:0.330000,  executed if:(op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op0[ref offset: 32] changed) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:0.500000, time:0.330000,  executed if:(op0[ref offset: 80] > 14),  nonconst if:(op0[ref offset: 32] changed) && (op0[ref offset: 80] > 14)
+    size:38.500000, time:8.474246,  executed if:(op0[ref offset: 80] > 14)
+    size:1.000000, time:0.063987,  executed if:(op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op0[ref offset: 104] changed) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:3.000000, time:0.191961,  executed if:(op0[ref offset: 80] > 14),  nonconst if:(op0[ref offset: 104] changed) && (op0[ref offset: 80] > 14)
+    size:1.500000, time:0.173976,  executed if:(op0[ref offset: 80] > 14) && (not inlined)
+    size:1.000000, time:0.219978,  executed if:(op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op1[ref offset: 392] changed) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:7.000000, time:1.539846,  executed if:(op0[ref offset: 80] > 14),  nonconst if:(op1[ref offset: 392] changed) && (op0[ref offset: 80] > 14)
+    size:0.500000, time:0.109989,  executed if:(op0[ref offset: 80] > 14) && (not inlined),  nonconst if:(op1[ref offset: 672] changed) && (op0[ref offset: 80] > 14) && (not inlined)
+    size:1.500000, time:0.329967,  executed if:(op0[ref offset: 80] > 14),  nonconst if:(op1[ref offset: 672] changed) && (op0[ref offset: 80] > 14)
+    size:6.500000, time:2.210000,  executed if:(op0[ref offset: 80] <= 14)
+    size:0.500000, time:0.170000,  executed if:(op0[ref offset: 80] <= 14) && (not inlined),  nonconst if:(op1[ref offset: 640] changed) && (op0[ref offset: 80] <= 14) && (not inlined)
+    size:1.500000, time:0.510000,  executed if:(op0[ref offset: 80] <= 14),  nonconst if:(op1[ref offset: 640] changed) && (op0[ref offset: 80] <= 14)
+    size:0.500000, time:0.170000,  executed if:(op0[ref offset: 80] <= 14) && (not inlined)
+  calls:
+    pbuf_free/10 function body not available
+      loop depth: 0 freq:0.89 size: 2 time: 11
+    etharp_input/9 function body not available
+      loop depth: 0 freq:0.05 size: 3 time: 12 predicate: (op0[ref offset: 80] > 14)
+    pbuf_remove_header/7 function body not available
+      loop depth: 0 freq:0.11 size: 4 time: 13 predicate: (op0[ref offset: 80] > 14)
+       op1 is compile time invariant
+    ip4_input/8 function body not available
+      loop depth: 0 freq:0.05 size: 3 time: 12 predicate: (op0[ref offset: 80] > 14)
+    pbuf_remove_header/7 function body not available
+      loop depth: 0 freq:0.11 size: 4 time: 13 predicate: (op0[ref offset: 80] > 14)
+       op1 is compile time invariant
+    memcmp/6 function body not available
+      loop depth: 0 freq:0.22 size: 5 time: 14 predicate: (op0[ref offset: 80] > 14)
+       op1 is compile time invariant
+       op2 is compile time invariant
+
+Symbol table:
+
+memcpy/13 (memcpy) @07288c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ethernet_output/4 (162688 (estimated locally),0.98 per call) ethernet_output/4 (162688 (estimated locally),0.98 per call) 
+  Calls: 
+pbuf_add_header/12 (pbuf_add_header) @07288b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ethernet_output/4 (166161 (estimated locally),1.00 per call) 
+  Calls: 
+lwip_htons/11 (lwip_htons) @07288a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ethernet_output/4 (166161 (estimated locally),1.00 per call) 
+  Calls: 
+pbuf_free/10 (pbuf_free) @072888c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ethernet_input/3 (960802782 (estimated locally),0.89 per call) 
+  Calls: 
+etharp_input/9 (etharp_input) @072887e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ethernet_input/3 (56434088 (estimated locally),0.05 per call) 
+  Calls: 
+ip4_input/8 (ip4_input) @07288620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ethernet_input/3 (56434088 (estimated locally),0.05 per call) 
+  Calls: 
+pbuf_remove_header/7 (pbuf_remove_header) @07288540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ethernet_input/3 (115454354 (estimated locally),0.11 per call) ethernet_input/3 (115454354 (estimated locally),0.11 per call) 
+  Calls: 
+memcmp/6 (memcmp) @07288460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ethernet_input/3 (233860969 (estimated locally),0.22 per call) 
+  Calls: 
+lwip_stats/5 (lwip_stats) @07285af8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: ethernet_input/3 (read)ethernet_input/3 (write)ethernet_input/3 (read)ethernet_input/3 (write)ethernet_input/3 (read)ethernet_input/3 (write)ethernet_input/3 (read)ethernet_input/3 (write)ethernet_input/3 (read)ethernet_input/3 (write)ethernet_input/3 (read)ethernet_input/3 (write)ethernet_output/4 (read)ethernet_output/4 (write)
+  Availability: not_available
+  Varpool flags:
+ethernet_output/4 (ethernet_output) @07246700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: lwip_stats/5 (read)lwip_stats/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:166161 (estimated locally) body optimize_size
+  Called by: 
+  Calls: memcpy/13 (162688 (estimated locally),0.98 per call) memcpy/13 (162688 (estimated locally),0.98 per call) pbuf_add_header/12 (166161 (estimated locally),1.00 per call) lwip_htons/11 (166161 (estimated locally),1.00 per call) 
+   Indirect call(55314 (estimated locally),0.33 per call)  of param:0 loaded from aggregate passed by reference at offset 192 (vptr maybe changed)
+ethernet_input/3 (ethernet_input) @07246b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: lwip_stats/5 (read)lwip_stats/5 (write)lwip_stats/5 (read)lwip_stats/5 (write)ethbroadcast/1 (addr)lwip_stats/5 (read)lwip_stats/5 (write)lwip_stats/5 (read)lwip_stats/5 (write)lwip_stats/5 (read)lwip_stats/5 (write)lwip_stats/5 (read)lwip_stats/5 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_free/10 (960802782 (estimated locally),0.89 per call) etharp_input/9 (56434088 (estimated locally),0.05 per call) pbuf_remove_header/7 (115454354 (estimated locally),0.11 per call) ip4_input/8 (56434088 (estimated locally),0.05 per call) pbuf_remove_header/7 (115454354 (estimated locally),0.11 per call) memcmp/6 (233860969 (estimated locally),0.22 per call) 
+ethzero/2 (ethzero) @07249b88
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+ethbroadcast/1 (ethbroadcast) @07249af8
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: ethernet_input/3 (addr)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+
+;; Function ethernet_input (ethernet_input, funcdef_no=1, decl_uid=6918, cgraph_uid=2, symbol_order=3)
+
+ethernet_input (struct pbuf * p, struct netif * netif)
+{
+  u16_t type;
+  struct eth_hdr * ethhdr;
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned char _8;
+  unsigned char _9;
+  unsigned char _10;
+  unsigned char _11;
+  unsigned char _12;
+  unsigned char _13;
+  unsigned char _14;
+  unsigned char _15;
+  u8_t[6] * _16;
+  int _17;
+  unsigned char _18;
+  unsigned char _19;
+  unsigned char _20;
+  unsigned char _21;
+  unsigned char _22;
+  unsigned char _23;
+  unsigned char _24;
+  unsigned char _25;
+  short unsigned int _26;
+  short unsigned int _27;
+  short unsigned int _28;
+  short unsigned int _29;
+  short unsigned int _30;
+  short unsigned int _31;
+  short unsigned int _32;
+  short unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  unsigned char _40;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG next_hdr_offset => 14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = p_42(D)->len;
+  if (_1 <= 14)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _2 = lwip_stats.etharp.proterr;
+  _3 = _2 + 1;
+  lwip_stats.etharp.proterr = _3;
+  # DEBUG BEGIN_STMT
+  _4 = lwip_stats.etharp.drop;
+  _5 = _4 + 1;
+  lwip_stats.etharp.drop = _5;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = netif_43(D)->mib2_counters.ifinerrors;
+  _7 = _6 + 1;
+  netif_43(D)->mib2_counters.ifinerrors = _7;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 25>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  _8 = p_42(D)->if_idx;
+  if (_8 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _9 = netif_43(D)->num;
+  _10 = _9 + 1;
+  p_42(D)->if_idx = _10;
+
+  <bb 6> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  ethhdr_45 = p_42(D)->payload;
+  # DEBUG ethhdr => ethhdr_45
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  type_46 = ethhdr_45->type;
+  # DEBUG type => type_46
+  # DEBUG BEGIN_STMT
+  _11 = ethhdr_45->dest.addr[0];
+  _40 = _11 & 1;
+  if (_40 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 7> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  if (_11 == 1)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 11>; [66.00%]
+
+  <bb 8> [local count: 120473833]:
+  # DEBUG BEGIN_STMT
+  _12 = ethhdr_45->dest.addr[1];
+  if (_12 == 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 9> [local count: 60236916]:
+  _13 = ethhdr_45->dest.addr[2];
+  if (_13 == 94)
+    goto <bb 10>; [34.00%]
+  else
+    goto <bb 13>; [66.00%]
+
+  <bb 10> [local count: 20480552]:
+  # DEBUG BEGIN_STMT
+  _14 = p_42(D)->flags;
+  _15 = _14 | 16;
+  p_42(D)->flags = _15;
+  goto <bb 13>; [100.00%]
+
+  <bb 11> [local count: 233860969]:
+  # DEBUG BEGIN_STMT
+  _16 = &ethhdr_45->dest.addr;
+  _17 = memcmp (_16, &ethbroadcast.addr, 6);
+  if (_17 == 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 12> [local count: 116930485]:
+  # DEBUG BEGIN_STMT
+  _18 = p_42(D)->flags;
+  _19 = _18 | 8;
+  p_42(D)->flags = _19;
+
+  <bb 13> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  switch (type_46) <default: <L25> [33.33%], case 8: <L15> [33.33%], case 1544: <L20> [33.33%]>
+
+  <bb 14> [local count: 236199579]:
+<L15>:
+  # DEBUG BEGIN_STMT
+  _20 = netif_43(D)->flags;
+  _21 = _20 & 8;
+  if (_21 == 0)
+    goto <bb 15>; [51.12%]
+  else
+    goto <bb 16>; [48.88%]
+
+  <bb 15> [local count: 120745225]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 25>; [100.00%]
+
+  <bb 16> [local count: 115454354]:
+  # DEBUG BEGIN_STMT
+  _22 = pbuf_remove_header (p_42(D), 14);
+  if (_22 != 0)
+    goto <bb 17>; [51.12%]
+  else
+    goto <bb 18>; [48.88%]
+
+  <bb 17> [local count: 59020266]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 25>; [100.00%]
+
+  <bb 18> [local count: 56434088]:
+  # DEBUG BEGIN_STMT
+  ip4_input (p_42(D), netif_43(D));
+  # DEBUG BEGIN_STMT
+  goto <bb 26>; [100.00%]
+
+  <bb 19> [local count: 236199579]:
+<L20>:
+  # DEBUG BEGIN_STMT
+  _23 = netif_43(D)->flags;
+  _24 = _23 & 8;
+  if (_24 == 0)
+    goto <bb 20>; [51.12%]
+  else
+    goto <bb 21>; [48.88%]
+
+  <bb 20> [local count: 120745225]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 25>; [100.00%]
+
+  <bb 21> [local count: 115454354]:
+  # DEBUG BEGIN_STMT
+  _25 = pbuf_remove_header (p_42(D), 14);
+  if (_25 != 0)
+    goto <bb 22>; [51.12%]
+  else
+    goto <bb 23>; [48.88%]
+
+  <bb 22> [local count: 59020266]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _26 = lwip_stats.etharp.lenerr;
+  _27 = _26 + 1;
+  lwip_stats.etharp.lenerr = _27;
+  # DEBUG BEGIN_STMT
+  _28 = lwip_stats.etharp.drop;
+  _29 = _28 + 1;
+  lwip_stats.etharp.drop = _29;
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 25>; [100.00%]
+
+  <bb 23> [local count: 56434088]:
+  # DEBUG BEGIN_STMT
+  etharp_input (p_42(D), netif_43(D));
+  # DEBUG BEGIN_STMT
+  goto <bb 26>; [100.00%]
+
+  <bb 24> [local count: 236199579]:
+<L25>:
+  # DEBUG BEGIN_STMT
+  _30 = lwip_stats.etharp.proterr;
+  _31 = _30 + 1;
+  lwip_stats.etharp.proterr = _31;
+  # DEBUG BEGIN_STMT
+  _32 = lwip_stats.etharp.drop;
+  _33 = _32 + 1;
+  lwip_stats.etharp.drop = _33;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _34 = netif_43(D)->mib2_counters.ifinunknownprotos;
+  _35 = _34 + 1;
+  netif_43(D)->mib2_counters.ifinunknownprotos = _35;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+
+  <bb 25> [local count: 960802782]:
+free_and_return:
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_42(D));
+  # DEBUG BEGIN_STMT
+
+  <bb 26> [local count: 1073670958]:
+  return 0;
+
+}
+
+
+
+;; Function ethernet_output (ethernet_output, funcdef_no=2, decl_uid=6924, cgraph_uid=3, symbol_order=4)
+
+ethernet_output (struct netif * netif, struct pbuf * p, const struct eth_addr * src, const struct eth_addr * dst, u16_t eth_type)
+{
+  u16_t eth_type_be;
+  struct eth_hdr * ethhdr;
+  unsigned char _1;
+  struct eth_addr * _2;
+  struct eth_addr * _3;
+  unsigned char _4;
+  err_t (*<T65b>) (struct netif *, struct pbuf *) _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  err_t _8;
+  err_t _25;
+
+  <bb 2> [local count: 166161]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  eth_type_be_14 = lwip_htons (eth_type_12(D));
+  # DEBUG eth_type_be => eth_type_be_14
+  # DEBUG BEGIN_STMT
+  _1 = pbuf_add_header (p_15(D), 14);
+  if (_1 != 0)
+    goto <bb 3>; [2.09%]
+  else
+    goto <bb 4>; [97.91%]
+
+  <bb 3> [local count: 3473]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  # DEBUG pbuf_header_failed => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = lwip_stats.link.lenerr;
+  _7 = _6 + 1;
+  lwip_stats.link.lenerr = _7;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 162688]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ethhdr_17 = p_15(D)->payload;
+  # DEBUG ethhdr => ethhdr_17
+  # DEBUG BEGIN_STMT
+  ethhdr_17->type = eth_type_be_14;
+  # DEBUG BEGIN_STMT
+  _2 = &ethhdr_17->dest;
+  memcpy (_2, dst_19(D), 6);
+  # DEBUG BEGIN_STMT
+  _3 = &ethhdr_17->src;
+  memcpy (_3, src_21(D), 6);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = netif_23(D)->hwaddr_len;
+  if (_4 != 6)
+    goto <bb 8>; [66.00%]
+  else
+    goto <bb 6>; [34.00%]
+
+  <bb 8> [local count: 107374]:
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 9> [local count: 1073741824]:
+  goto <bb 5>; [100.00%]
+
+  <bb 6> [local count: 55314]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = netif_23(D)->linkoutput;
+  _25 = _5 (netif_23(D), p_15(D));
+
+  <bb 7> [local count: 58787]:
+  # _8 = PHI <_25(6), -2(3)>
+  return _8;
+
+}
+
+

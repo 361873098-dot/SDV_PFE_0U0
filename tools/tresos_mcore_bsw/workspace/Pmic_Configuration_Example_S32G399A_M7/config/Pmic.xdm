@@ -1,0 +1,2072 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="Pmic" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Pmic" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+              <a:a name="DEF" value="ASPath:/TS_T40D11M40I0R0/Pmic"/>
+              <d:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN" value="true"/>
+              <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" 
+                     value="VariantPreCompile"/>
+              <d:ctr name="PmicGeneralConfiguration" type="IDENTIFIABLE">
+                <d:var name="PmicDevErrorDetect" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="PmicDisableDemReportErrorStatus" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="PmicTimeoutMechanism" type="ENUMERATION" 
+                       value="LOOPS"/>
+                <d:var name="PmicTimeoutMethod" type="ENUMERATION" 
+                       value="OSIF_COUNTER_SYSTEM">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="PmicTimeoutDuration" type="INTEGER" value="5000000"/>
+                <d:var name="PmicVersionInfoApi" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="PmicDeviceInfoApi" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="PmicSetAnalogMuxApi" type="BOOLEAN" value="false"/>
+                <d:var name="PmicWatchdogApi" type="BOOLEAN" value="true"/>
+                <d:var name="PmicOtpEmulationModeApi" type="BOOLEAN" 
+                       value="false"/>
+                <d:var name="PmicSwitchSVSApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="PmicExternalWatchdog" type="BOOLEAN" value="false"/>
+                <d:var name="PmicWatchdogTaskNotification" type="FUNCTION-NAME" 
+                       value="Pmic_Perform_WatchDog_Task">
+                  <a:a name="ENABLE" value="false"/>
+                </d:var>
+                <d:var name="PmicDieProcessEnable" type="BOOLEAN" value="false"/>
+                <d:ref name="PmicOcotplink" type="REFERENCE" 
+                       value="ASPath:/Ocotp/Ocotp/OcotpChannelList/OcotpChannel_0"/>
+                <d:var name="PmicEnableUserModeSupport" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:ctr name="PmicGlobalConfig" type="IDENTIFIABLE">
+                <d:lst name="PmicDevice" type="MAP">
+                  <d:ctr name="PmicDevice_0" type="IDENTIFIABLE">
+                    <d:var name="PmicDeviceId" type="INTEGER" value="0"/>
+                    <d:var name="PmicDeviceMainI2cAddress" type="ENUMERATION" 
+                           value="A_0x20"/>
+                    <d:var name="PmicDeviceSafetyI2cAddress" type="ENUMERATION" 
+                           value="A_0x21"/>
+                    <d:lst name="PmicOtpConfiguration" type="MAP">
+                      <d:ctr name="PmicOtpConfiguration_0" type="IDENTIFIABLE">
+                        <d:ctr name="PmicOtpMainUnitConfiguration" 
+                               type="IDENTIFIABLE">
+                          <d:ctr name="PmicOtpDeviceConfiguration" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicMainI2cAddress" type="ENUMERATION" 
+                                   value="A_0x20"/>
+                            <d:var name="PmicVsupLockoutThreshold" 
+                                   type="ENUMERATION" 
+                                   value="LOW_VOLTAGE_THRESHOLD">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicAutoRetryEnable" type="BOOLEAN" 
+                                   value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicAutoRetryTimeout" 
+                                   type="ENUMERATION" value="TIME_4S"/>
+                            <d:var name="PmicAutoRetryLimit" type="ENUMERATION" 
+                                   value="NO_LIMIT">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicPllEnable" type="BOOLEAN" 
+                                   value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicClk1Divider" type="ENUMERATION" 
+                                   value="DIV_9"/>
+                            <d:var name="PmicClk2Divider" type="ENUMERATION" 
+                                   value="DIV_44"/>
+                            <d:var name="PmicCenterDieTempThreshold" 
+                                   type="ENUMERATION" value="TEMP_105_oC"/>
+                            <d:var name="PmicDeepSleepEnable" type="BOOLEAN" 
+                                   value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicOtpMainIOConfiguration" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicPwron2GateEnable" type="BOOLEAN" 
+                                   value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicAmuxFoutPinMode" 
+                                   type="ENUMERATION" value="FOUT_MODE"/>
+                            <d:var name="PmicPsyncEnable" type="BOOLEAN" 
+                                   value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicPsyncMode" type="ENUMERATION" 
+                                   value="SYNC_2X_VR5510"/>
+                            <d:var name="PmicPsyncPowerDownControlEnable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicStandbyTimerEnable" type="BOOLEAN" 
+                                   value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicStandbyDischargeThreshold" 
+                                   type="ENUMERATION" value="MAX_75_MV"/>
+                            <d:var name="PmicStandbyPolarity" 
+                                   type="ENUMERATION" 
+                                   value="HIGH_IN_NORMAL_LOW_IN_STANDBY"/>
+                            <d:var name="PmicStandbyPGoodEnable" type="BOOLEAN" 
+                                   value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVddioSupplySelect" 
+                                   type="ENUMERATION" value="LDO3"/>
+                          </d:ctr>
+                          <d:ctr name="PmicOtpPowerSequenceConfiguration" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicSlotWidth" type="ENUMERATION" 
+                                   value="TIME_250US"/>
+                            <d:ctr name="PmicVpreRegulator" type="IDENTIFIABLE">
+                              <d:var name="PmicVpreEnableRegulator" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVprePowerupMode" 
+                                     type="ENUMERATION" value="AUTO_ENABLED">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicVprePhaseDelay" type="INTEGER" 
+                                     value="0"/>
+                              <d:var name="PmicVpreClockSelect" 
+                                     type="ENUMERATION" value="CLK2">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicBoostRegulator" 
+                                   type="IDENTIFIABLE">
+                              <d:var name="PmicBoostEnableRegulator" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicBoostSlotSelect" 
+                                     type="ENUMERATION" value="SLOT_0"/>
+                              <d:var name="PmicBoostPhaseDelay" type="INTEGER" 
+                                     value="0"/>
+                              <d:var name="PmicBoostClockSelect" 
+                                     type="ENUMERATION" value="CLK1">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicBoostTsdBehavior" 
+                                     type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicHVLdoRegulator" 
+                                   type="IDENTIFIABLE">
+                              <d:var name="PmicHVLdoEnableRegulator" 
+                                     type="BOOLEAN" value="true"/>
+                              <d:var name="PmicHVLdoSequenceControl" 
+                                     type="ENUMERATION" value="START_IN_SLOT">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicHVLdoSlotSelect" 
+                                     type="ENUMERATION" value="SLOT_3"/>
+                              <d:var name="PmicHVLdoTsdBehavior" 
+                                     type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicBuck1Regulator" 
+                                   type="IDENTIFIABLE">
+                              <d:var name="PmicBuck1EnableRegulator" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicBuck1SlotSelect" 
+                                     type="ENUMERATION" value="SLOT_4"/>
+                              <d:var name="PmicBuck1PhaseDelay" type="INTEGER" 
+                                     value="0"/>
+                              <d:var name="PmicBuck1ClockSelect" 
+                                     type="ENUMERATION" value="CLK1">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicBuck1TsdBehavior" 
+                                     type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicBuck2Regulator" 
+                                   type="IDENTIFIABLE">
+                              <d:var name="PmicBuck2EnableRegulator" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicBuck2SlotSelect" 
+                                     type="ENUMERATION" value="SLOT_0">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicBuck2PhaseDelay" type="INTEGER" 
+                                     value="0"/>
+                              <d:var name="PmicBuck2ClockSelect" 
+                                     type="ENUMERATION" value="CLK1">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicBuck2TsdBehavior" 
+                                     type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicBuck3Regulator" 
+                                   type="IDENTIFIABLE">
+                              <d:var name="PmicBuck3EnableRegulator" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicBuck3SlotSelect" 
+                                     type="ENUMERATION" value="SLOT_2"/>
+                              <d:var name="PmicBuck3PhaseDelay" type="INTEGER" 
+                                     value="0"/>
+                              <d:var name="PmicBuck3ClockSelect" 
+                                     type="ENUMERATION" value="CLK1">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicBuck3TsdBehavior" 
+                                     type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicLdo1Regulator" type="IDENTIFIABLE">
+                              <d:var name="PmicLdo1EnableRegulator" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicLdo1SlotSelect" 
+                                     type="ENUMERATION" value="SLOT_1"/>
+                              <d:var name="PmicLdo1TsdBehavior" 
+                                     type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicLdo2Regulator" type="IDENTIFIABLE">
+                              <d:var name="PmicLdo2EnableRegulator" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicLdo2SlotSelect" 
+                                     type="ENUMERATION" value="SLOT_1"/>
+                              <d:var name="PmicLdo2TsdBehavior" 
+                                     type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicLdo3Regulator" type="IDENTIFIABLE">
+                              <d:var name="PmicLdo3EnableRegulator" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicLdo3SlotSelect" 
+                                     type="ENUMERATION" value="SLOT_0">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicLdo3TsdBehavior" 
+                                     type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                          </d:ctr>
+                          <d:ctr name="PmicOtpRegulatorsConfiguration" 
+                                 type="IDENTIFIABLE">
+                            <d:ctr name="PmicVpreRegulator" type="IDENTIFIABLE">
+                              <d:var name="PmicVpreOutputVoltage" 
+                                     type="ENUMERATION" value="OUT_3V3"/>
+                              <d:var name="PmicVpreSlopeCompensation" 
+                                     type="ENUMERATION" value="SLOPE_60"/>
+                              <d:var name="PmicVpreStdbyVoltageControlEnable" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVpreCsaThreshold" 
+                                     type="ENUMERATION" value="MAX_120_MV"/>
+                              <d:var name="PmicVpreHsCurrentCapability" 
+                                     type="ENUMERATION" value="I_520_MA"/>
+                              <d:var name="PmicVpreLsCurrentCapability" 
+                                     type="ENUMERATION" value="I_900_MA"/>
+                              <d:var name="PmicVpreSoftStartRamp" 
+                                     type="INTEGER" value="2"/>
+                              <d:var name="PmicVpreHsOffTime" 
+                                     type="ENUMERATION" value="TIME_80NS"/>
+                              <d:var name="PmicVpreHsOnTime" type="ENUMERATION" 
+                                     value="TIME_120NS"/>
+                              <d:var name="PmicVpreShutdownDelay" 
+                                     type="ENUMERATION" value="TIME_250US"/>
+                            </d:ctr>
+                            <d:ctr name="PmicVBoostRegulator" 
+                                   type="IDENTIFIABLE">
+                              <d:var name="PmicVBoostOutputVoltage" 
+                                     type="ENUMERATION" value="OUT_5V00"/>
+                              <d:var name="PmicVBoostSlopeCompensation" 
+                                     type="ENUMERATION" value="SLOPE_67"/>
+                              <d:var name="PmicVBoostLsOnTime" 
+                                     type="ENUMERATION" value="TIME_60NS"/>
+                              <d:var name="PmicVBoostCurrentLimit" 
+                                     type="ENUMERATION" value="I_3_A"/>
+                              <d:var name="PmicVBoostSlewRate" 
+                                     type="ENUMERATION" value="RATE_500"/>
+                              <d:var name="PmicVBoostCompensationCapacitor" 
+                                     type="ENUMERATION" value="C_125_PF"/>
+                              <d:var name="PmicVBoostCompensationResistor" 
+                                     type="ENUMERATION" value="R_500_KOHM"/>
+                              <d:var name="PmicVBoostToVBos" type="BOOLEAN" 
+                                     value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicBuck1Regulator" 
+                                   type="IDENTIFIABLE">
+                              <d:var name="PmicBuck1OutputVoltage" type="FLOAT" 
+                                     value="0.8">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicBuck1CurrentLimit" 
+                                     type="ENUMERATION" value="I_3_6_A"/>
+                              <d:var name="PmicBuck1InductorSelect" 
+                                     type="ENUMERATION" value="L_0_47_UH"/>
+                              <d:var name="PmicBuck1Transconductance" 
+                                     type="ENUMERATION" value="TRANS_65_uMho"/>
+                              <d:var name="PmicBuck1DVSRamp" type="ENUMERATION" 
+                                     value="DVS_7_8"/>
+                              <d:var name="PmicBuck1PhaseMode" 
+                                     type="ENUMERATION" value="DUAL_PHASE_MODE">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicBuck2Regulator" 
+                                   type="IDENTIFIABLE">
+                              <d:var name="PmicBuck2OutputVoltage" type="FLOAT" 
+                                     value="0.8">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicBuck2CurrentLimit" 
+                                     type="ENUMERATION" value="I_3_6_A"/>
+                              <d:var name="PmicBuck2InductorSelect" 
+                                     type="ENUMERATION" value="L_1_0_UH"/>
+                              <d:var name="PmicBuck2Transconductance" 
+                                     type="ENUMERATION" value="TRANS_65_uMho"/>
+                            </d:ctr>
+                            <d:ctr name="PmicBuck3Regulator" 
+                                   type="IDENTIFIABLE">
+                              <d:var name="PmicBuck3OutputVoltage" 
+                                     type="ENUMERATION" value="OUT_3V8"/>
+                              <d:var name="PmicBuck3CurrentLimit" 
+                                     type="ENUMERATION" value="I_3_6_A"/>
+                              <d:var name="PmicBuck3InductorSelect" 
+                                     type="ENUMERATION" value="L_1_0_UH"/>
+                              <d:var name="PmicBuck3Transconductance" 
+                                     type="ENUMERATION" value="TRANS_65_uMho"/>
+                              <d:var name="PmicBuck3CompensationResistor" 
+                                     type="ENUMERATION" value="R_56_KOHM"/>
+                            </d:ctr>
+                            <d:ctr name="PmicLdo1Regulator" type="IDENTIFIABLE">
+                              <d:var name="PmicLdo1OutputVoltage" 
+                                     type="ENUMERATION" value="OUT_1V8"/>
+                              <d:var name="PmicLdo1CurrentLimit" 
+                                     type="ENUMERATION" value="I_400_MA"/>
+                            </d:ctr>
+                            <d:ctr name="PmicLdo2Regulator" type="IDENTIFIABLE">
+                              <d:var name="PmicLdo2OutputVoltage" 
+                                     type="ENUMERATION" value="OUT_1V8"/>
+                              <d:var name="PmicLdo2OperatingMode" 
+                                     type="ENUMERATION" value="REGULATOR_MODE">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicLdo3Regulator" type="IDENTIFIABLE">
+                              <d:var name="PmicLdo3OutputVoltage" 
+                                     type="ENUMERATION" value="OUT_1V8"/>
+                              <d:var name="PmicLdo3OperatingMode" 
+                                     type="ENUMERATION" value="LOAD_SWITCH_MODE">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicHVLdoRegulator" 
+                                   type="IDENTIFIABLE">
+                              <d:var name="PmicHVLdoOutputVoltage" 
+                                     type="ENUMERATION" value="OUT_0V8"/>
+                              <d:var name="PmicHVLdoTransitionMode" 
+                                     type="ENUMERATION" 
+                                     value="SWITCH_NORMAL_LDO_STDBY">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@DEF</a:v>
+                                  <a:v>@CALC</a:v>
+                                </a:a>
+                              </d:var>
+                            </d:ctr>
+                          </d:ctr>
+                        </d:ctr>
+                        <d:ctr name="PmicOtpFailSafeUnitConfiguration" 
+                               type="IDENTIFIABLE">
+                          <d:ctr name="PmicOtpSafetyConfiguration" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicSafetyI2cAddress" 
+                                   type="ENUMERATION" value="A_0x21"/>
+                            <d:var name="PmicRSTBTimerEnable" type="BOOLEAN" 
+                                   value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicFaultRecoveryEnable" 
+                                   type="BOOLEAN" value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicRstbDelay" type="ENUMERATION" 
+                                   value="NO_DELAY">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicSVSLimit" type="ENUMERATION" 
+                                   value="MAX_STEP_16"/>
+                            <d:var name="PmicSVSOffsetType" type="ENUMERATION" 
+                                   value="NEGATIVE_OFFSET"/>
+                            <d:var name="PmicRSTBAssertPGOOD" type="BOOLEAN" 
+                                   value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicHVLDOMONMode" type="ENUMERATION" 
+                                   value="LOAD_SWITCH_MODE">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicLBISTEnable" type="BOOLEAN" 
+                                   value="true"/>
+                          </d:ctr>
+                          <d:ctr name="PmicOtpSafetyIOConfiguration" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicWatchdogEnable" type="BOOLEAN" 
+                                   value="true"/>
+                            <d:var name="PmicWatchdogType" type="ENUMERATION" 
+                                   value="CHALLENGER_WATCHDOG"/>
+                            <d:var name="PmicWdiPolarity" type="ENUMERATION" 
+                                   value="FALLING_EDGE"/>
+                            <d:var name="PmicFccu1OperatingMode" 
+                                   type="ENUMERATION" value="FCCU_MODE"/>
+                            <d:var name="PmicFccuEnable" type="BOOLEAN" 
+                                   value="true"/>
+                            <d:var name="PmicStandbyModeEnable" type="BOOLEAN" 
+                                   value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicStandbyPolarity" 
+                                   type="ENUMERATION" 
+                                   value="HIGH_IN_NORMAL_LOW_IN_STANDBY">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicStandbyEntryControl" 
+                                   type="ENUMERATION" value="SW_AND_PIN_CONTROL"/>
+                            <d:var name="PmicSafetyStandbyWindowEnable" 
+                                   type="BOOLEAN" value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicSafetyWindowInitTimeout" 
+                                   type="ENUMERATION" value="TIME_1024MS">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicOtpVoltageMonitorConfiguration" 
+                                 type="IDENTIFIABLE">
+                            <d:ctr name="PmicVcoreMonitor" type="IDENTIFIABLE">
+                              <d:var name="PmicVcoreEnableMonitor" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVcoreMonitorVoltage" 
+                                     type="FLOAT" value="0.8">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVcoreMonitorUVThreshold" 
+                                     type="ENUMERATION" value="MIN_95_5"/>
+                              <d:var name="PmicVcoreMonitorOVThreshold" 
+                                     type="ENUMERATION" value="MAX_104_5"/>
+                              <d:var name="PmicVcoreMonitorUVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVcoreMonitorOVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVcoreMonitorPGOODAssert" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVcoreMonitorABIST1Enable" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicVddioMonitor" type="IDENTIFIABLE">
+                              <d:var name="PmicVddioEnableMonitor" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVddioMonitorVoltage" 
+                                     type="ENUMERATION" value="OUT_3V3"/>
+                              <d:var name="PmicVddioMonitorUVThreshold" 
+                                     type="ENUMERATION" value="MIN_95_5"/>
+                              <d:var name="PmicVddioMonitorOVThreshold" 
+                                     type="ENUMERATION" value="MAX_104_5"/>
+                              <d:var name="PmicVddioMonitorUVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVddioMonitorOVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVddioMonitorPGOODAssert" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVddioMonitorABIST1Enable" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicHVLdoMonitor" type="IDENTIFIABLE">
+                              <d:var name="PmicHVLdoEnableMonitor" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicHVLdoMonitorVoltage" 
+                                     type="ENUMERATION" value="OUT_0V8"/>
+                              <d:var name="PmicHVLdoMonitorUVThreshold" 
+                                     type="ENUMERATION" value="MIN_95_5"/>
+                              <d:var name="PmicHVLdoMonitorOVThreshold" 
+                                     type="ENUMERATION" value="MAX_104_5"/>
+                              <d:var name="PmicHVLdoMonitorUVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicHVLdoMonitorOVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicHVLdoMonitorPGOODAssert" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicHVLdoMonitorABIST1Enable" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicVmon1Monitor" type="IDENTIFIABLE">
+                              <d:var name="PmicVmon1EnableMonitor" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVmon1MonitorVoltage" 
+                                     type="STRING" value="0.8">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@CALC</a:v>
+                                  <a:v>@DEF</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicVmon1MonitorUVThreshold" 
+                                     type="ENUMERATION" value="MIN_95_5"/>
+                              <d:var name="PmicVmon1MonitorOVThreshold" 
+                                     type="ENUMERATION" value="MAX_104_5"/>
+                              <d:var name="PmicVmon1MonitorUVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVmon1MonitorOVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVmon1MonitorPGOODAssert" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVmon1MonitorABIST1Enable" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicVmon2Monitor" type="IDENTIFIABLE">
+                              <d:var name="PmicVmon2EnableMonitor" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVmon2MonitorVoltage" 
+                                     type="STRING" value="0.8">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@CALC</a:v>
+                                  <a:v>@DEF</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicVmon2MonitorUVThreshold" 
+                                     type="ENUMERATION" value="MIN_95_5"/>
+                              <d:var name="PmicVmon2MonitorOVThreshold" 
+                                     type="ENUMERATION" value="MAX_104_5"/>
+                              <d:var name="PmicVmon2MonitorUVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVmon2MonitorOVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVmon2MonitorPGOODAssert" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVmon2MonitorABIST1Enable" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicVmon3Monitor" type="IDENTIFIABLE">
+                              <d:var name="PmicVmon3EnableMonitor" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVmon3MonitorVoltage" 
+                                     type="STRING" value="0.8">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@CALC</a:v>
+                                  <a:v>@DEF</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicVmon3MonitorUVThreshold" 
+                                     type="ENUMERATION" value="MIN_95_5"/>
+                              <d:var name="PmicVmon3MonitorOVThreshold" 
+                                     type="ENUMERATION" value="MAX_104_5"/>
+                              <d:var name="PmicVmon3MonitorUVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVmon3MonitorOVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVmon3MonitorPGOODAssert" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVmon3MonitorABIST1Enable" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                            </d:ctr>
+                            <d:ctr name="PmicVmon4Monitor" type="IDENTIFIABLE">
+                              <d:var name="PmicVmon4EnableMonitor" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVmon4MonitorVoltage" 
+                                     type="STRING" value="0.8">
+                                <a:a name="IMPORTER_INFO">
+                                  <a:v>@CALC</a:v>
+                                  <a:v>@DEF</a:v>
+                                </a:a>
+                              </d:var>
+                              <d:var name="PmicVmon4MonitorUVThreshold" 
+                                     type="ENUMERATION" value="MIN_95_5"/>
+                              <d:var name="PmicVmon4MonitorOVThreshold" 
+                                     type="ENUMERATION" value="MAX_104_5"/>
+                              <d:var name="PmicVmon4MonitorUVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVmon4MonitorOVDebounce" 
+                                     type="ENUMERATION" value="TIME_25US"/>
+                              <d:var name="PmicVmon4MonitorPGOODAssert" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                              <d:var name="PmicVmon4MonitorABIST1Enable" 
+                                     type="BOOLEAN" value="true">
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              </d:var>
+                            </d:ctr>
+                          </d:ctr>
+                        </d:ctr>
+                      </d:ctr>
+                    </d:lst>
+                    <d:ctr name="PmicCommunicationConfiguration" 
+                           type="IDENTIFIABLE">
+                      <d:ref name="PmicI2cChannelRef" type="REFERENCE" 
+                             value="ASPath:/I2c/I2c/I2cGlobalConfig/I2cChannel_0"/>
+                      <d:ref name="PmicI2CSCLPinRef" type="REFERENCE" 
+                             value="ASPath:/Port/Port/PortConfigSet/PortContainer_0/PortPin_PMIC_SCL_Bitbang"/>
+                      <d:ref name="PmicI2CSCLDioRef" type="REFERENCE" 
+                             value="ASPath:/Dio/Dio/DioConfig/DioPort_Pmic/DioChannel_Pmic"/>
+                      <d:var name="PmicI2cCommunicationMethod" 
+                             type="ENUMERATION" value="SYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                    <d:lst name="PmicClockSettingConfig" type="MAP">
+                      <d:ctr name="PmicClockSettingConfig_0" 
+                             type="IDENTIFIABLE">
+                        <d:var name="PmicClockSettingId" type="INTEGER" 
+                               value="0">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicIrcoscFrequencyHz" type="ENUMERATION" 
+                               value="F_20000000"/>
+                        <d:var name="PmicLowPowerOscFrequencyHz" 
+                               type="ENUMERATION" value="F_100000"/>
+                        <d:var name="PmicFinEnable" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicExternalPIN_Fin_FrequencyHz" 
+                               type="FLOAT" value="333000.0">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicPllClockSelection" type="ENUMERATION" 
+                               value="IRCOSC_CLK">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicSpectrumModulationEnable" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicTriangularCarrierFrequencyHz" 
+                               type="ENUMERATION" value="F_23150"/>
+                        <d:var name="PmicFoutMuxSelection" type="ENUMERATION" 
+                               value="FOUT_CLK"/>
+                        <d:var name="PmicFoutClockSelection" type="ENUMERATION" 
+                               value="CLK1"/>
+                        <d:var name="PmicFoutPhaseDelay" type="INTEGER" 
+                               value="0"/>
+                        <d:var name="PmicClk1Frequency" type="FLOAT" 
+                               value="2222000.0"/>
+                        <d:var name="PmicClk2Frequency" type="FLOAT" 
+                               value="455000.0"/>
+                        <d:lst name="PmicClockReferencePoint" type="MAP">
+                          <d:ctr name="PmicClockReferencePoint_0" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicClockFrequencySelect" 
+                                   type="ENUMERATION" value="VPRE_CLK">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicClockReferencePointFrequency" 
+                                   type="FLOAT" value="455000.0">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicClockReferencePoint_1" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicClockFrequencySelect" 
+                                   type="ENUMERATION" value="BOOST_CLK">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicClockReferencePointFrequency" 
+                                   type="FLOAT" value="2222000.0"/>
+                          </d:ctr>
+                          <d:ctr name="PmicClockReferencePoint_2" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicClockFrequencySelect" 
+                                   type="ENUMERATION" value="BUCK1_CLK">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicClockReferencePointFrequency" 
+                                   type="FLOAT" value="2222000.0"/>
+                          </d:ctr>
+                          <d:ctr name="PmicClockReferencePoint_3" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicClockFrequencySelect" 
+                                   type="ENUMERATION" value="BUCK2_CLK">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicClockReferencePointFrequency" 
+                                   type="FLOAT" value="2222000.0">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@CALC</a:v>
+                                <a:v>@DEF</a:v>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicClockReferencePoint_4" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicClockFrequencySelect" 
+                                   type="ENUMERATION" value="BUCK3_CLK">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicClockReferencePointFrequency" 
+                                   type="FLOAT" value="2222000.0"/>
+                          </d:ctr>
+                          <d:ctr name="PmicClockReferencePoint_5" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicClockFrequencySelect" 
+                                   type="ENUMERATION" value="FOUT_CLK">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicClockReferencePointFrequency" 
+                                   type="FLOAT" value="2222000.0">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@CALC</a:v>
+                                <a:v>@DEF</a:v>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                        </d:lst>
+                      </d:ctr>
+                    </d:lst>
+                    <d:lst name="PmicModeSettingConf" type="MAP">
+                      <d:ctr name="Pmic_Normal" type="IDENTIFIABLE">
+                        <d:var name="PmicModeID" type="INTEGER" value="0">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicModeSelection" type="ENUMERATION" 
+                               value="NORMAL">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicPWRON2DeepSleepModeEnable" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicPWRON1WakeUpEnable" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicPWRON2WakeUpEnable" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicStandbyTimerEnable" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicStandbyTimerWindowDuration" 
+                               type="ENUMERATION" value="TIME_1024MS"/>
+                        <d:ctr name="PmicRegulatorsConfiguration" 
+                               type="IDENTIFIABLE">
+                          <d:ctr name="PmicVpreRegulator" type="IDENTIFIABLE">
+                            <d:var name="PmicVpreEnableRegulator" 
+                                   type="ENUMERATION" value="ENABLE"/>
+                            <d:var name="PmicVpreStandbyOutputVoltage" 
+                                   type="ENUMERATION" value="OUT_3V0"/>
+                            <d:var name="PmicVpreHsCurrentCapability" 
+                                   type="ENUMERATION" value="I_130_MA"/>
+                            <d:var name="PmicVpreLsCurrentCapability" 
+                                   type="ENUMERATION" value="I_130_MA"/>
+                          </d:ctr>
+                          <d:ctr name="PmicVBoostRegulator" type="IDENTIFIABLE">
+                            <d:var name="PmicBoostEnableRegulator" 
+                                   type="ENUMERATION" value="DISABLE"/>
+                            <d:var name="PmicBoostSlewRate" type="ENUMERATION" 
+                                   value="RATE_500">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@CALC</a:v>
+                                <a:v>@DEF</a:v>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicHVLdoRegulator" type="IDENTIFIABLE">
+                            <d:var name="PmicHVLdoEnableRegulator" 
+                                   type="ENUMERATION" value="ENABLE"/>
+                            <d:var name="PmicHVLdoStandbyEnableRegulator" 
+                                   type="BOOLEAN" value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicBuck1Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicBuck1EnableRegulator" 
+                                   type="ENUMERATION" value="ENABLE"/>
+                            <d:var name="PmicBuck1StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBuck1StandbyOutputVoltage" 
+                                   type="FLOAT" value="0.4">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicBuck2Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicBuck2EnableRegulator" 
+                                   type="ENUMERATION" value="NO_EFFECT">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBuck2StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicBuck3Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicBuck3EnableRegulator" 
+                                   type="ENUMERATION" value="ENABLE"/>
+                            <d:var name="PmicBuck3StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicLdo1Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicLdo1EnableRegulator" 
+                                   type="ENUMERATION" value="DISABLE"/>
+                            <d:var name="PmicLdo1StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicLdo2Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicLdo2EnableRegulator" 
+                                   type="ENUMERATION" value="DISABLE"/>
+                            <d:var name="PmicLdo2StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicLdo3Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicLdo3EnableRegulator" 
+                                   type="ENUMERATION" value="DISABLE"/>
+                            <d:var name="PmicLdo3StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="true">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                        </d:ctr>
+                        <d:ctr name="PmicVMONConfiguration" type="IDENTIFIABLE">
+                          <d:var name="PmicVMON4RegulatorAssignment" 
+                                 type="ENUMERATION" value="VPRE"/>
+                          <d:var name="PmicVMON3RegulatorAssignment" 
+                                 type="ENUMERATION" value="VPRE"/>
+                          <d:var name="PmicVMON2RegulatorAssignment" 
+                                 type="ENUMERATION" value="VPRE"/>
+                          <d:var name="PmicVMON1RegulatorAssignment" 
+                                 type="ENUMERATION" value="VPRE"/>
+                        </d:ctr>
+                      </d:ctr>
+                      <d:ctr name="PmicModeSettingConf_0" type="IDENTIFIABLE">
+                        <d:var name="PmicModeID" type="INTEGER" value="1">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicModeSelection" type="ENUMERATION" 
+                               value="NORMAL">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicPWRON2DeepSleepModeEnable" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicPWRON1WakeUpEnable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicPWRON2WakeUpEnable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicStandbyTimerEnable" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicStandbyTimerWindowDuration" 
+                               type="ENUMERATION" value="TIME_1024MS">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:ctr name="PmicRegulatorsConfiguration" 
+                               type="IDENTIFIABLE">
+                          <d:ctr name="PmicVpreRegulator" type="IDENTIFIABLE">
+                            <d:var name="PmicVpreEnableRegulator" 
+                                   type="ENUMERATION" value="NO_EFFECT">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicVpreStandbyOutputVoltage" 
+                                   type="ENUMERATION" value="OUT_3V0">
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicVpreHsCurrentCapability" 
+                                   type="ENUMERATION" value="I_130_MA">
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicVpreLsCurrentCapability" 
+                                   type="ENUMERATION" value="I_130_MA">
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicVBoostRegulator" type="IDENTIFIABLE">
+                            <d:var name="PmicBoostEnableRegulator" 
+                                   type="ENUMERATION" value="NO_EFFECT">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicBoostSlewRate" type="ENUMERATION" 
+                                   value="RATE_500">
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicHVLdoRegulator" type="IDENTIFIABLE">
+                            <d:var name="PmicHVLdoEnableRegulator" 
+                                   type="ENUMERATION" value="NO_EFFECT">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicHVLdoStandbyEnableRegulator" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicBuck1Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicBuck1EnableRegulator" 
+                                   type="ENUMERATION" value="NO_EFFECT">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicBuck1StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicBuck1StandbyOutputVoltage" 
+                                   type="FLOAT" value="0.4">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicBuck2Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicBuck2EnableRegulator" 
+                                   type="ENUMERATION" value="NO_EFFECT">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicBuck2StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicBuck3Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicBuck3EnableRegulator" 
+                                   type="ENUMERATION" value="NO_EFFECT">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicBuck3StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicLdo1Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicLdo1EnableRegulator" 
+                                   type="ENUMERATION" value="NO_EFFECT">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicLdo1StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicLdo2Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicLdo2EnableRegulator" 
+                                   type="ENUMERATION" value="NO_EFFECT">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicLdo2StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicLdo3Regulator" type="IDENTIFIABLE">
+                            <d:var name="PmicLdo3EnableRegulator" 
+                                   type="ENUMERATION" value="NO_EFFECT">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicLdo3StandbyEnableRegulator" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                        </d:ctr>
+                        <d:ctr name="PmicVMONConfiguration" type="IDENTIFIABLE">
+                          <d:var name="PmicVMON4RegulatorAssignment" 
+                                 type="ENUMERATION" value="EXTERNAL_REGULATOR">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                            <a:a name="VARIANTS" type="Variant">
+                              <variant:pbvcond>
+                                <variant:criterion 
+                                                   value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                <variant:cond>
+                                  <variant:tst expr="0"/>
+                                </variant:cond>
+                              </variant:pbvcond>
+                            </a:a>
+                          </d:var>
+                          <d:var name="PmicVMON3RegulatorAssignment" 
+                                 type="ENUMERATION" value="EXTERNAL_REGULATOR">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                            <a:a name="VARIANTS" type="Variant">
+                              <variant:pbvcond>
+                                <variant:criterion 
+                                                   value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                <variant:cond>
+                                  <variant:tst expr="0"/>
+                                </variant:cond>
+                              </variant:pbvcond>
+                            </a:a>
+                          </d:var>
+                          <d:var name="PmicVMON2RegulatorAssignment" 
+                                 type="ENUMERATION" value="EXTERNAL_REGULATOR">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                            <a:a name="VARIANTS" type="Variant">
+                              <variant:pbvcond>
+                                <variant:criterion 
+                                                   value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                <variant:cond>
+                                  <variant:tst expr="0"/>
+                                </variant:cond>
+                              </variant:pbvcond>
+                            </a:a>
+                          </d:var>
+                          <d:var name="PmicVMON1RegulatorAssignment" 
+                                 type="ENUMERATION" value="EXTERNAL_REGULATOR">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                            <a:a name="VARIANTS" type="Variant">
+                              <variant:pbvcond>
+                                <variant:criterion 
+                                                   value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                <variant:cond>
+                                  <variant:tst expr="0"/>
+                                </variant:cond>
+                              </variant:pbvcond>
+                            </a:a>
+                          </d:var>
+                        </d:ctr>
+                      </d:ctr>
+                    </d:lst>
+                    <d:lst name="PmicReactionsSettingConf" type="MAP">
+                      <d:ctr name="PmicReactionsSettingConf_0" 
+                             type="IDENTIFIABLE">
+                        <d:var name="PmicReactionsSettingId" type="INTEGER" 
+                               value="0">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:ctr name="PmicMainUnitReactionsConf" 
+                               type="IDENTIFIABLE">
+                          <d:ctr name="PmicMainInterruptMasks" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicHvldoOverCurrentIntDisable" 
+                                   type="BOOLEAN" value="true"/>
+                            <d:var name="PmicBuck1OverCurrentIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBuck2OverCurrentIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBuck3OverCurrentIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicLdo1OverCurrentIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicLdo2OverCurrentIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicLdo3OverCurrentIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicHvldoTempShutdownIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBoostTempShutdownIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBuck1TempShutdownIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBuck2TempShutdownIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBuck3TempShutdownIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicLdo1TempShutdownIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicLdo2TempShutdownIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicLdo3TempShutdownIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicCenterDieTempIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicCommunicationErrorIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBosUndervoltageHighIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBoostUndervoltageHighIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBoostOvervoltageHighIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicBistTempShutdownIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var 
+                                   name="PmicHvldoInputUndervoltageLowIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVpreOvervoltageIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVpreOvercurrentIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVpreUndervoltageLowIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVpreUndervoltageHighIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVsupUndervoltage7VIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVsupUndervoltageLowIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVsupUndervoltageHighIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicPwron2TransitionIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicPwron1TransitionIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="PmicMainThermalShutdownBehaviors" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicCenterDieTempThreshold" 
+                                   type="ENUMERATION" value="TEMP_105_oC"/>
+                            <d:var name="PmicBoostTsdBehavior" 
+                                   type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicBuck1TsdBehavior" 
+                                   type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicBuck2TsdBehavior" 
+                                   type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicBuck3TsdBehavior" 
+                                   type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicLdo1TsdBehavior" 
+                                   type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicLdo2TsdBehavior" 
+                                   type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicLdo3TsdBehavior" 
+                                   type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicLHVLdoTsdBehavior" 
+                                   type="ENUMERATION" value="SHUTDOWN_AND_DFS">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                          </d:ctr>
+                        </d:ctr>
+                        <d:ctr name="PmicFailSafeUnitReactionsConf" 
+                               type="IDENTIFIABLE">
+                          <d:ctr name="PmicFailSafeInterruptMasks" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicVmon4OverUnderVoltageIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVmon3OverUnderVoltageIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVmon2OverUnderVoltageIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVmon1OverUnderVoltageIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicVddioOverUnderVoltageIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var 
+                                   name="PmicVcoremonOverUnderVoltageIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicWatchdogBadRefreshIntDisable" 
+                                   type="BOOLEAN" value="false"/>
+                            <d:var name="PmicHvldoOverUnderVoltageIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicFccu2EventIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:var name="PmicFccu1EventIntDisable" 
+                                   type="BOOLEAN" value="false">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                        </d:ctr>
+                      </d:ctr>
+                    </d:lst>
+                    <d:ctr name="PmicAMUXConfiguration" type="IDENTIFIABLE">
+                      <d:var name="PmicSetAnalogMuxApi" type="BOOLEAN" 
+                             value="false"/>
+                      <d:lst name="PmicAmuxChannel" type="MAP"/>
+                    </d:ctr>
+                    <d:ctr name="PmicFailSafeConfiguration" type="IDENTIFIABLE">
+                      <d:ctr name="PmicSVSConfiguration" type="IDENTIFIABLE">
+                        <d:var name="PmicSwitchSVSApi" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicSVSOffset" type="ENUMERATION" 
+                               value="OFFSET_0_0"/>
+                        <d:var name="PmicSVSOffsetSign" type="ENUMERATION" 
+                               value="NEGATIVE_OFFSET">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicBuck1SVSOutputVoltage" type="FLOAT" 
+                               value="0.8">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PmicSVSSettingConf" type="MAP"/>
+                      </d:ctr>
+                      <d:ctr name="PmicFailSafePinReactions" 
+                             type="IDENTIFIABLE">
+                        <d:var name="PmicVcoremonOvervoltageImpact" 
+                               type="ENUMERATION" value="DISABLED"/>
+                        <d:var name="PmicVcoremonUndervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicHvldoOvervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_AND_RSTB_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicHvldoUndervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicVddioOvervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_AND_RSTB_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicVddioUndervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicVmon4OvervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_AND_RSTB_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicVmon4UndervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicVmon3OvervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_AND_RSTB_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicVmon3UndervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicVmon2OvervoltageImpact" 
+                               type="ENUMERATION" value="DISABLED"/>
+                        <d:var name="PmicVmon2UndervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicVmon1OvervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_AND_RSTB_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicVmon1UndervoltageImpact" 
+                               type="ENUMERATION" value="FS0B_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="PmicWatchdogConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="PmicWatchdogApi" type="BOOLEAN" 
+                               value="true"/>
+                        <d:var name="PmicWatchdogErrorCounterLimit" 
+                               type="ENUMERATION" value="MAX_6"/>
+                        <d:var name="PmicWatchdogRefreshCounterLimit" 
+                               type="ENUMERATION" value="MAX_1"/>
+                        <d:var name="PmicWatchdogErrorImpact" 
+                               type="ENUMERATION" value="DISABLED"/>
+                        <d:var name="PmicWatchdogWindowPeriodEnable" 
+                               type="BOOLEAN" value="false"/>
+                        <d:var name="PmicWatchdogWindowPeriod_Setting" 
+                               type="ENUMERATION" value="TIME_3MS"/>
+                        <d:var name="PmicWatchdogClosedWindowDutyCycle_Setting" 
+                               type="ENUMERATION" value="DUTY_50_0"/>
+                        <d:var name="PmicWatchdogRecoveryWindowPeriod" 
+                               type="ENUMERATION" value="TIME_64MS"/>
+                        <d:var name="PmicWatchdogSeed" type="INTEGER" 
+                               value="23218">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PmicWatchdogSettingConf" type="MAP">
+                          <d:ctr name="PmicWatchdogSettingConf_0" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicWatchdogSettingId" type="INTEGER" 
+                                   value="0">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicWatchdogWindowPeriod" 
+                                   type="ENUMERATION" value="TIME_6MS">
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicWatchdogClosedWindowDutyCycle" 
+                                   type="ENUMERATION" value="DUTY_50_0"/>
+                          </d:ctr>
+                          <d:ctr name="PmicWatchdogSettingConf_1" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="PmicWatchdogSettingId" type="INTEGER" 
+                                   value="1">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicWatchdogWindowPeriod" 
+                                   type="ENUMERATION" value="TIME_6MS">
+                              <a:a name="VARIANTS" type="Variant">
+                                <variant:pbvcond>
+                                  <variant:criterion 
+                                                     value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                                  <variant:cond>
+                                    <variant:tst expr="0"/>
+                                  </variant:cond>
+                                </variant:pbvcond>
+                              </a:a>
+                            </d:var>
+                            <d:var name="PmicWatchdogClosedWindowDutyCycle" 
+                                   type="ENUMERATION" value="DUTY_50_0"/>
+                          </d:ctr>
+                        </d:lst>
+                      </d:ctr>
+                      <d:ctr name="PmicABIST2Configuration" type="IDENTIFIABLE">
+                        <d:var name="PmicHVLdoMonitorABIST2Enable" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicVcoreMonitorABIST2Enable" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicVddioMonitorABIST2Enable" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicVmon1MonitorABIST2Enable" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicVmon2MonitorABIST2Enable" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicVmon3MonitorABIST2Enable" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicVmon4MonitorABIST2Enable" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="PmicSafeInputsConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="PmicSafetyStandbyWindowDuration" 
+                               type="ENUMERATION" value="TIME_2MS"/>
+                        <d:var name="PmicFccuMonitoringConfiguration" 
+                               type="ENUMERATION" value="FCCU1_ONLY"/>
+                        <d:var name="PmicFccu12FaultPolarity" 
+                               type="ENUMERATION" 
+                               value="FCCU1_LOW_OR_FCCU2_HIGH_IS_FAULT"/>
+                        <d:var name="PmicFccu12FaultImpact" type="ENUMERATION" 
+                               value="FS0B_AND_RSTB_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicFccu1FaultPolarity" type="ENUMERATION" 
+                               value="HIGH_LEVEL_IS_FAULT"/>
+                        <d:var name="PmicFccu1FaultImpact" type="ENUMERATION" 
+                               value="FS0B_ASSERT"/>
+                        <d:var name="PmicFccu2FaultPolarity" type="ENUMERATION" 
+                               value="LOW_LEVEL_IS_FAULT"/>
+                        <d:var name="PmicFccu2FaultImpact" type="ENUMERATION" 
+                               value="FS0B_AND_RSTB_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                      </d:ctr>
+                      <d:ctr name="PmicStateMachineConfiguration" 
+                             type="IDENTIFIABLE">
+                        <d:var name="PmicFaultErrorCounterLimit" 
+                               type="ENUMERATION" value="MAX_6"/>
+                        <d:var name="PmicFaultErrorCounterImpact" 
+                               type="ENUMERATION" value="FS0B_AND_RSTB_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicResetDuration" type="ENUMERATION" 
+                               value="TIME_10MS"/>
+                        <d:var name="PmicBackupSafetyPath" type="ENUMERATION" 
+                               value="RSTB_ASSERT">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PmicClockMonitoringEnable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicRSTBTimerEnable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:var name="PmicLowPowerClockMonitoringEnable" 
+                               type="BOOLEAN" value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                      </d:ctr>
+                    </d:ctr>
+                  </d:ctr>
+                </d:lst>
+                <d:ctr name="PmicDemEventParameterRefs" type="IDENTIFIABLE">
+                  <a:a name="ENABLE" value="true"/>
+                  <d:ref name="PMIC_E_ACESS_FAILURE" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:ref name="PMIC_E_INTEGRITY_CORRUPTED" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:ref name="PMIC_E_SIGNAL_SHORTED" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:ref name="PMIC_E_CLOCK_FAILURE" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:ref name="PMIC_E_TIMEOUT_FAILURE" type="REFERENCE" 
+                         value="ASPath:/Dem/Dem/DemConfigSet/MCU_E_TIMEOUT_FAILURE">
+                    <a:a name="ENABLE" value="false"/>
+                  </d:ref>
+                </d:ctr>
+              </d:ctr>
+              <d:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <d:var name="ArReleaseMajorVersion" type="INTEGER" value="4">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="ArReleaseMinorVersion" type="INTEGER" value="4">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="ArReleaseRevisionVersion" type="INTEGER" value="0">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="ModuleId" type="INTEGER" value="255">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="SwMajorVersion" type="INTEGER" value="4"/>
+                <d:var name="SwMinorVersion" type="INTEGER" value="0"/>
+                <d:var name="SwPatchVersion" type="INTEGER" value="0"/>
+                <d:var name="VendorApiInfix" type="STRING" value="">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="VendorId" type="INTEGER" value="43">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

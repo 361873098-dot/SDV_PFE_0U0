@@ -1,0 +1,235 @@
+Histogram:
+__attribute__((hot))
+fifo_peek (const volatile struct fifo_t * const fifo, uint32_t num)
+{
+  volatile void * ret;
+  long unsigned int _1;
+  _Bool _2;
+  long int _3;
+  long int _4;
+  void * * _5;
+  long unsigned int _6;
+  void * * _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0B
+  # DEBUG BEGIN_STMT
+  _1 ={v} fifo_10(D)->depth;
+  _2 = _1 > num_11(D);
+  _3 = (long int) _2;
+  _4 = __builtin_expect (_3, 1);
+  if (_4 != 0)
+    goto <bb 3>; [90.00%]
+  else
+    goto <bb 4>; [10.00%]
+
+  <bb 3> [local count: 966367642]:
+  # DEBUG BEGIN_STMT
+  _5 ={v} fifo_10(D)->data;
+  _6 = num_11(D) * 4;
+  _7 = _5 + _6;
+  ret_12 = *_7;
+  # DEBUG ret => ret_12
+
+  <bb 4> [local count: 1073741824]:
+  # ret_8 = PHI <0B(2), ret_12(3)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  return ret_8;
+
+}
+
+
+__attribute__((cold))
+fifo_clear (volatile struct fifo_t * const fifo)
+{
+  long unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (fifo_3(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 4>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  fifo_3(D)->read ={v} 0;
+  # DEBUG BEGIN_STMT
+  _1 ={v} fifo_3(D)->depth;
+  fifo_3(D)->write ={v} _1;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+__attribute__((cold))
+fifo_destroy (volatile struct fifo_t * fifo)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  fifo_2(D)->read ={v} 0;
+  # DEBUG BEGIN_STMT
+  fifo_2(D)->write ={v} 0;
+  # DEBUG BEGIN_STMT
+  fifo_2(D)->depth ={v} 0;
+  # DEBUG BEGIN_STMT
+  fifo_2(D)->depth_mask ={v} 0;
+  # DEBUG BEGIN_STMT
+  fifo_2(D)->protected ={v} 0;
+  # DEBUG BEGIN_STMT
+  fifo_2(D)->data ={v} 0B;
+  return;
+
+}
+
+
+__attribute__((cold))
+fifo_create (const uint32_t depth, volatile struct fifo_t * fifo, void * * data)
+{
+  volatile struct fifo_t * tmp_fifo;
+  long unsigned int _1;
+  long unsigned int _2;
+  signed int depth.2_3;
+  void * * _4;
+  _Bool _5;
+  long int _6;
+  long int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG tmp_fifo => fifo_10(D)
+  # DEBUG BEGIN_STMT
+  if (depth_11(D) == 0)
+    goto <bb 7>; [29.00%]
+  else
+    goto <bb 3>; [71.00%]
+
+  <bb 3> [local count: 762356696]:
+  _1 = depth_11(D) + 4294967295;
+  _2 = _1 & depth_11(D);
+  if (_2 != 0)
+    goto <bb 7>; [29.00%]
+  else
+    goto <bb 4>; [71.00%]
+
+  <bb 4> [local count: 541273254]:
+  depth.2_3 = (signed int) depth_11(D);
+  if (depth.2_3 < 0)
+    goto <bb 7>; [22.11%]
+  else
+    goto <bb 5>; [77.89%]
+
+  <bb 5> [local count: 421597737]:
+  # DEBUG BEGIN_STMT
+  fifo_10(D)->read ={v} 0;
+  # DEBUG BEGIN_STMT
+  fifo_10(D)->write ={v} 0;
+  # DEBUG BEGIN_STMT
+  fifo_10(D)->depth ={v} depth_11(D);
+  # DEBUG BEGIN_STMT
+  fifo_10(D)->depth_mask ={v} _1;
+  # DEBUG BEGIN_STMT
+  fifo_10(D)->data ={v} data_17(D);
+  # DEBUG BEGIN_STMT
+  _4 ={v} fifo_10(D)->data;
+  _5 = _4 == 0B;
+  _6 = (long int) _5;
+  _7 = __builtin_expect (_6, 0);
+  if (_7 != 0)
+    goto <bb 6>; [10.00%]
+  else
+    goto <bb 7>; [90.00%]
+
+  <bb 6> [local count: 42159774]:
+  # DEBUG BEGIN_STMT
+  # DEBUG tmp_fifo => 0B
+
+  <bb 7> [local count: 1073741824]:
+  # tmp_fifo_8 = PHI <0B(3), fifo_10(D)(5), 0B(6), 0B(2), 0B(4)>
+  # DEBUG tmp_fifo => tmp_fifo_8
+  # DEBUG BEGIN_STMT
+  return tmp_fifo_8;
+
+}
+
+
+__attribute__((hot))
+fifo_get_free_space (const volatile struct fifo_t * const fifo, uint32_t * free_space)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG fifo => fifo_5(D)
+  # DEBUG fill_level => &ret
+  # DEBUG INLINE_ENTRY fifo_get_fill_level
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 ={v} fifo_5(D)->write;
+  _9 ={v} fifo_5(D)->read;
+  # DEBUG BEGIN_STMT
+  _10 ={v} fifo_5(D)->write;
+  _11 ={v} fifo_5(D)->read;
+  # DEBUG ret => _10 - _11
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG fifo => NULL
+  # DEBUG fill_level => NULL
+  # DEBUG err => 0
+  # DEBUG BEGIN_STMT
+  _1 ={v} fifo_5(D)->depth;
+  # DEBUG BEGIN_STMT
+  _2 ={v} fifo_5(D)->depth;
+  _12 = _11 - _10;
+  _3 = _2 + _12;
+  *free_space_6(D) = _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => {CLOBBER}
+  # DEBUG ret => D#1
+  return 0;
+
+}
+
+
+__attribute__((hot))
+fifo_get_fill_level (const volatile struct fifo_t * const fifo, uint32_t * fill_level)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 ={v} fifo_7(D)->write;
+  _2 ={v} fifo_7(D)->read;
+  # DEBUG BEGIN_STMT
+  _3 ={v} fifo_7(D)->write;
+  _4 ={v} fifo_7(D)->read;
+  _5 = _3 - _4;
+  *fill_level_8(D) = _5;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+

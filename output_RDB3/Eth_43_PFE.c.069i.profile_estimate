@@ -1,0 +1,2549 @@
+Histogram:
+2 indirect calls trained.
+0 (0.00%) have common target.
+0 (0.00%) targets was not found.
+0 (0.00%) targets had parameter count mismatch.
+0 (0.00%) targets was not in polymorphic call target list.
+0 (0.00%) speculations seems useless.
+0 (0.00%) speculations produced.
+Eth_43_PFE_ChannelBdFlushRx (pfe_ct_phy_if_id_t DestHifChnl)
+{
+  Std_ReturnType eReturnStatus;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  eReturnStatus_4 = Eth_PFE_LLD_ChannelBdFlushRx (DestHifChnl_2(D));
+  # DEBUG eReturnStatus => eReturnStatus_4
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_4;
+
+}
+
+
+Eth_43_PFE_GetTxErrorCounterValues (uint8 u8CtrlIdx, struct Eth_TxErrorCounterValuesType * TxErrorCounterValuesPtr)
+{
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 29, 1);
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 5>; [48.88%]
+  else
+    goto <bb 6>; [51.12%]
+
+  <bb 5> [local count: 351646152]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 29, 2);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 367760870]:
+  # DEBUG BEGIN_STMT
+  if (TxErrorCounterValuesPtr_6(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 8>; [70.00%]
+
+  <bb 7> [local count: 110328261]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 29, 3);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 257432609]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_8 = Eth_PFE_LLD_GetTxErrorCounterValues (0, TxErrorCounterValuesPtr_6(D));
+  # DEBUG eReturnStatus => eReturnStatus_8
+
+  <bb 9> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), 1(7), eReturnStatus_8(8)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_GetTxStats (uint8 u8CtrlIdx, struct Eth_TxStatsType * TxStatsPtr)
+{
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 28, 1);
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 5>; [48.88%]
+  else
+    goto <bb 6>; [51.12%]
+
+  <bb 5> [local count: 351646152]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 28, 2);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 367760870]:
+  # DEBUG BEGIN_STMT
+  if (TxStatsPtr_6(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 8>; [70.00%]
+
+  <bb 7> [local count: 110328261]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 28, 3);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 257432609]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_8 = Eth_PFE_LLD_GetTxStats (0, TxStatsPtr_6(D));
+  # DEBUG eReturnStatus => eReturnStatus_8
+
+  <bb 9> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), 1(7), eReturnStatus_8(8)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_GetRxStats (uint8 u8CtrlIdx, struct Eth_RxStatsType * RxStatsPtr)
+{
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 21, 1);
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 5>; [48.88%]
+  else
+    goto <bb 6>; [51.12%]
+
+  <bb 5> [local count: 351646152]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 21, 2);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 367760870]:
+  # DEBUG BEGIN_STMT
+  if (RxStatsPtr_6(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 8>; [70.00%]
+
+  <bb 7> [local count: 110328261]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 21, 3);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 257432609]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_8 = Eth_PFE_LLD_GetRxStats (0, RxStatsPtr_6(D));
+  # DEBUG eReturnStatus => eReturnStatus_8
+
+  <bb 9> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), 1(7), eReturnStatus_8(8)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_GetCounterValues (uint8 u8CtrlIdx, struct Eth_CounterType * CounterPtr)
+{
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 20, 1);
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 5>; [48.88%]
+  else
+    goto <bb 6>; [51.12%]
+
+  <bb 5> [local count: 351646152]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 20, 2);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 367760870]:
+  # DEBUG BEGIN_STMT
+  if (CounterPtr_6(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 8>; [70.00%]
+
+  <bb 7> [local count: 110328261]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 20, 3);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 257432609]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_8 = Eth_PFE_LLD_GetCounterValues (0, CounterPtr_6(D));
+  # DEBUG eReturnStatus => eReturnStatus_8
+
+  <bb 9> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), 1(7), eReturnStatus_8(8)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_GetTmuStats (struct Eth_43_PFE_TmuStatsType * stat)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (stat_4(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 3> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 42, 3);
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  if (_1 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 42, 2);
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_8 = Eth_43_PFE_LLD_GetTmuStats (stat_4(D));
+  # DEBUG eReturnStatus => eReturnStatus_8
+
+  <bb 7> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), eReturnStatus_8(6)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_GetRtableStats (struct pfe_ct_conntrack_stats_t * stat, uint8 conntrack_index)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (stat_4(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 3> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 41, 3);
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  if (_1 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 41, 2);
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_9 = Eth_43_PFE_LLD_GetRtableStats (stat_4(D), conntrack_index_7(D));
+  # DEBUG eReturnStatus => eReturnStatus_9
+
+  <bb 7> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), eReturnStatus_9(6)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_GetL2BridgeDomainStats (struct pfe_ct_vlan_stats_t * stat, uint32 index_vlan)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+  unsigned char _2;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (stat_5(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 3> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 39, 3);
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  if (_1 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 39, 2);
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  _2 = (unsigned char) index_vlan_8(D);
+  eReturnStatus_10 = Eth_43_PFE_LLD_GetL2BridgeDomainStats (stat_5(D), _2);
+  # DEBUG eReturnStatus => eReturnStatus_10
+
+  <bb 7> [local count: 1073741824]:
+  # eReturnStatus_3 = PHI <1(3), 1(5), eReturnStatus_10(6)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_3;
+
+}
+
+
+Eth_43_PFE_GetL2BridgeStats (struct Eth_43_PFE_L2BridgeStatsType * stat, uint32 index_entry)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (stat_4(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 3> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 38, 3);
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  if (_1 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 38, 2);
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_9 = Eth_43_PFE_LLD_GetL2BridgeStats (stat_4(D), index_entry_7(D));
+  # DEBUG eReturnStatus => eReturnStatus_9
+
+  <bb 7> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), eReturnStatus_9(6)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_GetWdtStats (struct Eth_43_PFE_WdtStatsType * stat)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (stat_4(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 3> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 40, 3);
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  if (_1 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 40, 2);
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_8 = Eth_43_PFE_LLD_GetWdtStats (stat_4(D));
+  # DEBUG eReturnStatus => eReturnStatus_8
+
+  <bb 7> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), eReturnStatus_8(6)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_GetGpiStats (uint8 u8GpiIndex, struct Eth_43_PFE_GpiStatsType * stat)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (stat_4(D) == 0B)
+    goto <bb 3>; [17.43%]
+  else
+    goto <bb 4>; [82.57%]
+
+  <bb 3> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 37, 3);
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 886588625]:
+  # DEBUG BEGIN_STMT
+  if (u8GpiIndex_5(D) > 2)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 443294312]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 37, 4);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 443294312]:
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  if (_1 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 221647156]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 37, 2);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 221647156]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_9 = Eth_43_PFE_LLD_GetGpiStats (u8GpiIndex_5(D), stat_4(D));
+  # DEBUG eReturnStatus => eReturnStatus_9
+
+  <bb 9> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), 1(7), eReturnStatus_9(8)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_GetBmuStats (uint8 u8BmuIndex, struct Eth_43_PFE_BmuStatsType * stat)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (stat_4(D) == 0B)
+    goto <bb 3>; [17.43%]
+  else
+    goto <bb 4>; [82.57%]
+
+  <bb 3> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 36, 3);
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 886588625]:
+  # DEBUG BEGIN_STMT
+  if (u8BmuIndex_5(D) > 1)
+    goto <bb 5>; [59.00%]
+  else
+    goto <bb 6>; [41.00%]
+
+  <bb 5> [local count: 523087288]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 36, 4);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 363501336]:
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  if (_1 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 181750668]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 36, 2);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 181750668]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_9 = Eth_43_PFE_LLD_GetBmuStats (u8BmuIndex_5(D), stat_4(D));
+  # DEBUG eReturnStatus => eReturnStatus_9
+
+  <bb 9> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), 1(7), eReturnStatus_9(8)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_GetClassStats (struct pfe_ct_classify_stats_t * stat)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (stat_4(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 3> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 35, 3);
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  if (_1 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 35, 2);
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_8 = Eth_43_PFE_LLD_GetClassStats (stat_4(D));
+  # DEBUG eReturnStatus => eReturnStatus_8
+
+  <bb 7> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(5), eReturnStatus_8(6)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_PreInit (const struct Eth_43_PFE_ConfigType * CfgPtr)
+{
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.21_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (CfgPtr_3(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 4>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 33, 3);
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr = &Eth_43_PFE_Config;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_InitInterfaces (&Eth_43_PFE_Config);
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.21_1 = Eth_43_PFE_InternalCfgPtr;
+  Eth_PFE_LLD_InitEMACs (Eth_43_PFE_InternalCfgPtr.21_1);
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+
+Eth_43_PFE_GetPlatform ()
+{
+  void * _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 = Eth_PFE_LLD_GetPlatform ();
+  return _3;
+
+}
+
+
+Eth_43_PFE_GetIngressTimeStamp (uint8 u8CtrlIdx, const Eth_DataType * DataPtr, Eth_TimeStampQualType * timeQualPtr, struct Eth_TimeStampType * timeStampPtr)
+{
+  uint8 DetectedError;
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+  <unnamed type> _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_5(D) != 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 3>; [67.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (DataPtr_6(D) == 0B)
+    goto <bb 8>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 4> [local count: 503584916]:
+  if (timeQualPtr_7(D) == 0B)
+    goto <bb 8>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 5> [local count: 352509441]:
+  if (timeStampPtr_8(D) == 0B)
+    goto <bb 8>; [30.00%]
+  else
+    goto <bb 6>; [70.00%]
+
+  <bb 6> [local count: 246756608]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 8>; [79.76%]
+  else
+    goto <bb 7>; [20.24%]
+
+  <bb 7> [local count: 49943538]:
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *timeQualPtr_7(D) = 2;
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_LLD_GetRxTimeStamp (0, DataPtr_6(D), timeQualPtr_7(D), timeStampPtr_8(D));
+  # DEBUG BEGIN_STMT
+  _2 = *timeQualPtr_7(D);
+  if (_2 == 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 8> [local count: 1023798288]:
+  # DetectedError_13 = PHI <3(4), 1(2), 3(5), 3(3), 2(6)>
+  # DEBUG DetectedError => NULL
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 25, DetectedError_13);
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 24971769]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 0
+
+  <bb 10> [local count: 1073741824]:
+  # eReturnStatus_3 = PHI <1(8), 1(7), 0(9)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_3;
+
+}
+
+
+Eth_43_PFE_GetEgressTimeStamp (uint8 u8CtrlIdx, Eth_BufIdxType BufIdx, Eth_TimeStampQualType * timeQualPtr, struct Eth_TimeStampType * timeStampPtr)
+{
+  uint8 DetectedError;
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+  <unnamed type> _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_5(D) != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 3>; [67.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (timeQualPtr_6(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 4> [local count: 503584916]:
+  if (timeStampPtr_7(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 5> [local count: 352509441]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 7>; [79.76%]
+  else
+    goto <bb 6>; [20.24%]
+
+  <bb 6> [local count: 71347911]:
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *timeQualPtr_6(D) = 2;
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_LLD_GetTxTimeStamp (0, BufIdx_10(D), timeQualPtr_6(D), timeStampPtr_7(D));
+  # DEBUG BEGIN_STMT
+  _2 = *timeQualPtr_6(D);
+  if (_2 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 7> [local count: 1002393914]:
+  # DetectedError_12 = PHI <3(4), 1(2), 3(3), 2(5)>
+  # DEBUG DetectedError => NULL
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 24, DetectedError_12);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 35673955]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 0
+
+  <bb 9> [local count: 1073741824]:
+  # eReturnStatus_3 = PHI <1(7), 1(6), 0(8)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_3;
+
+}
+
+
+Eth_43_PFE_EnableEgressTimeStamp (uint8 u8CtrlIdx, Eth_BufIdxType BufIdx)
+{
+  uint8 DetectedError;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_3(D) != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 3>; [67.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (BufIdx_4(D) > 3)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 359703511]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 6>; [79.76%]
+  else
+    goto <bb 5>; [20.24%]
+
+  <bb 5> [local count: 72803991]:
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_LLD_EnableEgressTimeStamp (0, BufIdx_4(D));
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 1000937834]:
+  # DetectedError_8 = PHI <4(3), 1(2), 2(4)>
+  # DEBUG DetectedError => NULL
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 23, DetectedError_8);
+
+  <bb 7> [local count: 1073741824]:
+  return;
+
+}
+
+
+Eth_43_PFE_GetCurrentTime (uint8 u8CtrlIdx, Eth_TimeStampQualType * timeQualPtr, struct Eth_TimeStampType * timeStampPtr)
+{
+  uint8 DetectedError;
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+  <unnamed type> _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_5(D) != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 3>; [67.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (timeQualPtr_6(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 4> [local count: 503584916]:
+  if (timeStampPtr_7(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 5> [local count: 352509441]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 7>; [79.76%]
+  else
+    goto <bb 6>; [20.24%]
+
+  <bb 6> [local count: 71347911]:
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *timeQualPtr_6(D) = 2;
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_LLD_GetCurrentTime (0, timeQualPtr_6(D), timeStampPtr_7(D));
+  # DEBUG BEGIN_STMT
+  _2 = *timeQualPtr_6(D);
+  if (_2 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 7> [local count: 1002393914]:
+  # DetectedError_11 = PHI <3(4), 1(2), 3(3), 2(5)>
+  # DEBUG DetectedError => NULL
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 22, DetectedError_11);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 35673955]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 0
+
+  <bb 9> [local count: 1073741824]:
+  # eReturnStatus_3 = PHI <1(7), 1(6), 0(8)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_3;
+
+}
+
+
+Eth_43_PFE_SetCorrectionTime (uint8 u8CtrlIdx, const struct Eth_TimeIntDiffType * timeOffsetPtr, const struct Eth_RateRatioType * rateRatioPtr)
+{
+  uint8 DetectedError;
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 3>; [67.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (timeOffsetPtr_5(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 4> [local count: 503584916]:
+  if (rateRatioPtr_6(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 5> [local count: 352509441]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 7>; [79.76%]
+  else
+    goto <bb 6>; [20.24%]
+
+  <bb 6> [local count: 71347911]:
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  eReturnStatus_9 = Eth_43_PFE_LLD_SetCorrectionTime (0, timeOffsetPtr_5(D), rateRatioPtr_6(D));
+  # DEBUG eReturnStatus => eReturnStatus_9
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 1002393914]:
+  # DetectedError_11 = PHI <3(4), 1(2), 3(3), 2(5)>
+  # DEBUG DetectedError => NULL
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 26, DetectedError_11);
+
+  <bb 8> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(7), eReturnStatus_9(6)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_SetGlobalTime (uint8 u8CtrlIdx, const struct Eth_TimeStampType * timeStampPtr)
+{
+  uint8 DetectedError;
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 3>; [67.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (timeStampPtr_5(D) == 0B)
+    goto <bb 6>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 4> [local count: 503584916]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 6>; [79.76%]
+  else
+    goto <bb 5>; [20.24%]
+
+  <bb 5> [local count: 101925587]:
+  # DEBUG DetectedError => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  eReturnStatus_9 = Eth_43_PFE_LLD_SetGlobalTime (0, timeStampPtr_5(D));
+  # DEBUG eReturnStatus => eReturnStatus_9
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 971816239]:
+  # DetectedError_7 = PHI <3(3), 1(2), 2(4)>
+  # DEBUG DetectedError => NULL
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 27, DetectedError_7);
+
+  <bb 7> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(6), eReturnStatus_9(5)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_ReadMii45 (uint8 u8CtrlIdx, uint8 u8TrcvIdx, uint8 u8DevIdx, uint16 u16RegIdx, uint16 * pu16RegValPtr)
+{
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 31, 1);
+  goto <bb 12>; [100.00%]
+
+  <bb 4> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  if (u8TrcvIdx_5(D) > 31)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 5> [local count: 482002704]:
+  if (u8DevIdx_6(D) > 31)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 478405669]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 31, 4);
+  goto <bb 12>; [100.00%]
+
+  <bb 7> [local count: 241001352]:
+  # DEBUG BEGIN_STMT
+  if (pu16RegValPtr_7(D) == 0B)
+    goto <bb 8>; [17.43%]
+  else
+    goto <bb 9>; [82.57%]
+
+  <bb 8> [local count: 42006536]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 31, 3);
+  goto <bb 12>; [100.00%]
+
+  <bb 9> [local count: 198994816]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 10>; [66.00%]
+  else
+    goto <bb 11>; [34.00%]
+
+  <bb 10> [local count: 131336579]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 31, 2);
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 67658238]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_11 = Eth_43_PFE_LLD_ReadMii45 (0, u8TrcvIdx_5(D), u8DevIdx_6(D), u16RegIdx_9(D), pu16RegValPtr_7(D));
+  # DEBUG eReturnStatus => eReturnStatus_11
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(6), 1(8), 1(10), eReturnStatus_11(11)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_WriteMii45 (uint8 u8CtrlIdx, uint8 u8TrcvIdx, uint8 u8DevIdx, uint16 u16RegIdx, uint16 u16RegVal)
+{
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 30, 1);
+  goto <bb 10>; [100.00%]
+
+  <bb 4> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  if (u8TrcvIdx_5(D) > 31)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 5> [local count: 482002704]:
+  if (u8DevIdx_6(D) > 31)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 478405669]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 30, 4);
+  goto <bb 10>; [100.00%]
+
+  <bb 7> [local count: 241001352]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 8>; [66.00%]
+  else
+    goto <bb 9>; [34.00%]
+
+  <bb 8> [local count: 159060892]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 30, 2);
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 81940460]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_11 = Eth_43_PFE_LLD_WriteMii45 (0, u8TrcvIdx_5(D), u8DevIdx_6(D), u16RegIdx_8(D), u16RegVal_9(D));
+  # DEBUG eReturnStatus => eReturnStatus_11
+  # DEBUG BEGIN_STMT
+
+  <bb 10> [local count: 1073741824]:
+  # eReturnStatus_2 = PHI <1(3), 1(6), 1(8), eReturnStatus_11(9)>
+  # DEBUG eReturnStatus => eReturnStatus_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_2;
+
+}
+
+
+Eth_43_PFE_ReadMii (uint8 u8CtrlIdx, uint8 u8TrcvIdx, uint8 u8RegIdx, uint16 * pu16RegValPtr)
+{
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.19_2;
+  const struct Eth_43_PFE_CtrlCfgType * _3;
+  void (*<T8a7>) (uint8, uint8, uint8, uint16) _4;
+  short unsigned int _5;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_8(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 6, 1);
+  goto <bb 13>; [100.00%]
+
+  <bb 4> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  if (u8TrcvIdx_9(D) > 31)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 5> [local count: 482002704]:
+  if (u8RegIdx_10(D) > 31)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 478405669]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 6, 4);
+  goto <bb 13>; [100.00%]
+
+  <bb 7> [local count: 241001352]:
+  # DEBUG BEGIN_STMT
+  if (pu16RegValPtr_11(D) == 0B)
+    goto <bb 8>; [17.43%]
+  else
+    goto <bb 9>; [82.57%]
+
+  <bb 8> [local count: 42006536]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 6, 3);
+  goto <bb 13>; [100.00%]
+
+  <bb 9> [local count: 198994816]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 10>; [66.00%]
+  else
+    goto <bb 11>; [34.00%]
+
+  <bb 10> [local count: 131336579]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 6, 2);
+  goto <bb 13>; [100.00%]
+
+  <bb 11> [local count: 67658238]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_14 = Eth_43_PFE_LLD_ReadMii (0, u8TrcvIdx_9(D), u8RegIdx_10(D), pu16RegValPtr_11(D));
+  # DEBUG eReturnStatus => eReturnStatus_14
+  # DEBUG BEGIN_STMT
+  if (eReturnStatus_14 == 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 12> [local count: 33829119]:
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.19_2 = Eth_43_PFE_InternalCfgPtr;
+  _3 = Eth_43_PFE_InternalCfgPtr.19_2->pController[0];
+  _4 = _3->Eth_43_PFE_EthTrcvDriverFunctionList.ReadMiiIndicationFunction;
+  _5 = *pu16RegValPtr_11(D);
+  _4 (0, u8TrcvIdx_9(D), u8RegIdx_10(D), _5);
+
+  <bb 13> [local count: 1073741824]:
+  # eReturnStatus_6 = PHI <1(3), 1(6), 1(8), 1(10), eReturnStatus_14(11), 0(12)>
+  # DEBUG eReturnStatus => eReturnStatus_6
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_6;
+
+}
+
+
+Eth_43_PFE_WriteMii (uint8 u8CtrlIdx, uint8 u8TrcvIdx, uint8 u8RegIdx, uint16 u16RegVal)
+{
+  Std_ReturnType eReturnStatus;
+  <unnamed type> _1;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.18_2;
+  const struct Eth_43_PFE_CtrlCfgType * _3;
+  void (*<T8ab>) (uint8, uint8, uint8) _4;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnStatus => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_7(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 5, 1);
+  goto <bb 11>; [100.00%]
+
+  <bb 4> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  if (u8TrcvIdx_8(D) > 31)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 5> [local count: 482002704]:
+  if (u8RegIdx_9(D) > 31)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 478405669]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 5, 4);
+  goto <bb 11>; [100.00%]
+
+  <bb 7> [local count: 241001352]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 8>; [66.00%]
+  else
+    goto <bb 9>; [34.00%]
+
+  <bb 8> [local count: 159060892]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 5, 2);
+  goto <bb 11>; [100.00%]
+
+  <bb 9> [local count: 81940460]:
+  # DEBUG BEGIN_STMT
+  eReturnStatus_13 = Eth_43_PFE_LLD_WriteMii (0, u8TrcvIdx_8(D), u8RegIdx_9(D), u16RegVal_11(D));
+  # DEBUG eReturnStatus => eReturnStatus_13
+  # DEBUG BEGIN_STMT
+  if (eReturnStatus_13 == 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 10> [local count: 40970230]:
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.18_2 = Eth_43_PFE_InternalCfgPtr;
+  _3 = Eth_43_PFE_InternalCfgPtr.18_2->pController[0];
+  _4 = _3->Eth_43_PFE_EthTrcvDriverFunctionList.WriteMiiIndicationFunction;
+  _4 (0, u8TrcvIdx_8(D), u8RegIdx_9(D));
+
+  <bb 11> [local count: 1073741824]:
+  # eReturnStatus_5 = PHI <1(3), 1(6), 1(8), eReturnStatus_13(9), 0(10)>
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  return eReturnStatus_5;
+
+}
+
+
+Eth_43_PFE_MainFunction ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_MainFunction ();
+  return;
+
+}
+
+
+Eth_43_PFE_GetVersionInfo (struct Std_VersionInfoType * VersionInfoPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (VersionInfoPtr_2(D) == 0B)
+    goto <bb 3>; [17.43%]
+  else
+    goto <bb 4>; [82.57%]
+
+  <bb 3> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 13, 3);
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 886588625]:
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->moduleID = 88;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->vendorID = 43;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->sw_major_version = 1;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->sw_minor_version = 4;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->sw_patch_version = 0;
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+
+Eth_43_PFE_TxConfirmation (uint8 u8CtrlIdx)
+{
+  uint8 u8FifoIdx;
+  uint8 u8NumsFifo;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  const struct Eth_43_PFE_StaticCtrlCfgType * _3;
+  _Bool _4;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.16_5;
+  const struct Eth_43_PFE_CtrlCfgType * _6;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_10(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 12, 1);
+  goto <bb 12>; [100.00%]
+
+  <bb 4> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 5>; [66.00%]
+  else
+    goto <bb 6>; [34.00%]
+
+  <bb 5> [local count: 474808634]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 12, 2);
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 244598387]:
+  # DEBUG BEGIN_STMT
+  _2 = Eth_PFE_LLD_CheckControllerIsActive (0);
+  if (_2 != 1)
+    goto <bb 7>; [48.88%]
+  else
+    goto <bb 8>; [51.12%]
+
+  <bb 7> [local count: 119559692]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 12, 5);
+  goto <bb 12>; [100.00%]
+
+  <bb 8> [local count: 125038695]:
+  # DEBUG BEGIN_STMT
+  _3 = Eth_43_PFE_StaticConfig.pController[0];
+  _4 = _3->EnableTxInterrupt;
+  if (_4 != 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 9> [local count: 62519348]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.16_5 = Eth_43_PFE_InternalCfgPtr;
+  _6 = Eth_43_PFE_InternalCfgPtr.16_5->pController[0];
+  u8NumsFifo_13 = _6->EthCtrlEgressFifoCnt;
+  # DEBUG u8NumsFifo => u8NumsFifo_13
+  # DEBUG BEGIN_STMT
+  # DEBUG u8FifoIdx => 0
+  goto <bb 11>; [100.00%]
+
+  <bb 10> [local count: 505838361]:
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_ReportTransmission (0, u8FifoIdx_7);
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_ReportTransmissionTS (0, u8FifoIdx_7);
+  # DEBUG BEGIN_STMT
+  u8FifoIdx_16 = u8FifoIdx_7 + 1;
+  # DEBUG u8FifoIdx => u8FifoIdx_16
+
+  <bb 11> [local count: 568357710]:
+  # u8FifoIdx_7 = PHI <0(9), u8FifoIdx_16(10)>
+  # DEBUG u8FifoIdx => u8FifoIdx_7
+  # DEBUG BEGIN_STMT
+  if (u8FifoIdx_7 < u8NumsFifo_13)
+    goto <bb 10>; [89.00%]
+  else
+    goto <bb 12>; [11.00%]
+
+  <bb 12> [local count: 1073741824]:
+  return;
+
+}
+
+
+Eth_43_PFE_Receive (uint8 u8CtrlIdx, uint8 FifoIdx, Eth_RxStatusType * RxStatusPtr)
+{
+  <unnamed type> _1;
+  <unnamed type> _2;
+  const struct Eth_43_PFE_StaticCtrlCfgType * _3;
+  _Bool _4;
+  <unnamed type> _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_7(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 11, 1);
+  goto <bb 14>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (FifoIdx_8(D) > 7)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 237404317]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 11, 4);
+  goto <bb 14>; [100.00%]
+
+  <bb 6> [local count: 482002705]:
+  # DEBUG BEGIN_STMT
+  if (RxStatusPtr_9(D) == 0B)
+    goto <bb 7>; [17.43%]
+  else
+    goto <bb 8>; [82.57%]
+
+  <bb 7> [local count: 84013071]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 11, 3);
+  goto <bb 14>; [100.00%]
+
+  <bb 8> [local count: 397989633]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 9>; [66.00%]
+  else
+    goto <bb 10>; [34.00%]
+
+  <bb 9> [local count: 262673158]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 11, 2);
+  goto <bb 14>; [100.00%]
+
+  <bb 10> [local count: 135316475]:
+  # DEBUG BEGIN_STMT
+  _2 = Eth_PFE_LLD_CheckControllerIsActive (0);
+  if (_2 != 1)
+    goto <bb 11>; [48.88%]
+  else
+    goto <bb 12>; [51.12%]
+
+  <bb 11> [local count: 66142693]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 11, 5);
+  goto <bb 14>; [100.00%]
+
+  <bb 12> [local count: 69173782]:
+  # DEBUG BEGIN_STMT
+  _3 = Eth_43_PFE_StaticConfig.pController[0];
+  _4 = _3->EnableRxInterrupt;
+  if (_4 != 0)
+    goto <bb 14>; [67.00%]
+  else
+    goto <bb 13>; [33.00%]
+
+  <bb 13> [local count: 22827348]:
+  # DEBUG BEGIN_STMT
+  _5 = Eth_PFE_LLD_ReportReception (0, FifoIdx_8(D), 0);
+  *RxStatusPtr_9(D) = _5;
+
+  <bb 14> [local count: 1073741824]:
+  return;
+
+}
+
+
+Eth_43_PFE_ReleaseTxBuffer (uint8 u8CtrlIdx, Eth_BufIdxType BufIdx)
+{
+  uint8 u8DetError;
+  BufReq_ReturnType eReturnValue;
+  <unnamed type> _1;
+  _Bool _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eReturnValue => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG u8DetError => 0
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_5(D) != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 3>; [67.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (BufIdx_6(D) > 3)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 359703511]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 6>; [79.76%]
+  else
+    goto <bb 5>; [20.24%]
+
+  <bb 5> [local count: 72803991]:
+  # DEBUG u8DetError => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = Eth_PFE_LLD_ReleaseTxBuffer (0, BufIdx_6(D));
+  if (_2 != 0)
+    goto <bb 9>; [65.00%]
+  else
+    goto <bb 7>; [35.00%]
+
+  <bb 6> [local count: 1000937834]:
+  # u8DetError_8 = PHI <4(3), 1(2), 2(4)>
+  # DEBUG u8DetError => NULL
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 44, u8DetError_8);
+  goto <bb 9>; [100.00%]
+
+  <bb 7> [local count: 25481397]:
+
+  <bb 9> [local count: 1073741824]:
+  # eReturnValue_3 = PHI <1(6), 2(7), 0(5)>
+  # DEBUG eReturnValue => eReturnValue_3
+  # DEBUG BEGIN_STMT
+  return eReturnValue_3;
+
+}
+
+
+Eth_43_PFE_Transmit (uint8 u8CtrlIdx, Eth_BufIdxType BufIdx, Eth_FrameType FrameType, boolean TxConfirmation, uint16 LenByte, const uint8 * PhysAddrPtr)
+{
+  uint32 u32BufHdrSize;
+  uint32 u32BufLen;
+  uint8 u8FifoIdx;
+  uint16 lmem_header_size;
+  Std_ReturnType u8FunctionSuccess;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  short unsigned int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8FunctionSuccess => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_10(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 10, 1);
+  goto <bb 16>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (PhysAddrPtr_11(D) == 0B)
+    goto <bb 5>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 5> [local count: 125392644]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 10, 3);
+  goto <bb 16>; [100.00%]
+
+  <bb 6> [local count: 594014379]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 7>; [66.00%]
+  else
+    goto <bb 8>; [34.00%]
+
+  <bb 7> [local count: 392049490]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 10, 2);
+  goto <bb 16>; [100.00%]
+
+  <bb 8> [local count: 201964889]:
+  # DEBUG BEGIN_STMT
+  _2 = Eth_PFE_LLD_CheckControllerIsActive (0);
+  if (_2 != 1)
+    goto <bb 9>; [66.00%]
+  else
+    goto <bb 10>; [34.00%]
+
+  <bb 9> [local count: 133296826]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 10, 5);
+  goto <bb 16>; [100.00%]
+
+  <bb 10> [local count: 68668062]:
+  # DEBUG BEGIN_STMT
+  u8FifoIdx_16 = Eth_43_PFE_LLD_GetTxFifoIdx (0, BufIdx_14(D));
+  # DEBUG u8FifoIdx => u8FifoIdx_16
+  # DEBUG BEGIN_STMT
+  lmem_header_size_18 = Eth_43_PFE_LLD_GetLmemHdrSize (0);
+  # DEBUG lmem_header_size => lmem_header_size_18
+  # DEBUG BEGIN_STMT
+  _3 = (long unsigned int) lmem_header_size_18;
+  u32BufHdrSize_19 = _3 + 30;
+  # DEBUG u32BufHdrSize => u32BufHdrSize_19
+  # DEBUG BEGIN_STMT
+  _4 = Eth_43_PFE_LLD_GetTxBufferSize (0, u8FifoIdx_16);
+  if (_4 < u32BufHdrSize_19)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 11> [local count: 34334031]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Size of TX buffer is invalid\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/Eth_43_PFE.c", 898, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [100.00%]
+
+  <bb 12> [local count: 34334031]:
+  # DEBUG BEGIN_STMT
+  _5 = Eth_43_PFE_LLD_GetTxBufferSize (0, u8FifoIdx_16);
+  _6 = _5 - _3;
+  u32BufLen_22 = _6 + 4294967266;
+  # DEBUG u32BufLen => u32BufLen_22
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (BufIdx_14(D) > 3)
+    goto <bb 14>; [33.00%]
+  else
+    goto <bb 13>; [67.00%]
+
+  <bb 13> [local count: 23003801]:
+  _7 = (short unsigned int) u32BufLen_22;
+  if (_7 < LenByte_23(D))
+    goto <bb 14>; [67.00%]
+  else
+    goto <bb 15>; [33.00%]
+
+  <bb 14> [local count: 26742777]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 10, 4);
+  goto <bb 16>; [100.00%]
+
+  <bb 15> [local count: 7591254]:
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_27 = Eth_PFE_LLD_Transmit (0, BufIdx_14(D), FrameType_24(D), LenByte_23(D), TxConfirmation_25(D), PhysAddrPtr_11(D));
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_27
+
+  <bb 16> [local count: 1073741824]:
+  # u8FunctionSuccess_8 = PHI <1(3), 1(5), 1(7), 1(9), 1(11), 1(14), u8FunctionSuccess_27(15)>
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_8
+  # DEBUG BEGIN_STMT
+  return u8FunctionSuccess_8;
+
+}
+
+
+Eth_43_PFE_ProvideTxBuffer (uint8 u8CtrlIdx, uint8 Priority, Eth_BufIdxType * BufIdxPtr, uint8 * * BufPtr, uint16 * LenBytePtr)
+{
+  BufReq_ReturnType eFunctionSuccess;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eFunctionSuccess => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 9, 1);
+  goto <bb 14>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (BufIdxPtr_5(D) == 0B)
+    goto <bb 5>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 5> [local count: 125392644]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 9, 3);
+  goto <bb 14>; [100.00%]
+
+  <bb 6> [local count: 594014379]:
+  # DEBUG BEGIN_STMT
+  if (BufPtr_6(D) == 0B)
+    goto <bb 7>; [17.43%]
+  else
+    goto <bb 8>; [82.57%]
+
+  <bb 7> [local count: 103536706]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 9, 3);
+  goto <bb 14>; [100.00%]
+
+  <bb 8> [local count: 490477672]:
+  # DEBUG BEGIN_STMT
+  if (LenBytePtr_7(D) == 0B)
+    goto <bb 9>; [17.43%]
+  else
+    goto <bb 10>; [82.57%]
+
+  <bb 9> [local count: 85490258]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 9, 3);
+  goto <bb 14>; [100.00%]
+
+  <bb 10> [local count: 404987414]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 11>; [48.88%]
+  else
+    goto <bb 12>; [51.12%]
+
+  <bb 11> [local count: 197957848]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 9, 2);
+  goto <bb 14>; [100.00%]
+
+  <bb 12> [local count: 207029566]:
+  # DEBUG BEGIN_STMT
+  if (Priority_9(D) <= 7)
+    goto <bb 13>; [33.00%]
+  else
+    goto <bb 14>; [67.00%]
+
+  <bb 13> [local count: 68319757]:
+  # DEBUG BEGIN_STMT
+  eFunctionSuccess_11 = update_and_provide_buffer (0, Priority_9(D), BufIdxPtr_5(D), BufPtr_6(D), LenBytePtr_7(D));
+  # DEBUG eFunctionSuccess => eFunctionSuccess_11
+
+  <bb 14> [local count: 1073741824]:
+  # eFunctionSuccess_2 = PHI <1(3), 1(5), 1(7), 1(9), 1(11), eFunctionSuccess_11(13), 1(12)>
+  # DEBUG eFunctionSuccess => eFunctionSuccess_2
+  # DEBUG BEGIN_STMT
+  return eFunctionSuccess_2;
+
+}
+
+
+Eth_43_PFE_UpdatePhysAddrFilter (uint8 u8CtrlIdx, const uint8 * PhysAddrPtr, Eth_FilterActionType Action)
+{
+  Std_ReturnType u8FunctionSuccess;
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8FunctionSuccess => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 18, 1);
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  if (PhysAddrPtr_5(D) == 0B)
+    goto <bb 5>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 5> [local count: 125392644]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 18, 3);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 594014378]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 7>; [66.00%]
+  else
+    goto <bb 8>; [34.00%]
+
+  <bb 7> [local count: 392049489]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 18, 2);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 201964888]:
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_9 = Eth_PFE_LLD_UpdatePhysAddrFilter (0, PhysAddrPtr_5(D), Action_7(D));
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_9
+
+  <bb 9> [local count: 1073741824]:
+  # u8FunctionSuccess_2 = PHI <1(3), 1(5), 1(7), u8FunctionSuccess_9(8)>
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_2
+  # DEBUG BEGIN_STMT
+  return u8FunctionSuccess_2;
+
+}
+
+
+Eth_43_PFE_SetPhysAddr (uint8 u8CtrlIdx, const uint8 * PhysAddrPtr)
+{
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_3(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 19, 1);
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  if (PhysAddrPtr_4(D) == 0B)
+    goto <bb 5>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 5> [local count: 125392644]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 19, 3);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 594014378]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 7>; [66.00%]
+  else
+    goto <bb 8>; [34.00%]
+
+  <bb 7> [local count: 392049489]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 19, 2);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 201964888]:
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_SetPhysAddr (0, PhysAddrPtr_4(D));
+
+  <bb 9> [local count: 1073741824]:
+  return;
+
+}
+
+
+Eth_43_PFE_GetPhysAddr (uint8 u8CtrlIdx, uint8 * PhysAddrPtr)
+{
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_3(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 8, 1);
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  if (PhysAddrPtr_4(D) == 0B)
+    goto <bb 5>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 5> [local count: 125392644]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 8, 3);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 594014378]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 7>; [66.00%]
+  else
+    goto <bb 8>; [34.00%]
+
+  <bb 7> [local count: 392049489]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 8, 2);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 201964888]:
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_GetPhysicalAddress (0, PhysAddrPtr_4(D));
+
+  <bb 9> [local count: 1073741824]:
+  return;
+
+}
+
+
+Eth_43_PFE_GetControllerMode (uint8 u8CtrlIdx, Eth_ModeType * CtrlModePtr)
+{
+  Std_ReturnType u8FunctionSuccess;
+  <unnamed type> _1;
+  <unnamed type> _2;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8FunctionSuccess => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_5(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 4, 1);
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  if (CtrlModePtr_6(D) == 0B)
+    goto <bb 5>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 5> [local count: 125392644]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 4, 3);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 594014378]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 7>; [66.00%]
+  else
+    goto <bb 8>; [34.00%]
+
+  <bb 7> [local count: 392049489]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 4, 2);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 201964888]:
+  # DEBUG BEGIN_STMT
+  _2 = Eth_PFE_LLD_CheckControllerIsActive (0);
+  *CtrlModePtr_6(D) = _2;
+  # DEBUG BEGIN_STMT
+  # DEBUG u8FunctionSuccess => 0
+
+  <bb 9> [local count: 1073741824]:
+  # u8FunctionSuccess_3 = PHI <1(3), 1(5), 1(7), 0(8)>
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_3
+  # DEBUG BEGIN_STMT
+  return u8FunctionSuccess_3;
+
+}
+
+
+Eth_43_PFE_SetControllerMode (uint8 u8CtrlIdx, Eth_ModeType CtrlMode)
+{
+  Std_ReturnType u8FunctionSuccess;
+  <unnamed type> _1;
+  _Bool _2;
+  _Bool _3;
+  unsigned char _4;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.7_5;
+  const struct Eth_43_PFE_CtrlCfgType * _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  short unsigned int _9;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.9_10;
+  const struct Eth_43_PFE_CtrlCfgType * _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  short unsigned int _14;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8FunctionSuccess => 1
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_19(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 3, 1);
+  goto <bb 16>; [100.00%]
+
+  <bb 4> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} Eth_43_PFE_CtrlState[0];
+  if (_1 != 1)
+    goto <bb 5>; [66.00%]
+  else
+    goto <bb 6>; [34.00%]
+
+  <bb 5> [local count: 474808634]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 3, 2);
+  goto <bb 16>; [100.00%]
+
+  <bb 6> [local count: 244598387]:
+  # DEBUG BEGIN_STMT
+  _2 = Eth_PFE_LLD_CheckAccessToController ();
+  if (_2 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 7> [local count: 122299194]:
+  # DEBUG BEGIN_STMT
+  if (CtrlMode_23(D) == 1)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 10>; [66.00%]
+
+  <bb 8> [local count: 41581726]:
+  # DEBUG BEGIN_STMT
+  _3 = Eth_PFE_LLD_EnableController (0);
+  if (_3 != 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 9> [local count: 20790863]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8FunctionSuccess => 0
+  goto <bb 12>; [100.00%]
+
+  <bb 10> [local count: 80717468]:
+  # DEBUG BEGIN_STMT
+  _4 = Eth_PFE_LLD_DisableController (0);
+  if (_4 == 0)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 11> [local count: 40358734]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8FunctionSuccess => 0
+
+  <bb 12> [local count: 122299194]:
+  # u8FunctionSuccess_15 = PHI <0(9), 1(10), 0(11), 1(8)>
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_15
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.7_5 = Eth_43_PFE_InternalCfgPtr;
+  _6 = Eth_43_PFE_InternalCfgPtr.7_5->pController[0];
+  _7 = _6->ETH_43_PFE_DEM_E_ACCESS_Cfg.state;
+  if (_7 == 1)
+    goto <bb 13>; [20.24%]
+  else
+    goto <bb 16>; [79.76%]
+
+  <bb 13> [local count: 24753357]:
+  # DEBUG BEGIN_STMT
+  _8 = _6->ETH_43_PFE_DEM_E_ACCESS_Cfg.id;
+  _9 = (short unsigned int) _8;
+  Dem_SetEventStatus (_9, 2);
+  goto <bb 16>; [100.00%]
+
+  <bb 14> [local count: 122299194]:
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.9_10 = Eth_43_PFE_InternalCfgPtr;
+  _11 = Eth_43_PFE_InternalCfgPtr.9_10->pController[0];
+  _12 = _11->ETH_43_PFE_DEM_E_ACCESS_Cfg.state;
+  if (_12 == 1)
+    goto <bb 15>; [20.24%]
+  else
+    goto <bb 16>; [79.76%]
+
+  <bb 15> [local count: 24753357]:
+  # DEBUG BEGIN_STMT
+  _13 = _11->ETH_43_PFE_DEM_E_ACCESS_Cfg.id;
+  _14 = (short unsigned int) _13;
+  Dem_SetEventStatus (_14, 3);
+
+  <bb 16> [local count: 1073741824]:
+  # u8FunctionSuccess_16 = PHI <1(3), 1(5), u8FunctionSuccess_15(13), 1(14), 1(15), u8FunctionSuccess_15(12)>
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_16
+  # DEBUG BEGIN_STMT
+  return u8FunctionSuccess_16;
+
+}
+
+
+Eth_43_PFE_DeInit ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_DeInit ();
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr = 0B;
+  return;
+
+}
+
+
+Eth_43_PFE_Init (const struct Eth_43_PFE_ConfigType * CfgPtr)
+{
+  uint8 u8CtrlCount;
+  _Bool _1;
+  unsigned char _2;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.2_3;
+  const struct Eth_43_PFE_CtrlCfgType * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  short unsigned int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u8CtrlCount => 0
+  # DEBUG BEGIN_STMT
+  if (CfgPtr_16(D) != 0B)
+    goto <bb 3>; [67.00%]
+  else
+    goto <bb 18>; [33.00%]
+
+  <bb 18> [local count: 354334802]:
+  goto <bb 5>; [100.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 1, 3);
+  goto <bb 16>; [100.00%]
+
+  <bb 4> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_CtrlState[0] ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG u8CtrlCount => 1
+
+  <bb 5> [local count: 708669605]:
+  # u8CtrlCount_8 = PHI <1(4), 0(18)>
+  # DEBUG u8CtrlCount => u8CtrlCount_8
+  # DEBUG BEGIN_STMT
+  if (u8CtrlCount_8 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr = &Eth_43_PFE_Config;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_CheckAccessToController ();
+  if (_1 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 17>; [67.00%]
+
+  <bb 17> [local count: 237404317]:
+  goto <bb 15>; [100.00%]
+
+  <bb 7> [local count: 116930485]:
+  # DEBUG BEGIN_STMT
+  _2 = Eth_PFE_LLD_PlatformDrvPrepare ();
+  if (_2 == 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 16>; [67.00%]
+
+  <bb 8> [local count: 38587060]:
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_EMACPrepare ();
+  # DEBUG BEGIN_STMT
+  # DEBUG u8CtrlCount => 0
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 38587060]:
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_InterfacePrepare (0);
+  # DEBUG BEGIN_STMT
+  check_and_configure_controller (0);
+  # DEBUG BEGIN_STMT
+  # DEBUG u8CtrlCount => 1
+
+  <bb 10> [local count: 77174120]:
+  # u8CtrlCount_9 = PHI <0(8), 1(9)>
+  # DEBUG u8CtrlCount => u8CtrlCount_9
+  # DEBUG BEGIN_STMT
+  if (u8CtrlCount_9 == 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 11> [local count: 38587060]:
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_bIrqInitStatus ={v} 1;
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_LLD_SetMasterUp ();
+  goto <bb 16>; [100.00%]
+
+  <bb 12> [local count: 237404317]:
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.2_3 = Eth_43_PFE_InternalCfgPtr;
+  _4 = Eth_43_PFE_InternalCfgPtr.2_3->pController[0];
+  _5 = _4->ETH_43_PFE_DEM_E_ACCESS_Cfg.state;
+  if (_5 == 1)
+    goto <bb 13>; [20.24%]
+  else
+    goto <bb 14>; [79.76%]
+
+  <bb 13> [local count: 48050634]:
+  # DEBUG BEGIN_STMT
+  _6 = _4->ETH_43_PFE_DEM_E_ACCESS_Cfg.id;
+  _7 = (short unsigned int) _6;
+  Dem_SetEventStatus (_7, 3);
+
+  <bb 14> [local count: 237404317]:
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_CtrlState[0] ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG u8CtrlCount => 1
+
+  <bb 15> [local count: 474808635]:
+  # u8CtrlCount_10 = PHI <1(14), 0(17)>
+  # DEBUG u8CtrlCount => u8CtrlCount_10
+  # DEBUG BEGIN_STMT
+  if (u8CtrlCount_10 == 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 16>; [50.00%]
+
+  <bb 16> [local count: 1073741824]:
+  return;
+
+}
+
+
+update_and_provide_buffer (uint8 u8CtrlIdx, uint8 Priority, Eth_BufIdxType * BufIdxPtr, uint8 * * BufPtr, uint16 * LenBytePtr)
+{
+  uint8 u8QueueIdx;
+  uint16 u16TempLenByte;
+  BufReq_ReturnType eFunctionSuccess;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.11_1;
+  int _2;
+  const struct Eth_43_PFE_CtrlCfgType * _3;
+  int _4;
+  short unsigned int _5;
+  _Bool _6;
+  short unsigned int u16TempLenByte.12_7;
+  short unsigned int _8;
+  short unsigned int u16TempLenByte.13_9;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG eFunctionSuccess => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.11_1 = Eth_43_PFE_InternalCfgPtr;
+  _2 = (int) u8CtrlIdx_13(D);
+  _3 = Eth_43_PFE_InternalCfgPtr.11_1->pController[_2];
+  _4 = (int) Priority_14(D);
+  u8QueueIdx_15 = _3->EthCtrlEgressPrioToFifoIdx[_4];
+  # DEBUG u8QueueIdx => u8QueueIdx_15
+  # DEBUG BEGIN_STMT
+  _5 = *LenBytePtr_16(D);
+  u16TempLenByte = _5;
+  # DEBUG BEGIN_STMT
+  _6 = Eth_PFE_LLD_ProvideBufferDataArea (u8CtrlIdx_13(D), u8QueueIdx_15, BufIdxPtr_18(D), BufPtr_19(D), &u16TempLenByte);
+  if (_6 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  u16TempLenByte.12_7 = u16TempLenByte;
+  *LenBytePtr_16(D) = u16TempLenByte.12_7;
+  # DEBUG BEGIN_STMT
+  # DEBUG eFunctionSuccess => 0
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _8 = *LenBytePtr_16(D);
+  u16TempLenByte.13_9 = u16TempLenByte;
+  if (_8 > u16TempLenByte.13_9)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  *LenBytePtr_16(D) = u16TempLenByte.13_9;
+  # DEBUG BEGIN_STMT
+  # DEBUG eFunctionSuccess => 3
+
+  <bb 6> [local count: 1073741824]:
+  # eFunctionSuccess_10 = PHI <0(3), 3(5), 2(4)>
+  # DEBUG eFunctionSuccess => eFunctionSuccess_10
+  # DEBUG BEGIN_STMT
+  u16TempLenByte ={v} {CLOBBER};
+  return eFunctionSuccess_10;
+
+}
+
+
+check_and_configure_controller (uint8 u8CtrlCount)
+{
+  _Bool _1;
+  unsigned char _2;
+  int _3;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.5_4;
+  const struct Eth_43_PFE_CtrlCfgType * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  short unsigned int _8;
+  int _9;
+  int _10;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_CheckInitializationStatus (u8CtrlCount_13(D));
+  if (_1 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _2 = Eth_PFE_LLD_ConfigureController (u8CtrlCount_13(D));
+  if (_2 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 4> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  _3 = (int) u8CtrlCount_13(D);
+  Eth_43_PFE_CtrlState[_3] ={v} 1;
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.5_4 = Eth_43_PFE_InternalCfgPtr;
+  _5 = Eth_43_PFE_InternalCfgPtr.5_4->pController[_3];
+  _6 = _5->ETH_43_PFE_DEM_E_ACCESS_Cfg.state;
+  if (_6 == 1)
+    goto <bb 5>; [20.24%]
+  else
+    goto <bb 8>; [79.76%]
+
+  <bb 5> [local count: 35858682]:
+  # DEBUG BEGIN_STMT
+  _7 = _5->ETH_43_PFE_DEM_E_ACCESS_Cfg.id;
+  _8 = (short unsigned int) _7;
+  Dem_SetEventStatus (_8, 2);
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  _9 = (int) u8CtrlCount_13(D);
+  Eth_43_PFE_CtrlState[_9] ={v} 0;
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  _10 = (int) u8CtrlCount_13(D);
+  Eth_43_PFE_CtrlState[_10] ={v} 0;
+
+  <bb 8> [local count: 1073741824]:
+  return;
+
+}
+
+

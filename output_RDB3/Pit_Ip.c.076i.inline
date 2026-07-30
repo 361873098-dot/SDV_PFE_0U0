@@ -1,0 +1,2658 @@
+IPA function summary for Pit_Ip_EnableModule.constprop/43 inlinable
+  global time:     4.000000
+  self size:       9
+  global size:     7
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:4.000000, time:2.000000,  executed if:(op1 == 0)
+  array index:(op0 changed)
+  calls:
+
+IPA function summary for Pit_Ip_SetChainMode.constprop/42 inlinable
+  global time:     23.000000
+  self size:       17
+  global size:     9
+  min size:       8
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:4.000000, time:1.000000,  executed if:(op1 != 0) && (op2 != 0)
+  calls:
+    SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_01/34 function body not available
+      loop depth: 0 freq:1.00 size: 1 time: 10
+    SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_01/35 function body not available
+      loop depth: 0 freq:1.00 size: 1 time: 10
+
+IPA function summary for Pit_Ip_Reset.constprop/41 inlinable
+  global time:     56.000000
+  self size:       17
+  global size:     14
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:9.000000, time:53.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:2.000000, time:1.000000,  executed if:(op2 == 0),  nonconst if:(op3 changed) && (op2 == 0)
+  array index:(op0 changed)
+  calls:
+
+IPA function summary for Pit_Ip_ProcessCommonInterrupt.constprop/40 inlinable
+  global time:     7.722893
+  self size:       41
+  global size:     39
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:2.000000, time:0.820000,  executed if:(op0 <= 1),  nonconst if:(op1 changed) && (op0 <= 1)
+    size:22.000000, time:1.657425,  executed if:(op1 <= 6) && (op0 <= 1)
+  calls:
+    SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_03/36 function body not available
+      loop depth: 0 freq:0.14 size: 1 time: 10 predicate: (op1 <= 6) && (op0 <= 1)
+    Pit_Ip_ClearInterruptStatusFlag/14 function not considered for inlining
+      loop depth: 0 freq:0.02 size: 3 time: 12callee size: 3 stack: 0 predicate: (op1 <= 6) && (op0 <= 1)
+    SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_03/37 function body not available
+      loop depth: 0 freq:0.14 size: 1 time: 10 predicate: (op1 <= 6) && (op0 <= 1)
+    Pit_Ip_StopChannel/23 function not considered for inlining
+      loop depth: 0 freq:0.01 size: 3 time: 12callee size: 8 stack: 0 predicate: (op1 <= 6) && (op0 <= 1)
+    indirect call loop depth: 0 freq:0.01 size: 4 time: 16predicate: (op1 <= 6) && (op0 <= 1)
+
+IPA function summary for PIT_1_ISR/29 inlinable
+  global time:     93.968510
+  self size:       9
+  global size:     9
+  min size:       6
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:19.993702
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    Pit_Ip_ProcessCommonInterrupt.constprop/40 function not considered for inlining
+      loop depth: 1 freq:6.00 size: 3 time: 12callee size:19 stack: 0
+       op0 is compile time invariant
+
+IPA function summary for Pit_Ip_GetLifetimeTimer/28 inlinable
+  global time:     19.000000
+  self size:       11
+  global size:     11
+  min size:       4
+  self stack:      0
+  global stack:    0
+    size:5.000000, time:5.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+  array index:(op0 changed)
+  calls:
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_SetLifetimeTimer/27 inlinable
+  global time:     69.000000
+  self size:       25
+  global size:     25
+  min size:       36
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+  array index:(op0 changed)
+  calls:
+    Pit_Ip_EnableTimer/6 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+       op1 is compile time invariant
+       op2 is compile time invariant
+    Pit_Ip_EnableTimer/6 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+       op1 is compile time invariant
+       op2 is compile time invariant
+    Pit_Ip_SetChainMode.constprop/42 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 4 stack: 0
+       op1 is compile time invariant
+       op2 is compile time invariant
+    Pit_Ip_SetEnableInterruptFlag/13 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+       op1 is compile time invariant
+       op2 is compile time invariant
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_DisableChannelInterrupt/26 inlinable
+  global time:     51.000000
+  self size:       16
+  global size:     16
+  min size:       22
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+    Pit_Ip_ClearInterruptStatusFlag/14 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 3 stack: 0
+    Pit_Ip_SetEnableInterruptFlag/13 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+       op2 is compile time invariant
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_EnableChannelInterrupt/25 inlinable
+  global time:     51.000000
+  self size:       16
+  global size:     16
+  min size:       22
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+    Pit_Ip_SetEnableInterruptFlag/13 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+       op2 is compile time invariant
+    Pit_Ip_ClearInterruptStatusFlag/14 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 3 stack: 0
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_GetCurrentTimer/24 inlinable
+  global time:     28.000000
+  self size:       11
+  global size:     11
+  min size:       8
+  self stack:      0
+  global stack:    0
+    size:2.000000, time:2.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  array index:(op1 changed) && (op0 changed)
+  calls:
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_StopChannel/23 inlinable
+  global time:     51.000000
+  self size:       16
+  global size:     16
+  min size:       22
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+    Pit_Ip_ClearInterruptStatusFlag/14 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 3 stack: 0
+    Pit_Ip_EnableTimer/6 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+       op2 is compile time invariant
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_StartChannel/22 inlinable
+  global time:     34.950000
+  self size:       19
+  global size:     19
+  min size:       16
+  self stack:      0
+  global stack:    0
+    size:5.000000, time:4.330000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+    size:1.000000, time:0.330000,  nonconst if:(op2 changed)
+  array index:(op1 changed) && (op0 changed)
+  calls:
+    Pit_Ip_EnableTimer/6 function not considered for inlining
+      loop depth: 0 freq:0.33 size: 4 time: 13callee size: 7 stack: 0
+       op2 is compile time invariant
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_Deinit/21 inlinable
+  global time:     29.998400
+  self size:       17
+  global size:     17
+  min size:       14
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:1.999800,  executed if:(not inlined)
+    size:7.000000, time:3.000000,  nonconst if:(op0 changed)
+  calls:
+    Pit_Ip_Reset.constprop/41 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 5 time: 14callee size: 7 stack: 0
+       op2 is compile time invariant
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_InitChannel/20 inlinable
+  global time:     88.000000
+  self size:       35
+  global size:     35
+  min size:       34
+  self stack:      0
+  global stack:    0
+    size:9.000000, time:9.000000
+    size:7.000000, time:6.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+    Pit_Ip_ClearInterruptStatusFlag/14 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 3 stack: 0
+    Pit_Ip_SetEnableInterruptFlag/13 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+       op2 is compile time invariant
+    Pit_Ip_EnableTimer/6 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+       op2 is compile time invariant
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_Init/19 inlinable
+  global time:     45.960000
+  self size:       19
+  global size:     19
+  min size:       20
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:4.000000, time:3.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+    Pit_Ip_SetDebugMode/7 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 6 stack: 0
+    Pit_Ip_EnableModule.constprop/43 function not considered for inlining
+      loop depth: 0 freq:0.33 size: 3 time: 12callee size: 3 stack: 0
+       op1 is compile time invariant
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_ClearInterruptStatusFlag/14 inlinable
+  global time:     6.000000
+  self size:       7
+  global size:     7
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:4.000000, time:4.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  array index:(op1 changed) && (op0 changed)
+  calls:
+
+IPA function summary for Pit_Ip_SetEnableInterruptFlag/13 inlinable
+  global time:     28.000000
+  self size:       15
+  global size:     15
+  min size:       4
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:2.000000, time:2.000000,  nonconst if:(op2 changed)
+    size:4.000000, time:2.000000,  executed if:(op2 == 0)
+    size:4.000000, time:2.000000,  executed if:(op2 != 0)
+  array index:(op1 changed) && (op0 changed)
+  calls:
+    SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02/33 function body not available
+      loop depth: 0 freq:1.00 size: 1 time: 10
+    SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02/32 function body not available
+      loop depth: 0 freq:1.00 size: 1 time: 10
+
+IPA function summary for Pit_Ip_SetDebugMode/7 inlinable
+  global time:     8.000000
+  self size:       13
+  global size:     13
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:2.000000, time:2.000000,  nonconst if:(op1 changed)
+    size:4.000000, time:2.000000,  executed if:(op1 == 0)
+    size:4.000000, time:2.000000,  executed if:(op1 != 0)
+  array index:(op0 changed)
+  calls:
+
+IPA function summary for Pit_Ip_EnableTimer/6 inlinable
+  global time:     28.000000
+  self size:       15
+  global size:     15
+  min size:       4
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:2.000000, time:2.000000,  nonconst if:(op2 changed)
+    size:4.000000, time:2.000000,  executed if:(op2 == 0)
+    size:4.000000, time:2.000000,  executed if:(op2 != 0)
+  array index:(op1 changed) && (op0 changed)
+  calls:
+    SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 function body not available
+      loop depth: 0 freq:1.00 size: 1 time: 10
+    SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 function body not available
+      loop depth: 0 freq:1.00 size: 1 time: 10
+
+IPA function summary for Pit_Ip_GetLoadValue/4 inlinable
+  global time:     4.000000
+  self size:       5
+  global size:     5
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:2.000000, time:2.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  array index:(op1 changed) && (op0 changed)
+  calls:
+
+IPA function summary for DevAssert/0 inlinable
+  global time:     5004.008492
+  self size:       7
+  global size:     7
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  executed if:(not inlined),  nonconst if:(op0 changed) && (not inlined)
+    size:2.000000, time:2.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:5000.008492,  executed if:(op0 == 0)
+    size:1.000000, time:1.000000,  executed if:(op0 != 0) && (not inlined)
+  calls:
+
+
+Flattening functions:
+Overall time estimate: 5730.608299 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+Enqueueing calls in Pit_Ip_EnableModule.constprop/43.
+Enqueueing calls in Pit_Ip_SetChainMode.constprop/42.
+Enqueueing calls in Pit_Ip_Reset.constprop/41.
+Enqueueing calls in Pit_Ip_ProcessCommonInterrupt.constprop/40.
+Enqueueing calls in PIT_1_ISR/29.
+Enqueueing calls in Pit_Ip_GetLifetimeTimer/28.
+Enqueueing calls in Pit_Ip_SetLifetimeTimer/27.
+Enqueueing calls in Pit_Ip_DisableChannelInterrupt/26.
+Enqueueing calls in Pit_Ip_EnableChannelInterrupt/25.
+Enqueueing calls in Pit_Ip_GetCurrentTimer/24.
+Enqueueing calls in Pit_Ip_StopChannel/23.
+Enqueueing calls in Pit_Ip_StartChannel/22.
+Enqueueing calls in Pit_Ip_Deinit/21.
+Enqueueing calls in Pit_Ip_InitChannel/20.
+Enqueueing calls in Pit_Ip_Init/19.
+Enqueueing calls in Pit_Ip_ClearInterruptStatusFlag/14.
+Enqueueing calls in Pit_Ip_SetEnableInterruptFlag/13.
+Enqueueing calls in Pit_Ip_SetDebugMode/7.
+Enqueueing calls in Pit_Ip_EnableTimer/6.
+Enqueueing calls in Pit_Ip_GetLoadValue/4.
+Enqueueing calls in DevAssert/0.
+
+Considering Pit_Ip_ClearInterruptStatusFlag/14 with 7 size
+ to be inlined into Pit_Ip_DisableChannelInterrupt/26 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1433
+ Estimated badness is -26.352941, frequency 1.00.
+
+Considering Pit_Ip_ClearInterruptStatusFlag/14 with 7 size
+ to be inlined into Pit_Ip_StopChannel/23 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1345
+ Estimated badness is -26.352941, frequency 1.00.
+
+Considering Pit_Ip_ClearInterruptStatusFlag/14 with 7 size
+ to be inlined into Pit_Ip_EnableChannelInterrupt/25 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1403
+ Estimated badness is -26.352941, frequency 1.00.
+
+Considering Pit_Ip_SetEnableInterruptFlag/13 with 15 size
+ to be inlined into Pit_Ip_EnableChannelInterrupt/25 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1405
+ Estimated badness is -15.111111, frequency 1.00.
+
+Considering Pit_Ip_SetEnableInterruptFlag/13 with 15 size
+ to be inlined into Pit_Ip_DisableChannelInterrupt/26 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1431
+ Estimated badness is -15.111111, frequency 1.00.
+
+Considering Pit_Ip_EnableTimer/6 with 15 size
+ to be inlined into Pit_Ip_StopChannel/23 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1343
+ Estimated badness is -15.111111, frequency 1.00.
+
+Considering Pit_Ip_ClearInterruptStatusFlag/14 with 7 size
+ to be inlined into Pit_Ip_InitChannel/20 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1109
+ Estimated badness is -12.444444, frequency 1.00.
+
+Considering Pit_Ip_SetEnableInterruptFlag/13 with 15 size
+ to be inlined into Pit_Ip_SetLifetimeTimer/27 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1541
+ Estimated badness is -10.074074, frequency 1.00.
+
+Considering Pit_Ip_EnableTimer/6 with 15 size
+ to be inlined into Pit_Ip_SetLifetimeTimer/27 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1545
+ Estimated badness is -10.074074, frequency 1.00.
+
+Considering Pit_Ip_EnableTimer/6 with 15 size
+ to be inlined into Pit_Ip_SetLifetimeTimer/27 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1549
+ Estimated badness is -10.074074, frequency 1.00.
+
+Considering Pit_Ip_SetChainMode.constprop/42 with 9 size
+ to be inlined into Pit_Ip_SetLifetimeTimer/27 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1543
+ Estimated badness is -8.888889, frequency 1.00.
+
+Considering Pit_Ip_EnableModule.constprop/43 with 7 size
+ to be inlined into Pit_Ip_Init/19 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1050
+ Estimated badness is -7.392000, frequency 0.33.
+
+Considering Pit_Ip_EnableTimer/6 with 15 size
+ to be inlined into Pit_Ip_InitChannel/20 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1105
+ Estimated badness is -7.351351, frequency 1.00.
+
+Considering Pit_Ip_SetEnableInterruptFlag/13 with 15 size
+ to be inlined into Pit_Ip_InitChannel/20 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1107
+ Estimated badness is -7.351351, frequency 1.00.
+
+Considering Pit_Ip_EnableTimer/6 with 15 size
+ to be inlined into Pit_Ip_StartChannel/22 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1310
+ Estimated badness is -4.274286, frequency 0.33.
+
+Considering Pit_Ip_Reset.constprop/41 with 14 size
+ to be inlined into Pit_Ip_Deinit/21 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1248
+ Estimated badness is -3.709774, frequency 1.00.
+
+Considering Pit_Ip_SetDebugMode/7 with 13 size
+ to be inlined into Pit_Ip_Init/19 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1064
+ Estimated badness is -2.461538, frequency 1.00.
+
+Considering Pit_Ip_ProcessCommonInterrupt.constprop/40 with 39 size
+ to be inlined into PIT_1_ISR/29 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:1653
+ Estimated badness is -0.242339, frequency 6.00.
+
+Considering Pit_Ip_ClearInterruptStatusFlag/14 with 7 size
+ to be inlined into Pit_Ip_ProcessCommonInterrupt.constprop/40 in ./tools/tresos_mcore_bsw/plugins/Gpt_TS_T40D11M40I2R0/src/Pit_Ip.c:972
+ Estimated badness is -5.998726, frequency 0.13.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 5612.830734 weighted by profile: 0.000000
+
+Why inlining failed?
+function body not available                       :       22 calls, 20.283032 freq, 0 count
+call is unlikely and code size would grow         :       19 calls, 18.041063 freq, 0 count
+IPA function summary for PIT_1_ISR/29 inlinable
+  global time:     55.247846
+  self size:       9
+  global size:     43
+  min size:       48
+  self stack:      0
+  global stack:    0
+    size:31.000000, time:35.388652
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    Pit_Ip_ProcessCommonInterrupt.constprop/40 inlined
+      loop depth: 1 freq:6.00 size: 3 time: 12callee size:19 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_03/36 function body not available
+        loop depth: 1 freq:0.81 size: 1 time: 10
+      Pit_Ip_ClearInterruptStatusFlag/14 inlined
+        loop depth: 1 freq:0.13 size: 3 time: 12callee size: 3 stack: 0
+        Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_03/37 function body not available
+        loop depth: 1 freq:0.81 size: 1 time: 10
+      Pit_Ip_StopChannel/23 call is unlikely and code size would grow
+        loop depth: 1 freq:0.04 size: 3 time: 12callee size: 9 stack: 0
+         op0 is compile time invariant
+      indirect call loop depth: 1 freq:0.07 size: 4 time: 16
+
+IPA function summary for Pit_Ip_GetLifetimeTimer/28 inlinable
+  global time:     19.000000
+  self size:       11
+  global size:     11
+  min size:       4
+  self stack:      0
+  global stack:    0
+    size:5.000000, time:5.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+  array index:(op0 changed)
+  calls:
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_SetLifetimeTimer/27 inlinable
+  global time:     104.000000
+  self size:       25
+  global size:     33
+  min size:       140
+  self stack:      0
+  global stack:    0
+    size:19.000000, time:10.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+  array index:(op0 changed)
+  calls:
+    Pit_Ip_EnableTimer/53 inlined
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+    Pit_Ip_EnableTimer/52 inlined
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+    Pit_Ip_SetChainMode.constprop/42 inlined
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 4 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_01/34 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_01/35 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+    Pit_Ip_SetEnableInterruptFlag/51 inlined
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02/32 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02/33 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_DisableChannelInterrupt/26 inlinable
+  global time:     52.000000
+  self size:       16
+  global size:     19
+  min size:       50
+  self stack:      0
+  global stack:    0
+    size:8.000000, time:6.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+    Pit_Ip_ClearInterruptStatusFlag/44 inlined
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 3 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+    Pit_Ip_SetEnableInterruptFlag/48 inlined
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02/32 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02/33 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_EnableChannelInterrupt/25 inlinable
+  global time:     52.000000
+  self size:       16
+  global size:     19
+  min size:       50
+  self stack:      0
+  global stack:    0
+    size:8.000000, time:6.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+    Pit_Ip_SetEnableInterruptFlag/47 inlined
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02/32 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02/33 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+    Pit_Ip_ClearInterruptStatusFlag/46 inlined
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 3 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_GetCurrentTimer/24 inlinable
+  global time:     28.000000
+  self size:       11
+  global size:     11
+  min size:       8
+  self stack:      0
+  global stack:    0
+    size:2.000000, time:2.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  array index:(op1 changed) && (op0 changed)
+  calls:
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_StopChannel/23 inlinable
+  global time:     52.000000
+  self size:       16
+  global size:     19
+  min size:       8
+  self stack:      0
+  global stack:    0
+  estimated growth:9
+    size:8.000000, time:6.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+    Pit_Ip_ClearInterruptStatusFlag/45 inlined
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 3 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+    Pit_Ip_EnableTimer/49 inlined
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_StartChannel/22 inlinable
+  global time:     37.920000
+  self size:       19
+  global size:     21
+  min size:       28
+  self stack:      0
+  global stack:    0
+    size:9.000000, time:4.990000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+    size:1.000000, time:0.330000,  nonconst if:(op2 changed)
+  array index:(op1 changed) && (op0 changed)
+  calls:
+    Pit_Ip_EnableTimer/6 inlined
+      loop depth: 0 freq:0.33 size: 4 time: 13callee size: 7 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 function body not available
+        loop depth: 0 freq:0.33 size: 1 time: 10
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 function body not available
+        loop depth: 0 freq:0.33 size: 1 time: 10
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_Deinit/21 inlinable
+  global time:     69.994400
+  self size:       17
+  global size:     23
+  min size:       18
+  self stack:      0
+  global stack:    0
+    size:11.000000, time:53.994600
+    size:3.000000, time:1.999800,  executed if:(not inlined)
+    size:7.000000, time:3.000000,  nonconst if:(op0 changed)
+  calls:
+    Pit_Ip_Reset.constprop/41 inlined
+      loop depth: 0 freq:1.00 size: 5 time: 14callee size: 7 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_InitChannel/20 inlinable
+  global time:     98.000000
+  self size:       35
+  global size:     40
+  min size:       106
+  self stack:      0
+  global stack:    0
+    size:21.000000, time:17.000000
+    size:7.000000, time:6.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+    Pit_Ip_ClearInterruptStatusFlag/50 inlined
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 3 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+    Pit_Ip_SetEnableInterruptFlag/13 inlined
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02/33 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02/32 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+    Pit_Ip_EnableTimer/54 inlined
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 7 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+      SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+      SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 function body not available
+        loop depth: 0 freq:1.00 size: 1 time: 10
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_Init/19 inlinable
+  global time:     36.660000
+  self size:       19
+  global size:     27
+  min size:       42
+  self stack:      0
+  global stack:    0
+    size:17.000000, time:9.660000
+    size:4.000000, time:3.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+    Pit_Ip_SetDebugMode/7 inlined
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 6 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+    Pit_Ip_EnableModule.constprop/43 inlined
+      loop depth: 0 freq:0.33 size: 3 time: 12callee size: 3 stack: 0
+      Stack frame offset 0, callee self size 0, callee size 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+    DevAssert/0 call is unlikely and code size would grow
+      loop depth: 0 freq:1.00 size: 2 time: 11callee size: 3 stack: 0
+
+IPA function summary for Pit_Ip_GetLoadValue/4 inlinable
+  global time:     4.000000
+  self size:       5
+  global size:     5
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:2.000000, time:2.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  array index:(op1 changed) && (op0 changed)
+  calls:
+
+IPA function summary for DevAssert/0 inlinable
+  global time:     5004.008492
+  self size:       7
+  global size:     7
+  min size:       0
+  self stack:      0
+  global stack:    0
+  estimated growth:11
+    size:0.000000, time:0.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  executed if:(not inlined),  nonconst if:(op0 changed) && (not inlined)
+    size:2.000000, time:2.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:5000.008492,  executed if:(op0 == 0)
+    size:1.000000, time:1.000000,  executed if:(op0 != 0) && (not inlined)
+  calls:
+
+Symbol table:
+
+Pit_Ip_EnableTimer/54 (Pit_Ip_EnableTimer) @071be7e0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 53
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_EnableTimer/54 is inline copy in Pit_Ip_InitChannel/20
+  Clone of Pit_Ip_EnableTimer/6
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_InitChannel/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_EnableTimer/53 (Pit_Ip_EnableTimer) @071be620
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 52
+  previous sharing asm name: 54
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_EnableTimer/53 is inline copy in Pit_Ip_SetLifetimeTimer/27
+  Clone of Pit_Ip_EnableTimer/6
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_SetLifetimeTimer/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_EnableTimer/52 (Pit_Ip_EnableTimer) @071be460
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 49
+  previous sharing asm name: 53
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_EnableTimer/52 is inline copy in Pit_Ip_SetLifetimeTimer/27
+  Clone of Pit_Ip_EnableTimer/6
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_SetLifetimeTimer/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_SetEnableInterruptFlag/51 (Pit_Ip_SetEnableInterruptFlag) @071be2a0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 48
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_SetEnableInterruptFlag/51 is inline copy in Pit_Ip_SetLifetimeTimer/27
+  Clone of Pit_Ip_SetEnableInterruptFlag/13
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_SetLifetimeTimer/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02/32 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02/33 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_ClearInterruptStatusFlag/50 (Pit_Ip_ClearInterruptStatusFlag) @071be0e0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 46
+  References: pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_ClearInterruptStatusFlag/50 is inline copy in Pit_Ip_InitChannel/20
+  Clone of Pit_Ip_ClearInterruptStatusFlag/14
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_InitChannel/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pit_Ip_EnableTimer/49 (Pit_Ip_EnableTimer) @07090ee0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 6
+  previous sharing asm name: 52
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_EnableTimer/49 is inline copy in Pit_Ip_StopChannel/23
+  Clone of Pit_Ip_EnableTimer/6
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_StopChannel/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_SetEnableInterruptFlag/48 (Pit_Ip_SetEnableInterruptFlag) @07090d20
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 47
+  previous sharing asm name: 51
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_SetEnableInterruptFlag/48 is inline copy in Pit_Ip_DisableChannelInterrupt/26
+  Clone of Pit_Ip_SetEnableInterruptFlag/13
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_DisableChannelInterrupt/26 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02/32 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02/33 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_SetEnableInterruptFlag/47 (Pit_Ip_SetEnableInterruptFlag) @06ebb000
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 13
+  previous sharing asm name: 48
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_SetEnableInterruptFlag/47 is inline copy in Pit_Ip_EnableChannelInterrupt/25
+  Clone of Pit_Ip_SetEnableInterruptFlag/13
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_EnableChannelInterrupt/25 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02/32 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02/33 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_ClearInterruptStatusFlag/46 (Pit_Ip_ClearInterruptStatusFlag) @07188ee0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 45
+  previous sharing asm name: 50
+  References: pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_ClearInterruptStatusFlag/46 is inline copy in Pit_Ip_EnableChannelInterrupt/25
+  Clone of Pit_Ip_ClearInterruptStatusFlag/14
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_EnableChannelInterrupt/25 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pit_Ip_ClearInterruptStatusFlag/45 (Pit_Ip_ClearInterruptStatusFlag) @06ecf2a0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 44
+  previous sharing asm name: 46
+  References: pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_ClearInterruptStatusFlag/45 is inline copy in Pit_Ip_StopChannel/23
+  Clone of Pit_Ip_ClearInterruptStatusFlag/14
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_StopChannel/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pit_Ip_ClearInterruptStatusFlag/44 (Pit_Ip_ClearInterruptStatusFlag) @06ebb620
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 14
+  previous sharing asm name: 45
+  References: pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_ClearInterruptStatusFlag/44 is inline copy in Pit_Ip_DisableChannelInterrupt/26
+  Clone of Pit_Ip_ClearInterruptStatusFlag/14
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_DisableChannelInterrupt/26 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pit_Ip_EnableModule.constprop.0/43 (Pit_Ip_EnableModule.constprop) @06ebb540
+  Type: function definition analyzed
+  Visibility:
+  References: pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_EnableModule.constprop/43 is inline copy in Pit_Ip_Init/19
+  Clone of Pit_Ip_EnableModule/5
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Pit_Ip_Init/19 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+Pit_Ip_SetChainMode.constprop.0/42 (Pit_Ip_SetChainMode.constprop) @06ebb2a0
+  Type: function definition analyzed
+  Visibility:
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_SetChainMode.constprop/42 is inline copy in Pit_Ip_SetLifetimeTimer/27
+  Clone of Pit_Ip_SetChainMode/8
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: Pit_Ip_SetLifetimeTimer/27 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_01/34 (1073741824 (estimated locally),1.00 per call) SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_01/35 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_Reset.constprop.0/41 (Pit_Ip_Reset.constprop) @06ebb0e0
+  Type: function definition analyzed
+  Visibility:
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_Reset.constprop/41 is inline copy in Pit_Ip_Deinit/21
+  Clone of Pit_Ip_Reset/9
+  Availability: local
+  Function flags: count:1073634451 (estimated locally) local optimize_size
+  Called by: Pit_Ip_Deinit/21 (inlined) (1073634451 (estimated locally),1.00 per call) 
+  Calls: 
+Pit_Ip_ProcessCommonInterrupt.constprop.0/40 (Pit_Ip_ProcessCommonInterrupt.constprop) @06ebbd20
+  Type: function definition analyzed
+  Visibility:
+  References: pitBase/2 (read)Pit_Ip_u32ChState/3 (read)Pit_Ip_u32ChState/3 (read)Pit_Ip_u32ChState/3 (read)Pit_Ip_u32ChState/3 (read)
+  Referring: 
+  Function Pit_Ip_ProcessCommonInterrupt.constprop/40 is inline copy in PIT_1_ISR/29
+  Clone of Pit_Ip_ProcessCommonInterrupt/18
+  Availability: local
+  Function flags: count:920304118 (estimated locally) local optimize_size
+  Called by: PIT_1_ISR/29 (inlined) (920304118 (estimated locally),6.00 per call) 
+  Calls: SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_03/36 (124517147 (estimated locally),0.81 per call) Pit_Ip_ClearInterruptStatusFlag/14 (inlined) (20545329 (estimated locally),0.13 per call) SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_03/37 (124517147 (estimated locally),0.81 per call) Pit_Ip_StopChannel/23 (6300568 (estimated locally),0.04 per call) 
+   Indirect call(10895250 (estimated locally),0.07 per call) 
+SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_03/37 (SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_03) @06a842a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pit_Ip_ProcessCommonInterrupt.constprop/40 (124517147 (estimated locally),0.81 per call) 
+  Calls: 
+SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_03/36 (SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_03) @06a841c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pit_Ip_ProcessCommonInterrupt.constprop/40 (124517147 (estimated locally),0.81 per call) 
+  Calls: 
+SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_01/35 (SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_01) @06fe8c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pit_Ip_SetChainMode.constprop/42 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_01/34 (SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_01) @06fe8b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pit_Ip_SetChainMode.constprop/42 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02/33 (SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02) @06fdc0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pit_Ip_SetEnableInterruptFlag/51 (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetEnableInterruptFlag/48 (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetEnableInterruptFlag/47 (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetEnableInterruptFlag/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02/32 (SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02) @06fdcee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pit_Ip_SetEnableInterruptFlag/51 (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetEnableInterruptFlag/48 (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetEnableInterruptFlag/47 (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetEnableInterruptFlag/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 (SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00) @06fdcd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pit_Ip_EnableTimer/54 (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/53 (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/52 (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/49 (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/6 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 (SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00) @06fdcc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Pit_Ip_EnableTimer/54 (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/53 (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/52 (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/49 (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/6 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+PIT_1_ISR/29 (PIT_1_ISR) @06fdc2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:153437706 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pit_Ip_ProcessCommonInterrupt.constprop/40 (inlined) (920304118 (estimated locally),6.00 per call) 
+Pit_Ip_GetLifetimeTimer/28 (Pit_Ip_GetLifetimeTimer) @06fdc000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pitBase/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_SetLifetimeTimer/27 (Pit_Ip_SetLifetimeTimer) @06fd3b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pitBase/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pit_Ip_EnableTimer/53 (inlined) (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/52 (inlined) (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetChainMode.constprop/42 (inlined) (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetEnableInterruptFlag/51 (inlined) (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_DisableChannelInterrupt/26 (Pit_Ip_DisableChannelInterrupt) @06fd3620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pit_Ip_ClearInterruptStatusFlag/44 (inlined) (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetEnableInterruptFlag/48 (inlined) (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_EnableChannelInterrupt/25 (Pit_Ip_EnableChannelInterrupt) @06fd30e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pit_Ip_SetEnableInterruptFlag/47 (inlined) (1073741824 (estimated locally),1.00 per call) Pit_Ip_ClearInterruptStatusFlag/46 (inlined) (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_GetCurrentTimer/24 (Pit_Ip_GetCurrentTimer) @06fd3d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pitBase/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_StopChannel/23 (Pit_Ip_StopChannel) @06fd3a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: Pit_Ip_ProcessCommonInterrupt.constprop/40 (6300568 (estimated locally),0.04 per call) 
+  Calls: Pit_Ip_ClearInterruptStatusFlag/45 (inlined) (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/49 (inlined) (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_StartChannel/22 (Pit_Ip_StartChannel) @06fd37e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pitBase/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pit_Ip_EnableTimer/6 (inlined) (354334802 (estimated locally),0.33 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_Deinit/21 (Pit_Ip_Deinit) @06fd3540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pit_Ip_Reset.constprop/41 (inlined) (1073634451 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_InitChannel/20 (Pit_Ip_InitChannel) @06fd32a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Pit_Ip_u32ChState/3 (write)Pit_Ip_u32ChState/3 (write)Pit_Ip_u32ChState/3 (write)Pit_Ip_u32ChState/3 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pit_Ip_ClearInterruptStatusFlag/50 (inlined) (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetEnableInterruptFlag/13 (inlined) (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableTimer/54 (inlined) (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_Init/19 (Pit_Ip_Init) @06fd3000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Pit_Ip_SetDebugMode/7 (inlined) (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableModule.constprop/43 (inlined) (354334802 (estimated locally),0.33 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_ProcessCommonInterrupt/18 (Pit_Ip_ProcessCommonInterrupt) @06ebbb60
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pit_Ip_ClearInterruptStatusFlag/14 (Pit_Ip_ClearInterruptStatusFlag) @06ebba80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 44
+  References: pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_ClearInterruptStatusFlag/14 is inline copy in PIT_1_ISR/29
+  Availability: local
+  Function flags: count:20545329 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_ProcessCommonInterrupt.constprop/40 (inlined) (20545329 (estimated locally),0.13 per call) 
+  Calls: 
+Pit_Ip_SetEnableInterruptFlag/13 (Pit_Ip_SetEnableInterruptFlag) @06ebb7e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 47
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_SetEnableInterruptFlag/13 is inline copy in Pit_Ip_InitChannel/20
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_InitChannel/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02/33 (1073741824 (estimated locally),1.00 per call) SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02/32 (1073741824 (estimated locally),1.00 per call) 
+Pit_Ip_Reset/9 (Pit_Ip_Reset) @06eb37e0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:134217728 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pit_Ip_SetChainMode/8 (Pit_Ip_SetChainMode) @06eb39a0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pit_Ip_SetDebugMode/7 (Pit_Ip_SetDebugMode) @06eb3700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_SetDebugMode/7 is inline copy in Pit_Ip_Init/19
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_Init/19 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Pit_Ip_EnableTimer/6 (Pit_Ip_EnableTimer) @06eb3460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 49
+  References: pitBase/2 (read)pitBase/2 (read)
+  Referring: 
+  Function Pit_Ip_EnableTimer/6 is inline copy in Pit_Ip_StartChannel/22
+  Availability: local
+  Function flags: count:354334802 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_StartChannel/22 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00/31 (354334802 (estimated locally),0.33 per call) SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00/30 (354334802 (estimated locally),0.33 per call) 
+Pit_Ip_EnableModule/5 (Pit_Ip_EnableModule) @06eb31c0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pit_Ip_GetLoadValue/4 (Pit_Ip_GetLoadValue) @06eafe00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pitBase/2 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Pit_Ip_u32ChState/3 (Pit_Ip_u32ChState) @06edb3a8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: Pit_Ip_InitChannel/20 (write)Pit_Ip_InitChannel/20 (write)Pit_Ip_InitChannel/20 (write)Pit_Ip_InitChannel/20 (write)Pit_Ip_ProcessCommonInterrupt.constprop.0/40 (read)Pit_Ip_ProcessCommonInterrupt.constprop.0/40 (read)Pit_Ip_ProcessCommonInterrupt.constprop.0/40 (read)Pit_Ip_ProcessCommonInterrupt.constprop.0/40 (read)
+  Availability: available
+  Varpool flags: initialized
+pitBase/2 (pitBase) @06ed8750
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: Pit_Ip_SetEnableInterruptFlag/13 (read)Pit_Ip_EnableTimer/6 (read)Pit_Ip_Reset.constprop.0/41 (read)Pit_Ip_EnableModule.constprop.0/43 (read)Pit_Ip_ClearInterruptStatusFlag/14 (read)Pit_Ip_SetEnableInterruptFlag/13 (read)Pit_Ip_StartChannel/22 (read)Pit_Ip_SetDebugMode/7 (read)Pit_Ip_EnableTimer/6 (read)Pit_Ip_SetChainMode.constprop.0/42 (read)Pit_Ip_SetLifetimeTimer/27 (read)Pit_Ip_SetChainMode.constprop.0/42 (read)Pit_Ip_GetLoadValue/4 (read)Pit_Ip_ProcessCommonInterrupt.constprop.0/40 (read)Pit_Ip_Reset.constprop.0/41 (read)Pit_Ip_SetDebugMode/7 (read)Pit_Ip_GetCurrentTimer/24 (read)Pit_Ip_GetLifetimeTimer/28 (read)Pit_Ip_ClearInterruptStatusFlag/44 (read)Pit_Ip_ClearInterruptStatusFlag/45 (read)Pit_Ip_ClearInterruptStatusFlag/46 (read)Pit_Ip_SetEnableInterruptFlag/47 (read)Pit_Ip_SetEnableInterruptFlag/47 (read)Pit_Ip_SetEnableInterruptFlag/48 (read)Pit_Ip_SetEnableInterruptFlag/48 (read)Pit_Ip_EnableTimer/49 (read)Pit_Ip_EnableTimer/49 (read)Pit_Ip_ClearInterruptStatusFlag/50 (read)Pit_Ip_SetEnableInterruptFlag/51 (read)Pit_Ip_SetEnableInterruptFlag/51 (read)Pit_Ip_EnableTimer/52 (read)Pit_Ip_EnableTimer/52 (read)Pit_Ip_EnableTimer/53 (read)Pit_Ip_EnableTimer/53 (read)Pit_Ip_EnableTimer/54 (read)Pit_Ip_EnableTimer/54 (read)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+DevAssert/0 (DevAssert) @06ea5a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:214748 (estimated locally) body local optimize_size
+  Called by: Pit_Ip_GetLifetimeTimer/28 (1073741824 (estimated locally),1.00 per call) Pit_Ip_SetLifetimeTimer/27 (1073741824 (estimated locally),1.00 per call) Pit_Ip_DisableChannelInterrupt/26 (1073741824 (estimated locally),1.00 per call) Pit_Ip_DisableChannelInterrupt/26 (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableChannelInterrupt/25 (1073741824 (estimated locally),1.00 per call) Pit_Ip_EnableChannelInterrupt/25 (1073741824 (estimated locally),1.00 per call) Pit_Ip_GetCurrentTimer/24 (1073741824 (estimated locally),1.00 per call) Pit_Ip_GetCurrentTimer/24 (1073741824 (estimated locally),1.00 per call) Pit_Ip_StopChannel/23 (1073741824 (estimated locally),1.00 per call) Pit_Ip_StopChannel/23 (1073741824 (estimated locally),1.00 per call) Pit_Ip_StartChannel/22 (1073741824 (estimated locally),1.00 per call) Pit_Ip_StartChannel/22 (1073741824 (estimated locally),1.00 per call) Pit_Ip_Deinit/21 (1073741824 (estimated locally),1.00 per call) Pit_Ip_InitChannel/20 (1073741824 (estimated locally),1.00 per call) Pit_Ip_InitChannel/20 (1073741824 (estimated locally),1.00 per call) Pit_Ip_InitChannel/20 (1073741824 (estimated locally),1.00 per call) Pit_Ip_Init/19 (1073741824 (estimated locally),1.00 per call) Pit_Ip_Init/19 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+
+;; Function DevAssert (DevAssert, funcdef_no=0, decl_uid=5896, cgraph_uid=1, symbol_order=0)
+
+DevAssert (volatile boolean x)
+{
+  _Bool x.0_1;
+
+  <bb 2> [local count: 214748]:
+  # DEBUG BEGIN_STMT
+  x.0_1 ={v} x;
+  if (x.0_1 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0");
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function Pit_Ip_GetLoadValue (Pit_Ip_GetLoadValue, funcdef_no=2, decl_uid=5907, cgraph_uid=3, symbol_order=4)
+
+Pit_Ip_GetLoadValue (uint8 instance, uint8 channel)
+{
+  uint32 periodValue;
+  int _1;
+  struct PIT_Type * _2;
+  int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG periodValue => 0
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance_4(D);
+  _2 = pitBase[_1];
+  _3 = (int) channel_6(D);
+  periodValue_7 ={v} _2->TIMER[_3].LDVAL;
+  # DEBUG periodValue => periodValue_7
+  # DEBUG BEGIN_STMT
+  return periodValue_7;
+
+}
+
+
+
+;; Function Pit_Ip_Init (Pit_Ip_Init, funcdef_no=17, decl_uid=5910, cgraph_uid=18, symbol_order=19)
+
+
+Symbols to be put in SSA form
+{ D.6214 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 15
+Number of blocks to update: 14 ( 93%)
+
+
+Removing basic block 3
+Merging blocks 4 and 11
+Removing basic block 5
+Removing basic block 6
+Removing basic block 7
+Merging blocks 8 and 9
+Merging blocks 14 and 10
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7
+;; 2 succs { 3 4 }
+;; 3 succs { 4 }
+;; 4 succs { 5 6 }
+;; 5 succs { 7 }
+;; 6 succs { 7 }
+;; 7 succs { 1 }
+Pit_Ip_Init (uint8 instance, const struct Pit_Ip_InstanceConfigType * config)
+{
+  _Bool _1;
+  _Bool _2;
+  _Bool _3;
+  _Bool _4;
+  int _13;
+  struct PIT_Type * _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  int _17;
+  struct PIT_Type * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  int _21;
+  struct PIT_Type * _22;
+  long unsigned int _23;
+  long unsigned int _24;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = instance_6(D) <= 1;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = config_9(D) != 0B;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = config_9(D)->enableStandardTimers;
+  if (_3 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_6(D)
+  # DEBUG INLINE_ENTRY Pit_Ip_EnableModule
+  # DEBUG timerType => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = (int) instance_6(D);
+  _14 = pitBase[_13];
+  _15 ={v} _14->MCR;
+  _16 = _15 & 4294967293;
+  _14->MCR ={v} _16;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG instance => NULL
+  # DEBUG timerType => NULL
+  # DEBUG BEGIN_STMT
+  _4 = config_9(D)->stopRunInDebug;
+  # DEBUG instance => instance_6(D)
+  # DEBUG stopRun => _4
+  # DEBUG INLINE_ENTRY Pit_Ip_SetDebugMode
+  # DEBUG BEGIN_STMT
+  if (_4 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _17 = (int) instance_6(D);
+  _18 = pitBase[_17];
+  _19 ={v} _18->MCR;
+  _20 = _19 | 1;
+  _18->MCR ={v} _20;
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _21 = (int) instance_6(D);
+  _22 = pitBase[_21];
+  _23 ={v} _22->MCR;
+  _24 = _23 & 4294967294;
+  _22->MCR ={v} _24;
+
+  <bb 7> [local count: 1073741824]:
+  # DEBUG instance => NULL
+  # DEBUG stopRun => NULL
+  return;
+
+}
+
+
+
+;; Function Pit_Ip_InitChannel (Pit_Ip_InitChannel, funcdef_no=18, decl_uid=5913, cgraph_uid=19, symbol_order=20)
+
+Removing basic block 7
+Removing basic block 12
+
+Symbols to be put in SSA form
+{ D.6215 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 15
+Number of blocks to update: 12 ( 80%)
+
+
+Merging blocks 2 and 11
+Merging blocks 2 and 13
+Merging blocks 2 and 14
+Merging blocks 2 and 10
+Merging blocks 2 and 6
+Merging blocks 2 and 8
+Merging blocks 2 and 9
+Merging blocks 2 and 5
+Merging blocks 2 and 4
+Merging blocks 2 and 3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+Pit_Ip_InitChannel (uint8 instance, const struct Pit_Ip_ChannelConfigType * chnlConfig)
+{
+  _Bool _1;
+  _Bool _2;
+  unsigned char _3;
+  _Bool _4;
+  unsigned char _5;
+  unsigned char _6;
+  unsigned char _7;
+  int _8;
+  unsigned char _9;
+  int _10;
+  void (*<T49c>) (uint8) _11;
+  unsigned char _12;
+  <unnamed type> _13;
+  int _27;
+  struct PIT_Type * _28;
+  int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  int _37;
+  struct PIT_Type * _38;
+  int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  int _47;
+  struct PIT_Type * _48;
+  int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = instance_14(D) <= 1;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = chnlConfig_17(D) != 0B;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = chnlConfig_17(D)->hwChannel;
+  _4 = _3 <= 6;
+  DevAssert (_4);
+  # DEBUG BEGIN_STMT
+  _5 = chnlConfig_17(D)->hwChannel;
+  # DEBUG instance => instance_14(D)
+  # DEBUG channel => _5
+  # DEBUG enable => 0
+  # DEBUG INLINE_ENTRY Pit_Ip_EnableTimer
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _47 = (int) instance_14(D);
+  _48 = pitBase[_47];
+  _49 = (int) _5;
+  _50 ={v} _48->TIMER[_49].TCTRL;
+  _51 = _50 & 4294967294;
+  _48->TIMER[_49].TCTRL ={v} _51;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00 ();
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG enable => NULL
+  # DEBUG BEGIN_STMT
+  _6 = chnlConfig_17(D)->hwChannel;
+  # DEBUG instance => instance_14(D)
+  # DEBUG channel => _6
+  # DEBUG enable => 0
+  # DEBUG INLINE_ENTRY Pit_Ip_SetEnableInterruptFlag
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _37 = (int) instance_14(D);
+  _38 = pitBase[_37];
+  _39 = (int) _6;
+  _40 ={v} _38->TIMER[_39].TCTRL;
+  _41 = _40 & 4294967293;
+  _38->TIMER[_39].TCTRL ={v} _41;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02 ();
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG enable => NULL
+  # DEBUG BEGIN_STMT
+  _7 = chnlConfig_17(D)->hwChannel;
+  # DEBUG instance => instance_14(D)
+  # DEBUG channel => _7
+  # DEBUG INLINE_ENTRY Pit_Ip_ClearInterruptStatusFlag
+  # DEBUG BEGIN_STMT
+  _27 = (int) instance_14(D);
+  _28 = pitBase[_27];
+  _29 = (int) _7;
+  _30 ={v} _28->TIMER[_29].TFLG;
+  _31 = _30 | 1;
+  _28->TIMER[_29].TFLG ={v} _31;
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG BEGIN_STMT
+  _8 = (int) instance_14(D);
+  _9 = chnlConfig_17(D)->hwChannel;
+  _10 = (int) _9;
+  Pit_Ip_u32ChState[_8][_10].chInit = 1;
+  # DEBUG BEGIN_STMT
+  _11 = chnlConfig_17(D)->callback;
+  Pit_Ip_u32ChState[_8][_10].callback = _11;
+  # DEBUG BEGIN_STMT
+  _12 = chnlConfig_17(D)->callbackParam;
+  Pit_Ip_u32ChState[_8][_10].callbackParam = _12;
+  # DEBUG BEGIN_STMT
+  _13 = chnlConfig_17(D)->channelMode;
+  Pit_Ip_u32ChState[_8][_10].channelMode = _13;
+  return;
+
+}
+
+
+
+;; Function Pit_Ip_Deinit (Pit_Ip_Deinit, funcdef_no=19, decl_uid=5915, cgraph_uid=20, symbol_order=21)
+
+Removing basic block 9
+
+Symbols to be put in SSA form
+{ D.6216 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 16
+Number of blocks to update: 14 ( 88%)
+
+
+Merging blocks 5 and 7
+Removing basic block 8
+Merging blocks 15 and 6
+Merging blocks 5 and 10
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9 10
+;;
+;; Loop 1
+;;  header 9, latch 8
+;;  depth 1, outer 0
+;;  nodes: 9 8
+;; 2 succs { 5 3 4 }
+;; 3 succs { 5 }
+;; 4 succs { 5 }
+;; 5 succs { 7 6 }
+;; 6 succs { 7 }
+;; 7 succs { 9 }
+;; 8 succs { 9 }
+;; 9 succs { 8 10 }
+;; 10 succs { 1 }
+Pit_Ip_Deinit (uint8 instance)
+{
+  uint8 i;
+  uint8 channelIndex;
+  uint32 mask;
+  boolean mdisBitExists;
+  uint8 channelNum;
+  _Bool _1;
+  int _9;
+  struct PIT_Type * _10;
+  int _12;
+  int _15;
+  struct PIT_Type * _16;
+
+  <bb 2> [local count: 134231151]:
+  # DEBUG BEGIN_STMT
+  _1 = instance_4(D) <= 1;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  # DEBUG channelNum => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG rtiChannelExists => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG mdisBitExists => 0
+  # DEBUG BEGIN_STMT
+  switch (instance_4(D)) <default: <L4> [33.33%], case 0: <L0> [33.33%], case 1: <L1> [33.33%]>
+
+  <bb 3> [local count: 44739243]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  # DEBUG channelNum => 7
+  # DEBUG BEGIN_STMT
+  # DEBUG mdisBitExists => 1
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 44739243]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  # DEBUG channelNum => 6
+  # DEBUG BEGIN_STMT
+  # DEBUG mdisBitExists => 1
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 134217728]:
+  # channelNum_2 = PHI <7(3), 6(4), 0(2)>
+  # mdisBitExists_3 = PHI <1(3), 1(4), 0(2)>
+<L4>:
+  # DEBUG mdisBitExists => mdisBitExists_3
+  # DEBUG channelNum => channelNum_2
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_4(D)
+  # DEBUG channelNum => channelNum_2
+  # DEBUG bitExists => mdisBitExists_3
+  # DEBUG INLINE_ENTRY Pit_Ip_Reset
+  # DEBUG available => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG channelIndex => channelNum_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (mdisBitExists_3 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 67108864]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => 2
+
+  <bb 7> [local count: 134217728]:
+  # mask_17 = PHI <2(6), 0(5)>
+  # channelIndex_14 = PHI <channelNum_2(6), channelNum_2(5)>
+  # DEBUG channelIndex => channelIndex_14
+  # DEBUG mask => mask_17
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 939524096]:
+  # DEBUG BEGIN_STMT
+  _9 = (int) instance_4(D);
+  _10 = pitBase[_9];
+  _12 = (int) i_11;
+  _10->TIMER[_12].TCTRL ={v} 0;
+  # DEBUG BEGIN_STMT
+  _10->TIMER[_12].LDVAL ={v} 0;
+  # DEBUG BEGIN_STMT
+  _10->TIMER[_12].TFLG ={v} 1;
+  # DEBUG BEGIN_STMT
+  i_13 = i_11 + 1;
+  # DEBUG i => i_13
+
+  <bb 9> [local count: 1073741824]:
+  # i_11 = PHI <0(7), i_13(8)>
+  # DEBUG i => i_11
+  # DEBUG BEGIN_STMT
+  if (i_11 < channelIndex_14)
+    goto <bb 8>; [87.50%]
+  else
+    goto <bb 10>; [12.50%]
+
+  <bb 10> [local count: 134217728]:
+  # DEBUG BEGIN_STMT
+  _15 = (int) instance_4(D);
+  _16 = pitBase[_15];
+  _16->MCR ={v} mask_17;
+  # DEBUG instance => NULL
+  # DEBUG channelNum => NULL
+  # DEBUG bitExists => NULL
+  # DEBUG mask => NULL
+  # DEBUG channelIndex => NULL
+  # DEBUG i => NULL
+  # DEBUG available => NULL
+  return;
+
+}
+
+
+
+;; Function Pit_Ip_StartChannel (Pit_Ip_StartChannel, funcdef_no=20, decl_uid=5919, cgraph_uid=21, symbol_order=22)
+
+Removing basic block 8
+
+Symbols to be put in SSA form
+{ D.6217 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 10
+Number of blocks to update: 8 ( 80%)
+
+
+Merging blocks 3 and 6
+Removing basic block 5
+Merging blocks 3 and 7
+Merging blocks 3 and 9
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4
+;; 2 succs { 3 4 }
+;; 3 succs { 4 }
+;; 4 succs { 1 }
+Pit_Ip_StartChannel (uint8 instance, uint8 channel, uint32 countValue)
+{
+  boolean isRunning;
+  Pit_Ip_StatusType status;
+  _Bool _1;
+  _Bool _2;
+  long unsigned int _3;
+  int _13;
+  struct PIT_Type * _14;
+  int _15;
+  long unsigned int _16;
+  int _19;
+  struct PIT_Type * _20;
+  int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = instance_6(D) <= 1;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = channel_9(D) <= 6;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  # DEBUG isRunning => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG status => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_6(D)
+  # DEBUG channel => channel_9(D)
+  # DEBUG INLINE_ENTRY Pit_Ip_IsChannelRunning
+  # DEBUG BEGIN_STMT
+  # DEBUG isRunning => 0
+  # DEBUG BEGIN_STMT
+  _13 = (int) instance_6(D);
+  _14 = pitBase[_13];
+  _15 = (int) channel_9(D);
+  _16 ={v} _14->TIMER[_15].TCTRL;
+  isRunning_17 = (boolean) _16;
+  # DEBUG isRunning => isRunning_17
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG isRunning => NULL
+  # DEBUG isRunning => isRunning_17
+  # DEBUG BEGIN_STMT
+  if (isRunning_17 != 0)
+    goto <bb 4>; [67.00%]
+  else
+    goto <bb 3>; [33.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _3 = countValue_11(D) + 4294967295;
+  # DEBUG instance => instance_6(D)
+  # DEBUG channel => channel_9(D)
+  # DEBUG value => _3
+  # DEBUG INLINE_ENTRY Pit_Ip_SetCounterValue
+  # DEBUG BEGIN_STMT
+  _14->TIMER[_15].LDVAL ={v} _3;
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG value => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_6(D)
+  # DEBUG channel => channel_9(D)
+  # DEBUG enable => 1
+  # DEBUG INLINE_ENTRY Pit_Ip_EnableTimer
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = (int) instance_6(D);
+  _20 = pitBase[_19];
+  _21 = (int) channel_9(D);
+  _22 ={v} _20->TIMER[_21].TCTRL;
+  _23 = _22 | 1;
+  _20->TIMER[_21].TCTRL ={v} _23;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00 ();
+
+  <bb 4> [local count: 1073741824]:
+  # status_4 = PHI <1(2), 0(3)>
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG enable => NULL
+  # DEBUG status => NULL
+  # DEBUG status => status_4
+  # DEBUG BEGIN_STMT
+  return status_4;
+
+}
+
+
+
+;; Function Pit_Ip_StopChannel (Pit_Ip_StopChannel, funcdef_no=21, decl_uid=5922, cgraph_uid=22, symbol_order=23)
+
+Removing basic block 7
+
+Symbols to be put in SSA form
+{ D.6218 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 10
+Number of blocks to update: 8 ( 80%)
+
+
+Merging blocks 2 and 6
+Removing basic block 5
+Merging blocks 2 and 8
+Merging blocks 2 and 9
+Merging blocks 2 and 4
+Merging blocks 2 and 3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+Pit_Ip_StopChannel (uint8 instance, uint8 channel)
+{
+  _Bool _1;
+  _Bool _2;
+  int _10;
+  struct PIT_Type * _11;
+  int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  int _20;
+  struct PIT_Type * _21;
+  int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = instance_3(D) <= 1;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = channel_6(D) <= 6;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_3(D)
+  # DEBUG channel => channel_6(D)
+  # DEBUG enable => 0
+  # DEBUG INLINE_ENTRY Pit_Ip_EnableTimer
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = (int) instance_3(D);
+  _21 = pitBase[_20];
+  _22 = (int) channel_6(D);
+  _23 ={v} _21->TIMER[_22].TCTRL;
+  _24 = _23 & 4294967294;
+  _21->TIMER[_22].TCTRL ={v} _24;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00 ();
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG enable => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_3(D)
+  # DEBUG channel => channel_6(D)
+  # DEBUG INLINE_ENTRY Pit_Ip_ClearInterruptStatusFlag
+  # DEBUG BEGIN_STMT
+  _10 = (int) instance_3(D);
+  _11 = pitBase[_10];
+  _12 = (int) channel_6(D);
+  _13 ={v} _11->TIMER[_12].TFLG;
+  _14 = _13 | 1;
+  _11->TIMER[_12].TFLG ={v} _14;
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  return;
+
+}
+
+
+
+;; Function Pit_Ip_GetCurrentTimer (Pit_Ip_GetCurrentTimer, funcdef_no=22, decl_uid=5925, cgraph_uid=23, symbol_order=24)
+
+Pit_Ip_GetCurrentTimer (uint8 instance, uint8 channel)
+{
+  uint32 counterValue;
+  uint64 counterValue;
+  _Bool _1;
+  _Bool _2;
+  int _9;
+  struct PIT_Type * _10;
+  int _11;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = instance_3(D) <= 1;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = channel_6(D) <= 6;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  # DEBUG counterValue => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_3(D)
+  # DEBUG channel => channel_6(D)
+  # DEBUG INLINE_ENTRY Pit_Ip_GetCounterValue
+  # DEBUG BEGIN_STMT
+  # DEBUG counterValue => 0
+  # DEBUG BEGIN_STMT
+  _9 = (int) instance_3(D);
+  _10 = pitBase[_9];
+  _11 = (int) channel_6(D);
+  counterValue_12 ={v} _10->TIMER[_11].CVAL;
+  # DEBUG counterValue => counterValue_12
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG counterValue => NULL
+  counterValue_8 = (uint64) counterValue_12;
+  # DEBUG counterValue => counterValue_8
+  # DEBUG BEGIN_STMT
+  return counterValue_8;
+
+}
+
+
+
+;; Function Pit_Ip_EnableChannelInterrupt (Pit_Ip_EnableChannelInterrupt, funcdef_no=23, decl_uid=5928, cgraph_uid=24, symbol_order=25)
+
+Removing basic block 6
+
+Symbols to be put in SSA form
+{ D.6221 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 10
+Number of blocks to update: 8 ( 80%)
+
+
+Merging blocks 2 and 9
+Removing basic block 8
+Merging blocks 2 and 4
+Merging blocks 2 and 5
+Merging blocks 2 and 7
+Merging blocks 2 and 3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+Pit_Ip_EnableChannelInterrupt (uint8 instance, uint8 channel)
+{
+  _Bool _1;
+  _Bool _2;
+  int _10;
+  struct PIT_Type * _11;
+  int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  int _20;
+  struct PIT_Type * _21;
+  int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = instance_3(D) <= 1;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = channel_6(D) <= 6;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_3(D)
+  # DEBUG channel => channel_6(D)
+  # DEBUG INLINE_ENTRY Pit_Ip_ClearInterruptStatusFlag
+  # DEBUG BEGIN_STMT
+  _20 = (int) instance_3(D);
+  _21 = pitBase[_20];
+  _22 = (int) channel_6(D);
+  _23 ={v} _21->TIMER[_22].TFLG;
+  _24 = _23 | 1;
+  _21->TIMER[_22].TFLG ={v} _24;
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_3(D)
+  # DEBUG channel => channel_6(D)
+  # DEBUG enable => 1
+  # DEBUG INLINE_ENTRY Pit_Ip_SetEnableInterruptFlag
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = (int) instance_3(D);
+  _11 = pitBase[_10];
+  _12 = (int) channel_6(D);
+  _13 ={v} _11->TIMER[_12].TCTRL;
+  _14 = _13 | 2;
+  _11->TIMER[_12].TCTRL ={v} _14;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02 ();
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG enable => NULL
+  return;
+
+}
+
+
+
+;; Function Pit_Ip_DisableChannelInterrupt (Pit_Ip_DisableChannelInterrupt, funcdef_no=24, decl_uid=5931, cgraph_uid=25, symbol_order=26)
+
+Removing basic block 7
+
+Symbols to be put in SSA form
+{ D.6222 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 10
+Number of blocks to update: 8 ( 80%)
+
+
+Merging blocks 2 and 6
+Removing basic block 5
+Merging blocks 2 and 8
+Merging blocks 2 and 9
+Merging blocks 2 and 4
+Merging blocks 2 and 3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+Pit_Ip_DisableChannelInterrupt (uint8 instance, uint8 channel)
+{
+  _Bool _1;
+  _Bool _2;
+  int _10;
+  struct PIT_Type * _11;
+  int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  int _20;
+  struct PIT_Type * _21;
+  int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = instance_3(D) <= 1;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = channel_6(D) <= 6;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_3(D)
+  # DEBUG channel => channel_6(D)
+  # DEBUG enable => 0
+  # DEBUG INLINE_ENTRY Pit_Ip_SetEnableInterruptFlag
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = (int) instance_3(D);
+  _21 = pitBase[_20];
+  _22 = (int) channel_6(D);
+  _23 ={v} _21->TIMER[_22].TCTRL;
+  _24 = _23 & 4294967293;
+  _21->TIMER[_22].TCTRL ={v} _24;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02 ();
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG enable => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_3(D)
+  # DEBUG channel => channel_6(D)
+  # DEBUG INLINE_ENTRY Pit_Ip_ClearInterruptStatusFlag
+  # DEBUG BEGIN_STMT
+  _10 = (int) instance_3(D);
+  _11 = pitBase[_10];
+  _12 = (int) channel_6(D);
+  _13 ={v} _11->TIMER[_12].TFLG;
+  _14 = _13 | 1;
+  _11->TIMER[_12].TFLG ={v} _14;
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  return;
+
+}
+
+
+
+;; Function Pit_Ip_SetLifetimeTimer (Pit_Ip_SetLifetimeTimer, funcdef_no=25, decl_uid=5933, cgraph_uid=26, symbol_order=27)
+
+Removing basic block 6
+Removing basic block 11
+Removing basic block 18
+Removing basic block 22
+
+Symbols to be put in SSA form
+{ D.6223 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 25
+Number of blocks to update: 20 ( 80%)
+
+
+Merging blocks 2 and 21
+Removing basic block 13
+Removing basic block 14
+Removing basic block 16
+Removing basic block 20
+Merging blocks 2 and 23
+Merging blocks 2 and 24
+Merging blocks 2 and 15
+Merging blocks 2 and 17
+Merging blocks 2 and 19
+Merging blocks 2 and 9
+Merging blocks 2 and 10
+Merging blocks 2 and 12
+Merging blocks 2 and 8
+Merging blocks 2 and 4
+Merging blocks 2 and 5
+Merging blocks 2 and 7
+Merging blocks 2 and 3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+Pit_Ip_SetLifetimeTimer (uint8 instance)
+{
+  _Bool _1;
+  int _9;
+  struct PIT_Type * _10;
+  int _13;
+  struct PIT_Type * _14;
+  int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  int _23;
+  struct PIT_Type * _24;
+  int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  int _33;
+  struct PIT_Type * _34;
+  int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  int _48;
+  struct PIT_Type * _49;
+  int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = instance_2(D) <= 1;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_2(D)
+  # DEBUG channel => 1
+  # DEBUG value => 4294967295
+  # DEBUG INLINE_ENTRY Pit_Ip_SetCounterValue
+  # DEBUG BEGIN_STMT
+  _9 = (int) instance_2(D);
+  _10 = pitBase[_9];
+  _10->TIMER[1].LDVAL ={v} 4294967295;
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG value => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_2(D)
+  # DEBUG channel => 1
+  # DEBUG enable => 0
+  # DEBUG INLINE_ENTRY Pit_Ip_SetEnableInterruptFlag
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_02 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _48 = (int) instance_2(D);
+  _49 = pitBase[_48];
+  _50 = 1;
+  _51 ={v} _49->TIMER[_50].TCTRL;
+  _52 = _51 & 4294967293;
+  _49->TIMER[_50].TCTRL ={v} _52;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_02 ();
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG enable => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_2(D)
+  # DEBUG INLINE_ENTRY Pit_Ip_SetChainMode
+  # DEBUG enable => 1
+  # DEBUG channel => 1
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _33 = (int) instance_2(D);
+  _34 = pitBase[_33];
+  _35 = 1;
+  _36 ={v} _34->TIMER[_35].TCTRL;
+  _37 = _36 | 4;
+  _34->TIMER[_35].TCTRL ={v} _37;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_01 ();
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG enable => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_2(D)
+  # DEBUG channel => 1
+  # DEBUG enable => 1
+  # DEBUG INLINE_ENTRY Pit_Ip_EnableTimer
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _23 = (int) instance_2(D);
+  _24 = pitBase[_23];
+  _25 = 1;
+  _26 ={v} _24->TIMER[_25].TCTRL;
+  _27 = _26 | 1;
+  _24->TIMER[_25].TCTRL ={v} _27;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00 ();
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG enable => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_2(D)
+  # DEBUG channel => 0
+  # DEBUG value => 4294967295
+  # DEBUG INLINE_ENTRY Pit_Ip_SetCounterValue
+  # DEBUG BEGIN_STMT
+  _10->TIMER[0].LDVAL ={v} 4294967295;
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG value => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_2(D)
+  # DEBUG channel => 0
+  # DEBUG enable => 1
+  # DEBUG INLINE_ENTRY Pit_Ip_EnableTimer
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = (int) instance_2(D);
+  _14 = pitBase[_13];
+  _15 = 0;
+  _16 ={v} _14->TIMER[_15].TCTRL;
+  _17 = _16 | 1;
+  _14->TIMER[_15].TCTRL ={v} _17;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_00 ();
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG enable => NULL
+  return;
+
+}
+
+
+
+;; Function Pit_Ip_GetLifetimeTimer (Pit_Ip_GetLifetimeTimer, funcdef_no=26, decl_uid=5935, cgraph_uid=27, symbol_order=28)
+
+Pit_Ip_GetLifetimeTimer (uint8 instance)
+{
+  uint32 upperValue;
+  uint32 lowerValue;
+  uint64 lifeTimeValue;
+  _Bool _1;
+  long long unsigned int _2;
+  long long unsigned int _3;
+  long long unsigned int _4;
+  int _10;
+  struct PIT_Type * _11;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = instance_5(D) <= 1;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  # DEBUG lifeTimeValue => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG valueH => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG valueL => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_5(D)
+  # DEBUG INLINE_ENTRY Pit_Ip_GetUpperLifetimerValue
+  # DEBUG BEGIN_STMT
+  # DEBUG upperValue => 0
+  # DEBUG BEGIN_STMT
+  _10 = (int) instance_5(D);
+  _11 = pitBase[_10];
+  upperValue_12 ={v} _11->LTMR64H;
+  # DEBUG upperValue => upperValue_12
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => NULL
+  # DEBUG upperValue => NULL
+  # DEBUG valueH => upperValue_12
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => instance_5(D)
+  # DEBUG INLINE_ENTRY Pit_Ip_GetLowerLifetimerValue
+  # DEBUG BEGIN_STMT
+  # DEBUG lowerValue => 0
+  # DEBUG BEGIN_STMT
+  lowerValue_9 ={v} _11->LTMR64L;
+  # DEBUG lowerValue => lowerValue_9
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => NULL
+  # DEBUG lowerValue => NULL
+  # DEBUG valueL => lowerValue_9
+  # DEBUG BEGIN_STMT
+  _2 = (long long unsigned int) upperValue_12;
+  _3 = _2 << 32;
+  _4 = (long long unsigned int) lowerValue_9;
+  lifeTimeValue_8 = _3 + _4;
+  # DEBUG lifeTimeValue => lifeTimeValue_8
+  # DEBUG BEGIN_STMT
+  return lifeTimeValue_8;
+
+}
+
+
+
+;; Function PIT_1_ISR (PIT_1_ISR, funcdef_no=27, decl_uid=5939, cgraph_uid=28, symbol_order=29)
+
+
+Symbols to be put in SSA form
+{ D.6225 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 23
+Number of blocks to update: 22 ( 96%)
+
+
+Removing basic block 3
+Removing basic block 7
+Removing basic block 8
+Removing basic block 12
+Merging blocks 20 and 6
+Removing basic block 21
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+;;
+;; Loop 1
+;;  header 15, latch 14
+;;  depth 1, outer 0
+;;  nodes: 15 14 13 3 7 8 11 12 9 10 4 5 6
+;; 2 succs { 15 }
+;; 3 succs { 4 14 }
+;; 4 succs { 5 7 }
+;; 5 succs { 6 7 }
+;; 6 succs { 7 }
+;; 7 succs { 8 14 }
+;; 8 succs { 9 14 }
+;; 9 succs { 10 11 }
+;; 10 succs { 11 }
+;; 11 succs { 12 14 }
+;; 12 succs { 13 14 }
+;; 13 succs { 14 }
+;; 14 succs { 15 }
+;; 15 succs { 3 16 }
+;; 16 succs { 1 }
+PIT_1_ISR ()
+{
+  boolean returnFlag;
+  Pit_Ip_ChannelModeType channelMode;
+  uint8 callbackParam;
+  void (*Pit_Ip_CallbackType) (uint8) callback;
+  boolean chInit;
+  uint8 channel;
+  int _6;
+  struct PIT_Type * _7;
+  int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  int _17;
+  struct PIT_Type * _18;
+  int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+
+  <bb 2> [local count: 153437706]:
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG channel => 0
+  goto <bb 15>; [100.00%]
+
+  <bb 3> [local count: 920304118]:
+  # DEBUG BEGIN_STMT
+  # DEBUG channel => channel_1
+  # DEBUG INLINE_ENTRY Pit_Ip_ProcessCommonInterrupt
+  # DEBUG instance => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (channel_1 <= 6)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 14>; [67.00%]
+
+  <bb 4> [local count: 303700359]:
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => 1
+  # DEBUG channel => channel_1
+  # DEBUG INLINE_ENTRY Pit_Ip_GetInterruptEnableFlag
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = 1;
+  _7 = pitBase[_6];
+  _8 = (int) channel_1;
+  _9 ={v} _7->TIMER[_8].TCTRL;
+  _10 = _9 & 2;
+  # DEBUG D#1 => _10 != 0
+  # DEBUG returnFlag => D#1
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG returnFlag => NULL
+  # DEBUG IsChEvEnabled => D#1
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => 1
+  # DEBUG channel => channel_1
+  # DEBUG INLINE_ENTRY Pit_Ip_GetInterruptStatusFlag
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 ={v} _7->TIMER[_8].TFLG;
+  returnFlag_12 = (boolean) _11;
+  # DEBUG returnFlag => returnFlag_12
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG returnFlag => NULL
+  # DEBUG HasChEvOccurred => returnFlag_12
+  # DEBUG BEGIN_STMT
+  if (_10 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 5> [local count: 151850179]:
+  if (returnFlag_12 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 50110559]:
+  # DEBUG BEGIN_STMT
+  # DEBUG instance => 1
+  # DEBUG channel => channel_1
+  # DEBUG INLINE_ENTRY Pit_Ip_ClearInterruptStatusFlag
+  # DEBUG BEGIN_STMT
+  _17 = 1;
+  _18 = pitBase[_17];
+  _19 = (int) channel_1;
+  _20 ={v} _18->TIMER[_19].TFLG;
+  _21 = _20 | 1;
+  _18->TIMER[_19].TFLG ={v} _21;
+
+  <bb 7> [local count: 303700359]:
+  # DEBUG instance => NULL
+  # DEBUG channel => NULL
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Gpt_GPT_EXCLUSIVE_AREA_03 ();
+  # DEBUG BEGIN_STMT
+  if (_10 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 8> [local count: 151850179]:
+  if (returnFlag_12 != 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 9> [local count: 75925090]:
+  # DEBUG BEGIN_STMT
+  chInit_13 = Pit_Ip_u32ChState[_6][_8].chInit;
+  # DEBUG chInit => chInit_13
+  # DEBUG BEGIN_STMT
+  callback_14 = Pit_Ip_u32ChState[_6][_8].callback;
+  # DEBUG callback => callback_14
+  # DEBUG BEGIN_STMT
+  channelMode_15 = Pit_Ip_u32ChState[_6][_8].channelMode;
+  # DEBUG channelMode => channelMode_15
+  # DEBUG BEGIN_STMT
+  callbackParam_16 = Pit_Ip_u32ChState[_6][_8].callbackParam;
+  # DEBUG callbackParam => callbackParam_16
+  # DEBUG BEGIN_STMT
+  if (channelMode_15 == 1)
+    goto <bb 10>; [20.24%]
+  else
+    goto <bb 11>; [79.76%]
+
+  <bb 10> [local count: 15367238]:
+  # DEBUG BEGIN_STMT
+  Pit_Ip_StopChannel (1, channel_1);
+
+  <bb 11> [local count: 75925090]:
+  # DEBUG BEGIN_STMT
+  if (chInit_13 != 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 12> [local count: 37962545]:
+  if (callback_14 != 0B)
+    goto <bb 13>; [70.00%]
+  else
+    goto <bb 14>; [30.00%]
+
+  <bb 13> [local count: 26573781]:
+  # DEBUG BEGIN_STMT
+  callback_14 (callbackParam_16);
+
+  <bb 14> [local count: 920304116]:
+  # DEBUG channel => NULL
+  # DEBUG chInit => NULL
+  # DEBUG callback => NULL
+  # DEBUG callbackParam => NULL
+  # DEBUG channelMode => NULL
+  # DEBUG returnFlag => NULL
+  # DEBUG instance => NULL
+  # DEBUG BEGIN_STMT
+  channel_5 = channel_1 + 1;
+  # DEBUG channel => channel_5
+
+  <bb 15> [local count: 1073741824]:
+  # channel_1 = PHI <0(2), channel_5(14)>
+  # DEBUG channel => channel_1
+  # DEBUG BEGIN_STMT
+  if (channel_1 != 6)
+    goto <bb 3>; [85.71%]
+  else
+    goto <bb 16>; [14.29%]
+
+  <bb 16> [local count: 153437707]:
+  return;
+
+}
+
+

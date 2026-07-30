@@ -1,0 +1,33 @@
+Histogram:
+Platform_Ipw_Init (const struct Platform_Ipw_ConfigType * pConfig)
+{
+  const struct IntCtrl_Ip_CtrlConfigType * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = pConfig_4(D)->pIntCtrlConfig;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pIntCtrlCtrlConfig => _1
+  # DEBUG INLINE_ENTRY Platform_Ipw_InitIntCtrl
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_Init (_1);
+  # DEBUG BEGIN_STMT
+  # DEBUG pIntCtrlCtrlConfig => NULL
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

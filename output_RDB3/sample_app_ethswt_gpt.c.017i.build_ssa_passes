@@ -1,0 +1,91 @@
+SampleAppGptInit ()
+{
+  Std_ReturnType D.12395;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Gpt_Init (0B);
+  # DEBUG BEGIN_STMT
+  Gpt_EnableNotification (0);
+  # DEBUG BEGIN_STMT
+  Gpt_StartTimer (0, 133333);
+  # DEBUG BEGIN_STMT
+  D.12395 = 0;
+  return D.12395;
+
+}
+
+
+EthSwt_Tst_PitNotification ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pitIsrCount.0_1 = pitIsrCount;
+  _2 = pitIsrCount.0_1 + 1;
+  pitIsrCount = _2;
+  # DEBUG BEGIN_STMT
+  g_sys_milliseconds.1_3 = g_sys_milliseconds;
+  _4 = g_sys_milliseconds.1_3 + 1;
+  g_sys_milliseconds = _4;
+  # DEBUG BEGIN_STMT
+  gptNotificationCount.2_5 = gptNotificationCount;
+  gptNotificationCount.3_6 = gptNotificationCount.2_5;
+  _7 = gptNotificationCount.3_6 + 1;
+  gptNotificationCount = _7;
+  # DEBUG BEGIN_STMT
+  gptNotificationCount.4_8 = gptNotificationCount;
+  _9 = gptNotificationCount.4_8 % 100;
+  if (_9 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pfeMainFunction = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  gptNotificationCount.5_10 = gptNotificationCount;
+  _11 = gptNotificationCount.5_10 % 50;
+  if (_11 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  switchMainFunction = 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  gptNotificationCount.6_12 = gptNotificationCount;
+  _13 = gptNotificationCount.6_12 % 1000;
+  if (_13 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  sendFrames = 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  gptNotificationCount.7_14 = gptNotificationCount;
+  _15 = gptNotificationCount.7_14 % 500;
+  if (_15 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  getCounters = 1;
+
+  <bb 10> :
+  return;
+
+}
+
+

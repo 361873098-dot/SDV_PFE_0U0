@@ -1,0 +1,375 @@
+Dio_Ipw_WriteChannelGroup (const struct Dio_ChannelGroupType * pChannelGroupIdPtr, Dio_PortLevelType Level)
+{
+  Dio_PortType PortId;
+  uint8 u8Siul2Instance;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  PortId = pChannelGroupIdPtr->port;
+  # DEBUG BEGIN_STMT
+  _1 = (int) PortId;
+  u8Siul2Instance = Dio_au8PortSiul2Instance[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) Level;
+  _3 = pChannelGroupIdPtr->u8offset;
+  _4 = (int) _3;
+  _5 = _2 << _4;
+  _6 = (short unsigned int) _5;
+  _7 = pChannelGroupIdPtr->mask;
+  _8 = Dio_Ipw_ReverseBits (_7);
+  Siul2_Dio_Ip_MaskedWritePins (u8Siul2Instance, PortId, _6, _8);
+  return;
+
+}
+
+
+Dio_Ipw_ReadChannelGroup (const struct Dio_ChannelGroupType * pChannelGroupIdPtr)
+{
+  Dio_PortLevelType maskRevValue;
+  Dio_PortLevelType pinsValue;
+  uint32 u32PGPDOAdrress;
+  Dio_PortType PortOffset;
+  Dio_PortType PortId;
+  uint8 u8Siul2Instance;
+  Dio_PortLevelType PortLevel;
+  Dio_PortLevelType D.6167;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  PortLevel = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  PortId = pChannelGroupIdPtr->port;
+  # DEBUG BEGIN_STMT
+  _1 = (int) PortId;
+  u8Siul2Instance = Dio_au8PortSiul2Instance[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) u8Siul2Instance;
+  PortOffset = Dio_au8Port0OffsetInSiul2Instance[_2];
+  # DEBUG BEGIN_STMT
+  _3 = (int) u8Siul2Instance;
+  _4 = Siul2_Dio_Ip_au32BaseAdresses[_3];
+  _5 = (long unsigned int) PortId;
+  _6 = (long unsigned int) PortOffset;
+  _7 = _5 - _6;
+  _8 = _7 / 2;
+  _9 = _8 + 1;
+  _10 = _9 * 2;
+  _11 = PortId - PortOffset;
+  _12 = (long unsigned int) _11;
+  _13 = _12 & 1;
+  _14 = _10 - _13;
+  _15 = _14 + 4294967295;
+  _16 = _15 << 1;
+  _17 = _4 + _16;
+  u32PGPDOAdrress = _17 + 5888;
+  # DEBUG BEGIN_STMT
+  u32PGPDOAdrress.2_18 = (const struct Siul2_Dio_Ip_GpioType *) u32PGPDOAdrress;
+  pinsValue = Siul2_Dio_Ip_ReadPins (u32PGPDOAdrress.2_18);
+  # DEBUG BEGIN_STMT
+  _19 = pChannelGroupIdPtr->mask;
+  maskRevValue = Dio_Ipw_ReverseBits (_19);
+  # DEBUG BEGIN_STMT
+  _20 = pinsValue & maskRevValue;
+  _21 = (int) _20;
+  _22 = pChannelGroupIdPtr->u8offset;
+  _23 = (int) _22;
+  _24 = _21 >> _23;
+  PortLevel = (Dio_PortLevelType) _24;
+  # DEBUG BEGIN_STMT
+  D.6167 = PortLevel;
+  return D.6167;
+
+}
+
+
+Dio_Ipw_WritePort (Dio_PortType PortId, Dio_PortLevelType Level)
+{
+  uint32 u32PGPDOAdrress;
+  Dio_PortType PortOffset;
+  uint8 u8Siul2Instance;
+  Dio_PortLevelType CrtLevel;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  CrtLevel = Level;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) PortId;
+  u8Siul2Instance = Dio_au8PortSiul2Instance[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) u8Siul2Instance;
+  PortOffset = Dio_au8Port0OffsetInSiul2Instance[_2];
+  # DEBUG BEGIN_STMT
+  _3 = (int) u8Siul2Instance;
+  _4 = Siul2_Dio_Ip_au32BaseAdresses[_3];
+  _5 = (long unsigned int) PortId;
+  _6 = (long unsigned int) PortOffset;
+  _7 = _5 - _6;
+  _8 = _7 / 2;
+  _9 = _8 + 1;
+  _10 = _9 * 2;
+  _11 = PortId - PortOffset;
+  _12 = (long unsigned int) _11;
+  _13 = _12 & 1;
+  _14 = _10 - _13;
+  _15 = _14 + 4294967295;
+  _16 = _15 << 1;
+  _17 = _4 + _16;
+  u32PGPDOAdrress = _17 + 5888;
+  # DEBUG BEGIN_STMT
+  u32PGPDOAdrress.1_18 = (struct Siul2_Dio_Ip_GpioType *) u32PGPDOAdrress;
+  Siul2_Dio_Ip_WritePins (u32PGPDOAdrress.1_18, CrtLevel);
+  return;
+
+}
+
+
+Dio_Ipw_ReadPort (Dio_PortType PortId)
+{
+  uint32 u32PGPDOAdrress;
+  Dio_PortType PortOffset;
+  uint8 u8Siul2Instance;
+  Dio_PortLevelType PortLevel;
+  Dio_PortLevelType D.6165;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  PortLevel = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) PortId;
+  u8Siul2Instance = Dio_au8PortSiul2Instance[_1];
+  # DEBUG BEGIN_STMT
+  _2 = (int) u8Siul2Instance;
+  PortOffset = Dio_au8Port0OffsetInSiul2Instance[_2];
+  # DEBUG BEGIN_STMT
+  _3 = (int) u8Siul2Instance;
+  _4 = Siul2_Dio_Ip_au32BaseAdresses[_3];
+  _5 = (long unsigned int) PortId;
+  _6 = (long unsigned int) PortOffset;
+  _7 = _5 - _6;
+  _8 = _7 / 2;
+  _9 = _8 + 1;
+  _10 = _9 * 2;
+  _11 = PortId - PortOffset;
+  _12 = (long unsigned int) _11;
+  _13 = _12 & 1;
+  _14 = _10 - _13;
+  _15 = _14 + 4294967295;
+  _16 = _15 << 1;
+  _17 = _4 + _16;
+  u32PGPDOAdrress = _17 + 5888;
+  # DEBUG BEGIN_STMT
+  u32PGPDOAdrress.0_18 = (const struct Siul2_Dio_Ip_GpioType *) u32PGPDOAdrress;
+  PortLevel = Siul2_Dio_Ip_ReadPins (u32PGPDOAdrress.0_18);
+  # DEBUG BEGIN_STMT
+  D.6165 = PortLevel;
+  return D.6165;
+
+}
+
+
+Dio_Ipw_FlipChannel (Dio_ChannelType ChannelId)
+{
+  uint8 u8Siul2Instance;
+  Dio_PortType PortId;
+  Dio_LevelType ChannelLevel;
+  Dio_LevelType D.6163;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ChannelLevel = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = ChannelId >> 4;
+  PortId = (Dio_PortType) _1;
+  # DEBUG BEGIN_STMT
+  _2 = (int) PortId;
+  u8Siul2Instance = Dio_au8PortSiul2Instance[_2];
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Dio_DIO_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  ChannelLevel = Dio_Ipw_ReadChannelValue (u8Siul2Instance, ChannelId);
+  # DEBUG BEGIN_STMT
+  if (ChannelLevel == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ChannelLevel = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ChannelLevel = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) u8Siul2Instance;
+  _4 = Siul2_Dio_Ip_au32BaseAdresses[_3];
+  _5 = ChannelId ^ 3;
+  _6 = (long unsigned int) _5;
+  _7 = _4 + _6;
+  _8 = _7 + 4864;
+  _9 = (Dio_LevelType *) _8;
+  *_9 = ChannelLevel;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Dio_DIO_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  ChannelLevel = Dio_Ipw_ReadChannelValue (u8Siul2Instance, ChannelId);
+  # DEBUG BEGIN_STMT
+  D.6163 = ChannelLevel;
+  return D.6163;
+
+}
+
+
+Dio_Ipw_WriteChannel (Dio_ChannelType ChannelId, Dio_LevelType Level)
+{
+  uint8 u8Siul2Instance;
+  Dio_PortType PortId;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = ChannelId >> 4;
+  PortId = (Dio_PortType) _1;
+  # DEBUG BEGIN_STMT
+  _2 = (int) PortId;
+  u8Siul2Instance = Dio_au8PortSiul2Instance[_2];
+  # DEBUG BEGIN_STMT
+  _3 = (int) u8Siul2Instance;
+  _4 = Siul2_Dio_Ip_au32BaseAdresses[_3];
+  _5 = ChannelId ^ 3;
+  _6 = (long unsigned int) _5;
+  _7 = _4 + _6;
+  _8 = _7 + 4864;
+  _9 = (Dio_LevelType *) _8;
+  *_9 = Level;
+  return;
+
+}
+
+
+Dio_Ipw_ReadChannel (Dio_ChannelType ChannelId)
+{
+  uint8 u8Siul2Instance;
+  Dio_PortType PortId;
+  Dio_LevelType ChannelLevel;
+  Dio_LevelType D.6156;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ChannelLevel = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = ChannelId >> 4;
+  PortId = (Dio_PortType) _1;
+  # DEBUG BEGIN_STMT
+  _2 = (int) PortId;
+  u8Siul2Instance = Dio_au8PortSiul2Instance[_2];
+  # DEBUG BEGIN_STMT
+  ChannelLevel = Dio_Ipw_ReadChannelValue (u8Siul2Instance, ChannelId);
+  # DEBUG BEGIN_STMT
+  D.6156 = ChannelLevel;
+  return D.6156;
+
+}
+
+
+Dio_Ipw_ReadChannelValue (uint8 u8Siul2Instance, Dio_ChannelType Channel)
+{
+  Dio_LevelType returnValue;
+  Dio_LevelType D.6158;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8Siul2Instance;
+  _2 = Siul2_Dio_Ip_au32BaseAdresses[_1];
+  _3 = Channel ^ 3;
+  _4 = (long unsigned int) _3;
+  _5 = _2 + _4;
+  _6 = _5 + 5376;
+  _7 = (Dio_LevelType *) _6;
+  returnValue = *_7;
+  # DEBUG BEGIN_STMT
+  returnValue = returnValue & 1;
+  # DEBUG BEGIN_STMT
+  D.6158 = returnValue;
+  return D.6158;
+
+}
+
+
+Dio_Ipw_ReverseBits (Dio_PortLevelType Level)
+{
+  Dio_PortLevelType NumShifts;
+  Dio_PortLevelType RevLevel;
+  Dio_PortLevelType TempLevel;
+  Dio_PortLevelType D.6169;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  TempLevel = Level;
+  # DEBUG BEGIN_STMT
+  RevLevel = TempLevel;
+  # DEBUG BEGIN_STMT
+  NumShifts = 15;
+  # DEBUG BEGIN_STMT
+  TempLevel = TempLevel >> 1;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RevLevel = RevLevel << 1;
+  # DEBUG BEGIN_STMT
+  TempLevel.3_1 = (signed short) TempLevel;
+  _2 = TempLevel.3_1 & 1;
+  RevLevel.4_3 = (signed short) RevLevel;
+  _4 = _2 | RevLevel.4_3;
+  RevLevel = (Dio_PortLevelType) _4;
+  # DEBUG BEGIN_STMT
+  NumShifts.5_5 = NumShifts;
+  NumShifts = NumShifts.5_5 + 65535;
+  # DEBUG BEGIN_STMT
+  TempLevel = TempLevel >> 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (TempLevel != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _6 = (long unsigned int) RevLevel;
+  _7 = (int) NumShifts;
+  _8 = _6 << _7;
+  RevLevel = (Dio_PortLevelType) _8;
+  # DEBUG BEGIN_STMT
+  D.6169 = RevLevel;
+  return D.6169;
+
+}
+
+

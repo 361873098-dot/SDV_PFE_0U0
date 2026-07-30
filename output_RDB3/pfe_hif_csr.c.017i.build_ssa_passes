@@ -1,0 +1,2235 @@
+pfe_hif_cfg_stop_all_chnl_dma ()
+{
+  uint32_t hif_id;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  hif_id = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_tx_disable (1175027712, hif_id);
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_rx_disable (1175027712, hif_id);
+  # DEBUG BEGIN_STMT
+  hif_id = hif_id + 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (hif_id <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_get_rx_bdp_rd_fifo_cnt (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t D.10531;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 464;
+  _5 = (volatile uint32_t *) _4;
+  _6 = *_5;
+  _7 = _6 & 65535;
+  D.10531 = _7 / 2;
+  return D.10531;
+
+}
+
+
+pfe_hif_chnl_cfg_get_emac_timer_ownership (addr_t base_va, uint32_t channel_id, pfe_ct_phy_if_id_t emac)
+{
+  uint32_t reg;
+  bool_t val;
+  bool_t D.10529;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  val = 0;
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 484;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  _6 = (int) emac;
+  switch (_6) <default: <L3> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _7 = reg & 16;
+  _8 = _7 != 0;
+  val = (bool_t) _8;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _9 = reg & 32;
+  _10 = _9 != 0;
+  val = (bool_t) _10;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _11 = reg & 64;
+  _12 = _11 != 0;
+  val = (bool_t) _12;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  val = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.10529 = val;
+  return D.10529;
+
+}
+
+
+pfe_hif_chnl_cfg_set_emac_timer_ownership (addr_t base_va, uint32_t channel_id, pfe_ct_phy_if_id_t emac, bool_t value)
+{
+  errno_t ret;
+  uint32_t reg;
+  errno_t D.10527;
+  long unsigned int iftmp.8;
+  long unsigned int iftmp.7;
+  long unsigned int iftmp.6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 484;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  _6 = (int) emac;
+  switch (_6) <default: <L12> [INV], case 0: <L0> [INV], case 1: <L4> [INV], case 2: <L8> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  reg = reg & 4294967279;
+  # DEBUG BEGIN_STMT
+  if (value != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.6 = 16;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.6 = 0;
+
+  <bb 6> :
+  reg = iftmp.6 | reg;
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  reg = reg & 4294967263;
+  # DEBUG BEGIN_STMT
+  if (value != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.7 = 32;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.7 = 0;
+
+  <bb 10> :
+  reg = iftmp.7 | reg;
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [INV]
+
+  <bb 11> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  reg = reg & 4294967231;
+  # DEBUG BEGIN_STMT
+  if (value != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  iftmp.8 = 64;
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  iftmp.8 = 0;
+
+  <bb 14> :
+  reg = iftmp.8 | reg;
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  # DEBUG BEGIN_STMT
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = channel_id & 3;
+  _8 = _7 * 256;
+  _9 = base_va + _8;
+  _10 = _9 + 484;
+  _11 = (volatile uint32_t *) _10;
+  *_11 = reg;
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.10527 = ret;
+  return D.10527;
+
+}
+
+
+pfe_hif_chnl_cfg_get_hif_occupied (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+  bool_t D.10511;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 484;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  _6 = reg & 2;
+  _7 = _6 != 0;
+  D.10511 = (bool_t) _7;
+  return D.10511;
+
+}
+
+
+pfe_hif_chnl_cfg_set_hif_occupied (addr_t base_va, uint32_t channel_id, bool_t value)
+{
+  uint32_t reg;
+  long unsigned int iftmp.5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 484;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  reg = reg & 4294967293;
+  # DEBUG BEGIN_STMT
+  if (value != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.5 = 2;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.5 = 0;
+
+  <bb 5> :
+  reg = iftmp.5 | reg;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 484;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = reg;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_get_master_up (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+  bool_t D.10505;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 484;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  _6 = reg & 1;
+  _7 = _6 != 0;
+  D.10505 = (bool_t) _7;
+  return D.10505;
+
+}
+
+
+pfe_hif_chnl_cfg_set_master_up (addr_t base_va, uint32_t channel_id, bool_t value)
+{
+  uint32_t reg;
+  long unsigned int iftmp.4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 484;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  reg = reg & 4294967294;
+  # DEBUG BEGIN_STMT
+  if (value != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.4 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.4 = 0;
+
+  <bb 5> :
+  reg = iftmp.4 | reg;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 484;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = reg;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_get_rx_cnt (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t D.10499;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 424;
+  _5 = (volatile uint32_t *) _4;
+  D.10499 = *_5;
+  return D.10499;
+
+}
+
+
+pfe_hif_chnl_cfg_get_tx_cnt (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t D.10497;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 480;
+  _5 = (volatile uint32_t *) _4;
+  D.10497 = *_5;
+  return D.10497;
+
+}
+
+
+pfe_hif_chnl_cfg_set_rx_irq_coalesce (addr_t base_va, uint32_t channel_id, uint32_t frames, uint32_t cycles)
+{
+  errno_t ret;
+  errno_t D.10495;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 496;
+  _5 = (volatile uint32_t *) _4;
+  *_5 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 492;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = channel_id & 3;
+  _12 = _11 * 256;
+  _13 = base_va + _12;
+  _14 = _13 + 488;
+  _15 = (volatile uint32_t *) _14;
+  *_15 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (cycles == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  if (frames == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (frames != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = channel_id & 3;
+  _17 = _16 * 256;
+  _18 = base_va + _17;
+  _19 = _18 + 496;
+  _20 = (volatile uint32_t *) _19;
+  *_20 = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _21 = channel_id & 3;
+  _22 = _21 * 256;
+  _23 = base_va + _22;
+  _24 = _23 + 488;
+  _25 = (volatile uint32_t *) _24;
+  *_25 = cycles;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.10495 = ret;
+  return D.10495;
+
+}
+
+
+pfe_hif_chnl_cfg_get_rx_irq_coalesce (addr_t base_va, uint32_t channel_id, uint32_t * frames, uint32_t * cycles)
+{
+  uint32_t ena;
+  errno_t D.10486;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 496;
+  _5 = (volatile uint32_t *) _4;
+  ena = *_5;
+  # DEBUG BEGIN_STMT
+  _6 = ena & 3;
+  if (_6 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *cycles = 0;
+  # DEBUG BEGIN_STMT
+  *frames = 0;
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _7 = ena & 1;
+  if (_7 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _8 = channel_id & 3;
+  _9 = _8 * 256;
+  _10 = base_va + _9;
+  _11 = _10 + 488;
+  _12 = (volatile uint32_t *) _11;
+  _13 = *_12;
+  *cycles = _13;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *cycles = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _14 = ena & 2;
+  if (_14 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _15 = channel_id & 3;
+  _16 = _15 * 256;
+  _17 = base_va + _16;
+  _18 = _17 + 492;
+  _19 = (volatile uint32_t *) _18;
+  _20 = *_19;
+  *frames = _20;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  *frames = 0;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.10486 = 0;
+  return D.10486;
+
+}
+
+
+pfe_hif_chnl_cfg_is_tx_bdp_fifo_empty (addr_t base_va, uint32_t channel_id)
+{
+  bool_t D.10475;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 400;
+  _5 = (volatile uint32_t *) _4;
+  _6 = *_5;
+  _7 = _6 == 0;
+  D.10475 = (bool_t) _7;
+  return D.10475;
+
+}
+
+
+pfe_hif_chnl_cfg_is_rx_bdp_fifo_empty (addr_t base_va, uint32_t channel_id)
+{
+  bool_t D.10473;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 464;
+  _5 = (volatile uint32_t *) _4;
+  _6 = *_5;
+  _7 = _6 == 0;
+  D.10473 = (bool_t) _7;
+  return D.10473;
+
+}
+
+
+pfe_hif_chnl_cfg_is_tx_dma_active (addr_t base_va, uint32_t channel_id)
+{
+  bool_t ret;
+  uint32_t reg;
+  bool_t D.10471;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va + 132;
+  _2 = (volatile uint32_t *) _1;
+  reg = *_2;
+  # DEBUG BEGIN_STMT
+  if (reg != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.10471 = ret;
+  return D.10471;
+
+}
+
+
+pfe_hif_chnl_cfg_is_rx_dma_active (addr_t base_va, uint32_t channel_id)
+{
+  bool_t ret;
+  uint32_t reg;
+  bool_t D.10466;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va + 168;
+  _2 = (volatile uint32_t *) _1;
+  reg = *_2;
+  # DEBUG BEGIN_STMT
+  if (reg != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.10466 = ret;
+  return D.10466;
+
+}
+
+
+pfe_hif_chnl_cfg_set_tx_wb_table (addr_t base_va, uint32_t channel_id, const void * wb_tbl_pa, uint32_t tbl_len)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (channel_id > 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported channel ID: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 1005, channel_id, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (tbl_len > 65535)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported WB table size: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 1009, tbl_len, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 276;
+  _5 = (volatile uint32_t *) _4;
+  wb_tbl_pa.3_6 = (long unsigned int) wb_tbl_pa;
+  *_5 = wb_tbl_pa.3_6;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = channel_id & 3;
+  _8 = _7 * 256;
+  _9 = base_va + _8;
+  _10 = _9 + 280;
+  _11 = (volatile uint32_t *) _10;
+  *_11 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = channel_id & 3;
+  _13 = _12 * 256;
+  _14 = base_va + _13;
+  _15 = _14 + 300;
+  _16 = (volatile uint32_t *) _15;
+  *_16 = tbl_len;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_set_tx_bd_ring_addr (addr_t base_va, uint32_t channel_id, const void * tx_ring_pa)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (channel_id > 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported channel ID: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 984, channel_id, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 284;
+  _5 = (volatile uint32_t *) _4;
+  tx_ring_pa.2_6 = (long unsigned int) tx_ring_pa;
+  *_5 = tx_ring_pa.2_6;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = channel_id & 3;
+  _8 = _7 * 256;
+  _9 = base_va + _8;
+  _10 = _9 + 288;
+  _11 = (volatile uint32_t *) _10;
+  *_11 = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_set_rx_wb_table (addr_t base_va, uint32_t channel_id, const void * wb_tbl_pa, uint32_t tbl_len)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (channel_id > 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported channel ID: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 959, channel_id, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (tbl_len > 65535)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported WB table size: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 963, tbl_len, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 260;
+  _5 = (volatile uint32_t *) _4;
+  wb_tbl_pa.1_6 = (long unsigned int) wb_tbl_pa;
+  *_5 = wb_tbl_pa.1_6;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = channel_id & 3;
+  _8 = _7 * 256;
+  _9 = base_va + _8;
+  _10 = _9 + 264;
+  _11 = (volatile uint32_t *) _10;
+  *_11 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = channel_id & 3;
+  _13 = _12 * 256;
+  _14 = base_va + _13;
+  _15 = _14 + 292;
+  _16 = (volatile uint32_t *) _15;
+  *_16 = tbl_len;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_set_rx_bd_ring_addr (addr_t base_va, uint32_t channel_id, const void * rx_ring_pa)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (channel_id > 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported channel ID: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 938, channel_id, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 268;
+  _5 = (volatile uint32_t *) _4;
+  rx_ring_pa.0_6 = (long unsigned int) rx_ring_pa;
+  *_5 = rx_ring_pa.0_6;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = channel_id & 3;
+  _8 = _7 * 256;
+  _9 = base_va + _8;
+  _10 = _9 + 272;
+  _11 = (volatile uint32_t *) _10;
+  *_11 = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_get_tx_wb_table_len (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t D.10443;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 300;
+  _5 = (volatile uint32_t *) _4;
+  D.10443 = *_5;
+  return D.10443;
+
+}
+
+
+pfe_hif_chnl_cfg_get_tx_wb_table_addr (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t D.10441;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 276;
+  _5 = (volatile uint32_t *) _4;
+  D.10441 = *_5;
+  return D.10441;
+
+}
+
+
+pfe_hif_chnl_cfg_get_tx_bd_ring_addr (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t D.10439;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 284;
+  _5 = (volatile uint32_t *) _4;
+  D.10439 = *_5;
+  return D.10439;
+
+}
+
+
+pfe_hif_chnl_cfg_get_rx_wb_table_len (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t D.10437;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 292;
+  _5 = (volatile uint32_t *) _4;
+  D.10437 = *_5;
+  return D.10437;
+
+}
+
+
+pfe_hif_chnl_cfg_get_rx_wb_table_addr (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t D.10435;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 260;
+  _5 = (volatile uint32_t *) _4;
+  D.10435 = *_5;
+  return D.10435;
+
+}
+
+
+pfe_hif_chnl_cfg_get_rx_bd_ring_addr (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t D.10433;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 268;
+  _5 = (volatile uint32_t *) _4;
+  D.10433 = *_5;
+  return D.10433;
+
+}
+
+
+pfe_hif_chnl_cfg_tx_irq_unmask (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 356;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 356;
+  _10 = (volatile uint32_t *) _9;
+  _11 = reg | 24;
+  *_10 = _11;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_tx_irq_mask (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 356;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 356;
+  _10 = (volatile uint32_t *) _9;
+  _11 = reg & 4294967271;
+  *_10 = _11;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_rx_irq_unmask (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 356;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 356;
+  _10 = (volatile uint32_t *) _9;
+  _11 = reg | 6;
+  *_10 = _11;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_rx_irq_mask (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 356;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 356;
+  _10 = (volatile uint32_t *) _9;
+  _11 = reg & 4294967289;
+  *_10 = _11;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_irq_unmask (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 356;
+  _5 = (volatile uint32_t *) _4;
+  _6 = *_5;
+  reg = _6 | 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = channel_id & 3;
+  _8 = _7 * 256;
+  _9 = base_va + _8;
+  _10 = _9 + 356;
+  _11 = (volatile uint32_t *) _10;
+  *_11 = reg;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_irq_mask (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 356;
+  _5 = (volatile uint32_t *) _4;
+  _6 = *_5;
+  reg = _6 & 4294967294;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = channel_id & 3;
+  _8 = _7 * 256;
+  _9 = base_va + _8;
+  _10 = _9 + 356;
+  _11 = (volatile uint32_t *) _10;
+  *_11 = reg;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_tx_dma_stop (addr_t base_va, uint32_t channel_id)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_tx_dma_start (addr_t base_va, uint32_t channel_id)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_rx_dma_stop (addr_t base_va, uint32_t channel_id)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_rx_dma_start (addr_t base_va, uint32_t channel_id)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_rx_disable (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (channel_id > 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported channel ID: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 704, channel_id, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 256;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  reg = reg & 4294770687;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 256;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = reg;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_rx_irq_mask (base_va, channel_id);
+
+  <bb 5> :
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_rx_enable (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (channel_id > 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported channel ID: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 672, channel_id, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 256;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  reg = reg | 131072;
+  # DEBUG BEGIN_STMT
+  reg = reg | 65536;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 256;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = reg;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_tx_disable (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (channel_id > 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported channel ID: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 643, channel_id, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 256;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  reg = reg & 4294967292;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 256;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = reg;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_tx_irq_mask (base_va, channel_id);
+
+  <bb 5> :
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_tx_enable (addr_t base_va, uint32_t channel_id)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (channel_id > 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported channel ID: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 611, channel_id, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 256;
+  _5 = (volatile uint32_t *) _4;
+  reg = *_5;
+  # DEBUG BEGIN_STMT
+  reg = reg | 2;
+  # DEBUG BEGIN_STMT
+  reg = reg | 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 256;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = reg;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_tx_dma_start (base_va, channel_id);
+
+  <bb 5> :
+  return;
+
+}
+
+
+pfe_hif_cfg_get_tx_fifo_fill_level (addr_t base_va)
+{
+  uint32_t tmp;
+  const uint32_t multiplier;
+  uint32_t D.10419;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  multiplier = 8;
+  # DEBUG BEGIN_STMT
+  _1 = base_va + 140;
+  _2 = (volatile uint32_t *) _1;
+  tmp = *_2;
+  # DEBUG BEGIN_STMT
+  if (tmp <= 536870910)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  tmp = tmp * 8;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Return value overflow\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 592, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  tmp = 4294967295;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.10419 = tmp;
+  return D.10419;
+
+}
+
+
+pfe_hif_cfg_fini (addr_t base_va)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va + 108;
+  _2 = (volatile uint32_t *) _1;
+  *_2 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va + 116;
+  _4 = (volatile uint32_t *) _3;
+  *_4 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = base_va + 124;
+  _6 = (volatile uint32_t *) _5;
+  *_6 = 0;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_cfg_init (addr_t base_va)
+{
+  uint32_t ii;
+  errno_t ret;
+  errno_t D.10414;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va + 108;
+  _2 = (volatile uint32_t *) _1;
+  *_2 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va + 116;
+  _4 = (volatile uint32_t *) _3;
+  *_4 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = base_va + 124;
+  _6 = (volatile uint32_t *) _5;
+  *_6 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = base_va + 104;
+  _8 = (volatile uint32_t *) _7;
+  *_8 = 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = base_va + 112;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = base_va + 120;
+  _12 = (volatile uint32_t *) _11;
+  *_12 = 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = pfe_feature_mgr_is_available ("drv_run_on_g3");
+  if (_13 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = base_va + 20;
+  _15 = (volatile uint32_t *) _14;
+  *_15 = 15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ii = ii + 1;
+  if (ii > 1000)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret = 110;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (1000);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _16 = base_va + 20;
+  _17 = (volatile uint32_t *) _16;
+  _18 = *_17;
+  if (_18 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  reset_ring_registers_all_chnls (base_va);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = base_va + 4;
+  _20 = (volatile uint32_t *) _19;
+  *_20 = 16711935;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _21 = base_va + 8;
+  _22 = (volatile uint32_t *) _21;
+  *_22 = 16711935;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _23 = base_va + 12;
+  _24 = (volatile uint32_t *) _23;
+  *_24 = 32;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _25 = base_va + 16;
+  _26 = (volatile uint32_t *) _25;
+  *_26 = 100000000;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _27 = base_va + 204;
+  _28 = (volatile uint32_t *) _27;
+  *_28 = 857870592;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _29 = base_va + 200;
+  _30 = (volatile uint32_t *) _29;
+  *_30 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _31 = base_va + 196;
+  _32 = (volatile uint32_t *) _31;
+  *_32 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _33 = base_va + 208;
+  _34 = (volatile uint32_t *) _33;
+  *_34 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _35 = base_va + 108;
+  _36 = (volatile uint32_t *) _35;
+  *_36 = 4294967294;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _37 = base_va + 116;
+  _38 = (volatile uint32_t *) _37;
+  *_38 = 4294967294;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _39 = base_va + 124;
+  _40 = (volatile uint32_t *) _39;
+  *_40 = 4294967294;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.10414 = ret;
+  return D.10414;
+
+}
+
+
+pfe_hif_chnl_cfg_fini (addr_t base_va, uint32_t channel_id)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (channel_id > 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unsupported channel ID: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 460, channel_id, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 496;
+  _5 = (volatile uint32_t *) _4;
+  *_5 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_rx_disable (base_va, channel_id);
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_tx_disable (base_va, channel_id);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 356;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_chnl_cfg_init (addr_t base_va, uint32_t channel_id)
+{
+  errno_t D.10402;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = channel_id & 3;
+  _2 = _1 * 256;
+  _3 = base_va + _2;
+  _4 = _3 + 356;
+  _5 = (volatile uint32_t *) _4;
+  *_5 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = channel_id & 3;
+  _7 = _6 * 256;
+  _8 = base_va + _7;
+  _9 = _8 + 352;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_rx_disable (base_va, channel_id);
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_tx_disable (base_va, channel_id);
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_set_rx_irq_coalesce (base_va, channel_id, 0, 0);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = channel_id & 3;
+  _12 = _11 * 256;
+  _13 = base_va + _12;
+  _14 = _13 + 356;
+  _15 = (volatile uint32_t *) _14;
+  *_15 = 4294965248;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.10402 = 0;
+  return D.10402;
+
+}
+
+
+pfe_hif_chnl_cfg_isr (addr_t base_va, uint32_t channel_id, pfe_hif_chnl_event_t * events)
+{
+  errno_t ret;
+  uint32_t reg_en;
+  uint32_t reg_src;
+  errno_t D.10400;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  # DEBUG BEGIN_STMT
+  *events = 0;
+  # DEBUG BEGIN_STMT
+  _1 = channel_id > 3;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid channel ID in ISR\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 333, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = channel_id & 3;
+  _5 = _4 * 256;
+  _6 = base_va + _5;
+  _7 = _6 + 356;
+  _8 = (volatile uint32_t *) _7;
+  reg_en = *_8;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = channel_id & 3;
+  _10 = _9 * 256;
+  _11 = base_va + _10;
+  _12 = _11 + 356;
+  _13 = (volatile uint32_t *) _12;
+  *_13 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = channel_id & 3;
+  _15 = _14 * 256;
+  _16 = base_va + _15;
+  _17 = _16 + 352;
+  _18 = (volatile uint32_t *) _17;
+  reg_src = *_18;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = channel_id & 3;
+  _20 = _19 * 256;
+  _21 = base_va + _20;
+  _22 = _21 + 352;
+  _23 = (volatile uint32_t *) _22;
+  *_23 = reg_src;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = ~reg_src;
+  _25 = channel_id & 3;
+  _26 = _25 * 256;
+  _27 = base_va + _26;
+  _28 = _27 + 356;
+  _29 = (volatile uint32_t *) _28;
+  _30 = reg_en & _24;
+  *_29 = _30;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _31 = reg_src & reg_en;
+  _32 = _31 & 6;
+  if (_32 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _33 = *events;
+  _34 = _33 | 1;
+  *events = _34;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _35 = reg_src & reg_en;
+  _36 = _35 & 24;
+  if (_36 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _37 = *events;
+  _38 = _37 | 2;
+  *events = _38;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _39 = reg_src & reg_en;
+  _40 = _39 & 2016;
+  _41 = _40 != 0;
+  _42 = (long int) _41;
+  _43 = __builtin_expect (_42, 0);
+  if (_43 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _44 = reg_src & reg_en;
+  _45 = _44 & 32;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _46 = reg_src & reg_en;
+  _47 = _46 & 64;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _48 = reg_src & reg_en;
+  _49 = _48 & 128;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _50 = reg_src & reg_en;
+  _51 = _50 & 256;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _52 = reg_src & reg_en;
+  _53 = _52 & 512;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _54 = reg_src & reg_en;
+  _55 = _54 & 1024;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.10400 = ret;
+  return D.10400;
+
+}
+
+
+pfe_hif_cfg_irq_unmask (addr_t base_va)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va + 108;
+  _2 = (volatile uint32_t *) _1;
+  _3 = *_2;
+  reg = _3 | 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va + 108;
+  _5 = (volatile uint32_t *) _4;
+  *_5 = reg;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = base_va + 116;
+  _7 = (volatile uint32_t *) _6;
+  _8 = *_7;
+  reg = _8 | 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = base_va + 116;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = reg;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = base_va + 124;
+  _12 = (volatile uint32_t *) _11;
+  _13 = *_12;
+  reg = _13 | 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = base_va + 124;
+  _15 = (volatile uint32_t *) _14;
+  *_15 = reg;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_cfg_irq_mask (addr_t base_va)
+{
+  uint32_t reg;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va + 108;
+  _2 = (volatile uint32_t *) _1;
+  _3 = *_2;
+  reg = _3 & 4294967294;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va + 108;
+  _5 = (volatile uint32_t *) _4;
+  *_5 = reg;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = base_va + 116;
+  _7 = (volatile uint32_t *) _6;
+  _8 = *_7;
+  reg = _8 & 4294967294;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = base_va + 116;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = reg;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = base_va + 124;
+  _12 = (volatile uint32_t *) _11;
+  _13 = *_12;
+  reg = _13 & 4294967294;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = base_va + 124;
+  _15 = (volatile uint32_t *) _14;
+  *_15 = reg;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hif_cfg_isr (addr_t base_va)
+{
+  errno_t ret;
+  uint32_t reg_en;
+  uint32_t reg_src;
+  uint32_t glob_src;
+  errno_t D.10377;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  # DEBUG BEGIN_STMT
+  _1 = base_va + 64;
+  _2 = (volatile uint32_t *) _1;
+  glob_src = *_2;
+  # DEBUG BEGIN_STMT
+  _3 = glob_src != 0;
+  _4 = (long int) _3;
+  _5 = __builtin_expect (_4, 0);
+  if (_5 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _6 = glob_src & 65536;
+  if (_6 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _7 = base_va + 108;
+  _8 = (volatile uint32_t *) _7;
+  reg_en = *_8;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = base_va + 108;
+  _10 = (volatile uint32_t *) _9;
+  *_10 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = base_va + 104;
+  _12 = (volatile uint32_t *) _11;
+  reg_src = *_12;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = base_va + 104;
+  _14 = (volatile uint32_t *) _13;
+  *_14 = reg_src;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _15 = ~reg_src;
+  _16 = base_va + 108;
+  _17 = (volatile uint32_t *) _16;
+  _18 = reg_en & _15;
+  *_17 = _18;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = reg_src & reg_en;
+  _20 = _19 & 1;
+  if (_20 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (15, 2, 190, "[%s:%d] Interrupt (0x%x)", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 210, reg_src, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (57, 3);
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _21 = glob_src & 131072;
+  if (_21 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _22 = base_va + 116;
+  _23 = (volatile uint32_t *) _22;
+  reg_en = *_23;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = base_va + 116;
+  _25 = (volatile uint32_t *) _24;
+  *_25 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _26 = base_va + 112;
+  _27 = (volatile uint32_t *) _26;
+  reg_src = *_27;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _28 = base_va + 112;
+  _29 = (volatile uint32_t *) _28;
+  *_29 = reg_src;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _30 = ~reg_src;
+  _31 = base_va + 116;
+  _32 = (volatile uint32_t *) _31;
+  _33 = reg_en & _30;
+  *_32 = _33;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _34 = reg_src & reg_en;
+  _35 = _34 & 1;
+  if (_35 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (15, 2, 191, "[%s:%d] Interrupt (0x%x)", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 234, reg_src, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (57, 3);
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _36 = glob_src & 262144;
+  if (_36 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _37 = base_va + 124;
+  _38 = (volatile uint32_t *) _37;
+  reg_en = *_38;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _39 = base_va + 124;
+  _40 = (volatile uint32_t *) _39;
+  *_40 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _41 = base_va + 120;
+  _42 = (volatile uint32_t *) _41;
+  reg_src = *_42;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _43 = base_va + 120;
+  _44 = (volatile uint32_t *) _43;
+  *_44 = reg_src;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _45 = ~reg_src;
+  _46 = base_va + 124;
+  _47 = (volatile uint32_t *) _46;
+  _48 = reg_en & _45;
+  *_47 = _48;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _49 = reg_src & reg_en;
+  _50 = _49 & 1;
+  if (_50 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (15, 2, 192, "[%s:%d] Interrupt (0x%x)", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif_csr.c", 258, reg_src, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (57, 3);
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  D.10377 = ret;
+  return D.10377;
+
+}
+
+
+reset_ring_registers_all_chnls (const addr_t hif_base_addr)
+{
+  uint32_t hif_id;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  hif_id = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_set_rx_bd_ring_addr (hif_base_addr, hif_id, 0B);
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_set_rx_wb_table (hif_base_addr, hif_id, 0B, 0);
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_set_tx_bd_ring_addr (hif_base_addr, hif_id, 0B);
+  # DEBUG BEGIN_STMT
+  pfe_hif_chnl_cfg_set_tx_wb_table (hif_base_addr, hif_id, 0B, 0);
+  # DEBUG BEGIN_STMT
+  hif_id = hif_id + 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (hif_id <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+

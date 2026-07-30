@@ -1,0 +1,79 @@
+Variable bus_err_instance/8 is used by single function
+pfe_bus_err_irq_unmask (const struct pfe_bus_err_t * bus_err)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = bus_err_3(D)->bus_err_base_va;
+  pfe_bus_err_cfg_irq_unmask (_1);
+  return;
+
+}
+
+
+pfe_bus_err_irq_mask (const struct pfe_bus_err_t * bus_err)
+{
+  <bb 2> [local count: 1073741824]:
+  pfe_bus_err_destroy (bus_err_2(D)); [tail call]
+  return;
+
+}
+
+
+pfe_bus_err_isr (const struct pfe_bus_err_t * bus_err)
+{
+  errno_t ret;
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _1 = bus_err_3(D)->bus_err_base_va;
+  ret_5 = pfe_bus_err_cfg_isr (_1);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_bus_err_destroy (struct pfe_bus_err_t * bus_err)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = bus_err_3(D)->bus_err_base_va;
+  pfe_bus_err_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_bus_err_create (addr_t cbus_base_va, addr_t bus_err_base)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG bus_err => &bus_err_instance
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&bus_err_instance, 0, 12);
+  # DEBUG BEGIN_STMT
+  bus_err_instance.cbus_base_va = cbus_base_va_4(D);
+  # DEBUG BEGIN_STMT
+  bus_err_instance.bus_err_base_offset = bus_err_base_6(D);
+  # DEBUG BEGIN_STMT
+  _1 = cbus_base_va_4(D) + bus_err_base_6(D);
+  bus_err_instance.bus_err_base_va = _1;
+  # DEBUG BEGIN_STMT
+  pfe_bus_err_cfg_irq_unmask_all (_1);
+  # DEBUG BEGIN_STMT
+  return &bus_err_instance;
+
+}
+
+

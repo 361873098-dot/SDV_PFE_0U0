@@ -1,0 +1,2819 @@
+Trivially needed symbols: ipc_shm_poll_channels ipc_shm_is_remote_ready ipc_shm_unmanaged_tx ipc_shm_unmanaged_acquire ipc_shm_tx ipc_shm_release_buf ipc_shm_init ipc_shm_acquire_buf ipc_shm_free ipc_shm_free_instance ipc_shm_init_instance
+
+
+Initial Symbol table:
+
+ipc_os_poll_channels/54 (ipc_os_poll_channels) @06f418c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 
+  Calls: 
+ipc_hw_irq_notify/53 (ipc_hw_irq_notify) @06f412a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_buf_tx/31 
+  Calls: 
+ipc_queue_check_integrity/52 (ipc_queue_check_integrity) @06f24c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_check_mchan_integrity/7 ipc_check_mchan_integrity/7 
+  Calls: 
+ipc_hw_irq_disable/51 (ipc_hw_irq_disable) @06f24700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 
+  Calls: 
+ipc_queue_free/50 (ipc_queue_free) @06f24540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_managed_channel/18 ipc_shm_free_managed_channel/18 
+  Calls: 
+ipc_queue_push/49 (ipc_queue_push) @06f240e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_buffer_populate/11 
+  Calls: 
+ipc_queue_init/48 (ipc_queue_init) @06f0ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_buf_pool_init/12 managed_channel_init/15 
+  Calls: 
+ipc_os_get_local_shm/47 (ipc_os_get_local_shm) @06f0a8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_acquire_buf_from_pool/26 ipc_shm_acquire_buf_from_pool/26 ipc_buffer_populate/11 managed_pools_init/14 ipc_shm_init_channels/21 
+  Calls: 
+ipc_os_get_remote_shm/46 (ipc_os_get_remote_shm) @06f0a620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_init_channels/21 ipc_channel_rx/8 ipc_channel_rx/8 
+  Calls: 
+ipc_queue_pop/45 (ipc_queue_pop) @06f0a540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_acquire_buf_from_pool/26 ipc_channel_rx/8 
+  Calls: 
+ipc_hw_flush_cache_remote/44 (ipc_hw_flush_cache_remote) @06f0a380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_rx/10 
+  Calls: 
+ipc_os_free/43 (ipc_os_free) @06f0a1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_free/42 (ipc_hw_free) @06f0a0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance_priv/22 ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_os_init/41 (ipc_os_init) @06f0a000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_init/40 (ipc_hw_init) @06ee0620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_flush_cache_local/39 (ipc_hw_flush_cache_local) @06ee0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: 
+ipc_hw_irq_enable/38 (ipc_hw_irq_enable) @06ee0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: 
+ipc_hw_irq_clear/37 (ipc_hw_irq_clear) @06ee0d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: 
+ipc_shm_poll_channels/36 (ipc_shm_poll_channels) @06ee07e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_os_poll_channels/54 ipc_os_get_remote_shm/46 ipc_hw_flush_cache_remote/44 ipc_instance_is_free/9 
+ipc_shm_is_remote_ready/35 (ipc_shm_is_remote_ready) @06ee0540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ee07e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_tx/32 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: ipc_os_get_remote_shm/46 ipc_hw_flush_cache_remote/44 ipc_instance_is_free/9 
+ipc_shm_unmanaged_tx/34 (ipc_shm_unmanaged_tx) @06ee02a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ee0540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_notify/53 ipc_hw_flush_cache_local/39 ipc_check_uchan_integrity/5 get_unmanaged_chan/4 ipc_shm_is_remote_ready/35 
+ipc_shm_unmanaged_acquire/33 (ipc_shm_unmanaged_acquire) @06ee0000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ee02a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_check_uchan_local_integrity/6 get_unmanaged_chan/4 ipc_instance_is_free/9 
+ipc_shm_tx/32 (ipc_shm_tx) @06ed1540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ee0000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_buf_tx/31 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+ipc_shm_buf_tx/31 (ipc_shm_buf_tx) @06ed1ee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ee0000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_tx/32 
+  Calls: ipc_hw_irq_notify/53 ipc_hw_flush_cache_local/39 ipc_queue_push/49 find_pool_for_buf/29 ipc_check_mchan_integrity/7 
+ipc_shm_release_buf/30 (ipc_shm_release_buf) @06ed1c40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ed1540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_flush_cache_local/39 ipc_queue_push/49 find_pool_for_buf/29 ipc_check_mchan_integrity/7 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+find_pool_for_buf/29 (find_pool_for_buf) @06ed19a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed1540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 
+  Calls: 
+ipc_shm_init/28 (ipc_shm_init) @06ed1700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ed1c40
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_init_instance/23 ipc_instance_is_free/9 
+ipc_shm_acquire_buf/27 (ipc_shm_acquire_buf) @06ed1460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ed1700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_acquire_buf_from_pool/26 ipc_check_mchan_integrity/7 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+ipc_shm_acquire_buf_from_pool/26 (ipc_shm_acquire_buf_from_pool) @06ed11c0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed1700
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_acquire_buf/27 
+  Calls: ipc_os_get_local_shm/47 ipc_os_get_local_shm/47 ipc_queue_pop/45 
+ipc_shm_free/25 (ipc_shm_free) @06eb4d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ed1460
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_free_instance/24 
+ipc_shm_free_instance/24 (ipc_shm_free_instance) @06eb4ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06eb4d20
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free/25 
+  Calls: ipc_hw_free/42 ipc_os_free/43 ipc_hw_irq_disable/51 ipc_hw_flush_cache_local/39 ipc_shm_free_channel/19 ipc_instance_is_free/9 
+ipc_shm_init_instance/23 (ipc_shm_init_instance) @06eb4c40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06eb4ee0
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init/28 
+  Calls: ipc_hw_flush_cache_local/39 ipc_hw_irq_enable/38 ipc_hw_irq_clear/37 ipc_shm_free_channel/19 ipc_shm_init_instance_priv/22 ipc_instance_is_free/9 
+ipc_shm_init_instance_priv/22 (ipc_shm_init_instance_priv) @06eb49a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06eb41c0
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_rx/10 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: ipc_hw_free/42 ipc_os_free/43 ipc_shm_init_channels/21 ipc_hw_free/42 ipc_os_init/41 ipc_hw_init/40 
+ipc_shm_init_channels/21 (ipc_shm_init_channels) @06eb4700
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06eb41c0
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: get_chan_memmap_size/20 ipc_shm_init_a_channel/17 ipc_os_get_remote_shm/46 ipc_os_get_local_shm/47 
+get_chan_memmap_size/20 (get_chan_memmap_size) @06eb4460
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06eb41c0
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_channels/21 
+  Calls: ipc_queue_mem_size/0 
+ipc_shm_free_channel/19 (ipc_shm_free_channel) @06eb41c0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06eb4ee0
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: ipc_shm_free_managed_channel/18 
+ipc_shm_free_managed_channel/18 (ipc_shm_free_managed_channel) @06ea3ee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06eb4ee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free_channel/19 
+  Calls: ipc_queue_free/50 ipc_queue_free/50 
+ipc_shm_init_a_channel/17 (ipc_shm_init_a_channel) @06ea3c40
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06eb4460
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_channels/21 
+  Calls: unmanaged_channel_init/16 managed_channel_init/15 
+unmanaged_channel_init/16 (unmanaged_channel_init) @06ea39a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06eb4460
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_a_channel/17 
+  Calls: 
+managed_channel_init/15 (managed_channel_init) @06ea3700
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ea39a0
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_a_channel/17 
+  Calls: managed_pools_init/14 ipc_queue_init/48 ipc_get_total_buf_per_chan/13 
+managed_pools_init/14 (managed_pools_init) @06ea3460
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ea39a0
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_channel_init/15 
+  Calls: ipc_buf_pool_init/12 ipc_os_get_local_shm/47 ipc_queue_mem_size/0 
+ipc_get_total_buf_per_chan/13 (ipc_get_total_buf_per_chan) @06ea31c0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ea3460
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_channel_init/15 
+  Calls: 
+ipc_buf_pool_init/12 (ipc_buf_pool_init) @06e82ee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ea39a0
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_pools_init/14 
+  Calls: ipc_buffer_populate/11 ipc_queue_init/48 
+ipc_buffer_populate/11 (ipc_buffer_populate) @06e82c40
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ea39a0
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_buf_pool_init/12 
+  Calls: ipc_queue_push/49 ipc_os_get_local_shm/47 ipc_queue_mem_size/0 
+ipc_shm_rx/10 (ipc_shm_rx) @06e829a0
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  Aux: @06eb4700
+  References: ipc_shm_priv_data/1 (read)
+  Referring: ipc_shm_init_instance_priv/22 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_channel_rx/8 ipc_hw_flush_cache_remote/44 
+ipc_instance_is_free/9 (ipc_instance_is_free) @06e82700
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06eb49a0
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_unmanaged_acquire/33 ipc_shm_init/28 ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: 
+ipc_channel_rx/8 (ipc_channel_rx) @06e82460
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06eb4700
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_rx/10 
+  Calls: ipc_os_get_remote_shm/46 ipc_os_get_remote_shm/46 ipc_queue_pop/45 ipc_check_uchan_integrity/5 
+   Indirect call
+   Indirect call
+ipc_check_mchan_integrity/7 (ipc_check_mchan_integrity) @06e821c0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ed11c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: ipc_queue_check_integrity/52 ipc_queue_check_integrity/52 
+ipc_check_uchan_local_integrity/6 (ipc_check_uchan_local_integrity) @06e7dee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ee02a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_acquire/33 
+  Calls: 
+ipc_check_uchan_integrity/5 (ipc_check_uchan_integrity) @06e7dc40
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06eb4700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_channel_rx/8 
+  Calls: 
+get_unmanaged_chan/4 (get_unmanaged_chan) @06e7d9a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06e7dee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_unmanaged_acquire/33 
+  Calls: get_channel/2 
+get_managed_chan/3 (get_managed_chan) @06e7d700
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06e821c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_tx/32 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: get_channel/2 
+get_channel/2 (get_channel) @06e7d460
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06e821c0
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: get_unmanaged_chan/4 get_managed_chan/3 
+  Calls: 
+ipc_shm_priv_data/1 (ipc_shm_priv_data) @06e785a0
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @06e82700
+  References: 
+  Referring: ipc_shm_init_instance/23 (read)ipc_shm_init_instance/23 (read)ipc_instance_is_free/9 (read)ipc_instance_is_free/9 (read)ipc_instance_is_free/9 (read)ipc_shm_init_instance_priv/22 (write)ipc_shm_init_instance_priv/22 (write)ipc_shm_rx/10 (read)ipc_channel_rx/8 (addr)ipc_channel_rx/8 (read)ipc_shm_init_channels/21 (write)ipc_shm_init_channels/21 (read)ipc_shm_init_channels/21 (read)ipc_shm_init_a_channel/17 (addr)managed_channel_init/15 (addr)ipc_get_total_buf_per_chan/13 (addr)managed_pools_init/14 (addr)managed_pools_init/14 (read)ipc_buf_pool_init/12 (addr)ipc_buffer_populate/11 (read)unmanaged_channel_init/16 (addr)get_chan_memmap_size/20 (addr)ipc_shm_free_channel/19 (addr)ipc_shm_free_channel/19 (addr)ipc_shm_free_instance/24 (read)ipc_shm_free_instance/24 (write)ipc_shm_free_instance/24 (read)ipc_shm_free_instance/24 (read)get_channel/2 (read)get_channel/2 (addr)ipc_shm_acquire_buf_from_pool/26 (read)
+  Availability: not-ready
+  Varpool flags:
+ipc_queue_mem_size/0 (ipc_queue_mem_size) @06e63c40
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06e82ee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: get_chan_memmap_size/20 ipc_buffer_populate/11 managed_pools_init/14 
+  Calls: 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+ipc_os_poll_channels/54 (ipc_os_poll_channels) @06f418c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 
+  Calls: 
+ipc_hw_irq_notify/53 (ipc_hw_irq_notify) @06f412a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_buf_tx/31 
+  Calls: 
+ipc_queue_check_integrity/52 (ipc_queue_check_integrity) @06f24c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_check_mchan_integrity/7 ipc_check_mchan_integrity/7 
+  Calls: 
+ipc_hw_irq_disable/51 (ipc_hw_irq_disable) @06f24700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 
+  Calls: 
+ipc_queue_free/50 (ipc_queue_free) @06f24540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_managed_channel/18 ipc_shm_free_managed_channel/18 
+  Calls: 
+ipc_queue_push/49 (ipc_queue_push) @06f240e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_buffer_populate/11 
+  Calls: 
+ipc_queue_init/48 (ipc_queue_init) @06f0ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_buf_pool_init/12 managed_channel_init/15 
+  Calls: 
+ipc_os_get_local_shm/47 (ipc_os_get_local_shm) @06f0a8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_acquire_buf_from_pool/26 ipc_shm_acquire_buf_from_pool/26 ipc_buffer_populate/11 managed_pools_init/14 ipc_shm_init_channels/21 
+  Calls: 
+ipc_os_get_remote_shm/46 (ipc_os_get_remote_shm) @06f0a620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_init_channels/21 ipc_channel_rx/8 ipc_channel_rx/8 
+  Calls: 
+ipc_queue_pop/45 (ipc_queue_pop) @06f0a540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_acquire_buf_from_pool/26 ipc_channel_rx/8 
+  Calls: 
+ipc_hw_flush_cache_remote/44 (ipc_hw_flush_cache_remote) @06f0a380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_rx/10 
+  Calls: 
+ipc_os_free/43 (ipc_os_free) @06f0a1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_free/42 (ipc_hw_free) @06f0a0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance_priv/22 ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_os_init/41 (ipc_os_init) @06f0a000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_init/40 (ipc_hw_init) @06ee0620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_flush_cache_local/39 (ipc_hw_flush_cache_local) @06ee0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: 
+ipc_hw_irq_enable/38 (ipc_hw_irq_enable) @06ee0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: 
+ipc_hw_irq_clear/37 (ipc_hw_irq_clear) @06ee0d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: 
+ipc_shm_poll_channels/36 (ipc_shm_poll_channels) @06ee07e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_os_poll_channels/54 ipc_os_get_remote_shm/46 ipc_hw_flush_cache_remote/44 ipc_instance_is_free/9 
+ipc_shm_is_remote_ready/35 (ipc_shm_is_remote_ready) @06ee0540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_tx/32 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: ipc_os_get_remote_shm/46 ipc_hw_flush_cache_remote/44 ipc_instance_is_free/9 
+ipc_shm_unmanaged_tx/34 (ipc_shm_unmanaged_tx) @06ee02a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_notify/53 ipc_hw_flush_cache_local/39 ipc_check_uchan_integrity/5 get_unmanaged_chan/4 ipc_shm_is_remote_ready/35 
+ipc_shm_unmanaged_acquire/33 (ipc_shm_unmanaged_acquire) @06ee0000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_check_uchan_local_integrity/6 get_unmanaged_chan/4 ipc_instance_is_free/9 
+ipc_shm_tx/32 (ipc_shm_tx) @06ed1540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_buf_tx/31 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+ipc_shm_buf_tx/31 (ipc_shm_buf_tx) @06ed1ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_tx/32 
+  Calls: ipc_hw_irq_notify/53 ipc_hw_flush_cache_local/39 ipc_queue_push/49 find_pool_for_buf/29 ipc_check_mchan_integrity/7 
+ipc_shm_release_buf/30 (ipc_shm_release_buf) @06ed1c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_flush_cache_local/39 ipc_queue_push/49 find_pool_for_buf/29 ipc_check_mchan_integrity/7 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+find_pool_for_buf/29 (find_pool_for_buf) @06ed19a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 
+  Calls: 
+ipc_shm_init/28 (ipc_shm_init) @06ed1700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_init_instance/23 ipc_instance_is_free/9 
+ipc_shm_acquire_buf/27 (ipc_shm_acquire_buf) @06ed1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_acquire_buf_from_pool/26 ipc_check_mchan_integrity/7 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+ipc_shm_acquire_buf_from_pool/26 (ipc_shm_acquire_buf_from_pool) @06ed11c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_acquire_buf/27 
+  Calls: ipc_os_get_local_shm/47 ipc_os_get_local_shm/47 ipc_queue_pop/45 
+ipc_shm_free/25 (ipc_shm_free) @06eb4d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_free_instance/24 
+ipc_shm_free_instance/24 (ipc_shm_free_instance) @06eb4ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free/25 
+  Calls: ipc_hw_free/42 ipc_os_free/43 ipc_hw_irq_disable/51 ipc_hw_flush_cache_local/39 ipc_shm_free_channel/19 ipc_instance_is_free/9 
+ipc_shm_init_instance/23 (ipc_shm_init_instance) @06eb4c40
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init/28 
+  Calls: ipc_hw_flush_cache_local/39 ipc_hw_irq_enable/38 ipc_hw_irq_clear/37 ipc_shm_free_channel/19 ipc_shm_init_instance_priv/22 ipc_instance_is_free/9 
+ipc_shm_init_instance_priv/22 (ipc_shm_init_instance_priv) @06eb49a0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_rx/10 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: ipc_hw_free/42 ipc_os_free/43 ipc_shm_init_channels/21 ipc_hw_free/42 ipc_os_init/41 ipc_hw_init/40 
+ipc_shm_init_channels/21 (ipc_shm_init_channels) @06eb4700
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: get_chan_memmap_size/20 ipc_shm_init_a_channel/17 ipc_os_get_remote_shm/46 ipc_os_get_local_shm/47 
+get_chan_memmap_size/20 (get_chan_memmap_size) @06eb4460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_channels/21 
+  Calls: ipc_queue_mem_size/0 
+ipc_shm_free_channel/19 (ipc_shm_free_channel) @06eb41c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: ipc_shm_free_managed_channel/18 
+ipc_shm_free_managed_channel/18 (ipc_shm_free_managed_channel) @06ea3ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free_channel/19 
+  Calls: ipc_queue_free/50 ipc_queue_free/50 
+ipc_shm_init_a_channel/17 (ipc_shm_init_a_channel) @06ea3c40
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_channels/21 
+  Calls: unmanaged_channel_init/16 managed_channel_init/15 
+unmanaged_channel_init/16 (unmanaged_channel_init) @06ea39a0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_a_channel/17 
+  Calls: 
+managed_channel_init/15 (managed_channel_init) @06ea3700
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_a_channel/17 
+  Calls: managed_pools_init/14 ipc_queue_init/48 ipc_get_total_buf_per_chan/13 
+managed_pools_init/14 (managed_pools_init) @06ea3460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_channel_init/15 
+  Calls: ipc_buf_pool_init/12 ipc_os_get_local_shm/47 ipc_queue_mem_size/0 
+ipc_get_total_buf_per_chan/13 (ipc_get_total_buf_per_chan) @06ea31c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_channel_init/15 
+  Calls: 
+ipc_buf_pool_init/12 (ipc_buf_pool_init) @06e82ee0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_pools_init/14 
+  Calls: ipc_buffer_populate/11 ipc_queue_init/48 
+ipc_buffer_populate/11 (ipc_buffer_populate) @06e82c40
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_buf_pool_init/12 
+  Calls: ipc_queue_push/49 ipc_os_get_local_shm/47 ipc_queue_mem_size/0 
+ipc_shm_rx/10 (ipc_shm_rx) @06e829a0
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: ipc_shm_priv_data/1 (read)
+  Referring: ipc_shm_init_instance_priv/22 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_channel_rx/8 ipc_hw_flush_cache_remote/44 
+ipc_instance_is_free/9 (ipc_instance_is_free) @06e82700
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_unmanaged_acquire/33 ipc_shm_init/28 ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: 
+ipc_channel_rx/8 (ipc_channel_rx) @06e82460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_rx/10 
+  Calls: ipc_os_get_remote_shm/46 ipc_os_get_remote_shm/46 ipc_queue_pop/45 ipc_check_uchan_integrity/5 
+   Indirect call
+   Indirect call
+ipc_check_mchan_integrity/7 (ipc_check_mchan_integrity) @06e821c0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: ipc_queue_check_integrity/52 ipc_queue_check_integrity/52 
+ipc_check_uchan_local_integrity/6 (ipc_check_uchan_local_integrity) @06e7dee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_acquire/33 
+  Calls: 
+ipc_check_uchan_integrity/5 (ipc_check_uchan_integrity) @06e7dc40
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_channel_rx/8 
+  Calls: 
+get_unmanaged_chan/4 (get_unmanaged_chan) @06e7d9a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_unmanaged_acquire/33 
+  Calls: get_channel/2 
+get_managed_chan/3 (get_managed_chan) @06e7d700
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_tx/32 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: get_channel/2 
+get_channel/2 (get_channel) @06e7d460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: get_unmanaged_chan/4 get_managed_chan/3 
+  Calls: 
+ipc_shm_priv_data/1 (ipc_shm_priv_data) @06e785a0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: ipc_shm_init_instance/23 (read)ipc_shm_init_instance/23 (read)ipc_instance_is_free/9 (read)ipc_instance_is_free/9 (read)ipc_instance_is_free/9 (read)ipc_shm_init_instance_priv/22 (write)ipc_shm_init_instance_priv/22 (write)ipc_shm_rx/10 (read)ipc_channel_rx/8 (addr)ipc_channel_rx/8 (read)ipc_shm_init_channels/21 (write)ipc_shm_init_channels/21 (read)ipc_shm_init_channels/21 (read)ipc_shm_init_a_channel/17 (addr)managed_channel_init/15 (addr)ipc_get_total_buf_per_chan/13 (addr)managed_pools_init/14 (addr)managed_pools_init/14 (read)ipc_buf_pool_init/12 (addr)ipc_buffer_populate/11 (read)unmanaged_channel_init/16 (addr)get_chan_memmap_size/20 (addr)ipc_shm_free_channel/19 (addr)ipc_shm_free_channel/19 (addr)ipc_shm_free_instance/24 (read)ipc_shm_free_instance/24 (write)ipc_shm_free_instance/24 (read)ipc_shm_free_instance/24 (read)get_channel/2 (read)get_channel/2 (addr)ipc_shm_acquire_buf_from_pool/26 (read)
+  Availability: not-ready
+  Varpool flags:
+ipc_queue_mem_size/0 (ipc_queue_mem_size) @06e63c40
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: get_chan_memmap_size/20 ipc_buffer_populate/11 managed_pools_init/14 
+  Calls: 
+
+
+Initial Symbol table:
+
+ipc_os_poll_channels/54 (ipc_os_poll_channels) @06f418c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 
+  Calls: 
+ipc_hw_irq_notify/53 (ipc_hw_irq_notify) @06f412a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_buf_tx/31 
+  Calls: 
+ipc_queue_check_integrity/52 (ipc_queue_check_integrity) @06f24c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_check_mchan_integrity/7 ipc_check_mchan_integrity/7 
+  Calls: 
+ipc_hw_irq_disable/51 (ipc_hw_irq_disable) @06f24700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 
+  Calls: 
+ipc_queue_free/50 (ipc_queue_free) @06f24540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_managed_channel/18 ipc_shm_free_managed_channel/18 
+  Calls: 
+ipc_queue_push/49 (ipc_queue_push) @06f240e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_buffer_populate/11 
+  Calls: 
+ipc_queue_init/48 (ipc_queue_init) @06f0ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_buf_pool_init/12 managed_channel_init/15 
+  Calls: 
+ipc_os_get_local_shm/47 (ipc_os_get_local_shm) @06f0a8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_acquire_buf_from_pool/26 ipc_shm_acquire_buf_from_pool/26 ipc_buffer_populate/11 managed_pools_init/14 ipc_shm_init_channels/21 
+  Calls: 
+ipc_os_get_remote_shm/46 (ipc_os_get_remote_shm) @06f0a620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_init_channels/21 ipc_channel_rx/8 ipc_channel_rx/8 
+  Calls: 
+ipc_queue_pop/45 (ipc_queue_pop) @06f0a540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_acquire_buf_from_pool/26 ipc_channel_rx/8 
+  Calls: 
+ipc_hw_flush_cache_remote/44 (ipc_hw_flush_cache_remote) @06f0a380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_rx/10 
+  Calls: 
+ipc_os_free/43 (ipc_os_free) @06f0a1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_free/42 (ipc_hw_free) @06f0a0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance_priv/22 ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_os_init/41 (ipc_os_init) @06f0a000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_init/40 (ipc_hw_init) @06ee0620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_flush_cache_local/39 (ipc_hw_flush_cache_local) @06ee0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: 
+ipc_hw_irq_enable/38 (ipc_hw_irq_enable) @06ee0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: 
+ipc_hw_irq_clear/37 (ipc_hw_irq_clear) @06ee0d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: 
+ipc_shm_poll_channels/36 (ipc_shm_poll_channels) @06ee07e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_os_poll_channels/54 ipc_os_get_remote_shm/46 ipc_hw_flush_cache_remote/44 ipc_instance_is_free/9 
+ipc_shm_is_remote_ready/35 (ipc_shm_is_remote_ready) @06ee0540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_tx/32 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: ipc_os_get_remote_shm/46 ipc_hw_flush_cache_remote/44 ipc_instance_is_free/9 
+ipc_shm_unmanaged_tx/34 (ipc_shm_unmanaged_tx) @06ee02a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_notify/53 ipc_hw_flush_cache_local/39 ipc_check_uchan_integrity/5 get_unmanaged_chan/4 ipc_shm_is_remote_ready/35 
+ipc_shm_unmanaged_acquire/33 (ipc_shm_unmanaged_acquire) @06ee0000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_check_uchan_local_integrity/6 get_unmanaged_chan/4 ipc_instance_is_free/9 
+ipc_shm_tx/32 (ipc_shm_tx) @06ed1540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_buf_tx/31 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+ipc_shm_buf_tx/31 (ipc_shm_buf_tx) @06ed1ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_tx/32 
+  Calls: ipc_hw_irq_notify/53 ipc_hw_flush_cache_local/39 ipc_queue_push/49 find_pool_for_buf/29 ipc_check_mchan_integrity/7 
+ipc_shm_release_buf/30 (ipc_shm_release_buf) @06ed1c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_flush_cache_local/39 ipc_queue_push/49 find_pool_for_buf/29 ipc_check_mchan_integrity/7 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+find_pool_for_buf/29 (find_pool_for_buf) @06ed19a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 
+  Calls: 
+ipc_shm_init/28 (ipc_shm_init) @06ed1700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_init_instance/23 ipc_instance_is_free/9 
+ipc_shm_acquire_buf/27 (ipc_shm_acquire_buf) @06ed1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_acquire_buf_from_pool/26 ipc_check_mchan_integrity/7 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+ipc_shm_acquire_buf_from_pool/26 (ipc_shm_acquire_buf_from_pool) @06ed11c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_acquire_buf/27 
+  Calls: ipc_os_get_local_shm/47 ipc_os_get_local_shm/47 ipc_queue_pop/45 
+ipc_shm_free/25 (ipc_shm_free) @06eb4d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_free_instance/24 
+ipc_shm_free_instance/24 (ipc_shm_free_instance) @06eb4ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free/25 
+  Calls: ipc_hw_free/42 ipc_os_free/43 ipc_hw_irq_disable/51 ipc_hw_flush_cache_local/39 ipc_shm_free_channel/19 ipc_instance_is_free/9 
+ipc_shm_init_instance/23 (ipc_shm_init_instance) @06eb4c40
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init/28 
+  Calls: ipc_hw_flush_cache_local/39 ipc_hw_irq_enable/38 ipc_hw_irq_clear/37 ipc_shm_free_channel/19 ipc_shm_init_instance_priv/22 ipc_instance_is_free/9 
+ipc_shm_init_instance_priv/22 (ipc_shm_init_instance_priv) @06eb49a0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_rx/10 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: ipc_hw_free/42 ipc_os_free/43 ipc_shm_init_channels/21 ipc_hw_free/42 ipc_os_init/41 ipc_hw_init/40 
+ipc_shm_init_channels/21 (ipc_shm_init_channels) @06eb4700
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: get_chan_memmap_size/20 ipc_shm_init_a_channel/17 ipc_os_get_remote_shm/46 ipc_os_get_local_shm/47 
+get_chan_memmap_size/20 (get_chan_memmap_size) @06eb4460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_channels/21 
+  Calls: ipc_queue_mem_size/0 
+ipc_shm_free_channel/19 (ipc_shm_free_channel) @06eb41c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: ipc_shm_free_managed_channel/18 
+ipc_shm_free_managed_channel/18 (ipc_shm_free_managed_channel) @06ea3ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free_channel/19 
+  Calls: ipc_queue_free/50 ipc_queue_free/50 
+ipc_shm_init_a_channel/17 (ipc_shm_init_a_channel) @06ea3c40
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_channels/21 
+  Calls: unmanaged_channel_init/16 managed_channel_init/15 
+unmanaged_channel_init/16 (unmanaged_channel_init) @06ea39a0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_a_channel/17 
+  Calls: 
+managed_channel_init/15 (managed_channel_init) @06ea3700
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_a_channel/17 
+  Calls: managed_pools_init/14 ipc_queue_init/48 ipc_get_total_buf_per_chan/13 
+managed_pools_init/14 (managed_pools_init) @06ea3460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_channel_init/15 
+  Calls: ipc_buf_pool_init/12 ipc_os_get_local_shm/47 ipc_queue_mem_size/0 
+ipc_get_total_buf_per_chan/13 (ipc_get_total_buf_per_chan) @06ea31c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_channel_init/15 
+  Calls: 
+ipc_buf_pool_init/12 (ipc_buf_pool_init) @06e82ee0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_pools_init/14 
+  Calls: ipc_buffer_populate/11 ipc_queue_init/48 
+ipc_buffer_populate/11 (ipc_buffer_populate) @06e82c40
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_buf_pool_init/12 
+  Calls: ipc_queue_push/49 ipc_os_get_local_shm/47 ipc_queue_mem_size/0 
+ipc_shm_rx/10 (ipc_shm_rx) @06e829a0
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: ipc_shm_priv_data/1 (read)
+  Referring: ipc_shm_init_instance_priv/22 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_channel_rx/8 ipc_hw_flush_cache_remote/44 
+ipc_instance_is_free/9 (ipc_instance_is_free) @06e82700
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_unmanaged_acquire/33 ipc_shm_init/28 ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: 
+ipc_channel_rx/8 (ipc_channel_rx) @06e82460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_rx/10 
+  Calls: ipc_os_get_remote_shm/46 ipc_os_get_remote_shm/46 ipc_queue_pop/45 ipc_check_uchan_integrity/5 
+   Indirect call
+   Indirect call
+ipc_check_mchan_integrity/7 (ipc_check_mchan_integrity) @06e821c0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: ipc_queue_check_integrity/52 ipc_queue_check_integrity/52 
+ipc_check_uchan_local_integrity/6 (ipc_check_uchan_local_integrity) @06e7dee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_acquire/33 
+  Calls: 
+ipc_check_uchan_integrity/5 (ipc_check_uchan_integrity) @06e7dc40
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_channel_rx/8 
+  Calls: 
+get_unmanaged_chan/4 (get_unmanaged_chan) @06e7d9a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_unmanaged_acquire/33 
+  Calls: get_channel/2 
+get_managed_chan/3 (get_managed_chan) @06e7d700
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_tx/32 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: get_channel/2 
+get_channel/2 (get_channel) @06e7d460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: get_unmanaged_chan/4 get_managed_chan/3 
+  Calls: 
+ipc_shm_priv_data/1 (ipc_shm_priv_data) @06e785a0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: ipc_shm_init_instance/23 (read)ipc_shm_init_instance/23 (read)ipc_instance_is_free/9 (read)ipc_instance_is_free/9 (read)ipc_instance_is_free/9 (read)ipc_shm_init_instance_priv/22 (write)ipc_shm_init_instance_priv/22 (write)ipc_shm_rx/10 (read)ipc_channel_rx/8 (addr)ipc_channel_rx/8 (read)ipc_shm_init_channels/21 (write)ipc_shm_init_channels/21 (read)ipc_shm_init_channels/21 (read)ipc_shm_init_a_channel/17 (addr)managed_channel_init/15 (addr)ipc_get_total_buf_per_chan/13 (addr)managed_pools_init/14 (addr)managed_pools_init/14 (read)ipc_buf_pool_init/12 (addr)ipc_buffer_populate/11 (read)unmanaged_channel_init/16 (addr)get_chan_memmap_size/20 (addr)ipc_shm_free_channel/19 (addr)ipc_shm_free_channel/19 (addr)ipc_shm_free_instance/24 (read)ipc_shm_free_instance/24 (write)ipc_shm_free_instance/24 (read)ipc_shm_free_instance/24 (read)get_channel/2 (read)get_channel/2 (addr)ipc_shm_acquire_buf_from_pool/26 (read)
+  Availability: not-ready
+  Varpool flags:
+ipc_queue_mem_size/0 (ipc_queue_mem_size) @06e63c40
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: get_chan_memmap_size/20 ipc_buffer_populate/11 managed_pools_init/14 
+  Calls: 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+ipc_os_poll_channels/54 (ipc_os_poll_channels) @06f418c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 
+  Calls: 
+ipc_hw_irq_notify/53 (ipc_hw_irq_notify) @06f412a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_buf_tx/31 
+  Calls: 
+ipc_queue_check_integrity/52 (ipc_queue_check_integrity) @06f24c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_check_mchan_integrity/7 ipc_check_mchan_integrity/7 
+  Calls: 
+ipc_hw_irq_disable/51 (ipc_hw_irq_disable) @06f24700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 
+  Calls: 
+ipc_queue_free/50 (ipc_queue_free) @06f24540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_managed_channel/18 ipc_shm_free_managed_channel/18 
+  Calls: 
+ipc_queue_push/49 (ipc_queue_push) @06f240e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_buffer_populate/11 
+  Calls: 
+ipc_queue_init/48 (ipc_queue_init) @06f0ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_buf_pool_init/12 managed_channel_init/15 
+  Calls: 
+ipc_os_get_local_shm/47 (ipc_os_get_local_shm) @06f0a8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_acquire_buf_from_pool/26 ipc_shm_acquire_buf_from_pool/26 ipc_buffer_populate/11 managed_pools_init/14 ipc_shm_init_channels/21 
+  Calls: 
+ipc_os_get_remote_shm/46 (ipc_os_get_remote_shm) @06f0a620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_init_channels/21 ipc_channel_rx/8 ipc_channel_rx/8 
+  Calls: 
+ipc_queue_pop/45 (ipc_queue_pop) @06f0a540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_acquire_buf_from_pool/26 ipc_channel_rx/8 
+  Calls: 
+ipc_hw_flush_cache_remote/44 (ipc_hw_flush_cache_remote) @06f0a380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_rx/10 
+  Calls: 
+ipc_os_free/43 (ipc_os_free) @06f0a1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_free/42 (ipc_hw_free) @06f0a0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance_priv/22 ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_os_init/41 (ipc_os_init) @06f0a000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_init/40 (ipc_hw_init) @06ee0620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: 
+ipc_hw_flush_cache_local/39 (ipc_hw_flush_cache_local) @06ee0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: 
+ipc_hw_irq_enable/38 (ipc_hw_irq_enable) @06ee0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: 
+ipc_hw_irq_clear/37 (ipc_hw_irq_clear) @06ee0d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: 
+ipc_shm_poll_channels/36 (ipc_shm_poll_channels) @06ee07e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_os_poll_channels/54 ipc_os_get_remote_shm/46 ipc_hw_flush_cache_remote/44 ipc_instance_is_free/9 
+ipc_shm_is_remote_ready/35 (ipc_shm_is_remote_ready) @06ee0540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_tx/32 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: ipc_os_get_remote_shm/46 ipc_hw_flush_cache_remote/44 ipc_instance_is_free/9 
+ipc_shm_unmanaged_tx/34 (ipc_shm_unmanaged_tx) @06ee02a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_notify/53 ipc_hw_flush_cache_local/39 ipc_check_uchan_integrity/5 get_unmanaged_chan/4 ipc_shm_is_remote_ready/35 
+ipc_shm_unmanaged_acquire/33 (ipc_shm_unmanaged_acquire) @06ee0000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_check_uchan_local_integrity/6 get_unmanaged_chan/4 ipc_instance_is_free/9 
+ipc_shm_tx/32 (ipc_shm_tx) @06ed1540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_buf_tx/31 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+ipc_shm_buf_tx/31 (ipc_shm_buf_tx) @06ed1ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_tx/32 
+  Calls: ipc_hw_irq_notify/53 ipc_hw_flush_cache_local/39 ipc_queue_push/49 find_pool_for_buf/29 ipc_check_mchan_integrity/7 
+ipc_shm_release_buf/30 (ipc_shm_release_buf) @06ed1c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_flush_cache_local/39 ipc_queue_push/49 find_pool_for_buf/29 ipc_check_mchan_integrity/7 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+find_pool_for_buf/29 (find_pool_for_buf) @06ed19a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 
+  Calls: 
+ipc_shm_init/28 (ipc_shm_init) @06ed1700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_init_instance/23 ipc_instance_is_free/9 
+ipc_shm_acquire_buf/27 (ipc_shm_acquire_buf) @06ed1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_acquire_buf_from_pool/26 ipc_check_mchan_integrity/7 get_managed_chan/3 ipc_shm_is_remote_ready/35 
+ipc_shm_acquire_buf_from_pool/26 (ipc_shm_acquire_buf_from_pool) @06ed11c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_acquire_buf/27 
+  Calls: ipc_os_get_local_shm/47 ipc_os_get_local_shm/47 ipc_queue_pop/45 
+ipc_shm_free/25 (ipc_shm_free) @06eb4d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_shm_free_instance/24 
+ipc_shm_free_instance/24 (ipc_shm_free_instance) @06eb4ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free/25 
+  Calls: ipc_hw_free/42 ipc_os_free/43 ipc_hw_irq_disable/51 ipc_hw_flush_cache_local/39 ipc_shm_free_channel/19 ipc_instance_is_free/9 
+ipc_shm_init_instance/23 (ipc_shm_init_instance) @06eb4c40
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init/28 
+  Calls: ipc_hw_flush_cache_local/39 ipc_hw_irq_enable/38 ipc_hw_irq_clear/37 ipc_shm_free_channel/19 ipc_shm_init_instance_priv/22 ipc_instance_is_free/9 
+ipc_shm_init_instance_priv/22 (ipc_shm_init_instance_priv) @06eb49a0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_rx/10 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_instance/23 
+  Calls: ipc_hw_free/42 ipc_os_free/43 ipc_shm_init_channels/21 ipc_hw_free/42 ipc_os_init/41 ipc_hw_init/40 
+ipc_shm_init_channels/21 (ipc_shm_init_channels) @06eb4700
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_instance_priv/22 
+  Calls: get_chan_memmap_size/20 ipc_shm_init_a_channel/17 ipc_os_get_remote_shm/46 ipc_os_get_local_shm/47 
+get_chan_memmap_size/20 (get_chan_memmap_size) @06eb4460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_channels/21 
+  Calls: ipc_queue_mem_size/0 
+ipc_shm_free_channel/19 (ipc_shm_free_channel) @06eb41c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: ipc_shm_free_managed_channel/18 
+ipc_shm_free_managed_channel/18 (ipc_shm_free_managed_channel) @06ea3ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_free_channel/19 
+  Calls: ipc_queue_free/50 ipc_queue_free/50 
+ipc_shm_init_a_channel/17 (ipc_shm_init_a_channel) @06ea3c40
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_channels/21 
+  Calls: unmanaged_channel_init/16 managed_channel_init/15 
+unmanaged_channel_init/16 (unmanaged_channel_init) @06ea39a0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_a_channel/17 
+  Calls: 
+managed_channel_init/15 (managed_channel_init) @06ea3700
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_init_a_channel/17 
+  Calls: managed_pools_init/14 ipc_queue_init/48 ipc_get_total_buf_per_chan/13 
+managed_pools_init/14 (managed_pools_init) @06ea3460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_channel_init/15 
+  Calls: ipc_buf_pool_init/12 ipc_os_get_local_shm/47 ipc_queue_mem_size/0 
+ipc_get_total_buf_per_chan/13 (ipc_get_total_buf_per_chan) @06ea31c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_channel_init/15 
+  Calls: 
+ipc_buf_pool_init/12 (ipc_buf_pool_init) @06e82ee0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: managed_pools_init/14 
+  Calls: ipc_buffer_populate/11 ipc_queue_init/48 
+ipc_buffer_populate/11 (ipc_buffer_populate) @06e82c40
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_buf_pool_init/12 
+  Calls: ipc_queue_push/49 ipc_os_get_local_shm/47 ipc_queue_mem_size/0 
+ipc_shm_rx/10 (ipc_shm_rx) @06e829a0
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: ipc_shm_priv_data/1 (read)
+  Referring: ipc_shm_init_instance_priv/22 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_channel_rx/8 ipc_hw_flush_cache_remote/44 
+ipc_instance_is_free/9 (ipc_instance_is_free) @06e82700
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_poll_channels/36 ipc_shm_is_remote_ready/35 ipc_shm_unmanaged_acquire/33 ipc_shm_init/28 ipc_shm_free_instance/24 ipc_shm_init_instance/23 
+  Calls: 
+ipc_channel_rx/8 (ipc_channel_rx) @06e82460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_rx/10 
+  Calls: ipc_os_get_remote_shm/46 ipc_os_get_remote_shm/46 ipc_queue_pop/45 ipc_check_uchan_integrity/5 
+   Indirect call
+   Indirect call
+ipc_check_mchan_integrity/7 (ipc_check_mchan_integrity) @06e821c0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_buf_tx/31 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: ipc_queue_check_integrity/52 ipc_queue_check_integrity/52 
+ipc_check_uchan_local_integrity/6 (ipc_check_uchan_local_integrity) @06e7dee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_acquire/33 
+  Calls: 
+ipc_check_uchan_integrity/5 (ipc_check_uchan_integrity) @06e7dc40
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_channel_rx/8 
+  Calls: 
+get_unmanaged_chan/4 (get_unmanaged_chan) @06e7d9a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 ipc_shm_unmanaged_acquire/33 
+  Calls: get_channel/2 
+get_managed_chan/3 (get_managed_chan) @06e7d700
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_tx/32 ipc_shm_release_buf/30 ipc_shm_acquire_buf/27 
+  Calls: get_channel/2 
+get_channel/2 (get_channel) @06e7d460
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: get_unmanaged_chan/4 get_managed_chan/3 
+  Calls: 
+ipc_shm_priv_data/1 (ipc_shm_priv_data) @06e785a0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: ipc_shm_init_instance/23 (read)ipc_shm_init_instance/23 (read)ipc_instance_is_free/9 (read)ipc_instance_is_free/9 (read)ipc_instance_is_free/9 (read)ipc_shm_init_instance_priv/22 (write)ipc_shm_init_instance_priv/22 (write)ipc_shm_rx/10 (read)ipc_channel_rx/8 (addr)ipc_channel_rx/8 (read)ipc_shm_init_channels/21 (write)ipc_shm_init_channels/21 (read)ipc_shm_init_channels/21 (read)ipc_shm_init_a_channel/17 (addr)managed_channel_init/15 (addr)ipc_get_total_buf_per_chan/13 (addr)managed_pools_init/14 (addr)managed_pools_init/14 (read)ipc_buf_pool_init/12 (addr)ipc_buffer_populate/11 (read)unmanaged_channel_init/16 (addr)get_chan_memmap_size/20 (addr)ipc_shm_free_channel/19 (addr)ipc_shm_free_channel/19 (addr)ipc_shm_free_instance/24 (read)ipc_shm_free_instance/24 (write)ipc_shm_free_instance/24 (read)ipc_shm_free_instance/24 (read)get_channel/2 (read)get_channel/2 (addr)ipc_shm_acquire_buf_from_pool/26 (read)
+  Availability: not-ready
+  Varpool flags:
+ipc_queue_mem_size/0 (ipc_queue_mem_size) @06e63c40
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: get_chan_memmap_size/20 ipc_buffer_populate/11 managed_pools_init/14 
+  Calls: 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+find_pool_for_buf/74 (find_pool_for_buf) @0713a540
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 29
+  References: 
+  Referring: 
+  Function find_pool_for_buf/74 is inline copy in ipc_shm_tx/32
+  Clone of find_pool_for_buf/29
+  Availability: local
+  Function flags: count:327651227 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_buf_tx/31 (inlined) (327651227 (estimated locally),0.31 per call) 
+  Calls: 
+ipc_check_uchan_integrity/73 (ipc_check_uchan_integrity) @0713a380
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 5
+  References: 
+  Referring: 
+  Function ipc_check_uchan_integrity/73 is inline copy in ipc_shm_rx/10
+  Clone of ipc_check_uchan_integrity/5
+  Availability: local
+  Function flags: count:324914278 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_channel_rx/8 (inlined) (324914278 (estimated locally),22.96 per call) 
+  Calls: 
+ipc_instance_is_free/72 (ipc_instance_is_free) @0713a0e0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 71
+  References: 
+  Referring: 
+  Function ipc_instance_is_free/72 is inline copy in ipc_shm_poll_channels/36
+  Clone of ipc_instance_is_free/9
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_poll_channels/36 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ipc_instance_is_free.part.0/57 (697932184 (estimated locally),0.65 per call) 
+ipc_instance_is_free/71 (ipc_instance_is_free) @070ffee0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 70
+  previous sharing asm name: 72
+  References: 
+  Referring: 
+  Function ipc_instance_is_free/71 is inline copy in ipc_shm_unmanaged_acquire/33
+  Clone of ipc_instance_is_free/9
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_unmanaged_acquire/33 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ipc_instance_is_free.part.0/57 (697932184 (estimated locally),0.65 per call) 
+ipc_instance_is_free/70 (ipc_instance_is_free) @070ffc40
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 69
+  previous sharing asm name: 71
+  References: 
+  Referring: 
+  Function ipc_instance_is_free/70 is inline copy in ipc_shm_is_remote_ready/35
+  Clone of ipc_instance_is_free/9
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_is_remote_ready/35 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ipc_instance_is_free.part.0/57 (697932184 (estimated locally),0.65 per call) 
+ipc_instance_is_free/69 (ipc_instance_is_free) @070ff9a0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 65
+  previous sharing asm name: 70
+  References: 
+  Referring: 
+  Function ipc_instance_is_free/69 is inline copy in ipc_shm_free_instance/24
+  Clone of ipc_instance_is_free/9
+  Availability: local
+  Function flags: count:236223200 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_free_instance/24 (inlined) (236223200 (estimated locally),1.00 per call) 
+  Calls: ipc_instance_is_free.part.0/57 (153545080 (estimated locally),0.65 per call) 
+get_managed_chan/68 (get_managed_chan) @06e7d460
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 66
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function get_managed_chan/68 is inline copy in ipc_shm_release_buf/30
+  Clone of get_managed_chan/3
+  Availability: local
+  Function flags: count:1052266988 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_release_buf/30 (inlined) (1052266988 (estimated locally),0.98 per call) 
+  Calls: 
+get_unmanaged_chan/67 (get_unmanaged_chan) @06eb4700
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 4
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function get_unmanaged_chan/67 is inline copy in ipc_shm_unmanaged_acquire/33
+  Clone of get_unmanaged_chan/4
+  Availability: local
+  Function flags: count:762356696 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_unmanaged_acquire/33 (inlined) (762356696 (estimated locally),0.71 per call) 
+  Calls: 
+get_managed_chan/66 (get_managed_chan) @06ea3460
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 3
+  previous sharing asm name: 68
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function get_managed_chan/66 is inline copy in ipc_shm_tx/32
+  Clone of get_managed_chan/3
+  Availability: local
+  Function flags: count:1052266988 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_tx/32 (inlined) (1052266988 (estimated locally),0.98 per call) 
+  Calls: 
+ipc_instance_is_free/65 (ipc_instance_is_free) @06e7dee0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 9
+  previous sharing asm name: 69
+  References: 
+  Referring: 
+  Function ipc_instance_is_free/65 is inline copy in ipc_shm_init/28
+  Clone of ipc_instance_is_free/9
+  Availability: local
+  Function flags: count:1014686025 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_init/28 (inlined) (1014686025 (estimated locally),11.13 per call) 
+  Calls: ipc_instance_is_free.part.0/57 (659545915 (estimated locally),7.23 per call) 
+ipc_shm_free_instance.part.0/64 (ipc_shm_free_instance.part.0) @070bf8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function ipc_shm_free_instance.part.0/64 is inline copy in ipc_shm_free_instance/24
+  Availability: local
+  Function flags: count:118111600 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: ipc_shm_free_instance/24 (inlined) (118111600 (estimated locally),0.50 per call) 
+  Calls: ipc_shm_free_channel/19 (955630223 (estimated locally),4.05 per call) ipc_hw_flush_cache_local/39 (118111601 (estimated locally),0.50 per call) ipc_hw_irq_disable/51 (118111601 (estimated locally),0.50 per call) ipc_os_free/43 (118111601 (estimated locally),0.50 per call) ipc_hw_free/42 (118111601 (estimated locally),0.50 per call) 
+ipc_check_mchan_integrity.part.0/63 (ipc_check_mchan_integrity.part.0) @070bf000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function ipc_check_mchan_integrity.part.0/63 is inline copy in ipc_check_mchan_integrity/7
+  Availability: local
+  Function flags: count:118111600 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: ipc_check_mchan_integrity/7 (inlined) (118111600 (estimated locally),0.98 per call) 
+  Calls: ipc_queue_check_integrity/52 (955630223 (estimated locally),7.93 per call) 
+ipc_shm_free_channel.part.0/62 (ipc_shm_free_channel.part.0) @07095700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function ipc_shm_free_channel.part.0/62 is inline copy in ipc_shm_free_channel/19
+  Availability: local
+  Function flags: count:182536112 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: ipc_shm_free_channel/19 (inlined) (182536112 (estimated locally),0.17 per call) 
+  Calls: 
+ipc_shm_init_channels.isra.0/61 (ipc_shm_init_channels.isra.0) @06f80b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function ipc_shm_init_channels.isra.0/61 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:29087185 (estimated locally) body local optimize_size
+  Called by: ipc_shm_init_instance_priv/22 (inlined) (29087185 (estimated locally),0.14 per call) 
+  Calls: get_chan_memmap_size/20 (inlined) (167761456 (estimated locally),0.84 per call) ipc_shm_init_a_channel/17 (inlined) (177525350 (estimated locally),0.88 per call) ipc_os_get_remote_shm/46 (29087185 (estimated locally),0.14 per call) ipc_os_get_local_shm/47 (29087185 (estimated locally),0.14 per call) 
+managed_pools_init.isra.0/60 (managed_pools_init.isra.0) @06e63c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function managed_pools_init.isra.0/60 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:27396046 (estimated locally) body local optimize_size
+  Called by: managed_channel_init/15 (inlined) (27396046 (estimated locally),0.14 per call) 
+  Calls: ipc_buf_pool_init/12 (inlined) (237172033 (estimated locally),1.18 per call) ipc_os_get_local_shm/47 (27396046 (estimated locally),0.14 per call) 
+ipc_instance_is_free.part.0/57 (ipc_instance_is_free.part.0) @06f81620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: ipc_instance_is_free/72 (697932184 (estimated locally),0.65 per call) ipc_instance_is_free/71 (697932184 (estimated locally),0.65 per call) ipc_instance_is_free/70 (697932184 (estimated locally),0.65 per call) ipc_instance_is_free/69 (153545080 (estimated locally),0.65 per call) ipc_instance_is_free/65 (659545915 (estimated locally),7.23 per call) ipc_instance_is_free/9 (130514871 (estimated locally),0.65 per call) 
+  Calls: 
+ipc_os_poll_channels/54 (ipc_os_poll_channels) @06f418c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 (327972293 (estimated locally),0.31 per call) 
+  Calls: 
+ipc_hw_irq_notify/53 (ipc_hw_irq_notify) @06f412a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 (344227047 (estimated locally),0.32 per call) ipc_shm_buf_tx/31 (35681219 (estimated locally),0.03 per call) 
+  Calls: 
+ipc_queue_check_integrity/52 (ipc_queue_check_integrity) @06f24c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_check_mchan_integrity/7 (120522041 (estimated locally),1.00 per call) ipc_check_mchan_integrity.part.0/63 (955630223 (estimated locally),7.93 per call) 
+  Calls: 
+ipc_hw_irq_disable/51 (ipc_hw_irq_disable) @06f24700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance.part.0/64 (118111601 (estimated locally),0.50 per call) 
+  Calls: 
+ipc_queue_free/50 (ipc_queue_free) @06f24540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_free_managed_channel/18 (430124034 (estimated locally),0.40 per call) ipc_shm_free_managed_channel/18 (135949333 (estimated locally),0.13 per call) 
+  Calls: 
+ipc_queue_push/49 (ipc_queue_push) @06f240e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_release_buf/30 (111618374 (estimated locally),0.10 per call) ipc_shm_buf_tx/31 (108124905 (estimated locally),0.10 per call) ipc_buffer_populate/11 (650600968 (estimated locally),3.24 per call) 
+  Calls: 
+ipc_queue_init/48 (ipc_queue_init) @06f0ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: managed_channel_init/15 (83018322 (estimated locally),0.41 per call) ipc_buf_pool_init/12 (227732586 (estimated locally),1.13 per call) 
+  Calls: 
+ipc_os_get_local_shm/47 (ipc_os_get_local_shm) @06f0a8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_init_channels.isra.0/61 (29087185 (estimated locally),0.14 per call) managed_pools_init.isra.0/60 (27396046 (estimated locally),0.14 per call) ipc_buffer_populate/11 (75151753 (estimated locally),0.37 per call) ipc_shm_acquire_buf_from_pool/26 (6601474 (estimated locally),0.01 per call) ipc_shm_acquire_buf_from_pool/26 (20004468 (estimated locally),0.02 per call) 
+  Calls: 
+ipc_os_get_remote_shm/46 (ipc_os_get_remote_shm) @06f0a620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 (354334802 (estimated locally),0.33 per call) ipc_shm_is_remote_ready/35 (1031006900 (estimated locally),0.96 per call) ipc_shm_init_channels.isra.0/61 (29087185 (estimated locally),0.14 per call) ipc_channel_rx/8 (1737517004 (estimated locally),122.81 per call) ipc_channel_rx/8 (5265203054 (estimated locally),372.14 per call) 
+  Calls: 
+ipc_queue_pop/45 (ipc_queue_pop) @06f0a540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_acquire_buf_from_pool/26 (238769922 (estimated locally),0.22 per call) ipc_channel_rx/8 (5571643447 (estimated locally),393.80 per call) 
+  Calls: 
+ipc_hw_flush_cache_remote/44 (ipc_hw_flush_cache_remote) @06f0a380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_poll_channels/36 (354334802 (estimated locally),0.33 per call) ipc_shm_is_remote_ready/35 (1031006900 (estimated locally),0.96 per call) ipc_shm_rx/10 (118111600 (estimated locally),8.35 per call) 
+  Calls: 
+ipc_os_free/43 (ipc_os_free) @06f0a1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance.part.0/64 (118111601 (estimated locally),0.50 per call) ipc_shm_init_instance_priv/22 (9598771 (estimated locally),0.05 per call) 
+  Calls: 
+ipc_hw_free/42 (ipc_hw_free) @06f0a0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_free_instance.part.0/64 (118111601 (estimated locally),0.50 per call) ipc_shm_init_instance_priv/22 (9598771 (estimated locally),0.05 per call) ipc_shm_init_instance_priv/22 (29087185 (estimated locally),0.14 per call) 
+  Calls: 
+ipc_os_init/41 (ipc_os_init) @06f0a000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance_priv/22 (58174370 (estimated locally),0.29 per call) 
+  Calls: 
+ipc_hw_init/40 (ipc_hw_init) @06ee0620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance_priv/22 (176285970 (estimated locally),0.88 per call) 
+  Calls: 
+ipc_hw_flush_cache_local/39 (ipc_hw_flush_cache_local) @06ee0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 (344227047 (estimated locally),0.32 per call) ipc_shm_release_buf/30 (111618374 (estimated locally),0.10 per call) ipc_shm_free_instance.part.0/64 (118111601 (estimated locally),0.50 per call) ipc_shm_init_instance/23 (58174370 (estimated locally),0.29 per call) ipc_shm_buf_tx/31 (35681219 (estimated locally),0.03 per call) 
+  Calls: 
+ipc_hw_irq_enable/38 (ipc_hw_irq_enable) @06ee0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance/23 (58174370 (estimated locally),0.29 per call) 
+  Calls: 
+ipc_hw_irq_clear/37 (ipc_hw_irq_clear) @06ee0d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_init_instance/23 (58174370 (estimated locally),0.29 per call) 
+  Calls: 
+ipc_shm_poll_channels/36 (ipc_shm_poll_channels) @06ee07e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ipc_os_poll_channels/54 (327972293 (estimated locally),0.31 per call) ipc_os_get_remote_shm/46 (354334802 (estimated locally),0.33 per call) ipc_hw_flush_cache_remote/44 (354334802 (estimated locally),0.33 per call) ipc_instance_is_free/72 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ipc_shm_is_remote_ready/35 (ipc_shm_is_remote_ready) @06ee0540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 (1073741824 (estimated locally),1.00 per call) ipc_shm_tx/32 (1073741824 (estimated locally),1.00 per call) ipc_shm_release_buf/30 (1073741824 (estimated locally),1.00 per call) ipc_shm_acquire_buf/27 (1073741823 (estimated locally),1.00 per call) 
+  Calls: ipc_os_get_remote_shm/46 (1031006900 (estimated locally),0.96 per call) ipc_hw_flush_cache_remote/44 (1031006900 (estimated locally),0.96 per call) ipc_instance_is_free/70 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ipc_shm_unmanaged_tx/34 (ipc_shm_unmanaged_tx) @06ee02a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_notify/53 (344227047 (estimated locally),0.32 per call) ipc_hw_flush_cache_local/39 (344227047 (estimated locally),0.32 per call) ipc_check_uchan_integrity/5 (inlined) (1043112264 (estimated locally),0.97 per call) get_unmanaged_chan/4 (inlined) (1052266988 (estimated locally),0.98 per call) ipc_shm_is_remote_ready/35 (1073741824 (estimated locally),1.00 per call) 
+ipc_shm_unmanaged_acquire/33 (ipc_shm_unmanaged_acquire) @06ee0000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: get_unmanaged_chan/67 (inlined) (762356696 (estimated locally),0.71 per call) ipc_instance_is_free/71 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ipc_shm_tx/32 (ipc_shm_tx) @06ed1540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ipc_shm_buf_tx/31 (inlined) (992882505 (estimated locally),0.92 per call) get_managed_chan/66 (inlined) (1052266988 (estimated locally),0.98 per call) ipc_shm_is_remote_ready/35 (1073741824 (estimated locally),1.00 per call) 
+ipc_shm_buf_tx/31 (ipc_shm_buf_tx) @06ed1ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function ipc_shm_buf_tx/31 is inline copy in ipc_shm_tx/32
+  Availability: local
+  Function flags: count:992882505 (estimated locally) body local optimize_size
+  Called by: ipc_shm_tx/32 (inlined) (992882505 (estimated locally),0.92 per call) 
+  Calls: ipc_hw_irq_notify/53 (35681219 (estimated locally),0.03 per call) ipc_hw_flush_cache_local/39 (35681219 (estimated locally),0.03 per call) ipc_queue_push/49 (108124905 (estimated locally),0.10 per call) find_pool_for_buf/74 (inlined) (327651227 (estimated locally),0.31 per call) ipc_check_mchan_integrity/7 (992882505 (estimated locally),0.92 per call) 
+ipc_shm_release_buf/30 (ipc_shm_release_buf) @06ed1c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ipc_hw_flush_cache_local/39 (111618374 (estimated locally),0.10 per call) ipc_queue_push/49 (111618374 (estimated locally),0.10 per call) find_pool_for_buf/29 (inlined) (338237496 (estimated locally),0.32 per call) ipc_check_mchan_integrity/7 (1024962110 (estimated locally),0.95 per call) get_managed_chan/68 (inlined) (1052266988 (estimated locally),0.98 per call) ipc_shm_is_remote_ready/35 (1073741824 (estimated locally),1.00 per call) 
+find_pool_for_buf/29 (find_pool_for_buf) @06ed19a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 74
+  References: 
+  Referring: 
+  Function find_pool_for_buf/29 is inline copy in ipc_shm_release_buf/30
+  Availability: local
+  Function flags: count:338237496 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_release_buf/30 (inlined) (338237496 (estimated locally),0.32 per call) 
+  Calls: 
+ipc_shm_init/28 (ipc_shm_init) @06ed1700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:91197479 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ipc_shm_init_instance/23 (507343012 (estimated locally),5.56 per call) ipc_instance_is_free/65 (inlined) (1014686025 (estimated locally),11.13 per call) 
+ipc_shm_acquire_buf/27 (ipc_shm_acquire_buf) @06ed1460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ipc_shm_acquire_buf_from_pool/26 (inlined) (40925670 (estimated locally),0.04 per call) ipc_check_mchan_integrity/7 (124017180 (estimated locally),0.12 per call) get_managed_chan/3 (inlined) (536870911 (estimated locally),0.50 per call) ipc_shm_is_remote_ready/35 (1073741823 (estimated locally),1.00 per call) 
+ipc_shm_acquire_buf_from_pool/26 (ipc_shm_acquire_buf_from_pool) @06ed11c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function ipc_shm_acquire_buf_from_pool/26 is inline copy in ipc_shm_acquire_buf/27
+  Availability: local
+  Function flags: count:40925670 (estimated locally) body local optimize_size
+  Called by: ipc_shm_acquire_buf/27 (inlined) (40925670 (estimated locally),0.04 per call) 
+  Calls: ipc_os_get_local_shm/47 (6601474 (estimated locally),0.01 per call) ipc_os_get_local_shm/47 (20004468 (estimated locally),0.02 per call) ipc_queue_pop/45 (238769922 (estimated locally),0.22 per call) 
+ipc_shm_free/25 (ipc_shm_free) @06eb4d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:536870913 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ipc_shm_free_instance/24 (536870913 (estimated locally),1.00 per call) 
+ipc_shm_free_instance/24 (ipc_shm_free_instance) @06eb4ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:236223200 (estimated locally) body optimize_size
+  Called by: ipc_shm_free/25 (536870913 (estimated locally),1.00 per call) 
+  Calls: ipc_shm_free_instance.part.0/64 (inlined) (118111600 (estimated locally),0.50 per call) ipc_instance_is_free/69 (inlined) (236223200 (estimated locally),1.00 per call) 
+ipc_shm_init_instance/23 (ipc_shm_init_instance) @06eb4c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:200792109 (estimated locally) body optimize_size
+  Called by: ipc_shm_init/28 (507343012 (estimated locally),5.56 per call) 
+  Calls: ipc_hw_flush_cache_local/39 (58174370 (estimated locally),0.29 per call) ipc_hw_irq_enable/38 (58174370 (estimated locally),0.29 per call) ipc_hw_irq_clear/37 (58174370 (estimated locally),0.29 per call) ipc_shm_free_channel/19 (510975480 (estimated locally),2.54 per call) ipc_shm_init_instance_priv/22 (inlined) (176285970 (estimated locally),0.88 per call) ipc_instance_is_free/9 (inlined) (200792109 (estimated locally),1.00 per call) 
+ipc_shm_init_instance_priv/22 (ipc_shm_init_instance_priv) @06eb49a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_rx/10 (addr)
+  Referring: 
+  Function ipc_shm_init_instance_priv/22 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:176285970 (estimated locally) body local optimize_size
+  Called by: ipc_shm_init_instance/23 (inlined) (176285970 (estimated locally),0.88 per call) 
+  Calls: ipc_hw_free/42 (9598771 (estimated locally),0.05 per call) ipc_os_free/43 (9598771 (estimated locally),0.05 per call) ipc_shm_init_channels.isra.0/61 (inlined) (29087185 (estimated locally),0.14 per call) ipc_hw_free/42 (29087185 (estimated locally),0.14 per call) ipc_os_init/41 (58174370 (estimated locally),0.29 per call) ipc_hw_init/40 (176285970 (estimated locally),0.88 per call) 
+get_chan_memmap_size/20 (get_chan_memmap_size) @06eb4460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function get_chan_memmap_size/20 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:167761456 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_init_channels.isra.0/61 (inlined) (167761456 (estimated locally),0.84 per call) 
+  Calls: 
+ipc_shm_free_channel/19 (ipc_shm_free_channel) @06eb41c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: ipc_shm_free_instance.part.0/64 (955630223 (estimated locally),4.05 per call) ipc_shm_init_instance/23 (510975480 (estimated locally),2.54 per call) 
+  Calls: ipc_shm_free_channel.part.0/62 (inlined) (182536112 (estimated locally),0.17 per call) ipc_shm_free_managed_channel/18 (inlined) (287064877 (estimated locally),0.27 per call) 
+ipc_shm_free_managed_channel/18 (ipc_shm_free_managed_channel) @06ea3ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function ipc_shm_free_managed_channel/18 is inline copy in ipc_shm_free_channel/19
+  Availability: local
+  Function flags: count:287064877 (estimated locally) body local optimize_size
+  Called by: ipc_shm_free_channel/19 (inlined) (287064877 (estimated locally),0.27 per call) 
+  Calls: ipc_queue_free/50 (430124034 (estimated locally),0.40 per call) ipc_queue_free/50 (135949333 (estimated locally),0.13 per call) 
+ipc_shm_init_a_channel/17 (ipc_shm_init_a_channel) @06ea3c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)
+  Referring: 
+  Function ipc_shm_init_a_channel/17 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:177525350 (estimated locally) body local optimize_size
+  Called by: ipc_shm_init_channels.isra.0/61 (inlined) (177525350 (estimated locally),0.88 per call) 
+  Calls: unmanaged_channel_init/16 (inlined) (83895191 (estimated locally),0.42 per call) managed_channel_init/15 (inlined) (86459406 (estimated locally),0.43 per call) 
+unmanaged_channel_init/16 (unmanaged_channel_init) @06ea39a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function unmanaged_channel_init/16 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:83895191 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_init_a_channel/17 (inlined) (83895191 (estimated locally),0.42 per call) 
+  Calls: 
+managed_channel_init/15 (managed_channel_init) @06ea3700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function managed_channel_init/15 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:86459406 (estimated locally) body local optimize_size
+  Called by: ipc_shm_init_a_channel/17 (inlined) (86459406 (estimated locally),0.43 per call) 
+  Calls: managed_pools_init.isra.0/60 (inlined) (27396046 (estimated locally),0.14 per call) ipc_queue_init/48 (83018322 (estimated locally),0.41 per call) ipc_get_total_buf_per_chan/13 (inlined) (86459406 (estimated locally),0.43 per call) 
+ipc_get_total_buf_per_chan/13 (ipc_get_total_buf_per_chan) @06ea31c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)
+  Referring: 
+  Function ipc_get_total_buf_per_chan/13 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:86459406 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: managed_channel_init/15 (inlined) (86459406 (estimated locally),0.43 per call) 
+  Calls: 
+ipc_buf_pool_init/12 (ipc_buf_pool_init) @06e82ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (write)ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function ipc_buf_pool_init/12 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:237172033 (estimated locally) body local optimize_size
+  Called by: managed_pools_init.isra.0/60 (inlined) (237172033 (estimated locally),1.18 per call) 
+  Calls: ipc_buffer_populate/11 (inlined) (75151753 (estimated locally),0.37 per call) ipc_queue_init/48 (227732586 (estimated locally),1.13 per call) 
+ipc_buffer_populate/11 (ipc_buffer_populate) @06e82c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function ipc_buffer_populate/11 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:75151753 (estimated locally) body local optimize_size
+  Called by: ipc_buf_pool_init/12 (inlined) (75151753 (estimated locally),0.37 per call) 
+  Calls: ipc_queue_push/49 (650600968 (estimated locally),3.24 per call) ipc_os_get_local_shm/47 (75151753 (estimated locally),0.37 per call) 
+ipc_shm_rx/10 (ipc_shm_rx) @06e829a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: ipc_shm_priv_data/1 (read)
+  Referring: ipc_shm_init_instance_priv/22 (addr)
+  Availability: available
+  Function flags: count:14148526 (estimated locally) body optimize_size
+  Called by: 
+  Calls: ipc_channel_rx/8 (inlined) (955630224 (estimated locally),67.54 per call) ipc_hw_flush_cache_remote/44 (118111600 (estimated locally),8.35 per call) 
+ipc_instance_is_free/9 (ipc_instance_is_free) @06e82700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 65
+  References: 
+  Referring: 
+  Function ipc_instance_is_free/9 is inline copy in ipc_shm_init_instance/23
+  Availability: local
+  Function flags: count:200792109 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_init_instance/23 (inlined) (200792109 (estimated locally),1.00 per call) 
+  Calls: ipc_instance_is_free.part.0/57 (130514871 (estimated locally),0.65 per call) 
+ipc_channel_rx/8 (ipc_channel_rx) @06e82460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (addr)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (read)
+  Referring: 
+  Function ipc_channel_rx/8 is inline copy in ipc_shm_rx/10
+  Availability: local
+  Function flags: count:955630224 (estimated locally) body local optimize_size
+  Called by: ipc_shm_rx/10 (inlined) (955630224 (estimated locally),67.54 per call) 
+  Calls: ipc_os_get_remote_shm/46 (1737517004 (estimated locally),122.81 per call) ipc_os_get_remote_shm/46 (5265203054 (estimated locally),372.14 per call) ipc_queue_pop/45 (5571643447 (estimated locally),393.80 per call) ipc_check_uchan_integrity/73 (inlined) (324914278 (estimated locally),22.96 per call) 
+   Indirect call(868758502 (estimated locally),61.40 per call) 
+   Indirect call(107221712 (estimated locally),7.58 per call) 
+ipc_check_mchan_integrity/7 (ipc_check_mchan_integrity) @06e821c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:120522041 (estimated locally) body local optimize_size
+  Called by: ipc_shm_release_buf/30 (1024962110 (estimated locally),0.95 per call) ipc_shm_acquire_buf/27 (124017180 (estimated locally),0.12 per call) ipc_shm_buf_tx/31 (992882505 (estimated locally),0.92 per call) 
+  Calls: ipc_check_mchan_integrity.part.0/63 (inlined) (118111600 (estimated locally),0.98 per call) ipc_queue_check_integrity/52 (120522041 (estimated locally),1.00 per call) 
+ipc_check_uchan_integrity/5 (ipc_check_uchan_integrity) @06e7dc40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 73
+  References: 
+  Referring: 
+  Function ipc_check_uchan_integrity/5 is inline copy in ipc_shm_unmanaged_tx/34
+  Availability: local
+  Function flags: count:1043112264 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 (inlined) (1043112264 (estimated locally),0.97 per call) 
+  Calls: 
+get_unmanaged_chan/4 (get_unmanaged_chan) @06e7d9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 67
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function get_unmanaged_chan/4 is inline copy in ipc_shm_unmanaged_tx/34
+  Availability: local
+  Function flags: count:1052266988 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_unmanaged_tx/34 (inlined) (1052266988 (estimated locally),0.98 per call) 
+  Calls: 
+get_managed_chan/3 (get_managed_chan) @06e7d700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 66
+  References: ipc_shm_priv_data/1 (read)ipc_shm_priv_data/1 (addr)
+  Referring: 
+  Function get_managed_chan/3 is inline copy in ipc_shm_acquire_buf/27
+  Availability: local
+  Function flags: count:536870911 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_shm_acquire_buf/27 (inlined) (536870911 (estimated locally),0.50 per call) 
+  Calls: 
+ipc_shm_priv_data/1 (ipc_shm_priv_data) @06e785a0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: ipc_shm_init_instance_priv/22 (write)ipc_shm_init_instance_priv/22 (write)ipc_channel_rx/8 (read)ipc_shm_init_instance/23 (read)ipc_shm_init_instance/23 (read)ipc_shm_init_a_channel/17 (write)ipc_shm_init_a_channel/17 (write)get_chan_memmap_size/20 (read)get_unmanaged_chan/4 (read)unmanaged_channel_init/16 (read)get_managed_chan/3 (addr)ipc_buf_pool_init/12 (addr)managed_channel_init/15 (read)managed_pools_init.isra.0/60 (read)ipc_buf_pool_init/12 (read)get_unmanaged_chan/4 (addr)get_chan_memmap_size/20 (read)ipc_buffer_populate/11 (read)ipc_shm_acquire_buf_from_pool/26 (read)ipc_shm_rx/10 (read)ipc_instance_is_free.part.0/57 (read)ipc_get_total_buf_per_chan/13 (write)ipc_shm_init_channels.isra.0/61 (write)ipc_shm_init_channels.isra.0/61 (read)ipc_shm_free_channel/19 (read)managed_channel_init/15 (addr)ipc_shm_free_channel/19 (addr)ipc_shm_free_instance.part.0/64 (read)ipc_shm_free_channel.part.0/62 (read)get_managed_chan/3 (read)ipc_get_total_buf_per_chan/13 (write)ipc_get_total_buf_per_chan/13 (write)unmanaged_channel_init/16 (write)unmanaged_channel_init/16 (write)unmanaged_channel_init/16 (write)unmanaged_channel_init/16 (write)unmanaged_channel_init/16 (write)get_chan_memmap_size/20 (read)get_chan_memmap_size/20 (read)get_chan_memmap_size/20 (read)get_chan_memmap_size/20 (read)ipc_channel_rx/8 (addr)ipc_channel_rx/8 (read)ipc_channel_rx/8 (read)ipc_channel_rx/8 (read)ipc_channel_rx/8 (read)ipc_channel_rx/8 (read)ipc_channel_rx/8 (read)ipc_channel_rx/8 (addr)ipc_channel_rx/8 (read)ipc_channel_rx/8 (read)ipc_channel_rx/8 (read)ipc_channel_rx/8 (read)ipc_channel_rx/8 (read)ipc_channel_rx/8 (read)ipc_buf_pool_init/12 (addr)ipc_buf_pool_init/12 (write)ipc_buf_pool_init/12 (write)managed_pools_init.isra.0/60 (read)managed_pools_init.isra.0/60 (read)ipc_shm_free_instance.part.0/64 (read)ipc_shm_free_instance.part.0/64 (read)ipc_shm_free_instance.part.0/64 (write)managed_pools_init.isra.0/60 (read)managed_pools_init.isra.0/60 (read)get_managed_chan/66 (read)get_managed_chan/66 (addr)get_unmanaged_chan/67 (read)get_unmanaged_chan/67 (addr)get_managed_chan/68 (read)get_managed_chan/68 (addr)
+  Availability: available
+  Varpool flags:
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:ipc_instance_is_free.part.0:1
+Time profile order in expand_all_functions:ipc_shm_free_channel:0
+Time profile order in expand_all_functions:ipc_check_mchan_integrity:0
+Time profile order in expand_all_functions:ipc_shm_rx:0
+Time profile order in expand_all_functions:ipc_shm_init_instance:0
+Time profile order in expand_all_functions:ipc_shm_free_instance:0
+Time profile order in expand_all_functions:ipc_shm_free:0
+Time profile order in expand_all_functions:ipc_shm_init:0
+Time profile order in expand_all_functions:ipc_shm_unmanaged_acquire:0
+Time profile order in expand_all_functions:ipc_shm_is_remote_ready:0
+Time profile order in expand_all_functions:ipc_shm_acquire_buf:0
+Time profile order in expand_all_functions:ipc_shm_release_buf:0
+Time profile order in expand_all_functions:ipc_shm_tx:0
+Time profile order in expand_all_functions:ipc_shm_unmanaged_tx:0
+Time profile order in expand_all_functions:ipc_shm_poll_channels:0
+Trivially needed variables: ipc_shm_priv_data
+Removing variables:
+
+Final Symbol table:
+
+ipc_instance_is_free.part.0/57 (ipc_instance_is_free.part.0) @06f81620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) first_run:1 local split_part nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_os_poll_channels/54 (ipc_os_poll_channels) @06f418c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_notify/53 (ipc_hw_irq_notify) @06f412a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_queue_check_integrity/52 (ipc_queue_check_integrity) @06f24c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_disable/51 (ipc_hw_irq_disable) @06f24700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_queue_free/50 (ipc_queue_free) @06f24540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_queue_push/49 (ipc_queue_push) @06f240e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_queue_init/48 (ipc_queue_init) @06f0ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_os_get_local_shm/47 (ipc_os_get_local_shm) @06f0a8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_os_get_remote_shm/46 (ipc_os_get_remote_shm) @06f0a620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_queue_pop/45 (ipc_queue_pop) @06f0a540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_flush_cache_remote/44 (ipc_hw_flush_cache_remote) @06f0a380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_os_free/43 (ipc_os_free) @06f0a1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_free/42 (ipc_hw_free) @06f0a0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_os_init/41 (ipc_os_init) @06f0a000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_init/40 (ipc_hw_init) @06ee0620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_flush_cache_local/39 (ipc_hw_flush_cache_local) @06ee0ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_enable/38 (ipc_hw_irq_enable) @06ee0e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_clear/37 (ipc_hw_irq_clear) @06ee0d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_poll_channels/36 (ipc_shm_poll_channels) @06ee07e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_is_remote_ready/35 (ipc_shm_is_remote_ready) @06ee0540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_unmanaged_tx/34 (ipc_shm_unmanaged_tx) @06ee02a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_unmanaged_acquire/33 (ipc_shm_unmanaged_acquire) @06ee0000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_tx/32 (ipc_shm_tx) @06ed1540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_release_buf/30 (ipc_shm_release_buf) @06ed1c40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_init/28 (ipc_shm_init) @06ed1700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:91197479 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_acquire_buf/27 (ipc_shm_acquire_buf) @06ed1460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_free/25 (ipc_shm_free) @06eb4d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:536870913 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_free_instance/24 (ipc_shm_free_instance) @06eb4ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:236223200 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_init_instance/23 (ipc_shm_init_instance) @06eb4c40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:200792109 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_free_channel/19 (ipc_shm_free_channel) @06eb41c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_rx/10 (ipc_shm_rx) @06e829a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:14148526 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_check_mchan_integrity/7 (ipc_check_mchan_integrity) @06e821c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:120522041 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_priv_data/1 (ipc_shm_priv_data) @06e785a0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:

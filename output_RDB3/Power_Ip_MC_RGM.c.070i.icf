@@ -1,0 +1,1521 @@
+Parsed function:Power_Ip_MC_RGM_ClearDesResetFlags.part.0
+Parsed function:Power_Ip_MC_RGM_ClearFesResetFlags.part.0
+Parsed function:Power_Ip_MC_RGM_GetResetRawValue
+Parsed function:Power_Ip_MC_RGM_GetResetReason
+Parsed function:Power_Ip_MC_RGM_CheckResetReason
+Parsed function:Power_Ip_MC_RGM_DisableResetDomain
+Parsed function:Power_Ip_MC_RGM_EnableResetDomain
+Parsed function:Power_Ip_MC_RGM_CheckModeConfig
+Parsed function:Power_Ip_MC_RGM_ModeConfig
+Parsed function:Power_Ip_MC_RGM_ResetInit
+Parsed function:Power_Ip_MC_RGM_CheckConfigureCore
+Parsed function:Power_Ip_MC_RGM_ConfigureCore
+Parsed function:Power_Ip_MC_RGM_CheckConfigureCOFB
+Parsed function:Power_Ip_MC_RGM_ConfigureCOFB
+Parsed function:Power_Ip_MC_RGM_ConfigureResetDomainController
+Parsed function:Power_Ip_MC_RGM_AssertDomainReset
+Parsed function:Power_Ip_MC_RGM_ReleaseDomainReset
+Parsed function:Power_Ip_MC_RGM_ClearDesResetFlags
+Parsed function:Power_Ip_MC_RGM_ClearFesResetFlags
+Dump after hash based groups
+Congruence classes: 19 (unique hash values: 19), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 17 classes
+[2]: 2 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 19 (unique hash values: 19), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 17 classes
+[2]: 2 classes
+
+
+Worklist has been filled with: 13
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 20 (unique hash values: 19), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 19 classes
+[2]: 1 classes
+
+
+Init called for 2 items (9.52%).
+Dump after full equality comparison of groups
+Congruence classes: 20 (unique hash values: 19), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 19 classes
+[2]: 1 classes
+
+
+Worklist has been filled with: 13
+Address reference subdivision created: 0 new classes.
+Congruence classes: 20 (unique hash values: 19), with total: 21 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 19 classes
+[2]: 1 classes
+
+
+
+Item count: 21
+Congruent classes before: 20, after: 20
+Average class size before: 1.05, after: 1.05
+Average non-singular class size: 2.00, count: 1
+Equal symbols: 1
+Fraction of visited symbols: 4.76%
+
+Semantic equality hit:Power_Ip_MC_RGM_ClearFesResetFlags.part.0->Power_Ip_MC_RGM_ClearDesResetFlags.part.0
+Assembler symbol names:Power_Ip_MC_RGM_ClearFesResetFlags.part.0->Power_Ip_MC_RGM_ClearDesResetFlags.part.0
+Unified; Function alias has been created.
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Power_Ip_MC_RGM_ClearFesResetFlags.part.0 ()
+{
+  uint32 StartTime;
+  uint32 ElapsedTime;
+  uint32 TimeoutTicks;
+  boolean TimeoutOccurred;
+  uint32 RegValueTemp;
+  uint32 RegValue;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#4 s=> RegValue
+  # DEBUG RegValue => D#4
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_ReportPowerErrors (0, 255);
+
+  <bb 3> [local count: 1073741824]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_GetResetRawValue ()
+{
+  uint32 Position;
+  uint32 DynamicMask;
+  uint32 Index;
+  uint32 ActiveValue;
+  uint32 RegValue;
+  uint32 RawReset;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.33_1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.34_6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+
+  <bb 2> [local count: 65068756]:
+  # DEBUG BEGIN_STMT
+  # DEBUG RawReset => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.33_1 = Power_Ip_pxMC_RGM;
+  _2 ={v} Power_Ip_pxMC_RGM.33_1->FES;
+  RegValue_31 = _2 & 3224633433;
+  # DEBUG RegValue => RegValue_31
+  # DEBUG BEGIN_STMT
+  if (RegValue_31 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 32534378]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_u32FesResetStatus = RegValue_31;
+
+  <bb 4> [local count: 65068756]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ResetMask => 3224633433
+  # DEBUG BEGIN_STMT
+  ActiveValue_33 = Power_Ip_u32FesResetStatus;
+  # DEBUG ActiveValue => ActiveValue_33
+  # DEBUG BEGIN_STMT
+  if (ActiveValue_33 != 0)
+    goto <bb 24>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 24> [local count: 32534378]:
+  goto <bb 10>; [100.00%]
+
+  <bb 5> [local count: 1041207447]:
+  # DEBUG BEGIN_STMT
+  DynamicMask_35 = 1 << Index_19;
+  # DEBUG DynamicMask => DynamicMask_35
+  # DEBUG BEGIN_STMT
+  _3 = DynamicMask_35 & 3224633433;
+  if (_3 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 6> [local count: 520603723]:
+  # DEBUG BEGIN_STMT
+  _4 = ActiveValue_33 & DynamicMask_35;
+  if (_4 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 260301862]:
+  # DEBUG BEGIN_STMT
+  _5 = 1 << Position_22;
+  RawReset_36 = _5 | RawReset_13;
+  # DEBUG RawReset => RawReset_36
+
+  <bb 8> [local count: 520603723]:
+  # RawReset_11 = PHI <RawReset_13(6), RawReset_36(7)>
+  # DEBUG RawReset => RawReset_11
+  # DEBUG BEGIN_STMT
+  Position_37 = Position_22 + 1;
+  # DEBUG Position => Position_37
+
+  <bb 9> [local count: 1041207447]:
+  # RawReset_12 = PHI <RawReset_13(5), RawReset_11(8)>
+  # Position_21 = PHI <Position_22(5), Position_37(8)>
+  # DEBUG Position => Position_21
+  # DEBUG RawReset => RawReset_12
+  # DEBUG BEGIN_STMT
+  Index_38 = Index_19 + 1;
+  # DEBUG Index => Index_38
+
+  <bb 10> [local count: 1073741824]:
+  # RawReset_13 = PHI <RawReset_12(9), 0(24)>
+  # Index_19 = PHI <Index_38(9), 0(24)>
+  # Position_22 = PHI <Position_21(9), 0(24)>
+  # DEBUG Position => Position_22
+  # DEBUG Index => Index_19
+  # DEBUG RawReset => RawReset_13
+  # DEBUG BEGIN_STMT
+  if (Index_19 != 32)
+    goto <bb 5>; [96.97%]
+  else
+    goto <bb 11>; [3.03%]
+
+  <bb 11> [local count: 32534377]:
+  # RawReset_47 = PHI <RawReset_13(10)>
+  # DEBUG BEGIN_STMT
+  Power_Ip_MC_RGM_ClearFesResetFlags (RegValue_31);
+
+  <bb 12> [local count: 65068755]:
+  # RawReset_14 = PHI <0(4), RawReset_47(11)>
+  # DEBUG RawReset => RawReset_14
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.34_6 = Power_Ip_pxMC_RGM;
+  _7 ={v} Power_Ip_pxMC_RGM.34_6->DES;
+  RegValue_39 = _7 & 3221700443;
+  # DEBUG RegValue => RegValue_39
+  # DEBUG BEGIN_STMT
+  if (RegValue_39 != 0)
+    goto <bb 13>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 13> [local count: 32534378]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_u32DesResetStatus = RegValue_39;
+
+  <bb 14> [local count: 65068755]:
+  # DEBUG BEGIN_STMT
+  ActiveValue_41 = Power_Ip_u32DesResetStatus;
+  # DEBUG ActiveValue => ActiveValue_41
+  # DEBUG BEGIN_STMT
+  if (ActiveValue_41 != 0)
+    goto <bb 23>; [50.00%]
+  else
+    goto <bb 22>; [50.00%]
+
+  <bb 23> [local count: 32534378]:
+  goto <bb 20>; [100.00%]
+
+  <bb 15> [local count: 1041207436]:
+  # DEBUG BEGIN_STMT
+  DynamicMask_43 = 1 << Index_20;
+  # DEBUG DynamicMask => DynamicMask_43
+  # DEBUG BEGIN_STMT
+  _8 = DynamicMask_43 & 3221700443;
+  if (_8 != 0)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 19>; [50.00%]
+
+  <bb 16> [local count: 520603718]:
+  # DEBUG BEGIN_STMT
+  _9 = ActiveValue_41 & DynamicMask_43;
+  if (_9 != 0)
+    goto <bb 17>; [50.00%]
+  else
+    goto <bb 18>; [50.00%]
+
+  <bb 17> [local count: 260301859]:
+  # DEBUG BEGIN_STMT
+  _10 = 1 << Position_24;
+  RawReset_44 = _10 | RawReset_17;
+  # DEBUG RawReset => RawReset_44
+
+  <bb 18> [local count: 520603718]:
+  # RawReset_15 = PHI <RawReset_17(16), RawReset_44(17)>
+  # DEBUG RawReset => RawReset_15
+  # DEBUG BEGIN_STMT
+  Position_45 = Position_24 + 1;
+  # DEBUG Position => Position_45
+
+  <bb 19> [local count: 1041207436]:
+  # RawReset_16 = PHI <RawReset_17(15), RawReset_15(18)>
+  # Position_23 = PHI <Position_24(15), Position_45(18)>
+  # DEBUG Position => Position_23
+  # DEBUG RawReset => RawReset_16
+  # DEBUG BEGIN_STMT
+  Index_46 = Index_20 + 1;
+  # DEBUG Index => Index_46
+
+  <bb 20> [local count: 1073741814]:
+  # RawReset_17 = PHI <RawReset_16(19), RawReset_14(23)>
+  # Index_20 = PHI <Index_46(19), 0(23)>
+  # Position_24 = PHI <Position_23(19), 16(23)>
+  # DEBUG Position => Position_24
+  # DEBUG Index => Index_20
+  # DEBUG RawReset => RawReset_17
+  # DEBUG BEGIN_STMT
+  if (Index_20 != 32)
+    goto <bb 15>; [96.97%]
+  else
+    goto <bb 21>; [3.03%]
+
+  <bb 21> [local count: 32534377]:
+  # RawReset_29 = PHI <RawReset_17(20)>
+  # DEBUG BEGIN_STMT
+  Power_Ip_MC_RGM_ClearDesResetFlags (RegValue_39);
+
+  <bb 22> [local count: 65068755]:
+  # RawReset_18 = PHI <RawReset_14(14), RawReset_29(21)>
+  # DEBUG RawReset => RawReset_18
+  # DEBUG BEGIN_STMT
+  return RawReset_18;
+
+}
+
+
+Power_Ip_MC_RGM_GetResetReason ()
+{
+  uint32 Position;
+  uint32 ActiveValue;
+  uint32 RegValue;
+  Power_Ip_ResetType ResetReason;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.28_1;
+  long unsigned int _2;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.29_3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG RegValue => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Position = 0;
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.28_1 = Power_Ip_pxMC_RGM;
+  _2 ={v} Power_Ip_pxMC_RGM.28_1->DES;
+  RegValue_13 = _2 & 3221700443;
+  # DEBUG RegValue => RegValue_13
+  # DEBUG BEGIN_STMT
+  if (RegValue_13 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_u32DesResetStatus = RegValue_13;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ActiveValue_15 = Power_Ip_u32DesResetStatus;
+  # DEBUG ActiveValue => ActiveValue_15
+  # DEBUG BEGIN_STMT
+  ResetReason_17 = Power_Ip_MC_RGM_CheckResetReason (ActiveValue_15, 0, &Position);
+  # DEBUG ResetReason => ResetReason_17
+  # DEBUG BEGIN_STMT
+  Power_Ip_MC_RGM_ClearDesResetFlags (RegValue_13);
+  # DEBUG BEGIN_STMT
+  if (RegValue_13 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.29_3 = Power_Ip_pxMC_RGM;
+  _4 ={v} Power_Ip_pxMC_RGM.29_3->FES;
+  RegValue_19 = _4 & 3224633433;
+  # DEBUG RegValue => RegValue_19
+  # DEBUG BEGIN_STMT
+  if (RegValue_19 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_u32FesResetStatus = RegValue_19;
+
+  <bb 7> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  ActiveValue_21 = Power_Ip_u32FesResetStatus;
+  # DEBUG ActiveValue => ActiveValue_21
+  # DEBUG BEGIN_STMT
+  if (ActiveValue_21 != 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 8> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  ResetReason_23 = Power_Ip_MC_RGM_CheckResetReason (ActiveValue_21, 1, &Position);
+  # DEBUG ResetReason => ResetReason_23
+
+  <bb 9> [local count: 536870913]:
+  # ResetReason_5 = PHI <ResetReason_17(7), ResetReason_23(8)>
+  # DEBUG ResetReason => ResetReason_5
+  # DEBUG BEGIN_STMT
+  Power_Ip_MC_RGM_ClearFesResetFlags (RegValue_19);
+
+  <bb 10> [local count: 1073741824]:
+  # ResetReason_6 = PHI <ResetReason_17(4), ResetReason_5(9)>
+  # DEBUG ResetReason => ResetReason_6
+  # DEBUG BEGIN_STMT
+  Position ={v} {CLOBBER};
+  return ResetReason_6;
+
+}
+
+
+Power_Ip_MC_RGM_CheckResetReason (uint32 ActiveValue, uint8 ResetMode, uint32 * PositionPtr)
+{
+  uint32 Position;
+  uint32 DynamicMask;
+  uint32 Index;
+  uint32 NumberOfFlags;
+  uint32 ResetMask;
+  Power_Ip_ResetType ResetReason;
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 46850980]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ResetReason => 26
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG NumberOfFlags => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Position_16 = *PositionPtr_15(D);
+  # DEBUG Position => Position_16
+  # DEBUG BEGIN_STMT
+  if (ResetMode_17(D) == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 23425490]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ResetMask => 3224633433
+
+  <bb 4> [local count: 46850980]:
+  # ResetMask_7 = PHI <3221700443(2), 3224633433(3)>
+  # DEBUG ResetMask => ResetMask_7
+  # DEBUG BEGIN_STMT
+  # DEBUG Index => 0
+  goto <bb 10>; [100.00%]
+
+  <bb 5> [local count: 1041207447]:
+  # DEBUG BEGIN_STMT
+  DynamicMask_18 = 1 << Index_11;
+  # DEBUG DynamicMask => DynamicMask_18
+  # DEBUG BEGIN_STMT
+  _1 = ResetMask_7 & DynamicMask_18;
+  if (_1 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 6> [local count: 520603723]:
+  # DEBUG BEGIN_STMT
+  _2 = DynamicMask_18 & ActiveValue_19(D);
+  if (_2 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 260301862]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ResetReason => Position_13
+  # DEBUG BEGIN_STMT
+  NumberOfFlags_21 = NumberOfFlags_10 + 1;
+  # DEBUG NumberOfFlags => NumberOfFlags_21
+  # DEBUG BEGIN_STMT
+  if (NumberOfFlags_21 > 1)
+    goto <bb 11>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 8> [local count: 506287121]:
+  # ResetReason_3 = PHI <ResetReason_5(6), Position_13(7)>
+  # NumberOfFlags_8 = PHI <NumberOfFlags_10(6), NumberOfFlags_21(7)>
+  # DEBUG NumberOfFlags => NumberOfFlags_8
+  # DEBUG ResetReason => ResetReason_3
+  # DEBUG BEGIN_STMT
+  Position_22 = Position_13 + 1;
+  # DEBUG Position => Position_22
+
+  <bb 9> [local count: 1026890845]:
+  # ResetReason_4 = PHI <ResetReason_5(5), ResetReason_3(8)>
+  # NumberOfFlags_9 = PHI <NumberOfFlags_10(5), NumberOfFlags_8(8)>
+  # Position_12 = PHI <Position_13(5), Position_22(8)>
+  # DEBUG Position => Position_12
+  # DEBUG NumberOfFlags => NumberOfFlags_9
+  # DEBUG ResetReason => ResetReason_4
+  # DEBUG BEGIN_STMT
+  Index_23 = Index_11 + 1;
+  # DEBUG Index => Index_23
+
+  <bb 10> [local count: 1073741824]:
+  # ResetReason_5 = PHI <26(4), ResetReason_4(9)>
+  # NumberOfFlags_10 = PHI <0(4), NumberOfFlags_9(9)>
+  # Index_11 = PHI <0(4), Index_23(9)>
+  # Position_13 = PHI <Position_16(4), Position_12(9)>
+  # DEBUG Position => Position_13
+  # DEBUG Index => Index_11
+  # DEBUG NumberOfFlags => NumberOfFlags_10
+  # DEBUG ResetReason => ResetReason_5
+  # DEBUG BEGIN_STMT
+  if (Index_11 != 32)
+    goto <bb 5>; [96.97%]
+  else
+    goto <bb 11>; [3.03%]
+
+  <bb 11> [local count: 46850980]:
+  # ResetReason_6 = PHI <27(7), ResetReason_5(10)>
+  # Position_20 = PHI <Position_13(7), Position_13(10)>
+  # DEBUG ResetReason => ResetReason_6
+  # DEBUG BEGIN_STMT
+  *PositionPtr_15(D) = Position_20;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ResetReason_6;
+
+}
+
+
+Power_Ip_MC_RGM_DisableResetDomain (const struct Power_Ip_MC_RGM_ModeConfigType * ModeConfigPtr, uint8 DomainIndex)
+{
+  const struct Power_Ip_MC_RGM_DomainConfigType * TempDomainConfigPtr;
+  const struct Power_Ip_MC_RGM_DomainConfigType[4] * _1;
+  int _2;
+  _Bool _3;
+  unsigned char _4;
+  _Bool _5;
+  long unsigned int _6;
+  long unsigned int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TempDomainConfigPtr => 0B
+  # DEBUG BEGIN_STMT
+  _1 = ModeConfigPtr_10(D)->ArrayDomainConfigPtr;
+  _2 = (int) DomainIndex_11(D);
+  TempDomainConfigPtr_12 = &*_1[_2];
+  # DEBUG TempDomainConfigPtr => TempDomainConfigPtr_12
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainUnderMcuControl;
+  if (_3 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainIndex;
+  if (_4 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 4> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  _5 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainPowerUnderMcuControl;
+  if (_5 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 5> [local count: 134217728]:
+  # DEBUG BEGIN_STMT
+  _6 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainRdcRegValue;
+  _7 = _6 & 8;
+  if (_7 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 44291850]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_MC_RGM_AssertDomainReset (_4);
+  # DEBUG BEGIN_STMT
+  Power_Ip_MC_RGM_ConfigureResetDomainController (TempDomainConfigPtr_12);
+
+  <bb 7> [local count: 1073741824]:
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_EnableResetDomain (const struct Power_Ip_MC_RGM_ModeConfigType * ModeConfigPtr, uint8 DomainIndex)
+{
+  const struct Power_Ip_MC_RGM_DomainConfigType * TempDomainConfigPtr;
+  const struct Power_Ip_MC_RGM_DomainConfigType[4] * _1;
+  int _2;
+  _Bool _3;
+  unsigned char _4;
+  _Bool _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned char _8;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TempDomainConfigPtr => 0B
+  # DEBUG BEGIN_STMT
+  _1 = ModeConfigPtr_11(D)->ArrayDomainConfigPtr;
+  _2 = (int) DomainIndex_12(D);
+  TempDomainConfigPtr_13 = &*_1[_2];
+  # DEBUG TempDomainConfigPtr => TempDomainConfigPtr_13
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainUnderMcuControl;
+  if (_3 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainIndex;
+  if (_4 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 4> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  _5 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainPowerUnderMcuControl;
+  if (_5 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 5> [local count: 134217728]:
+  # DEBUG BEGIN_STMT
+  _6 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainRdcRegValue;
+  _7 = _6 & 8;
+  if (_7 == 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 44291850]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_MC_RGM_ConfigureResetDomainController (TempDomainConfigPtr_13);
+  # DEBUG BEGIN_STMT
+  _8 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainIndex;
+  Power_Ip_MC_RGM_ReleaseDomainReset (_8);
+
+  <bb 7> [local count: 1073741824]:
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_CheckModeConfig (const struct Power_Ip_MC_RGM_ModeConfigType * ModeConfigPtr, uint8 DomainIndex)
+{
+  uint8 CoreIndex;
+  uint8 CofbIndex;
+  const struct Power_Ip_MC_RGM_DomainConfigType[4] * _1;
+  int _2;
+  _Bool _3;
+  const struct Power_Ip_MC_RGM_CofbConfigType[<unknown>] * _4;
+  int _5;
+  _Bool _6;
+  const struct Power_Ip_MC_RGM_CofbConfigType * _7;
+  unsigned char _8;
+  unsigned char _9;
+  const struct Power_Ip_MC_RGM_CoreConfigType[<unknown>] * _10;
+  int _11;
+  _Bool _12;
+  const struct Power_Ip_MC_RGM_CoreConfigType * _13;
+  unsigned char _14;
+  unsigned char _15;
+
+  <bb 2> [local count: 236223204]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TempDomainConfigPtr => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = ModeConfigPtr_24(D)->ArrayDomainConfigPtr;
+  _2 = (int) DomainIndex_25(D);
+  # DEBUG D#8 => &*_1[_2]
+  # DEBUG TempDomainConfigPtr => D#8
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainUnderMcuControl;
+  if (_3 != 0)
+    goto <bb 13>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 13> [local count: 118111602]:
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].ArrayDomainCofbConfigPtr;
+  _5 = (int) CofbIndex_16;
+  _6 = *_4[_5].CofbUnderMcuControl;
+  if (_6 != 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 4> [local count: 315357973]:
+  # DEBUG BEGIN_STMT
+  _7 = &*_4[_5];
+  _8 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainIndex;
+  Power_Ip_MC_RGM_CheckConfigureCOFB (_7, _8);
+
+  <bb 5> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  CofbIndex_29 = CofbIndex_16 + 1;
+  # DEBUG CofbIndex => CofbIndex_29
+
+  <bb 6> [local count: 1073741824]:
+  # CofbIndex_16 = PHI <CofbIndex_29(5), 0(13)>
+  # DEBUG CofbIndex => CofbIndex_16
+  # DEBUG BEGIN_STMT
+  _9 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].NumberOfCofbs;
+  if (_9 > CofbIndex_16)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 12>; [11.00%]
+
+  <bb 12> [local count: 118111601]:
+  goto <bb 10>; [100.00%]
+
+  <bb 7> [local count: 955630215]:
+  # DEBUG BEGIN_STMT
+  _10 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].ArrayDomainCoreConfigPtr;
+  _11 = (int) CoreIndex_17;
+  _12 = *_10[_11].CoreUnderMcuControl;
+  if (_12 != 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 8> [local count: 315357971]:
+  # DEBUG BEGIN_STMT
+  _13 = &*_10[_11];
+  _14 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainIndex;
+  Power_Ip_MC_RGM_CheckConfigureCore (_13, _14);
+
+  <bb 9> [local count: 955630215]:
+  # DEBUG BEGIN_STMT
+  CoreIndex_27 = CoreIndex_17 + 1;
+  # DEBUG CoreIndex => CoreIndex_27
+
+  <bb 10> [local count: 1073741813]:
+  # CoreIndex_17 = PHI <CoreIndex_27(9), 0(12)>
+  # DEBUG CoreIndex => CoreIndex_17
+  # DEBUG BEGIN_STMT
+  _15 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].NumberOfCores;
+  if (_15 > CoreIndex_17)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 11> [local count: 236223201]:
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_ModeConfig (const struct Power_Ip_MC_RGM_ModeConfigType * ModeConfigPtr, uint8 DomainIndex)
+{
+  uint8 CoreIndex;
+  uint8 CofbIndex;
+  const struct Power_Ip_MC_RGM_DomainConfigType[4] * _1;
+  int _2;
+  _Bool _3;
+  const struct Power_Ip_MC_RGM_CofbConfigType[<unknown>] * _4;
+  int _5;
+  _Bool _6;
+  const struct Power_Ip_MC_RGM_CofbConfigType * _7;
+  unsigned char _8;
+  unsigned char _9;
+  const struct Power_Ip_MC_RGM_CoreConfigType[<unknown>] * _10;
+  int _11;
+  _Bool _12;
+  const struct Power_Ip_MC_RGM_CoreConfigType * _13;
+  unsigned char _14;
+  unsigned char _15;
+
+  <bb 2> [local count: 236223204]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TempDomainConfigPtr => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = ModeConfigPtr_24(D)->ArrayDomainConfigPtr;
+  _2 = (int) DomainIndex_25(D);
+  # DEBUG D#7 => &*_1[_2]
+  # DEBUG TempDomainConfigPtr => D#7
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainUnderMcuControl;
+  if (_3 != 0)
+    goto <bb 13>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 13> [local count: 118111602]:
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].ArrayDomainCofbConfigPtr;
+  _5 = (int) CofbIndex_16;
+  _6 = *_4[_5].CofbUnderMcuControl;
+  if (_6 != 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 4> [local count: 315357973]:
+  # DEBUG BEGIN_STMT
+  _7 = &*_4[_5];
+  _8 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainIndex;
+  Power_Ip_MC_RGM_ConfigureCOFB (_7, _8);
+
+  <bb 5> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  CofbIndex_29 = CofbIndex_16 + 1;
+  # DEBUG CofbIndex => CofbIndex_29
+
+  <bb 6> [local count: 1073741824]:
+  # CofbIndex_16 = PHI <CofbIndex_29(5), 0(13)>
+  # DEBUG CofbIndex => CofbIndex_16
+  # DEBUG BEGIN_STMT
+  _9 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].NumberOfCofbs;
+  if (_9 > CofbIndex_16)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 12>; [11.00%]
+
+  <bb 12> [local count: 118111601]:
+  goto <bb 10>; [100.00%]
+
+  <bb 7> [local count: 955630215]:
+  # DEBUG BEGIN_STMT
+  _10 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].ArrayDomainCoreConfigPtr;
+  _11 = (int) CoreIndex_17;
+  _12 = *_10[_11].CoreUnderMcuControl;
+  if (_12 != 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 8> [local count: 315357971]:
+  # DEBUG BEGIN_STMT
+  _13 = &*_10[_11];
+  _14 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].DomainIndex;
+  Power_Ip_MC_RGM_ConfigureCore (_13, _14);
+
+  <bb 9> [local count: 955630215]:
+  # DEBUG BEGIN_STMT
+  CoreIndex_27 = CoreIndex_17 + 1;
+  # DEBUG CoreIndex => CoreIndex_27
+
+  <bb 10> [local count: 1073741813]:
+  # CoreIndex_17 = PHI <CoreIndex_27(9), 0(12)>
+  # DEBUG CoreIndex => CoreIndex_17
+  # DEBUG BEGIN_STMT
+  _15 = MEM[(const struct Power_Ip_MC_RGM_DomainConfigType *)_1][_2].NumberOfCores;
+  if (_15 > CoreIndex_17)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 11> [local count: 236223201]:
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_ResetInit (const struct Power_Ip_MC_RGM_ConfigType * ConfigPtr)
+{
+  uint32 DesResetReason;
+  uint32 FesResetReason;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.0_1;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.1_2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG FesResetReason => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG DesResetReason => 0
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.0_1 = Power_Ip_pxMC_RGM;
+  FesResetReason_11 ={v} Power_Ip_pxMC_RGM.0_1->FES;
+  # DEBUG FesResetReason => FesResetReason_11
+  # DEBUG BEGIN_STMT
+  if (FesResetReason_11 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_u32FesResetStatus = FesResetReason_11;
+  # DEBUG BEGIN_STMT
+  Power_Ip_MC_RGM_ClearFesResetFlags (FesResetReason_11);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.1_2 = Power_Ip_pxMC_RGM;
+  _3 = ConfigPtr_14(D)->FuncResetOpt;
+  Power_Ip_pxMC_RGM.1_2->FERD ={v} _3;
+  # DEBUG BEGIN_STMT
+  DesResetReason_16 ={v} Power_Ip_pxMC_RGM.1_2->DES;
+  # DEBUG DesResetReason => DesResetReason_16
+  # DEBUG BEGIN_STMT
+  if (DesResetReason_16 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _4 = ConfigPtr_14(D)->FesThresholdReset;
+  Power_Ip_pxMC_RGM.1_2->FRET ={v} _4;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _5 = DesResetReason_16 & 1;
+  if (_5 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _6 = ConfigPtr_14(D)->DesThresholdReset;
+  Power_Ip_pxMC_RGM.1_2->DRET ={v} _6;
+
+  <bb 8> [local count: 1073741824]:
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_CheckConfigureCore (const struct Power_Ip_MC_RGM_CoreConfigType * CoreConfigPtr, uint8 DomainIndex)
+{
+  boolean TimeoutOccurred;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  uint32 CoreStatus;
+  uint32 CoreToUpdate;
+  uint32 CoreConfig;
+  long unsigned int TimeoutTicks.14_1;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.15_2;
+  int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  CoreConfig_10 = CoreConfigPtr_9(D)->CorePrstRegValue;
+  # DEBUG CoreConfig => CoreConfig_10
+  # DEBUG BEGIN_STMT
+  CoreToUpdate_11 = CoreConfigPtr_9(D)->CoreBlocksToUpdateMask;
+  # DEBUG CoreToUpdate => CoreToUpdate_11
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  Power_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.14_1 = TimeoutTicks;
+  TimeoutOccurred_15 = Power_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.14_1);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_15
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.15_2 = Power_Ip_pxMC_RGM;
+  _3 = (int) DomainIndex_16(D);
+  CoreStatus_17 ={v} Power_Ip_pxMC_RGM.15_2->PSTAT[_3].PSTAT_COFB[0];
+  # DEBUG CoreStatus => CoreStatus_17
+  # DEBUG BEGIN_STMT
+  _4 = CoreConfig_10 ^ CoreStatus_17;
+  _5 = _4 & CoreToUpdate_11;
+  if (_5 != 0)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 5>; [5.50%]
+
+  <bb 4> [local count: 1014686025]:
+  if (TimeoutOccurred_15 != 0)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 8> [local count: 958878293]:
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 114863532]:
+  # TimeoutOccurred_12 = PHI <TimeoutOccurred_15(3), TimeoutOccurred_15(4)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_12 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 37904965]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_ReportPowerErrors (0, 255);
+
+  <bb 7> [local count: 114863532]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_ConfigureCore (const struct Power_Ip_MC_RGM_CoreConfigType * CoreConfigPtr, uint8 DomainIndex)
+{
+  uint32 TempValue;
+  uint32 CoreToUpdate;
+  uint32 CoreConfig;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.10_1;
+  int _2;
+  long unsigned int _7;
+  long unsigned int _12;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  CoreConfig_5 = CoreConfigPtr_4(D)->CorePrstRegValue;
+  # DEBUG CoreConfig => CoreConfig_5
+  # DEBUG BEGIN_STMT
+  CoreToUpdate_6 = CoreConfigPtr_4(D)->CoreBlocksToUpdateMask;
+  # DEBUG CoreToUpdate => CoreToUpdate_6
+  # DEBUG BEGIN_STMT
+  # DEBUG TempValue => 0
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.10_1 = Power_Ip_pxMC_RGM;
+  _2 = (int) DomainIndex_8(D);
+  TempValue_9 ={v} Power_Ip_pxMC_RGM.10_1->PRST[_2].PRST_COFB[0];
+  # DEBUG TempValue => TempValue_9
+  # DEBUG BEGIN_STMT
+  # DEBUG D#2 => ~CoreToUpdate_6
+  # DEBUG TempValue => D#2 & TempValue_9
+  # DEBUG BEGIN_STMT
+  _7 = CoreConfig_5 ^ TempValue_9;
+  _12 = CoreToUpdate_6 & _7;
+  TempValue_10 = TempValue_9 ^ _12;
+  # DEBUG TempValue => TempValue_10
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.10_1->PRST[_2].PRST_COFB[0] ={v} TempValue_10;
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_CheckConfigureCOFB (const struct Power_Ip_MC_RGM_CofbConfigType * CofbConfigPtr, uint8 DomainIndex)
+{
+  boolean TimeoutOccurred;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  uint32 PeripheralsRstStatus;
+  uint8 CofbIndex;
+  uint32 PeripheralsRstToUpdate;
+  uint32 PeripheralsRstConfig;
+  long unsigned int TimeoutTicks.12_1;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.13_2;
+  int _3;
+  int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  PeripheralsRstConfig_11 = CofbConfigPtr_10(D)->CofbRstRegValue;
+  # DEBUG PeripheralsRstConfig => PeripheralsRstConfig_11
+  # DEBUG BEGIN_STMT
+  PeripheralsRstToUpdate_12 = CofbConfigPtr_10(D)->CofbBlocksToUpdateMask;
+  # DEBUG PeripheralsRstToUpdate => PeripheralsRstToUpdate_12
+  # DEBUG BEGIN_STMT
+  CofbIndex_13 = CofbConfigPtr_10(D)->CofbIndex;
+  # DEBUG CofbIndex => CofbIndex_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  Power_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.12_1 = TimeoutTicks;
+  TimeoutOccurred_17 = Power_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.12_1);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_17
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.13_2 = Power_Ip_pxMC_RGM;
+  _3 = (int) DomainIndex_18(D);
+  _4 = (int) CofbIndex_13;
+  PeripheralsRstStatus_19 ={v} Power_Ip_pxMC_RGM.13_2->PRST[_3].PRST_COFB[_4];
+  # DEBUG PeripheralsRstStatus => PeripheralsRstStatus_19
+  # DEBUG BEGIN_STMT
+  _5 = PeripheralsRstConfig_11 ^ PeripheralsRstStatus_19;
+  _6 = _5 & PeripheralsRstToUpdate_12;
+  if (_6 != 0)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 5>; [5.50%]
+
+  <bb 4> [local count: 1014686025]:
+  if (TimeoutOccurred_17 != 0)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 8> [local count: 958878293]:
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 114863532]:
+  # TimeoutOccurred_14 = PHI <TimeoutOccurred_17(3), TimeoutOccurred_17(4)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_14 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 37904965]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_ReportPowerErrors (0, 255);
+
+  <bb 7> [local count: 114863532]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_ConfigureCOFB (const struct Power_Ip_MC_RGM_CofbConfigType * CofbConfigPtr, uint8 DomainIndex)
+{
+  uint32 TempValue;
+  uint8 CofbIndex;
+  uint32 PeripheralsRstToUpdate;
+  uint32 PeripheralsRstConfig;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.8_1;
+  int _2;
+  int _3;
+  long unsigned int _9;
+  long unsigned int _14;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  PeripheralsRstConfig_6 = CofbConfigPtr_5(D)->CofbRstRegValue;
+  # DEBUG PeripheralsRstConfig => PeripheralsRstConfig_6
+  # DEBUG BEGIN_STMT
+  PeripheralsRstToUpdate_7 = CofbConfigPtr_5(D)->CofbBlocksToUpdateMask;
+  # DEBUG PeripheralsRstToUpdate => PeripheralsRstToUpdate_7
+  # DEBUG BEGIN_STMT
+  CofbIndex_8 = CofbConfigPtr_5(D)->CofbIndex;
+  # DEBUG CofbIndex => CofbIndex_8
+  # DEBUG BEGIN_STMT
+  # DEBUG TempValue => 0
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.8_1 = Power_Ip_pxMC_RGM;
+  _2 = (int) DomainIndex_10(D);
+  _3 = (int) CofbIndex_8;
+  TempValue_11 ={v} Power_Ip_pxMC_RGM.8_1->PRST[_2].PRST_COFB[_3];
+  # DEBUG TempValue => TempValue_11
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => ~PeripheralsRstToUpdate_7
+  # DEBUG TempValue => D#1 & TempValue_11
+  # DEBUG BEGIN_STMT
+  _9 = PeripheralsRstConfig_6 ^ TempValue_11;
+  _14 = PeripheralsRstToUpdate_7 & _9;
+  TempValue_12 = TempValue_11 ^ _14;
+  # DEBUG TempValue => TempValue_12
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.8_1->PRST[_2].PRST_COFB[_3] ={v} TempValue_12;
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_ConfigureResetDomainController (const struct Power_Ip_MC_RGM_DomainConfigType * ResetDomainConfigPtr)
+{
+  uint8 DomainIndex;
+  boolean TimeoutOccurred;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  uint32 ResetDomainStatus;
+  uint32 ResetDomainConfig;
+  uint32 TempValue;
+  struct Power_Ip_RDC_Type * Power_Ip_pxRdc.16_1;
+  int _2;
+  long unsigned int TimeoutTicks.20_4;
+  struct Power_Ip_RDC_Type * Power_Ip_pxRdc.21_5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  struct Power_Ip_RDC_Type * Power_Ip_pxRdc.22_10;
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  # DEBUG TempValue => 0
+  # DEBUG BEGIN_STMT
+  ResetDomainConfig_15 = ResetDomainConfigPtr_14(D)->DomainRdcRegValue;
+  # DEBUG ResetDomainConfig => ResetDomainConfig_15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  DomainIndex_16 = ResetDomainConfigPtr_14(D)->DomainIndex;
+  # DEBUG DomainIndex => DomainIndex_16
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxRdc.16_1 = Power_Ip_pxRdc;
+  _2 = (int) DomainIndex_16;
+  TempValue_17 ={v} Power_Ip_pxRdc.16_1->RDC_CTRL_REG[_2];
+  # DEBUG TempValue => TempValue_17
+  # DEBUG BEGIN_STMT
+  TempValue_18 = TempValue_17 & 2147483647;
+  # DEBUG TempValue => TempValue_18
+  # DEBUG BEGIN_STMT
+  TempValue_19 = TempValue_18 | 2147483648;
+  # DEBUG TempValue => TempValue_19
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxRdc.16_1->RDC_CTRL_REG[_2] ={v} TempValue_19;
+  # DEBUG BEGIN_STMT
+  TempValue_21 ={v} Power_Ip_pxRdc.16_1->RDC_CTRL_REG[_2];
+  # DEBUG TempValue => TempValue_21
+  # DEBUG BEGIN_STMT
+  TempValue_22 = TempValue_21 & 4294967287;
+  # DEBUG TempValue => TempValue_22
+  # DEBUG BEGIN_STMT
+  TempValue_23 = ResetDomainConfig_15 | TempValue_22;
+  # DEBUG TempValue => TempValue_23
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxRdc.16_1->RDC_CTRL_REG[_2] ={v} TempValue_23;
+  # DEBUG BEGIN_STMT
+  Power_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.20_4 = TimeoutTicks;
+  TimeoutOccurred_27 = Power_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.20_4);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_27
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxRdc.21_5 = Power_Ip_pxRdc;
+  ResetDomainStatus_28 ={v} Power_Ip_pxRdc.21_5->RDC_STAT_REG[_2];
+  # DEBUG ResetDomainStatus => ResetDomainStatus_28
+  # DEBUG BEGIN_STMT
+  _6 = ResetDomainStatus_28 >> 4;
+  _7 = ResetDomainConfig_15 >> 3;
+  _8 = _6 ^ _7;
+  _9 = _8 & 1;
+  if (_9 != 0)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 5>; [5.50%]
+
+  <bb 4> [local count: 1014686025]:
+  if (TimeoutOccurred_27 != 0)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 8> [local count: 958878293]:
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 114863532]:
+  # TimeoutOccurred_3 = PHI <TimeoutOccurred_27(3), TimeoutOccurred_27(4)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_3 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 37904965]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_ReportPowerErrors (0, 255);
+
+  <bb 7> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxRdc.22_10 = Power_Ip_pxRdc;
+  TempValue_30 ={v} Power_Ip_pxRdc.22_10->RDC_CTRL_REG[_2];
+  # DEBUG TempValue => TempValue_30
+  # DEBUG BEGIN_STMT
+  TempValue_31 = TempValue_30 & 2147483647;
+  # DEBUG TempValue => TempValue_31
+  # DEBUG BEGIN_STMT
+  # DEBUG TempValue => TempValue_31
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxRdc.22_10->RDC_CTRL_REG[_2] ={v} TempValue_31;
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_AssertDomainReset (uint8 DomainIndex)
+{
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.26_1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.26_1 = Power_Ip_pxMC_RGM;
+  _2 = (int) DomainIndex_6(D);
+  _3 ={v} Power_Ip_pxMC_RGM.26_1->PRST[_2].PRST_COFB[0];
+  _4 = _3 | 1;
+  Power_Ip_pxMC_RGM.26_1->PRST[_2].PRST_COFB[0] ={v} _4;
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_ReleaseDomainReset (uint8 DomainIndex)
+{
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.24_1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.24_1 = Power_Ip_pxMC_RGM;
+  _2 = (int) DomainIndex_6(D);
+  _3 ={v} Power_Ip_pxMC_RGM.24_1->PRST[_2].PRST_COFB[0];
+  _4 = _3 & 4294967294;
+  Power_Ip_pxMC_RGM.24_1->PRST[_2].PRST_COFB[0] ={v} _4;
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_ClearDesResetFlags (uint32 RegValue)
+{
+  uint32 RegValueTemp;
+  boolean TimeoutOccurred;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  long unsigned int TimeoutTicks.30_1;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.31_2;
+  long unsigned int _4;
+
+  <bb 2> [local count: 348071309]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG RegValueTemp => RegValue_9(D)
+  # DEBUG BEGIN_STMT
+  if (RegValue_9(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 3> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> [local count: 1073741824]:
+  # RegValueTemp_6 = PHI <RegValue_9(D)(3), RegValueTemp_15(9)>
+  # DEBUG RegValueTemp => RegValueTemp_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.30_1 = TimeoutTicks;
+  TimeoutOccurred_13 = Power_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.30_1);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_13
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.31_2 = Power_Ip_pxMC_RGM;
+  Power_Ip_pxMC_RGM.31_2->DES ={v} RegValueTemp_6;
+  # DEBUG BEGIN_STMT
+  _4 ={v} Power_Ip_pxMC_RGM.31_2->DES;
+  RegValueTemp_15 = _4 & 3221700443;
+  # DEBUG RegValueTemp => RegValueTemp_15
+  # DEBUG BEGIN_STMT
+  if (RegValueTemp_15 != 0)
+    goto <bb 5>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 5> [local count: 1014686025]:
+  if (TimeoutOccurred_13 != 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 9>; [94.50%]
+
+  <bb 9> [local count: 958878294]:
+  goto <bb 4>; [100.00%]
+
+  <bb 6> [local count: 114863532]:
+  # TimeoutOccurred_3 = PHI <TimeoutOccurred_13(4), TimeoutOccurred_13(5)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_3 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 7> [local count: 37904965]:
+  # DEBUG D#5 => RegValue_9(D)
+  Power_Ip_MC_RGM_ClearDesResetFlags.part.0 ();
+
+  <bb 8> [local count: 348071309]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+
+Power_Ip_MC_RGM_ClearFesResetFlags (uint32 RegValue)
+{
+  uint32 RegValueTemp;
+  boolean TimeoutOccurred;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  long unsigned int TimeoutTicks.5_1;
+  struct Power_Ip_MC_RGM_Type * Power_Ip_pxMC_RGM.6_2;
+  long unsigned int _4;
+
+  <bb 2> [local count: 348071309]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG TimeoutOccurred => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG RegValueTemp => RegValue_9(D)
+  # DEBUG BEGIN_STMT
+  if (RegValue_9(D) != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 3> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  Power_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> [local count: 1073741824]:
+  # RegValueTemp_6 = PHI <RegValue_9(D)(3), RegValueTemp_15(9)>
+  # DEBUG RegValueTemp => RegValueTemp_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.5_1 = TimeoutTicks;
+  TimeoutOccurred_13 = Power_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.5_1);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_13
+  # DEBUG BEGIN_STMT
+  Power_Ip_pxMC_RGM.6_2 = Power_Ip_pxMC_RGM;
+  Power_Ip_pxMC_RGM.6_2->FES ={v} RegValueTemp_6;
+  # DEBUG BEGIN_STMT
+  _4 ={v} Power_Ip_pxMC_RGM.6_2->FES;
+  RegValueTemp_15 = _4 & 3224633433;
+  # DEBUG RegValueTemp => RegValueTemp_15
+  # DEBUG BEGIN_STMT
+  if (RegValueTemp_15 != 0)
+    goto <bb 5>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 5> [local count: 1014686025]:
+  if (TimeoutOccurred_13 != 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 9>; [94.50%]
+
+  <bb 9> [local count: 958878294]:
+  goto <bb 4>; [100.00%]
+
+  <bb 6> [local count: 114863532]:
+  # TimeoutOccurred_3 = PHI <TimeoutOccurred_13(4), TimeoutOccurred_13(5)>
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_3 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 7> [local count: 37904965]:
+  # DEBUG D#3 => RegValue_9(D)
+  Power_Ip_MC_RGM_ClearFesResetFlags.part.0 ();
+
+  <bb 8> [local count: 348071309]:
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+

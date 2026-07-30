@@ -1,0 +1,274 @@
+
+Analyzing function: EthSwt_EthTxFinishedIndication/5
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EthSwt_EthTxFinishedIndication
+
+IPA function summary for EthSwt_EthTxFinishedIndication/5 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: EthSwt_EthTxProcessFrame/4
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EthSwt_EthTxProcessFrame
+
+IPA function summary for EthSwt_EthTxProcessFrame/4 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: EthSwt_EthTxAdaptBufferLength/3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EthSwt_EthTxAdaptBufferLength
+
+IPA function summary for EthSwt_EthTxAdaptBufferLength/3 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: EthSwt_EthTxPrepareFrame/2
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EthSwt_EthTxPrepareFrame
+
+IPA function summary for EthSwt_EthTxPrepareFrame/2 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: EthSwt_EthRxFinishedIndication/1
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EthSwt_EthRxFinishedIndication
+
+IPA function summary for EthSwt_EthRxFinishedIndication/1 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: EthSwt_EthRxProcessFrame/0
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EthSwt_EthRxProcessFrame
+
+IPA function summary for EthSwt_EthRxProcessFrame/0 inlinable
+  global time:     3.000000
+  self size:       4
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.500000, time:0.500000
+    size:3.500000, time:2.500000,  executed if:(not inlined)
+  calls:
+
+Symbol table:
+
+EthSwt_EthTxPrepareFrame.constprop.0/6 (EthSwt_EthTxPrepareFrame.constprop) @06e6d7e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Clone of EthSwt_EthTxPrepareFrame/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local icf_merged optimize_size
+  Called by: EthSwt_EthTxProcessFrame/4 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthSwt_EthTxFinishedIndication/5 (EthSwt_EthTxFinishedIndication) @06e237e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthSwt_EthRxFinishedIndication/1 (1073741824 (estimated locally),1.00 per call) 
+EthSwt_EthTxProcessFrame/4 (EthSwt_EthTxProcessFrame) @06e23540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthSwt_EthTxPrepareFrame.constprop/6 (1073741824 (estimated locally),1.00 per call) 
+EthSwt_EthTxAdaptBufferLength/3 (EthSwt_EthTxAdaptBufferLength) @06e232a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthTxPrepareFrame/2 (EthSwt_EthTxPrepareFrame) @06e23000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthRxFinishedIndication/1 (EthSwt_EthRxFinishedIndication) @06e20b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: EthSwt_EthTxFinishedIndication/5 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthSwt_EthRxProcessFrame/0 (EthSwt_EthRxProcessFrame) @06e20d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthTxFinishedIndication (uint8 CtrlIdx, Eth_BufIdxType BufIdx)
+{
+  Std_ReturnType retval.6;
+
+  <bb 2> [local count: 1073741824]:
+  retval.6_3 = EthSwt_EthRxFinishedIndication (CtrlIdx_1(D), BufIdx_2(D)); [tail call]
+  return retval.6_3;
+
+}
+
+
+EthSwt_EthTxProcessFrame (uint8 CtrlIdx, Eth_BufIdxType BufIdx, uint8 * * DataPtr, uint16 * LengthPtr)
+{
+  Std_ReturnType retval.7;
+
+  <bb 2> [local count: 1073741824]:
+  retval.7_5 = EthSwt_EthTxPrepareFrame (CtrlIdx_1(D), BufIdx_2(D), DataPtr_3(D), LengthPtr_4(D)); [tail call]
+  return retval.7_5;
+
+}
+
+
+EthSwt_EthTxAdaptBufferLength (uint16 * LengthPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthSwt_EthTxPrepareFrame (uint8 CtrlIdx, Eth_BufIdxType BufIdx, uint8 * * DataPtr, uint16 * LengthPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+EthSwt_EthRxFinishedIndication (uint8 CtrlIdx, Eth_BufIdxType BufIdx)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+EthSwt_EthRxProcessFrame (uint8 CtrlIdx, Eth_BufIdxType BufIdx, uint8 * * DataPtr, uint16 * LengthPtr, boolean * IsMgmtFrameOnlyPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *IsMgmtFrameOnlyPtr_2(D) = 0;
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+

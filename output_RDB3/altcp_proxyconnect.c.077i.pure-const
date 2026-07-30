@@ -1,0 +1,3640 @@
+
+
+ local analysis of altcp_proxyconnect_set_poll.part.0
+   scanning: _2 = conn_1(D)->inner_conn;
+    Indirect ref read is not const
+  scanning: altcp_poll (_2, altcp_proxyconnect_lower_poll, interval_3(D));
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of altcp_proxyconnect_lower_connected.part.0
+   scanning: if (err_1(D) != 0)
+  scanning: _3 = MEM[(struct altcp_pcb *)arg_2(D)].connected;
+    Indirect ref read is not const
+  scanning: if (_3 != 0B)
+  scanning: _4 = MEM[(struct altcp_pcb *)arg_2(D)].arg;
+    Indirect ref read is not const
+  scanning: _5 = _3 (_4, arg_2(D), err_1(D));
+  scanning: if (_5 == -13)
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: _6 = altcp_proxyconnect_send_request (arg_2(D));
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: return _7;
+Function is locally pure.
+
+
+ local analysis of altcp_proxyconnect_lower_recv.part.0
+   scanning: state_2 = MEM[(struct altcp_pcb *)arg_1(D)].state;
+    Indirect ref read is not const
+  scanning: _3 = MEM[(struct altcp_pcb *)arg_1(D)].inner_conn;
+    Indirect ref read is not const
+  scanning: if (_3 != inner_conn_4(D))
+  scanning: __asm__ __volatile__("BKPT #0
+	");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: if (state_2 == 0B)
+  scanning: if (p_5(D) != 0B)
+  scanning: pbuf_free (p_5(D));
+  scanning: altcp_close (inner_conn_4(D));
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: _6 = state_2->flags;
+    Indirect ref read is not const
+  scanning: _7 = _6 & 2;
+  scanning: if (_7 != 0)
+  scanning: _8 = MEM[(struct altcp_pcb *)arg_1(D)].recv;
+    Indirect ref read is not const
+  scanning: if (_8 != 0B)
+  scanning: _9 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+    Indirect ref read is not const
+  scanning: _10 = _8 (_9, arg_1(D), p_5(D), 0);
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: pbuf_free (p_5(D));
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: if (p_5(D) == 0B)
+  scanning: _11 = altcp_close (arg_1(D));
+  scanning: if (_11 != 0)
+  scanning: altcp_abort (arg_1(D));
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: idx_12 = pbuf_memfind (p_5(D), "\r\n\r\n", 4, 0);
+  scanning: _13 = p_5(D)->tot_len;
+    Indirect ref read is not const
+  scanning: altcp_recved (inner_conn_4(D), _13);
+  scanning: pbuf_free (p_5(D));
+  scanning: if (idx_12 != 65535)
+  scanning: _14 = state_2->flags;
+    Indirect ref read is not const
+  scanning: _15 = _14 | 2;
+  scanning: state_2->flags = _15;
+    Indirect ref write is not const/pure
+  scanning: _16 = MEM[(struct altcp_pcb *)arg_1(D)].connected;
+    Indirect ref read is not const
+  scanning: if (_16 != 0B)
+  scanning: _17 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+    Indirect ref read is not const
+  scanning: _18 = _16 (_17, arg_1(D), 0);
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: return _19;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of altcp_proxyconnect_lower_poll.part.0
+   scanning: _2 = MEM[(struct altcp_pcb *)arg_1(D)].poll;
+    Indirect ref read is not const
+  scanning: if (_2 != 0B)
+  scanning: _3 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+    Indirect ref read is not const
+  scanning: _4 = _2 (_3, arg_1(D));
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: return _5;
+Function is locally pure.
+
+
+ local analysis of altcp_proxyconnect_lower_sent.part.0
+   scanning: _2 = MEM[(struct altcp_pcb *)arg_1(D)].sent;
+    Indirect ref read is not const
+  scanning: if (_2 != 0B)
+  scanning: _3 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+    Indirect ref read is not const
+  scanning: _5 = _2 (_3, arg_1(D), len_4(D));
+  scanning: // predicted unlikely by early return (on trees) predictor.
+  scanning: return _6;
+Function is locally pure.
+
+
+ local analysis of altcp_proxyconnect_dealloc
+   scanning: if (conn_2(D) != 0B)
+  scanning: state_4 = conn_2(D)->state;
+    Indirect ref read is not const
+  scanning: if (state_4 != 0B)
+  scanning: altcp_proxyconnect_state_free (state_4);
+  scanning: conn_2(D)->state = 0B;
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of altcp_proxyconnect_write
+   scanning: if (conn_5(D) == 0B)
+  scanning: state_7 = conn_5(D)->state;
+    Indirect ref read is not const
+  scanning: if (state_7 == 0B)
+  scanning: _1 = state_7->flags;
+    Indirect ref read is not const
+  scanning: _13 = _1 & 2;
+  scanning: if (_13 == 0)
+  scanning: _2 = conn_5(D)->inner_conn;
+    Indirect ref read is not const
+  scanning: _12 = altcp_write (_2, dataptr_8(D), len_9(D), apiflags_10(D));
+  scanning: return _3;
+Function is locally pure.
+
+
+ local analysis of altcp_proxyconnect_close
+   scanning: if (conn_5(D) == 0B)
+  scanning: _1 = conn_5(D)->inner_conn;
+    Indirect ref read is not const
+  scanning: if (_1 != 0B)
+  scanning: err_8 = altcp_close (_1);
+  scanning: if (err_8 != 0)
+  scanning: altcp_free (conn_5(D));
+  scanning: return _2;
+Function is locally pure.
+
+
+ local analysis of altcp_proxyconnect_abort
+   scanning: if (conn_4(D) != 0B)
+  scanning: _1 = conn_4(D)->inner_conn;
+    Indirect ref read is not const
+  scanning: if (_1 != 0B)
+  scanning: altcp_abort (_1);
+  scanning: altcp_free (conn_4(D));
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of altcp_proxyconnect_listen
+   scanning: return 0B;
+Function is locally const.
+
+
+ local analysis of altcp_proxyconnect_connect
+   scanning: if (conn_10(D) == 0B)
+  scanning: if (ipaddr_11(D) == 0B)
+  scanning: state_13 = conn_10(D)->state;
+    Indirect ref read is not const
+  scanning: if (state_13 == 0B)
+  scanning: _1 = state_13->flags;
+    Indirect ref read is not const
+  scanning: _22 = _1 & 1;
+  scanning: if (_22 != 0)
+  scanning: _2 = _1 | 1;
+  scanning: state_13->flags = _2;
+    Indirect ref write is not const/pure
+  scanning: conn_10(D)->connected = connected_15(D);
+    Indirect ref write is not const/pure
+  scanning: _3 = ipaddr_11(D)->addr;
+    Indirect ref read is not const
+  scanning: state_13->outer_addr.addr = _3;
+    Indirect ref write is not const/pure
+  scanning: state_13->outer_port = port_18(D);
+    Indirect ref write is not const/pure
+  scanning: _4 = conn_10(D)->inner_conn;
+    Indirect ref read is not const
+  scanning: _5 = state_13->conf;
+    Indirect ref read is not const
+  scanning: _6 = &_5->proxy_addr;
+  scanning: _7 = _5->proxy_port;
+    Indirect ref read is not const
+  scanning: _21 = altcp_connect (_4, _6, _7, altcp_proxyconnect_lower_connected);
+  scanning: return _8;
+
+
+ local analysis of altcp_proxyconnect_recved
+   scanning: if (conn_4(D) == 0B)
+  scanning: state_6 = conn_4(D)->state;
+    Indirect ref read is not const
+  scanning: if (state_6 == 0B)
+  scanning: _1 = state_6->flags;
+    Indirect ref read is not const
+  scanning: _9 = _1 & 2;
+  scanning: if (_9 == 0)
+  scanning: _2 = conn_4(D)->inner_conn;
+    Indirect ref read is not const
+  scanning: altcp_recved (_2, len_7(D));
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of altcp_proxyconnect_set_poll
+   scanning: if (conn_1(D) != 0B)
+  scanning: altcp_proxyconnect_set_poll.part.0 (conn_1(D), interval_3(D));
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of altcp_proxyconnect_alloc
+   scanning: _5 = altcp_proxyconnect_new_tcp (arg_2(D), ip_type_3(D));
+  scanning: return _5;
+Function is locally const.
+
+
+ local analysis of altcp_proxyconnect_new_tcp
+   scanning: inner_pcb_6 = altcp_tcp_new_ip_type (ip_type_4(D));
+  scanning: if (inner_pcb_6 == 0B)
+  scanning: ret_9 = altcp_proxyconnect_new (config_7(D), inner_pcb_6);
+  scanning: if (ret_9 == 0B)
+  scanning: altcp_close (inner_pcb_6);
+  scanning: return _1;
+Function is locally const.
+
+
+ local analysis of altcp_proxyconnect_new
+   scanning: if (inner_pcb_4(D) == 0B)
+  scanning: ret_7 = altcp_alloc ();
+  scanning: if (ret_7 != 0B)
+  scanning: _1 = altcp_proxyconnect_setup (config_8(D), ret_7, inner_pcb_4(D));
+  scanning: if (_1 != 0)
+  scanning: altcp_free (ret_7);
+  scanning: return _2;
+Function is locally const.
+
+
+ local analysis of altcp_proxyconnect_setup
+   scanning: if (config_4(D) == 0B)
+  scanning: if (conn_5(D) == inner_conn_6(D))
+  scanning: __asm__ __volatile__("BKPT #0
+	");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: state_9 = altcp_proxyconnect_state_alloc ();
+  scanning: if (state_9 == 0B)
+  scanning: state_9->flags = 0;
+    Indirect ref write is not const/pure
+  scanning: state_9->conf = config_4(D);
+    Indirect ref write is not const/pure
+  scanning: altcp_proxyconnect_setup_callbacks (conn_5(D), inner_conn_6(D));
+  scanning: conn_5(D)->inner_conn = inner_conn_6(D);
+    Indirect ref write is not const/pure
+  scanning: conn_5(D)->fns = &altcp_proxyconnect_functions;
+    Indirect ref write is not const/pure
+  scanning: conn_5(D)->state = state_9;
+    Indirect ref write is not const/pure
+  scanning: return _1;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of altcp_proxyconnect_setup_callbacks
+   scanning: altcp_arg (inner_conn_2(D), conn_3(D));
+  scanning: altcp_recv (inner_conn_2(D), altcp_proxyconnect_lower_recv);
+  scanning: altcp_sent (inner_conn_2(D), altcp_proxyconnect_lower_sent);
+  scanning: altcp_err (inner_conn_2(D), altcp_proxyconnect_lower_err);
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of altcp_proxyconnect_lower_err
+   scanning: if (arg_5(D) != 0B)
+  scanning: MEM[(struct altcp_pcb *)arg_5(D)].inner_conn = 0B;
+    Indirect ref write is not const/pure
+  scanning: _1 = MEM[(struct altcp_pcb *)arg_5(D)].err;
+    Indirect ref read is not const
+  scanning: if (_1 != 0B)
+  scanning: _2 = MEM[(struct altcp_pcb *)arg_5(D)].arg;
+    Indirect ref read is not const
+  scanning: _1 (_2, err_8(D));
+  scanning: altcp_free (arg_5(D));
+  scanning: return;
+
+
+ local analysis of altcp_proxyconnect_lower_poll
+   scanning: if (arg_5(D) != 0B)
+  scanning: _1 = MEM[(struct altcp_pcb *)arg_5(D)].inner_conn;
+    Indirect ref read is not const
+  scanning: if (_1 != inner_conn_8(D))
+  scanning: __asm__ __volatile__("BKPT #0
+	");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: _2 = altcp_proxyconnect_lower_poll.part.0 (arg_5(D));
+  scanning: return _3;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of altcp_proxyconnect_lower_sent
+   scanning: if (arg_8(D) != 0B)
+  scanning: state_11 = MEM[(struct altcp_pcb *)arg_8(D)].state;
+    Indirect ref read is not const
+  scanning: _1 = MEM[(struct altcp_pcb *)arg_8(D)].inner_conn;
+    Indirect ref read is not const
+  scanning: if (_1 != inner_conn_12(D))
+  scanning: __asm__ __volatile__("BKPT #0
+	");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: if (state_11 == 0B)
+  scanning: _2 = state_11->flags;
+    Indirect ref read is not const
+  scanning: _9 = _2 & 2;
+  scanning: if (_9 == 0)
+  scanning: _3 = altcp_proxyconnect_lower_sent.part.0 (arg_8(D), len_13(D));
+  scanning: return _6;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of altcp_proxyconnect_lower_recv
+   scanning: if (err_8(D) != 0)
+  scanning: __asm__ __volatile__("BKPT #0
+	");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: if (arg_7(D) == 0B)
+  scanning: if (p_11(D) != 0B)
+  scanning: pbuf_free (p_11(D));
+  scanning: altcp_close (inner_conn_10(D));
+  scanning: _1 = altcp_proxyconnect_lower_recv.part.0 (arg_7(D), inner_conn_10(D), p_11(D));
+  scanning: return _4;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of altcp_proxyconnect_lower_connected
+   scanning: if (arg_6(D) != 0B)
+  scanning: _1 = MEM[(struct altcp_pcb *)arg_6(D)].state;
+    Indirect ref read is not const
+  scanning: if (_1 != 0B)
+  scanning: _2 = MEM[(struct altcp_pcb *)arg_6(D)].inner_conn;
+    Indirect ref read is not const
+  scanning: if (_2 != inner_conn_9(D))
+  scanning: __asm__ __volatile__("BKPT #0
+	");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: _3 = altcp_proxyconnect_lower_connected.part.0 (arg_6(D), err_10(D));
+  scanning: return _4;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of altcp_proxyconnect_send_request
+   scanning: state_14 = conn_13(D)->state;
+    Indirect ref read is not const
+  scanning: if (state_14 == 0B)
+  scanning: _1 = state_14->outer_port;
+    Indirect ref read is not const
+  scanning: _2 = (int) _1;
+  scanning: len_16 = altcp_proxyconnect_format_request (0B, 0, "", _2);
+  scanning: if (len_16 < 0)
+  scanning: len_17 = len_16 + 16;
+  scanning: alloc_len_18 = (mem_size_t) len_17;
+  scanning: _28 = len_17 & 65535;
+  scanning: if (len_17 != _28)
+  scanning: buffer_20 = mem_malloc (alloc_len_18);
+  scanning: if (buffer_20 == 0B)
+  scanning: _3 = &state_14->outer_addr;
+  scanning: host_22 = ip4addr_ntoa (_3);
+  scanning: _4 = (unsigned int) _28;
+  scanning: _5 = state_14->outer_port;
+    Indirect ref read is not const
+  scanning: _6 = (int) _5;
+  scanning: len2_24 = altcp_proxyconnect_format_request (buffer_20, _4, host_22, _6);
+  scanning: if (len2_24 > 0)
+  scanning: if (len_17 >= len2_24)
+  scanning: _7 = conn_13(D)->inner_conn;
+    Indirect ref read is not const
+  scanning: _8 = (short unsigned int) len2_24;
+  scanning: err_26 = altcp_write (_7, buffer_20, _8, 1);
+  scanning: if (err_26 != 0)
+  scanning: mem_free (buffer_20);
+  scanning: mem_free (buffer_20);
+  scanning: return _9;
+Function is locally pure.
+
+
+ local analysis of altcp_proxyconnect_format_request
+   scanning: _7 = snprintf (buffer_2(D), bufsize_3(D), "CONNECT %s:%d HTTP/1.1\r\nUser-Agent: %s\r\nProxy-Connection: keep-alive\r\nConnection: keep-alive\r\n\r\n", host_4(D), port_5(D), "lwIP/2.1.3 (http://savannah.nongnu.org/projects/lwip)");
+  scanning: return _7;
+Function is locally const.
+Function can locally free.
+
+
+ local analysis of altcp_proxyconnect_state_free
+   scanning: if (state_2(D) == 0B)
+  scanning: __asm__ __volatile__("BKPT #0
+	");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: mem_free (state_2(D));
+  scanning: return;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of altcp_proxyconnect_state_alloc
+   scanning: ret_3 = mem_calloc (1, 16);
+  scanning: return ret_3;
+Function is locally const.
+callgraph:
+
+altcp_proxyconnect_format_request/65 (altcp_proxyconnect_format_request) @07265d20
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 6
+  Aux: @0702acf0
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_format_request/65 is inline copy in altcp_proxyconnect_lower_connected/8
+  Clone of altcp_proxyconnect_format_request/6
+  Availability: local
+  Function flags: count:15808 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (inlined) (15808 (estimated locally),0.10 per call) 
+  Calls: snprintf/58 (15808 (estimated locally),0.10 per call) 
+altcp_proxyconnect_set_poll.part.0/64 (altcp_proxyconnect_set_poll.part.0) @07378620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702aaf0
+  References: altcp_proxyconnect_lower_poll/11 (addr)
+  Referring: 
+  Function altcp_proxyconnect_set_poll.part.0/64 is inline copy in altcp_proxyconnect_set_poll/18
+  Availability: local
+  Function flags: count:574129752 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_set_poll/18 (inlined) (574129752 (estimated locally),0.53 per call) 
+  Calls: altcp_poll/59 (574129752 (estimated locally),0.53 per call) 
+altcp_proxyconnect_lower_connected.part.0/63 (altcp_proxyconnect_lower_connected.part.0) @071c20e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ae10
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_connected.part.0/63 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:46017 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_connected/8 (inlined) (46017 (estimated locally),0.29 per call) 
+  Calls: altcp_proxyconnect_send_request/7 (inlined) (15953 (estimated locally),0.10 per call) 
+   Indirect call(30064 (estimated locally),0.19 per call)  of param:0 loaded from aggregate passed by reference at offset 160 (vptr maybe changed)
+altcp_proxyconnect_lower_recv.part.0/62 (altcp_proxyconnect_lower_recv.part.0) @071bde00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ad70
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_recv.part.0/62 is inline copy in altcp_proxyconnect_lower_recv/9
+  Availability: local
+  Function flags: count:106891 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_recv/9 (inlined) (106891 (estimated locally),0.50 per call) 
+  Calls: pbuf_free/34 (77 (estimated locally),0.00 per call) altcp_close/35 (144 (estimated locally),0.00 per call) pbuf_free/34 (2782 (estimated locally),0.01 per call) altcp_close/35 (4789 (estimated locally),0.02 per call) altcp_abort/36 (48 (estimated locally),0.00 per call) pbuf_memfind/37 (11173 (estimated locally),0.05 per call) altcp_recved/38 (11173 (estimated locally),0.05 per call) pbuf_free/34 (11173 (estimated locally),0.05 per call) 
+   Indirect call(13180 (estimated locally),0.06 per call)  of param:0 loaded from aggregate passed by reference at offset 192 (vptr maybe changed)
+   Indirect call(6181 (estimated locally),0.03 per call)  of param:0 loaded from aggregate passed by reference at offset 160 (vptr maybe changed)
+altcp_proxyconnect_lower_poll.part.0/61 (altcp_proxyconnect_lower_poll.part.0) @071bd9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ac90
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_poll.part.0/61 is inline copy in altcp_proxyconnect_lower_poll/11
+  Availability: local
+  Function flags: count:46017 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_poll/11 (inlined) (46017 (estimated locally),0.21 per call) 
+  Calls: 
+   Indirect call(25121 (estimated locally),0.11 per call)  of param:0 loaded from aggregate passed by reference at offset 256 (vptr maybe changed)
+altcp_proxyconnect_lower_sent.part.0/60 (altcp_proxyconnect_lower_sent.part.0) @06fbd620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ac50
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_sent.part.0/60 is inline copy in altcp_proxyconnect_lower_sent/10
+  Availability: local
+  Function flags: count:24877 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_sent/10 (inlined) (24877 (estimated locally),0.11 per call) 
+  Calls: 
+   Indirect call(13580 (estimated locally),0.06 per call)  of param:0 loaded from aggregate passed by reference at offset 224 (vptr maybe changed)
+altcp_poll/59 (altcp_poll) @07244a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_set_poll.part.0/64 (574129752 (estimated locally),0.53 per call) 
+  Calls: 
+snprintf/58 (snprintf) @072447e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_format_request/65 (15808 (estimated locally),0.10 per call) altcp_proxyconnect_format_request/6 (14931 (estimated locally),0.10 per call) 
+  Calls: 
+ip4addr_ntoa/57 (ip4addr_ntoa) @07244620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (14931 (estimated locally),0.10 per call) 
+  Calls: 
+mem_malloc/56 (mem_malloc) @07244540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (15068 (estimated locally),0.10 per call) 
+  Calls: 
+altcp_connect/55 (altcp_connect) @072442a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_connect/20 (1037171832 (estimated locally),0.97 per call) 
+  Calls: 
+altcp_write/54 (altcp_write) @0723dee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (3671 (estimated locally),0.02 per call) altcp_proxyconnect_write/24 (1041860204 (estimated locally),0.97 per call) 
+  Calls: 
+mem_free/53 (mem_free) @0723dd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (14188 (estimated locally),0.09 per call) altcp_proxyconnect_send_request/7 (743 (estimated locally),0.00 per call) altcp_proxyconnect_state_free/5 (214891067 (estimated locally),0.20 per call) 
+  Calls: 
+altcp_default_get_port/52 (altcp_default_get_port) @0723da80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_get_ip/51 (altcp_default_get_ip) @0723d9a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_get_tcp_addrinfo/50 (altcp_default_get_tcp_addrinfo) @0723d8c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_setprio/49 (altcp_default_setprio) @0723d7e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_nagle_disabled/48 (altcp_default_nagle_disabled) @0723d700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_nagle_enable/47 (altcp_default_nagle_enable) @0723d620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_nagle_disable/46 (altcp_default_nagle_disable) @0723d540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_sndqueuelen/45 (altcp_default_sndqueuelen) @0723d460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_sndbuf/44 (altcp_default_sndbuf) @0723d380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_mss/43 (altcp_default_mss) @0723d2a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_output/42 (altcp_default_output) @0723d1c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_shutdown/41 (altcp_default_shutdown) @0723d0e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_bind/40 (altcp_default_bind) @0721fee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_tcp_new_ip_type/39 (altcp_tcp_new_ip_type) @0721fd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_new_tcp/16 (1073741823 (estimated locally),1.00 per call) 
+  Calls: 
+altcp_recved/38 (altcp_recved) @0721fb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_recved/19 (352131534 (estimated locally),0.33 per call) altcp_proxyconnect_lower_recv.part.0/62 (11173 (estimated locally),0.05 per call) 
+  Calls: 
+pbuf_memfind/37 (pbuf_memfind) @0721fa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_lower_recv.part.0/62 (11173 (estimated locally),0.05 per call) 
+  Calls: 
+altcp_abort/36 (altcp_abort) @0721f9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_lower_recv.part.0/62 (48 (estimated locally),0.00 per call) altcp_proxyconnect_abort/22 (401890828 (estimated locally),0.37 per call) 
+  Calls: 
+altcp_close/35 (altcp_close) @0721f8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_new_tcp/16 (158200600 (estimated locally),0.15 per call) altcp_proxyconnect_lower_recv/9 (483 (estimated locally),0.00 per call) altcp_proxyconnect_lower_recv.part.0/62 (144 (estimated locally),0.00 per call) altcp_proxyconnect_lower_recv.part.0/62 (4789 (estimated locally),0.02 per call) altcp_proxyconnect_close/23 (748236991 (estimated locally),0.70 per call) 
+  Calls: 
+pbuf_free/34 (pbuf_free) @0721f7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_lower_recv/9 (258 (estimated locally),0.00 per call) altcp_proxyconnect_lower_recv.part.0/62 (77 (estimated locally),0.00 per call) altcp_proxyconnect_lower_recv.part.0/62 (2782 (estimated locally),0.01 per call) altcp_proxyconnect_lower_recv.part.0/62 (11173 (estimated locally),0.05 per call) 
+  Calls: 
+altcp_err/33 (altcp_err) @0721f2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_setup_callbacks/13 (255977595 (estimated locally),0.24 per call) 
+  Calls: 
+altcp_sent/32 (altcp_sent) @0721f1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_setup_callbacks/13 (255977595 (estimated locally),0.24 per call) 
+  Calls: 
+altcp_recv/31 (altcp_recv) @0721f0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_setup_callbacks/13 (255977595 (estimated locally),0.24 per call) 
+  Calls: 
+altcp_arg/30 (altcp_arg) @0721f000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_setup_callbacks/13 (255977595 (estimated locally),0.24 per call) 
+  Calls: 
+mem_calloc/29 (mem_calloc) @0721be00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_state_alloc/4 (258328721 (estimated locally),0.24 per call) 
+  Calls: 
+altcp_free/28 (altcp_free) @0721bb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_new/15 (45570786 (estimated locally),0.04 per call) altcp_proxyconnect_abort/22 (751619278 (estimated locally),0.70 per call) altcp_proxyconnect_close/23 (814509410 (estimated locally),0.76 per call) altcp_proxyconnect_lower_err/12 (751619278 (estimated locally),0.70 per call) 
+  Calls: 
+altcp_alloc/27 (altcp_alloc) @0721ba80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_new/15 (907633963 (estimated locally),0.85 per call) 
+  Calls: 
+altcp_proxyconnect_dealloc/25 (altcp_proxyconnect_dealloc) @0721b460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aad0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_state_free/5 (inlined) (401890827 (estimated locally),0.37 per call) 
+altcp_proxyconnect_write/24 (altcp_proxyconnect_write) @0721b1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ac70
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_write/54 (1041860204 (estimated locally),0.97 per call) 
+altcp_proxyconnect_close/23 (altcp_proxyconnect_close) @07213ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702acb0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (814509410 (estimated locally),0.76 per call) altcp_close/35 (748236991 (estimated locally),0.70 per call) 
+altcp_proxyconnect_abort/22 (altcp_proxyconnect_abort) @07213c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702add0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (751619278 (estimated locally),0.70 per call) altcp_abort/36 (401890828 (estimated locally),0.37 per call) 
+altcp_proxyconnect_listen/21 (altcp_proxyconnect_listen) @072139a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ab10
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+altcp_proxyconnect_connect/20 (altcp_proxyconnect_connect) @07213700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aa90
+  References: altcp_proxyconnect_lower_connected/8 (addr)
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_connect/55 (1037171832 (estimated locally),0.97 per call) 
+altcp_proxyconnect_recved/19 (altcp_proxyconnect_recved) @07213380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aab0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_recved/38 (352131534 (estimated locally),0.33 per call) 
+altcp_proxyconnect_set_poll/18 (altcp_proxyconnect_set_poll) @072130e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ab30
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_set_poll.part.0/64 (inlined) (574129752 (estimated locally),0.53 per call) 
+altcp_proxyconnect_alloc/17 (altcp_proxyconnect_alloc) @071f7c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @0702a9d0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_new_tcp/16 (1073741824 (estimated locally),1.00 per call) 
+altcp_proxyconnect_new_tcp/16 (altcp_proxyconnect_new_tcp) @071f7e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @0702a690
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: altcp_proxyconnect_alloc/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: altcp_close/35 (158200600 (estimated locally),0.15 per call) altcp_proxyconnect_new/15 (907633963 (estimated locally),0.85 per call) altcp_tcp_new_ip_type/39 (1073741823 (estimated locally),1.00 per call) 
+altcp_proxyconnect_new/15 (altcp_proxyconnect_new) @071f7b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @0702a7f0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: altcp_proxyconnect_new_tcp/16 (907633963 (estimated locally),0.85 per call) 
+  Calls: altcp_free/28 (45570786 (estimated locally),0.04 per call) altcp_proxyconnect_setup/14 (inlined) (485311880 (estimated locally),0.45 per call) altcp_alloc/27 (907633963 (estimated locally),0.85 per call) 
+altcp_proxyconnect_setup/14 (altcp_proxyconnect_setup) @071f78c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07396188
+  References: altcp_proxyconnect_functions/26 (addr)
+  Referring: 
+  Function altcp_proxyconnect_setup/14 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:485311880 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_new/15 (inlined) (485311880 (estimated locally),0.45 per call) 
+  Calls: altcp_proxyconnect_setup_callbacks/13 (inlined) (255977595 (estimated locally),0.24 per call) altcp_proxyconnect_state_alloc/4 (inlined) (258328721 (estimated locally),0.24 per call) 
+altcp_proxyconnect_setup_callbacks/13 (altcp_proxyconnect_setup_callbacks) @071f7540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07395f88
+  References: altcp_proxyconnect_lower_recv/9 (addr)altcp_proxyconnect_lower_sent/10 (addr)altcp_proxyconnect_lower_err/12 (addr)
+  Referring: 
+  Function altcp_proxyconnect_setup_callbacks/13 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:255977595 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_setup/14 (inlined) (255977595 (estimated locally),0.24 per call) 
+  Calls: altcp_err/33 (255977595 (estimated locally),0.24 per call) altcp_sent/32 (255977595 (estimated locally),0.24 per call) altcp_recv/31 (255977595 (estimated locally),0.24 per call) altcp_arg/30 (255977595 (estimated locally),0.24 per call) 
+altcp_proxyconnect_lower_err/12 (altcp_proxyconnect_lower_err) @071f72a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @07396008
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (751619278 (estimated locally),0.70 per call) 
+   Indirect call(526133494 (estimated locally),0.49 per call)  of param:0 loaded from aggregate passed by reference at offset 288 (vptr maybe changed)
+altcp_proxyconnect_lower_poll/11 (altcp_proxyconnect_lower_poll) @071f7000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @07395a08
+  References: 
+  Referring: altcp_proxyconnect_set_poll.part.0/64 (addr)
+  Availability: available
+  Function flags: count:219131 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_poll.part.0/61 (inlined) (46017 (estimated locally),0.21 per call) 
+altcp_proxyconnect_lower_sent/10 (altcp_proxyconnect_lower_sent) @071cad20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096b98
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:219131 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_sent.part.0/60 (inlined) (24877 (estimated locally),0.11 per call) 
+altcp_proxyconnect_lower_recv/9 (altcp_proxyconnect_lower_recv) @071caa80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096a58
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:214748 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_recv.part.0/62 (inlined) (106891 (estimated locally),0.50 per call) altcp_close/35 (483 (estimated locally),0.00 per call) pbuf_free/34 (258 (estimated locally),0.00 per call) 
+altcp_proxyconnect_lower_connected/8 (altcp_proxyconnect_lower_connected) @071ca700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096b38
+  References: 
+  Referring: altcp_proxyconnect_connect/20 (addr)
+  Availability: available
+  Function flags: count:156096 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_connected.part.0/63 (inlined) (46017 (estimated locally),0.29 per call) 
+altcp_proxyconnect_send_request/7 (altcp_proxyconnect_send_request) @071ca460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096978
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_send_request/7 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:15953 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_lower_connected.part.0/63 (inlined) (15953 (estimated locally),0.10 per call) 
+  Calls: mem_free/53 (14188 (estimated locally),0.09 per call) mem_free/53 (743 (estimated locally),0.00 per call) altcp_write/54 (3671 (estimated locally),0.02 per call) altcp_proxyconnect_format_request/6 (inlined) (14931 (estimated locally),0.10 per call) ip4addr_ntoa/57 (14931 (estimated locally),0.10 per call) mem_malloc/56 (15068 (estimated locally),0.10 per call) altcp_proxyconnect_format_request/65 (inlined) (15808 (estimated locally),0.10 per call) 
+altcp_proxyconnect_format_request/6 (altcp_proxyconnect_format_request) @071ca1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 65
+  Aux: @050969b8
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_format_request/6 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:14931 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (inlined) (14931 (estimated locally),0.10 per call) 
+  Calls: snprintf/58 (14931 (estimated locally),0.10 per call) 
+altcp_proxyconnect_state_free/5 (altcp_proxyconnect_state_free) @071c2d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096bb8
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_state_free/5 is inline copy in altcp_proxyconnect_dealloc/25
+  Availability: local
+  Function flags: count:401890827 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_dealloc/25 (inlined) (401890827 (estimated locally),0.37 per call) 
+  Calls: mem_free/53 (214891067 (estimated locally),0.20 per call) 
+altcp_proxyconnect_state_alloc/4 (altcp_proxyconnect_state_alloc) @071c2a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096c58
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_state_alloc/4 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:258328721 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_setup/14 (inlined) (258328721 (estimated locally),0.24 per call) 
+  Calls: mem_calloc/29 (258328721 (estimated locally),0.24 per call) 
+
+
+ ordered call graph: reduced for nothrow
+altcp_proxyconnect_format_request/65 (altcp_proxyconnect_format_request) @07265d20
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 6
+  Aux: @0702acf0
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_format_request/65 is inline copy in altcp_proxyconnect_lower_connected/8
+  Clone of altcp_proxyconnect_format_request/6
+  Availability: local
+  Function flags: count:15808 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (inlined) (15808 (estimated locally),0.10 per call) 
+  Calls: snprintf/58 (15808 (estimated locally),0.10 per call) 
+altcp_proxyconnect_set_poll.part.0/64 (altcp_proxyconnect_set_poll.part.0) @07378620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702aaf0
+  References: altcp_proxyconnect_lower_poll/11 (addr)
+  Referring: 
+  Function altcp_proxyconnect_set_poll.part.0/64 is inline copy in altcp_proxyconnect_set_poll/18
+  Availability: local
+  Function flags: count:574129752 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_set_poll/18 (inlined) (574129752 (estimated locally),0.53 per call) 
+  Calls: altcp_poll/59 (574129752 (estimated locally),0.53 per call) 
+altcp_proxyconnect_lower_connected.part.0/63 (altcp_proxyconnect_lower_connected.part.0) @071c20e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ae10
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_connected.part.0/63 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:46017 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_connected/8 (inlined) (46017 (estimated locally),0.29 per call) 
+  Calls: altcp_proxyconnect_send_request/7 (inlined) (15953 (estimated locally),0.10 per call) 
+   Indirect call(30064 (estimated locally),0.19 per call)  of param:0 loaded from aggregate passed by reference at offset 160 (vptr maybe changed)
+altcp_proxyconnect_lower_recv.part.0/62 (altcp_proxyconnect_lower_recv.part.0) @071bde00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ad70
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_recv.part.0/62 is inline copy in altcp_proxyconnect_lower_recv/9
+  Availability: local
+  Function flags: count:106891 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_recv/9 (inlined) (106891 (estimated locally),0.50 per call) 
+  Calls: pbuf_free/34 (77 (estimated locally),0.00 per call) altcp_close/35 (144 (estimated locally),0.00 per call) pbuf_free/34 (2782 (estimated locally),0.01 per call) altcp_close/35 (4789 (estimated locally),0.02 per call) altcp_abort/36 (48 (estimated locally),0.00 per call) pbuf_memfind/37 (11173 (estimated locally),0.05 per call) altcp_recved/38 (11173 (estimated locally),0.05 per call) pbuf_free/34 (11173 (estimated locally),0.05 per call) 
+   Indirect call(13180 (estimated locally),0.06 per call)  of param:0 loaded from aggregate passed by reference at offset 192 (vptr maybe changed)
+   Indirect call(6181 (estimated locally),0.03 per call)  of param:0 loaded from aggregate passed by reference at offset 160 (vptr maybe changed)
+altcp_proxyconnect_lower_poll.part.0/61 (altcp_proxyconnect_lower_poll.part.0) @071bd9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ac90
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_poll.part.0/61 is inline copy in altcp_proxyconnect_lower_poll/11
+  Availability: local
+  Function flags: count:46017 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_poll/11 (inlined) (46017 (estimated locally),0.21 per call) 
+  Calls: 
+   Indirect call(25121 (estimated locally),0.11 per call)  of param:0 loaded from aggregate passed by reference at offset 256 (vptr maybe changed)
+altcp_proxyconnect_lower_sent.part.0/60 (altcp_proxyconnect_lower_sent.part.0) @06fbd620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ac50
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_sent.part.0/60 is inline copy in altcp_proxyconnect_lower_sent/10
+  Availability: local
+  Function flags: count:24877 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_sent/10 (inlined) (24877 (estimated locally),0.11 per call) 
+  Calls: 
+   Indirect call(13580 (estimated locally),0.06 per call)  of param:0 loaded from aggregate passed by reference at offset 224 (vptr maybe changed)
+altcp_proxyconnect_dealloc/25 (altcp_proxyconnect_dealloc) @0721b460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aad0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_state_free/5 (inlined) (401890827 (estimated locally),0.37 per call) 
+altcp_proxyconnect_write/24 (altcp_proxyconnect_write) @0721b1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ac70
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_write/54 (1041860204 (estimated locally),0.97 per call) 
+altcp_proxyconnect_close/23 (altcp_proxyconnect_close) @07213ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702acb0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (814509410 (estimated locally),0.76 per call) altcp_close/35 (748236991 (estimated locally),0.70 per call) 
+altcp_proxyconnect_abort/22 (altcp_proxyconnect_abort) @07213c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702add0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (751619278 (estimated locally),0.70 per call) altcp_abort/36 (401890828 (estimated locally),0.37 per call) 
+altcp_proxyconnect_listen/21 (altcp_proxyconnect_listen) @072139a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ab10
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+altcp_proxyconnect_connect/20 (altcp_proxyconnect_connect) @07213700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aa90
+  References: altcp_proxyconnect_lower_connected/8 (addr)
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_connect/55 (1037171832 (estimated locally),0.97 per call) 
+altcp_proxyconnect_recved/19 (altcp_proxyconnect_recved) @07213380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aab0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_recved/38 (352131534 (estimated locally),0.33 per call) 
+altcp_proxyconnect_set_poll/18 (altcp_proxyconnect_set_poll) @072130e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ab30
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_set_poll.part.0/64 (inlined) (574129752 (estimated locally),0.53 per call) 
+altcp_proxyconnect_alloc/17 (altcp_proxyconnect_alloc) @071f7c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @0702a9d0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_new_tcp/16 (1073741824 (estimated locally),1.00 per call) 
+altcp_proxyconnect_new_tcp/16 (altcp_proxyconnect_new_tcp) @071f7e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @0702a690
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: altcp_proxyconnect_alloc/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: altcp_close/35 (158200600 (estimated locally),0.15 per call) altcp_proxyconnect_new/15 (907633963 (estimated locally),0.85 per call) altcp_tcp_new_ip_type/39 (1073741823 (estimated locally),1.00 per call) 
+altcp_proxyconnect_new/15 (altcp_proxyconnect_new) @071f7b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @0702a7f0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: altcp_proxyconnect_new_tcp/16 (907633963 (estimated locally),0.85 per call) 
+  Calls: altcp_free/28 (45570786 (estimated locally),0.04 per call) altcp_proxyconnect_setup/14 (inlined) (485311880 (estimated locally),0.45 per call) altcp_alloc/27 (907633963 (estimated locally),0.85 per call) 
+altcp_proxyconnect_setup/14 (altcp_proxyconnect_setup) @071f78c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07396188
+  References: altcp_proxyconnect_functions/26 (addr)
+  Referring: 
+  Function altcp_proxyconnect_setup/14 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:485311880 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_new/15 (inlined) (485311880 (estimated locally),0.45 per call) 
+  Calls: altcp_proxyconnect_setup_callbacks/13 (inlined) (255977595 (estimated locally),0.24 per call) altcp_proxyconnect_state_alloc/4 (inlined) (258328721 (estimated locally),0.24 per call) 
+altcp_proxyconnect_setup_callbacks/13 (altcp_proxyconnect_setup_callbacks) @071f7540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07395f88
+  References: altcp_proxyconnect_lower_recv/9 (addr)altcp_proxyconnect_lower_sent/10 (addr)altcp_proxyconnect_lower_err/12 (addr)
+  Referring: 
+  Function altcp_proxyconnect_setup_callbacks/13 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:255977595 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_setup/14 (inlined) (255977595 (estimated locally),0.24 per call) 
+  Calls: altcp_err/33 (255977595 (estimated locally),0.24 per call) altcp_sent/32 (255977595 (estimated locally),0.24 per call) altcp_recv/31 (255977595 (estimated locally),0.24 per call) altcp_arg/30 (255977595 (estimated locally),0.24 per call) 
+altcp_proxyconnect_lower_err/12 (altcp_proxyconnect_lower_err) @071f72a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @07396008
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (751619278 (estimated locally),0.70 per call) 
+   Indirect call(526133494 (estimated locally),0.49 per call)  of param:0 loaded from aggregate passed by reference at offset 288 (vptr maybe changed)
+altcp_proxyconnect_lower_poll/11 (altcp_proxyconnect_lower_poll) @071f7000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @07395a08
+  References: 
+  Referring: altcp_proxyconnect_set_poll.part.0/64 (addr)
+  Availability: available
+  Function flags: count:219131 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_poll.part.0/61 (inlined) (46017 (estimated locally),0.21 per call) 
+altcp_proxyconnect_lower_sent/10 (altcp_proxyconnect_lower_sent) @071cad20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096b98
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:219131 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_sent.part.0/60 (inlined) (24877 (estimated locally),0.11 per call) 
+altcp_proxyconnect_lower_recv/9 (altcp_proxyconnect_lower_recv) @071caa80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096a58
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:214748 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_recv.part.0/62 (inlined) (106891 (estimated locally),0.50 per call) altcp_close/35 (483 (estimated locally),0.00 per call) pbuf_free/34 (258 (estimated locally),0.00 per call) 
+altcp_proxyconnect_lower_connected/8 (altcp_proxyconnect_lower_connected) @071ca700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096b38
+  References: 
+  Referring: altcp_proxyconnect_connect/20 (addr)
+  Availability: available
+  Function flags: count:156096 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_connected.part.0/63 (inlined) (46017 (estimated locally),0.29 per call) 
+altcp_proxyconnect_send_request/7 (altcp_proxyconnect_send_request) @071ca460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096978
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_send_request/7 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:15953 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_lower_connected.part.0/63 (inlined) (15953 (estimated locally),0.10 per call) 
+  Calls: mem_free/53 (14188 (estimated locally),0.09 per call) mem_free/53 (743 (estimated locally),0.00 per call) altcp_write/54 (3671 (estimated locally),0.02 per call) altcp_proxyconnect_format_request/6 (inlined) (14931 (estimated locally),0.10 per call) ip4addr_ntoa/57 (14931 (estimated locally),0.10 per call) mem_malloc/56 (15068 (estimated locally),0.10 per call) altcp_proxyconnect_format_request/65 (inlined) (15808 (estimated locally),0.10 per call) 
+altcp_proxyconnect_format_request/6 (altcp_proxyconnect_format_request) @071ca1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 65
+  Aux: @050969b8
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_format_request/6 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:14931 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (inlined) (14931 (estimated locally),0.10 per call) 
+  Calls: snprintf/58 (14931 (estimated locally),0.10 per call) 
+altcp_proxyconnect_state_free/5 (altcp_proxyconnect_state_free) @071c2d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096bb8
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_state_free/5 is inline copy in altcp_proxyconnect_dealloc/25
+  Availability: local
+  Function flags: count:401890827 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_dealloc/25 (inlined) (401890827 (estimated locally),0.37 per call) 
+  Calls: mem_free/53 (214891067 (estimated locally),0.20 per call) 
+altcp_proxyconnect_state_alloc/4 (altcp_proxyconnect_state_alloc) @071c2a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096c58
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_state_alloc/4 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:258328721 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_setup/14 (inlined) (258328721 (estimated locally),0.24 per call) 
+  Calls: mem_calloc/29 (258328721 (estimated locally),0.24 per call) 
+
+
+
+MALLOC LATTICE Initial:
+altcp_proxyconnect_format_request: malloc_bottom
+altcp_proxyconnect_set_poll.part.0: malloc_bottom
+altcp_proxyconnect_lower_connected.part.0: malloc_bottom
+altcp_proxyconnect_lower_recv.part.0: malloc_bottom
+altcp_proxyconnect_lower_poll.part.0: malloc_bottom
+altcp_proxyconnect_lower_sent.part.0: malloc_bottom
+altcp_proxyconnect_dealloc: malloc_bottom
+altcp_proxyconnect_write: malloc_bottom
+altcp_proxyconnect_close: malloc_bottom
+altcp_proxyconnect_abort: malloc_bottom
+altcp_proxyconnect_listen: malloc_bottom
+altcp_proxyconnect_connect: malloc_bottom
+altcp_proxyconnect_recved: malloc_bottom
+altcp_proxyconnect_set_poll: malloc_bottom
+altcp_proxyconnect_alloc: malloc_top
+altcp_proxyconnect_new_tcp: malloc_top
+altcp_proxyconnect_new: malloc_bottom
+altcp_proxyconnect_setup: malloc_bottom
+altcp_proxyconnect_setup_callbacks: malloc_bottom
+altcp_proxyconnect_lower_err: malloc_bottom
+altcp_proxyconnect_lower_poll: malloc_bottom
+altcp_proxyconnect_lower_sent: malloc_bottom
+altcp_proxyconnect_lower_recv: malloc_bottom
+altcp_proxyconnect_lower_connected: malloc_bottom
+altcp_proxyconnect_send_request: malloc_bottom
+altcp_proxyconnect_format_request: malloc_bottom
+altcp_proxyconnect_state_free: malloc_bottom
+altcp_proxyconnect_state_alloc: malloc_top
+
+
+MALLOC LATTICE after propagation:
+altcp_proxyconnect_format_request: malloc_bottom
+altcp_proxyconnect_set_poll.part.0: malloc_bottom
+altcp_proxyconnect_lower_connected.part.0: malloc_bottom
+altcp_proxyconnect_lower_recv.part.0: malloc_bottom
+altcp_proxyconnect_lower_poll.part.0: malloc_bottom
+altcp_proxyconnect_lower_sent.part.0: malloc_bottom
+mem_calloc: malloc_bottom
+altcp_proxyconnect_dealloc: malloc_bottom
+altcp_proxyconnect_write: malloc_bottom
+altcp_proxyconnect_close: malloc_bottom
+altcp_proxyconnect_abort: malloc_bottom
+altcp_proxyconnect_listen: malloc_bottom
+altcp_proxyconnect_connect: malloc_bottom
+altcp_proxyconnect_recved: malloc_bottom
+altcp_proxyconnect_set_poll: malloc_bottom
+altcp_proxyconnect_alloc: malloc_bottom
+altcp_proxyconnect_new_tcp: malloc_bottom
+altcp_proxyconnect_new: malloc_bottom
+altcp_proxyconnect_setup: malloc_bottom
+altcp_proxyconnect_setup_callbacks: malloc_bottom
+altcp_proxyconnect_lower_err: malloc_bottom
+altcp_proxyconnect_lower_poll: malloc_bottom
+altcp_proxyconnect_lower_sent: malloc_bottom
+altcp_proxyconnect_lower_recv: malloc_bottom
+altcp_proxyconnect_lower_connected: malloc_bottom
+altcp_proxyconnect_send_request: malloc_bottom
+altcp_proxyconnect_format_request: malloc_bottom
+altcp_proxyconnect_state_free: malloc_bottom
+altcp_proxyconnect_state_alloc: malloc_bottom
+callgraph:
+
+altcp_proxyconnect_format_request/65 (altcp_proxyconnect_format_request) @07265d20
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 6
+  Aux: @0702ac50
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_format_request/65 is inline copy in altcp_proxyconnect_lower_connected/8
+  Clone of altcp_proxyconnect_format_request/6
+  Availability: local
+  Function flags: count:15808 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (inlined) (15808 (estimated locally),0.10 per call) 
+  Calls: snprintf/58 (15808 (estimated locally),0.10 per call) 
+altcp_proxyconnect_set_poll.part.0/64 (altcp_proxyconnect_set_poll.part.0) @07378620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702add0
+  References: altcp_proxyconnect_lower_poll/11 (addr)
+  Referring: 
+  Function altcp_proxyconnect_set_poll.part.0/64 is inline copy in altcp_proxyconnect_set_poll/18
+  Availability: local
+  Function flags: count:574129752 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_set_poll/18 (inlined) (574129752 (estimated locally),0.53 per call) 
+  Calls: altcp_poll/59 (574129752 (estimated locally),0.53 per call) 
+altcp_proxyconnect_lower_connected.part.0/63 (altcp_proxyconnect_lower_connected.part.0) @071c20e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ad70
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_connected.part.0/63 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:46017 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_connected/8 (inlined) (46017 (estimated locally),0.29 per call) 
+  Calls: altcp_proxyconnect_send_request/7 (inlined) (15953 (estimated locally),0.10 per call) 
+   Indirect call(30064 (estimated locally),0.19 per call)  of param:0 loaded from aggregate passed by reference at offset 160 (vptr maybe changed)
+altcp_proxyconnect_lower_recv.part.0/62 (altcp_proxyconnect_lower_recv.part.0) @071bde00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ac70
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_recv.part.0/62 is inline copy in altcp_proxyconnect_lower_recv/9
+  Availability: local
+  Function flags: count:106891 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_recv/9 (inlined) (106891 (estimated locally),0.50 per call) 
+  Calls: pbuf_free/34 (77 (estimated locally),0.00 per call) altcp_close/35 (144 (estimated locally),0.00 per call) pbuf_free/34 (2782 (estimated locally),0.01 per call) altcp_close/35 (4789 (estimated locally),0.02 per call) altcp_abort/36 (48 (estimated locally),0.00 per call) pbuf_memfind/37 (11173 (estimated locally),0.05 per call) altcp_recved/38 (11173 (estimated locally),0.05 per call) pbuf_free/34 (11173 (estimated locally),0.05 per call) 
+   Indirect call(13180 (estimated locally),0.06 per call)  of param:0 loaded from aggregate passed by reference at offset 192 (vptr maybe changed)
+   Indirect call(6181 (estimated locally),0.03 per call)  of param:0 loaded from aggregate passed by reference at offset 160 (vptr maybe changed)
+altcp_proxyconnect_lower_poll.part.0/61 (altcp_proxyconnect_lower_poll.part.0) @071bd9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702aa90
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_poll.part.0/61 is inline copy in altcp_proxyconnect_lower_poll/11
+  Availability: local
+  Function flags: count:46017 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_poll/11 (inlined) (46017 (estimated locally),0.21 per call) 
+  Calls: 
+   Indirect call(25121 (estimated locally),0.11 per call)  of param:0 loaded from aggregate passed by reference at offset 256 (vptr maybe changed)
+altcp_proxyconnect_lower_sent.part.0/60 (altcp_proxyconnect_lower_sent.part.0) @06fbd620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ac90
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_sent.part.0/60 is inline copy in altcp_proxyconnect_lower_sent/10
+  Availability: local
+  Function flags: count:24877 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_sent/10 (inlined) (24877 (estimated locally),0.11 per call) 
+  Calls: 
+   Indirect call(13580 (estimated locally),0.06 per call)  of param:0 loaded from aggregate passed by reference at offset 224 (vptr maybe changed)
+altcp_poll/59 (altcp_poll) @07244a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_set_poll.part.0/64 (574129752 (estimated locally),0.53 per call) 
+  Calls: 
+snprintf/58 (snprintf) @072447e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_format_request/65 (15808 (estimated locally),0.10 per call) altcp_proxyconnect_format_request/6 (14931 (estimated locally),0.10 per call) 
+  Calls: 
+ip4addr_ntoa/57 (ip4addr_ntoa) @07244620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (14931 (estimated locally),0.10 per call) 
+  Calls: 
+mem_malloc/56 (mem_malloc) @07244540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (15068 (estimated locally),0.10 per call) 
+  Calls: 
+altcp_connect/55 (altcp_connect) @072442a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_connect/20 (1037171832 (estimated locally),0.97 per call) 
+  Calls: 
+altcp_write/54 (altcp_write) @0723dee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (3671 (estimated locally),0.02 per call) altcp_proxyconnect_write/24 (1041860204 (estimated locally),0.97 per call) 
+  Calls: 
+mem_free/53 (mem_free) @0723dd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (14188 (estimated locally),0.09 per call) altcp_proxyconnect_send_request/7 (743 (estimated locally),0.00 per call) altcp_proxyconnect_state_free/5 (214891067 (estimated locally),0.20 per call) 
+  Calls: 
+altcp_default_get_port/52 (altcp_default_get_port) @0723da80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_get_ip/51 (altcp_default_get_ip) @0723d9a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_get_tcp_addrinfo/50 (altcp_default_get_tcp_addrinfo) @0723d8c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_setprio/49 (altcp_default_setprio) @0723d7e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_nagle_disabled/48 (altcp_default_nagle_disabled) @0723d700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_nagle_enable/47 (altcp_default_nagle_enable) @0723d620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_nagle_disable/46 (altcp_default_nagle_disable) @0723d540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_sndqueuelen/45 (altcp_default_sndqueuelen) @0723d460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_sndbuf/44 (altcp_default_sndbuf) @0723d380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_mss/43 (altcp_default_mss) @0723d2a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_output/42 (altcp_default_output) @0723d1c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_shutdown/41 (altcp_default_shutdown) @0723d0e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_bind/40 (altcp_default_bind) @0721fee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_tcp_new_ip_type/39 (altcp_tcp_new_ip_type) @0721fd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_new_tcp/16 (1073741823 (estimated locally),1.00 per call) 
+  Calls: 
+altcp_recved/38 (altcp_recved) @0721fb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_recved/19 (352131534 (estimated locally),0.33 per call) altcp_proxyconnect_lower_recv.part.0/62 (11173 (estimated locally),0.05 per call) 
+  Calls: 
+pbuf_memfind/37 (pbuf_memfind) @0721fa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_lower_recv.part.0/62 (11173 (estimated locally),0.05 per call) 
+  Calls: 
+altcp_abort/36 (altcp_abort) @0721f9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_lower_recv.part.0/62 (48 (estimated locally),0.00 per call) altcp_proxyconnect_abort/22 (401890828 (estimated locally),0.37 per call) 
+  Calls: 
+altcp_close/35 (altcp_close) @0721f8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_new_tcp/16 (158200600 (estimated locally),0.15 per call) altcp_proxyconnect_lower_recv/9 (483 (estimated locally),0.00 per call) altcp_proxyconnect_lower_recv.part.0/62 (144 (estimated locally),0.00 per call) altcp_proxyconnect_lower_recv.part.0/62 (4789 (estimated locally),0.02 per call) altcp_proxyconnect_close/23 (748236991 (estimated locally),0.70 per call) 
+  Calls: 
+pbuf_free/34 (pbuf_free) @0721f7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_lower_recv/9 (258 (estimated locally),0.00 per call) altcp_proxyconnect_lower_recv.part.0/62 (77 (estimated locally),0.00 per call) altcp_proxyconnect_lower_recv.part.0/62 (2782 (estimated locally),0.01 per call) altcp_proxyconnect_lower_recv.part.0/62 (11173 (estimated locally),0.05 per call) 
+  Calls: 
+altcp_err/33 (altcp_err) @0721f2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_setup_callbacks/13 (255977595 (estimated locally),0.24 per call) 
+  Calls: 
+altcp_sent/32 (altcp_sent) @0721f1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_setup_callbacks/13 (255977595 (estimated locally),0.24 per call) 
+  Calls: 
+altcp_recv/31 (altcp_recv) @0721f0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_setup_callbacks/13 (255977595 (estimated locally),0.24 per call) 
+  Calls: 
+altcp_arg/30 (altcp_arg) @0721f000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_setup_callbacks/13 (255977595 (estimated locally),0.24 per call) 
+  Calls: 
+mem_calloc/29 (mem_calloc) @0721be00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_state_alloc/4 (258328721 (estimated locally),0.24 per call) 
+  Calls: 
+altcp_free/28 (altcp_free) @0721bb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_new/15 (45570786 (estimated locally),0.04 per call) altcp_proxyconnect_abort/22 (751619278 (estimated locally),0.70 per call) altcp_proxyconnect_close/23 (814509410 (estimated locally),0.76 per call) altcp_proxyconnect_lower_err/12 (751619278 (estimated locally),0.70 per call) 
+  Calls: 
+altcp_alloc/27 (altcp_alloc) @0721ba80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_proxyconnect_new/15 (907633963 (estimated locally),0.85 per call) 
+  Calls: 
+altcp_proxyconnect_dealloc/25 (altcp_proxyconnect_dealloc) @0721b460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ae10
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_state_free/5 (inlined) (401890827 (estimated locally),0.37 per call) 
+altcp_proxyconnect_write/24 (altcp_proxyconnect_write) @0721b1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702acb0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_write/54 (1041860204 (estimated locally),0.97 per call) 
+altcp_proxyconnect_close/23 (altcp_proxyconnect_close) @07213ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702acf0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (814509410 (estimated locally),0.76 per call) altcp_close/35 (748236991 (estimated locally),0.70 per call) 
+altcp_proxyconnect_abort/22 (altcp_proxyconnect_abort) @07213c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aab0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (751619278 (estimated locally),0.70 per call) altcp_abort/36 (401890828 (estimated locally),0.37 per call) 
+altcp_proxyconnect_listen/21 (altcp_proxyconnect_listen) @072139a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aad0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+altcp_proxyconnect_connect/20 (altcp_proxyconnect_connect) @07213700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aaf0
+  References: altcp_proxyconnect_lower_connected/8 (addr)
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_connect/55 (1037171832 (estimated locally),0.97 per call) 
+altcp_proxyconnect_recved/19 (altcp_proxyconnect_recved) @07213380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ab10
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_recved/38 (352131534 (estimated locally),0.33 per call) 
+altcp_proxyconnect_set_poll/18 (altcp_proxyconnect_set_poll) @072130e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ab30
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_set_poll.part.0/64 (inlined) (574129752 (estimated locally),0.53 per call) 
+altcp_proxyconnect_alloc/17 (altcp_proxyconnect_alloc) @071f7c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07395a08
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_new_tcp/16 (1073741824 (estimated locally),1.00 per call) 
+altcp_proxyconnect_new_tcp/16 (altcp_proxyconnect_new_tcp) @071f7e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07396188
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: altcp_proxyconnect_alloc/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: altcp_close/35 (158200600 (estimated locally),0.15 per call) altcp_proxyconnect_new/15 (907633963 (estimated locally),0.85 per call) altcp_tcp_new_ip_type/39 (1073741823 (estimated locally),1.00 per call) 
+altcp_proxyconnect_new/15 (altcp_proxyconnect_new) @071f7b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07395f88
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: altcp_proxyconnect_new_tcp/16 (907633963 (estimated locally),0.85 per call) 
+  Calls: altcp_free/28 (45570786 (estimated locally),0.04 per call) altcp_proxyconnect_setup/14 (inlined) (485311880 (estimated locally),0.45 per call) altcp_alloc/27 (907633963 (estimated locally),0.85 per call) 
+altcp_proxyconnect_setup/14 (altcp_proxyconnect_setup) @071f78c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07396008
+  References: altcp_proxyconnect_functions/26 (addr)
+  Referring: 
+  Function altcp_proxyconnect_setup/14 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:485311880 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_new/15 (inlined) (485311880 (estimated locally),0.45 per call) 
+  Calls: altcp_proxyconnect_setup_callbacks/13 (inlined) (255977595 (estimated locally),0.24 per call) altcp_proxyconnect_state_alloc/4 (inlined) (258328721 (estimated locally),0.24 per call) 
+altcp_proxyconnect_setup_callbacks/13 (altcp_proxyconnect_setup_callbacks) @071f7540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096ef8
+  References: altcp_proxyconnect_lower_recv/9 (addr)altcp_proxyconnect_lower_sent/10 (addr)altcp_proxyconnect_lower_err/12 (addr)
+  Referring: 
+  Function altcp_proxyconnect_setup_callbacks/13 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:255977595 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_setup/14 (inlined) (255977595 (estimated locally),0.24 per call) 
+  Calls: altcp_err/33 (255977595 (estimated locally),0.24 per call) altcp_sent/32 (255977595 (estimated locally),0.24 per call) altcp_recv/31 (255977595 (estimated locally),0.24 per call) altcp_arg/30 (255977595 (estimated locally),0.24 per call) 
+altcp_proxyconnect_lower_err/12 (altcp_proxyconnect_lower_err) @071f72a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05097038
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (751619278 (estimated locally),0.70 per call) 
+   Indirect call(526133494 (estimated locally),0.49 per call)  of param:0 loaded from aggregate passed by reference at offset 288 (vptr maybe changed)
+altcp_proxyconnect_lower_poll/11 (altcp_proxyconnect_lower_poll) @071f7000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096f58
+  References: 
+  Referring: altcp_proxyconnect_set_poll.part.0/64 (addr)
+  Availability: available
+  Function flags: count:219131 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_poll.part.0/61 (inlined) (46017 (estimated locally),0.21 per call) 
+altcp_proxyconnect_lower_sent/10 (altcp_proxyconnect_lower_sent) @071cad20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096f38
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:219131 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_sent.part.0/60 (inlined) (24877 (estimated locally),0.11 per call) 
+altcp_proxyconnect_lower_recv/9 (altcp_proxyconnect_lower_recv) @071caa80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096db8
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:214748 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_recv.part.0/62 (inlined) (106891 (estimated locally),0.50 per call) altcp_close/35 (483 (estimated locally),0.00 per call) pbuf_free/34 (258 (estimated locally),0.00 per call) 
+altcp_proxyconnect_lower_connected/8 (altcp_proxyconnect_lower_connected) @071ca700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096d58
+  References: 
+  Referring: altcp_proxyconnect_connect/20 (addr)
+  Availability: available
+  Function flags: count:156096 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_connected.part.0/63 (inlined) (46017 (estimated locally),0.29 per call) 
+altcp_proxyconnect_send_request/7 (altcp_proxyconnect_send_request) @071ca460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096e98
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_send_request/7 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:15953 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_lower_connected.part.0/63 (inlined) (15953 (estimated locally),0.10 per call) 
+  Calls: mem_free/53 (14188 (estimated locally),0.09 per call) mem_free/53 (743 (estimated locally),0.00 per call) altcp_write/54 (3671 (estimated locally),0.02 per call) altcp_proxyconnect_format_request/6 (inlined) (14931 (estimated locally),0.10 per call) ip4addr_ntoa/57 (14931 (estimated locally),0.10 per call) mem_malloc/56 (15068 (estimated locally),0.10 per call) altcp_proxyconnect_format_request/65 (inlined) (15808 (estimated locally),0.10 per call) 
+altcp_proxyconnect_format_request/6 (altcp_proxyconnect_format_request) @071ca1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 65
+  Aux: @05096e18
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_format_request/6 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:14931 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (inlined) (14931 (estimated locally),0.10 per call) 
+  Calls: snprintf/58 (14931 (estimated locally),0.10 per call) 
+altcp_proxyconnect_state_free/5 (altcp_proxyconnect_state_free) @071c2d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096f98
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_state_free/5 is inline copy in altcp_proxyconnect_dealloc/25
+  Availability: local
+  Function flags: count:401890827 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_dealloc/25 (inlined) (401890827 (estimated locally),0.37 per call) 
+  Calls: mem_free/53 (214891067 (estimated locally),0.20 per call) 
+altcp_proxyconnect_state_alloc/4 (altcp_proxyconnect_state_alloc) @071c2a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096dd8
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_state_alloc/4 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:258328721 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_setup/14 (inlined) (258328721 (estimated locally),0.24 per call) 
+  Calls: mem_calloc/29 (258328721 (estimated locally),0.24 per call) 
+
+
+ ordered call graph: reduced
+altcp_proxyconnect_dealloc/25 (altcp_proxyconnect_dealloc) @0721b460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ae10
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_state_free/5 (inlined) (401890827 (estimated locally),0.37 per call) 
+altcp_proxyconnect_write/24 (altcp_proxyconnect_write) @0721b1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702acb0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_write/54 (1041860204 (estimated locally),0.97 per call) 
+altcp_proxyconnect_close/23 (altcp_proxyconnect_close) @07213ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702acf0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (814509410 (estimated locally),0.76 per call) altcp_close/35 (748236991 (estimated locally),0.70 per call) 
+altcp_proxyconnect_abort/22 (altcp_proxyconnect_abort) @07213c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aab0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (751619278 (estimated locally),0.70 per call) altcp_abort/36 (401890828 (estimated locally),0.37 per call) 
+altcp_proxyconnect_listen/21 (altcp_proxyconnect_listen) @072139a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aad0
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+altcp_proxyconnect_connect/20 (altcp_proxyconnect_connect) @07213700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702aaf0
+  References: altcp_proxyconnect_lower_connected/8 (addr)
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_connect/55 (1037171832 (estimated locally),0.97 per call) 
+altcp_proxyconnect_recved/19 (altcp_proxyconnect_recved) @07213380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ab10
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_recved/38 (352131534 (estimated locally),0.33 per call) 
+altcp_proxyconnect_set_poll/18 (altcp_proxyconnect_set_poll) @072130e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @0702ab30
+  References: 
+  Referring: altcp_proxyconnect_functions/26 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_set_poll.part.0/64 (inlined) (574129752 (estimated locally),0.53 per call) 
+altcp_proxyconnect_set_poll.part.0/64 (altcp_proxyconnect_set_poll.part.0) @07378620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702add0
+  References: altcp_proxyconnect_lower_poll/11 (addr)
+  Referring: 
+  Function altcp_proxyconnect_set_poll.part.0/64 is inline copy in altcp_proxyconnect_set_poll/18
+  Availability: local
+  Function flags: count:574129752 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_set_poll/18 (inlined) (574129752 (estimated locally),0.53 per call) 
+  Calls: altcp_poll/59 (574129752 (estimated locally),0.53 per call) 
+altcp_proxyconnect_alloc/17 (altcp_proxyconnect_alloc) @071f7c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07395a08
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_new_tcp/16 (1073741824 (estimated locally),1.00 per call) 
+altcp_proxyconnect_new_tcp/16 (altcp_proxyconnect_new_tcp) @071f7e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07396188
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: altcp_proxyconnect_alloc/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: altcp_close/35 (158200600 (estimated locally),0.15 per call) altcp_proxyconnect_new/15 (907633963 (estimated locally),0.85 per call) altcp_tcp_new_ip_type/39 (1073741823 (estimated locally),1.00 per call) 
+altcp_proxyconnect_new/15 (altcp_proxyconnect_new) @071f7b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07395f88
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: altcp_proxyconnect_new_tcp/16 (907633963 (estimated locally),0.85 per call) 
+  Calls: altcp_free/28 (45570786 (estimated locally),0.04 per call) altcp_proxyconnect_setup/14 (inlined) (485311880 (estimated locally),0.45 per call) altcp_alloc/27 (907633963 (estimated locally),0.85 per call) 
+altcp_proxyconnect_setup/14 (altcp_proxyconnect_setup) @071f78c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07396008
+  References: altcp_proxyconnect_functions/26 (addr)
+  Referring: 
+  Function altcp_proxyconnect_setup/14 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:485311880 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_new/15 (inlined) (485311880 (estimated locally),0.45 per call) 
+  Calls: altcp_proxyconnect_setup_callbacks/13 (inlined) (255977595 (estimated locally),0.24 per call) altcp_proxyconnect_state_alloc/4 (inlined) (258328721 (estimated locally),0.24 per call) 
+altcp_proxyconnect_setup_callbacks/13 (altcp_proxyconnect_setup_callbacks) @071f7540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096ef8
+  References: altcp_proxyconnect_lower_recv/9 (addr)altcp_proxyconnect_lower_sent/10 (addr)altcp_proxyconnect_lower_err/12 (addr)
+  Referring: 
+  Function altcp_proxyconnect_setup_callbacks/13 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:255977595 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_setup/14 (inlined) (255977595 (estimated locally),0.24 per call) 
+  Calls: altcp_err/33 (255977595 (estimated locally),0.24 per call) altcp_sent/32 (255977595 (estimated locally),0.24 per call) altcp_recv/31 (255977595 (estimated locally),0.24 per call) altcp_arg/30 (255977595 (estimated locally),0.24 per call) 
+altcp_proxyconnect_lower_err/12 (altcp_proxyconnect_lower_err) @071f72a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05097038
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_free/28 (751619278 (estimated locally),0.70 per call) 
+   Indirect call(526133494 (estimated locally),0.49 per call)  of param:0 loaded from aggregate passed by reference at offset 288 (vptr maybe changed)
+altcp_proxyconnect_lower_poll/11 (altcp_proxyconnect_lower_poll) @071f7000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096f58
+  References: 
+  Referring: altcp_proxyconnect_set_poll.part.0/64 (addr)
+  Availability: available
+  Function flags: count:219131 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_poll.part.0/61 (inlined) (46017 (estimated locally),0.21 per call) 
+altcp_proxyconnect_lower_poll.part.0/61 (altcp_proxyconnect_lower_poll.part.0) @071bd9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702aa90
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_poll.part.0/61 is inline copy in altcp_proxyconnect_lower_poll/11
+  Availability: local
+  Function flags: count:46017 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_poll/11 (inlined) (46017 (estimated locally),0.21 per call) 
+  Calls: 
+   Indirect call(25121 (estimated locally),0.11 per call)  of param:0 loaded from aggregate passed by reference at offset 256 (vptr maybe changed)
+altcp_proxyconnect_lower_sent/10 (altcp_proxyconnect_lower_sent) @071cad20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096f38
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:219131 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_sent.part.0/60 (inlined) (24877 (estimated locally),0.11 per call) 
+altcp_proxyconnect_lower_sent.part.0/60 (altcp_proxyconnect_lower_sent.part.0) @06fbd620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ac90
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_sent.part.0/60 is inline copy in altcp_proxyconnect_lower_sent/10
+  Availability: local
+  Function flags: count:24877 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_sent/10 (inlined) (24877 (estimated locally),0.11 per call) 
+  Calls: 
+   Indirect call(13580 (estimated locally),0.06 per call)  of param:0 loaded from aggregate passed by reference at offset 224 (vptr maybe changed)
+altcp_proxyconnect_lower_recv/9 (altcp_proxyconnect_lower_recv) @071caa80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096db8
+  References: 
+  Referring: altcp_proxyconnect_setup_callbacks/13 (addr)
+  Availability: available
+  Function flags: count:214748 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_recv.part.0/62 (inlined) (106891 (estimated locally),0.50 per call) altcp_close/35 (483 (estimated locally),0.00 per call) pbuf_free/34 (258 (estimated locally),0.00 per call) 
+altcp_proxyconnect_lower_recv.part.0/62 (altcp_proxyconnect_lower_recv.part.0) @071bde00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ac70
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_recv.part.0/62 is inline copy in altcp_proxyconnect_lower_recv/9
+  Availability: local
+  Function flags: count:106891 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_recv/9 (inlined) (106891 (estimated locally),0.50 per call) 
+  Calls: pbuf_free/34 (77 (estimated locally),0.00 per call) altcp_close/35 (144 (estimated locally),0.00 per call) pbuf_free/34 (2782 (estimated locally),0.01 per call) altcp_close/35 (4789 (estimated locally),0.02 per call) altcp_abort/36 (48 (estimated locally),0.00 per call) pbuf_memfind/37 (11173 (estimated locally),0.05 per call) altcp_recved/38 (11173 (estimated locally),0.05 per call) pbuf_free/34 (11173 (estimated locally),0.05 per call) 
+   Indirect call(13180 (estimated locally),0.06 per call)  of param:0 loaded from aggregate passed by reference at offset 192 (vptr maybe changed)
+   Indirect call(6181 (estimated locally),0.03 per call)  of param:0 loaded from aggregate passed by reference at offset 160 (vptr maybe changed)
+altcp_proxyconnect_lower_connected/8 (altcp_proxyconnect_lower_connected) @071ca700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @05096d58
+  References: 
+  Referring: altcp_proxyconnect_connect/20 (addr)
+  Availability: available
+  Function flags: count:156096 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_proxyconnect_lower_connected.part.0/63 (inlined) (46017 (estimated locally),0.29 per call) 
+altcp_proxyconnect_lower_connected.part.0/63 (altcp_proxyconnect_lower_connected.part.0) @071c20e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @0702ad70
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_lower_connected.part.0/63 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:46017 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: altcp_proxyconnect_lower_connected/8 (inlined) (46017 (estimated locally),0.29 per call) 
+  Calls: altcp_proxyconnect_send_request/7 (inlined) (15953 (estimated locally),0.10 per call) 
+   Indirect call(30064 (estimated locally),0.19 per call)  of param:0 loaded from aggregate passed by reference at offset 160 (vptr maybe changed)
+altcp_proxyconnect_send_request/7 (altcp_proxyconnect_send_request) @071ca460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096e98
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_send_request/7 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:15953 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_lower_connected.part.0/63 (inlined) (15953 (estimated locally),0.10 per call) 
+  Calls: mem_free/53 (14188 (estimated locally),0.09 per call) mem_free/53 (743 (estimated locally),0.00 per call) altcp_write/54 (3671 (estimated locally),0.02 per call) altcp_proxyconnect_format_request/6 (inlined) (14931 (estimated locally),0.10 per call) ip4addr_ntoa/57 (14931 (estimated locally),0.10 per call) mem_malloc/56 (15068 (estimated locally),0.10 per call) altcp_proxyconnect_format_request/65 (inlined) (15808 (estimated locally),0.10 per call) 
+altcp_proxyconnect_format_request/65 (altcp_proxyconnect_format_request) @07265d20
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 6
+  Aux: @0702ac50
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_format_request/65 is inline copy in altcp_proxyconnect_lower_connected/8
+  Clone of altcp_proxyconnect_format_request/6
+  Availability: local
+  Function flags: count:15808 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (inlined) (15808 (estimated locally),0.10 per call) 
+  Calls: snprintf/58 (15808 (estimated locally),0.10 per call) 
+altcp_proxyconnect_format_request/6 (altcp_proxyconnect_format_request) @071ca1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 65
+  Aux: @05096e18
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_format_request/6 is inline copy in altcp_proxyconnect_lower_connected/8
+  Availability: local
+  Function flags: count:14931 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_send_request/7 (inlined) (14931 (estimated locally),0.10 per call) 
+  Calls: snprintf/58 (14931 (estimated locally),0.10 per call) 
+altcp_proxyconnect_state_free/5 (altcp_proxyconnect_state_free) @071c2d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096f98
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_state_free/5 is inline copy in altcp_proxyconnect_dealloc/25
+  Availability: local
+  Function flags: count:401890827 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_dealloc/25 (inlined) (401890827 (estimated locally),0.37 per call) 
+  Calls: mem_free/53 (214891067 (estimated locally),0.20 per call) 
+altcp_proxyconnect_state_alloc/4 (altcp_proxyconnect_state_alloc) @071c2a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @05096dd8
+  References: 
+  Referring: 
+  Function altcp_proxyconnect_state_alloc/4 is inline copy in altcp_proxyconnect_new/15
+  Availability: local
+  Function flags: count:258328721 (estimated locally) body local optimize_size
+  Called by: altcp_proxyconnect_setup/14 (inlined) (258328721 (estimated locally),0.24 per call) 
+  Calls: mem_calloc/29 (258328721 (estimated locally),0.24 per call) 
+
+Function found not to call free: altcp_proxyconnect_listen
+altcp_proxyconnect_set_poll.part.0 (struct altcp_pcb * conn, u8_t interval)
+{
+  struct altcp_pcb * _2;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = conn_1(D)->inner_conn;
+  altcp_poll (_2, altcp_proxyconnect_lower_poll, interval_3(D));
+
+  <bb 3> [local count: 1073741824]:
+  return;
+
+}
+
+
+altcp_proxyconnect_lower_connected.part.0 (void * arg, err_t err)
+{
+  struct altcp_pcb * conn;
+  struct altcp_pcb * inner_conn;
+  err_t (*<T632>) (void *, struct altcp_pcb *, err_t) _3;
+  void * _4;
+  signed char _5;
+  signed char _6;
+  signed char _7;
+
+  <bb 9> [local count: 1073741824]:
+  # DEBUG D#8 s=> inner_conn
+  # DEBUG inner_conn => D#8
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (err_1(D) != 0)
+    goto <bb 3>; [79.76%]
+  else
+    goto <bb 7>; [20.24%]
+
+  <bb 3> [local count: 856416480]:
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct altcp_pcb *)arg_2(D)].connected;
+  if (_3 != 0B)
+    goto <bb 4>; [81.91%]
+  else
+    goto <bb 7>; [18.09%]
+
+  <bb 4> [local count: 701490739]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(struct altcp_pcb *)arg_2(D)].arg;
+  _5 = _3 (_4, arg_2(D), err_1(D));
+  if (_5 == -13)
+    goto <bb 5>; [1.04%]
+  else
+    goto <bb 6>; [98.96%]
+
+  <bb 5> [local count: 7295504]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 694195235]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 372251086]:
+  # DEBUG BEGIN_STMT
+  _6 = altcp_proxyconnect_send_request (arg_2(D));
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 8> [local count: 1073741824]:
+  # _7 = PHI <-13(5), 0(6), _6(7)>
+  return _7;
+
+}
+
+
+altcp_proxyconnect_lower_recv.part.0 (void * arg, struct altcp_pcb * inner_conn, struct pbuf * p)
+{
+  struct altcp_proxyconnect_state_t * state;
+  struct altcp_pcb * conn;
+  u16_t idx;
+  err_t err;
+  struct altcp_pcb * _3;
+  unsigned char _6;
+  unsigned char _7;
+  err_t (*<T638>) (void *, struct altcp_pcb *, struct pbuf *, err_t) _8;
+  void * _9;
+  signed char _10;
+  signed char _11;
+  short unsigned int _13;
+  unsigned char _14;
+  unsigned char _15;
+  err_t (*<T632>) (void *, struct altcp_pcb *, err_t) _16;
+  void * _17;
+  signed char _18;
+  signed char _19;
+
+  <bb 23> [local count: 153391]:
+  # DEBUG D#6 s=> err
+  # DEBUG err => D#6
+
+  <bb 2> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  state_2 = MEM[(struct altcp_pcb *)arg_1(D)].state;
+  # DEBUG state => state_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct altcp_pcb *)arg_1(D)].inner_conn;
+  if (_3 != inner_conn_4(D))
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 107374]:
+
+  <bb 4> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 6> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (state_2 == 0B)
+    goto <bb 7>; [0.45%]
+  else
+    goto <bb 10>; [99.55%]
+
+  <bb 7> [local count: 207]:
+  # DEBUG BEGIN_STMT
+  if (p_5(D) != 0B)
+    goto <bb 8>; [53.47%]
+  else
+    goto <bb 9>; [46.53%]
+
+  <bb 8> [local count: 111]:
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_5(D));
+
+  <bb 9> [local count: 207]:
+  # DEBUG BEGIN_STMT
+  altcp_close (inner_conn_4(D));
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [100.00%]
+
+  <bb 10> [local count: 45810]:
+  # DEBUG BEGIN_STMT
+  _6 = state_2->flags;
+  _7 = _6 & 2;
+  if (_7 != 0)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 11> [local count: 22905]:
+  # DEBUG BEGIN_STMT
+  _8 = MEM[(struct altcp_pcb *)arg_1(D)].recv;
+  if (_8 != 0B)
+    goto <bb 12>; [82.57%]
+  else
+    goto <bb 13>; [17.43%]
+
+  <bb 12> [local count: 18913]:
+  # DEBUG BEGIN_STMT
+  _9 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+  _10 = _8 (_9, arg_1(D), p_5(D), 0);
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [100.00%]
+
+  <bb 13> [local count: 3992]:
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_5(D));
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [100.00%]
+
+  <bb 14> [local count: 22905]:
+  # DEBUG BEGIN_STMT
+  if (p_5(D) == 0B)
+    goto <bb 15>; [30.00%]
+  else
+    goto <bb 18>; [70.00%]
+
+  <bb 15> [local count: 6872]:
+  # DEBUG BEGIN_STMT
+  _11 = altcp_close (arg_1(D));
+  if (_11 != 0)
+    goto <bb 16>; [1.00%]
+  else
+    goto <bb 17>; [99.00%]
+
+  <bb 16> [local count: 69]:
+  # DEBUG BEGIN_STMT
+  altcp_abort (arg_1(D));
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [100.00%]
+
+  <bb 17> [local count: 6803]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [100.00%]
+
+  <bb 18> [local count: 16034]:
+  # DEBUG BEGIN_STMT
+  idx_12 = pbuf_memfind (p_5(D), "\r\n\r\n", 4, 0);
+  # DEBUG idx => idx_12
+  # DEBUG BEGIN_STMT
+  _13 = p_5(D)->tot_len;
+  altcp_recved (inner_conn_4(D), _13);
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_5(D));
+  # DEBUG BEGIN_STMT
+  if (idx_12 != 65535)
+    goto <bb 19>; [79.03%]
+  else
+    goto <bb 21>; [20.97%]
+
+  <bb 19> [local count: 12671]:
+  # DEBUG BEGIN_STMT
+  _14 = state_2->flags;
+  _15 = _14 | 2;
+  state_2->flags = _15;
+  # DEBUG BEGIN_STMT
+  _16 = MEM[(struct altcp_pcb *)arg_1(D)].connected;
+  if (_16 != 0B)
+    goto <bb 20>; [70.00%]
+  else
+    goto <bb 21>; [30.00%]
+
+  <bb 20> [local count: 8870]:
+  # DEBUG BEGIN_STMT
+  _17 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+  _18 = _16 (_17, arg_1(D), 0);
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [100.00%]
+
+  <bb 21> [local count: 7164]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 22> [local count: 46017]:
+  # _19 = PHI <-15(9), _10(12), 0(13), -13(16), 0(17), _18(20), 0(21)>
+  return _19;
+
+}
+
+
+altcp_proxyconnect_lower_poll.part.0 (void * arg)
+{
+  struct altcp_pcb * conn;
+  struct altcp_pcb * inner_conn;
+  err_t (*<T642>) (void *, struct altcp_pcb *) _2;
+  void * _3;
+  signed char _4;
+  signed char _5;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG D#4 s=> inner_conn
+  # DEBUG inner_conn => D#4
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_1(D)].poll;
+  if (_2 != 0B)
+    goto <bb 3>; [54.59%]
+  else
+    goto <bb 4>; [45.41%]
+
+  <bb 3> [local count: 586155663]:
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+  _4 = _2 (_3, arg_1(D));
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 4> [local count: 1073741824]:
+  # _5 = PHI <0(2), _4(3)>
+  return _5;
+
+}
+
+
+altcp_proxyconnect_lower_sent.part.0 (void * arg, u16_t len)
+{
+  struct altcp_pcb * conn;
+  struct altcp_proxyconnect_state_t * state;
+  struct altcp_pcb * inner_conn;
+  err_t (*<T63d>) (void *, struct altcp_pcb *, u16_t) _2;
+  void * _3;
+  signed char _5;
+  signed char _6;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG D#2 s=> inner_conn
+  # DEBUG inner_conn => D#2
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_1(D)].sent;
+  if (_2 != 0B)
+    goto <bb 3>; [54.59%]
+  else
+    goto <bb 4>; [45.41%]
+
+  <bb 3> [local count: 586155663]:
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+  _5 = _2 (_3, arg_1(D), len_4(D));
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 4> [local count: 1073741824]:
+  # _6 = PHI <0(2), _5(3)>
+  return _6;
+
+}
+
+
+altcp_proxyconnect_dealloc (struct altcp_pcb * conn)
+{
+  struct altcp_proxyconnect_state_t * state;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  if (conn_2(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 3> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  state_4 = conn_2(D)->state;
+  # DEBUG state => state_4
+  # DEBUG BEGIN_STMT
+  if (state_4 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 401890827]:
+  # DEBUG BEGIN_STMT
+  altcp_proxyconnect_state_free (state_4);
+  # DEBUG BEGIN_STMT
+  conn_2(D)->state = 0B;
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+
+altcp_proxyconnect_write (struct altcp_pcb * conn, const void * dataptr, u16_t len, u8_t apiflags)
+{
+  struct altcp_proxyconnect_state_t * state;
+  unsigned char _1;
+  struct altcp_pcb * _2;
+  err_t _3;
+  err_t _12;
+  unsigned char _13;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_5(D) == 0B)
+    goto <bb 6>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 1068909987]:
+  # DEBUG BEGIN_STMT
+  state_7 = conn_5(D)->state;
+  # DEBUG state => state_7
+  # DEBUG BEGIN_STMT
+  if (state_7 == 0B)
+    goto <bb 6>; [0.45%]
+  else
+    goto <bb 4>; [99.55%]
+
+  <bb 4> [local count: 1064099892]:
+  # DEBUG BEGIN_STMT
+  _1 = state_7->flags;
+  _13 = _1 & 2;
+  if (_13 == 0)
+    goto <bb 6>; [2.09%]
+  else
+    goto <bb 5>; [97.91%]
+
+  <bb 5> [local count: 1041860204]:
+  # DEBUG BEGIN_STMT
+  _2 = conn_5(D)->inner_conn;
+  _12 = altcp_write (_2, dataptr_8(D), len_9(D), apiflags_10(D));
+
+  <bb 6> [local count: 1073741824]:
+  # _3 = PHI <-6(2), -15(3), -6(4), _12(5)>
+  return _3;
+
+}
+
+
+altcp_proxyconnect_close (struct altcp_pcb * conn)
+{
+  err_t err;
+  struct altcp_pcb * _1;
+  err_t _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (conn_5(D) == 0B)
+    goto <bb 6>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 1068909987]:
+  # DEBUG BEGIN_STMT
+  _1 = conn_5(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 4> [local count: 748236991]:
+  # DEBUG BEGIN_STMT
+  err_8 = altcp_close (_1);
+  # DEBUG err => err_8
+  # DEBUG BEGIN_STMT
+  if (err_8 != 0)
+    goto <bb 6>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 5> [local count: 814509410]:
+  # DEBUG BEGIN_STMT
+  altcp_free (conn_5(D));
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  # _2 = PHI <-6(2), err_8(4), 0(5)>
+  return _2;
+
+}
+
+
+altcp_proxyconnect_abort (struct altcp_pcb * conn)
+{
+  struct altcp_pcb * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 401890828]:
+  # DEBUG BEGIN_STMT
+  altcp_abort (_1);
+
+  <bb 5> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  altcp_free (conn_4(D));
+
+  <bb 6> [local count: 1073741824]:
+  return;
+
+}
+
+
+altcp_proxyconnect_listen (struct altcp_pcb * conn, u8_t backlog, err_t * err)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0B;
+
+}
+
+
+altcp_proxyconnect_connect (struct altcp_pcb * conn, const struct ip_addr_t * ipaddr, u16_t port, err_t (*altcp_connected_fn) (void *, struct altcp_pcb *, err_t) connected)
+{
+  struct altcp_proxyconnect_state_t * state;
+  unsigned char _1;
+  unsigned char _2;
+  long unsigned int _3;
+  struct altcp_pcb * _4;
+  struct altcp_proxyconnect_config * _5;
+  struct ip_addr_t * _6;
+  short unsigned int _7;
+  err_t _8;
+  err_t _21;
+  unsigned char _22;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_10(D) == 0B)
+    goto <bb 7>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 1068909987]:
+  if (ipaddr_11(D) == 0B)
+    goto <bb 7>; [0.45%]
+  else
+    goto <bb 4>; [99.55%]
+
+  <bb 4> [local count: 1064099892]:
+  # DEBUG BEGIN_STMT
+  state_13 = conn_10(D)->state;
+  # DEBUG state => state_13
+  # DEBUG BEGIN_STMT
+  if (state_13 == 0B)
+    goto <bb 7>; [0.45%]
+  else
+    goto <bb 5>; [99.55%]
+
+  <bb 5> [local count: 1059311441]:
+  # DEBUG BEGIN_STMT
+  _1 = state_13->flags;
+  _22 = _1 & 1;
+  if (_22 != 0)
+    goto <bb 7>; [2.09%]
+  else
+    goto <bb 6>; [97.91%]
+
+  <bb 6> [local count: 1037171832]:
+  # DEBUG BEGIN_STMT
+  _2 = _1 | 1;
+  state_13->flags = _2;
+  # DEBUG BEGIN_STMT
+  conn_10(D)->connected = connected_15(D);
+  # DEBUG BEGIN_STMT
+  _3 = ipaddr_11(D)->addr;
+  state_13->outer_addr.addr = _3;
+  # DEBUG BEGIN_STMT
+  state_13->outer_port = port_18(D);
+  # DEBUG BEGIN_STMT
+  _4 = conn_10(D)->inner_conn;
+  _5 = state_13->conf;
+  _6 = &_5->proxy_addr;
+  _7 = _5->proxy_port;
+  _21 = altcp_connect (_4, _6, _7, altcp_proxyconnect_lower_connected);
+
+  <bb 7> [local count: 1073741824]:
+  # _8 = PHI <-6(3), -6(4), -6(5), _21(6), -6(2)>
+  return _8;
+
+}
+
+
+altcp_proxyconnect_recved (struct altcp_pcb * conn, u16_t len)
+{
+  struct altcp_proxyconnect_state_t * state;
+  unsigned char _1;
+  struct altcp_pcb * _2;
+  unsigned char _9;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501929]:
+  # DEBUG BEGIN_STMT
+  state_6 = conn_4(D)->state;
+  # DEBUG state => state_6
+  # DEBUG BEGIN_STMT
+  if (state_6 == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 4>; [81.91%]
+
+  <bb 4> [local count: 720400030]:
+  # DEBUG BEGIN_STMT
+  _1 = state_6->flags;
+  _9 = _1 & 2;
+  if (_9 == 0)
+    goto <bb 6>; [51.12%]
+  else
+    goto <bb 5>; [48.88%]
+
+  <bb 5> [local count: 352131534]:
+  # DEBUG BEGIN_STMT
+  _2 = conn_4(D)->inner_conn;
+  altcp_recved (_2, len_7(D));
+
+  <bb 6> [local count: 1073741824]:
+  return;
+
+}
+
+
+altcp_proxyconnect_set_poll (struct altcp_pcb * conn, u8_t interval)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (conn_1(D) != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129752]:
+  altcp_proxyconnect_set_poll.part.0 (conn_1(D), interval_3(D));
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+altcp_proxyconnect_alloc (void * arg, u8_t ip_type)
+{
+  struct altcp_pcb * _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _5 = altcp_proxyconnect_new_tcp (arg_2(D), ip_type_3(D));
+  return _5;
+
+}
+
+
+altcp_proxyconnect_new_tcp (struct altcp_proxyconnect_config * config, u8_t ip_type)
+{
+  struct altcp_pcb * ret;
+  struct altcp_pcb * inner_pcb;
+  struct altcp_pcb * _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  inner_pcb_6 = altcp_tcp_new_ip_type (ip_type_4(D));
+  # DEBUG inner_pcb => inner_pcb_6
+  # DEBUG BEGIN_STMT
+  if (inner_pcb_6 == 0B)
+    goto <bb 5>; [15.47%]
+  else
+    goto <bb 3>; [84.53%]
+
+  <bb 3> [local count: 907633963]:
+  # DEBUG BEGIN_STMT
+  ret_9 = altcp_proxyconnect_new (config_7(D), inner_pcb_6);
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 == 0B)
+    goto <bb 4>; [17.43%]
+  else
+    goto <bb 5>; [82.57%]
+
+  <bb 4> [local count: 158200600]:
+  # DEBUG BEGIN_STMT
+  altcp_close (inner_pcb_6);
+
+  <bb 5> [local count: 1073741824]:
+  # _1 = PHI <0B(2), ret_9(4), ret_9(3)>
+  return _1;
+
+}
+
+
+altcp_proxyconnect_new (struct altcp_proxyconnect_config * config, struct altcp_pcb * inner_pcb)
+{
+  struct altcp_pcb * ret;
+  signed char _1;
+  struct altcp_pcb * _2;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (inner_pcb_4(D) == 0B)
+    goto <bb 6>; [15.47%]
+  else
+    goto <bb 3>; [84.53%]
+
+  <bb 3> [local count: 907633963]:
+  # DEBUG BEGIN_STMT
+  ret_7 = altcp_alloc ();
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 6>; [46.53%]
+
+  <bb 4> [local count: 485311880]:
+  # DEBUG BEGIN_STMT
+  _1 = altcp_proxyconnect_setup (config_8(D), ret_7, inner_pcb_4(D));
+  if (_1 != 0)
+    goto <bb 5>; [9.39%]
+  else
+    goto <bb 6>; [90.61%]
+
+  <bb 5> [local count: 45570786]:
+  # DEBUG BEGIN_STMT
+  altcp_free (ret_7);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  # _2 = PHI <0B(2), 0B(5), ret_7(4), ret_7(3)>
+  return _2;
+
+}
+
+
+altcp_proxyconnect_setup (struct altcp_proxyconnect_config * config, struct altcp_pcb * conn, struct altcp_pcb * inner_conn)
+{
+  struct altcp_proxyconnect_state_t * state;
+  err_t _1;
+
+  <bb 2> [local count: 231806]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (config_4(D) == 0B)
+    goto <bb 7>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 230763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_5(D) == inner_conn_6(D))
+    goto <bb 8>; [46.53%]
+  else
+    goto <bb 5>; [53.47%]
+
+  <bb 8> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 9> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 123389]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  state_9 = altcp_proxyconnect_state_alloc ();
+  # DEBUG state => state_9
+  # DEBUG BEGIN_STMT
+  if (state_9 == 0B)
+    goto <bb 7>; [0.91%]
+  else
+    goto <bb 6>; [99.09%]
+
+  <bb 6> [local count: 122266]:
+  # DEBUG BEGIN_STMT
+  state_9->flags = 0;
+  # DEBUG BEGIN_STMT
+  state_9->conf = config_4(D);
+  # DEBUG BEGIN_STMT
+  altcp_proxyconnect_setup_callbacks (conn_5(D), inner_conn_6(D));
+  # DEBUG BEGIN_STMT
+  conn_5(D)->inner_conn = inner_conn_6(D);
+  # DEBUG BEGIN_STMT
+  conn_5(D)->fns = &altcp_proxyconnect_functions;
+  # DEBUG BEGIN_STMT
+  conn_5(D)->state = state_9;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 124432]:
+  # _1 = PHI <-16(2), -1(5), 0(6)>
+  return _1;
+
+}
+
+
+altcp_proxyconnect_setup_callbacks (struct altcp_pcb * conn, struct altcp_pcb * inner_conn)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  altcp_arg (inner_conn_2(D), conn_3(D));
+  # DEBUG BEGIN_STMT
+  altcp_recv (inner_conn_2(D), altcp_proxyconnect_lower_recv);
+  # DEBUG BEGIN_STMT
+  altcp_sent (inner_conn_2(D), altcp_proxyconnect_lower_sent);
+  # DEBUG BEGIN_STMT
+  altcp_err (inner_conn_2(D), altcp_proxyconnect_lower_err);
+  return;
+
+}
+
+
+altcp_proxyconnect_lower_err (void * arg, err_t err)
+{
+  void (*<T647>) (void *, err_t) _1;
+  void * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG conn => arg_5(D)
+  # DEBUG BEGIN_STMT
+  if (arg_5(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct altcp_pcb *)arg_5(D)].inner_conn = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct altcp_pcb *)arg_5(D)].err;
+  if (_1 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 4> [local count: 526133494]:
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_5(D)].arg;
+  _1 (_2, err_8(D));
+
+  <bb 5> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  altcp_free (arg_5(D));
+
+  <bb 6> [local count: 1073741824]:
+  return;
+
+}
+
+
+altcp_proxyconnect_lower_poll (void * arg, struct altcp_pcb * inner_conn)
+{
+  struct altcp_pcb * _1;
+  signed char _2;
+  err_t _3;
+
+  <bb 2> [local count: 219131]:
+  # DEBUG BEGIN_STMT
+  # DEBUG conn => arg_5(D)
+  # DEBUG BEGIN_STMT
+  if (arg_5(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct altcp_pcb *)arg_5(D)].inner_conn;
+  if (_1 != inner_conn_8(D))
+    goto <bb 7>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG D#3 => inner_conn_8(D)
+  _2 = altcp_proxyconnect_lower_poll.part.0 (arg_5(D));
+
+  <bb 6> [local count: 111757]:
+  # _3 = PHI <_2(5), 0(2)>
+  return _3;
+
+}
+
+
+altcp_proxyconnect_lower_sent (void * arg, struct altcp_pcb * inner_conn, u16_t len)
+{
+  struct altcp_proxyconnect_state_t * state;
+  struct altcp_pcb * _1;
+  unsigned char _2;
+  signed char _3;
+  err_t _6;
+  unsigned char _9;
+
+  <bb 2> [local count: 219131]:
+  # DEBUG BEGIN_STMT
+  # DEBUG conn => arg_8(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (arg_8(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  state_11 = MEM[(struct altcp_pcb *)arg_8(D)].state;
+  # DEBUG state => state_11
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct altcp_pcb *)arg_8(D)].inner_conn;
+  if (_1 != inner_conn_12(D))
+    goto <bb 9>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 9> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 10> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (state_11 == 0B)
+    goto <bb 8>; [18.09%]
+  else
+    goto <bb 6>; [81.91%]
+
+  <bb 6> [local count: 37693]:
+  _2 = state_11->flags;
+  _9 = _2 & 2;
+  if (_9 == 0)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 7>; [66.00%]
+
+  <bb 7> [local count: 24877]:
+  # DEBUG D#1 => inner_conn_12(D)
+  _3 = altcp_proxyconnect_lower_sent.part.0 (arg_8(D), len_13(D));
+
+  <bb 8> [local count: 111757]:
+  # _6 = PHI <0(6), _3(7), 0(2), 0(5)>
+  return _6;
+
+}
+
+
+altcp_proxyconnect_lower_recv (void * arg, struct altcp_pcb * inner_conn, struct pbuf * p, err_t err)
+{
+  signed char _1;
+  err_t _4;
+
+  <bb 2> [local count: 214748]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG conn => arg_7(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (err_8(D) != 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 10> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 11> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (arg_7(D) == 0B)
+    goto <bb 5>; [0.45%]
+  else
+    goto <bb 8>; [99.55%]
+
+  <bb 5> [local count: 483]:
+  # DEBUG BEGIN_STMT
+  if (p_11(D) != 0B)
+    goto <bb 6>; [53.47%]
+  else
+    goto <bb 7>; [46.53%]
+
+  <bb 6> [local count: 258]:
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_11(D));
+
+  <bb 7> [local count: 483]:
+  # DEBUG BEGIN_STMT
+  altcp_close (inner_conn_10(D));
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 106891]:
+  # DEBUG D#5 => err_8(D)
+  _1 = altcp_proxyconnect_lower_recv.part.0 (arg_7(D), inner_conn_10(D), p_11(D));
+
+  <bb 9> [local count: 32550]:
+  # _4 = PHI <-15(7), _1(8)>
+  return _4;
+
+}
+
+
+altcp_proxyconnect_lower_connected (void * arg, struct altcp_pcb * inner_conn, err_t err)
+{
+  void * _1;
+  struct altcp_pcb * _2;
+  signed char _3;
+  err_t _4;
+
+  <bb 2> [local count: 156096]:
+  # DEBUG BEGIN_STMT
+  # DEBUG conn => arg_6(D)
+  # DEBUG BEGIN_STMT
+  if (arg_6(D) != 0B)
+    goto <bb 3>; [99.13%]
+  else
+    goto <bb 7>; [0.87%]
+
+  <bb 3> [local count: 154738]:
+  _1 = MEM[(struct altcp_pcb *)arg_6(D)].state;
+  if (_1 != 0B)
+    goto <bb 4>; [99.13%]
+  else
+    goto <bb 7>; [0.87%]
+
+  <bb 4> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_6(D)].inner_conn;
+  if (_2 != inner_conn_9(D))
+    goto <bb 8>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 8> [local count: 107374]:
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 9> [local count: 1073741824]:
+  goto <bb 5>; [100.00%]
+
+  <bb 6> [local count: 46017]:
+  # DEBUG D#7 => inner_conn_9(D)
+  _3 = altcp_proxyconnect_lower_connected.part.0 (arg_6(D), err_10(D));
+
+  <bb 7> [local count: 48722]:
+  # _4 = PHI <_3(6), -6(2), -6(3)>
+  return _4;
+
+}
+
+
+altcp_proxyconnect_send_request (struct altcp_pcb * conn)
+{
+  err_t err;
+  struct altcp_proxyconnect_state_t * state;
+  char * host;
+  char * buffer;
+  mem_size_t alloc_len;
+  int len2;
+  int len;
+  short unsigned int _1;
+  int _2;
+  struct ip_addr_t * _3;
+  unsigned int _4;
+  short unsigned int _5;
+  int _6;
+  struct altcp_pcb * _7;
+  short unsigned int _8;
+  err_t _9;
+  int _28;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  state_14 = conn_13(D)->state;
+  # DEBUG state => state_14
+  # DEBUG BEGIN_STMT
+  if (state_14 == 0B)
+    goto <bb 11>; [0.91%]
+  else
+    goto <bb 3>; [99.09%]
+
+  <bb 3> [local count: 1063970774]:
+  # DEBUG BEGIN_STMT
+  _1 = state_14->outer_port;
+  _2 = (int) _1;
+  len_16 = altcp_proxyconnect_format_request (0B, 0, "", _2);
+  # DEBUG len => len_16
+  # DEBUG BEGIN_STMT
+  if (len_16 < 0)
+    goto <bb 11>; [0.73%]
+  else
+    goto <bb 4>; [99.27%]
+
+  <bb 4> [local count: 1056203787]:
+  # DEBUG BEGIN_STMT
+  len_17 = len_16 + 16;
+  # DEBUG len => len_17
+  # DEBUG BEGIN_STMT
+  alloc_len_18 = (mem_size_t) len_17;
+  # DEBUG alloc_len => alloc_len_18
+  # DEBUG BEGIN_STMT
+  _28 = len_17 & 65535;
+  if (len_17 != _28)
+    goto <bb 11>; [3.98%]
+  else
+    goto <bb 5>; [96.02%]
+
+  <bb 5> [local count: 1014166876]:
+  # DEBUG BEGIN_STMT
+  buffer_20 = mem_malloc (alloc_len_18);
+  # DEBUG buffer => buffer_20
+  # DEBUG BEGIN_STMT
+  if (buffer_20 == 0B)
+    goto <bb 11>; [0.91%]
+  else
+    goto <bb 6>; [99.09%]
+
+  <bb 6> [local count: 1004937957]:
+  # DEBUG BEGIN_STMT
+  _3 = &state_14->outer_addr;
+  host_22 = ip4addr_ntoa (_3);
+  # DEBUG host => host_22
+  # DEBUG BEGIN_STMT
+  _4 = (unsigned int) _28;
+  _5 = state_14->outer_port;
+  _6 = (int) _5;
+  len2_24 = altcp_proxyconnect_format_request (buffer_20, _4, host_22, _6);
+  # DEBUG len2 => len2_24
+  # DEBUG BEGIN_STMT
+  if (len2_24 > 0)
+    goto <bb 7>; [74.50%]
+  else
+    goto <bb 10>; [25.50%]
+
+  <bb 7> [local count: 748678778]:
+  if (len_17 >= len2_24)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 8> [local count: 247063996]:
+  # DEBUG BEGIN_STMT
+  _7 = conn_13(D)->inner_conn;
+  _8 = (short unsigned int) len2_24;
+  err_26 = altcp_write (_7, buffer_20, _8, 1);
+  # DEBUG err => err_26
+  # DEBUG BEGIN_STMT
+  if (err_26 != 0)
+    goto <bb 9>; [20.24%]
+  else
+    goto <bb 10>; [79.76%]
+
+  <bb 9> [local count: 50005753]:
+  # DEBUG BEGIN_STMT
+  mem_free (buffer_20);
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [100.00%]
+
+  <bb 10> [local count: 954932204]:
+  # DEBUG BEGIN_STMT
+  mem_free (buffer_20);
+  # DEBUG BEGIN_STMT
+
+  <bb 11> [local count: 1073741822]:
+  # _9 = PHI <-6(2), -6(3), -1(4), -1(5), err_26(9), 0(10)>
+  return _9;
+
+}
+
+
+altcp_proxyconnect_format_request (char * buffer, size_t bufsize, const char * host, int port)
+{
+  int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _7 = snprintf (buffer_2(D), bufsize_3(D), "CONNECT %s:%d HTTP/1.1\r\nUser-Agent: %s\r\nProxy-Connection: keep-alive\r\nConnection: keep-alive\r\n\r\n", host_4(D), port_5(D), "lwIP/2.1.3 (http://savannah.nongnu.org/projects/lwip)");
+  return _7;
+
+}
+
+
+altcp_proxyconnect_state_free (struct altcp_proxyconnect_state_t * state)
+{
+  <bb 2> [local count: 230763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (state_2(D) == 0B)
+    goto <bb 5>; [46.53%]
+  else
+    goto <bb 4>; [53.47%]
+
+  <bb 5> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 123389]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  mem_free (state_2(D));
+  return;
+
+}
+
+
+altcp_proxyconnect_state_alloc ()
+{
+  struct altcp_proxyconnect_state_t * ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ret_3 = mem_calloc (1, 16);
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+

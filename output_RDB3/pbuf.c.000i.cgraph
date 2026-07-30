@@ -1,0 +1,2572 @@
+Trivially needed symbols: pbuf_strstr pbuf_memfind pbuf_memcmp pbuf_put_at pbuf_try_get_at pbuf_get_at pbuf_clone pbuf_coalesce pbuf_take_at pbuf_take pbuf_skip pbuf_split_64k pbuf_get_contiguous pbuf_copy_partial pbuf_copy_partial_pbuf pbuf_copy pbuf_dechain pbuf_chain pbuf_cat pbuf_ref pbuf_clen pbuf_free pbuf_free_header pbuf_header_force pbuf_header pbuf_remove_header pbuf_add_header_force pbuf_add_header pbuf_realloc pbuf_alloced_custom pbuf_alloc_reference pbuf_alloc pbuf_free_ooseq pbuf_free_ooseq_pending
+
+
+Initial Symbol table:
+
+strlen/48 (strlen) @0729d2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_strstr/39 
+  Calls: 
+memcpy/47 (memcpy) @07279380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_take_at/31 pbuf_take/30 pbuf_copy_partial/25 pbuf_copy_partial_pbuf/24 
+  Calls: 
+mem_free/46 (mem_free) @07261a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free/17 
+  Calls: 
+memp_free/45 (memp_free) @072619a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free/17 pbuf_free/17 
+  Calls: 
+mem_trim/44 (mem_trim) @0721fee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_realloc/8 
+  Calls: 
+mem_malloc/43 (mem_malloc) @0721f8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: 
+memp_malloc/42 (memp_malloc) @0721f7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_alloc_reference/6 pbuf_alloc/5 
+  Calls: 
+tcp_free_ooseq/41 (tcp_free_ooseq) @0721f460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free_ooseq/2 
+  Calls: 
+tcp_active_pcbs/40 (tcp_active_pcbs) @0721e438
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: pbuf_free_ooseq/2 (read)
+  Availability: not-ready
+  Varpool flags:
+pbuf_strstr/39 (pbuf_strstr) @0721f000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_memfind/38 strlen/48 
+pbuf_memfind/38 (pbuf_memfind) @07214a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0721f000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_strstr/39 
+  Calls: pbuf_memcmp/37 
+pbuf_memcmp/37 (pbuf_memcmp) @07214460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07214a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_memfind/38 
+  Calls: pbuf_get_at/34 
+pbuf_put_at/36 (pbuf_put_at) @07214ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07214460
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_skip/29 
+pbuf_try_get_at/35 (pbuf_try_get_at) @07214c40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07214ee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_get_at/34 
+  Calls: pbuf_skip_const/28 
+pbuf_get_at/34 (pbuf_get_at) @072149a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07214c40
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_memcmp/37 
+  Calls: pbuf_try_get_at/35 
+pbuf_clone/33 (pbuf_clone) @07214700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @072149a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_coalesce/32 
+  Calls: pbuf_copy/23 pbuf_alloc/5 
+pbuf_coalesce/32 (pbuf_coalesce) @07214380
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07214700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 pbuf_clone/33 
+pbuf_take_at/31 (pbuf_take_at) @072140e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07214380
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_take/30 memcpy/47 pbuf_skip/29 
+pbuf_take/30 (pbuf_take) @071fbb60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @072140e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_take_at/31 
+  Calls: memcpy/47 
+pbuf_skip/29 (pbuf_skip) @071fb380
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071fbb60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_put_at/36 pbuf_take_at/31 
+  Calls: pbuf_skip_const/28 
+pbuf_skip_const/28 (pbuf_skip_const) @071fbd20
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071fba80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_try_get_at/35 pbuf_skip/29 pbuf_get_contiguous/26 
+  Calls: 
+pbuf_split_64k/27 (pbuf_split_64k) @071fba80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071fb380
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pbuf_get_contiguous/26 (pbuf_get_contiguous) @071fb7e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071fba80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_copy_partial/25 pbuf_skip_const/28 
+pbuf_copy_partial/25 (pbuf_copy_partial) @071fb540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071fb7e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_get_contiguous/26 
+  Calls: memcpy/47 
+pbuf_copy_partial_pbuf/24 (pbuf_copy_partial_pbuf) @071fb2a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071fb540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_copy/23 
+  Calls: memcpy/47 
+pbuf_copy/23 (pbuf_copy) @071eeee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071fb2a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_clone/33 
+  Calls: pbuf_copy_partial_pbuf/24 
+pbuf_dechain/22 (pbuf_dechain) @071ee9a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071eeee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 
+pbuf_chain/21 (pbuf_chain) @071ee2a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071ee9a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_ref/19 pbuf_cat/20 
+pbuf_cat/20 (pbuf_cat) @071eee00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071ee2a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_chain/21 
+  Calls: 
+pbuf_ref/19 (pbuf_ref) @071eeb60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071eee00
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_chain/21 
+  Calls: 
+pbuf_clen/18 (pbuf_clen) @071ee8c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071eeb60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pbuf_free/17 (pbuf_free) @071ee620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071ee8c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_coalesce/32 pbuf_dechain/22 pbuf_free_header/16 pbuf_realloc/8 pbuf_alloc/5 
+  Calls: mem_free/46 memp_free/45 memp_free/45 
+   Indirect call
+pbuf_free_header/16 (pbuf_free_header) @071ee1c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071ee620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_remove_header/12 pbuf_free/17 
+pbuf_header_force/15 (pbuf_header_force) @071e6ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071ee1c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_header_impl/13 
+pbuf_header/14 (pbuf_header) @071e6700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071e6ee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_header_impl/13 
+pbuf_header_impl/13 (pbuf_header_impl) @071e6e00
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071e6ee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_header_force/15 pbuf_header/14 
+  Calls: pbuf_add_header_impl/9 pbuf_remove_header/12 
+pbuf_remove_header/12 (pbuf_remove_header) @071e6b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071e6700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_free_header/16 pbuf_header_impl/13 
+  Calls: 
+pbuf_add_header_force/11 (pbuf_add_header_force) @071e68c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071e6b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_add_header_impl/9 
+pbuf_add_header/10 (pbuf_add_header) @071e6620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071e68c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_add_header_impl/9 
+pbuf_add_header_impl/9 (pbuf_add_header_impl) @071e6380
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071e68c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_header_impl/13 pbuf_add_header_force/11 pbuf_add_header/10 
+  Calls: 
+pbuf_realloc/8 (pbuf_realloc) @071e6000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071e6620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 mem_trim/44 
+pbuf_alloced_custom/7 (pbuf_alloced_custom) @071d3ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071e6000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_init_alloced_pbuf/4 
+pbuf_alloc_reference/6 (pbuf_alloc_reference) @071d3a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071d3ee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: pbuf_init_alloced_pbuf/4 memp_malloc/42 
+pbuf_alloc/5 (pbuf_alloc) @071d37e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071d3a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_clone/33 
+  Calls: pbuf_init_alloced_pbuf/4 mem_malloc/43 pbuf_init_alloced_pbuf/4 pbuf_free/17 pbuf_pool_is_empty/3 memp_malloc/42 pbuf_alloc_reference/6 
+pbuf_init_alloced_pbuf/4 (pbuf_init_alloced_pbuf) @071c7e00
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071d3a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloced_custom/7 pbuf_alloc_reference/6 pbuf_alloc/5 pbuf_alloc/5 
+  Calls: 
+pbuf_pool_is_empty/3 (pbuf_pool_is_empty) @071c7b60
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071c7e00
+  References: pbuf_free_ooseq_pending/1 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: 
+pbuf_free_ooseq/2 (pbuf_free_ooseq) @071c78c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071d37e0
+  References: pbuf_free_ooseq_pending/1 (write)tcp_active_pcbs/40 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_free_ooseq/41 
+pbuf_free_ooseq_pending/1 (pbuf_free_ooseq_pending) @071c5cf0
+  Type: variable definition analyzed
+  Visibility: force_output public
+  Aux: @071c78c0
+  References: 
+  Referring: pbuf_free_ooseq/2 (write)pbuf_pool_is_empty/3 (write)
+  Availability: not-ready
+  Varpool flags:
+oal_swap_endian_long/0 (oal_swap_endian_long) @06f83620
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+strlen/48 (strlen) @0729d2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_strstr/39 
+  Calls: 
+memcpy/47 (memcpy) @07279380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_take_at/31 pbuf_take/30 pbuf_copy_partial/25 pbuf_copy_partial_pbuf/24 
+  Calls: 
+mem_free/46 (mem_free) @07261a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free/17 
+  Calls: 
+memp_free/45 (memp_free) @072619a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free/17 pbuf_free/17 
+  Calls: 
+mem_trim/44 (mem_trim) @0721fee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_realloc/8 
+  Calls: 
+mem_malloc/43 (mem_malloc) @0721f8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: 
+memp_malloc/42 (memp_malloc) @0721f7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_alloc_reference/6 pbuf_alloc/5 
+  Calls: 
+tcp_free_ooseq/41 (tcp_free_ooseq) @0721f460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free_ooseq/2 
+  Calls: 
+tcp_active_pcbs/40 (tcp_active_pcbs) @0721e438
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: pbuf_free_ooseq/2 (read)
+  Availability: not-ready
+  Varpool flags:
+pbuf_strstr/39 (pbuf_strstr) @0721f000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_memfind/38 strlen/48 
+pbuf_memfind/38 (pbuf_memfind) @07214a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_strstr/39 
+  Calls: pbuf_memcmp/37 
+pbuf_memcmp/37 (pbuf_memcmp) @07214460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_memfind/38 
+  Calls: pbuf_get_at/34 
+pbuf_put_at/36 (pbuf_put_at) @07214ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_skip/29 
+pbuf_try_get_at/35 (pbuf_try_get_at) @07214c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_get_at/34 
+  Calls: pbuf_skip_const/28 
+pbuf_get_at/34 (pbuf_get_at) @072149a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_memcmp/37 
+  Calls: pbuf_try_get_at/35 
+pbuf_clone/33 (pbuf_clone) @07214700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_coalesce/32 
+  Calls: pbuf_copy/23 pbuf_alloc/5 
+pbuf_coalesce/32 (pbuf_coalesce) @07214380
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 pbuf_clone/33 
+pbuf_take_at/31 (pbuf_take_at) @072140e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_take/30 memcpy/47 pbuf_skip/29 
+pbuf_take/30 (pbuf_take) @071fbb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_take_at/31 
+  Calls: memcpy/47 
+pbuf_skip/29 (pbuf_skip) @071fb380
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_put_at/36 pbuf_take_at/31 
+  Calls: pbuf_skip_const/28 
+pbuf_skip_const/28 (pbuf_skip_const) @071fbd20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_try_get_at/35 pbuf_skip/29 pbuf_get_contiguous/26 
+  Calls: 
+pbuf_split_64k/27 (pbuf_split_64k) @071fba80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pbuf_get_contiguous/26 (pbuf_get_contiguous) @071fb7e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_copy_partial/25 pbuf_skip_const/28 
+pbuf_copy_partial/25 (pbuf_copy_partial) @071fb540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_get_contiguous/26 
+  Calls: memcpy/47 
+pbuf_copy_partial_pbuf/24 (pbuf_copy_partial_pbuf) @071fb2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_copy/23 
+  Calls: memcpy/47 
+pbuf_copy/23 (pbuf_copy) @071eeee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_clone/33 
+  Calls: pbuf_copy_partial_pbuf/24 
+pbuf_dechain/22 (pbuf_dechain) @071ee9a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 
+pbuf_chain/21 (pbuf_chain) @071ee2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_ref/19 pbuf_cat/20 
+pbuf_cat/20 (pbuf_cat) @071eee00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_chain/21 
+  Calls: 
+pbuf_ref/19 (pbuf_ref) @071eeb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_chain/21 
+  Calls: 
+pbuf_clen/18 (pbuf_clen) @071ee8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pbuf_free/17 (pbuf_free) @071ee620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_coalesce/32 pbuf_dechain/22 pbuf_free_header/16 pbuf_realloc/8 pbuf_alloc/5 
+  Calls: mem_free/46 memp_free/45 memp_free/45 
+   Indirect call
+pbuf_free_header/16 (pbuf_free_header) @071ee1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_remove_header/12 pbuf_free/17 
+pbuf_header_force/15 (pbuf_header_force) @071e6ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_header_impl/13 
+pbuf_header/14 (pbuf_header) @071e6700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_header_impl/13 
+pbuf_header_impl/13 (pbuf_header_impl) @071e6e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_header_force/15 pbuf_header/14 
+  Calls: pbuf_add_header_impl/9 pbuf_remove_header/12 
+pbuf_remove_header/12 (pbuf_remove_header) @071e6b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_free_header/16 pbuf_header_impl/13 
+  Calls: 
+pbuf_add_header_force/11 (pbuf_add_header_force) @071e68c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_add_header_impl/9 
+pbuf_add_header/10 (pbuf_add_header) @071e6620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_add_header_impl/9 
+pbuf_add_header_impl/9 (pbuf_add_header_impl) @071e6380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_header_impl/13 pbuf_add_header_force/11 pbuf_add_header/10 
+  Calls: 
+pbuf_realloc/8 (pbuf_realloc) @071e6000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 mem_trim/44 
+pbuf_alloced_custom/7 (pbuf_alloced_custom) @071d3ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_init_alloced_pbuf/4 
+pbuf_alloc_reference/6 (pbuf_alloc_reference) @071d3a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: pbuf_init_alloced_pbuf/4 memp_malloc/42 
+pbuf_alloc/5 (pbuf_alloc) @071d37e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_clone/33 
+  Calls: pbuf_init_alloced_pbuf/4 mem_malloc/43 pbuf_init_alloced_pbuf/4 pbuf_free/17 pbuf_pool_is_empty/3 memp_malloc/42 pbuf_alloc_reference/6 
+pbuf_init_alloced_pbuf/4 (pbuf_init_alloced_pbuf) @071c7e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloced_custom/7 pbuf_alloc_reference/6 pbuf_alloc/5 pbuf_alloc/5 
+  Calls: 
+pbuf_pool_is_empty/3 (pbuf_pool_is_empty) @071c7b60
+  Type: function definition analyzed
+  Visibility:
+  References: pbuf_free_ooseq_pending/1 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: 
+pbuf_free_ooseq/2 (pbuf_free_ooseq) @071c78c0
+  Type: function definition analyzed
+  Visibility: public
+  References: pbuf_free_ooseq_pending/1 (write)tcp_active_pcbs/40 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_free_ooseq/41 
+pbuf_free_ooseq_pending/1 (pbuf_free_ooseq_pending) @071c5cf0
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: pbuf_free_ooseq/2 (write)pbuf_pool_is_empty/3 (write)
+  Availability: not-ready
+  Varpool flags:
+
+
+Initial Symbol table:
+
+strlen/48 (strlen) @0729d2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_strstr/39 
+  Calls: 
+memcpy/47 (memcpy) @07279380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_take_at/31 pbuf_take/30 pbuf_copy_partial/25 pbuf_copy_partial_pbuf/24 
+  Calls: 
+mem_free/46 (mem_free) @07261a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free/17 
+  Calls: 
+memp_free/45 (memp_free) @072619a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free/17 pbuf_free/17 
+  Calls: 
+mem_trim/44 (mem_trim) @0721fee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_realloc/8 
+  Calls: 
+mem_malloc/43 (mem_malloc) @0721f8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: 
+memp_malloc/42 (memp_malloc) @0721f7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_alloc_reference/6 pbuf_alloc/5 
+  Calls: 
+tcp_free_ooseq/41 (tcp_free_ooseq) @0721f460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free_ooseq/2 
+  Calls: 
+tcp_active_pcbs/40 (tcp_active_pcbs) @0721e438
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: pbuf_free_ooseq/2 (read)
+  Availability: not-ready
+  Varpool flags:
+pbuf_strstr/39 (pbuf_strstr) @0721f000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_memfind/38 strlen/48 
+pbuf_memfind/38 (pbuf_memfind) @07214a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_strstr/39 
+  Calls: pbuf_memcmp/37 
+pbuf_memcmp/37 (pbuf_memcmp) @07214460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_memfind/38 
+  Calls: pbuf_get_at/34 
+pbuf_put_at/36 (pbuf_put_at) @07214ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_skip/29 
+pbuf_try_get_at/35 (pbuf_try_get_at) @07214c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_get_at/34 
+  Calls: pbuf_skip_const/28 
+pbuf_get_at/34 (pbuf_get_at) @072149a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_memcmp/37 
+  Calls: pbuf_try_get_at/35 
+pbuf_clone/33 (pbuf_clone) @07214700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_coalesce/32 
+  Calls: pbuf_copy/23 pbuf_alloc/5 
+pbuf_coalesce/32 (pbuf_coalesce) @07214380
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 pbuf_clone/33 
+pbuf_take_at/31 (pbuf_take_at) @072140e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_take/30 memcpy/47 pbuf_skip/29 
+pbuf_take/30 (pbuf_take) @071fbb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_take_at/31 
+  Calls: memcpy/47 
+pbuf_skip/29 (pbuf_skip) @071fb380
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_put_at/36 pbuf_take_at/31 
+  Calls: pbuf_skip_const/28 
+pbuf_skip_const/28 (pbuf_skip_const) @071fbd20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_try_get_at/35 pbuf_skip/29 pbuf_get_contiguous/26 
+  Calls: 
+pbuf_split_64k/27 (pbuf_split_64k) @071fba80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pbuf_get_contiguous/26 (pbuf_get_contiguous) @071fb7e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_copy_partial/25 pbuf_skip_const/28 
+pbuf_copy_partial/25 (pbuf_copy_partial) @071fb540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_get_contiguous/26 
+  Calls: memcpy/47 
+pbuf_copy_partial_pbuf/24 (pbuf_copy_partial_pbuf) @071fb2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_copy/23 
+  Calls: memcpy/47 
+pbuf_copy/23 (pbuf_copy) @071eeee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_clone/33 
+  Calls: pbuf_copy_partial_pbuf/24 
+pbuf_dechain/22 (pbuf_dechain) @071ee9a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 
+pbuf_chain/21 (pbuf_chain) @071ee2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_ref/19 pbuf_cat/20 
+pbuf_cat/20 (pbuf_cat) @071eee00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_chain/21 
+  Calls: 
+pbuf_ref/19 (pbuf_ref) @071eeb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_chain/21 
+  Calls: 
+pbuf_clen/18 (pbuf_clen) @071ee8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pbuf_free/17 (pbuf_free) @071ee620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_coalesce/32 pbuf_dechain/22 pbuf_free_header/16 pbuf_realloc/8 pbuf_alloc/5 
+  Calls: mem_free/46 memp_free/45 memp_free/45 
+   Indirect call
+pbuf_free_header/16 (pbuf_free_header) @071ee1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_remove_header/12 pbuf_free/17 
+pbuf_header_force/15 (pbuf_header_force) @071e6ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_header_impl/13 
+pbuf_header/14 (pbuf_header) @071e6700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_header_impl/13 
+pbuf_header_impl/13 (pbuf_header_impl) @071e6e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_header_force/15 pbuf_header/14 
+  Calls: pbuf_add_header_impl/9 pbuf_remove_header/12 
+pbuf_remove_header/12 (pbuf_remove_header) @071e6b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_free_header/16 pbuf_header_impl/13 
+  Calls: 
+pbuf_add_header_force/11 (pbuf_add_header_force) @071e68c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_add_header_impl/9 
+pbuf_add_header/10 (pbuf_add_header) @071e6620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_add_header_impl/9 
+pbuf_add_header_impl/9 (pbuf_add_header_impl) @071e6380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_header_impl/13 pbuf_add_header_force/11 pbuf_add_header/10 
+  Calls: 
+pbuf_realloc/8 (pbuf_realloc) @071e6000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 mem_trim/44 
+pbuf_alloced_custom/7 (pbuf_alloced_custom) @071d3ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_init_alloced_pbuf/4 
+pbuf_alloc_reference/6 (pbuf_alloc_reference) @071d3a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: pbuf_init_alloced_pbuf/4 memp_malloc/42 
+pbuf_alloc/5 (pbuf_alloc) @071d37e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_clone/33 
+  Calls: pbuf_init_alloced_pbuf/4 mem_malloc/43 pbuf_init_alloced_pbuf/4 pbuf_free/17 pbuf_pool_is_empty/3 memp_malloc/42 pbuf_alloc_reference/6 
+pbuf_init_alloced_pbuf/4 (pbuf_init_alloced_pbuf) @071c7e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloced_custom/7 pbuf_alloc_reference/6 pbuf_alloc/5 pbuf_alloc/5 
+  Calls: 
+pbuf_pool_is_empty/3 (pbuf_pool_is_empty) @071c7b60
+  Type: function definition analyzed
+  Visibility:
+  References: pbuf_free_ooseq_pending/1 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: 
+pbuf_free_ooseq/2 (pbuf_free_ooseq) @071c78c0
+  Type: function definition analyzed
+  Visibility: public
+  References: pbuf_free_ooseq_pending/1 (write)tcp_active_pcbs/40 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_free_ooseq/41 
+pbuf_free_ooseq_pending/1 (pbuf_free_ooseq_pending) @071c5cf0
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: pbuf_free_ooseq/2 (write)pbuf_pool_is_empty/3 (write)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+strlen/48 (strlen) @0729d2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_strstr/39 
+  Calls: 
+memcpy/47 (memcpy) @07279380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_take_at/31 pbuf_take/30 pbuf_copy_partial/25 pbuf_copy_partial_pbuf/24 
+  Calls: 
+mem_free/46 (mem_free) @07261a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free/17 
+  Calls: 
+memp_free/45 (memp_free) @072619a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free/17 pbuf_free/17 
+  Calls: 
+mem_trim/44 (mem_trim) @0721fee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_realloc/8 
+  Calls: 
+mem_malloc/43 (mem_malloc) @0721f8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: 
+memp_malloc/42 (memp_malloc) @0721f7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_alloc_reference/6 pbuf_alloc/5 
+  Calls: 
+tcp_free_ooseq/41 (tcp_free_ooseq) @0721f460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pbuf_free_ooseq/2 
+  Calls: 
+tcp_active_pcbs/40 (tcp_active_pcbs) @0721e438
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: pbuf_free_ooseq/2 (read)
+  Availability: not-ready
+  Varpool flags:
+pbuf_strstr/39 (pbuf_strstr) @0721f000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_memfind/38 strlen/48 
+pbuf_memfind/38 (pbuf_memfind) @07214a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_strstr/39 
+  Calls: pbuf_memcmp/37 
+pbuf_memcmp/37 (pbuf_memcmp) @07214460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_memfind/38 
+  Calls: pbuf_get_at/34 
+pbuf_put_at/36 (pbuf_put_at) @07214ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_skip/29 
+pbuf_try_get_at/35 (pbuf_try_get_at) @07214c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_get_at/34 
+  Calls: pbuf_skip_const/28 
+pbuf_get_at/34 (pbuf_get_at) @072149a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_memcmp/37 
+  Calls: pbuf_try_get_at/35 
+pbuf_clone/33 (pbuf_clone) @07214700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_coalesce/32 
+  Calls: pbuf_copy/23 pbuf_alloc/5 
+pbuf_coalesce/32 (pbuf_coalesce) @07214380
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 pbuf_clone/33 
+pbuf_take_at/31 (pbuf_take_at) @072140e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_take/30 memcpy/47 pbuf_skip/29 
+pbuf_take/30 (pbuf_take) @071fbb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_take_at/31 
+  Calls: memcpy/47 
+pbuf_skip/29 (pbuf_skip) @071fb380
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_put_at/36 pbuf_take_at/31 
+  Calls: pbuf_skip_const/28 
+pbuf_skip_const/28 (pbuf_skip_const) @071fbd20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_try_get_at/35 pbuf_skip/29 pbuf_get_contiguous/26 
+  Calls: 
+pbuf_split_64k/27 (pbuf_split_64k) @071fba80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pbuf_get_contiguous/26 (pbuf_get_contiguous) @071fb7e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_copy_partial/25 pbuf_skip_const/28 
+pbuf_copy_partial/25 (pbuf_copy_partial) @071fb540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_get_contiguous/26 
+  Calls: memcpy/47 
+pbuf_copy_partial_pbuf/24 (pbuf_copy_partial_pbuf) @071fb2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_copy/23 
+  Calls: memcpy/47 
+pbuf_copy/23 (pbuf_copy) @071eeee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_clone/33 
+  Calls: pbuf_copy_partial_pbuf/24 
+pbuf_dechain/22 (pbuf_dechain) @071ee9a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 
+pbuf_chain/21 (pbuf_chain) @071ee2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_ref/19 pbuf_cat/20 
+pbuf_cat/20 (pbuf_cat) @071eee00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_chain/21 
+  Calls: 
+pbuf_ref/19 (pbuf_ref) @071eeb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_chain/21 
+  Calls: 
+pbuf_clen/18 (pbuf_clen) @071ee8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pbuf_free/17 (pbuf_free) @071ee620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_coalesce/32 pbuf_dechain/22 pbuf_free_header/16 pbuf_realloc/8 pbuf_alloc/5 
+  Calls: mem_free/46 memp_free/45 memp_free/45 
+   Indirect call
+pbuf_free_header/16 (pbuf_free_header) @071ee1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_remove_header/12 pbuf_free/17 
+pbuf_header_force/15 (pbuf_header_force) @071e6ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_header_impl/13 
+pbuf_header/14 (pbuf_header) @071e6700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_header_impl/13 
+pbuf_header_impl/13 (pbuf_header_impl) @071e6e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_header_force/15 pbuf_header/14 
+  Calls: pbuf_add_header_impl/9 pbuf_remove_header/12 
+pbuf_remove_header/12 (pbuf_remove_header) @071e6b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_free_header/16 pbuf_header_impl/13 
+  Calls: 
+pbuf_add_header_force/11 (pbuf_add_header_force) @071e68c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_add_header_impl/9 
+pbuf_add_header/10 (pbuf_add_header) @071e6620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_add_header_impl/9 
+pbuf_add_header_impl/9 (pbuf_add_header_impl) @071e6380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_header_impl/13 pbuf_add_header_force/11 pbuf_add_header/10 
+  Calls: 
+pbuf_realloc/8 (pbuf_realloc) @071e6000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 mem_trim/44 
+pbuf_alloced_custom/7 (pbuf_alloced_custom) @071d3ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_init_alloced_pbuf/4 
+pbuf_alloc_reference/6 (pbuf_alloc_reference) @071d3a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: pbuf_init_alloced_pbuf/4 memp_malloc/42 
+pbuf_alloc/5 (pbuf_alloc) @071d37e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_clone/33 
+  Calls: pbuf_init_alloced_pbuf/4 mem_malloc/43 pbuf_init_alloced_pbuf/4 pbuf_free/17 pbuf_pool_is_empty/3 memp_malloc/42 pbuf_alloc_reference/6 
+pbuf_init_alloced_pbuf/4 (pbuf_init_alloced_pbuf) @071c7e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloced_custom/7 pbuf_alloc_reference/6 pbuf_alloc/5 pbuf_alloc/5 
+  Calls: 
+pbuf_pool_is_empty/3 (pbuf_pool_is_empty) @071c7b60
+  Type: function definition analyzed
+  Visibility:
+  References: pbuf_free_ooseq_pending/1 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pbuf_alloc/5 
+  Calls: 
+pbuf_free_ooseq/2 (pbuf_free_ooseq) @071c78c0
+  Type: function definition analyzed
+  Visibility: public
+  References: pbuf_free_ooseq_pending/1 (write)tcp_active_pcbs/40 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_free_ooseq/41 
+pbuf_free_ooseq_pending/1 (pbuf_free_ooseq_pending) @071c5cf0
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: pbuf_free_ooseq/2 (write)pbuf_pool_is_empty/3 (write)
+  Availability: not-ready
+  Varpool flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+pbuf_header_impl.part.0/63 (pbuf_header_impl.part.0) @0742ec40
+  Type: function definition analyzed
+  Visibility: artificial
+  next sharing asm name: 54
+  References: 
+  Referring: 
+  Function pbuf_header_impl.part.0/63 is inline copy in pbuf_header_force/15
+  Clone of pbuf_header_impl.part.0/54
+  Availability: local
+  Function flags: count:440234144 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: pbuf_header_impl/62 (inlined) (440234144 (estimated locally),0.41 per call) 
+  Calls: pbuf_remove_header/12 (440234144 (estimated locally),0.41 per call) 
+pbuf_header_impl/62 (pbuf_header_impl) @0742e8c0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 13
+  References: 
+  Referring: 
+  Function pbuf_header_impl/62 is inline copy in pbuf_header_force/15
+  Clone of pbuf_header_impl/13
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: pbuf_header_force/15 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: pbuf_header_impl.part.0/63 (inlined) (440234144 (estimated locally),0.41 per call) pbuf_add_header_impl/9 (633507677 (estimated locally),0.59 per call) 
+pbuf_memcmp.part.0/61 (pbuf_memcmp.part.0) @071c7b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function pbuf_memcmp.part.0/61 is inline copy in pbuf_memcmp/37
+  Availability: local
+  Function flags: count:114863532 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: pbuf_memcmp/37 (inlined) (114863532 (estimated locally),0.78 per call) 
+  Calls: pbuf_get_at/34 (1014686020 (estimated locally),6.92 per call) 
+pbuf_copy_partial.part.0/58 (pbuf_copy_partial.part.0) @071c7e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function pbuf_copy_partial.part.0/58 is inline copy in pbuf_copy_partial/25
+  Availability: local
+  Function flags: count:114863532 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: pbuf_copy_partial/25 (inlined) (114863532 (estimated locally),0.67 per call) 
+  Calls: memcpy/47 (637654064 (estimated locally),3.72 per call) 
+pbuf_cat.part.0/57 (pbuf_cat.part.0) @073ea700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function pbuf_cat.part.0/57 is inline copy in pbuf_cat/20
+  Availability: local
+  Function flags: count:162688 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: pbuf_cat/20 (inlined) (162688 (estimated locally),0.67 per call) 
+  Calls: 
+pbuf_free.part.0/55 (pbuf_free.part.0) @073ea000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function pbuf_free.part.0/55 is inline copy in pbuf_free/17
+  Availability: local
+  Function flags: count:250539 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: pbuf_free/17 (inlined) (250539 (estimated locally),0.70 per call) 
+  Calls: memp_free/45 (291392 (estimated locally),0.81 per call) memp_free/45 (232414 (estimated locally),0.65 per call) mem_free/46 (895728 (estimated locally),2.50 per call) 
+   Indirect call(1408011 (estimated locally),3.93 per call) 
+pbuf_header_impl.part.0/54 (pbuf_header_impl.part.0) @073d5380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  previous sharing asm name: 63
+  References: 
+  Referring: 
+  Function pbuf_header_impl.part.0/54 is inline copy in pbuf_header/14
+  Availability: local
+  Function flags: count:440234144 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: pbuf_header_impl/13 (inlined) (440234144 (estimated locally),0.41 per call) 
+  Calls: pbuf_remove_header/12 (440234144 (estimated locally),0.41 per call) 
+pbuf_remove_header.part.0/53 (pbuf_remove_header.part.0) @073d58c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function pbuf_remove_header.part.0/53 is inline copy in pbuf_remove_header/12
+  Availability: local
+  Function flags: count:109135 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: pbuf_remove_header/12 (inlined) (109135 (estimated locally),0.30 per call) 
+  Calls: 
+pbuf_alloc_reference.part.0/51 (pbuf_alloc_reference.part.0) @073d50e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function pbuf_alloc_reference.part.0/51 is inline copy in pbuf_alloc_reference/6
+  Availability: local
+  Function flags: count:96598 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: pbuf_alloc_reference/6 (inlined) (96598 (estimated locally),0.47 per call) 
+  Calls: memp_malloc/42 (96598 (estimated locally),0.47 per call) 
+pbuf_add_header_impl.part.0/49 (pbuf_add_header_impl.part.0) @06f83620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function pbuf_add_header_impl.part.0/49 is inline copy in pbuf_add_header_impl/9
+  Availability: local
+  Function flags: count:109135 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: pbuf_add_header_impl/9 (inlined) (109135 (estimated locally),0.30 per call) 
+  Calls: 
+strlen/48 (strlen) @0729d2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pbuf_strstr/39 (657280122 (estimated locally),0.61 per call) 
+  Calls: 
+memcpy/47 (memcpy) @07279380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pbuf_take_at/31 (107374 (estimated locally),0.49 per call) pbuf_take/30 (1844881 (estimated locally),8.19 per call) pbuf_copy_partial.part.0/58 (637654064 (estimated locally),3.72 per call) pbuf_copy_partial_pbuf/24 (5368700 (estimated locally),13.40 per call) 
+  Calls: 
+mem_free/46 (mem_free) @07261a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pbuf_free.part.0/55 (895728 (estimated locally),2.50 per call) 
+  Calls: 
+memp_free/45 (memp_free) @072619a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pbuf_free.part.0/55 (291392 (estimated locally),0.81 per call) pbuf_free.part.0/55 (232414 (estimated locally),0.65 per call) 
+  Calls: 
+mem_trim/44 (mem_trim) @0721fee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pbuf_realloc/8 (9258 (estimated locally),0.03 per call) 
+  Calls: 
+mem_malloc/43 (mem_malloc) @0721f8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pbuf_alloc/5 (62161 (estimated locally),0.14 per call) 
+  Calls: 
+memp_malloc/42 (memp_malloc) @0721f7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pbuf_alloc/5 (1014586 (estimated locally),2.36 per call) pbuf_alloc_reference.part.0/51 (96598 (estimated locally),0.47 per call) 
+  Calls: 
+tcp_free_ooseq/41 (tcp_free_ooseq) @0721f460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pbuf_free_ooseq/2 (55807731 (estimated locally),0.49 per call) 
+  Calls: 
+tcp_active_pcbs/40 (tcp_active_pcbs) @0721e438
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: pbuf_free_ooseq/2 (read)
+  Availability: not_available
+  Varpool flags:
+pbuf_strstr/39 (pbuf_strstr) @0721f000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_memfind/38 (420462094 (estimated locally),0.39 per call) strlen/48 (657280122 (estimated locally),0.61 per call) 
+pbuf_memfind/38 (pbuf_memfind) @07214a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:176713126 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: pbuf_strstr/39 (420462094 (estimated locally),0.39 per call) 
+  Calls: pbuf_memcmp/37 (1014686024 (estimated locally),5.74 per call) 
+pbuf_memcmp/37 (pbuf_memcmp) @07214460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:146734200 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: pbuf_memfind/38 (1014686024 (estimated locally),5.74 per call) 
+  Calls: pbuf_memcmp.part.0/61 (inlined) (114863532 (estimated locally),0.78 per call) 
+pbuf_put_at/36 (pbuf_put_at) @07214ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: pbuf_skip_const/28 (1073741823 (estimated locally),1.00 per call) 
+pbuf_try_get_at/35 (pbuf_try_get_at) @07214c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: pbuf_get_at/34 (1073741824 (estimated locally),1.00 per call) 
+  Calls: pbuf_skip_const/28 (1073741824 (estimated locally),1.00 per call) 
+pbuf_get_at/34 (pbuf_get_at) @072149a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: pbuf_memcmp.part.0/61 (1014686020 (estimated locally),6.92 per call) 
+  Calls: pbuf_try_get_at/35 (1073741824 (estimated locally),1.00 per call) 
+pbuf_clone/33 (pbuf_clone) @07214700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:254049 (estimated locally) body optimize_size
+  Called by: pbuf_coalesce/32 (741418730 (estimated locally),0.69 per call) 
+  Calls: pbuf_copy/23 (214748 (estimated locally),0.85 per call) pbuf_alloc/5 (254049 (estimated locally),1.00 per call) 
+pbuf_coalesce/32 (pbuf_coalesce) @07214380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 (511949632 (estimated locally),0.48 per call) pbuf_clone/33 (741418730 (estimated locally),0.69 per call) 
+pbuf_take_at/31 (pbuf_take_at) @072140e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:221054 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_take/30 (35433 (estimated locally),0.16 per call) memcpy/47 (107374 (estimated locally),0.49 per call) pbuf_skip_const/28 (221054 (estimated locally),1.00 per call) 
+pbuf_take/30 (pbuf_take) @071fbb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:225343 (estimated locally) body optimize_size
+  Called by: pbuf_take_at/31 (35433 (estimated locally),0.16 per call) 
+  Calls: memcpy/47 (1844881 (estimated locally),8.19 per call) 
+pbuf_skip/29 (pbuf_skip) @071fb380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: pbuf_skip_const/28 (1073741824 (estimated locally),1.00 per call) 
+pbuf_skip_const/28 (pbuf_skip_const) @071fbd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:114863532 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: pbuf_put_at/36 (1073741823 (estimated locally),1.00 per call) pbuf_try_get_at/35 (1073741824 (estimated locally),1.00 per call) pbuf_take_at/31 (221054 (estimated locally),1.00 per call) pbuf_skip/29 (1073741824 (estimated locally),1.00 per call) pbuf_get_contiguous/26 (633074433 (estimated locally),0.59 per call) 
+  Calls: 
+pbuf_split_64k/27 (pbuf_split_64k) @071fba80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1417254 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pbuf_get_contiguous/26 (pbuf_get_contiguous) @071fb7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_copy_partial/25 (263339212 (estimated locally),0.25 per call) pbuf_skip_const/28 (633074433 (estimated locally),0.59 per call) 
+pbuf_copy_partial/25 (pbuf_copy_partial) @071fb540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:171201796 (estimated locally) body optimize_size
+  Called by: pbuf_get_contiguous/26 (263339212 (estimated locally),0.25 per call) 
+  Calls: pbuf_copy_partial.part.0/58 (inlined) (114863532 (estimated locally),0.67 per call) 
+pbuf_copy_partial_pbuf/24 (pbuf_copy_partial_pbuf) @071fb2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:400722 (estimated locally) body optimize_size
+  Called by: pbuf_copy/23 (1063970774 (estimated locally),0.99 per call) 
+  Calls: memcpy/47 (5368700 (estimated locally),13.40 per call) 
+pbuf_copy/23 (pbuf_copy) @071eeee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: pbuf_clone/33 (214748 (estimated locally),0.85 per call) 
+  Calls: pbuf_copy_partial_pbuf/24 (1063970774 (estimated locally),0.99 per call) 
+pbuf_dechain/22 (pbuf_dechain) @071ee9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:192316 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 (27247 (estimated locally),0.14 per call) 
+pbuf_chain/21 (pbuf_chain) @071ee2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_ref/19 (1073741824 (estimated locally),1.00 per call) pbuf_cat/20 (1073741824 (estimated locally),1.00 per call) 
+pbuf_cat/20 (pbuf_cat) @071eee00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:242483 (estimated locally) body optimize_size
+  Called by: pbuf_chain/21 (1073741824 (estimated locally),1.00 per call) 
+  Calls: pbuf_cat.part.0/57 (inlined) (162688 (estimated locally),0.67 per call) 
+pbuf_ref/19 (pbuf_ref) @071eeb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:306783 (estimated locally) body optimize_size
+  Called by: pbuf_chain/21 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pbuf_clen/18 (pbuf_clen) @071ee8c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_free/17 (pbuf_free) @071ee620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) body optimize_size
+  Called by: pbuf_coalesce/32 (511949632 (estimated locally),0.48 per call) pbuf_dechain/22 (27247 (estimated locally),0.14 per call) pbuf_free_header/16 (960107354 (estimated locally),8.45 per call) pbuf_realloc/8 (43973 (estimated locally),0.12 per call) pbuf_alloc/5 (19855 (estimated locally),0.05 per call) 
+  Calls: pbuf_free.part.0/55 (inlined) (250539 (estimated locally),0.70 per call) 
+pbuf_free_header/16 (pbuf_free_header) @071ee1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:113634470 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_remove_header/12 (36474911 (estimated locally),0.32 per call) pbuf_free/17 (960107354 (estimated locally),8.45 per call) 
+pbuf_header_force/15 (pbuf_header_force) @071e6ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_header_impl/62 (inlined) (1073741824 (estimated locally),1.00 per call) 
+pbuf_header/14 (pbuf_header) @071e6700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_header_impl/13 (inlined) (1073741824 (estimated locally),1.00 per call) 
+pbuf_header_impl/13 (pbuf_header_impl) @071e6e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 62
+  References: 
+  Referring: 
+  Function pbuf_header_impl/13 is inline copy in pbuf_header/14
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: pbuf_header/14 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: pbuf_add_header_impl/9 (633507677 (estimated locally),0.59 per call) pbuf_header_impl.part.0/54 (inlined) (440234144 (estimated locally),0.41 per call) 
+pbuf_remove_header/12 (pbuf_remove_header) @071e6b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) body optimize_size
+  Called by: pbuf_header_impl.part.0/63 (440234144 (estimated locally),0.41 per call) pbuf_free_header/16 (36474911 (estimated locally),0.32 per call) pbuf_header_impl.part.0/54 (440234144 (estimated locally),0.41 per call) 
+  Calls: pbuf_remove_header.part.0/53 (inlined) (109135 (estimated locally),0.30 per call) 
+pbuf_add_header_force/11 (pbuf_add_header_force) @071e68c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_add_header_impl/9 (1073741824 (estimated locally),1.00 per call) 
+pbuf_add_header/10 (pbuf_add_header) @071e6620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_add_header_impl/9 (1073741824 (estimated locally),1.00 per call) 
+pbuf_add_header_impl/9 (pbuf_add_header_impl) @071e6380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) body local optimize_size
+  Called by: pbuf_header_impl/62 (633507677 (estimated locally),0.59 per call) pbuf_header_impl/13 (633507677 (estimated locally),0.59 per call) pbuf_add_header_force/11 (1073741824 (estimated locally),1.00 per call) pbuf_add_header/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: pbuf_add_header_impl.part.0/49 (inlined) (109135 (estimated locally),0.30 per call) 
+pbuf_realloc/8 (pbuf_realloc) @071e6000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_free/17 (43973 (estimated locally),0.12 per call) mem_trim/44 (9258 (estimated locally),0.03 per call) 
+pbuf_alloced_custom/7 (pbuf_alloced_custom) @071d3ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_alloc_reference/6 (pbuf_alloc_reference) @071d3a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:203972 (estimated locally) body optimize_size
+  Called by: pbuf_alloc/5 (107374 (estimated locally),0.25 per call) 
+  Calls: pbuf_alloc_reference.part.0/51 (inlined) (96598 (estimated locally),0.47 per call) 
+pbuf_alloc/5 (pbuf_alloc) @071d37e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pbuf_free_ooseq_pending/1 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:429496 (estimated locally) body optimize_size
+  Called by: pbuf_clone/33 (254049 (estimated locally),1.00 per call) 
+  Calls: mem_malloc/43 (62161 (estimated locally),0.14 per call) pbuf_free/17 (19855 (estimated locally),0.05 per call) memp_malloc/42 (1014586 (estimated locally),2.36 per call) pbuf_alloc_reference/6 (107374 (estimated locally),0.25 per call) 
+pbuf_free_ooseq/2 (pbuf_free_ooseq) @071c78c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pbuf_free_ooseq_pending/1 (write)tcp_active_pcbs/40 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:114863532 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_free_ooseq/41 (55807731 (estimated locally),0.49 per call) 
+pbuf_free_ooseq_pending/1 (pbuf_free_ooseq_pending) @071c5cf0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible public
+  References: 
+  Referring: pbuf_free_ooseq/2 (write)pbuf_alloc/5 (write)
+  Availability: available
+  Varpool flags:
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:pbuf_skip_const:0
+Time profile order in expand_all_functions:pbuf_add_header_impl:0
+Time profile order in expand_all_functions:pbuf_free_ooseq:0
+Time profile order in expand_all_functions:pbuf_alloc_reference:0
+Time profile order in expand_all_functions:pbuf_alloced_custom:0
+Time profile order in expand_all_functions:pbuf_add_header:0
+Time profile order in expand_all_functions:pbuf_add_header_force:0
+Time profile order in expand_all_functions:pbuf_remove_header:0
+Time profile order in expand_all_functions:pbuf_header:0
+Time profile order in expand_all_functions:pbuf_header_force:0
+Time profile order in expand_all_functions:pbuf_free:0
+Time profile order in expand_all_functions:pbuf_alloc:0
+Time profile order in expand_all_functions:pbuf_realloc:0
+Time profile order in expand_all_functions:pbuf_free_header:0
+Time profile order in expand_all_functions:pbuf_clen:0
+Time profile order in expand_all_functions:pbuf_ref:0
+Time profile order in expand_all_functions:pbuf_cat:0
+Time profile order in expand_all_functions:pbuf_chain:0
+Time profile order in expand_all_functions:pbuf_dechain:0
+Time profile order in expand_all_functions:pbuf_copy_partial_pbuf:0
+Time profile order in expand_all_functions:pbuf_copy:0
+Time profile order in expand_all_functions:pbuf_copy_partial:0
+Time profile order in expand_all_functions:pbuf_get_contiguous:0
+Time profile order in expand_all_functions:pbuf_split_64k:0
+Time profile order in expand_all_functions:pbuf_skip:0
+Time profile order in expand_all_functions:pbuf_take:0
+Time profile order in expand_all_functions:pbuf_take_at:0
+Time profile order in expand_all_functions:pbuf_clone:0
+Time profile order in expand_all_functions:pbuf_coalesce:0
+Time profile order in expand_all_functions:pbuf_try_get_at:0
+Time profile order in expand_all_functions:pbuf_get_at:0
+Time profile order in expand_all_functions:pbuf_put_at:0
+Time profile order in expand_all_functions:pbuf_memcmp:0
+Time profile order in expand_all_functions:pbuf_memfind:0
+Time profile order in expand_all_functions:pbuf_strstr:0
+Trivially needed variables: pbuf_free_ooseq_pending
+Removing variables:
+
+Final Symbol table:
+
+strlen/48 (strlen) @0729d2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+memcpy/47 (memcpy) @07279380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+mem_free/46 (mem_free) @07261a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+memp_free/45 (memp_free) @072619a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+mem_trim/44 (mem_trim) @0721fee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+mem_malloc/43 (mem_malloc) @0721f8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+memp_malloc/42 (memp_malloc) @0721f7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_free_ooseq/41 (tcp_free_ooseq) @0721f460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_active_pcbs/40 (tcp_active_pcbs) @0721e438
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+pbuf_strstr/39 (pbuf_strstr) @0721f000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_memfind/38 (pbuf_memfind) @07214a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:176713126 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_memcmp/37 (pbuf_memcmp) @07214460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:146734200 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_put_at/36 (pbuf_put_at) @07214ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_try_get_at/35 (pbuf_try_get_at) @07214c40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_get_at/34 (pbuf_get_at) @072149a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_clone/33 (pbuf_clone) @07214700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:254049 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_coalesce/32 (pbuf_coalesce) @07214380
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_take_at/31 (pbuf_take_at) @072140e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:221054 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_take/30 (pbuf_take) @071fbb60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:225343 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_skip/29 (pbuf_skip) @071fb380
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_skip_const/28 (pbuf_skip_const) @071fbd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:114863532 (estimated locally) local nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_split_64k/27 (pbuf_split_64k) @071fba80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1417254 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_get_contiguous/26 (pbuf_get_contiguous) @071fb7e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_copy_partial/25 (pbuf_copy_partial) @071fb540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:171201796 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_copy_partial_pbuf/24 (pbuf_copy_partial_pbuf) @071fb2a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:400722 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_copy/23 (pbuf_copy) @071eeee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_dechain/22 (pbuf_dechain) @071ee9a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:192316 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_chain/21 (pbuf_chain) @071ee2a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_cat/20 (pbuf_cat) @071eee00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:242483 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_ref/19 (pbuf_ref) @071eeb60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:306783 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_clen/18 (pbuf_clen) @071ee8c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_free/17 (pbuf_free) @071ee620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_free_header/16 (pbuf_free_header) @071ee1c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:113634470 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_header_force/15 (pbuf_header_force) @071e6ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_header/14 (pbuf_header) @071e6700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_remove_header/12 (pbuf_remove_header) @071e6b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_add_header_force/11 (pbuf_add_header_force) @071e68c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_add_header/10 (pbuf_add_header) @071e6620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_add_header_impl/9 (pbuf_add_header_impl) @071e6380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+pbuf_realloc/8 (pbuf_realloc) @071e6000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_alloced_custom/7 (pbuf_alloced_custom) @071d3ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pbuf_alloc_reference/6 (pbuf_alloc_reference) @071d3a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:203972 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_alloc/5 (pbuf_alloc) @071d37e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:429496 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_free_ooseq/2 (pbuf_free_ooseq) @071c78c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:114863532 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pbuf_free_ooseq_pending/1 (pbuf_free_ooseq_pending) @071c5cf0
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible asm_written public
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:

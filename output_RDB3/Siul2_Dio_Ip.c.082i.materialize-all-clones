@@ -1,0 +1,295 @@
+Siul2_Dio_Ip_MaskedWritePins (uint8 u8Siul2Instance, uint8 u8PortId, Siul2_Dio_Ip_PinsChannelType pins, Siul2_Dio_Ip_PinsChannelType mask)
+{
+  uint32 pinsRev;
+  uint32 maskRev;
+  struct SIUL2_Type * base;
+  int _1;
+  long unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8Siul2Instance_8(D);
+  _2 = Siul2_Dio_Ip_au32BaseAdresses[_1];
+  base_10 = (struct SIUL2_Type *) _2;
+  # DEBUG base => base_10
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = Siul2_Dio_Ip_Rev_Bit_16 (mask_11(D));
+  maskRev_12 = (uint32) _3;
+  # DEBUG maskRev => maskRev_12
+  # DEBUG BEGIN_STMT
+  _4 = Siul2_Dio_Ip_Rev_Bit_16 (pins_13(D));
+  pinsRev_14 = (uint32) _4;
+  # DEBUG pinsRev => pinsRev_14
+  # DEBUG BEGIN_STMT
+  _5 = maskRev_12 << 16;
+  _6 = (int) u8PortId_15(D);
+  _7 = _5 | pinsRev_14;
+  base_10->MPGPDO[_6] ={v} _7;
+  return;
+
+}
+
+
+Siul2_Dio_Ip_ReadPin (const struct Siul2_Dio_Ip_GpioType * const base, Siul2_Dio_Ip_PinsChannelType pin)
+{
+  Siul2_Dio_Ip_PinsLevelType returnValue;
+  short unsigned int _1;
+  short unsigned int _2;
+  int _3;
+  int _4;
+  int _5;
+  int _6;
+  int _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG returnValue => 0
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_9(D)->PGPDI;
+  _2 = Siul2_Dio_Ip_Rev_Bit_16 (_1);
+  _3 = (int) _2;
+  _4 = (int) pin_10(D);
+  _5 = 1 << _4;
+  _6 = _3 & _5;
+  _7 = _6 >> _4;
+  returnValue_11 = (Siul2_Dio_Ip_PinsLevelType) _7;
+  # DEBUG returnValue => returnValue_11
+  # DEBUG BEGIN_STMT
+  return returnValue_11;
+
+}
+
+
+Siul2_Dio_Ip_ReadPins (const struct Siul2_Dio_Ip_GpioType * const base)
+{
+  Siul2_Dio_Ip_PinsChannelType returnValue;
+  short unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG returnValue => 0
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_3(D)->PGPDI;
+  returnValue_4 = Siul2_Dio_Ip_Rev_Bit_16 (_1);
+  # DEBUG returnValue => returnValue_4
+  # DEBUG BEGIN_STMT
+  return returnValue_4;
+
+}
+
+
+Siul2_Dio_Ip_TogglePins (struct Siul2_Dio_Ip_GpioType * const base, Siul2_Dio_Ip_PinsChannelType pins)
+{
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = Siul2_Dio_Ip_Rev_Bit_16 (pins_4(D));
+  _1 ={v} base_6(D)->PGPDO;
+  _2 = _1 ^ _5;
+  base_6(D)->PGPDO ={v} _2;
+  return;
+
+}
+
+
+Siul2_Dio_Ip_ClearPins (struct Siul2_Dio_Ip_GpioType * const base, Siul2_Dio_Ip_PinsChannelType pins)
+{
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Siul2_Dio_Ip_Rev_Bit_16 (pins_5(D));
+  _6 = ~_1;
+  _2 ={v} base_7(D)->PGPDO;
+  _3 = _2 & _6;
+  base_7(D)->PGPDO ={v} _3;
+  return;
+
+}
+
+
+Siul2_Dio_Ip_SetPins (struct Siul2_Dio_Ip_GpioType * const base, Siul2_Dio_Ip_PinsChannelType pins)
+{
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = Siul2_Dio_Ip_Rev_Bit_16 (pins_4(D));
+  _1 ={v} base_6(D)->PGPDO;
+  _2 = _1 | _5;
+  base_6(D)->PGPDO ={v} _2;
+  return;
+
+}
+
+
+Siul2_Dio_Ip_GetPinsOutput (const struct Siul2_Dio_Ip_GpioType * const base)
+{
+  Siul2_Dio_Ip_PinsChannelType returnValue;
+  short unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG returnValue => 0
+  # DEBUG BEGIN_STMT
+  _1 ={v} base_3(D)->PGPDO;
+  returnValue_4 = Siul2_Dio_Ip_Rev_Bit_16 (_1);
+  # DEBUG returnValue => returnValue_4
+  # DEBUG BEGIN_STMT
+  return returnValue_4;
+
+}
+
+
+Siul2_Dio_Ip_WritePins (struct Siul2_Dio_Ip_GpioType * const base, Siul2_Dio_Ip_PinsChannelType pins)
+{
+  short unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Siul2_Dio_Ip_Rev_Bit_16 (pins_3(D));
+  base_4(D)->PGPDO ={v} _1;
+  return;
+
+}
+
+
+Siul2_Dio_Ip_WritePin (struct Siul2_Dio_Ip_GpioType * const base, Siul2_Dio_Ip_PinsChannelType pin, Siul2_Dio_Ip_PinsLevelType value)
+{
+  Siul2_Dio_Ip_PinsChannelType pinsValues;
+  unsigned int _1;
+  unsigned int _2;
+  int _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  short unsigned int _8;
+  unsigned char _19;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Dio_DIO_EXCLUSIVE_AREA_01 ();
+  # DEBUG BEGIN_STMT
+  pinsValues_12 ={v} base_11(D)->PGPDO;
+  # DEBUG pinsValues => pinsValues_12
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned int) pin_13(D);
+  _2 = 15 - _1;
+  _3 = 1 << _2;
+  _4 = (short unsigned int) _3;
+  _5 = ~_4;
+  pinsValues_14 = _5 & pinsValues_12;
+  # DEBUG pinsValues => pinsValues_14
+  # DEBUG BEGIN_STMT
+  _19 = value_15(D) & 1;
+  _6 = (unsigned int) _19;
+  _7 = _6 << _2;
+  _8 = (short unsigned int) _7;
+  pinsValues_16 = _8 | pinsValues_14;
+  # DEBUG pinsValues => pinsValues_16
+  # DEBUG BEGIN_STMT
+  base_11(D)->PGPDO ={v} pinsValues_16;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Dio_DIO_EXCLUSIVE_AREA_01 ();
+  return;
+
+}
+
+
+Siul2_Dio_Ip_Rev_Bit_16 (uint16 value)
+{
+  uint16 ret;
+  uint8 i;
+  int _1;
+  int _2;
+  int _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  short unsigned int _9;
+  int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int _14;
+  short unsigned int _15;
+  short unsigned int _16;
+
+  <bb 2> [local count: 119292716]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 954449108]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) value_20(D);
+  _2 = (int) i_17;
+  _3 = _1 >> _2;
+  _4 = (unsigned int) _3;
+  _5 = _4 & 1;
+  _6 = (unsigned int) i_17;
+  _7 = 15 - _6;
+  _8 = _5 << _7;
+  _9 = (short unsigned int) _8;
+  _11 = _1 << _2;
+  _12 = (unsigned int) _11;
+  _13 = _12 & 32768;
+  _14 = _13 >> _7;
+  _15 = (short unsigned int) _14;
+  _16 = _9 | _15;
+  ret_21 = _16 | ret_18;
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  i_22 = i_17 + 1;
+  # DEBUG i => i_22
+
+  <bb 4> [local count: 1073741824]:
+  # i_17 = PHI <0(2), i_22(3)>
+  # ret_18 = PHI <0(2), ret_21(3)>
+  # DEBUG ret => ret_18
+  # DEBUG i => i_17
+  # DEBUG BEGIN_STMT
+  if (i_17 != 8)
+    goto <bb 3>; [88.89%]
+  else
+    goto <bb 5>; [11.11%]
+
+  <bb 5> [local count: 119292717]:
+  # ret_10 = PHI <ret_18(4)>
+  # DEBUG BEGIN_STMT
+  return ret_10;
+
+}
+
+

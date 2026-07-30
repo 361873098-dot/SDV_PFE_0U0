@@ -1,0 +1,83 @@
+Histogram:
+pfe_fail_stop_irq_unmask (const struct pfe_fail_stop_t * fail_stop)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = fail_stop_3(D)->fail_stop_base_va;
+  pfe_fail_stop_cfg_irq_unmask (_1);
+  return;
+
+}
+
+
+pfe_fail_stop_irq_mask (const struct pfe_fail_stop_t * fail_stop)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = fail_stop_3(D)->fail_stop_base_va;
+  pfe_fail_stop_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_fail_stop_isr (const struct pfe_fail_stop_t * fail_stop)
+{
+  errno_t ret;
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _1 = fail_stop_3(D)->fail_stop_base_va;
+  ret_5 = pfe_fail_stop_cfg_isr (_1);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_fail_stop_destroy (struct pfe_fail_stop_t * fail_stop)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = fail_stop_3(D)->fail_stop_base_va;
+  pfe_fail_stop_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_fail_stop_create (addr_t cbus_base_va, addr_t fail_stop_base)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG fail_stop => &fail_stop_instance
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&fail_stop_instance, 0, 12);
+  # DEBUG BEGIN_STMT
+  fail_stop_instance.cbus_base_va = cbus_base_va_4(D);
+  # DEBUG BEGIN_STMT
+  fail_stop_instance.fail_stop_base_offset = fail_stop_base_6(D);
+  # DEBUG BEGIN_STMT
+  _1 = cbus_base_va_4(D) + fail_stop_base_6(D);
+  fail_stop_instance.fail_stop_base_va = _1;
+  # DEBUG BEGIN_STMT
+  pfe_fail_stop_cfg_irq_unmask_all (_1);
+  # DEBUG BEGIN_STMT
+  return &fail_stop_instance;
+
+}
+
+

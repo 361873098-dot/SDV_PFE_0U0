@@ -1,0 +1,1398 @@
+Gpt_ProcessCommonInterrupt (uint8 channel)
+{
+  uint32 coreID;
+  uint8 ChannelIndex;
+  const struct Gpt_ConfigType * _1;
+  const struct Gpt_ConfigType * _2;
+  const uint8[<unknown>] * _3;
+  int _4;
+  const struct Gpt_ConfigType * _5;
+  const struct Gpt_ChannelConfigType[<unknown>] * _6;
+  int _7;
+  <unnamed type> _8;
+  int _9;
+  <unnamed type> _10;
+  int _11;
+  _Bool _12;
+  const struct Gpt_ConfigType * _13;
+  const struct Gpt_ChannelConfigType[<unknown>] * _14;
+  int _15;
+  void (*<T55c>) (void) _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  coreID_19 = 0;
+  # DEBUG coreID => coreID_19
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_pConfig[coreID_19];
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_pConfig[coreID_19];
+  _3 = _2->u8GptChannelIdToIndexMap;
+  _4 = (int) channel_21(D);
+  ChannelIndex_22 = *_3[_4];
+  # DEBUG ChannelIndex => ChannelIndex_22
+  # DEBUG BEGIN_STMT
+  _5 = Gpt_pConfig[coreID_19];
+  _6 = _5->Gpt_pChannelConfig;
+  _7 = (int) ChannelIndex_22;
+  _8 = *_6[_7].Gpt_eChannelMode;
+  if (_8 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _9 = (int) channel_21(D);
+  Gpt_aChannelInfo[coreID_19][_9].eChannelStatus = 3;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _10 = Gpt_eMode[coreID_19];
+  if (_10 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  _11 = (int) channel_21(D);
+  _12 = Gpt_aChannelInfo[coreID_19][_11].bNotificationEnabled;
+  if (_12 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _13 = Gpt_pConfig[coreID_19];
+  _14 = _13->Gpt_pChannelConfig;
+  _15 = (int) ChannelIndex_22;
+  _16 = *_14[_15].Gpt_pfNotification;
+  _16 ();
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Gpt_DisableNotification (Gpt_ChannelType channel)
+{
+  uint32 coreID;
+  uint8 ChannelIndex;
+  unsigned char _1;
+  unsigned char _2;
+  const struct Gpt_ConfigType * _3;
+  const uint8[<unknown>] * _4;
+  int _5;
+  int _6;
+  <unnamed type> _7;
+  const struct Gpt_ConfigType * _8;
+  const struct Gpt_ChannelConfigType[<unknown>] * _9;
+  int _10;
+  <unnamed type> _11;
+  int _12;
+  <unnamed type> _13;
+  const struct Gpt_ConfigType * _14;
+  const struct Gpt_ChannelConfigType[<unknown>] * _15;
+  int _16;
+  struct Gpt_Ipw_HwChannelConfigType * _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  coreID_19 = 0;
+  # DEBUG coreID => coreID_19
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_ValidateChannelCall (8, channel_21(D), coreID_19);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_ValidateChannelNotification (8, channel_21(D), coreID_19);
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = Gpt_pConfig[coreID_19];
+  _4 = _3->u8GptChannelIdToIndexMap;
+  _5 = (int) channel_21(D);
+  ChannelIndex_24 = *_4[_5];
+  # DEBUG ChannelIndex => ChannelIndex_24
+  # DEBUG BEGIN_STMT
+  _6 = (int) channel_21(D);
+  Gpt_aChannelInfo[coreID_19][_6].bNotificationEnabled = 0;
+  # DEBUG BEGIN_STMT
+  _7 = Gpt_eMode[coreID_19];
+  if (_7 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  _8 = Gpt_pConfig[coreID_19];
+  _9 = _8->Gpt_pChannelConfig;
+  _10 = (int) ChannelIndex_24;
+  _11 = *_9[_10].Gpt_eChannelMode;
+  if (_11 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _12 = (int) channel_21(D);
+  _13 = Gpt_aChannelInfo[coreID_19][_12].eChannelStatus;
+  if (_13 != 4)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _14 = Gpt_pConfig[coreID_19];
+  _15 = _14->Gpt_pChannelConfig;
+  _16 = (int) ChannelIndex_24;
+  _17 = *_15[_16].Gpt_Ipw_HwChannelConfig;
+  Gpt_Ipw_DisableInterrupt (_17);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Gpt_EnableNotification (Gpt_ChannelType channel)
+{
+  uint32 coreID;
+  uint8 ChannelIndex;
+  unsigned char _1;
+  unsigned char _2;
+  const struct Gpt_ConfigType * _3;
+  const uint8[<unknown>] * _4;
+  int _5;
+  int _6;
+  <unnamed type> _7;
+  const struct Gpt_ConfigType * _8;
+  const struct Gpt_ChannelConfigType[<unknown>] * _9;
+  int _10;
+  struct Gpt_Ipw_HwChannelConfigType * _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  coreID_13 = 0;
+  # DEBUG coreID => coreID_13
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_ValidateChannelCall (7, channel_15(D), coreID_13);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_ValidateChannelNotification (7, channel_15(D), coreID_13);
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = Gpt_pConfig[coreID_13];
+  _4 = _3->u8GptChannelIdToIndexMap;
+  _5 = (int) channel_15(D);
+  ChannelIndex_18 = *_4[_5];
+  # DEBUG ChannelIndex => ChannelIndex_18
+  # DEBUG BEGIN_STMT
+  _6 = (int) channel_15(D);
+  Gpt_aChannelInfo[coreID_13][_6].bNotificationEnabled = 1;
+  # DEBUG BEGIN_STMT
+  _7 = Gpt_eMode[coreID_13];
+  if (_7 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _8 = Gpt_pConfig[coreID_13];
+  _9 = _8->Gpt_pChannelConfig;
+  _10 = (int) ChannelIndex_18;
+  _11 = *_9[_10].Gpt_Ipw_HwChannelConfig;
+  Gpt_Ipw_EnableInterrupt (_11);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Gpt_StopTimer (Gpt_ChannelType channel)
+{
+  uint32 coreID;
+  Gpt_ChannelType ChannelIndex;
+  Gpt_ValueType uElapsedTime;
+  struct Gpt_HwChannelInfoType * pRetHwChannelInfo;
+  struct Gpt_HwChannelInfoType returnHwChannelInfo;
+  unsigned char _1;
+  const struct Gpt_ConfigType * _2;
+  const uint8[<unknown>] * _3;
+  int _4;
+  const struct Gpt_ConfigType * _5;
+  const struct Gpt_ChannelConfigType[<unknown>] * _6;
+  int _7;
+  struct Gpt_Ipw_HwChannelConfigType * _8;
+  int _9;
+  <unnamed type> _10;
+  const struct Gpt_ConfigType * _11;
+  const struct Gpt_ChannelConfigType[<unknown>] * _12;
+  int _13;
+  struct Gpt_Ipw_HwChannelConfigType * _14;
+  _Bool _15;
+  const struct Gpt_ConfigType * _16;
+  const struct Gpt_ChannelConfigType[<unknown>] * _17;
+  int _18;
+  <unnamed type> _19;
+  int _20;
+  int _21;
+  int _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnHwChannelInfo.bChannelRollover = 0;
+  returnHwChannelInfo.uTargetTime = 0;
+  # DEBUG BEGIN_STMT
+  pRetHwChannelInfo_27 = &returnHwChannelInfo;
+  # DEBUG pRetHwChannelInfo => pRetHwChannelInfo_27
+  # DEBUG BEGIN_STMT
+  uElapsedTime_28 = 0;
+  # DEBUG uElapsedTime => uElapsedTime_28
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  coreID_29 = 0;
+  # DEBUG coreID => coreID_29
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_ValidateChannelCall (6, channel_30(D), coreID_29);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_pConfig[coreID_29];
+  _3 = _2->u8GptChannelIdToIndexMap;
+  _4 = (int) channel_30(D);
+  ChannelIndex_32 = *_3[_4];
+  # DEBUG ChannelIndex => ChannelIndex_32
+  # DEBUG BEGIN_STMT
+  _5 = Gpt_pConfig[coreID_29];
+  _6 = _5->Gpt_pChannelConfig;
+  _7 = (int) ChannelIndex_32;
+  _8 = *_6[_7].Gpt_Ipw_HwChannelConfig;
+  uElapsedTime_34 = Gpt_Ipw_GetTimeElapsed (_8, pRetHwChannelInfo_27);
+  # DEBUG uElapsedTime => uElapsedTime_34
+  # DEBUG BEGIN_STMT
+  _9 = (int) channel_30(D);
+  _10 = Gpt_aChannelInfo[coreID_29][_9].eChannelStatus;
+  if (_10 == 4)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _11 = Gpt_pConfig[coreID_29];
+  _12 = _11->Gpt_pChannelConfig;
+  _13 = (int) ChannelIndex_32;
+  _14 = *_12[_13].Gpt_Ipw_HwChannelConfig;
+  Gpt_Ipw_StopTimer (_14);
+  # DEBUG BEGIN_STMT
+  _15 = returnHwChannelInfo.bChannelRollover;
+  if (_15 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _16 = Gpt_pConfig[coreID_29];
+  _17 = _16->Gpt_pChannelConfig;
+  _18 = (int) ChannelIndex_32;
+  _19 = *_17[_18].Gpt_eChannelMode;
+  if (_19 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _20 = (int) channel_30(D);
+  Gpt_aChannelInfo[coreID_29][_20].eChannelStatus = 3;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _21 = (int) channel_30(D);
+  Gpt_aStopTime[coreID_29][_21] = uElapsedTime_34;
+  # DEBUG BEGIN_STMT
+  _22 = (int) channel_30(D);
+  Gpt_aChannelInfo[coreID_29][_22].eChannelStatus = 2;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  returnHwChannelInfo ={v} {CLOBBER};
+  return;
+
+}
+
+
+Gpt_StartTimer (Gpt_ChannelType channel, Gpt_ValueType value)
+{
+  uint32 coreID;
+  Std_ReturnType returnValue;
+  uint8 ChannelIndex;
+  unsigned char _1;
+  unsigned char _2;
+  const struct Gpt_ConfigType * _3;
+  const uint8[<unknown>] * _4;
+  int _5;
+  const struct Gpt_ConfigType * _6;
+  const struct Gpt_ChannelConfigType[<unknown>] * _7;
+  int _8;
+  <unnamed type> _9;
+  const struct Gpt_ConfigType * _10;
+  const struct Gpt_ChannelConfigType[<unknown>] * _11;
+  int _12;
+  struct Gpt_Ipw_HwChannelConfigType * _13;
+  int _14;
+  const struct Gpt_ConfigType * _15;
+  const struct Gpt_ChannelConfigType[<unknown>] * _16;
+  int _17;
+  struct Gpt_Ipw_HwChannelConfigType * _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  coreID_21 = 0;
+  # DEBUG coreID => coreID_21
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_ValidateChannelStatus (5, channel_23(D), coreID_21);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_ValidateParamValue (5, channel_23(D), value_25(D), coreID_21);
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = Gpt_pConfig[coreID_21];
+  _4 = _3->u8GptChannelIdToIndexMap;
+  _5 = (int) channel_23(D);
+  ChannelIndex_27 = *_4[_5];
+  # DEBUG ChannelIndex => ChannelIndex_27
+  # DEBUG BEGIN_STMT
+  _6 = Gpt_pConfig[coreID_21];
+  _7 = _6->Gpt_pChannelConfig;
+  _8 = (int) ChannelIndex_27;
+  _9 = *_7[_8].Gpt_eChannelMode;
+  if (_9 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _10 = Gpt_pConfig[coreID_21];
+  _11 = _10->Gpt_pChannelConfig;
+  _12 = (int) ChannelIndex_27;
+  _13 = *_11[_12].Gpt_Ipw_HwChannelConfig;
+  Gpt_Ipw_EnableInterrupt (_13);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _14 = (int) channel_23(D);
+  Gpt_aChannelInfo[coreID_21][_14].eChannelStatus = 4;
+  # DEBUG BEGIN_STMT
+  _15 = Gpt_pConfig[coreID_21];
+  _16 = _15->Gpt_pChannelConfig;
+  _17 = (int) ChannelIndex_27;
+  _18 = *_16[_17].Gpt_Ipw_HwChannelConfig;
+  returnValue_31 = Gpt_Ipw_StartTimer (_18, value_25(D));
+  # DEBUG returnValue => returnValue_31
+  # DEBUG BEGIN_STMT
+  if (returnValue_31 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportRuntimeError (100, 0, 5, 43);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Gpt_GetTimeRemaining (Gpt_ChannelType channel)
+{
+  uint32 coreID;
+  Gpt_ValueType returnValue;
+  Gpt_ChannelType ChannelIndex;
+  struct Gpt_HwChannelInfoType * pRetHwChannelInfo;
+  struct Gpt_HwChannelInfoType returnHwChannelInfo;
+  unsigned char _1;
+  const struct Gpt_ConfigType * _2;
+  const uint8[<unknown>] * _3;
+  int _4;
+  const struct Gpt_ConfigType * _5;
+  const struct Gpt_ChannelConfigType[<unknown>] * _6;
+  int _7;
+  struct Gpt_Ipw_HwChannelConfigType * _8;
+  int _9;
+  <unnamed type> _10;
+  _Bool _11;
+  const struct Gpt_ConfigType * _12;
+  const struct Gpt_ChannelConfigType[<unknown>] * _13;
+  int _14;
+  <unnamed type> _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  int _18;
+  long unsigned int _19;
+  Gpt_ValueType _38;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnHwChannelInfo.bChannelRollover = 0;
+  returnHwChannelInfo.uTargetTime = 0;
+  # DEBUG BEGIN_STMT
+  pRetHwChannelInfo_25 = &returnHwChannelInfo;
+  # DEBUG pRetHwChannelInfo => pRetHwChannelInfo_25
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  returnValue_26 = 0;
+  # DEBUG returnValue => returnValue_26
+  # DEBUG BEGIN_STMT
+  coreID_27 = 0;
+  # DEBUG coreID => coreID_27
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_ValidateChannelCall (4, channel_28(D), coreID_27);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_pConfig[coreID_27];
+  _3 = _2->u8GptChannelIdToIndexMap;
+  _4 = (int) channel_28(D);
+  ChannelIndex_30 = *_3[_4];
+  # DEBUG ChannelIndex => ChannelIndex_30
+  # DEBUG BEGIN_STMT
+  _5 = Gpt_pConfig[coreID_27];
+  _6 = _5->Gpt_pChannelConfig;
+  _7 = (int) ChannelIndex_30;
+  _8 = *_6[_7].Gpt_Ipw_HwChannelConfig;
+  returnValue_32 = Gpt_Ipw_GetTimeElapsed (_8, pRetHwChannelInfo_25);
+  # DEBUG returnValue => returnValue_32
+  # DEBUG BEGIN_STMT
+  _9 = (int) channel_28(D);
+  _10 = Gpt_aChannelInfo[coreID_27][_9].eChannelStatus;
+  switch (_10) <default: <L14> [INV], case 1: <L6> [INV], case 2: <L7> [INV], case 3: <L8> [INV], case 4: <L1> [INV]>
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _11 = returnHwChannelInfo.bChannelRollover;
+  if (_11 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _12 = Gpt_pConfig[coreID_27];
+  _13 = _12->Gpt_pChannelConfig;
+  _14 = (int) ChannelIndex_30;
+  _15 = *_13[_14].Gpt_eChannelMode;
+  if (_15 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  returnValue_33 = 0;
+  # DEBUG returnValue => returnValue_33
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _16 = returnHwChannelInfo.uTargetTime;
+  returnValue_34 = _16 - returnValue_32;
+  # DEBUG returnValue => returnValue_34
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  returnValue_37 = 0;
+  # DEBUG returnValue => returnValue_37
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  _17 = returnHwChannelInfo.uTargetTime;
+  _18 = (int) channel_28(D);
+  _19 = Gpt_aStopTime[coreID_27][_18];
+  returnValue_36 = _17 - _19;
+  # DEBUG returnValue => returnValue_36
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  returnValue_35 = 0;
+  # DEBUG returnValue => returnValue_35
+  # DEBUG BEGIN_STMT
+
+  <bb 11> :
+  # returnValue_20 = PHI <returnValue_26(2), returnValue_34(7), returnValue_37(8), returnValue_36(9), returnValue_35(10), returnValue_32(3), returnValue_33(6)>
+<L14>:
+  # DEBUG returnValue => returnValue_20
+  # DEBUG BEGIN_STMT
+  _38 = returnValue_20;
+  returnHwChannelInfo ={v} {CLOBBER};
+  return _38;
+
+}
+
+
+Gpt_GetTimeElapsed (Gpt_ChannelType channel)
+{
+  uint32 coreID;
+  Gpt_ValueType returnValue;
+  Gpt_ChannelType ChannelIndex;
+  struct Gpt_HwChannelInfoType * pRetHwChannelInfo;
+  struct Gpt_HwChannelInfoType returnHwChannelInfo;
+  unsigned char _1;
+  const struct Gpt_ConfigType * _2;
+  const uint8[<unknown>] * _3;
+  int _4;
+  const struct Gpt_ConfigType * _5;
+  const struct Gpt_ChannelConfigType[<unknown>] * _6;
+  int _7;
+  struct Gpt_Ipw_HwChannelConfigType * _8;
+  int _9;
+  <unnamed type> _10;
+  _Bool _11;
+  const struct Gpt_ConfigType * _12;
+  const struct Gpt_ChannelConfigType[<unknown>] * _13;
+  int _14;
+  <unnamed type> _15;
+  int _16;
+  Gpt_ValueType _34;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnHwChannelInfo.bChannelRollover = 0;
+  returnHwChannelInfo.uTargetTime = 0;
+  # DEBUG BEGIN_STMT
+  pRetHwChannelInfo_22 = &returnHwChannelInfo;
+  # DEBUG pRetHwChannelInfo => pRetHwChannelInfo_22
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  returnValue_23 = 0;
+  # DEBUG returnValue => returnValue_23
+  # DEBUG BEGIN_STMT
+  coreID_24 = 0;
+  # DEBUG coreID => coreID_24
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_ValidateChannelCall (3, channel_25(D), coreID_24);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_pConfig[coreID_24];
+  _3 = _2->u8GptChannelIdToIndexMap;
+  _4 = (int) channel_25(D);
+  ChannelIndex_27 = *_3[_4];
+  # DEBUG ChannelIndex => ChannelIndex_27
+  # DEBUG BEGIN_STMT
+  _5 = Gpt_pConfig[coreID_24];
+  _6 = _5->Gpt_pChannelConfig;
+  _7 = (int) ChannelIndex_27;
+  _8 = *_6[_7].Gpt_Ipw_HwChannelConfig;
+  returnValue_29 = Gpt_Ipw_GetTimeElapsed (_8, pRetHwChannelInfo_22);
+  # DEBUG returnValue => returnValue_29
+  # DEBUG BEGIN_STMT
+  _9 = (int) channel_25(D);
+  _10 = Gpt_aChannelInfo[coreID_24][_9].eChannelStatus;
+  switch (_10) <default: <L14> [INV], case 1: <L6> [INV], case 2: <L7> [INV], case 3: <L8> [INV], case 4: <L1> [INV]>
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _11 = returnHwChannelInfo.bChannelRollover;
+  if (_11 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  _12 = Gpt_pConfig[coreID_24];
+  _13 = _12->Gpt_pChannelConfig;
+  _14 = (int) ChannelIndex_27;
+  _15 = *_13[_14].Gpt_eChannelMode;
+  if (_15 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  returnValue_30 = returnHwChannelInfo.uTargetTime;
+  # DEBUG returnValue => returnValue_30
+  goto <bb 10>; [INV]
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  returnValue_33 = 0;
+  # DEBUG returnValue => returnValue_33
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  _16 = (int) channel_25(D);
+  returnValue_32 = Gpt_aStopTime[coreID_24][_16];
+  # DEBUG returnValue => returnValue_32
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  returnValue_31 = returnHwChannelInfo.uTargetTime;
+  # DEBUG returnValue => returnValue_31
+  # DEBUG BEGIN_STMT
+
+  <bb 10> :
+  # returnValue_17 = PHI <returnValue_23(2), returnValue_29(5), returnValue_33(7), returnValue_32(8), returnValue_31(9), returnValue_29(3), returnValue_29(4), returnValue_30(6)>
+<L14>:
+  # DEBUG returnValue => returnValue_17
+  # DEBUG BEGIN_STMT
+  _34 = returnValue_17;
+  returnHwChannelInfo ={v} {CLOBBER};
+  return _34;
+
+}
+
+
+Gpt_DeInit ()
+{
+  uint32 coreID;
+  Std_ReturnType allChannelStatus;
+  Gpt_ChannelType ChannelIndex;
+  Gpt_ChannelType channel;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char ChannelIndex.1_3;
+  const struct Gpt_ConfigType * _4;
+  unsigned char _5;
+  int _6;
+  int _7;
+  int _8;
+  const struct Gpt_ConfigType * _9;
+  const struct Gpt_ChannelConfigType[<unknown>] * _10;
+  int _11;
+  struct Gpt_Ipw_HwChannelConfigType * _12;
+  unsigned char ChannelIndex.2_13;
+  const struct Gpt_ConfigType * _14;
+  unsigned char _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  allChannelStatus_24 = 0;
+  # DEBUG allChannelStatus => allChannelStatus_24
+  # DEBUG BEGIN_STMT
+  coreID_25 = 0;
+  # DEBUG coreID => coreID_25
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_ValidateGlobalCall (2, coreID_25);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ChannelIndex_28 = 0;
+  # DEBUG ChannelIndex => ChannelIndex_28
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  channel_30 = Gpt_ConvertChannelIndexToChannel (ChannelIndex_16, coreID_25);
+  # DEBUG channel => channel_30
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_ValidateChannelStatus (2, channel_30, coreID_25);
+  if (_2 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  allChannelStatus_33 = 1;
+  # DEBUG allChannelStatus => allChannelStatus_33
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ChannelIndex.1_3 = ChannelIndex_16;
+  ChannelIndex_32 = ChannelIndex.1_3 + 1;
+  # DEBUG ChannelIndex => ChannelIndex_32
+
+  <bb 7> :
+  # ChannelIndex_16 = PHI <ChannelIndex_28(3), ChannelIndex_32(6)>
+  # DEBUG ChannelIndex => ChannelIndex_16
+  # DEBUG BEGIN_STMT
+  _4 = Gpt_pConfig[coreID_25];
+  _5 = _4->channelCount;
+  if (ChannelIndex_16 < _5)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # allChannelStatus_18 = PHI <allChannelStatus_33(5), allChannelStatus_24(7)>
+  # DEBUG allChannelStatus => allChannelStatus_18
+  # DEBUG BEGIN_STMT
+  if (allChannelStatus_18 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ChannelIndex_34 = 0;
+  # DEBUG ChannelIndex => ChannelIndex_34
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  channel_37 = Gpt_ConvertChannelIndexToChannel (ChannelIndex_17, coreID_25);
+  # DEBUG channel => channel_37
+  # DEBUG BEGIN_STMT
+  if (channel_37 <= 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _6 = (int) channel_37;
+  Gpt_aChannelInfo[coreID_25][_6].bNotificationEnabled = 0;
+  # DEBUG BEGIN_STMT
+  _7 = (int) channel_37;
+  Gpt_aChannelInfo[coreID_25][_7].eChannelStatus = 0;
+  # DEBUG BEGIN_STMT
+  _8 = (int) channel_37;
+  Gpt_aStopTime[coreID_25][_8] = 0;
+  # DEBUG BEGIN_STMT
+  _9 = Gpt_pConfig[coreID_25];
+  _10 = _9->Gpt_pChannelConfig;
+  _11 = (int) ChannelIndex_17;
+  _12 = *_10[_11].Gpt_Ipw_HwChannelConfig;
+  Gpt_Ipw_DeInit (_12);
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  ChannelIndex.2_13 = ChannelIndex_17;
+  ChannelIndex_42 = ChannelIndex.2_13 + 1;
+  # DEBUG ChannelIndex => ChannelIndex_42
+
+  <bb 13> :
+  # ChannelIndex_17 = PHI <ChannelIndex_34(9), ChannelIndex_42(12)>
+  # DEBUG ChannelIndex => ChannelIndex_17
+  # DEBUG BEGIN_STMT
+  _14 = Gpt_pConfig[coreID_25];
+  _15 = _14->channelCount;
+  if (ChannelIndex_17 < _15)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  Gpt_pConfig[coreID_25] = 0B;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Gpt_Init (const struct Gpt_ConfigType * configPtr)
+{
+  uint32 coreID;
+  Gpt_ChannelType channel;
+  Gpt_ChannelType ChannelIndex;
+  unsigned char _1;
+  unsigned char _2;
+  const struct Gpt_ConfigType * _3;
+  int _4;
+  int _5;
+  int _6;
+  const struct Gpt_ConfigType * _7;
+  const struct Gpt_ChannelConfigType[<unknown>] * _8;
+  int _9;
+  struct Gpt_Ipw_HwChannelConfigType * _10;
+  unsigned char ChannelIndex.0_11;
+  const struct Gpt_ConfigType * _12;
+  unsigned char _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  coreID_18 = 0;
+  # DEBUG coreID => coreID_18
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_ValidateGlobalCall (1, coreID_18);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_ValidateParamPtrInit (configPtr_21(D));
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Gpt_pConfig[coreID_18] = &Gpt_Config;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = Gpt_pConfig[coreID_18];
+  Gpt_Ipw_InitInstances (_3);
+  # DEBUG BEGIN_STMT
+  ChannelIndex_25 = 0;
+  # DEBUG ChannelIndex => ChannelIndex_25
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  channel_28 = Gpt_ConvertChannelIndexToChannel (ChannelIndex_14, coreID_18);
+  # DEBUG channel => channel_28
+  # DEBUG BEGIN_STMT
+  if (channel_28 <= 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _4 = (int) channel_28;
+  Gpt_aChannelInfo[coreID_18][_4].bNotificationEnabled = 0;
+  # DEBUG BEGIN_STMT
+  _5 = (int) channel_28;
+  Gpt_aChannelInfo[coreID_18][_5].eChannelStatus = 1;
+  # DEBUG BEGIN_STMT
+  _6 = (int) channel_28;
+  Gpt_aStopTime[coreID_18][_6] = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _7 = Gpt_pConfig[coreID_18];
+  _8 = _7->Gpt_pChannelConfig;
+  _9 = (int) ChannelIndex_14;
+  _10 = *_8[_9].Gpt_Ipw_HwChannelConfig;
+  Gpt_Ipw_Init (_10);
+  # DEBUG BEGIN_STMT
+  ChannelIndex.0_11 = ChannelIndex_14;
+  ChannelIndex_33 = ChannelIndex.0_11 + 1;
+  # DEBUG ChannelIndex => ChannelIndex_33
+
+  <bb 8> :
+  # ChannelIndex_14 = PHI <ChannelIndex_25(4), ChannelIndex_33(7)>
+  # DEBUG ChannelIndex => ChannelIndex_14
+  # DEBUG BEGIN_STMT
+  _12 = Gpt_pConfig[coreID_18];
+  _13 = _12->channelCount;
+  if (ChannelIndex_14 < _13)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Gpt_eMode[coreID_18] = 0;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Gpt_GetVersionInfo (struct Std_VersionInfoType * VersionInfoPtr)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (VersionInfoPtr_2(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (100, 0, 0, 22);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->vendorID = 43;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->moduleID = 100;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->sw_major_version = 4;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->sw_minor_version = 0;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->sw_patch_version = 2;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Gpt_ConvertChannelIndexToChannel (Gpt_ChannelType ChannelIndex, uint32 coreID)
+{
+  Gpt_ChannelType Channel;
+  const struct Gpt_ConfigType * _1;
+  const uint8[<unknown>] * _2;
+  int _3;
+  unsigned char _4;
+  Gpt_ChannelType _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Channel_6 = 0;
+  # DEBUG Channel => Channel_6
+  goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_pConfig[coreID_8(D)];
+  _2 = _1->u8GptChannelIdToIndexMap;
+  _3 = (int) Channel_5;
+  _4 = *_2[_3];
+  if (ChannelIndex_9(D) == _4)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Channel_10 = Channel_5 + 1;
+  # DEBUG Channel => Channel_10
+
+  <bb 5> :
+  # Channel_5 = PHI <Channel_6(2), Channel_10(4)>
+  # DEBUG Channel => Channel_5
+  # DEBUG BEGIN_STMT
+  if (Channel_5 <= 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _11 = Channel_5;
+  return _11;
+
+}
+
+
+Gpt_ValidateParamPtrInit (const struct Gpt_ConfigType * configPtr)
+{
+  Std_ReturnType returnValue;
+  Std_ReturnType _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue_3 = 1;
+  # DEBUG returnValue => returnValue_3
+  # DEBUG BEGIN_STMT
+  if (configPtr_4(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (100, 0, 1, 14);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  returnValue_5 = 0;
+  # DEBUG returnValue => returnValue_5
+
+  <bb 5> :
+  # returnValue_1 = PHI <returnValue_3(3), returnValue_5(4)>
+  # DEBUG returnValue => returnValue_1
+  # DEBUG BEGIN_STMT
+  _8 = returnValue_1;
+  return _8;
+
+}
+
+
+Gpt_ValidateParamValue (uint8 u8ServiceId, Gpt_ChannelType channel, Gpt_ValueType value, uint32 coreID)
+{
+  uint8 ChannelIndex;
+  Std_ReturnType returnValue;
+  const struct Gpt_ConfigType * _1;
+  const uint8[<unknown>] * _2;
+  int _3;
+  const struct Gpt_ConfigType * _4;
+  const struct Gpt_ChannelConfigType[<unknown>] * _5;
+  int _6;
+  long unsigned int _7;
+  Std_ReturnType _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue_10 = 1;
+  # DEBUG returnValue => returnValue_10
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_pConfig[coreID_12(D)];
+  _2 = _1->u8GptChannelIdToIndexMap;
+  _3 = (int) channel_13(D);
+  ChannelIndex_14 = *_2[_3];
+  # DEBUG ChannelIndex => ChannelIndex_14
+  # DEBUG BEGIN_STMT
+  _4 = Gpt_pConfig[coreID_12(D)];
+  _5 = _4->Gpt_pChannelConfig;
+  _6 = (int) ChannelIndex_14;
+  _7 = *_5[_6].Gpt_uChannelTickValueMax;
+  if (value_15(D) > _7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (value_15(D) == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (100, 0, u8ServiceId_17(D), 21);
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  returnValue_16 = 0;
+  # DEBUG returnValue => returnValue_16
+
+  <bb 6> :
+  # returnValue_8 = PHI <returnValue_10(4), returnValue_16(5)>
+  # DEBUG returnValue => returnValue_8
+  # DEBUG BEGIN_STMT
+  _19 = returnValue_8;
+  return _19;
+
+}
+
+
+Gpt_ValidateChannelStatus (uint8 u8ServiceId, Gpt_ChannelType channel, uint32 coreID)
+{
+  Std_ReturnType returnValue;
+  unsigned char _1;
+  int _2;
+  <unnamed type> _3;
+  Std_ReturnType _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue_6 = 1;
+  # DEBUG returnValue => returnValue_6
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_ValidateChannelCall (u8ServiceId_8(D), channel_9(D), coreID_10(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (channel_9(D) <= 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = (int) channel_9(D);
+  _3 = Gpt_aChannelInfo[coreID_10(D)][_2].eChannelStatus;
+  if (_3 == 4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportRuntimeError (100, 0, u8ServiceId_8(D), 11);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  returnValue_12 = 0;
+  # DEBUG returnValue => returnValue_12
+
+  <bb 7> :
+  # returnValue_4 = PHI <returnValue_6(2), returnValue_6(3), returnValue_6(5), returnValue_12(6)>
+  # DEBUG returnValue => returnValue_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = returnValue_4;
+  return _14;
+
+}
+
+
+Gpt_ValidateChannelNotification (uint8 u8ServiceId, Gpt_ChannelType channel, uint32 coreID)
+{
+  uint8 ChannelIndex;
+  Std_ReturnType returnValue;
+  const struct Gpt_ConfigType * _1;
+  const uint8[<unknown>] * _2;
+  int _3;
+  const struct Gpt_ConfigType * _4;
+  const struct Gpt_ChannelConfigType[<unknown>] * _5;
+  int _6;
+  void (*<T55c>) (void) _7;
+  Std_ReturnType _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue_10 = 1;
+  # DEBUG returnValue => returnValue_10
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_pConfig[coreID_12(D)];
+  _2 = _1->u8GptChannelIdToIndexMap;
+  _3 = (int) channel_13(D);
+  ChannelIndex_14 = *_2[_3];
+  # DEBUG ChannelIndex => ChannelIndex_14
+  # DEBUG BEGIN_STMT
+  _4 = Gpt_pConfig[coreID_12(D)];
+  _5 = _4->Gpt_pChannelConfig;
+  _6 = (int) ChannelIndex_14;
+  _7 = *_5[_6].Gpt_pfNotification;
+  if (_7 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (100, 0, u8ServiceId_16(D), 20);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  returnValue_15 = 0;
+  # DEBUG returnValue => returnValue_15
+
+  <bb 5> :
+  # returnValue_8 = PHI <returnValue_10(3), returnValue_15(4)>
+  # DEBUG returnValue => returnValue_8
+  # DEBUG BEGIN_STMT
+  _18 = returnValue_8;
+  return _18;
+
+}
+
+
+Gpt_ValidateGlobalCall (uint8 u8ServiceId, uint32 coreID)
+{
+  Std_ReturnType returnValue;
+  const struct Gpt_ConfigType * _1;
+  Std_ReturnType _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue_4 = 1;
+  # DEBUG returnValue => returnValue_4
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_pConfig[coreID_6(D)];
+  if (_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (u8ServiceId_7(D) == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  returnValue_11 = 0;
+  # DEBUG returnValue => returnValue_11
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (100, 0, u8ServiceId_7(D), 10);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (u8ServiceId_7(D) == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (100, 0, u8ServiceId_7(D), 13);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  returnValue_8 = 0;
+  # DEBUG returnValue => returnValue_8
+
+  <bb 9> :
+  # returnValue_2 = PHI <returnValue_4(5), returnValue_4(7), returnValue_8(8), returnValue_11(4)>
+  # DEBUG returnValue => returnValue_2
+  # DEBUG BEGIN_STMT
+  _12 = returnValue_2;
+  return _12;
+
+}
+
+
+Gpt_ValidateChannelCall (uint8 u8ServiceId, Gpt_ChannelType channel, uint32 coreID)
+{
+  Std_ReturnType returnValue;
+  const struct Gpt_ConfigType * _1;
+  const struct Gpt_ConfigType * _2;
+  const uint8[<unknown>] * _3;
+  int _4;
+  unsigned char _5;
+  Std_ReturnType _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  returnValue_8 = 1;
+  # DEBUG returnValue => returnValue_8
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_pConfig[coreID_10(D)];
+  if (_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (100, 0, u8ServiceId_12(D), 10);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (channel_11(D) > 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (100, 0, u8ServiceId_12(D), 20);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_pConfig[coreID_10(D)];
+  _3 = _2->u8GptChannelIdToIndexMap;
+  _4 = (int) channel_11(D);
+  _5 = *_3[_4];
+  if (_5 != 255)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  returnValue_14 = 0;
+  # DEBUG returnValue => returnValue_14
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (100, 0, u8ServiceId_12(D), 24);
+
+  <bb 9> :
+  # returnValue_6 = PHI <returnValue_8(3), returnValue_8(5), returnValue_14(7), returnValue_8(8)>
+  # DEBUG returnValue => returnValue_6
+  # DEBUG BEGIN_STMT
+  _17 = returnValue_6;
+  return _17;
+
+}
+
+

@@ -1,0 +1,298 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: Serdes_Ipw_SetMode Serdes_Ipw_GetJobResult Serdes_Ipw_GetStatus Serdes_Ipw_MainFunction Serdes_Ipw_InitChannel
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Serdes_Ip_SetMode/9 (Serdes_Ip_SetMode) @0756c1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Serdes_Ipw_SetMode/4 Serdes_Ipw_SetMode/4 Serdes_Ipw_SetMode/4 
+  Calls: 
+Serdes_Ip_GetStatus/8 (Serdes_Ip_GetStatus) @075637e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Serdes_Ipw_GetStatus/2 
+  Calls: 
+Serdes_Ip_MainFunction/7 (Serdes_Ip_MainFunction) @075632a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Serdes_Ipw_MainFunction/1 
+  Calls: 
+Serdes_Ip_GetJobResult/6 (Serdes_Ip_GetJobResult) @07563000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Serdes_Ipw_GetJobResult/3 Serdes_Ipw_MainFunction/1 
+  Calls: 
+Serdes_Ip_Init/5 (Serdes_Ip_Init) @07563e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Serdes_Ipw_InitChannel/0 
+  Calls: 
+Serdes_Ipw_SetMode/4 (Serdes_Ipw_SetMode) @075639a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ip_SetMode/9 Serdes_Ip_SetMode/9 Serdes_Ip_SetMode/9 
+Serdes_Ipw_GetJobResult/3 (Serdes_Ipw_GetJobResult) @07563700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ip_GetJobResult/6 
+Serdes_Ipw_GetStatus/2 (Serdes_Ipw_GetStatus) @07563460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ip_GetStatus/8 
+Serdes_Ipw_MainFunction/1 (Serdes_Ipw_MainFunction) @075631c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ip_MainFunction/7 Serdes_Ip_GetJobResult/6 
+Serdes_Ipw_InitChannel/0 (Serdes_Ipw_InitChannel) @0755be00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ip_Init/5 
+Serdes_Ipw_SetMode (uint8 Instance, Serdes_ModeType Mode)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  switch (Mode) <default: <L5> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  Serdes_Ip_SetMode (Instance, 1);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  Serdes_Ip_SetMode (Instance, 3);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  Serdes_Ip_SetMode (Instance, 2);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L5>:
+  return;
+
+}
+
+
+Serdes_Ipw_GetJobResult (uint8 Instance)
+{
+  Serdes_Ip_JobResultType JobResult;
+  Serdes_JobResultType RetJobResult;
+  Serdes_JobResultType D.6678;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetJobResult = 4;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  JobResult = Serdes_Ip_GetJobResult (Instance);
+  # DEBUG BEGIN_STMT
+  if (JobResult == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetJobResult = 1;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (JobResult == 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetJobResult = 2;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetJobResult = 4;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.6678 = RetJobResult;
+  return D.6678;
+
+}
+
+
+Serdes_Ipw_GetStatus (uint8 Instance)
+{
+  Serdes_Ip_StatusType Status;
+  Serdes_StatusType RetStatus;
+  Serdes_StatusType D.6670;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetStatus = 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Status = Serdes_Ip_GetStatus (Instance);
+  # DEBUG BEGIN_STMT
+  if (Status == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetStatus = 1;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (Status == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetStatus = 2;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetStatus = 3;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.6670 = RetStatus;
+  return D.6670;
+
+}
+
+
+Serdes_Ipw_MainFunction (uint8 Instance)
+{
+  Serdes_StatusType Status;
+  Serdes_StatusType D.6662;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Status = 3;
+  # DEBUG BEGIN_STMT
+  _1 = Serdes_Ip_GetJobResult (Instance);
+  if (_1 == 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Serdes_Ip_MainFunction (Instance);
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Status = 1;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.6662 = Status;
+  return D.6662;
+
+}
+
+
+Serdes_Ipw_InitChannel (const uint8 Instance, const struct Serdes_Ipw_HwChannelConfigType * ConfigPtr)
+{
+  Std_ReturnType StdStatus;
+  Serdes_Ip_StatusType Status;
+  Std_ReturnType D.6656;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  StdStatus = 1;
+  # DEBUG BEGIN_STMT
+  _1 = ConfigPtr->SerdesHwConfig;
+  Status = Serdes_Ip_Init (Instance, _1);
+  # DEBUG BEGIN_STMT
+  if (Status == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  StdStatus = 0;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  D.6656 = StdStatus;
+  return D.6656;
+
+}
+
+

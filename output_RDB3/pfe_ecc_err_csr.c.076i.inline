@@ -1,0 +1,346 @@
+IPA function summary for pfe_ecc_err_cfg_irq_unmask_all/16 inlinable
+  global time:     4.000000
+  self size:       5
+  global size:     5
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:1.000000, time:1.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+  calls:
+
+IPA function summary for pfe_ecc_err_cfg_irq_unmask/15 inlinable
+  global time:     6.000000
+  self size:       7
+  global size:     7
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+  calls:
+
+IPA function summary for pfe_ecc_err_cfg_irq_mask/14 inlinable
+  global time:     6.000000
+  self size:       7
+  global size:     7
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+  calls:
+
+IPA function summary for pfe_ecc_err_cfg_isr/13 inlinable
+  global time:     29.853300
+  self size:       28
+  global size:     28
+  min size:       22
+  self stack:      0
+  global stack:    0
+    size:12.000000, time:12.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:2.000000, time:2.000000,  nonconst if:(op0 changed)
+  calls:
+    Dem_SetEventStatus/18 function body not available
+      loop depth: 0 freq:0.48 size: 3 time: 12
+       op0 is compile time invariant
+       op1 is compile time invariant
+    pfe_hm_report/17 function body not available
+      loop depth: 0 freq:0.48 size: 8 time: 17
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op2 is compile time invariant
+       op3 is compile time invariant
+       op4 is compile time invariant
+       op5 is compile time invariant
+       op6 is compile time invariant
+
+
+Flattening functions:
+Overall time estimate: 45.853300 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+Enqueueing calls in pfe_ecc_err_cfg_irq_unmask_all/16.
+Enqueueing calls in pfe_ecc_err_cfg_irq_unmask/15.
+Enqueueing calls in pfe_ecc_err_cfg_irq_mask/14.
+Enqueueing calls in pfe_ecc_err_cfg_isr/13.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 45.853300 weighted by profile: 0.000000
+
+Why inlining failed?
+function body not available                       :        2 calls, 0.955400 freq, 0 count
+IPA function summary for pfe_ecc_err_cfg_irq_unmask_all/16 inlinable
+  global time:     4.000000
+  self size:       5
+  global size:     5
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:1.000000, time:1.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+  calls:
+
+IPA function summary for pfe_ecc_err_cfg_irq_unmask/15 inlinable
+  global time:     6.000000
+  self size:       7
+  global size:     7
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+  calls:
+
+IPA function summary for pfe_ecc_err_cfg_irq_mask/14 inlinable
+  global time:     6.000000
+  self size:       7
+  global size:     7
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op0 changed)
+  calls:
+
+IPA function summary for pfe_ecc_err_cfg_isr/13 inlinable
+  global time:     29.853300
+  self size:       28
+  global size:     28
+  min size:       22
+  self stack:      0
+  global stack:    0
+    size:12.000000, time:12.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:2.000000, time:2.000000,  nonconst if:(op0 changed)
+  calls:
+    Dem_SetEventStatus/18 function body not available
+      loop depth: 0 freq:0.48 size: 3 time: 12
+       op0 is compile time invariant
+       op1 is compile time invariant
+    pfe_hm_report/17 function body not available
+      loop depth: 0 freq:0.48 size: 8 time: 17
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op2 is compile time invariant
+       op3 is compile time invariant
+       op4 is compile time invariant
+       op5 is compile time invariant
+       op6 is compile time invariant
+
+Symbol table:
+
+Dem_SetEventStatus/18 (Dem_SetEventStatus) @07480620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_cfg_isr/13 (512926469 (estimated locally),0.48 per call) 
+  Calls: 
+pfe_hm_report/17 (pfe_hm_report) @074802a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_cfg_isr/13 (512926469 (estimated locally),0.48 per call) 
+  Calls: 
+pfe_ecc_err_cfg_irq_unmask_all/16 (pfe_ecc_err_cfg_irq_unmask_all) @07480b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_irq_unmask/15 (pfe_ecc_err_cfg_irq_unmask) @074808c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_irq_mask/14 (pfe_ecc_err_cfg_irq_mask) @07480540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_isr/13 (pfe_ecc_err_cfg_isr) @074801c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Dem_SetEventStatus/18 (512926469 (estimated locally),0.48 per call) pfe_hm_report/17 (512926469 (estimated locally),0.48 per call) 
+
+;; Function pfe_ecc_err_cfg_isr (pfe_ecc_err_cfg_isr, funcdef_no=11, decl_uid=7255, cgraph_uid=12, symbol_order=13)
+
+pfe_ecc_err_cfg_isr (addr_t base_va)
+{
+  uint32_t trig_en_interrupts;
+  errno_t ret;
+  uint32_t reg_src;
+  uint32_t reg_en;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_11(D) + 304;
+  _2 = (volatile uint32_t *) _1;
+  reg_en_13 ={v} *_2;
+  # DEBUG reg_en => reg_en_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = reg_en_13 & 4294967294;
+  *_2 ={v} _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_11(D) + 300;
+  _5 = (volatile uint32_t *) _4;
+  reg_src_15 ={v} *_5;
+  # DEBUG reg_src => reg_src_15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_5 ={v} reg_src_15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = reg_en_13 & reg_src_15;
+  trig_en_interrupts_17 = _6 & 3;
+  # DEBUG trig_en_interrupts => trig_en_interrupts_17
+  # DEBUG BEGIN_STMT
+  if (trig_en_interrupts_17 != 0)
+    goto <bb 3>; [47.77%]
+  else
+    goto <bb 4>; [52.23%]
+
+  <bb 3> [local count: 512926469]:
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (11, 2, 2, "[%s:%d] ", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_ecc_err_csr.c", 69, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (33, 3);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_9 = PHI <2(2), 0(3)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = ~reg_src_15;
+  _8 = _7 & reg_en_13;
+  *_2 ={v} _8;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_9;
+
+}
+
+
+
+;; Function pfe_ecc_err_cfg_irq_mask (pfe_ecc_err_cfg_irq_mask, funcdef_no=12, decl_uid=7257, cgraph_uid=13, symbol_order=14)
+
+pfe_ecc_err_cfg_irq_mask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 304;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 & 4294967294;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_ecc_err_cfg_irq_unmask (pfe_ecc_err_cfg_irq_unmask, funcdef_no=13, decl_uid=7259, cgraph_uid=14, symbol_order=15)
+
+pfe_ecc_err_cfg_irq_unmask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 304;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 | 1;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_ecc_err_cfg_irq_unmask_all (pfe_ecc_err_cfg_irq_unmask_all, funcdef_no=14, decl_uid=7261, cgraph_uid=15, symbol_order=16)
+
+pfe_ecc_err_cfg_irq_unmask_all (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 304;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 3;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

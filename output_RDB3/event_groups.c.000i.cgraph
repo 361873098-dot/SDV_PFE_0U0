@@ -1,0 +1,1507 @@
+Trivially needed symbols: vEventGroupSetNumber uxEventGroupGetNumber xEventGroupSetBitsFromISR vEventGroupClearBitsCallback vEventGroupSetBitsCallback vEventGroupDelete xEventGroupSetBits xEventGroupGetBitsFromISR xEventGroupClearBitsFromISR xEventGroupClearBits xEventGroupWaitBits xEventGroupSync xEventGroupCreate
+
+
+Initial Symbol table:
+
+vPortFree/29 (vPortFree) @06f182a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 
+  Calls: 
+vTaskRemoveFromUnorderedEventList/28 (vTaskRemoveFromUnorderedEventList) @06f180e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 
+  Calls: 
+xTimerPendFunctionCallFromISR/27 (xTimerPendFunctionCallFromISR) @06f00a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupSetBitsFromISR/15 xEventGroupClearBitsFromISR/8 
+  Calls: 
+vPortExitCritical/26 (vPortExitCritical) @06f002a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vPortEnterCritical/25 (vPortEnterCritical) @06f001c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+uxTaskResetEventItemValue/24 (uxTaskResetEventItemValue) @06f000e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+xTaskResumeAll/23 (xTaskResumeAll) @06f00000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vTaskPlaceOnUnorderedEventList/22 (vTaskPlaceOnUnorderedEventList) @06e9c540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vTaskSuspendAll/21 (vTaskSuspendAll) @06e9c2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+xTaskGetSchedulerState/20 (xTaskGetSchedulerState) @06e9c000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vListInitialise/19 (vListInitialise) @06e9cc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupCreate/4 
+  Calls: 
+pvPortMalloc/18 (pvPortMalloc) @06e9cb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupCreate/4 
+  Calls: 
+vEventGroupSetNumber/17 (vEventGroupSetNumber) @06e9c700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+uxEventGroupGetNumber/16 (uxEventGroupGetNumber) @06e9c460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e9c700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+xEventGroupSetBitsFromISR/15 (xEventGroupSetBitsFromISR) @06e9c1c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e9c460
+  References: vEventGroupSetBitsCallback/12 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTimerPendFunctionCallFromISR/27 
+prvTestWaitCondition/14 (prvTestWaitCondition) @06e91e00
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06e91000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupWaitBits/6 
+  Calls: 
+vEventGroupClearBitsCallback/13 (vEventGroupClearBitsCallback) @06e91620
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  Aux: @06e9c1c0
+  References: 
+  Referring: xEventGroupClearBitsFromISR/8 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xEventGroupClearBits/7 
+vEventGroupSetBitsCallback/12 (vEventGroupSetBitsCallback) @06e910e0
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  Aux: @06e91620
+  References: 
+  Referring: xEventGroupSetBitsFromISR/15 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xEventGroupSetBits/10 
+vEventGroupDelete/11 (vEventGroupDelete) @06e91d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e910e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTaskResumeAll/23 vPortFree/29 vTaskRemoveFromUnorderedEventList/28 vPortRaiseBASEPRI/1 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 
+xEventGroupSetBits/10 (xEventGroupSetBits) @06e919a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e91d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupSetBitsCallback/12 xEventGroupSync/5 
+  Calls: xTaskResumeAll/23 vTaskRemoveFromUnorderedEventList/28 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupGetBitsFromISR/9 (xEventGroupGetBitsFromISR) @06e91540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e919a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 ulPortRaiseBASEPRI/2 
+xEventGroupClearBitsFromISR/8 (xEventGroupClearBitsFromISR) @06e912a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e91540
+  References: vEventGroupClearBitsCallback/13 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTimerPendFunctionCallFromISR/27 
+xEventGroupClearBits/7 (xEventGroupClearBits) @06e91000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e912a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupClearBitsCallback/13 
+  Calls: vPortExitCritical/26 vPortEnterCritical/25 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupWaitBits/6 (xEventGroupWaitBits) @06ee1460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e91000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortExitCritical/26 prvTestWaitCondition/14 vPortEnterCritical/25 uxTaskResetEventItemValue/24 xTaskResumeAll/23 vTaskPlaceOnUnorderedEventList/22 prvTestWaitCondition/14 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 xTaskGetSchedulerState/20 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupSync/5 (xEventGroupSync) @06ee1a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ee1460
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortExitCritical/26 vPortEnterCritical/25 uxTaskResetEventItemValue/24 xTaskResumeAll/23 vTaskPlaceOnUnorderedEventList/22 xEventGroupSetBits/10 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 xTaskGetSchedulerState/20 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupCreate/4 (xEventGroupCreate) @06ee1620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ee1a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vListInitialise/19 pvPortMalloc/18 
+vPortSetBASEPRI/3 (vPortSetBASEPRI) @06e2b540
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06e919a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupGetBitsFromISR/9 
+  Calls: 
+ulPortRaiseBASEPRI/2 (ulPortRaiseBASEPRI) @06e2b2a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06e2b540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupGetBitsFromISR/9 
+  Calls: 
+vPortRaiseBASEPRI/1 (vPortRaiseBASEPRI) @06e26ee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ee1460
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupDelete/11 vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupSetBits/10 xEventGroupClearBits/7 xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupSync/5 xEventGroupSync/5 xEventGroupSync/5 
+  Calls: 
+xPortIsInsideInterrupt/0 (xPortIsInsideInterrupt) @06e26b60
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: xPortIsInsideInterrupt
+
+Reclaimed Symbol table:
+
+vPortFree/29 (vPortFree) @06f182a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 
+  Calls: 
+vTaskRemoveFromUnorderedEventList/28 (vTaskRemoveFromUnorderedEventList) @06f180e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 
+  Calls: 
+xTimerPendFunctionCallFromISR/27 (xTimerPendFunctionCallFromISR) @06f00a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupSetBitsFromISR/15 xEventGroupClearBitsFromISR/8 
+  Calls: 
+vPortExitCritical/26 (vPortExitCritical) @06f002a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vPortEnterCritical/25 (vPortEnterCritical) @06f001c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+uxTaskResetEventItemValue/24 (uxTaskResetEventItemValue) @06f000e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+xTaskResumeAll/23 (xTaskResumeAll) @06f00000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vTaskPlaceOnUnorderedEventList/22 (vTaskPlaceOnUnorderedEventList) @06e9c540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vTaskSuspendAll/21 (vTaskSuspendAll) @06e9c2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+xTaskGetSchedulerState/20 (xTaskGetSchedulerState) @06e9c000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vListInitialise/19 (vListInitialise) @06e9cc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupCreate/4 
+  Calls: 
+pvPortMalloc/18 (pvPortMalloc) @06e9cb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupCreate/4 
+  Calls: 
+vEventGroupSetNumber/17 (vEventGroupSetNumber) @06e9c700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+uxEventGroupGetNumber/16 (uxEventGroupGetNumber) @06e9c460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+xEventGroupSetBitsFromISR/15 (xEventGroupSetBitsFromISR) @06e9c1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: vEventGroupSetBitsCallback/12 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTimerPendFunctionCallFromISR/27 
+prvTestWaitCondition/14 (prvTestWaitCondition) @06e91e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupWaitBits/6 
+  Calls: 
+vEventGroupClearBitsCallback/13 (vEventGroupClearBitsCallback) @06e91620
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  References: 
+  Referring: xEventGroupClearBitsFromISR/8 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xEventGroupClearBits/7 
+vEventGroupSetBitsCallback/12 (vEventGroupSetBitsCallback) @06e910e0
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  References: 
+  Referring: xEventGroupSetBitsFromISR/15 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xEventGroupSetBits/10 
+vEventGroupDelete/11 (vEventGroupDelete) @06e91d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTaskResumeAll/23 vPortFree/29 vTaskRemoveFromUnorderedEventList/28 vPortRaiseBASEPRI/1 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 
+xEventGroupSetBits/10 (xEventGroupSetBits) @06e919a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupSetBitsCallback/12 xEventGroupSync/5 
+  Calls: xTaskResumeAll/23 vTaskRemoveFromUnorderedEventList/28 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupGetBitsFromISR/9 (xEventGroupGetBitsFromISR) @06e91540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 ulPortRaiseBASEPRI/2 
+xEventGroupClearBitsFromISR/8 (xEventGroupClearBitsFromISR) @06e912a0
+  Type: function definition analyzed
+  Visibility: public
+  References: vEventGroupClearBitsCallback/13 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTimerPendFunctionCallFromISR/27 
+xEventGroupClearBits/7 (xEventGroupClearBits) @06e91000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupClearBitsCallback/13 
+  Calls: vPortExitCritical/26 vPortEnterCritical/25 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupWaitBits/6 (xEventGroupWaitBits) @06ee1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortExitCritical/26 prvTestWaitCondition/14 vPortEnterCritical/25 uxTaskResetEventItemValue/24 xTaskResumeAll/23 vTaskPlaceOnUnorderedEventList/22 prvTestWaitCondition/14 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 xTaskGetSchedulerState/20 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupSync/5 (xEventGroupSync) @06ee1a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortExitCritical/26 vPortEnterCritical/25 uxTaskResetEventItemValue/24 xTaskResumeAll/23 vTaskPlaceOnUnorderedEventList/22 xEventGroupSetBits/10 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 xTaskGetSchedulerState/20 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupCreate/4 (xEventGroupCreate) @06ee1620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vListInitialise/19 pvPortMalloc/18 
+vPortSetBASEPRI/3 (vPortSetBASEPRI) @06e2b540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupGetBitsFromISR/9 
+  Calls: 
+ulPortRaiseBASEPRI/2 (ulPortRaiseBASEPRI) @06e2b2a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupGetBitsFromISR/9 
+  Calls: 
+vPortRaiseBASEPRI/1 (vPortRaiseBASEPRI) @06e26ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupDelete/11 vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupSetBits/10 xEventGroupClearBits/7 xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupSync/5 xEventGroupSync/5 xEventGroupSync/5 
+  Calls: 
+
+
+Initial Symbol table:
+
+vPortFree/29 (vPortFree) @06f182a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 
+  Calls: 
+vTaskRemoveFromUnorderedEventList/28 (vTaskRemoveFromUnorderedEventList) @06f180e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 
+  Calls: 
+xTimerPendFunctionCallFromISR/27 (xTimerPendFunctionCallFromISR) @06f00a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupSetBitsFromISR/15 xEventGroupClearBitsFromISR/8 
+  Calls: 
+vPortExitCritical/26 (vPortExitCritical) @06f002a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vPortEnterCritical/25 (vPortEnterCritical) @06f001c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+uxTaskResetEventItemValue/24 (uxTaskResetEventItemValue) @06f000e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+xTaskResumeAll/23 (xTaskResumeAll) @06f00000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vTaskPlaceOnUnorderedEventList/22 (vTaskPlaceOnUnorderedEventList) @06e9c540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vTaskSuspendAll/21 (vTaskSuspendAll) @06e9c2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+xTaskGetSchedulerState/20 (xTaskGetSchedulerState) @06e9c000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vListInitialise/19 (vListInitialise) @06e9cc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupCreate/4 
+  Calls: 
+pvPortMalloc/18 (pvPortMalloc) @06e9cb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupCreate/4 
+  Calls: 
+vEventGroupSetNumber/17 (vEventGroupSetNumber) @06e9c700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+uxEventGroupGetNumber/16 (uxEventGroupGetNumber) @06e9c460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+xEventGroupSetBitsFromISR/15 (xEventGroupSetBitsFromISR) @06e9c1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: vEventGroupSetBitsCallback/12 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTimerPendFunctionCallFromISR/27 
+prvTestWaitCondition/14 (prvTestWaitCondition) @06e91e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupWaitBits/6 
+  Calls: 
+vEventGroupClearBitsCallback/13 (vEventGroupClearBitsCallback) @06e91620
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  References: 
+  Referring: xEventGroupClearBitsFromISR/8 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xEventGroupClearBits/7 
+vEventGroupSetBitsCallback/12 (vEventGroupSetBitsCallback) @06e910e0
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  References: 
+  Referring: xEventGroupSetBitsFromISR/15 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xEventGroupSetBits/10 
+vEventGroupDelete/11 (vEventGroupDelete) @06e91d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTaskResumeAll/23 vPortFree/29 vTaskRemoveFromUnorderedEventList/28 vPortRaiseBASEPRI/1 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 
+xEventGroupSetBits/10 (xEventGroupSetBits) @06e919a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupSetBitsCallback/12 xEventGroupSync/5 
+  Calls: xTaskResumeAll/23 vTaskRemoveFromUnorderedEventList/28 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupGetBitsFromISR/9 (xEventGroupGetBitsFromISR) @06e91540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 ulPortRaiseBASEPRI/2 
+xEventGroupClearBitsFromISR/8 (xEventGroupClearBitsFromISR) @06e912a0
+  Type: function definition analyzed
+  Visibility: public
+  References: vEventGroupClearBitsCallback/13 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTimerPendFunctionCallFromISR/27 
+xEventGroupClearBits/7 (xEventGroupClearBits) @06e91000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupClearBitsCallback/13 
+  Calls: vPortExitCritical/26 vPortEnterCritical/25 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupWaitBits/6 (xEventGroupWaitBits) @06ee1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortExitCritical/26 prvTestWaitCondition/14 vPortEnterCritical/25 uxTaskResetEventItemValue/24 xTaskResumeAll/23 vTaskPlaceOnUnorderedEventList/22 prvTestWaitCondition/14 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 xTaskGetSchedulerState/20 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupSync/5 (xEventGroupSync) @06ee1a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortExitCritical/26 vPortEnterCritical/25 uxTaskResetEventItemValue/24 xTaskResumeAll/23 vTaskPlaceOnUnorderedEventList/22 xEventGroupSetBits/10 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 xTaskGetSchedulerState/20 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupCreate/4 (xEventGroupCreate) @06ee1620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vListInitialise/19 pvPortMalloc/18 
+vPortSetBASEPRI/3 (vPortSetBASEPRI) @06e2b540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupGetBitsFromISR/9 
+  Calls: 
+ulPortRaiseBASEPRI/2 (ulPortRaiseBASEPRI) @06e2b2a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupGetBitsFromISR/9 
+  Calls: 
+vPortRaiseBASEPRI/1 (vPortRaiseBASEPRI) @06e26ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupDelete/11 vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupSetBits/10 xEventGroupClearBits/7 xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupSync/5 xEventGroupSync/5 xEventGroupSync/5 
+  Calls: 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+vPortFree/29 (vPortFree) @06f182a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 
+  Calls: 
+vTaskRemoveFromUnorderedEventList/28 (vTaskRemoveFromUnorderedEventList) @06f180e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 
+  Calls: 
+xTimerPendFunctionCallFromISR/27 (xTimerPendFunctionCallFromISR) @06f00a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupSetBitsFromISR/15 xEventGroupClearBitsFromISR/8 
+  Calls: 
+vPortExitCritical/26 (vPortExitCritical) @06f002a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vPortEnterCritical/25 (vPortEnterCritical) @06f001c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+uxTaskResetEventItemValue/24 (uxTaskResetEventItemValue) @06f000e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+xTaskResumeAll/23 (xTaskResumeAll) @06f00000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vTaskPlaceOnUnorderedEventList/22 (vTaskPlaceOnUnorderedEventList) @06e9c540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vTaskSuspendAll/21 (vTaskSuspendAll) @06e9c2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+xTaskGetSchedulerState/20 (xTaskGetSchedulerState) @06e9c000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupSync/5 
+  Calls: 
+vListInitialise/19 (vListInitialise) @06e9cc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupCreate/4 
+  Calls: 
+pvPortMalloc/18 (pvPortMalloc) @06e9cb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: xEventGroupCreate/4 
+  Calls: 
+vEventGroupSetNumber/17 (vEventGroupSetNumber) @06e9c700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+uxEventGroupGetNumber/16 (uxEventGroupGetNumber) @06e9c460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+xEventGroupSetBitsFromISR/15 (xEventGroupSetBitsFromISR) @06e9c1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: vEventGroupSetBitsCallback/12 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTimerPendFunctionCallFromISR/27 
+prvTestWaitCondition/14 (prvTestWaitCondition) @06e91e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupWaitBits/6 xEventGroupWaitBits/6 
+  Calls: 
+vEventGroupClearBitsCallback/13 (vEventGroupClearBitsCallback) @06e91620
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  References: 
+  Referring: xEventGroupClearBitsFromISR/8 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xEventGroupClearBits/7 
+vEventGroupSetBitsCallback/12 (vEventGroupSetBitsCallback) @06e910e0
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  References: 
+  Referring: xEventGroupSetBitsFromISR/15 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xEventGroupSetBits/10 
+vEventGroupDelete/11 (vEventGroupDelete) @06e91d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTaskResumeAll/23 vPortFree/29 vTaskRemoveFromUnorderedEventList/28 vPortRaiseBASEPRI/1 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 
+xEventGroupSetBits/10 (xEventGroupSetBits) @06e919a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupSetBitsCallback/12 xEventGroupSync/5 
+  Calls: xTaskResumeAll/23 vTaskRemoveFromUnorderedEventList/28 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupGetBitsFromISR/9 (xEventGroupGetBitsFromISR) @06e91540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 ulPortRaiseBASEPRI/2 
+xEventGroupClearBitsFromISR/8 (xEventGroupClearBitsFromISR) @06e912a0
+  Type: function definition analyzed
+  Visibility: public
+  References: vEventGroupClearBitsCallback/13 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTimerPendFunctionCallFromISR/27 
+xEventGroupClearBits/7 (xEventGroupClearBits) @06e91000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupClearBitsCallback/13 
+  Calls: vPortExitCritical/26 vPortEnterCritical/25 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupWaitBits/6 (xEventGroupWaitBits) @06ee1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortExitCritical/26 prvTestWaitCondition/14 vPortEnterCritical/25 uxTaskResetEventItemValue/24 xTaskResumeAll/23 vTaskPlaceOnUnorderedEventList/22 prvTestWaitCondition/14 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 xTaskGetSchedulerState/20 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupSync/5 (xEventGroupSync) @06ee1a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortExitCritical/26 vPortEnterCritical/25 uxTaskResetEventItemValue/24 xTaskResumeAll/23 vTaskPlaceOnUnorderedEventList/22 xEventGroupSetBits/10 vTaskSuspendAll/21 vPortRaiseBASEPRI/1 xTaskGetSchedulerState/20 vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+xEventGroupCreate/4 (xEventGroupCreate) @06ee1620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vListInitialise/19 pvPortMalloc/18 
+vPortSetBASEPRI/3 (vPortSetBASEPRI) @06e2b540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupGetBitsFromISR/9 
+  Calls: 
+ulPortRaiseBASEPRI/2 (ulPortRaiseBASEPRI) @06e2b2a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: xEventGroupGetBitsFromISR/9 
+  Calls: 
+vPortRaiseBASEPRI/1 (vPortRaiseBASEPRI) @06e26ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: vEventGroupDelete/11 vEventGroupDelete/11 xEventGroupSetBits/10 xEventGroupSetBits/10 xEventGroupClearBits/7 xEventGroupClearBits/7 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupWaitBits/6 xEventGroupSync/5 xEventGroupSync/5 xEventGroupSync/5 
+  Calls: 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+prvTestWaitCondition/44 (prvTestWaitCondition) @06e2b540
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 14
+  References: 
+  Referring: 
+  Function prvTestWaitCondition/44 is inline copy in xEventGroupWaitBits/6
+  Clone of prvTestWaitCondition/14
+  Availability: local
+  Function flags: count:23563 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: xEventGroupWaitBits/6 (inlined) (23563 (estimated locally),0.08 per call) 
+  Calls: 
+xEventGroupSetBits.part.0/39 (xEventGroupSetBits.part.0) @06e2b2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function xEventGroupSetBits.part.0/39 is inline copy in xEventGroupSetBits/10
+  Availability: local
+  Function flags: count:52886 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: xEventGroupSetBits/10 (inlined) (52886 (estimated locally),0.23 per call) 
+  Calls: vTaskSuspendAll/21 (52886 (estimated locally),0.23 per call) vTaskRemoveFromUnorderedEventList/28 (179716 (estimated locally),0.78 per call) xTaskResumeAll/23 (52886 (estimated locally),0.23 per call) 
+xEventGroupClearBits.part.0/36 (xEventGroupClearBits.part.0) @06e26b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function xEventGroupClearBits.part.0/36 is inline copy in xEventGroupClearBits/7
+  Availability: local
+  Function flags: count:52886 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: xEventGroupClearBits/7 (inlined) (52886 (estimated locally),0.23 per call) 
+  Calls: vPortEnterCritical/25 (52886 (estimated locally),0.23 per call) vPortExitCritical/26 (52886 (estimated locally),0.23 per call) 
+vPortFree/29 (vPortFree) @06f182a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 (63439 (estimated locally),0.27 per call) 
+  Calls: 
+vTaskRemoveFromUnorderedEventList/28 (vTaskRemoveFromUnorderedEventList) @06f180e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 (1030048 (estimated locally),4.46 per call) xEventGroupSetBits.part.0/39 (179716 (estimated locally),0.78 per call) 
+  Calls: 
+xTimerPendFunctionCallFromISR/27 (xTimerPendFunctionCallFromISR) @06f00a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: xEventGroupSetBitsFromISR/15 (1073741824 (estimated locally),1.00 per call) xEventGroupClearBitsFromISR/8 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+vPortExitCritical/26 (vPortExitCritical) @06f002a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: xEventGroupSync/5 (3888 (estimated locally),0.02 per call) xEventGroupClearBits.part.0/36 (52886 (estimated locally),0.23 per call) xEventGroupWaitBits/6 (3888 (estimated locally),0.01 per call) 
+  Calls: 
+vPortEnterCritical/25 (vPortEnterCritical) @06f001c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: xEventGroupSync/5 (3888 (estimated locally),0.02 per call) xEventGroupClearBits.part.0/36 (52886 (estimated locally),0.23 per call) xEventGroupWaitBits/6 (3888 (estimated locally),0.01 per call) 
+  Calls: 
+uxTaskResetEventItemValue/24 (uxTaskResetEventItemValue) @06f000e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: xEventGroupSync/5 (11782 (estimated locally),0.05 per call) xEventGroupWaitBits/6 (11782 (estimated locally),0.04 per call) 
+  Calls: 
+xTaskResumeAll/23 (xTaskResumeAll) @06f00000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 (63439 (estimated locally),0.27 per call) xEventGroupSync/5 (23563 (estimated locally),0.11 per call) xEventGroupSetBits.part.0/39 (52886 (estimated locally),0.23 per call) xEventGroupWaitBits/6 (23563 (estimated locally),0.08 per call) 
+  Calls: 
+vTaskPlaceOnUnorderedEventList/22 (vTaskPlaceOnUnorderedEventList) @06e9c540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: xEventGroupSync/5 (5132 (estimated locally),0.02 per call) xEventGroupWaitBits/6 (5891 (estimated locally),0.02 per call) 
+  Calls: 
+vTaskSuspendAll/21 (vTaskSuspendAll) @06e9c2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: vEventGroupDelete/11 (123389 (estimated locally),0.53 per call) xEventGroupSync/5 (23563 (estimated locally),0.11 per call) xEventGroupSetBits.part.0/39 (52886 (estimated locally),0.23 per call) xEventGroupWaitBits/6 (23563 (estimated locally),0.08 per call) 
+  Calls: 
+xTaskGetSchedulerState/20 (xTaskGetSchedulerState) @06e9c000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: xEventGroupSync/5 (35433 (estimated locally),0.16 per call) xEventGroupWaitBits/6 (35433 (estimated locally),0.12 per call) 
+  Calls: 
+vListInitialise/19 (vListInitialise) @06e9cc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: xEventGroupCreate/4 (574129754 (estimated locally),0.53 per call) 
+  Calls: 
+pvPortMalloc/18 (pvPortMalloc) @06e9cb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: xEventGroupCreate/4 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+vEventGroupSetNumber/17 (vEventGroupSetNumber) @06e9c700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+uxEventGroupGetNumber/16 (uxEventGroupGetNumber) @06e9c460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+xEventGroupSetBitsFromISR/15 (xEventGroupSetBitsFromISR) @06e9c1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: vEventGroupSetBitsCallback/12 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: xTimerPendFunctionCallFromISR/27 (1073741824 (estimated locally),1.00 per call) 
+prvTestWaitCondition/14 (prvTestWaitCondition) @06e91e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 44
+  References: 
+  Referring: 
+  Function prvTestWaitCondition/14 is inline copy in xEventGroupWaitBits/6
+  Availability: local
+  Function flags: count:3888 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: xEventGroupWaitBits/6 (inlined) (3888 (estimated locally),0.01 per call) 
+  Calls: 
+vEventGroupClearBitsCallback/13 (vEventGroupClearBitsCallback) @06e91620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Address is taken.
+  References: 
+  Referring: xEventGroupClearBitsFromISR/8 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: xEventGroupClearBits/7 (1073741824 (estimated locally),1.00 per call) 
+vEventGroupSetBitsCallback/12 (vEventGroupSetBitsCallback) @06e910e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Address is taken.
+  References: 
+  Referring: xEventGroupSetBitsFromISR/15 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: xEventGroupSetBits/10 (1073741824 (estimated locally),1.00 per call) 
+vEventGroupDelete/11 (vEventGroupDelete) @06e91d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:230763 (estimated locally) body optimize_size
+  Called by: 
+  Calls: xTaskResumeAll/23 (63439 (estimated locally),0.27 per call) vPortFree/29 (63439 (estimated locally),0.27 per call) vTaskRemoveFromUnorderedEventList/28 (1030048 (estimated locally),4.46 per call) vTaskSuspendAll/21 (123389 (estimated locally),0.53 per call) 
+xEventGroupSetBits/10 (xEventGroupSetBits) @06e919a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:228942 (estimated locally) body optimize_size
+  Called by: vEventGroupSetBitsCallback/12 (1073741824 (estimated locally),1.00 per call) xEventGroupSync/5 (23563 (estimated locally),0.11 per call) 
+  Calls: xEventGroupSetBits.part.0/39 (inlined) (52886 (estimated locally),0.23 per call) 
+xEventGroupGetBitsFromISR/9 (xEventGroupGetBitsFromISR) @06e91540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+xEventGroupClearBitsFromISR/8 (xEventGroupClearBitsFromISR) @06e912a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: vEventGroupClearBitsCallback/13 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: xTimerPendFunctionCallFromISR/27 (1073741824 (estimated locally),1.00 per call) 
+xEventGroupClearBits/7 (xEventGroupClearBits) @06e91000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:228942 (estimated locally) body optimize_size
+  Called by: vEventGroupClearBitsCallback/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: xEventGroupClearBits.part.0/36 (inlined) (52886 (estimated locally),0.23 per call) 
+xEventGroupWaitBits/6 (xEventGroupWaitBits) @06ee1460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:306783 (estimated locally) body optimize_size
+  Called by: 
+  Calls: vPortExitCritical/26 (3888 (estimated locally),0.01 per call) prvTestWaitCondition/14 (inlined) (3888 (estimated locally),0.01 per call) vPortEnterCritical/25 (3888 (estimated locally),0.01 per call) uxTaskResetEventItemValue/24 (11782 (estimated locally),0.04 per call) xTaskResumeAll/23 (23563 (estimated locally),0.08 per call) vTaskPlaceOnUnorderedEventList/22 (5891 (estimated locally),0.02 per call) prvTestWaitCondition/44 (inlined) (23563 (estimated locally),0.08 per call) vTaskSuspendAll/21 (23563 (estimated locally),0.08 per call) xTaskGetSchedulerState/20 (35433 (estimated locally),0.12 per call) 
+xEventGroupSync/5 (xEventGroupSync) @06ee1a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:214748 (estimated locally) body optimize_size
+  Called by: 
+  Calls: vPortExitCritical/26 (3888 (estimated locally),0.02 per call) vPortEnterCritical/25 (3888 (estimated locally),0.02 per call) uxTaskResetEventItemValue/24 (11782 (estimated locally),0.05 per call) xTaskResumeAll/23 (23563 (estimated locally),0.11 per call) vTaskPlaceOnUnorderedEventList/22 (5132 (estimated locally),0.02 per call) xEventGroupSetBits/10 (23563 (estimated locally),0.11 per call) vTaskSuspendAll/21 (23563 (estimated locally),0.11 per call) xTaskGetSchedulerState/20 (35433 (estimated locally),0.16 per call) 
+xEventGroupCreate/4 (xEventGroupCreate) @06ee1620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: vListInitialise/19 (574129754 (estimated locally),0.53 per call) pvPortMalloc/18 (1073741824 (estimated locally),1.00 per call) 
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:xEventGroupCreate:0
+Time profile order in expand_all_functions:xEventGroupWaitBits:0
+Time profile order in expand_all_functions:xEventGroupClearBits:0
+Time profile order in expand_all_functions:vEventGroupClearBitsCallback:0
+Time profile order in expand_all_functions:xEventGroupClearBitsFromISR:0
+Time profile order in expand_all_functions:xEventGroupGetBitsFromISR:0
+Time profile order in expand_all_functions:xEventGroupSetBits:0
+Time profile order in expand_all_functions:xEventGroupSync:0
+Time profile order in expand_all_functions:vEventGroupSetBitsCallback:0
+Time profile order in expand_all_functions:vEventGroupDelete:0
+Time profile order in expand_all_functions:xEventGroupSetBitsFromISR:0
+Time profile order in expand_all_functions:uxEventGroupGetNumber:0
+Time profile order in expand_all_functions:vEventGroupSetNumber:0
+Trivially needed variables:
+Removing variables:
+
+Final Symbol table:
+
+vPortFree/29 (vPortFree) @06f182a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+vTaskRemoveFromUnorderedEventList/28 (vTaskRemoveFromUnorderedEventList) @06f180e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+xTimerPendFunctionCallFromISR/27 (xTimerPendFunctionCallFromISR) @06f00a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+vPortExitCritical/26 (vPortExitCritical) @06f002a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+vPortEnterCritical/25 (vPortEnterCritical) @06f001c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+uxTaskResetEventItemValue/24 (uxTaskResetEventItemValue) @06f000e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+xTaskResumeAll/23 (xTaskResumeAll) @06f00000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+vTaskPlaceOnUnorderedEventList/22 (vTaskPlaceOnUnorderedEventList) @06e9c540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+vTaskSuspendAll/21 (vTaskSuspendAll) @06e9c2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+xTaskGetSchedulerState/20 (xTaskGetSchedulerState) @06e9c000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+vListInitialise/19 (vListInitialise) @06e9cc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pvPortMalloc/18 (pvPortMalloc) @06e9cb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+vEventGroupSetNumber/17 (vEventGroupSetNumber) @06e9c700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+uxEventGroupGetNumber/16 (uxEventGroupGetNumber) @06e9c460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+xEventGroupSetBitsFromISR/15 (xEventGroupSetBitsFromISR) @06e9c1c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+vEventGroupClearBitsCallback/13 (vEventGroupClearBitsCallback) @06e91620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+vEventGroupSetBitsCallback/12 (vEventGroupSetBitsCallback) @06e910e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+vEventGroupDelete/11 (vEventGroupDelete) @06e91d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:230763 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+xEventGroupSetBits/10 (xEventGroupSetBits) @06e919a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:228942 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+xEventGroupGetBitsFromISR/9 (xEventGroupGetBitsFromISR) @06e91540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+xEventGroupClearBitsFromISR/8 (xEventGroupClearBitsFromISR) @06e912a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+xEventGroupClearBits/7 (xEventGroupClearBits) @06e91000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:228942 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+xEventGroupWaitBits/6 (xEventGroupWaitBits) @06ee1460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:306783 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+xEventGroupSync/5 (xEventGroupSync) @06ee1a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:214748 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+xEventGroupCreate/4 (xEventGroupCreate) @06ee1620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 

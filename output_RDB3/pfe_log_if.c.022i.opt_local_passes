@@ -1,0 +1,2765 @@
+pfe_log_if_get_stats (const struct pfe_log_if_t * iface, struct pfe_ct_class_algo_stats_t * stat)
+{
+  addr_t offset;
+  errno_t ret;
+  uint32_t u32reVal;
+  uint32_t i;
+  struct pfe_class_t * _1;
+  unsigned int _2;
+  unsigned int _3;
+  struct pfe_class_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  long unsigned int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  long unsigned int _75;
+  long unsigned int _76;
+  long unsigned int _77;
+  long unsigned int _78;
+  long unsigned int _79;
+  long unsigned int _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  long unsigned int _83;
+  long unsigned int _84;
+  long unsigned int _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  long unsigned int _90;
+  long unsigned int _91;
+  long unsigned int _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  long unsigned int _97;
+  long unsigned int _98;
+  long unsigned int _99;
+  long unsigned int _100;
+  long unsigned int _101;
+  long unsigned int _102;
+  long unsigned int _103;
+  long unsigned int _104;
+  long unsigned int _105;
+  long unsigned int _106;
+  long unsigned int _107;
+  long unsigned int _108;
+  long unsigned int _109;
+  long unsigned int _110;
+  long unsigned int _111;
+  long unsigned int _112;
+  long unsigned int _113;
+  long unsigned int _114;
+  long unsigned int _115;
+  long unsigned int _116;
+  errno_t _134;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  offset_119 = 0;
+  # DEBUG offset => offset_119
+  # DEBUG BEGIN_STMT
+  autolibc_memset (stat_121(D), 0, 16);
+  # DEBUG BEGIN_STMT
+  offset_123 = 88;
+  # DEBUG offset => offset_123
+  # DEBUG BEGIN_STMT
+  _1 = iface_124(D)->class;
+  _2 = iface_124(D)->dmem_base;
+  _3 = offset_123 + _2;
+  ret_126 = pfe_class_gather_read_dmem (_1, &pfe_class_algo_stats, _3, 128, 16);
+  # DEBUG ret => ret_126
+  # DEBUG BEGIN_STMT
+  _4 = iface_124(D)->class;
+  u32reVal_128 = pfe_class_get_num_of_pes (_4);
+  # DEBUG u32reVal => u32reVal_128
+  # DEBUG BEGIN_STMT
+  i_129 = 0;
+  # DEBUG i => i_129
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _5 = stat_121(D)->accepted;
+  _6 = pfe_class_algo_stats[i_117].accepted;
+  _7 = _6 >> 24;
+  _8 = pfe_class_algo_stats[i_117].accepted;
+  _9 = _8 >> 8;
+  _10 = _9 & 65280;
+  _11 = _7 | _10;
+  _12 = pfe_class_algo_stats[i_117].accepted;
+  _13 = _12 << 8;
+  _14 = _13 & 16711680;
+  _15 = _11 | _14;
+  _16 = pfe_class_algo_stats[i_117].accepted;
+  _17 = _16 << 24;
+  _18 = _15 | _17;
+  _19 = _5 + _18;
+  stat_121(D)->accepted = _19;
+  # DEBUG BEGIN_STMT
+  _20 = stat_121(D)->discarded;
+  _21 = pfe_class_algo_stats[i_117].discarded;
+  _22 = _21 >> 24;
+  _23 = pfe_class_algo_stats[i_117].discarded;
+  _24 = _23 >> 8;
+  _25 = _24 & 65280;
+  _26 = _22 | _25;
+  _27 = pfe_class_algo_stats[i_117].discarded;
+  _28 = _27 << 8;
+  _29 = _28 & 16711680;
+  _30 = _26 | _29;
+  _31 = pfe_class_algo_stats[i_117].discarded;
+  _32 = _31 << 24;
+  _33 = _30 | _32;
+  _34 = _20 + _33;
+  stat_121(D)->discarded = _34;
+  # DEBUG BEGIN_STMT
+  _35 = stat_121(D)->processed;
+  _36 = pfe_class_algo_stats[i_117].processed;
+  _37 = _36 >> 24;
+  _38 = pfe_class_algo_stats[i_117].processed;
+  _39 = _38 >> 8;
+  _40 = _39 & 65280;
+  _41 = _37 | _40;
+  _42 = pfe_class_algo_stats[i_117].processed;
+  _43 = _42 << 8;
+  _44 = _43 & 16711680;
+  _45 = _41 | _44;
+  _46 = pfe_class_algo_stats[i_117].processed;
+  _47 = _46 << 24;
+  _48 = _45 | _47;
+  _49 = _35 + _48;
+  stat_121(D)->processed = _49;
+  # DEBUG BEGIN_STMT
+  _50 = stat_121(D)->rejected;
+  _51 = pfe_class_algo_stats[i_117].rejected;
+  _52 = _51 >> 24;
+  _53 = pfe_class_algo_stats[i_117].rejected;
+  _54 = _53 >> 8;
+  _55 = _54 & 65280;
+  _56 = _52 | _55;
+  _57 = pfe_class_algo_stats[i_117].rejected;
+  _58 = _57 << 8;
+  _59 = _58 & 16711680;
+  _60 = _56 | _59;
+  _61 = pfe_class_algo_stats[i_117].rejected;
+  _62 = _61 << 24;
+  _63 = _60 | _62;
+  _64 = _50 + _63;
+  stat_121(D)->rejected = _64;
+  # DEBUG BEGIN_STMT
+  i_139 = i_117 + 1;
+  # DEBUG i => i_139
+
+  <bb 4> :
+  # i_117 = PHI <i_129(2), i_139(3)>
+  # DEBUG i => i_117
+  # DEBUG BEGIN_STMT
+  if (i_117 < u32reVal_128)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _65 = stat_121(D)->accepted;
+  _66 = _65 >> 24;
+  _67 = stat_121(D)->accepted;
+  _68 = _67 >> 8;
+  _69 = _68 & 65280;
+  _70 = _66 | _69;
+  _71 = stat_121(D)->accepted;
+  _72 = _71 << 8;
+  _73 = _72 & 16711680;
+  _74 = _70 | _73;
+  _75 = stat_121(D)->accepted;
+  _76 = _75 << 24;
+  _77 = _74 | _76;
+  stat_121(D)->accepted = _77;
+  # DEBUG BEGIN_STMT
+  _78 = stat_121(D)->discarded;
+  _79 = _78 >> 24;
+  _80 = stat_121(D)->discarded;
+  _81 = _80 >> 8;
+  _82 = _81 & 65280;
+  _83 = _79 | _82;
+  _84 = stat_121(D)->discarded;
+  _85 = _84 << 8;
+  _86 = _85 & 16711680;
+  _87 = _83 | _86;
+  _88 = stat_121(D)->discarded;
+  _89 = _88 << 24;
+  _90 = _87 | _89;
+  stat_121(D)->discarded = _90;
+  # DEBUG BEGIN_STMT
+  _91 = stat_121(D)->processed;
+  _92 = _91 >> 24;
+  _93 = stat_121(D)->processed;
+  _94 = _93 >> 8;
+  _95 = _94 & 65280;
+  _96 = _92 | _95;
+  _97 = stat_121(D)->processed;
+  _98 = _97 << 8;
+  _99 = _98 & 16711680;
+  _100 = _96 | _99;
+  _101 = stat_121(D)->processed;
+  _102 = _101 << 24;
+  _103 = _100 | _102;
+  stat_121(D)->processed = _103;
+  # DEBUG BEGIN_STMT
+  _104 = stat_121(D)->rejected;
+  _105 = _104 >> 24;
+  _106 = stat_121(D)->rejected;
+  _107 = _106 >> 8;
+  _108 = _107 & 65280;
+  _109 = _105 | _108;
+  _110 = stat_121(D)->rejected;
+  _111 = _110 << 8;
+  _112 = _111 & 16711680;
+  _113 = _109 | _112;
+  _114 = stat_121(D)->rejected;
+  _115 = _114 << 24;
+  _116 = _113 | _115;
+  stat_121(D)->rejected = _116;
+  # DEBUG BEGIN_STMT
+  _134 = ret_126;
+  return _134;
+
+}
+
+
+__attribute__((pure))
+pfe_log_if_get_name (const struct pfe_log_if_t * iface)
+{
+  const char_t * str;
+  const char_t * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (iface_2(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  str_4 = &iface_2(D)->name;
+  # DEBUG str => str_4
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  str_3 = "(unknown)";
+  # DEBUG str => str_3
+
+  <bb 5> :
+  # str_1 = PHI <str_4(3), str_3(4)>
+  # DEBUG str => str_1
+  # DEBUG BEGIN_STMT
+  _5 = str_1;
+  return _5;
+
+}
+
+
+__attribute__((pure))
+pfe_log_if_is_discard (struct pfe_log_if_t * iface)
+{
+  bool_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  _Bool _15;
+  bool_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_17(D)->log_if_class.flags;
+  _2 = _1 >> 24;
+  _3 = iface_17(D)->log_if_class.flags;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = iface_17(D)->log_if_class.flags;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = iface_17(D)->log_if_class.flags;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  _14 = _13 & 16;
+  _15 = _14 != 0;
+  ret_18 = (bool_t) _15;
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _19 = ret_18;
+  return _19;
+
+}
+
+
+pfe_log_if_discard_disable (struct pfe_log_if_t * iface)
+{
+  pfe_ct_if_flags_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  struct pfe_ct_log_if_t * _2;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (16);
+  # DEBUG BEGIN_STMT
+  tmp_7 = iface_6(D)->log_if_class.flags;
+  # DEBUG tmp => tmp_7
+  # DEBUG BEGIN_STMT
+  _1 = tmp_7 & 4026531839;
+  iface_6(D)->log_if_class.flags = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &iface_6(D)->log_if_class;
+  ret_10 = pfe_log_if_write_to_class_nostats (iface_6(D), _2);
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  iface_6(D)->log_if_class.flags = tmp_7;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (16);
+  # DEBUG BEGIN_STMT
+  _13 = ret_10;
+  return _13;
+
+}
+
+
+pfe_log_if_discard_enable (struct pfe_log_if_t * iface)
+{
+  pfe_ct_if_flags_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  struct pfe_ct_log_if_t * _2;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (15);
+  # DEBUG BEGIN_STMT
+  tmp_7 = iface_6(D)->log_if_class.flags;
+  # DEBUG tmp => tmp_7
+  # DEBUG BEGIN_STMT
+  _1 = tmp_7 | 268435456;
+  iface_6(D)->log_if_class.flags = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &iface_6(D)->log_if_class;
+  ret_10 = pfe_log_if_write_to_class_nostats (iface_6(D), _2);
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  iface_6(D)->log_if_class.flags = tmp_7;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (15);
+  # DEBUG BEGIN_STMT
+  _13 = ret_10;
+  return _13;
+
+}
+
+
+__attribute__((pure))
+pfe_log_if_is_promisc (struct pfe_log_if_t * iface)
+{
+  bool_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  _Bool _15;
+  bool_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_17(D)->log_if_class.flags;
+  _2 = _1 >> 24;
+  _3 = iface_17(D)->log_if_class.flags;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = iface_17(D)->log_if_class.flags;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = iface_17(D)->log_if_class.flags;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  _14 = _13 & 2;
+  _15 = _14 != 0;
+  ret_18 = (bool_t) _15;
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _19 = ret_18;
+  return _19;
+
+}
+
+
+pfe_log_if_promisc_disable (struct pfe_log_if_t * iface)
+{
+  pfe_ct_if_flags_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  struct pfe_ct_log_if_t * _2;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (14);
+  # DEBUG BEGIN_STMT
+  tmp_7 = iface_6(D)->log_if_class.flags;
+  # DEBUG tmp => tmp_7
+  # DEBUG BEGIN_STMT
+  _1 = tmp_7 & 4261412863;
+  iface_6(D)->log_if_class.flags = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &iface_6(D)->log_if_class;
+  ret_10 = pfe_log_if_write_to_class_nostats (iface_6(D), _2);
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  iface_6(D)->log_if_class.flags = tmp_7;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (14);
+  # DEBUG BEGIN_STMT
+  _13 = ret_10;
+  return _13;
+
+}
+
+
+pfe_log_if_promisc_enable (struct pfe_log_if_t * iface)
+{
+  pfe_ct_if_flags_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  struct pfe_ct_log_if_t * _3;
+  errno_t _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (13);
+  # DEBUG BEGIN_STMT
+  tmp_8 = iface_7(D)->log_if_class.flags;
+  # DEBUG tmp => tmp_8
+  # DEBUG BEGIN_STMT
+  _1 = iface_7(D)->log_if_class.flags;
+  _2 = _1 | 33554432;
+  iface_7(D)->log_if_class.flags = _2;
+  # DEBUG BEGIN_STMT
+  _3 = &iface_7(D)->log_if_class;
+  ret_11 = pfe_log_if_write_to_class_nostats (iface_7(D), _3);
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  if (ret_11 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  iface_7(D)->log_if_class.flags = tmp_8;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (13);
+  # DEBUG BEGIN_STMT
+  _14 = ret_11;
+  return _14;
+
+}
+
+
+__attribute__((pure))
+pfe_log_if_is_enabled (const struct pfe_log_if_t * iface)
+{
+  bool_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  _Bool _15;
+  bool_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_17(D)->log_if_class.flags;
+  _2 = _1 >> 24;
+  _3 = iface_17(D)->log_if_class.flags;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = iface_17(D)->log_if_class.flags;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = iface_17(D)->log_if_class.flags;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  _14 = _13 & 1;
+  _15 = _14 != 0;
+  ret_18 = (bool_t) _15;
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _19 = ret_18;
+  return _19;
+
+}
+
+
+pfe_log_if_disable (struct pfe_log_if_t * iface)
+{
+  pfe_ct_if_flags_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  struct pfe_ct_log_if_t * _2;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (10);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  tmp_7 = iface_6(D)->log_if_class.flags;
+  # DEBUG tmp => tmp_7
+  # DEBUG BEGIN_STMT
+  _1 = tmp_7 & 4278190079;
+  iface_6(D)->log_if_class.flags = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &iface_6(D)->log_if_class;
+  ret_10 = pfe_log_if_write_to_class_nostats (iface_6(D), _2);
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  iface_6(D)->log_if_class.flags = tmp_7;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (10);
+  # DEBUG BEGIN_STMT
+  _13 = ret_10;
+  return _13;
+
+}
+
+
+pfe_log_if_enable (struct pfe_log_if_t * iface)
+{
+  pfe_ct_if_flags_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  struct pfe_ct_log_if_t * _2;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (9);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  tmp_7 = iface_6(D)->log_if_class.flags;
+  # DEBUG tmp => tmp_7
+  # DEBUG BEGIN_STMT
+  _1 = tmp_7 | 16777216;
+  iface_6(D)->log_if_class.flags = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &iface_6(D)->log_if_class;
+  ret_10 = pfe_log_if_write_to_class_nostats (iface_6(D), _2);
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  iface_6(D)->log_if_class.flags = tmp_7;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (9);
+  # DEBUG BEGIN_STMT
+  _13 = ret_10;
+  return _13;
+
+}
+
+
+pfe_log_if_del_egress_if (struct pfe_log_if_t * iface, const struct pfe_phy_if_t * phy_if)
+{
+  pfe_ct_phy_if_id_t phy_if_id;
+  uint32_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  struct pfe_ct_log_if_t * _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  errno_t _62;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  phy_if_id_52 = pfe_phy_if_get_id (phy_if_51(D));
+  # DEBUG phy_if_id => phy_if_id_52
+  # DEBUG BEGIN_STMT
+  if (phy_if_id_52 > 9)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid PHY IF ID\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 1298, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_61 = 22;
+  # DEBUG ret => ret_61
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = iface_53(D)->log_if_class.e_phy_ifs;
+  _2 = _1 >> 24;
+  _3 = iface_53(D)->log_if_class.e_phy_ifs;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = iface_53(D)->log_if_class.e_phy_ifs;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = iface_53(D)->log_if_class.e_phy_ifs;
+  _12 = _11 << 24;
+  tmp_54 = _10 | _12;
+  # DEBUG tmp => tmp_54
+  # DEBUG BEGIN_STMT
+  _13 = (int) phy_if_id_52;
+  _14 = 1 << _13;
+  _15 = ~_14;
+  _16 = tmp_54 & _15;
+  _17 = _16 >> 24;
+  _18 = (int) phy_if_id_52;
+  _19 = 1 << _18;
+  _20 = ~_19;
+  _21 = tmp_54 & _20;
+  _22 = _21 >> 8;
+  _23 = _22 & 65280;
+  _24 = _17 | _23;
+  _25 = (int) phy_if_id_52;
+  _26 = 1 << _25;
+  _27 = ~_26;
+  _28 = tmp_54 & _27;
+  _29 = _28 << 8;
+  _30 = _29 & 16711680;
+  _31 = _24 | _30;
+  _32 = (int) phy_if_id_52;
+  _33 = 1 << _32;
+  _34 = ~_33;
+  _35 = tmp_54 & _34;
+  _36 = _35 << 24;
+  _37 = _31 | _36;
+  iface_53(D)->log_if_class.e_phy_ifs = _37;
+  # DEBUG BEGIN_STMT
+  _38 = &iface_53(D)->log_if_class;
+  ret_57 = pfe_log_if_write_to_class_nostats (iface_53(D), _38);
+  # DEBUG ret => ret_57
+  # DEBUG BEGIN_STMT
+  if (ret_57 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _39 = tmp_54 >> 24;
+  _40 = tmp_54 >> 8;
+  _41 = _40 & 65280;
+  _42 = _39 | _41;
+  _43 = tmp_54 << 8;
+  _44 = _43 & 16711680;
+  _45 = _42 | _44;
+  _46 = tmp_54 << 24;
+  _47 = _45 | _46;
+  iface_53(D)->log_if_class.e_phy_ifs = _47;
+
+  <bb 6> :
+  # ret_48 = PHI <ret_61(3), ret_57(4), ret_57(5)>
+  # DEBUG ret => ret_48
+  # DEBUG BEGIN_STMT
+  _62 = ret_48;
+  return _62;
+
+}
+
+
+pfe_log_if_add_egress_if (struct pfe_log_if_t * iface, const struct pfe_phy_if_t * phy_if)
+{
+  pfe_ct_phy_if_id_t phy_if_id;
+  uint32_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  struct pfe_ct_log_if_t * _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  errno_t _58;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  phy_if_id_48 = pfe_phy_if_get_id (phy_if_47(D));
+  # DEBUG phy_if_id => phy_if_id_48
+  # DEBUG BEGIN_STMT
+  if (phy_if_id_48 > 9)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid PHY IF ID\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 1251, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_57 = 22;
+  # DEBUG ret => ret_57
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = iface_49(D)->log_if_class.e_phy_ifs;
+  _2 = _1 >> 24;
+  _3 = iface_49(D)->log_if_class.e_phy_ifs;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = iface_49(D)->log_if_class.e_phy_ifs;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = iface_49(D)->log_if_class.e_phy_ifs;
+  _12 = _11 << 24;
+  tmp_50 = _10 | _12;
+  # DEBUG tmp => tmp_50
+  # DEBUG BEGIN_STMT
+  _13 = (int) phy_if_id_48;
+  _14 = 1 << _13;
+  _15 = tmp_50 | _14;
+  _16 = _15 >> 24;
+  _17 = (int) phy_if_id_48;
+  _18 = 1 << _17;
+  _19 = tmp_50 | _18;
+  _20 = _19 >> 8;
+  _21 = _20 & 65280;
+  _22 = _16 | _21;
+  _23 = (int) phy_if_id_48;
+  _24 = 1 << _23;
+  _25 = tmp_50 | _24;
+  _26 = _25 << 8;
+  _27 = _26 & 16711680;
+  _28 = _22 | _27;
+  _29 = (int) phy_if_id_48;
+  _30 = 1 << _29;
+  _31 = tmp_50 | _30;
+  _32 = _31 << 24;
+  _33 = _28 | _32;
+  iface_49(D)->log_if_class.e_phy_ifs = _33;
+  # DEBUG BEGIN_STMT
+  _34 = &iface_49(D)->log_if_class;
+  ret_53 = pfe_log_if_write_to_class_nostats (iface_49(D), _34);
+  # DEBUG ret => ret_53
+  # DEBUG BEGIN_STMT
+  if (ret_53 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _35 = tmp_50 >> 24;
+  _36 = tmp_50 >> 8;
+  _37 = _36 & 65280;
+  _38 = _35 | _37;
+  _39 = tmp_50 << 8;
+  _40 = _39 & 16711680;
+  _41 = _38 | _40;
+  _42 = tmp_50 << 24;
+  _43 = _41 | _42;
+  iface_49(D)->log_if_class.e_phy_ifs = _43;
+
+  <bb 6> :
+  # ret_44 = PHI <ret_57(3), ret_53(4), ret_53(5)>
+  # DEBUG ret => ret_44
+  # DEBUG BEGIN_STMT
+  _58 = ret_44;
+  return _58;
+
+}
+
+
+pfe_log_if_set_egress_ifs (struct pfe_log_if_t * iface, uint32_t egress)
+{
+  errno_t ret;
+  uint32_t tmp;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  struct pfe_ct_log_if_t * _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  errno_t _41;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_34(D)->log_if_class.e_phy_ifs;
+  _2 = _1 >> 24;
+  _3 = iface_34(D)->log_if_class.e_phy_ifs;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = iface_34(D)->log_if_class.e_phy_ifs;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = iface_34(D)->log_if_class.e_phy_ifs;
+  _12 = _11 << 24;
+  tmp_35 = _10 | _12;
+  # DEBUG tmp => tmp_35
+  # DEBUG BEGIN_STMT
+  _13 = egress_36(D) >> 24;
+  _14 = egress_36(D) >> 8;
+  _15 = _14 & 65280;
+  _16 = _13 | _15;
+  _17 = egress_36(D) << 8;
+  _18 = _17 & 16711680;
+  _19 = _16 | _18;
+  _20 = egress_36(D) << 24;
+  _21 = _19 | _20;
+  iface_34(D)->log_if_class.e_phy_ifs = _21;
+  # DEBUG BEGIN_STMT
+  _22 = &iface_34(D)->log_if_class;
+  ret_39 = pfe_log_if_write_to_class_nostats (iface_34(D), _22);
+  # DEBUG ret => ret_39
+  # DEBUG BEGIN_STMT
+  if (ret_39 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _23 = tmp_35 >> 24;
+  _24 = tmp_35 >> 8;
+  _25 = _24 & 65280;
+  _26 = _23 | _25;
+  _27 = tmp_35 << 8;
+  _28 = _27 & 16711680;
+  _29 = _26 | _28;
+  _30 = tmp_35 << 24;
+  _31 = _29 | _30;
+  iface_34(D)->log_if_class.e_phy_ifs = _31;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _41 = ret_39;
+  return _41;
+
+}
+
+
+pfe_log_if_get_egress_ifs (struct pfe_log_if_t * iface, uint32_t * egress)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  errno_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_15(D)->log_if_class.e_phy_ifs;
+  _2 = _1 >> 24;
+  _3 = iface_15(D)->log_if_class.e_phy_ifs;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = iface_15(D)->log_if_class.e_phy_ifs;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = iface_15(D)->log_if_class.e_phy_ifs;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  *egress_16(D) = _13;
+  # DEBUG BEGIN_STMT
+  ret_18 = 0;
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _19 = ret_18;
+  return _19;
+
+}
+
+
+pfe_log_if_get_match_rules (struct pfe_log_if_t * iface, pfe_ct_if_m_rules_t * rules, struct pfe_ct_if_m_args_t * args)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  struct pfe_ct_if_m_args_t * _14;
+  errno_t _23;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_17(D)->log_if_class.m_rules;
+  _2 = _1 >> 24;
+  _3 = iface_17(D)->log_if_class.m_rules;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = iface_17(D)->log_if_class.m_rules;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = iface_17(D)->log_if_class.m_rules;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  *rules_18(D) = _13;
+  # DEBUG BEGIN_STMT
+  if (args_20(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _14 = &iface_17(D)->log_if_class.m_args;
+  autolibc_memcpy (args_20(D), _14, 68);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_22 = 0;
+  # DEBUG ret => ret_22
+  # DEBUG BEGIN_STMT
+  _23 = ret_22;
+  return _23;
+
+}
+
+
+pfe_log_if_del_match_rule (struct pfe_log_if_t * iface, pfe_ct_if_m_rules_t rule)
+{
+  pfe_ct_if_m_rules_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  struct pfe_ct_log_if_t * _16;
+  errno_t _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (8);
+  # DEBUG BEGIN_STMT
+  tmp_21 = iface_20(D)->log_if_class.m_rules;
+  # DEBUG tmp => tmp_21
+  # DEBUG BEGIN_STMT
+  _1 = iface_20(D)->log_if_class.m_rules;
+  _2 = ~rule_22(D);
+  _3 = _2 >> 24;
+  _4 = ~rule_22(D);
+  _5 = _4 >> 8;
+  _6 = _5 & 65280;
+  _7 = _3 | _6;
+  _8 = ~rule_22(D);
+  _9 = _8 << 8;
+  _10 = _9 & 16711680;
+  _11 = _7 | _10;
+  _12 = ~rule_22(D);
+  _13 = _12 << 24;
+  _14 = _11 | _13;
+  _15 = _1 & _14;
+  iface_20(D)->log_if_class.m_rules = _15;
+  # DEBUG BEGIN_STMT
+  _16 = &iface_20(D)->log_if_class;
+  ret_25 = pfe_log_if_write_to_class_nostats (iface_20(D), _16);
+  # DEBUG ret => ret_25
+  # DEBUG BEGIN_STMT
+  if (ret_25 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  iface_20(D)->log_if_class.m_rules = tmp_21;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (8);
+  # DEBUG BEGIN_STMT
+  _28 = ret_25;
+  return _28;
+
+}
+
+
+pfe_log_if_add_match_rule (struct pfe_log_if_t * iface, pfe_ct_if_m_rules_t rule, const void * arg, uint32_t arg_len)
+{
+  pfe_ct_if_m_rules_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  struct pfe_ct_log_if_t * _14;
+  errno_t _35;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (rule_19(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_34 = 22;
+  # DEBUG ret => ret_34
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = rule_19(D) + 4294967295;
+  _2 = rule_19(D) & _1;
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_33 = 22;
+  # DEBUG ret => ret_33
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (7);
+  # DEBUG BEGIN_STMT
+  ret_26 = pfe_log_if_add_match_rule_validate_arg (iface_22(D), rule_19(D), arg_23(D), arg_len_24(D));
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  if (ret_26 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  tmp_27 = iface_22(D)->log_if_class.m_rules;
+  # DEBUG tmp => tmp_27
+  # DEBUG BEGIN_STMT
+  _3 = iface_22(D)->log_if_class.m_rules;
+  _4 = rule_19(D) >> 24;
+  _5 = rule_19(D) >> 8;
+  _6 = _5 & 65280;
+  _7 = _4 | _6;
+  _8 = rule_19(D) << 8;
+  _9 = _8 & 16711680;
+  _10 = _7 | _9;
+  _11 = rule_19(D) << 24;
+  _12 = _10 | _11;
+  _13 = _3 | _12;
+  iface_22(D)->log_if_class.m_rules = _13;
+  # DEBUG BEGIN_STMT
+  _14 = &iface_22(D)->log_if_class;
+  ret_30 = pfe_log_if_write_to_class_nostats (iface_22(D), _14);
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  if (ret_30 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  iface_22(D)->log_if_class.m_rules = tmp_27;
+
+  <bb 9> :
+  # ret_15 = PHI <ret_26(6), ret_30(7), ret_30(8)>
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (7);
+
+  <bb 10> :
+  # ret_16 = PHI <ret_34(3), ret_33(5), ret_15(9)>
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  _35 = ret_16;
+  return _35;
+
+}
+
+
+pfe_log_if_add_match_rule_validate_arg (struct pfe_log_if_t * iface, pfe_ct_if_m_rules_t rule, const void * arg, uint32_t arg_len)
+{
+  errno_t ret;
+  errno_t _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_9 = pfe_log_if_match_rule1 (iface_4(D), rule_5(D), arg_6(D), arg_len_7(D));
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 == 22)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_11 = pfe_log_if_match_rule2 (iface_4(D), rule_5(D), arg_6(D), arg_len_7(D));
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  if (ret_11 == 22)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_13 = pfe_log_if_match_rule3 (iface_4(D), rule_5(D), arg_6(D), arg_len_7(D));
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (ret_13 == 22)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_15 = pfe_log_if_match_rule4 (iface_4(D), rule_5(D), arg_6(D), arg_len_7(D));
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  if (ret_15 == 22)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (arg_len_7(D) != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ret_16 = 0;
+  # DEBUG ret => ret_16
+
+  <bb 8> :
+  # ret_1 = PHI <ret_9(2), ret_11(3), ret_13(4), ret_15(5), ret_15(6), ret_16(7)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  _17 = ret_1;
+  return _17;
+
+}
+
+
+pfe_log_if_set_match_rules (struct pfe_log_if_t * iface, pfe_ct_if_m_rules_t rules, const struct pfe_ct_if_m_args_t * args)
+{
+  pfe_ct_if_m_rules_t tmp;
+  errno_t ret;
+  struct pfe_ct_if_m_args_t * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  struct pfe_ct_log_if_t * _11;
+  errno_t _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (args_15(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_27 = 22;
+  # DEBUG ret => ret_27
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (6);
+  # DEBUG BEGIN_STMT
+  _1 = &iface_18(D)->log_if_class.m_args;
+  autolibc_memcpy (_1, args_15(D), 68);
+  # DEBUG BEGIN_STMT
+  tmp_20 = iface_18(D)->log_if_class.m_rules;
+  # DEBUG tmp => tmp_20
+  # DEBUG BEGIN_STMT
+  _2 = rules_21(D) >> 24;
+  _3 = rules_21(D) >> 8;
+  _4 = _3 & 65280;
+  _5 = _2 | _4;
+  _6 = rules_21(D) << 8;
+  _7 = _6 & 16711680;
+  _8 = _5 | _7;
+  _9 = rules_21(D) << 24;
+  _10 = _8 | _9;
+  iface_18(D)->log_if_class.m_rules = _10;
+  # DEBUG BEGIN_STMT
+  _11 = &iface_18(D)->log_if_class;
+  ret_24 = pfe_log_if_write_to_class_nostats (iface_18(D), _11);
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  if (ret_24 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  iface_18(D)->log_if_class.m_rules = tmp_20;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (6);
+
+  <bb 7> :
+  # ret_12 = PHI <ret_27(3), ret_24(6)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  _28 = ret_12;
+  return _28;
+
+}
+
+
+pfe_log_if_set_match_and (struct pfe_log_if_t * iface)
+{
+  pfe_ct_if_flags_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  struct pfe_ct_log_if_t * _3;
+  errno_t _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (5);
+  # DEBUG BEGIN_STMT
+  tmp_8 = iface_7(D)->log_if_class.flags;
+  # DEBUG tmp => tmp_8
+  # DEBUG BEGIN_STMT
+  _1 = iface_7(D)->log_if_class.flags;
+  _2 = _1 & 4160749567;
+  iface_7(D)->log_if_class.flags = _2;
+  # DEBUG BEGIN_STMT
+  _3 = &iface_7(D)->log_if_class;
+  ret_11 = pfe_log_if_write_to_class_nostats (iface_7(D), _3);
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  if (ret_11 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  iface_7(D)->log_if_class.flags = tmp_8;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (5);
+  # DEBUG BEGIN_STMT
+  _14 = ret_11;
+  return _14;
+
+}
+
+
+pfe_log_if_set_match_or (struct pfe_log_if_t * iface)
+{
+  pfe_ct_if_flags_t tmp;
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  struct pfe_ct_log_if_t * _3;
+  errno_t _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (4);
+  # DEBUG BEGIN_STMT
+  tmp_8 = iface_7(D)->log_if_class.flags;
+  # DEBUG tmp => tmp_8
+  # DEBUG BEGIN_STMT
+  _1 = iface_7(D)->log_if_class.flags;
+  _2 = _1 | 134217728;
+  iface_7(D)->log_if_class.flags = _2;
+  # DEBUG BEGIN_STMT
+  _3 = &iface_7(D)->log_if_class;
+  ret_11 = pfe_log_if_write_to_class_nostats (iface_7(D), _3);
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  if (ret_11 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  iface_7(D)->log_if_class.flags = tmp_8;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (4);
+  # DEBUG BEGIN_STMT
+  _14 = ret_11;
+  return _14;
+
+}
+
+
+pfe_log_if_is_match_or (struct pfe_log_if_t * iface)
+{
+  bool_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  _Bool _15;
+  bool_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_17(D)->log_if_class.flags;
+  _2 = _1 >> 24;
+  _3 = iface_17(D)->log_if_class.flags;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = iface_17(D)->log_if_class.flags;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = iface_17(D)->log_if_class.flags;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  _14 = _13 & 8;
+  _15 = _14 != 0;
+  ret_18 = (bool_t) _15;
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _19 = ret_18;
+  return _19;
+
+}
+
+
+pfe_log_if_destroy (struct pfe_log_if_t * iface)
+{
+  errno_t ret;
+  struct pfe_phy_if_t * _1;
+  char_t[16] * _2;
+  struct pfe_ct_log_if_t * _3;
+  struct pfe_ct_log_if_t * _4;
+  int _5;
+  unsigned int _6;
+  struct pfe_class_t * _7;
+  unsigned int _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (iface_13(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = iface_13(D)->parent;
+  ret_16 = pfe_phy_if_del_log_if (_1, iface_13(D));
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = &iface_13(D)->name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not remove %s from parent instance: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 798, _2, ret_16, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  iface_13(D)->name[0] = 0;
+  # DEBUG BEGIN_STMT
+  _3 = &iface_13(D)->log_if_class;
+  autolibc_memset (_3, 0, 104);
+  # DEBUG BEGIN_STMT
+  _4 = &iface_13(D)->log_if_class;
+  _5 = pfe_log_if_write_to_class_nostats (iface_13(D), _4);
+  if (_5 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Iface invalidation failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 806, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = iface_13(D)->dmem_base;
+  if (_6 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _7 = iface_13(D)->class;
+  _8 = iface_13(D)->dmem_base;
+  pfe_class_dmem_heap_free (_7, _8);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  isa_release (&pfe_log_ifs, iface_13(D));
+
+  <bb 10> :
+  return;
+
+}
+
+
+pfe_log_if_get_dmem_base (const struct pfe_log_if_t * iface, addr_t * dmem_base)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_3(D)->dmem_base;
+  *dmem_base_4(D) = _1;
+  # DEBUG BEGIN_STMT
+  ret_6 = 0;
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  _7 = ret_6;
+  return _7;
+
+}
+
+
+pfe_log_if_get_next_dmem_ptr (struct pfe_log_if_t * iface, addr_t * next_dmem_ptr)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  errno_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_15(D)->log_if_class.next;
+  _2 = _1 >> 24;
+  _3 = iface_15(D)->log_if_class.next;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = iface_15(D)->log_if_class.next;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = iface_15(D)->log_if_class.next;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  *next_dmem_ptr_16(D) = _13;
+  # DEBUG BEGIN_STMT
+  ret_18 = 0;
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _19 = ret_18;
+  return _19;
+
+}
+
+
+pfe_log_if_set_next_dmem_ptr (struct pfe_log_if_t * iface, addr_t next_dmem_ptr)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  struct pfe_ct_log_if_t * _10;
+  int _11;
+  errno_t _23;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_14 = 0;
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  _1 = next_dmem_ptr_15(D) >> 24;
+  _2 = next_dmem_ptr_15(D) >> 8;
+  _3 = _2 & 65280;
+  _4 = _1 | _3;
+  _5 = next_dmem_ptr_15(D) << 8;
+  _6 = _5 & 16711680;
+  _7 = _4 | _6;
+  _8 = next_dmem_ptr_15(D) << 24;
+  _9 = _7 | _8;
+  iface_17(D)->log_if_class.next = _9;
+  # DEBUG BEGIN_STMT
+  _10 = &iface_17(D)->log_if_class;
+  _11 = pfe_log_if_write_to_class_nostats (iface_17(D), _10);
+  if (_11 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Interface update failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 722, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_22 = 114;
+  # DEBUG ret => ret_22
+
+  <bb 4> :
+  # ret_12 = PHI <ret_14(2), ret_22(3)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  _23 = ret_12;
+  return _23;
+
+}
+
+
+__attribute__((pure))
+pfe_log_if_get_parent (const struct pfe_log_if_t * iface)
+{
+  struct pfe_phy_if_t * ptr;
+  struct pfe_phy_if_t * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ptr_3 = iface_2(D)->parent;
+  # DEBUG ptr => ptr_3
+  # DEBUG BEGIN_STMT
+  _4 = ptr_3;
+  return _4;
+
+}
+
+
+__attribute__((pure))
+pfe_log_if_get_id (const struct pfe_log_if_t * iface)
+{
+  uint8_t ret;
+  uint8_t _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_3 = iface_2(D)->log_if_class.id;
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  _4 = ret_3;
+  return _4;
+
+}
+
+
+pfe_log_if_create (struct pfe_phy_if_t * parent, const char_t * name)
+{
+  uint32_t length;
+  struct pfe_log_if_t * iface;
+  long unsigned int _1;
+  unsigned char pfe_log_ifs_initialized.2_2;
+  struct pfe_class_t * _3;
+  struct pfe_log_if_t * _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  length_9 = pfe_log_if_strnlen (name_7(D), 16);
+  # DEBUG length => length_9
+  # DEBUG BEGIN_STMT
+  _1 = length_9 + 4294967295;
+  if (_1 > 14)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] LOG IF name string is invalid\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 615, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  iface_25 = 0B;
+  # DEBUG iface => iface_25
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  pfe_log_ifs_initialized.2_2 = pfe_log_ifs_initialized;
+  if (pfe_log_ifs_initialized.2_2 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  iface_14 = isa_reserve (&pfe_log_ifs);
+  # DEBUG iface => iface_14
+  # DEBUG BEGIN_STMT
+  if (iface_14 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not reserve ISA item for LOG IF\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 624, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (iface_14, 0, 144);
+  # DEBUG BEGIN_STMT
+  iface_14->parent = parent_16(D);
+  # DEBUG BEGIN_STMT
+  _3 = pfe_phy_if_get_class (parent_16(D));
+  iface_14->class = _3;
+  # DEBUG BEGIN_STMT
+  iface_20 = pfe_log_ifs_init_db (parent_16(D), name_7(D), iface_14);
+  # DEBUG iface => iface_20
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] LOG IF ISA pool not initialized\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 636, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  iface_12 = 0B;
+  # DEBUG iface => iface_12
+
+  <bb 9> :
+  # iface_4 = PHI <iface_25(3), iface_20(7), iface_12(8), iface_14(6)>
+  # DEBUG iface => iface_4
+  # DEBUG BEGIN_STMT
+  _26 = iface_4;
+  return _26;
+
+}
+
+
+pfe_log_ifs_init_db (struct pfe_phy_if_t * parent, const char_t * name, struct pfe_log_if_t * iface)
+{
+  char_t[16] * _1;
+  struct pfe_class_t * _2;
+  unsigned int _3;
+  unsigned int _4;
+  struct pfe_ct_log_if_t * _5;
+  int _6;
+  int _7;
+  unsigned char _8;
+  struct pfe_ct_log_if_t * _9;
+  int _10;
+  char_t[16] * _11;
+  struct pfe_class_t * _12;
+  unsigned int _13;
+  int _14;
+  char_t[16] * _15;
+  const char_t * _16;
+  struct pfe_class_t * _17;
+  unsigned int _18;
+  struct pfe_log_if_t * _52;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = &iface_21(D)->name;
+  autolibc_strncpy (_1, name_23(D), 16);
+  # DEBUG BEGIN_STMT
+  _2 = iface_21(D)->class;
+  _3 = pfe_class_dmem_heap_alloc (_2, 104);
+  iface_21(D)->dmem_base = _3;
+  # DEBUG BEGIN_STMT
+  _4 = iface_21(D)->dmem_base;
+  if (_4 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] No DMEM\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 549, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  isa_release (&pfe_log_ifs, iface_21(D));
+  # DEBUG BEGIN_STMT
+  iface_51 = 0B;
+  # DEBUG iface => iface_51
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 = &iface_21(D)->log_if_class;
+  autolibc_memset (_5, 0, 104);
+  # DEBUG BEGIN_STMT
+  iface_21(D)->log_if_class.next = 0;
+  # DEBUG BEGIN_STMT
+  _6 = iface_21(D) - &pfe_log_ifs_pool;
+  _7 = _6 /[ex] 144;
+  _8 = (unsigned char) _7;
+  iface_21(D)->log_if_class.id = _8;
+  # DEBUG BEGIN_STMT
+  iface_21(D)->log_if_class.m_rules = 0;
+  # DEBUG BEGIN_STMT
+  iface_21(D)->log_if_class.class_stats.accepted = 0;
+  # DEBUG BEGIN_STMT
+  iface_21(D)->log_if_class.class_stats.rejected = 0;
+  # DEBUG BEGIN_STMT
+  iface_21(D)->log_if_class.class_stats.discarded = 0;
+  # DEBUG BEGIN_STMT
+  iface_21(D)->log_if_class.class_stats.processed = 0;
+  # DEBUG BEGIN_STMT
+  _9 = &iface_21(D)->log_if_class;
+  _10 = pfe_log_if_write_to_class (iface_21(D), _9);
+  if (_10 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = &iface_21(D)->name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not update DMEM (%s)\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 570, _11, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = iface_21(D)->class;
+  _13 = iface_21(D)->dmem_base;
+  pfe_class_dmem_heap_free (_12, _13);
+  # DEBUG BEGIN_STMT
+  isa_release (&pfe_log_ifs, iface_21(D));
+  # DEBUG BEGIN_STMT
+  iface_47 = 0B;
+  # DEBUG iface => iface_47
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _14 = pfe_phy_if_add_log_if (parent_36(D), iface_21(D));
+  if (_14 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _15 = &iface_21(D)->name;
+  _16 = pfe_phy_if_get_name (parent_36(D));
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t bind %s to %s\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_log_if.c", 580, _15, _16, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = iface_21(D)->class;
+  _18 = iface_21(D)->dmem_base;
+  pfe_class_dmem_heap_free (_17, _18);
+  # DEBUG BEGIN_STMT
+  isa_release (&pfe_log_ifs, iface_21(D));
+  # DEBUG BEGIN_STMT
+  iface_42 = 0B;
+  # DEBUG iface => iface_42
+
+  <bb 8> :
+  # iface_19 = PHI <iface_51(3), iface_47(5), iface_21(D)(6), iface_42(7)>
+  # DEBUG iface => iface_19
+  # DEBUG BEGIN_STMT
+  _52 = iface_19;
+  return _52;
+
+}
+
+
+pfe_log_ifs_deinit ()
+{
+  unsigned char pfe_log_ifs_initialized.1_1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pfe_log_ifs_initialized.1_1 = pfe_log_ifs_initialized;
+  if (pfe_log_ifs_initialized.1_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_log_ifs, 0, 8);
+  # DEBUG BEGIN_STMT
+  pfe_log_ifs_initialized = 0;
+
+  <bb 4> :
+  return;
+
+}
+
+
+pfe_log_ifs_init ()
+{
+  errno_t ret;
+  unsigned char pfe_log_ifs_initialized.0_1;
+  errno_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_3 = 0;
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  pfe_log_ifs_initialized.0_1 = pfe_log_ifs_initialized;
+  if (pfe_log_ifs_initialized.0_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  isa_init (&pfe_log_ifs, &pfe_log_ifs_isa_def);
+  # DEBUG BEGIN_STMT
+  pfe_log_ifs_initialized = 1;
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = ret_3;
+  return _7;
+
+}
+
+
+pfe_log_if_from_phy_if_binding_list_entry (const struct LLIST_t * entry)
+{
+  struct pfe_log_if_t * log_if;
+  int _1;
+  struct pfe_log_if_t * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = entry_2(D) - 133B;
+  log_if_3 = (struct pfe_log_if_t *) _1;
+  # DEBUG log_if => log_if_3
+  # DEBUG BEGIN_STMT
+  _4 = log_if_3;
+  return _4;
+
+}
+
+
+pfe_log_if_get_phy_if_binding_list_entry (const struct pfe_log_if_t * iface)
+{
+  struct LLIST_t * entry;
+  struct LLIST_t * _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_2 = &iface_1(D)->phy_if_binding;
+  # DEBUG entry => entry_2
+  # DEBUG BEGIN_STMT
+  _3 = entry_2;
+  return _3;
+
+}
+
+
+pfe_log_if_write_to_class (const struct pfe_log_if_t * iface, const struct pfe_ct_log_if_t * class_if)
+{
+  errno_t ret;
+  struct pfe_class_t * _1;
+  unsigned int _2;
+  errno_t _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_4(D)->class;
+  _2 = iface_4(D)->dmem_base;
+  ret_7 = pfe_class_write_dmem (_1, -1, _2, class_if_5(D), 104);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  _8 = ret_7;
+  return _8;
+
+}
+
+
+pfe_log_if_write_to_class_nostats (const struct pfe_log_if_t * iface, const struct pfe_ct_log_if_t * class_if)
+{
+  errno_t ret;
+  struct pfe_class_t * _1;
+  unsigned int _2;
+  errno_t _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = iface_4(D)->class;
+  _2 = iface_4(D)->dmem_base;
+  ret_7 = pfe_class_write_dmem (_1, -1, _2, class_if_5(D), 88);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  _8 = ret_7;
+  return _8;
+
+}
+
+
+pfe_log_if_match_rule2 (struct pfe_log_if_t * iface, pfe_ct_if_m_rules_t rule, const void * arg, uint32_t arg_len)
+{
+  errno_t ret;
+  uint32_t[4] * _1;
+  uint32_t[4] * _2;
+  uint32_t * _3;
+  uint32_t * _4;
+  errno_t _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = 22;
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (rule_8(D)) <default: <L16> [INV], case 4194304: <L0> [INV], case 8388608: <L3> [INV], case 16777216: <L6> [INV], case 33554432: <L9> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_10(D) == 16)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = &iface_11(D)->log_if_class.m_args.ipv.v6.sip;
+  autolibc_memcpy (_1, arg_12(D), 16);
+  # DEBUG BEGIN_STMT
+  ret_20 = 0;
+  # DEBUG ret => ret_20
+  goto <bb 11>; [INV]
+
+  <bb 5> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_10(D) == 16)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = &iface_11(D)->log_if_class.m_args.ipv.v6.dip;
+  autolibc_memcpy (_2, arg_12(D), 16);
+  # DEBUG BEGIN_STMT
+  ret_18 = 0;
+  # DEBUG ret => ret_18
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_10(D) == 4)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = &iface_11(D)->log_if_class.m_args.ipv.v4.sip;
+  autolibc_memcpy (_3, arg_12(D), 4);
+  # DEBUG BEGIN_STMT
+  ret_16 = 0;
+  # DEBUG ret => ret_16
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_10(D) == 4)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _4 = &iface_11(D)->log_if_class.m_args.ipv.v4.dip;
+  autolibc_memcpy (_4, arg_12(D), 4);
+  # DEBUG BEGIN_STMT
+  ret_14 = 0;
+  # DEBUG ret => ret_14
+
+  <bb 11> :
+  # ret_5 = PHI <ret_20(4), ret_18(6), ret_16(8), ret_14(10), ret_7(2), ret_7(3), ret_7(5), ret_7(7), ret_7(9)>
+<L16>:
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  _21 = ret_5;
+  return _21;
+
+}
+
+
+pfe_log_if_match_rule4 (struct pfe_log_if_t * iface, pfe_ct_if_m_rules_t rule, const void * arg, uint32_t arg_len)
+{
+  errno_t ret;
+  uint8_t[6] * _1;
+  uint8_t[6] * _2;
+  long unsigned int _3;
+  errno_t _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_6 = 22;
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (rule_7(D)) <default: <L13> [INV], case 536870912: <L0> [INV], case 1073741824: <L3> [INV], case 2147483648: <L6> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_9(D) == 6)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = &iface_11(D)->log_if_class.m_args.smac;
+  autolibc_memcpy (_1, arg_10(D), 6);
+  # DEBUG BEGIN_STMT
+  ret_17 = 0;
+  # DEBUG ret => ret_17
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_9(D) == 6)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = &iface_11(D)->log_if_class.m_args.dmac;
+  autolibc_memcpy (_2, arg_10(D), 6);
+  # DEBUG BEGIN_STMT
+  ret_15 = 0;
+  # DEBUG ret => ret_15
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_9(D) == 4)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(const uint32_t *)arg_10(D)];
+  iface_11(D)->log_if_class.m_args.hif_cookie = _3;
+  # DEBUG BEGIN_STMT
+  ret_13 = 0;
+  # DEBUG ret => ret_13
+
+  <bb 9> :
+  # ret_4 = PHI <ret_17(4), ret_15(6), ret_13(8), ret_6(2), ret_6(3), ret_6(5), ret_6(7)>
+<L13>:
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _18 = ret_4;
+  return _18;
+
+}
+
+
+pfe_log_if_match_rule3 (struct pfe_log_if_t * iface, pfe_ct_if_m_rules_t rule, const void * arg, uint32_t arg_len)
+{
+  errno_t ret;
+  short unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  errno_t _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_6 = 22;
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (rule_7(D)) <default: <L13> [INV], case 67108864: <L0> [INV], case 134217728: <L3> [INV], case 268435456: <L6> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_9(D) == 2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(const uint16_t *)arg_10(D)];
+  iface_11(D)->log_if_class.m_args.ethtype = _1;
+  # DEBUG BEGIN_STMT
+  ret_17 = 0;
+  # DEBUG ret => ret_17
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_9(D) == 4)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(uint32_t *)arg_10(D)];
+  iface_11(D)->log_if_class.m_args.fp0_table = _2;
+  # DEBUG BEGIN_STMT
+  ret_15 = 0;
+  # DEBUG ret => ret_15
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_9(D) == 4)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(uint32_t *)arg_10(D)];
+  iface_11(D)->log_if_class.m_args.fp1_table = _3;
+  # DEBUG BEGIN_STMT
+  ret_13 = 0;
+  # DEBUG ret => ret_13
+
+  <bb 9> :
+  # ret_4 = PHI <ret_17(4), ret_15(6), ret_13(8), ret_6(2), ret_6(3), ret_6(5), ret_6(7)>
+<L13>:
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _18 = ret_4;
+  return _18;
+
+}
+
+
+pfe_log_if_match_rule1 (struct pfe_log_if_t * iface, pfe_ct_if_m_rules_t rule, const void * arg, uint32_t arg_len)
+{
+  errno_t ret;
+  short unsigned int _1;
+  unsigned char _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  errno_t _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = 22;
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (rule_8(D)) <default: <L16> [INV], case 32768: <L0> [INV], case 65536: <L3> [INV], case 1048576: <L6> [INV], case 2097152: <L9> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_10(D) == 2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(const uint16_t *)arg_11(D)];
+  iface_12(D)->log_if_class.m_args.vlan = _1;
+  # DEBUG BEGIN_STMT
+  ret_20 = 0;
+  # DEBUG ret => ret_20
+  goto <bb 11>; [INV]
+
+  <bb 5> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_10(D) == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(uint8_t *)arg_11(D)];
+  iface_12(D)->log_if_class.m_args.proto = _2;
+  # DEBUG BEGIN_STMT
+  ret_18 = 0;
+  # DEBUG ret => ret_18
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_10(D) == 2)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(uint16_t *)arg_11(D)];
+  iface_12(D)->log_if_class.m_args.sport = _3;
+  # DEBUG BEGIN_STMT
+  ret_16 = 0;
+  # DEBUG ret => ret_16
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  if (arg_len_10(D) == 2)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(uint16_t *)arg_11(D)];
+  iface_12(D)->log_if_class.m_args.dport = _4;
+  # DEBUG BEGIN_STMT
+  ret_14 = 0;
+  # DEBUG ret => ret_14
+
+  <bb 11> :
+  # ret_5 = PHI <ret_20(4), ret_18(6), ret_16(8), ret_14(10), ret_7(2), ret_7(3), ret_7(5), ret_7(7), ret_7(9)>
+<L16>:
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  _21 = ret_5;
+  return _21;
+
+}
+
+
+pfe_log_if_strnlen (const char_t * str, uint32_t strsz)
+{
+  uint32_t length;
+  const char_t * _1;
+  char _2;
+  uint32_t _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  length_5 = 0;
+  # DEBUG length => length_5
+  # DEBUG BEGIN_STMT
+  if (str_6(D) != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  length_9 = length_3 + 1;
+  # DEBUG length => length_9
+
+  <bb 4> :
+  # length_3 = PHI <length_5(2), length_9(3)>
+  # DEBUG length => length_3
+  # DEBUG BEGIN_STMT
+  _1 = str_6(D) + length_3;
+  _2 = *_1;
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  if (length_3 < strsz_8(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # length_4 = PHI <length_5(2), length_3(4), length_3(5)>
+  # DEBUG length => length_4
+  # DEBUG BEGIN_STMT
+  _10 = length_4;
+  return _10;
+
+}
+
+
+oal_mutex_unlock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

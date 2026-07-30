@@ -1,0 +1,4669 @@
+Trivially needed symbols: tcp_free_ooseq tcp_tcp_get_tcp_addrinfo tcp_debug_state_str tcp_netif_ip_addr_changed tcp_eff_send_mss_netif tcp_next_iss tcp_pcb_remove tcp_pcb_purge tcp_poll tcp_accept tcp_err tcp_sent tcp_recv tcp_arg tcp_new_ip_type tcp_new tcp_alloc tcp_recv_null tcp_seg_copy tcp_setprio tcp_seg_free tcp_segs_free tcp_process_refused_data tcp_txnow tcp_fasttmr tcp_slowtmr tcp_connect tcp_recved tcp_update_rcv_ann_wnd tcp_listen_with_backlog_and_err tcp_listen_with_backlog tcp_bind_netif tcp_bind tcp_abort tcp_abandon tcp_shutdown tcp_close tcp_tmr tcp_free tcp_init tcp_active_pcbs_changed tcp_pcb_lists tcp_tw_pcbs tcp_active_pcbs tcp_listen_pcbs tcp_bound_pcbs tcp_ticks
+
+
+Initial Symbol table:
+
+iss/91 (iss) @0721c510
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @071872a0
+  References: 
+  Referring: tcp_next_iss/59 (read)tcp_next_iss/59 (write)tcp_next_iss/59 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+memset/90 (memset) @07207000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_alloc/48 
+  Calls: 
+pbuf_ref/89 (pbuf_ref) @071f2e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_copy/42 
+  Calls: 
+memcpy/88 (memcpy) @071f2d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_copy/42 
+  Calls: 
+pbuf_cat/87 (pbuf_cat) @071f28c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: 
+pbuf_split_64k/86 (pbuf_split_64k) @071f27e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: 
+tcp_keepalive/85 (tcp_keepalive) @071f21c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_rexmit_rto_commit/84 (tcp_rexmit_rto_commit) @071f20e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_rexmit_rto_prepare/83 (tcp_rexmit_rto_prepare) @071f2000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_split_unsent_seg/82 (tcp_split_unsent_seg) @071c3ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_zero_window_probe/81 (tcp_zero_window_probe) @071c3e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_enqueue_flags/80 (tcp_enqueue_flags) @071c3b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+ip4_route/79 (ip4_route) @071c3a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+netif_get_by_index/78 (netif_get_by_index) @071c39a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+memp_malloc/77 (memp_malloc) @071c32a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_seg_copy/42 tcp_listen_with_backlog_and_err/30 
+  Calls: 
+tcp_timer_needed/76 (tcp_timer_needed) @071adc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 tcp_listen_with_backlog_and_err/30 tcp_bind/26 
+  Calls: 
+ip_addr_any/75 (ip_addr_any) @071b8e58
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_bind/26 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+pbuf_free/74 (pbuf_free) @071ad460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_pcb_purge/57 tcp_recv_null/43 tcp_seg_free/40 tcp_shutdown/23 
+  Calls: 
+tcp_output/73 (tcp_output) @071ad2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_pcb_remove/58 tcp_txnow/37 tcp_fasttmr/36 tcp_slowtmr/35 tcp_slowtmr/35 tcp_connect/34 tcp_recved/32 tcp_close_shutdown_fin/21 
+  Calls: 
+tcp_send_fin/72 (tcp_send_fin) @071ad0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_close_shutdown_fin/21 tcp_close_shutdown_fin/21 tcp_close_shutdown_fin/21 
+  Calls: 
+lwip_stats/71 (lwip_stats) @071a8168
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_connect/34 (read)tcp_connect/34 (write)tcp_alloc/48 (read)tcp_alloc/48 (read)tcp_alloc/48 (read)tcp_alloc/48 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_trigger_input_pcb_close/70 (tcp_trigger_input_pcb_close) @0718dd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: 
+tcp_input_pcb/69 (tcp_input_pcb) @071a1ea0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_close_shutdown/20 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_rst/68 (tcp_rst) @0718db60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 tcp_abandon/24 tcp_close_shutdown/20 
+  Calls: 
+memp_free/67 (memp_free) @0718d620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_free/40 tcp_free_listen/16 tcp_free/15 
+  Calls: 
+rand/66 (rand) @0718d460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_init/14 
+  Calls: 
+tcp_free_ooseq/65 (tcp_free_ooseq) @0718d000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_pcb_purge/57 tcp_slowtmr/35 
+  Calls: tcp_segs_free/39 
+tcp_tcp_get_tcp_addrinfo/64 (tcp_tcp_get_tcp_addrinfo) @07187700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0718d000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_debug_state_str/63 (tcp_debug_state_str) @07187ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07187700
+  References: tcp_state_str/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_netif_ip_addr_changed/62 (tcp_netif_ip_addr_changed) @07187c40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07187ee0
+  References: tcp_active_pcbs/8 (read)tcp_bound_pcbs/6 (read)tcp_listen_pcbs/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_netif_ip_addr_changed_pcblist/61 tcp_netif_ip_addr_changed_pcblist/61 
+tcp_netif_ip_addr_changed_pcblist/61 (tcp_netif_ip_addr_changed_pcblist) @07187620
+  Type: function definition analyzed
+  Visibility:
+  Aux: @07187ee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_netif_ip_addr_changed/62 tcp_netif_ip_addr_changed/62 
+  Calls: tcp_abort/25 
+tcp_eff_send_mss_netif/60 (tcp_eff_send_mss_netif) @071872a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07187c40
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+tcp_next_iss/59 (tcp_next_iss) @07178e00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071872a0
+  References: iss/91 (read)tcp_ticks/3 (read)iss/91 (write)iss/91 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+tcp_pcb_remove/58 (tcp_pcb_remove) @071788c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07178e00
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_abandon/24 tcp_abandon/24 tcp_close_shutdown/20 tcp_close_shutdown/20 
+  Calls: tcp_output/73 tcp_pcb_purge/57 
+tcp_pcb_purge/57 (tcp_pcb_purge) @071780e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071788c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_pcb_remove/58 tcp_slowtmr/35 tcp_slowtmr/35 tcp_close_shutdown/20 
+  Calls: tcp_segs_free/39 tcp_segs_free/39 tcp_free_ooseq/65 pbuf_free/74 
+tcp_poll/56 (tcp_poll) @07178d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071780e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_accept/55 (tcp_accept) @07178a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07178d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_err/54 (tcp_err) @071787e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07178a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_sent/53 (tcp_sent) @07178540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071787e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_recv/52 (tcp_recv) @071782a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07178540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_arg/51 (tcp_arg) @07178000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071782a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_new_ip_type/50 (tcp_new_ip_type) @0716dc40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07178000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_alloc/48 
+tcp_new/49 (tcp_new) @0716de00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0716dc40
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_alloc/48 
+tcp_alloc/48 (tcp_alloc) @0716db60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0716de00
+  References: lwip_stats/71 (read)lwip_stats/71 (read)lwip_stats/71 (read)lwip_stats/71 (read)tcp_ticks/3 (read)tcp_timer_ctr/13 (read)tcp_recv_null/43 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_new_ip_type/50 tcp_new/49 
+  Calls: memset/90 memp_malloc/77 tcp_kill_prio/44 memp_malloc/77 tcp_kill_state/45 memp_malloc/77 tcp_kill_state/45 memp_malloc/77 tcp_kill_timewait/46 tcp_handle_closepend/47 memp_malloc/77 
+tcp_handle_closepend/47 (tcp_handle_closepend) @0716d7e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0716d540
+  References: tcp_active_pcbs/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_close_shutdown_fin/21 
+tcp_kill_timewait/46 (tcp_kill_timewait) @0716d540
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0716d2a0
+  References: tcp_tw_pcbs/9 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_abort/25 
+tcp_kill_state/45 (tcp_kill_state) @0716d2a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0716d000
+  References: tcp_active_pcbs/8 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 tcp_alloc/48 
+  Calls: tcp_abandon/24 
+tcp_kill_prio/44 (tcp_kill_prio) @0716d000
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0716de00
+  References: tcp_active_pcbs/8 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_abort/25 
+tcp_recv_null/43 (tcp_recv_null) @071647e0
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  Aux: @0716db60
+  References: 
+  Referring: tcp_alloc/48 (addr)
+  Function flags: body optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: tcp_close/22 pbuf_free/74 tcp_recved/32 
+tcp_seg_copy/42 (tcp_seg_copy) @071640e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071647e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_ref/89 memcpy/88 memp_malloc/77 
+tcp_setprio/41 (tcp_setprio) @07164c40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071640e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_seg_free/40 (tcp_seg_free) @071649a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07164c40
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_segs_free/39 
+  Calls: memp_free/67 pbuf_free/74 
+tcp_segs_free/39 (tcp_segs_free) @07164700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071649a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_free_ooseq/65 tcp_pcb_purge/57 tcp_pcb_purge/57 tcp_abandon/24 tcp_abandon/24 tcp_abandon/24 
+  Calls: tcp_seg_free/40 
+tcp_process_refused_data/38 (tcp_process_refused_data) @07164460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07164700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_fasttmr/36 
+  Calls: pbuf_cat/87 tcp_recv_null/43 pbuf_split_64k/86 
+   Indirect call
+   Indirect call
+tcp_txnow/37 (tcp_txnow) @07164000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07164460
+  References: tcp_active_pcbs/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_output/73 
+tcp_fasttmr/36 (tcp_fasttmr) @071471c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07164000
+  References: tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (write)tcp_active_pcbs/8 (read)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (read)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_tmr/17 
+  Calls: tcp_process_refused_data/38 tcp_close_shutdown_fin/21 tcp_output/73 
+tcp_slowtmr/35 (tcp_slowtmr) @07147d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071471c0
+  References: tcp_ticks/3 (read)tcp_ticks/3 (write)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (write)tcp_active_pcbs/8 (read)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (read)tcp_persist_backoff/5 (read)tcp_backoff/4 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)tcp_tw_pcbs/9 (read)tcp_ticks/3 (read)tcp_tw_pcbs/9 (read)tcp_tw_pcbs/9 (read)tcp_tw_pcbs/9 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_tmr/17 
+  Calls: tcp_free/15 tcp_pcb_purge/57 tcp_output/73 tcp_free/15 tcp_rst/68 tcp_pcb_purge/57 tcp_free_ooseq/65 tcp_keepalive/85 tcp_rexmit_rto_commit/84 tcp_rexmit_rto_prepare/83 tcp_output/73 tcp_split_unsent_seg/82 tcp_zero_window_probe/81 
+   Indirect call
+   Indirect call
+tcp_connect/34 (tcp_connect) @071470e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07147d20
+  References: tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_output/73 tcp_timer_needed/76 tcp_enqueue_flags/80 tcp_eff_send_mss_netif/60 tcp_next_iss/59 tcp_new_port/33 ip4_route/79 netif_get_by_index/78 
+tcp_new_port/33 (tcp_new_port) @07119b60
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0710bb60
+  References: tcp_port/2 (read)tcp_port/2 (write)tcp_port/2 (read)tcp_port/2 (write)tcp_pcb_lists/10 (read)tcp_port/2 (read)tcp_port/2 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 tcp_bind/26 
+  Calls: 
+tcp_recved/32 (tcp_recved) @071198c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071470e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recv_null/43 
+  Calls: tcp_output/73 tcp_update_rcv_ann_wnd/31 
+tcp_update_rcv_ann_wnd/31 (tcp_update_rcv_ann_wnd) @071192a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071198c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recved/32 
+  Calls: 
+tcp_listen_with_backlog_and_err/30 (tcp_listen_with_backlog_and_err) @07119000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071192a0
+  References: tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_accept_null/28 (addr)tcp_listen_pcbs/7 (read)tcp_listen_pcbs/7 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_listen_with_backlog/29 
+  Calls: tcp_timer_needed/76 tcp_free/15 memp_malloc/77 
+tcp_listen_with_backlog/29 (tcp_listen_with_backlog) @0710b2a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07119000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_listen_with_backlog_and_err/30 
+tcp_accept_null/28 (tcp_accept_null) @0710be00
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  Aux: @071192a0
+  References: 
+  Referring: tcp_listen_with_backlog_and_err/30 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_abort/25 
+tcp_bind_netif/27 (tcp_bind_netif) @0710bb60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0710b2a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_bind/26 (tcp_bind) @0710b8c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0710bb60
+  References: ip_addr_any/75 (addr)tcp_pcb_lists/10 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_timer_needed/76 tcp_new_port/33 
+tcp_abort/25 (tcp_abort) @0710b1c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0710b8c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_netif_ip_addr_changed_pcblist/61 tcp_kill_prio/44 tcp_kill_timewait/46 tcp_accept_null/28 
+  Calls: tcp_abandon/24 
+tcp_abandon/24 (tcp_abandon) @070f8d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0710b1c0
+  References: tcp_tw_pcbs/9 (addr)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_active_pcbs/8 (addr)tcp_active_pcbs_changed/11 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_kill_state/45 tcp_abort/25 
+  Calls: tcp_free/15 tcp_rst/68 tcp_segs_free/39 tcp_segs_free/39 tcp_segs_free/39 tcp_pcb_remove/58 tcp_free/15 tcp_pcb_remove/58 
+   Indirect call
+tcp_shutdown/23 (tcp_shutdown) @070f8ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @070f8d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_close_shutdown/20 pbuf_free/74 tcp_close_shutdown/20 
+tcp_close/22 (tcp_close) @070f8c40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @070f8ee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recv_null/43 
+  Calls: tcp_close_shutdown/20 
+tcp_close_shutdown_fin/21 (tcp_close_shutdown_fin) @070f89a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070f8ee0
+  References: lwip_stats/71 (read)lwip_stats/71 (write)lwip_stats/71 (read)lwip_stats/71 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_handle_closepend/47 tcp_fasttmr/36 tcp_close_shutdown/20 
+  Calls: tcp_output/73 tcp_send_fin/72 tcp_send_fin/72 tcp_send_fin/72 
+tcp_close_shutdown/20 (tcp_close_shutdown) @070f8700
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070f8ee0
+  References: tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs/8 (read)tcp_active_pcbs_changed/11 (write)tcp_input_pcb/69 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_listen_pcbs/7 (addr)tcp_active_pcbs/8 (addr)tcp_active_pcbs_changed/11 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_shutdown/23 tcp_shutdown/23 tcp_close/22 
+  Calls: tcp_close_shutdown_fin/21 tcp_free/15 tcp_pcb_remove/58 tcp_free_listen/16 tcp_pcb_remove/58 tcp_listen_closed/19 tcp_free/15 tcp_free/15 tcp_trigger_input_pcb_close/70 tcp_pcb_purge/57 tcp_rst/68 
+tcp_listen_closed/19 (tcp_listen_closed) @070f80e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070f3a80
+  References: tcp_pcb_lists/10 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: tcp_remove_listener/18 
+tcp_remove_listener/18 (tcp_remove_listener) @070f3380
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070f3a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_listen_closed/19 
+  Calls: 
+tcp_tmr/17 (tcp_tmr) @070f3d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @070f8c40
+  References: tcp_timer/12 (read)tcp_timer/12 (write)tcp_timer/12 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_slowtmr/35 tcp_fasttmr/36 
+tcp_free_listen/16 (tcp_free_listen) @070f3a80
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070f89a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: memp_free/67 
+tcp_free/15 (tcp_free) @070f37e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @070f3d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_slowtmr/35 tcp_slowtmr/35 tcp_listen_with_backlog_and_err/30 tcp_abandon/24 tcp_abandon/24 tcp_close_shutdown/20 tcp_close_shutdown/20 tcp_close_shutdown/20 
+  Calls: memp_free/67 
+tcp_init/14 (tcp_init) @070f3540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @070f37e0
+  References: tcp_port/2 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: rand/66 
+tcp_timer_ctr/13 (tcp_timer_ctr) @070d4510
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @071471c0
+  References: 
+  Referring: tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_fasttmr/36 (read)tcp_fasttmr/36 (write)tcp_fasttmr/36 (read)tcp_fasttmr/36 (read)tcp_alloc/48 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_timer/12 (tcp_timer) @070d4480
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @070f8c40
+  References: 
+  Referring: tcp_tmr/17 (read)tcp_tmr/17 (write)tcp_tmr/17 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs_changed/11 (tcp_active_pcbs_changed) @070d43f0
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @070f3540
+  References: 
+  Referring: tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (write)tcp_abandon/24 (write)tcp_connect/34 (write)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_fasttmr/36 (write)tcp_fasttmr/36 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_pcb_lists/10 (tcp_pcb_lists) @070d43a8
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @070d43f0
+  References: tcp_listen_pcbs/7 (addr)tcp_bound_pcbs/6 (addr)tcp_active_pcbs/8 (addr)tcp_tw_pcbs/9 (addr)
+  Referring: tcp_listen_closed/19 (read)tcp_bind/26 (read)tcp_new_port/33 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_tw_pcbs/9 (tcp_tw_pcbs) @070d4360
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @070d43a8
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_abandon/24 (addr)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_kill_timewait/46 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs/8 (tcp_active_pcbs) @070d4318
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @070d4360
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (addr)tcp_abandon/24 (addr)tcp_connect/34 (read)tcp_connect/34 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_fasttmr/36 (read)tcp_txnow/37 (read)tcp_handle_closepend/47 (read)tcp_kill_state/45 (read)tcp_kill_prio/44 (read)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_listen_pcbs/7 (tcp_listen_pcbs) @070d42d0
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @070d4318
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (addr)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (write)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_bound_pcbs/6 (tcp_bound_pcbs) @070d4288
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @070d42d0
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (read)tcp_abandon/24 (read)tcp_abandon/24 (read)tcp_abandon/24 (write)tcp_abandon/24 (read)tcp_bind/26 (read)tcp_bind/26 (write)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (write)tcp_listen_with_backlog_and_err/30 (read)tcp_connect/34 (read)tcp_connect/34 (read)tcp_connect/34 (write)tcp_connect/34 (read)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_persist_backoff/5 (tcp_persist_backoff) @070d4240
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @070d4510
+  References: 
+  Referring: tcp_slowtmr/35 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_backoff/4 (tcp_backoff) @070d4168
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @070d4240
+  References: 
+  Referring: tcp_slowtmr/35 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_ticks/3 (tcp_ticks) @070d4090
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @070d4288
+  References: 
+  Referring: tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_alloc/48 (read)tcp_kill_timewait/46 (read)tcp_kill_timewait/46 (read)tcp_kill_state/45 (read)tcp_kill_state/45 (read)tcp_kill_prio/44 (read)tcp_kill_prio/44 (read)tcp_next_iss/59 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_port/2 (tcp_port) @070d4048
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @070f37e0
+  References: 
+  Referring: tcp_init/14 (write)tcp_new_port/33 (read)tcp_new_port/33 (write)tcp_new_port/33 (read)tcp_new_port/33 (write)tcp_new_port/33 (read)tcp_new_port/33 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+tcp_state_str/1 (tcp_state_str) @070caf78
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @07187700
+  References: 
+  Referring: tcp_debug_state_str/63 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+oal_swap_endian_long/0 (oal_swap_endian_long) @06e8b620
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+iss/91 (iss) @0721c510
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_next_iss/59 (read)tcp_next_iss/59 (write)tcp_next_iss/59 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+memset/90 (memset) @07207000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_alloc/48 
+  Calls: 
+pbuf_ref/89 (pbuf_ref) @071f2e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_copy/42 
+  Calls: 
+memcpy/88 (memcpy) @071f2d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_copy/42 
+  Calls: 
+pbuf_cat/87 (pbuf_cat) @071f28c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: 
+pbuf_split_64k/86 (pbuf_split_64k) @071f27e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: 
+tcp_keepalive/85 (tcp_keepalive) @071f21c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_rexmit_rto_commit/84 (tcp_rexmit_rto_commit) @071f20e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_rexmit_rto_prepare/83 (tcp_rexmit_rto_prepare) @071f2000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_split_unsent_seg/82 (tcp_split_unsent_seg) @071c3ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_zero_window_probe/81 (tcp_zero_window_probe) @071c3e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_enqueue_flags/80 (tcp_enqueue_flags) @071c3b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+ip4_route/79 (ip4_route) @071c3a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+netif_get_by_index/78 (netif_get_by_index) @071c39a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+memp_malloc/77 (memp_malloc) @071c32a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_seg_copy/42 tcp_listen_with_backlog_and_err/30 
+  Calls: 
+tcp_timer_needed/76 (tcp_timer_needed) @071adc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 tcp_listen_with_backlog_and_err/30 tcp_bind/26 
+  Calls: 
+ip_addr_any/75 (ip_addr_any) @071b8e58
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_bind/26 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+pbuf_free/74 (pbuf_free) @071ad460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_pcb_purge/57 tcp_recv_null/43 tcp_seg_free/40 tcp_shutdown/23 
+  Calls: 
+tcp_output/73 (tcp_output) @071ad2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_pcb_remove/58 tcp_txnow/37 tcp_fasttmr/36 tcp_slowtmr/35 tcp_slowtmr/35 tcp_connect/34 tcp_recved/32 tcp_close_shutdown_fin/21 
+  Calls: 
+tcp_send_fin/72 (tcp_send_fin) @071ad0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_close_shutdown_fin/21 tcp_close_shutdown_fin/21 tcp_close_shutdown_fin/21 
+  Calls: 
+lwip_stats/71 (lwip_stats) @071a8168
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_connect/34 (read)tcp_connect/34 (write)tcp_alloc/48 (read)tcp_alloc/48 (read)tcp_alloc/48 (read)tcp_alloc/48 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_trigger_input_pcb_close/70 (tcp_trigger_input_pcb_close) @0718dd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: 
+tcp_input_pcb/69 (tcp_input_pcb) @071a1ea0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_close_shutdown/20 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_rst/68 (tcp_rst) @0718db60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 tcp_abandon/24 tcp_close_shutdown/20 
+  Calls: 
+memp_free/67 (memp_free) @0718d620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_free/40 tcp_free_listen/16 tcp_free/15 
+  Calls: 
+rand/66 (rand) @0718d460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_init/14 
+  Calls: 
+tcp_free_ooseq/65 (tcp_free_ooseq) @0718d000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_pcb_purge/57 tcp_slowtmr/35 
+  Calls: tcp_segs_free/39 
+tcp_tcp_get_tcp_addrinfo/64 (tcp_tcp_get_tcp_addrinfo) @07187700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_debug_state_str/63 (tcp_debug_state_str) @07187ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_state_str/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_netif_ip_addr_changed/62 (tcp_netif_ip_addr_changed) @07187c40
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_active_pcbs/8 (read)tcp_bound_pcbs/6 (read)tcp_listen_pcbs/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_netif_ip_addr_changed_pcblist/61 tcp_netif_ip_addr_changed_pcblist/61 
+tcp_netif_ip_addr_changed_pcblist/61 (tcp_netif_ip_addr_changed_pcblist) @07187620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_netif_ip_addr_changed/62 tcp_netif_ip_addr_changed/62 
+  Calls: tcp_abort/25 
+tcp_eff_send_mss_netif/60 (tcp_eff_send_mss_netif) @071872a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+tcp_next_iss/59 (tcp_next_iss) @07178e00
+  Type: function definition analyzed
+  Visibility: public
+  References: iss/91 (read)tcp_ticks/3 (read)iss/91 (write)iss/91 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+tcp_pcb_remove/58 (tcp_pcb_remove) @071788c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_abandon/24 tcp_abandon/24 tcp_close_shutdown/20 tcp_close_shutdown/20 
+  Calls: tcp_output/73 tcp_pcb_purge/57 
+tcp_pcb_purge/57 (tcp_pcb_purge) @071780e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_pcb_remove/58 tcp_slowtmr/35 tcp_slowtmr/35 tcp_close_shutdown/20 
+  Calls: tcp_segs_free/39 tcp_segs_free/39 tcp_free_ooseq/65 pbuf_free/74 
+tcp_poll/56 (tcp_poll) @07178d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_accept/55 (tcp_accept) @07178a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_err/54 (tcp_err) @071787e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_sent/53 (tcp_sent) @07178540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_recv/52 (tcp_recv) @071782a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_arg/51 (tcp_arg) @07178000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_new_ip_type/50 (tcp_new_ip_type) @0716dc40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_alloc/48 
+tcp_new/49 (tcp_new) @0716de00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_alloc/48 
+tcp_alloc/48 (tcp_alloc) @0716db60
+  Type: function definition analyzed
+  Visibility: public
+  References: lwip_stats/71 (read)lwip_stats/71 (read)lwip_stats/71 (read)lwip_stats/71 (read)tcp_ticks/3 (read)tcp_timer_ctr/13 (read)tcp_recv_null/43 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_new_ip_type/50 tcp_new/49 
+  Calls: memset/90 memp_malloc/77 tcp_kill_prio/44 memp_malloc/77 tcp_kill_state/45 memp_malloc/77 tcp_kill_state/45 memp_malloc/77 tcp_kill_timewait/46 tcp_handle_closepend/47 memp_malloc/77 
+tcp_handle_closepend/47 (tcp_handle_closepend) @0716d7e0
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_close_shutdown_fin/21 
+tcp_kill_timewait/46 (tcp_kill_timewait) @0716d540
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_tw_pcbs/9 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_abort/25 
+tcp_kill_state/45 (tcp_kill_state) @0716d2a0
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 tcp_alloc/48 
+  Calls: tcp_abandon/24 
+tcp_kill_prio/44 (tcp_kill_prio) @0716d000
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_abort/25 
+tcp_recv_null/43 (tcp_recv_null) @071647e0
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  References: 
+  Referring: tcp_alloc/48 (addr)
+  Function flags: body optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: tcp_close/22 pbuf_free/74 tcp_recved/32 
+tcp_seg_copy/42 (tcp_seg_copy) @071640e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_ref/89 memcpy/88 memp_malloc/77 
+tcp_setprio/41 (tcp_setprio) @07164c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_seg_free/40 (tcp_seg_free) @071649a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_segs_free/39 
+  Calls: memp_free/67 pbuf_free/74 
+tcp_segs_free/39 (tcp_segs_free) @07164700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_free_ooseq/65 tcp_pcb_purge/57 tcp_pcb_purge/57 tcp_abandon/24 tcp_abandon/24 tcp_abandon/24 
+  Calls: tcp_seg_free/40 
+tcp_process_refused_data/38 (tcp_process_refused_data) @07164460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_fasttmr/36 
+  Calls: pbuf_cat/87 tcp_recv_null/43 pbuf_split_64k/86 
+   Indirect call
+   Indirect call
+tcp_txnow/37 (tcp_txnow) @07164000
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_active_pcbs/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_output/73 
+tcp_fasttmr/36 (tcp_fasttmr) @071471c0
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (write)tcp_active_pcbs/8 (read)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (read)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_tmr/17 
+  Calls: tcp_process_refused_data/38 tcp_close_shutdown_fin/21 tcp_output/73 
+tcp_slowtmr/35 (tcp_slowtmr) @07147d20
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_ticks/3 (read)tcp_ticks/3 (write)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (write)tcp_active_pcbs/8 (read)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (read)tcp_persist_backoff/5 (read)tcp_backoff/4 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)tcp_tw_pcbs/9 (read)tcp_ticks/3 (read)tcp_tw_pcbs/9 (read)tcp_tw_pcbs/9 (read)tcp_tw_pcbs/9 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_tmr/17 
+  Calls: tcp_free/15 tcp_pcb_purge/57 tcp_output/73 tcp_free/15 tcp_rst/68 tcp_pcb_purge/57 tcp_free_ooseq/65 tcp_keepalive/85 tcp_rexmit_rto_commit/84 tcp_rexmit_rto_prepare/83 tcp_output/73 tcp_split_unsent_seg/82 tcp_zero_window_probe/81 
+   Indirect call
+   Indirect call
+tcp_connect/34 (tcp_connect) @071470e0
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_output/73 tcp_timer_needed/76 tcp_enqueue_flags/80 tcp_eff_send_mss_netif/60 tcp_next_iss/59 tcp_new_port/33 ip4_route/79 netif_get_by_index/78 
+tcp_new_port/33 (tcp_new_port) @07119b60
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_port/2 (read)tcp_port/2 (write)tcp_port/2 (read)tcp_port/2 (write)tcp_pcb_lists/10 (read)tcp_port/2 (read)tcp_port/2 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 tcp_bind/26 
+  Calls: 
+tcp_recved/32 (tcp_recved) @071198c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recv_null/43 
+  Calls: tcp_output/73 tcp_update_rcv_ann_wnd/31 
+tcp_update_rcv_ann_wnd/31 (tcp_update_rcv_ann_wnd) @071192a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recved/32 
+  Calls: 
+tcp_listen_with_backlog_and_err/30 (tcp_listen_with_backlog_and_err) @07119000
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_accept_null/28 (addr)tcp_listen_pcbs/7 (read)tcp_listen_pcbs/7 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_listen_with_backlog/29 
+  Calls: tcp_timer_needed/76 tcp_free/15 memp_malloc/77 
+tcp_listen_with_backlog/29 (tcp_listen_with_backlog) @0710b2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_listen_with_backlog_and_err/30 
+tcp_accept_null/28 (tcp_accept_null) @0710be00
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: 
+  Referring: tcp_listen_with_backlog_and_err/30 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_abort/25 
+tcp_bind_netif/27 (tcp_bind_netif) @0710bb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_bind/26 (tcp_bind) @0710b8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ip_addr_any/75 (addr)tcp_pcb_lists/10 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_timer_needed/76 tcp_new_port/33 
+tcp_abort/25 (tcp_abort) @0710b1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_netif_ip_addr_changed_pcblist/61 tcp_kill_prio/44 tcp_kill_timewait/46 tcp_accept_null/28 
+  Calls: tcp_abandon/24 
+tcp_abandon/24 (tcp_abandon) @070f8d20
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_tw_pcbs/9 (addr)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_active_pcbs/8 (addr)tcp_active_pcbs_changed/11 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_kill_state/45 tcp_abort/25 
+  Calls: tcp_free/15 tcp_rst/68 tcp_segs_free/39 tcp_segs_free/39 tcp_segs_free/39 tcp_pcb_remove/58 tcp_free/15 tcp_pcb_remove/58 
+   Indirect call
+tcp_shutdown/23 (tcp_shutdown) @070f8ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_close_shutdown/20 pbuf_free/74 tcp_close_shutdown/20 
+tcp_close/22 (tcp_close) @070f8c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recv_null/43 
+  Calls: tcp_close_shutdown/20 
+tcp_close_shutdown_fin/21 (tcp_close_shutdown_fin) @070f89a0
+  Type: function definition analyzed
+  Visibility:
+  References: lwip_stats/71 (read)lwip_stats/71 (write)lwip_stats/71 (read)lwip_stats/71 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_handle_closepend/47 tcp_fasttmr/36 tcp_close_shutdown/20 
+  Calls: tcp_output/73 tcp_send_fin/72 tcp_send_fin/72 tcp_send_fin/72 
+tcp_close_shutdown/20 (tcp_close_shutdown) @070f8700
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs/8 (read)tcp_active_pcbs_changed/11 (write)tcp_input_pcb/69 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_listen_pcbs/7 (addr)tcp_active_pcbs/8 (addr)tcp_active_pcbs_changed/11 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_shutdown/23 tcp_shutdown/23 tcp_close/22 
+  Calls: tcp_close_shutdown_fin/21 tcp_free/15 tcp_pcb_remove/58 tcp_free_listen/16 tcp_pcb_remove/58 tcp_listen_closed/19 tcp_free/15 tcp_free/15 tcp_trigger_input_pcb_close/70 tcp_pcb_purge/57 tcp_rst/68 
+tcp_listen_closed/19 (tcp_listen_closed) @070f80e0
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_pcb_lists/10 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: tcp_remove_listener/18 
+tcp_remove_listener/18 (tcp_remove_listener) @070f3380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_listen_closed/19 
+  Calls: 
+tcp_tmr/17 (tcp_tmr) @070f3d20
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_timer/12 (read)tcp_timer/12 (write)tcp_timer/12 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_slowtmr/35 tcp_fasttmr/36 
+tcp_free_listen/16 (tcp_free_listen) @070f3a80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: memp_free/67 
+tcp_free/15 (tcp_free) @070f37e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_slowtmr/35 tcp_slowtmr/35 tcp_listen_with_backlog_and_err/30 tcp_abandon/24 tcp_abandon/24 tcp_close_shutdown/20 tcp_close_shutdown/20 tcp_close_shutdown/20 
+  Calls: memp_free/67 
+tcp_init/14 (tcp_init) @070f3540
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_port/2 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: rand/66 
+tcp_timer_ctr/13 (tcp_timer_ctr) @070d4510
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_fasttmr/36 (read)tcp_fasttmr/36 (write)tcp_fasttmr/36 (read)tcp_fasttmr/36 (read)tcp_alloc/48 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_timer/12 (tcp_timer) @070d4480
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_tmr/17 (read)tcp_tmr/17 (write)tcp_tmr/17 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs_changed/11 (tcp_active_pcbs_changed) @070d43f0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (write)tcp_abandon/24 (write)tcp_connect/34 (write)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_fasttmr/36 (write)tcp_fasttmr/36 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_pcb_lists/10 (tcp_pcb_lists) @070d43a8
+  Type: variable definition analyzed
+  Visibility: public
+  References: tcp_listen_pcbs/7 (addr)tcp_bound_pcbs/6 (addr)tcp_active_pcbs/8 (addr)tcp_tw_pcbs/9 (addr)
+  Referring: tcp_listen_closed/19 (read)tcp_bind/26 (read)tcp_new_port/33 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_tw_pcbs/9 (tcp_tw_pcbs) @070d4360
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_abandon/24 (addr)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_kill_timewait/46 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs/8 (tcp_active_pcbs) @070d4318
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (addr)tcp_abandon/24 (addr)tcp_connect/34 (read)tcp_connect/34 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_fasttmr/36 (read)tcp_txnow/37 (read)tcp_handle_closepend/47 (read)tcp_kill_state/45 (read)tcp_kill_prio/44 (read)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_listen_pcbs/7 (tcp_listen_pcbs) @070d42d0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (addr)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (write)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_bound_pcbs/6 (tcp_bound_pcbs) @070d4288
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (read)tcp_abandon/24 (read)tcp_abandon/24 (read)tcp_abandon/24 (write)tcp_abandon/24 (read)tcp_bind/26 (read)tcp_bind/26 (write)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (write)tcp_listen_with_backlog_and_err/30 (read)tcp_connect/34 (read)tcp_connect/34 (read)tcp_connect/34 (write)tcp_connect/34 (read)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_persist_backoff/5 (tcp_persist_backoff) @070d4240
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_slowtmr/35 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_backoff/4 (tcp_backoff) @070d4168
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_slowtmr/35 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_ticks/3 (tcp_ticks) @070d4090
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_alloc/48 (read)tcp_kill_timewait/46 (read)tcp_kill_timewait/46 (read)tcp_kill_state/45 (read)tcp_kill_state/45 (read)tcp_kill_prio/44 (read)tcp_kill_prio/44 (read)tcp_next_iss/59 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_port/2 (tcp_port) @070d4048
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_init/14 (write)tcp_new_port/33 (read)tcp_new_port/33 (write)tcp_new_port/33 (read)tcp_new_port/33 (write)tcp_new_port/33 (read)tcp_new_port/33 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+tcp_state_str/1 (tcp_state_str) @070caf78
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_debug_state_str/63 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+
+
+Initial Symbol table:
+
+iss.7765/91 (iss) @0721c510
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_next_iss/59 (read)tcp_next_iss/59 (write)tcp_next_iss/59 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+memset/90 (memset) @07207000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_alloc/48 
+  Calls: 
+pbuf_ref/89 (pbuf_ref) @071f2e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_copy/42 
+  Calls: 
+memcpy/88 (memcpy) @071f2d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_copy/42 
+  Calls: 
+pbuf_cat/87 (pbuf_cat) @071f28c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: 
+pbuf_split_64k/86 (pbuf_split_64k) @071f27e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: 
+tcp_keepalive/85 (tcp_keepalive) @071f21c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_rexmit_rto_commit/84 (tcp_rexmit_rto_commit) @071f20e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_rexmit_rto_prepare/83 (tcp_rexmit_rto_prepare) @071f2000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_split_unsent_seg/82 (tcp_split_unsent_seg) @071c3ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_zero_window_probe/81 (tcp_zero_window_probe) @071c3e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_enqueue_flags/80 (tcp_enqueue_flags) @071c3b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+ip4_route/79 (ip4_route) @071c3a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+netif_get_by_index/78 (netif_get_by_index) @071c39a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+memp_malloc/77 (memp_malloc) @071c32a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_seg_copy/42 tcp_listen_with_backlog_and_err/30 
+  Calls: 
+tcp_timer_needed/76 (tcp_timer_needed) @071adc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 tcp_listen_with_backlog_and_err/30 tcp_bind/26 
+  Calls: 
+ip_addr_any/75 (ip_addr_any) @071b8e58
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_bind/26 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+pbuf_free/74 (pbuf_free) @071ad460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_pcb_purge/57 tcp_recv_null/43 tcp_seg_free/40 tcp_shutdown/23 
+  Calls: 
+tcp_output/73 (tcp_output) @071ad2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_pcb_remove/58 tcp_txnow/37 tcp_fasttmr/36 tcp_slowtmr/35 tcp_slowtmr/35 tcp_connect/34 tcp_recved/32 tcp_close_shutdown_fin/21 
+  Calls: 
+tcp_send_fin/72 (tcp_send_fin) @071ad0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_close_shutdown_fin/21 tcp_close_shutdown_fin/21 tcp_close_shutdown_fin/21 
+  Calls: 
+lwip_stats/71 (lwip_stats) @071a8168
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_connect/34 (read)tcp_connect/34 (write)tcp_alloc/48 (read)tcp_alloc/48 (read)tcp_alloc/48 (read)tcp_alloc/48 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_trigger_input_pcb_close/70 (tcp_trigger_input_pcb_close) @0718dd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: 
+tcp_input_pcb/69 (tcp_input_pcb) @071a1ea0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_close_shutdown/20 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_rst/68 (tcp_rst) @0718db60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 tcp_abandon/24 tcp_close_shutdown/20 
+  Calls: 
+memp_free/67 (memp_free) @0718d620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_free/40 tcp_free_listen/16 tcp_free/15 
+  Calls: 
+rand/66 (rand) @0718d460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_init/14 
+  Calls: 
+tcp_free_ooseq/65 (tcp_free_ooseq) @0718d000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_pcb_purge/57 tcp_slowtmr/35 
+  Calls: tcp_segs_free/39 
+tcp_tcp_get_tcp_addrinfo/64 (tcp_tcp_get_tcp_addrinfo) @07187700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_debug_state_str/63 (tcp_debug_state_str) @07187ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_state_str/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_netif_ip_addr_changed/62 (tcp_netif_ip_addr_changed) @07187c40
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_active_pcbs/8 (read)tcp_bound_pcbs/6 (read)tcp_listen_pcbs/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_netif_ip_addr_changed_pcblist/61 tcp_netif_ip_addr_changed_pcblist/61 
+tcp_netif_ip_addr_changed_pcblist/61 (tcp_netif_ip_addr_changed_pcblist) @07187620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_netif_ip_addr_changed/62 tcp_netif_ip_addr_changed/62 
+  Calls: tcp_abort/25 
+tcp_eff_send_mss_netif/60 (tcp_eff_send_mss_netif) @071872a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+tcp_next_iss/59 (tcp_next_iss) @07178e00
+  Type: function definition analyzed
+  Visibility: public
+  References: iss.7765/91 (read)tcp_ticks/3 (read)iss.7765/91 (write)iss.7765/91 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+tcp_pcb_remove/58 (tcp_pcb_remove) @071788c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_abandon/24 tcp_abandon/24 tcp_close_shutdown/20 tcp_close_shutdown/20 
+  Calls: tcp_output/73 tcp_pcb_purge/57 
+tcp_pcb_purge/57 (tcp_pcb_purge) @071780e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_pcb_remove/58 tcp_slowtmr/35 tcp_slowtmr/35 tcp_close_shutdown/20 
+  Calls: tcp_segs_free/39 tcp_segs_free/39 tcp_free_ooseq/65 pbuf_free/74 
+tcp_poll/56 (tcp_poll) @07178d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_accept/55 (tcp_accept) @07178a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_err/54 (tcp_err) @071787e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_sent/53 (tcp_sent) @07178540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_recv/52 (tcp_recv) @071782a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_arg/51 (tcp_arg) @07178000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_new_ip_type/50 (tcp_new_ip_type) @0716dc40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_alloc/48 
+tcp_new/49 (tcp_new) @0716de00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_alloc/48 
+tcp_alloc/48 (tcp_alloc) @0716db60
+  Type: function definition analyzed
+  Visibility: public
+  References: lwip_stats/71 (read)lwip_stats/71 (read)lwip_stats/71 (read)lwip_stats/71 (read)tcp_ticks/3 (read)tcp_timer_ctr/13 (read)tcp_recv_null/43 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_new_ip_type/50 tcp_new/49 
+  Calls: memset/90 memp_malloc/77 tcp_kill_prio/44 memp_malloc/77 tcp_kill_state/45 memp_malloc/77 tcp_kill_state/45 memp_malloc/77 tcp_kill_timewait/46 tcp_handle_closepend/47 memp_malloc/77 
+tcp_handle_closepend/47 (tcp_handle_closepend) @0716d7e0
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_close_shutdown_fin/21 
+tcp_kill_timewait/46 (tcp_kill_timewait) @0716d540
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_tw_pcbs/9 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_abort/25 
+tcp_kill_state/45 (tcp_kill_state) @0716d2a0
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 tcp_alloc/48 
+  Calls: tcp_abandon/24 
+tcp_kill_prio/44 (tcp_kill_prio) @0716d000
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_abort/25 
+tcp_recv_null/43 (tcp_recv_null) @071647e0
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  References: 
+  Referring: tcp_alloc/48 (addr)
+  Function flags: body optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: tcp_close/22 pbuf_free/74 tcp_recved/32 
+tcp_seg_copy/42 (tcp_seg_copy) @071640e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_ref/89 memcpy/88 memp_malloc/77 
+tcp_setprio/41 (tcp_setprio) @07164c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_seg_free/40 (tcp_seg_free) @071649a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_segs_free/39 
+  Calls: memp_free/67 pbuf_free/74 
+tcp_segs_free/39 (tcp_segs_free) @07164700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_free_ooseq/65 tcp_pcb_purge/57 tcp_pcb_purge/57 tcp_abandon/24 tcp_abandon/24 tcp_abandon/24 
+  Calls: tcp_seg_free/40 
+tcp_process_refused_data/38 (tcp_process_refused_data) @07164460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_fasttmr/36 
+  Calls: pbuf_cat/87 tcp_recv_null/43 pbuf_split_64k/86 
+   Indirect call
+   Indirect call
+tcp_txnow/37 (tcp_txnow) @07164000
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_active_pcbs/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_output/73 
+tcp_fasttmr/36 (tcp_fasttmr) @071471c0
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (write)tcp_active_pcbs/8 (read)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (read)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_tmr/17 
+  Calls: tcp_process_refused_data/38 tcp_close_shutdown_fin/21 tcp_output/73 
+tcp_slowtmr/35 (tcp_slowtmr) @07147d20
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_ticks/3 (read)tcp_ticks/3 (write)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (write)tcp_active_pcbs/8 (read)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (read)tcp_persist_backoff/5 (read)tcp_backoff/4 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)tcp_tw_pcbs/9 (read)tcp_ticks/3 (read)tcp_tw_pcbs/9 (read)tcp_tw_pcbs/9 (read)tcp_tw_pcbs/9 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_tmr/17 
+  Calls: tcp_free/15 tcp_pcb_purge/57 tcp_output/73 tcp_free/15 tcp_rst/68 tcp_pcb_purge/57 tcp_free_ooseq/65 tcp_keepalive/85 tcp_rexmit_rto_commit/84 tcp_rexmit_rto_prepare/83 tcp_output/73 tcp_split_unsent_seg/82 tcp_zero_window_probe/81 
+   Indirect call
+   Indirect call
+tcp_connect/34 (tcp_connect) @071470e0
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_output/73 tcp_timer_needed/76 tcp_enqueue_flags/80 tcp_eff_send_mss_netif/60 tcp_next_iss/59 tcp_new_port/33 ip4_route/79 netif_get_by_index/78 
+tcp_new_port/33 (tcp_new_port) @07119b60
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_port/2 (read)tcp_port/2 (write)tcp_port/2 (read)tcp_port/2 (write)tcp_pcb_lists/10 (read)tcp_port/2 (read)tcp_port/2 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 tcp_bind/26 
+  Calls: 
+tcp_recved/32 (tcp_recved) @071198c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recv_null/43 
+  Calls: tcp_output/73 tcp_update_rcv_ann_wnd/31 
+tcp_update_rcv_ann_wnd/31 (tcp_update_rcv_ann_wnd) @071192a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recved/32 
+  Calls: 
+tcp_listen_with_backlog_and_err/30 (tcp_listen_with_backlog_and_err) @07119000
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_accept_null/28 (addr)tcp_listen_pcbs/7 (read)tcp_listen_pcbs/7 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_listen_with_backlog/29 
+  Calls: tcp_timer_needed/76 tcp_free/15 memp_malloc/77 
+tcp_listen_with_backlog/29 (tcp_listen_with_backlog) @0710b2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_listen_with_backlog_and_err/30 
+tcp_accept_null/28 (tcp_accept_null) @0710be00
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: 
+  Referring: tcp_listen_with_backlog_and_err/30 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_abort/25 
+tcp_bind_netif/27 (tcp_bind_netif) @0710bb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_bind/26 (tcp_bind) @0710b8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ip_addr_any/75 (addr)tcp_pcb_lists/10 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_timer_needed/76 tcp_new_port/33 
+tcp_abort/25 (tcp_abort) @0710b1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_netif_ip_addr_changed_pcblist/61 tcp_kill_prio/44 tcp_kill_timewait/46 tcp_accept_null/28 
+  Calls: tcp_abandon/24 
+tcp_abandon/24 (tcp_abandon) @070f8d20
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_tw_pcbs/9 (addr)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_active_pcbs/8 (addr)tcp_active_pcbs_changed/11 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_kill_state/45 tcp_abort/25 
+  Calls: tcp_free/15 tcp_rst/68 tcp_segs_free/39 tcp_segs_free/39 tcp_segs_free/39 tcp_pcb_remove/58 tcp_free/15 tcp_pcb_remove/58 
+   Indirect call
+tcp_shutdown/23 (tcp_shutdown) @070f8ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_close_shutdown/20 pbuf_free/74 tcp_close_shutdown/20 
+tcp_close/22 (tcp_close) @070f8c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recv_null/43 
+  Calls: tcp_close_shutdown/20 
+tcp_close_shutdown_fin/21 (tcp_close_shutdown_fin) @070f89a0
+  Type: function definition analyzed
+  Visibility:
+  References: lwip_stats/71 (read)lwip_stats/71 (write)lwip_stats/71 (read)lwip_stats/71 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_handle_closepend/47 tcp_fasttmr/36 tcp_close_shutdown/20 
+  Calls: tcp_output/73 tcp_send_fin/72 tcp_send_fin/72 tcp_send_fin/72 
+tcp_close_shutdown/20 (tcp_close_shutdown) @070f8700
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs/8 (read)tcp_active_pcbs_changed/11 (write)tcp_input_pcb/69 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_listen_pcbs/7 (addr)tcp_active_pcbs/8 (addr)tcp_active_pcbs_changed/11 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_shutdown/23 tcp_shutdown/23 tcp_close/22 
+  Calls: tcp_close_shutdown_fin/21 tcp_free/15 tcp_pcb_remove/58 tcp_free_listen/16 tcp_pcb_remove/58 tcp_listen_closed/19 tcp_free/15 tcp_free/15 tcp_trigger_input_pcb_close/70 tcp_pcb_purge/57 tcp_rst/68 
+tcp_listen_closed/19 (tcp_listen_closed) @070f80e0
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_pcb_lists/10 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: tcp_remove_listener/18 
+tcp_remove_listener/18 (tcp_remove_listener) @070f3380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_listen_closed/19 
+  Calls: 
+tcp_tmr/17 (tcp_tmr) @070f3d20
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_timer/12 (read)tcp_timer/12 (write)tcp_timer/12 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_slowtmr/35 tcp_fasttmr/36 
+tcp_free_listen/16 (tcp_free_listen) @070f3a80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: memp_free/67 
+tcp_free/15 (tcp_free) @070f37e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_slowtmr/35 tcp_slowtmr/35 tcp_listen_with_backlog_and_err/30 tcp_abandon/24 tcp_abandon/24 tcp_close_shutdown/20 tcp_close_shutdown/20 tcp_close_shutdown/20 
+  Calls: memp_free/67 
+tcp_init/14 (tcp_init) @070f3540
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_port/2 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: rand/66 
+tcp_timer_ctr/13 (tcp_timer_ctr) @070d4510
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_fasttmr/36 (read)tcp_fasttmr/36 (write)tcp_fasttmr/36 (read)tcp_fasttmr/36 (read)tcp_alloc/48 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_timer/12 (tcp_timer) @070d4480
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_tmr/17 (read)tcp_tmr/17 (write)tcp_tmr/17 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs_changed/11 (tcp_active_pcbs_changed) @070d43f0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (write)tcp_abandon/24 (write)tcp_connect/34 (write)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_fasttmr/36 (write)tcp_fasttmr/36 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_pcb_lists/10 (tcp_pcb_lists) @070d43a8
+  Type: variable definition analyzed
+  Visibility: public
+  References: tcp_listen_pcbs/7 (addr)tcp_bound_pcbs/6 (addr)tcp_active_pcbs/8 (addr)tcp_tw_pcbs/9 (addr)
+  Referring: tcp_listen_closed/19 (read)tcp_bind/26 (read)tcp_new_port/33 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_tw_pcbs/9 (tcp_tw_pcbs) @070d4360
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_abandon/24 (addr)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_kill_timewait/46 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs/8 (tcp_active_pcbs) @070d4318
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (addr)tcp_abandon/24 (addr)tcp_connect/34 (read)tcp_connect/34 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_fasttmr/36 (read)tcp_txnow/37 (read)tcp_handle_closepend/47 (read)tcp_kill_state/45 (read)tcp_kill_prio/44 (read)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_listen_pcbs/7 (tcp_listen_pcbs) @070d42d0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (addr)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (write)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_bound_pcbs/6 (tcp_bound_pcbs) @070d4288
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (read)tcp_abandon/24 (read)tcp_abandon/24 (read)tcp_abandon/24 (write)tcp_abandon/24 (read)tcp_bind/26 (read)tcp_bind/26 (write)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (write)tcp_listen_with_backlog_and_err/30 (read)tcp_connect/34 (read)tcp_connect/34 (read)tcp_connect/34 (write)tcp_connect/34 (read)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_persist_backoff/5 (tcp_persist_backoff) @070d4240
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_slowtmr/35 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_backoff/4 (tcp_backoff) @070d4168
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_slowtmr/35 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_ticks/3 (tcp_ticks) @070d4090
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_alloc/48 (read)tcp_kill_timewait/46 (read)tcp_kill_timewait/46 (read)tcp_kill_state/45 (read)tcp_kill_state/45 (read)tcp_kill_prio/44 (read)tcp_kill_prio/44 (read)tcp_next_iss/59 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_port/2 (tcp_port) @070d4048
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_init/14 (write)tcp_new_port/33 (read)tcp_new_port/33 (write)tcp_new_port/33 (read)tcp_new_port/33 (write)tcp_new_port/33 (read)tcp_new_port/33 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+tcp_state_str/1 (tcp_state_str) @070caf78
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_debug_state_str/63 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+iss.7765/91 (iss) @0721c510
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_next_iss/59 (read)tcp_next_iss/59 (write)tcp_next_iss/59 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+memset/90 (memset) @07207000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_alloc/48 
+  Calls: 
+pbuf_ref/89 (pbuf_ref) @071f2e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_copy/42 
+  Calls: 
+memcpy/88 (memcpy) @071f2d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_copy/42 
+  Calls: 
+pbuf_cat/87 (pbuf_cat) @071f28c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: 
+pbuf_split_64k/86 (pbuf_split_64k) @071f27e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: 
+tcp_keepalive/85 (tcp_keepalive) @071f21c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_rexmit_rto_commit/84 (tcp_rexmit_rto_commit) @071f20e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_rexmit_rto_prepare/83 (tcp_rexmit_rto_prepare) @071f2000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_split_unsent_seg/82 (tcp_split_unsent_seg) @071c3ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_zero_window_probe/81 (tcp_zero_window_probe) @071c3e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 
+  Calls: 
+tcp_enqueue_flags/80 (tcp_enqueue_flags) @071c3b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+ip4_route/79 (ip4_route) @071c3a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+netif_get_by_index/78 (netif_get_by_index) @071c39a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+memp_malloc/77 (memp_malloc) @071c32a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_alloc/48 tcp_seg_copy/42 tcp_listen_with_backlog_and_err/30 
+  Calls: 
+tcp_timer_needed/76 (tcp_timer_needed) @071adc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_connect/34 tcp_listen_with_backlog_and_err/30 tcp_bind/26 
+  Calls: 
+ip_addr_any/75 (ip_addr_any) @071b8e58
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_bind/26 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+pbuf_free/74 (pbuf_free) @071ad460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_pcb_purge/57 tcp_recv_null/43 tcp_seg_free/40 tcp_shutdown/23 
+  Calls: 
+tcp_output/73 (tcp_output) @071ad2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_pcb_remove/58 tcp_txnow/37 tcp_fasttmr/36 tcp_slowtmr/35 tcp_slowtmr/35 tcp_connect/34 tcp_recved/32 tcp_close_shutdown_fin/21 
+  Calls: 
+tcp_send_fin/72 (tcp_send_fin) @071ad0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_close_shutdown_fin/21 tcp_close_shutdown_fin/21 tcp_close_shutdown_fin/21 
+  Calls: 
+lwip_stats/71 (lwip_stats) @071a8168
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_connect/34 (read)tcp_connect/34 (write)tcp_alloc/48 (read)tcp_alloc/48 (read)tcp_alloc/48 (read)tcp_alloc/48 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_trigger_input_pcb_close/70 (tcp_trigger_input_pcb_close) @0718dd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: 
+tcp_input_pcb/69 (tcp_input_pcb) @071a1ea0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_close_shutdown/20 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_rst/68 (tcp_rst) @0718db60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 tcp_abandon/24 tcp_close_shutdown/20 
+  Calls: 
+memp_free/67 (memp_free) @0718d620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_seg_free/40 tcp_free_listen/16 tcp_free/15 
+  Calls: 
+rand/66 (rand) @0718d460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_init/14 
+  Calls: 
+tcp_free_ooseq/65 (tcp_free_ooseq) @0718d000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_pcb_purge/57 tcp_slowtmr/35 
+  Calls: tcp_segs_free/39 
+tcp_tcp_get_tcp_addrinfo/64 (tcp_tcp_get_tcp_addrinfo) @07187700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_debug_state_str/63 (tcp_debug_state_str) @07187ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_state_str/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_netif_ip_addr_changed/62 (tcp_netif_ip_addr_changed) @07187c40
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_active_pcbs/8 (read)tcp_bound_pcbs/6 (read)tcp_listen_pcbs/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_netif_ip_addr_changed_pcblist/61 tcp_netif_ip_addr_changed_pcblist/61 
+tcp_netif_ip_addr_changed_pcblist/61 (tcp_netif_ip_addr_changed_pcblist) @07187620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_netif_ip_addr_changed/62 tcp_netif_ip_addr_changed/62 
+  Calls: tcp_abort/25 
+tcp_eff_send_mss_netif/60 (tcp_eff_send_mss_netif) @071872a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+tcp_next_iss/59 (tcp_next_iss) @07178e00
+  Type: function definition analyzed
+  Visibility: public
+  References: iss.7765/91 (read)tcp_ticks/3 (read)iss.7765/91 (write)iss.7765/91 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 
+  Calls: 
+tcp_pcb_remove/58 (tcp_pcb_remove) @071788c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_abandon/24 tcp_abandon/24 tcp_close_shutdown/20 tcp_close_shutdown/20 
+  Calls: tcp_output/73 tcp_pcb_purge/57 
+tcp_pcb_purge/57 (tcp_pcb_purge) @071780e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_pcb_remove/58 tcp_slowtmr/35 tcp_slowtmr/35 tcp_close_shutdown/20 
+  Calls: tcp_segs_free/39 tcp_segs_free/39 tcp_free_ooseq/65 pbuf_free/74 
+tcp_poll/56 (tcp_poll) @07178d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_accept/55 (tcp_accept) @07178a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_err/54 (tcp_err) @071787e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_sent/53 (tcp_sent) @07178540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_recv/52 (tcp_recv) @071782a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_arg/51 (tcp_arg) @07178000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_new_ip_type/50 (tcp_new_ip_type) @0716dc40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_alloc/48 
+tcp_new/49 (tcp_new) @0716de00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_alloc/48 
+tcp_alloc/48 (tcp_alloc) @0716db60
+  Type: function definition analyzed
+  Visibility: public
+  References: lwip_stats/71 (read)lwip_stats/71 (read)lwip_stats/71 (read)lwip_stats/71 (read)tcp_ticks/3 (read)tcp_timer_ctr/13 (read)tcp_recv_null/43 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_new_ip_type/50 tcp_new/49 
+  Calls: memset/90 memp_malloc/77 tcp_kill_prio/44 memp_malloc/77 tcp_kill_state/45 memp_malloc/77 tcp_kill_state/45 memp_malloc/77 tcp_kill_timewait/46 tcp_handle_closepend/47 memp_malloc/77 
+tcp_handle_closepend/47 (tcp_handle_closepend) @0716d7e0
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_close_shutdown_fin/21 
+tcp_kill_timewait/46 (tcp_kill_timewait) @0716d540
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_tw_pcbs/9 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_abort/25 
+tcp_kill_state/45 (tcp_kill_state) @0716d2a0
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 tcp_alloc/48 
+  Calls: tcp_abandon/24 
+tcp_kill_prio/44 (tcp_kill_prio) @0716d000
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_alloc/48 
+  Calls: tcp_abort/25 
+tcp_recv_null/43 (tcp_recv_null) @071647e0
+  Type: function definition analyzed
+  Visibility: public
+  Address is taken.
+  References: 
+  Referring: tcp_alloc/48 (addr)
+  Function flags: body optimize_size
+  Called by: tcp_process_refused_data/38 
+  Calls: tcp_close/22 pbuf_free/74 tcp_recved/32 
+tcp_seg_copy/42 (tcp_seg_copy) @071640e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_ref/89 memcpy/88 memp_malloc/77 
+tcp_setprio/41 (tcp_setprio) @07164c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_seg_free/40 (tcp_seg_free) @071649a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_segs_free/39 
+  Calls: memp_free/67 pbuf_free/74 
+tcp_segs_free/39 (tcp_segs_free) @07164700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_free_ooseq/65 tcp_pcb_purge/57 tcp_pcb_purge/57 tcp_abandon/24 tcp_abandon/24 tcp_abandon/24 
+  Calls: tcp_seg_free/40 
+tcp_process_refused_data/38 (tcp_process_refused_data) @07164460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_fasttmr/36 
+  Calls: pbuf_cat/87 tcp_recv_null/43 pbuf_split_64k/86 
+   Indirect call
+   Indirect call
+tcp_txnow/37 (tcp_txnow) @07164000
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_active_pcbs/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_output/73 
+tcp_fasttmr/36 (tcp_fasttmr) @071471c0
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (write)tcp_active_pcbs/8 (read)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (read)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_tmr/17 
+  Calls: tcp_process_refused_data/38 tcp_close_shutdown_fin/21 tcp_output/73 
+tcp_slowtmr/35 (tcp_slowtmr) @07147d20
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_ticks/3 (read)tcp_ticks/3 (write)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (write)tcp_active_pcbs/8 (read)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (read)tcp_persist_backoff/5 (read)tcp_backoff/4 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)tcp_tw_pcbs/9 (read)tcp_ticks/3 (read)tcp_tw_pcbs/9 (read)tcp_tw_pcbs/9 (read)tcp_tw_pcbs/9 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_tmr/17 
+  Calls: tcp_free/15 tcp_pcb_purge/57 tcp_output/73 tcp_free/15 tcp_rst/68 tcp_pcb_purge/57 tcp_free_ooseq/65 tcp_keepalive/85 tcp_rexmit_rto_commit/84 tcp_rexmit_rto_prepare/83 tcp_output/73 tcp_split_unsent_seg/82 tcp_zero_window_probe/81 
+   Indirect call
+   Indirect call
+tcp_connect/34 (tcp_connect) @071470e0
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_output/73 tcp_timer_needed/76 tcp_enqueue_flags/80 tcp_eff_send_mss_netif/60 tcp_next_iss/59 tcp_new_port/33 ip4_route/79 netif_get_by_index/78 
+tcp_new_port/33 (tcp_new_port) @07119b60
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_port/2 (read)tcp_port/2 (write)tcp_port/2 (read)tcp_port/2 (write)tcp_pcb_lists/10 (read)tcp_port/2 (read)tcp_port/2 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_connect/34 tcp_bind/26 
+  Calls: 
+tcp_recved/32 (tcp_recved) @071198c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recv_null/43 
+  Calls: tcp_output/73 tcp_update_rcv_ann_wnd/31 
+tcp_update_rcv_ann_wnd/31 (tcp_update_rcv_ann_wnd) @071192a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recved/32 
+  Calls: 
+tcp_listen_with_backlog_and_err/30 (tcp_listen_with_backlog_and_err) @07119000
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_accept_null/28 (addr)tcp_listen_pcbs/7 (read)tcp_listen_pcbs/7 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_listen_with_backlog/29 
+  Calls: tcp_timer_needed/76 tcp_free/15 memp_malloc/77 
+tcp_listen_with_backlog/29 (tcp_listen_with_backlog) @0710b2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_listen_with_backlog_and_err/30 
+tcp_accept_null/28 (tcp_accept_null) @0710be00
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: 
+  Referring: tcp_listen_with_backlog_and_err/30 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_abort/25 
+tcp_bind_netif/27 (tcp_bind_netif) @0710bb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_bind/26 (tcp_bind) @0710b8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ip_addr_any/75 (addr)tcp_pcb_lists/10 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_timer_needed/76 tcp_new_port/33 
+tcp_abort/25 (tcp_abort) @0710b1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_netif_ip_addr_changed_pcblist/61 tcp_kill_prio/44 tcp_kill_timewait/46 tcp_accept_null/28 
+  Calls: tcp_abandon/24 
+tcp_abandon/24 (tcp_abandon) @070f8d20
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_tw_pcbs/9 (addr)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_active_pcbs/8 (addr)tcp_active_pcbs_changed/11 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_kill_state/45 tcp_abort/25 
+  Calls: tcp_free/15 tcp_rst/68 tcp_segs_free/39 tcp_segs_free/39 tcp_segs_free/39 tcp_pcb_remove/58 tcp_free/15 tcp_pcb_remove/58 
+   Indirect call
+tcp_shutdown/23 (tcp_shutdown) @070f8ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_close_shutdown/20 pbuf_free/74 tcp_close_shutdown/20 
+tcp_close/22 (tcp_close) @070f8c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_recv_null/43 
+  Calls: tcp_close_shutdown/20 
+tcp_close_shutdown_fin/21 (tcp_close_shutdown_fin) @070f89a0
+  Type: function definition analyzed
+  Visibility:
+  References: lwip_stats/71 (read)lwip_stats/71 (write)lwip_stats/71 (read)lwip_stats/71 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_handle_closepend/47 tcp_fasttmr/36 tcp_close_shutdown/20 
+  Calls: tcp_output/73 tcp_send_fin/72 tcp_send_fin/72 tcp_send_fin/72 
+tcp_close_shutdown/20 (tcp_close_shutdown) @070f8700
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs/8 (read)tcp_active_pcbs_changed/11 (write)tcp_input_pcb/69 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_bound_pcbs/6 (read)tcp_listen_pcbs/7 (addr)tcp_active_pcbs/8 (addr)tcp_active_pcbs_changed/11 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_shutdown/23 tcp_shutdown/23 tcp_close/22 
+  Calls: tcp_close_shutdown_fin/21 tcp_free/15 tcp_pcb_remove/58 tcp_free_listen/16 tcp_pcb_remove/58 tcp_listen_closed/19 tcp_free/15 tcp_free/15 tcp_trigger_input_pcb_close/70 tcp_pcb_purge/57 tcp_rst/68 
+tcp_listen_closed/19 (tcp_listen_closed) @070f80e0
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_pcb_lists/10 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: tcp_remove_listener/18 
+tcp_remove_listener/18 (tcp_remove_listener) @070f3380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_listen_closed/19 
+  Calls: 
+tcp_tmr/17 (tcp_tmr) @070f3d20
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_timer/12 (read)tcp_timer/12 (write)tcp_timer/12 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: tcp_slowtmr/35 tcp_fasttmr/36 
+tcp_free_listen/16 (tcp_free_listen) @070f3a80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_close_shutdown/20 
+  Calls: memp_free/67 
+tcp_free/15 (tcp_free) @070f37e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_slowtmr/35 tcp_slowtmr/35 tcp_listen_with_backlog_and_err/30 tcp_abandon/24 tcp_abandon/24 tcp_close_shutdown/20 tcp_close_shutdown/20 tcp_close_shutdown/20 
+  Calls: memp_free/67 
+tcp_init/14 (tcp_init) @070f3540
+  Type: function definition analyzed
+  Visibility: public
+  References: tcp_port/2 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: rand/66 
+tcp_timer_ctr/13 (tcp_timer_ctr) @070d4510
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_fasttmr/36 (read)tcp_fasttmr/36 (write)tcp_fasttmr/36 (read)tcp_fasttmr/36 (read)tcp_alloc/48 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_timer/12 (tcp_timer) @070d4480
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_tmr/17 (read)tcp_tmr/17 (write)tcp_tmr/17 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs_changed/11 (tcp_active_pcbs_changed) @070d43f0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (write)tcp_abandon/24 (write)tcp_connect/34 (write)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_fasttmr/36 (write)tcp_fasttmr/36 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_pcb_lists/10 (tcp_pcb_lists) @070d43a8
+  Type: variable definition analyzed
+  Visibility: public
+  References: tcp_listen_pcbs/7 (addr)tcp_bound_pcbs/6 (addr)tcp_active_pcbs/8 (addr)tcp_tw_pcbs/9 (addr)
+  Referring: tcp_listen_closed/19 (read)tcp_bind/26 (read)tcp_new_port/33 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_tw_pcbs/9 (tcp_tw_pcbs) @070d4360
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_abandon/24 (addr)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_kill_timewait/46 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs/8 (tcp_active_pcbs) @070d4318
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (addr)tcp_abandon/24 (addr)tcp_connect/34 (read)tcp_connect/34 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_fasttmr/36 (read)tcp_txnow/37 (read)tcp_handle_closepend/47 (read)tcp_kill_state/45 (read)tcp_kill_prio/44 (read)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_listen_pcbs/7 (tcp_listen_pcbs) @070d42d0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (addr)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (write)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_bound_pcbs/6 (tcp_bound_pcbs) @070d4288
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_close_shutdown/20 (read)tcp_abandon/24 (read)tcp_abandon/24 (read)tcp_abandon/24 (write)tcp_abandon/24 (read)tcp_bind/26 (read)tcp_bind/26 (write)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (write)tcp_listen_with_backlog_and_err/30 (read)tcp_connect/34 (read)tcp_connect/34 (read)tcp_connect/34 (write)tcp_connect/34 (read)tcp_netif_ip_addr_changed/62 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_persist_backoff/5 (tcp_persist_backoff) @070d4240
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_slowtmr/35 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_backoff/4 (tcp_backoff) @070d4168
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_slowtmr/35 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+tcp_ticks/3 (tcp_ticks) @070d4090
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_alloc/48 (read)tcp_kill_timewait/46 (read)tcp_kill_timewait/46 (read)tcp_kill_state/45 (read)tcp_kill_state/45 (read)tcp_kill_prio/44 (read)tcp_kill_prio/44 (read)tcp_next_iss/59 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_port/2 (tcp_port) @070d4048
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_init/14 (write)tcp_new_port/33 (read)tcp_new_port/33 (write)tcp_new_port/33 (read)tcp_new_port/33 (write)tcp_new_port/33 (read)tcp_new_port/33 (read)
+  Availability: not-ready
+  Varpool flags: initialized
+tcp_state_str/1 (tcp_state_str) @070caf78
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_debug_state_str/63 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+tcp_process_refused_data.part.0/100 (tcp_process_refused_data.part.0) @06f1a540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function tcp_process_refused_data.part.0/100 is inline copy in tcp_process_refused_data/38
+  Availability: local
+  Function flags: count:80989426 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_process_refused_data/38 (inlined) (80989426 (estimated locally),1.00 per call) 
+  Calls: pbuf_split_64k/86 (1034442874 (estimated locally),12.72 per call) tcp_recv_null/43 (180303393 (estimated locally),2.22 per call) pbuf_cat/87 (13361085 (estimated locally),0.16 per call) 
+   Indirect call(854139480 (estimated locally),10.50 per call)  of param:0 loaded from aggregate passed by reference at offset 1216 (vptr maybe changed)
+   Indirect call(104641138 (estimated locally),1.29 per call)  of param:0 loaded from aggregate passed by reference at offset 1216 (vptr maybe changed)
+tcp_recv_null.part.0/99 (tcp_recv_null.part.0) @06f1ab60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function tcp_recv_null.part.0/99 is inline copy in tcp_recv_null/43
+  Availability: local
+  Function flags: count:497363818 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_recv_null/43 (inlined) (497363818 (estimated locally),0.46 per call) 
+  Calls: tcp_close/22 (100666437 (estimated locally),0.09 per call) 
+tcp_kill_state.part.0/98 (tcp_kill_state.part.0) @06f1a000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: tcp_active_pcbs/8 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function tcp_kill_state.part.0/98 is inline copy in tcp_kill_state/45
+  Availability: local
+  Function flags: count:74616 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_kill_state/45 (inlined) (74616 (estimated locally),0.41 per call) 
+  Calls: tcp_abandon/24 (39897 (estimated locally),0.22 per call) 
+tcp_netif_ip_addr_changed_pcblist.part.0/97 (tcp_netif_ip_addr_changed_pcblist.part.0) @073a22a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function tcp_netif_ip_addr_changed_pcblist.part.0/97 is inline copy in tcp_netif_ip_addr_changed_pcblist/61
+  Availability: local
+  Function flags: count:250539 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_netif_ip_addr_changed_pcblist/61 (inlined) (250539 (estimated locally),0.70 per call) 
+  Calls: tcp_abort/25 (410283 (estimated locally),1.15 per call) 
+tcp_pcb_remove.part.0/96 (tcp_pcb_remove.part.0) @073a2540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function tcp_pcb_remove.part.0/96 is inline copy in tcp_pcb_remove/58
+  Availability: local
+  Function flags: count:175377 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_pcb_remove/58 (inlined) (175377 (estimated locally),0.49 per call) 
+  Calls: tcp_pcb_purge/57 (175377 (estimated locally),0.49 per call) tcp_output/73 (25210 (estimated locally),0.07 per call) 
+tcp_pcb_purge.part.0/95 (tcp_pcb_purge.part.0) @073a2000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function tcp_pcb_purge.part.0/95 is inline copy in tcp_pcb_purge/57
+  Availability: local
+  Function flags: count:191555519 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_pcb_purge/57 (inlined) (191555519 (estimated locally),0.18 per call) 
+  Calls: pbuf_free/74 (102424736 (estimated locally),0.10 per call) tcp_free_ooseq/65 (102424736 (estimated locally),0.10 per call) tcp_segs_free/39 (191555519 (estimated locally),0.18 per call) tcp_segs_free/39 (191555519 (estimated locally),0.18 per call) 
+tcp_eff_send_mss_netif.part.0/94 (tcp_eff_send_mss_netif.part.0) @073901c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function tcp_eff_send_mss_netif.part.0/94 is inline copy in tcp_eff_send_mss_netif/60
+  Availability: local
+  Function flags: count:205216 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: tcp_eff_send_mss_netif/60 (inlined) (205216 (estimated locally),0.57 per call) 
+  Calls: 
+tcp_recved.part.0/93 (tcp_recved.part.0) @0724da80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function tcp_recved.part.0/93 is inline copy in tcp_recved/32
+  Availability: local
+  Function flags: count:68783 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_recved/32 (inlined) (68783 (estimated locally),0.18 per call) 
+  Calls: tcp_output/73 (68783 (estimated locally),0.18 per call) 
+tcp_free.part.0/92 (tcp_free.part.0) @06e8b620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function tcp_free.part.0/92 is inline copy in tcp_free/15
+  Availability: local
+  Function flags: count:102669 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_free/15 (inlined) (102669 (estimated locally),0.49 per call) 
+  Calls: memp_free/67 (102669 (estimated locally),0.49 per call) 
+iss.7765/91 (iss) @0721c510
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_next_iss/59 (read)tcp_next_iss/59 (write)
+  Availability: available
+  Varpool flags: initialized used-by-single-function
+memset/90 (memset) @07207000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_alloc/48 (574129754 (estimated locally),0.53 per call) 
+  Calls: 
+pbuf_ref/89 (pbuf_ref) @071f2e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_seg_copy/42 (104301 (estimated locally),0.45 per call) 
+  Calls: 
+memcpy/88 (memcpy) @071f2d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_seg_copy/42 (104301 (estimated locally),0.45 per call) 
+  Calls: 
+pbuf_cat/87 (pbuf_cat) @071f28c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_process_refused_data.part.0/100 (13361085 (estimated locally),0.16 per call) 
+  Calls: 
+pbuf_split_64k/86 (pbuf_split_64k) @071f27e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_process_refused_data.part.0/100 (1034442874 (estimated locally),12.72 per call) 
+  Calls: 
+tcp_keepalive/85 (tcp_keepalive) @071f21c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 (186119 (estimated locally),0.38 per call) 
+  Calls: 
+tcp_rexmit_rto_commit/84 (tcp_rexmit_rto_commit) @071f20e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 (166963 (estimated locally),0.34 per call) 
+  Calls: 
+tcp_rexmit_rto_prepare/83 (tcp_rexmit_rto_prepare) @071f2000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 (275972 (estimated locally),0.57 per call) 
+  Calls: 
+tcp_split_unsent_seg/82 (tcp_split_unsent_seg) @071c3ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 (100395 (estimated locally),0.21 per call) 
+  Calls: 
+tcp_zero_window_probe/81 (tcp_zero_window_probe) @071c3e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 (100395 (estimated locally),0.21 per call) 
+  Calls: 
+tcp_enqueue_flags/80 (tcp_enqueue_flags) @071c3b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_connect/34 (656363041 (estimated locally),0.97 per call) 
+  Calls: 
+ip4_route/79 (ip4_route) @071c3a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_connect/34 (331388231 (estimated locally),0.49 per call) 
+  Calls: 
+netif_get_by_index/78 (netif_get_by_index) @071c39a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_connect/34 (331388231 (estimated locally),0.49 per call) 
+  Calls: 
+memp_malloc/77 (memp_malloc) @071c32a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_alloc/48 (991036 (estimated locally),0.00 per call) tcp_alloc/48 (5685806 (estimated locally),0.01 per call) tcp_alloc/48 (32620803 (estimated locally),0.03 per call) tcp_alloc/48 (187153200 (estimated locally),0.17 per call) tcp_alloc/48 (1073741824 (estimated locally),1.00 per call) tcp_seg_copy/42 (123389 (estimated locally),0.53 per call) tcp_listen_with_backlog_and_err/30 (357769019 (estimated locally),0.64 per call) 
+  Calls: 
+tcp_timer_needed/76 (tcp_timer_needed) @071adc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_connect/34 (328181520 (estimated locally),0.49 per call) tcp_listen_with_backlog_and_err/30 (328181520 (estimated locally),0.59 per call) tcp_bind/26 (34903969 (estimated locally),0.52 per call) 
+  Calls: 
+ip_addr_any/75 (ip_addr_any) @071b8e58
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: tcp_bind/26 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+pbuf_free/74 (pbuf_free) @071ad460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_shutdown/23 (226701775 (estimated locally),0.21 per call) tcp_recv_null/43 (571546170 (estimated locally),0.53 per call) tcp_pcb_purge.part.0/95 (102424736 (estimated locally),0.10 per call) tcp_seg_free/40 (401890828 (estimated locally),0.37 per call) 
+  Calls: 
+tcp_output/73 (tcp_output) @071ad2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 (433046 (estimated locally),0.89 per call) tcp_slowtmr/35 (33130 (estimated locally),0.07 per call) tcp_fasttmr/36 (220998616 (estimated locally),3.74 per call) tcp_pcb_remove.part.0/96 (25210 (estimated locally),0.07 per call) tcp_connect/34 (328181520 (estimated locally),0.49 per call) tcp_txnow/37 (315357973 (estimated locally),2.67 per call) tcp_recved.part.0/93 (68783 (estimated locally),0.18 per call) tcp_close_shutdown_fin/21 (62008 (estimated locally),0.17 per call) 
+  Calls: 
+tcp_send_fin/72 (tcp_send_fin) @071ad0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_close_shutdown_fin/21 (62635 (estimated locally),0.18 per call) tcp_close_shutdown_fin/21 (62635 (estimated locally),0.18 per call) tcp_close_shutdown_fin/21 (62635 (estimated locally),0.18 per call) 
+  Calls: 
+lwip_stats/71 (lwip_stats) @071a8168
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_connect/34 (read)tcp_connect/34 (write)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_alloc/48 (read)tcp_alloc/48 (read)tcp_close_shutdown_fin/21 (read)tcp_close_shutdown_fin/21 (write)tcp_alloc/48 (read)tcp_alloc/48 (read)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)
+  Availability: not_available
+  Varpool flags:
+tcp_trigger_input_pcb_close/70 (tcp_trigger_input_pcb_close) @0718dd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_close_shutdown/20 (3855 (estimated locally),0.01 per call) 
+  Calls: 
+tcp_input_pcb/69 (tcp_input_pcb) @071a1ea0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: tcp_close_shutdown/20 (read)
+  Availability: not_available
+  Varpool flags:
+tcp_rst/68 (tcp_rst) @0718db60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_slowtmr/35 (426583 (estimated locally),0.88 per call) tcp_close_shutdown/20 (12850 (estimated locally),0.04 per call) tcp_abandon/24 (54861 (estimated locally),0.14 per call) 
+  Calls: 
+memp_free/67 (memp_free) @0718d620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_seg_free/40 (751619278 (estimated locally),0.70 per call) tcp_free.part.0/92 (102669 (estimated locally),0.49 per call) tcp_free_listen/16 (22857 (estimated locally),0.06 per call) 
+  Calls: 
+rand/66 (rand) @0718d460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_init/14 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+tcp_free_ooseq/65 (tcp_free_ooseq) @0718d000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: tcp_slowtmr/35 (923339 (estimated locally),1.90 per call) tcp_pcb_purge.part.0/95 (102424736 (estimated locally),0.10 per call) 
+  Calls: tcp_segs_free/39 (574129754 (estimated locally),0.53 per call) 
+tcp_tcp_get_tcp_addrinfo/64 (tcp_tcp_get_tcp_addrinfo) @07187700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_debug_state_str/63 (tcp_debug_state_str) @07187ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: tcp_state_str/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_netif_ip_addr_changed/62 (tcp_netif_ip_addr_changed) @07187c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: tcp_active_pcbs/8 (read)tcp_bound_pcbs/6 (read)tcp_listen_pcbs/7 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_netif_ip_addr_changed_pcblist/61 (248034361 (estimated locally),0.23 per call) tcp_netif_ip_addr_changed_pcblist/61 (248034361 (estimated locally),0.23 per call) 
+tcp_netif_ip_addr_changed_pcblist/61 (tcp_netif_ip_addr_changed_pcblist) @07187620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) body local optimize_size
+  Called by: tcp_netif_ip_addr_changed/62 (248034361 (estimated locally),0.23 per call) tcp_netif_ip_addr_changed/62 (248034361 (estimated locally),0.23 per call) 
+  Calls: tcp_netif_ip_addr_changed_pcblist.part.0/97 (inlined) (250539 (estimated locally),0.70 per call) 
+tcp_eff_send_mss_netif/60 (tcp_eff_send_mss_netif) @071872a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) body optimize_size
+  Called by: tcp_connect/34 (656363041 (estimated locally),0.97 per call) 
+  Calls: tcp_eff_send_mss_netif.part.0/94 (inlined) (205216 (estimated locally),0.57 per call) 
+tcp_next_iss/59 (tcp_next_iss) @07178e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: iss.7765/91 (read)tcp_ticks/3 (read)iss.7765/91 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) body optimize_size
+  Called by: tcp_connect/34 (656363041 (estimated locally),0.97 per call) 
+  Calls: 
+tcp_pcb_remove/58 (tcp_pcb_remove) @071788c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) body optimize_size
+  Called by: tcp_close_shutdown/20 (46762 (estimated locally),0.13 per call) tcp_close_shutdown/20 (46762 (estimated locally),0.13 per call) tcp_abandon/24 (54861 (estimated locally),0.14 per call) tcp_abandon/24 (42187 (estimated locally),0.11 per call) 
+  Calls: tcp_pcb_remove.part.0/96 (inlined) (175377 (estimated locally),0.49 per call) 
+tcp_pcb_purge/57 (tcp_pcb_purge) @071780e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: tcp_slowtmr/35 (544281 (estimated locally),1.12 per call) tcp_slowtmr/35 (1319056 (estimated locally),2.72 per call) tcp_close_shutdown/20 (12850 (estimated locally),0.04 per call) tcp_pcb_remove.part.0/96 (175377 (estimated locally),0.49 per call) 
+  Calls: tcp_pcb_purge.part.0/95 (inlined) (191555519 (estimated locally),0.18 per call) 
+tcp_poll/56 (tcp_poll) @07178d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:385552 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+tcp_accept/55 (tcp_accept) @07178a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_err/54 (tcp_err) @071787e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:451151 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+tcp_sent/53 (tcp_sent) @07178540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:451151 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+tcp_recv/52 (tcp_recv) @071782a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:451151 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+tcp_arg/51 (tcp_arg) @07178000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_new_ip_type/50 (tcp_new_ip_type) @0716dc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_alloc/48 (1073741824 (estimated locally),1.00 per call) 
+tcp_new/49 (tcp_new) @0716de00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_alloc/48 (1073741824 (estimated locally),1.00 per call) 
+tcp_alloc/48 (tcp_alloc) @0716db60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: lwip_stats/71 (read)lwip_stats/71 (read)lwip_stats/71 (read)lwip_stats/71 (read)tcp_ticks/3 (read)tcp_timer_ctr/13 (read)tcp_recv_null/43 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: tcp_new_ip_type/50 (1073741824 (estimated locally),1.00 per call) tcp_new/49 (1073741824 (estimated locally),1.00 per call) 
+  Calls: memset/90 (574129754 (estimated locally),0.53 per call) memp_malloc/77 (991036 (estimated locally),0.00 per call) tcp_kill_prio/44 (inlined) (991036 (estimated locally),0.00 per call) memp_malloc/77 (5685806 (estimated locally),0.01 per call) tcp_kill_state/45 (5685806 (estimated locally),0.01 per call) memp_malloc/77 (32620803 (estimated locally),0.03 per call) tcp_kill_state/45 (32620803 (estimated locally),0.03 per call) memp_malloc/77 (187153200 (estimated locally),0.17 per call) tcp_kill_timewait/46 (inlined) (187153200 (estimated locally),0.17 per call) tcp_handle_closepend/47 (inlined) (187153200 (estimated locally),0.17 per call) memp_malloc/77 (1073741824 (estimated locally),1.00 per call) 
+tcp_handle_closepend/47 (tcp_handle_closepend) @0716d7e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: tcp_active_pcbs/8 (read)
+  Referring: 
+  Function tcp_handle_closepend/47 is inline copy in tcp_alloc/48
+  Availability: local
+  Function flags: count:187153200 (estimated locally) body local optimize_size
+  Called by: tcp_alloc/48 (inlined) (187153200 (estimated locally),0.17 per call) 
+  Calls: tcp_close_shutdown_fin/21 (499699037 (estimated locally),0.47 per call) 
+tcp_kill_timewait/46 (tcp_kill_timewait) @0716d540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: tcp_tw_pcbs/9 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function tcp_kill_timewait/46 is inline copy in tcp_alloc/48
+  Availability: local
+  Function flags: count:187153200 (estimated locally) body local optimize_size
+  Called by: tcp_alloc/48 (inlined) (187153200 (estimated locally),0.17 per call) 
+  Calls: tcp_abort/25 (100070817 (estimated locally),0.09 per call) 
+tcp_kill_state/45 (tcp_kill_state) @0716d2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:181990 (estimated locally) body local optimize_size
+  Called by: tcp_alloc/48 (5685806 (estimated locally),0.01 per call) tcp_alloc/48 (32620803 (estimated locally),0.03 per call) 
+  Calls: tcp_kill_state.part.0/98 (inlined) (74616 (estimated locally),0.41 per call) 
+tcp_kill_prio/44 (tcp_kill_prio) @0716d000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: tcp_active_pcbs/8 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)
+  Referring: 
+  Function tcp_kill_prio/44 is inline copy in tcp_alloc/48
+  Availability: local
+  Function flags: count:991036 (estimated locally) body local optimize_size
+  Called by: tcp_alloc/48 (inlined) (991036 (estimated locally),0.00 per call) 
+  Calls: tcp_abort/25 (423608 (estimated locally),0.00 per call) 
+tcp_recv_null/43 (tcp_recv_null) @071647e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Address is taken.
+  References: 
+  Referring: tcp_alloc/48 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: tcp_process_refused_data.part.0/100 (180303393 (estimated locally),2.22 per call) 
+  Calls: tcp_recv_null.part.0/99 (inlined) (497363818 (estimated locally),0.46 per call) pbuf_free/74 (571546170 (estimated locally),0.53 per call) tcp_recved/32 (571546170 (estimated locally),0.53 per call) 
+tcp_seg_copy/42 (tcp_seg_copy) @071640e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:230763 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_ref/89 (104301 (estimated locally),0.45 per call) memcpy/88 (104301 (estimated locally),0.45 per call) memp_malloc/77 (123389 (estimated locally),0.53 per call) 
+tcp_setprio/41 (tcp_setprio) @07164c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_seg_free/40 (tcp_seg_free) @071649a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: tcp_segs_free/39 (955630223 (estimated locally),8.09 per call) 
+  Calls: memp_free/67 (751619278 (estimated locally),0.70 per call) pbuf_free/74 (401890828 (estimated locally),0.37 per call) 
+tcp_segs_free/39 (tcp_segs_free) @07164700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body optimize_size
+  Called by: tcp_abandon/24 (88891 (estimated locally),0.23 per call) tcp_abandon/24 (88891 (estimated locally),0.23 per call) tcp_abandon/24 (88891 (estimated locally),0.23 per call) tcp_pcb_purge.part.0/95 (191555519 (estimated locally),0.18 per call) tcp_pcb_purge.part.0/95 (191555519 (estimated locally),0.18 per call) tcp_free_ooseq/65 (574129754 (estimated locally),0.53 per call) 
+  Calls: tcp_seg_free/40 (955630223 (estimated locally),8.09 per call) 
+tcp_process_refused_data/38 (tcp_process_refused_data) @07164460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:81355526 (estimated locally) body optimize_size
+  Called by: tcp_fasttmr/36 (358084727 (estimated locally),6.06 per call) 
+  Calls: tcp_process_refused_data.part.0/100 (inlined) (80989426 (estimated locally),1.00 per call) 
+tcp_txnow/37 (tcp_txnow) @07164000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: tcp_active_pcbs/8 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:118111602 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_output/73 (315357973 (estimated locally),2.67 per call) 
+tcp_fasttmr/36 (tcp_fasttmr) @071471c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (write)tcp_active_pcbs/8 (read)tcp_timer_ctr/13 (read)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:59055800 (estimated locally) body optimize_size
+  Called by: tcp_tmr/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: tcp_process_refused_data/38 (358084727 (estimated locally),6.06 per call) tcp_close_shutdown_fin/21 (220998616 (estimated locally),3.74 per call) tcp_output/73 (220998616 (estimated locally),3.74 per call) 
+tcp_slowtmr/35 (tcp_slowtmr) @07147d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: tcp_ticks/3 (read)tcp_ticks/3 (write)tcp_timer_ctr/13 (read)tcp_timer_ctr/13 (write)tcp_active_pcbs/8 (read)tcp_timer_ctr/13 (read)tcp_persist_backoff/5 (read)tcp_backoff/4 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_ticks/3 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)tcp_active_pcbs_changed/11 (write)tcp_active_pcbs_changed/11 (read)tcp_tw_pcbs/9 (read)tcp_ticks/3 (read)tcp_tw_pcbs/9 (read)tcp_tw_pcbs/9 (read)tcp_tw_pcbs/9 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:484786 (estimated locally) body optimize_size
+  Called by: tcp_tmr/17 (354334802 (estimated locally),0.33 per call) 
+  Calls: tcp_free/15 (529314 (estimated locally),1.09 per call) tcp_pcb_purge/57 (544281 (estimated locally),1.12 per call) tcp_output/73 (433046 (estimated locally),0.89 per call) tcp_free/15 (1292675 (estimated locally),2.67 per call) tcp_rst/68 (426583 (estimated locally),0.88 per call) tcp_pcb_purge/57 (1319056 (estimated locally),2.72 per call) tcp_free_ooseq/65 (923339 (estimated locally),1.90 per call) tcp_keepalive/85 (186119 (estimated locally),0.38 per call) tcp_rexmit_rto_commit/84 (166963 (estimated locally),0.34 per call) tcp_rexmit_rto_prepare/83 (275972 (estimated locally),0.57 per call) tcp_output/73 (33130 (estimated locally),0.07 per call) tcp_split_unsent_seg/82 (100395 (estimated locally),0.21 per call) tcp_zero_window_probe/81 (100395 (estimated locally),0.21 per call) 
+   Indirect call(937329 (estimated locally),1.93 per call) 
+   Indirect call(904872 (estimated locally),1.87 per call) 
+tcp_connect/34 (tcp_connect) @071470e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:675810386 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_output/73 (328181520 (estimated locally),0.49 per call) tcp_timer_needed/76 (328181520 (estimated locally),0.49 per call) tcp_enqueue_flags/80 (656363041 (estimated locally),0.97 per call) tcp_eff_send_mss_netif/60 (656363041 (estimated locally),0.97 per call) tcp_next_iss/59 (656363041 (estimated locally),0.97 per call) tcp_new_port/33 (329896985 (estimated locally),0.49 per call) ip4_route/79 (331388231 (estimated locally),0.49 per call) netif_get_by_index/78 (331388231 (estimated locally),0.49 per call) 
+tcp_new_port/33 (tcp_new_port) @07119b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: tcp_port/2 (read)tcp_port/2 (write)tcp_port/2 (write)tcp_pcb_lists/10 (read)tcp_port/2 (read)tcp_port/2 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:29273961 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: tcp_connect/34 (329896985 (estimated locally),0.49 per call) tcp_bind/26 (21623814 (estimated locally),0.33 per call) 
+  Calls: 
+tcp_recved/32 (tcp_recved) @071198c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:385552 (estimated locally) body optimize_size
+  Called by: tcp_recv_null/43 (571546170 (estimated locally),0.53 per call) 
+  Calls: tcp_recved.part.0/93 (inlined) (68783 (estimated locally),0.18 per call) tcp_update_rcv_ann_wnd/31 (208432 (estimated locally),0.54 per call) 
+tcp_update_rcv_ann_wnd/31 (tcp_update_rcv_ann_wnd) @071192a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) body optimize_size
+  Called by: tcp_recved/32 (208432 (estimated locally),0.54 per call) 
+  Calls: 
+tcp_listen_with_backlog_and_err/30 (tcp_listen_with_backlog_and_err) @07119000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_accept_null/28 (addr)tcp_listen_pcbs/7 (read)tcp_listen_pcbs/7 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:556620529 (estimated locally) body optimize_size
+  Called by: tcp_listen_with_backlog/29 (1073741824 (estimated locally),1.00 per call) 
+  Calls: tcp_timer_needed/76 (328181520 (estimated locally),0.59 per call) tcp_free/15 (328181520 (estimated locally),0.59 per call) memp_malloc/77 (357769019 (estimated locally),0.64 per call) 
+tcp_listen_with_backlog/29 (tcp_listen_with_backlog) @0710b2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_listen_with_backlog_and_err/30 (1073741824 (estimated locally),1.00 per call) 
+tcp_accept_null/28 (tcp_accept_null) @0710be00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: tcp_listen_with_backlog_and_err/30 (addr)
+  Availability: available
+  Function flags: count:230763 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_abort/25 (123389 (estimated locally),0.53 per call) 
+tcp_bind_netif/27 (tcp_bind_netif) @0710bb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_bind/26 (tcp_bind) @0710b8c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ip_addr_any/75 (addr)tcp_pcb_lists/10 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:66514664 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_timer_needed/76 (34903969 (estimated locally),0.52 per call) tcp_new_port/33 (21623814 (estimated locally),0.33 per call) 
+tcp_abort/25 (tcp_abort) @0710b1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: tcp_netif_ip_addr_changed_pcblist.part.0/97 (410283 (estimated locally),1.15 per call) tcp_kill_prio/44 (423608 (estimated locally),0.00 per call) tcp_kill_timewait/46 (100070817 (estimated locally),0.09 per call) tcp_accept_null/28 (123389 (estimated locally),0.53 per call) 
+  Calls: tcp_abandon/24 (1073741824 (estimated locally),1.00 per call) 
+tcp_abandon/24 (tcp_abandon) @070f8d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: tcp_tw_pcbs/9 (addr)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_active_pcbs/8 (addr)tcp_active_pcbs_changed/11 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:385552 (estimated locally) body optimize_size
+  Called by: tcp_kill_state.part.0/98 (39897 (estimated locally),0.22 per call) tcp_abort/25 (1073741824 (estimated locally),1.00 per call) 
+  Calls: tcp_free/15 (166245 (estimated locally),0.43 per call) tcp_rst/68 (54861 (estimated locally),0.14 per call) tcp_segs_free/39 (88891 (estimated locally),0.23 per call) tcp_segs_free/39 (88891 (estimated locally),0.23 per call) tcp_segs_free/39 (88891 (estimated locally),0.23 per call) tcp_pcb_remove/58 (54861 (estimated locally),0.14 per call) tcp_free/15 (42187 (estimated locally),0.11 per call) tcp_pcb_remove/58 (42187 (estimated locally),0.11 per call) 
+   Indirect call(116372 (estimated locally),0.30 per call)  of param:0 loaded from aggregate passed by reference at offset 1312 (vptr maybe changed)
+tcp_shutdown/23 (tcp_shutdown) @070f8ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_close_shutdown/20 (458758748 (estimated locally),0.43 per call) pbuf_free/74 (226701775 (estimated locally),0.21 per call) tcp_close_shutdown/20 (107589552 (estimated locally),0.10 per call) 
+tcp_close/22 (tcp_close) @070f8c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: tcp_recv_null.part.0/99 (100666437 (estimated locally),0.09 per call) 
+  Calls: tcp_close_shutdown/20 (1068909987 (estimated locally),1.00 per call) 
+tcp_close_shutdown_fin/21 (tcp_close_shutdown_fin) @070f89a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: lwip_stats/71 (read)lwip_stats/71 (write)lwip_stats/71 (read)lwip_stats/71 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) body local optimize_size
+  Called by: tcp_fasttmr/36 (220998616 (estimated locally),3.74 per call) tcp_close_shutdown/20 (46762 (estimated locally),0.13 per call) tcp_handle_closepend/47 (499699037 (estimated locally),0.47 per call) 
+  Calls: tcp_output/73 (62008 (estimated locally),0.17 per call) tcp_send_fin/72 (62635 (estimated locally),0.18 per call) tcp_send_fin/72 (62635 (estimated locally),0.18 per call) tcp_send_fin/72 (62635 (estimated locally),0.18 per call) 
+tcp_close_shutdown/20 (tcp_close_shutdown) @070f8700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: tcp_active_pcbs/8 (read)tcp_active_pcbs/8 (write)tcp_active_pcbs_changed/11 (write)tcp_input_pcb/69 (read)tcp_bound_pcbs/6 (read)tcp_bound_pcbs/6 (write)tcp_listen_pcbs/7 (addr)tcp_active_pcbs/8 (addr)tcp_active_pcbs_changed/11 (write)lwip_stats/71 (read)lwip_stats/71 (write)
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) body local optimize_size
+  Called by: tcp_shutdown/23 (458758748 (estimated locally),0.43 per call) tcp_shutdown/23 (107589552 (estimated locally),0.10 per call) tcp_close/22 (1068909987 (estimated locally),1.00 per call) 
+  Calls: tcp_close_shutdown_fin/21 (46762 (estimated locally),0.13 per call) tcp_free/15 (46762 (estimated locally),0.13 per call) tcp_pcb_remove/58 (46762 (estimated locally),0.13 per call) tcp_free_listen/16 (inlined) (46762 (estimated locally),0.13 per call) tcp_pcb_remove/58 (46762 (estimated locally),0.13 per call) tcp_listen_closed/19 (inlined) (46762 (estimated locally),0.13 per call) tcp_free/15 (46762 (estimated locally),0.13 per call) tcp_free/15 (8995 (estimated locally),0.03 per call) tcp_trigger_input_pcb_close/70 (3855 (estimated locally),0.01 per call) tcp_pcb_purge/57 (12850 (estimated locally),0.04 per call) tcp_rst/68 (12850 (estimated locally),0.04 per call) 
+tcp_listen_closed/19 (tcp_listen_closed) @070f80e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: tcp_pcb_lists/10 (read)
+  Referring: 
+  Function tcp_listen_closed/19 is inline copy in tcp_close_shutdown/20
+  Availability: local
+  Function flags: count:46762 (estimated locally) body local optimize_size
+  Called by: tcp_close_shutdown/20 (inlined) (46762 (estimated locally),0.13 per call) 
+  Calls: tcp_remove_listener/18 (inlined) (33388 (estimated locally),0.09 per call) 
+tcp_remove_listener/18 (tcp_remove_listener) @070f3380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function tcp_remove_listener/18 is inline copy in tcp_close_shutdown/20
+  Availability: local
+  Function flags: count:33388 (estimated locally) body local optimize_size
+  Called by: tcp_listen_closed/19 (inlined) (33388 (estimated locally),0.09 per call) 
+  Calls: 
+tcp_tmr/17 (tcp_tmr) @070f3d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: tcp_timer/12 (read)tcp_timer/12 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: tcp_slowtmr/35 (354334802 (estimated locally),0.33 per call) tcp_fasttmr/36 (1073741824 (estimated locally),1.00 per call) 
+tcp_free_listen/16 (tcp_free_listen) @070f3a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function tcp_free_listen/16 is inline copy in tcp_close_shutdown/20
+  Availability: local
+  Function flags: count:46762 (estimated locally) body local optimize_size
+  Called by: tcp_close_shutdown/20 (inlined) (46762 (estimated locally),0.13 per call) 
+  Calls: memp_free/67 (22857 (estimated locally),0.06 per call) 
+tcp_free/15 (tcp_free) @070f37e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:210043 (estimated locally) body optimize_size
+  Called by: tcp_slowtmr/35 (529314 (estimated locally),1.09 per call) tcp_slowtmr/35 (1292675 (estimated locally),2.67 per call) tcp_close_shutdown/20 (46762 (estimated locally),0.13 per call) tcp_close_shutdown/20 (46762 (estimated locally),0.13 per call) tcp_close_shutdown/20 (8995 (estimated locally),0.03 per call) tcp_abandon/24 (166245 (estimated locally),0.43 per call) tcp_abandon/24 (42187 (estimated locally),0.11 per call) tcp_listen_with_backlog_and_err/30 (328181520 (estimated locally),0.59 per call) 
+  Calls: tcp_free.part.0/92 (inlined) (102669 (estimated locally),0.49 per call) 
+tcp_init/14 (tcp_init) @070f3540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: tcp_port/2 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: rand/66 (1073741824 (estimated locally),1.00 per call) 
+tcp_timer_ctr/13 (tcp_timer_ctr) @070d4510
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_fasttmr/36 (read)tcp_fasttmr/36 (write)tcp_fasttmr/36 (read)tcp_alloc/48 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)
+  Availability: available
+  Varpool flags:
+tcp_timer/12 (tcp_timer) @070d4480
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_tmr/17 (read)tcp_tmr/17 (write)
+  Availability: available
+  Varpool flags: used-by-single-function
+tcp_active_pcbs_changed/11 (tcp_active_pcbs_changed) @070d43f0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: tcp_fasttmr/36 (write)tcp_fasttmr/36 (read)tcp_close_shutdown/20 (write)tcp_abandon/24 (write)tcp_close_shutdown/20 (write)tcp_connect/34 (write)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)
+  Availability: available
+  Varpool flags:
+tcp_pcb_lists/10 (tcp_pcb_lists) @070d43a8
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: tcp_listen_pcbs/7 (addr)tcp_bound_pcbs/6 (addr)tcp_active_pcbs/8 (addr)tcp_tw_pcbs/9 (addr)
+  Referring: tcp_new_port/33 (read)tcp_listen_closed/19 (read)tcp_bind/26 (read)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+tcp_tw_pcbs/9 (tcp_tw_pcbs) @070d4360
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_kill_timewait/46 (read)tcp_abandon/24 (addr)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)
+  Availability: available
+  Varpool flags:
+tcp_active_pcbs/8 (tcp_active_pcbs) @070d4318
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_netif_ip_addr_changed/62 (read)tcp_kill_state.part.0/98 (read)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)tcp_fasttmr/36 (read)tcp_close_shutdown/20 (addr)tcp_connect/34 (write)tcp_handle_closepend/47 (read)tcp_abandon/24 (addr)tcp_kill_prio/44 (read)tcp_connect/34 (read)tcp_txnow/37 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)
+  Availability: available
+  Varpool flags:
+tcp_listen_pcbs/7 (tcp_listen_pcbs) @070d42d0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_listen_with_backlog_and_err/30 (write)tcp_netif_ip_addr_changed/62 (read)tcp_listen_with_backlog_and_err/30 (read)tcp_close_shutdown/20 (addr)
+  Availability: available
+  Varpool flags:
+tcp_bound_pcbs/6 (tcp_bound_pcbs) @070d4288
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)tcp_abandon/24 (write)tcp_bind/26 (read)tcp_listen_with_backlog_and_err/30 (read)tcp_listen_with_backlog_and_err/30 (write)tcp_connect/34 (write)tcp_connect/34 (read)tcp_abandon/24 (read)tcp_netif_ip_addr_changed/62 (read)tcp_bind/26 (write)tcp_close_shutdown/20 (read)tcp_close_shutdown/20 (write)
+  Availability: available
+  Varpool flags:
+tcp_persist_backoff/5 (tcp_persist_backoff) @070d4240
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_slowtmr/35 (read)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+tcp_backoff/4 (tcp_backoff) @070d4168
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_slowtmr/35 (read)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+tcp_ticks/3 (tcp_ticks) @070d4090
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: tcp_kill_state.part.0/98 (read)tcp_kill_prio/44 (read)tcp_next_iss/59 (read)tcp_alloc/48 (read)tcp_kill_prio/44 (read)tcp_kill_timewait/46 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (write)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)tcp_slowtmr/35 (read)
+  Availability: available
+  Varpool flags:
+tcp_port/2 (tcp_port) @070d4048
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_new_port/33 (read)tcp_new_port/33 (read)tcp_new_port/33 (write)tcp_new_port/33 (write)tcp_new_port/33 (read)tcp_init/14 (write)
+  Availability: available
+  Varpool flags: initialized
+tcp_state_str/1 (tcp_state_str) @070caf78
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_debug_state_str/63 (read)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:tcp_new_port:0
+Time profile order in expand_all_functions:tcp_close_shutdown_fin:0
+Time profile order in expand_all_functions:tcp_init:0
+Time profile order in expand_all_functions:tcp_free:0
+Time profile order in expand_all_functions:tcp_bind:0
+Time profile order in expand_all_functions:tcp_bind_netif:0
+Time profile order in expand_all_functions:tcp_listen_with_backlog_and_err:0
+Time profile order in expand_all_functions:tcp_listen_with_backlog:0
+Time profile order in expand_all_functions:tcp_update_rcv_ann_wnd:0
+Time profile order in expand_all_functions:tcp_recved:0
+Time profile order in expand_all_functions:tcp_txnow:0
+Time profile order in expand_all_functions:tcp_seg_free:0
+Time profile order in expand_all_functions:tcp_segs_free:0
+Time profile order in expand_all_functions:tcp_setprio:0
+Time profile order in expand_all_functions:tcp_seg_copy:0
+Time profile order in expand_all_functions:tcp_arg:0
+Time profile order in expand_all_functions:tcp_recv:0
+Time profile order in expand_all_functions:tcp_sent:0
+Time profile order in expand_all_functions:tcp_err:0
+Time profile order in expand_all_functions:tcp_accept:0
+Time profile order in expand_all_functions:tcp_poll:0
+Time profile order in expand_all_functions:tcp_next_iss:0
+Time profile order in expand_all_functions:tcp_eff_send_mss_netif:0
+Time profile order in expand_all_functions:tcp_connect:0
+Time profile order in expand_all_functions:tcp_debug_state_str:0
+Time profile order in expand_all_functions:tcp_tcp_get_tcp_addrinfo:0
+Time profile order in expand_all_functions:tcp_free_ooseq:0
+Time profile order in expand_all_functions:tcp_pcb_purge:0
+Time profile order in expand_all_functions:tcp_pcb_remove:0
+Time profile order in expand_all_functions:tcp_abandon:0
+Time profile order in expand_all_functions:tcp_abort:0
+Time profile order in expand_all_functions:tcp_accept_null:0
+Time profile order in expand_all_functions:tcp_netif_ip_addr_changed_pcblist:0
+Time profile order in expand_all_functions:tcp_netif_ip_addr_changed:0
+Time profile order in expand_all_functions:tcp_kill_state:0
+Time profile order in expand_all_functions:tcp_alloc:0
+Time profile order in expand_all_functions:tcp_new:0
+Time profile order in expand_all_functions:tcp_new_ip_type:0
+Time profile order in expand_all_functions:tcp_close_shutdown:0
+Time profile order in expand_all_functions:tcp_close:0
+Time profile order in expand_all_functions:tcp_recv_null:0
+Time profile order in expand_all_functions:tcp_process_refused_data:0
+Time profile order in expand_all_functions:tcp_fasttmr:0
+Time profile order in expand_all_functions:tcp_shutdown:0
+Time profile order in expand_all_functions:tcp_slowtmr:0
+Time profile order in expand_all_functions:tcp_tmr:0
+Trivially needed variables: iss.7765 tcp_timer_ctr tcp_timer tcp_active_pcbs_changed tcp_pcb_lists tcp_tw_pcbs tcp_active_pcbs tcp_listen_pcbs tcp_bound_pcbs tcp_persist_backoff tcp_backoff tcp_ticks tcp_port tcp_state_str
+Removing variables:
+
+Final Symbol table:
+
+iss.7765/91 (iss) @0721c510
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function
+memset/90 (memset) @07207000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pbuf_ref/89 (pbuf_ref) @071f2e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+memcpy/88 (memcpy) @071f2d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pbuf_cat/87 (pbuf_cat) @071f28c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pbuf_split_64k/86 (pbuf_split_64k) @071f27e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_keepalive/85 (tcp_keepalive) @071f21c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_rexmit_rto_commit/84 (tcp_rexmit_rto_commit) @071f20e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_rexmit_rto_prepare/83 (tcp_rexmit_rto_prepare) @071f2000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_split_unsent_seg/82 (tcp_split_unsent_seg) @071c3ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_zero_window_probe/81 (tcp_zero_window_probe) @071c3e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_enqueue_flags/80 (tcp_enqueue_flags) @071c3b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ip4_route/79 (ip4_route) @071c3a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+netif_get_by_index/78 (netif_get_by_index) @071c39a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+memp_malloc/77 (memp_malloc) @071c32a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_timer_needed/76 (tcp_timer_needed) @071adc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ip_addr_any/75 (ip_addr_any) @071b8e58
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+pbuf_free/74 (pbuf_free) @071ad460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_output/73 (tcp_output) @071ad2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_send_fin/72 (tcp_send_fin) @071ad0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+lwip_stats/71 (lwip_stats) @071a8168
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+tcp_trigger_input_pcb_close/70 (tcp_trigger_input_pcb_close) @0718dd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_input_pcb/69 (tcp_input_pcb) @071a1ea0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+tcp_rst/68 (tcp_rst) @0718db60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+memp_free/67 (memp_free) @0718d620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+rand/66 (rand) @0718d460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_free_ooseq/65 (tcp_free_ooseq) @0718d000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_tcp_get_tcp_addrinfo/64 (tcp_tcp_get_tcp_addrinfo) @07187700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_debug_state_str/63 (tcp_debug_state_str) @07187ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_netif_ip_addr_changed/62 (tcp_netif_ip_addr_changed) @07187c40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_netif_ip_addr_changed_pcblist/61 (tcp_netif_ip_addr_changed_pcblist) @07187620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+tcp_eff_send_mss_netif/60 (tcp_eff_send_mss_netif) @071872a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_next_iss/59 (tcp_next_iss) @07178e00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_pcb_remove/58 (tcp_pcb_remove) @071788c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_pcb_purge/57 (tcp_pcb_purge) @071780e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_poll/56 (tcp_poll) @07178d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:385552 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_accept/55 (tcp_accept) @07178a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_err/54 (tcp_err) @071787e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:451151 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_sent/53 (tcp_sent) @07178540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:451151 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_recv/52 (tcp_recv) @071782a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:451151 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_arg/51 (tcp_arg) @07178000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_new_ip_type/50 (tcp_new_ip_type) @0716dc40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_new/49 (tcp_new) @0716de00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_alloc/48 (tcp_alloc) @0716db60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_kill_state/45 (tcp_kill_state) @0716d2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:181990 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+tcp_recv_null/43 (tcp_recv_null) @071647e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_seg_copy/42 (tcp_seg_copy) @071640e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:230763 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_setprio/41 (tcp_setprio) @07164c40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_seg_free/40 (tcp_seg_free) @071649a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_segs_free/39 (tcp_segs_free) @07164700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_process_refused_data/38 (tcp_process_refused_data) @07164460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:81355526 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_txnow/37 (tcp_txnow) @07164000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111602 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_fasttmr/36 (tcp_fasttmr) @071471c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:59055800 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_slowtmr/35 (tcp_slowtmr) @07147d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:484786 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_connect/34 (tcp_connect) @071470e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:675810386 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_new_port/33 (tcp_new_port) @07119b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:29273961 (estimated locally) local nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_recved/32 (tcp_recved) @071198c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:385552 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_update_rcv_ann_wnd/31 (tcp_update_rcv_ann_wnd) @071192a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_listen_with_backlog_and_err/30 (tcp_listen_with_backlog_and_err) @07119000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:556620529 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_listen_with_backlog/29 (tcp_listen_with_backlog) @0710b2a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_accept_null/28 (tcp_accept_null) @0710be00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:230763 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_bind_netif/27 (tcp_bind_netif) @0710bb60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_bind/26 (tcp_bind) @0710b8c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:66514664 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_abort/25 (tcp_abort) @0710b1c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_abandon/24 (tcp_abandon) @070f8d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:385552 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_shutdown/23 (tcp_shutdown) @070f8ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_close/22 (tcp_close) @070f8c40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_close_shutdown_fin/21 (tcp_close_shutdown_fin) @070f89a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+tcp_close_shutdown/20 (tcp_close_shutdown) @070f8700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+tcp_tmr/17 (tcp_tmr) @070f3d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_free/15 (tcp_free) @070f37e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:210043 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_init/14 (tcp_init) @070f3540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_timer_ctr/13 (tcp_timer_ctr) @070d4510
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0721c510
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+tcp_timer/12 (tcp_timer) @070d4480
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @070d4510
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: used-by-single-function
+tcp_active_pcbs_changed/11 (tcp_active_pcbs_changed) @070d43f0
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @070d4480
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+tcp_pcb_lists/10 (tcp_pcb_lists) @070d43a8
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @070d43f0
+  References: tcp_listen_pcbs/7 (addr)tcp_bound_pcbs/6 (addr)tcp_active_pcbs/8 (addr)tcp_tw_pcbs/9 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+tcp_tw_pcbs/9 (tcp_tw_pcbs) @070d4360
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @070d43a8
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)
+  Availability: available
+  Varpool flags:
+tcp_active_pcbs/8 (tcp_active_pcbs) @070d4318
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @070d4360
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)
+  Availability: available
+  Varpool flags:
+tcp_listen_pcbs/7 (tcp_listen_pcbs) @070d42d0
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @070d4318
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)
+  Availability: available
+  Varpool flags:
+tcp_bound_pcbs/6 (tcp_bound_pcbs) @070d4288
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @070d42d0
+  References: 
+  Referring: tcp_pcb_lists/10 (addr)
+  Availability: available
+  Varpool flags:
+tcp_persist_backoff/5 (tcp_persist_backoff) @070d4240
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @070d4288
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+tcp_backoff/4 (tcp_backoff) @070d4168
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @070d4240
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+tcp_ticks/3 (tcp_ticks) @070d4090
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @070d4168
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+tcp_port/2 (tcp_port) @070d4048
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @070d4090
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+tcp_state_str/1 (tcp_state_str) @070caf78
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @070d4048
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known

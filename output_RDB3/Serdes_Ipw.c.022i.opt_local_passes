@@ -1,0 +1,219 @@
+Serdes_Ipw_SetMode (uint8 Instance, Serdes_ModeType Mode)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  switch (Mode_2(D)) <default: <L5> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  Serdes_Ip_SetMode (Instance_4(D), 1);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  Serdes_Ip_SetMode (Instance_4(D), 3);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  Serdes_Ip_SetMode (Instance_4(D), 2);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L5>:
+  return;
+
+}
+
+
+Serdes_Ipw_GetJobResult (uint8 Instance)
+{
+  Serdes_Ip_JobResultType JobResult;
+  Serdes_JobResultType RetJobResult;
+  Serdes_JobResultType _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetJobResult_2 = 4;
+  # DEBUG RetJobResult => RetJobResult_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  JobResult_6 = Serdes_Ip_GetJobResult (Instance_4(D));
+  # DEBUG JobResult => JobResult_6
+  # DEBUG BEGIN_STMT
+  if (JobResult_6 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetJobResult_9 = 1;
+  # DEBUG RetJobResult => RetJobResult_9
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (JobResult_6 == 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetJobResult_8 = 2;
+  # DEBUG RetJobResult => RetJobResult_8
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetJobResult_7 = 4;
+  # DEBUG RetJobResult => RetJobResult_7
+
+  <bb 7> :
+  # RetJobResult_1 = PHI <RetJobResult_9(3), RetJobResult_8(5), RetJobResult_7(6)>
+  # DEBUG RetJobResult => RetJobResult_1
+  # DEBUG BEGIN_STMT
+  _10 = RetJobResult_1;
+  return _10;
+
+}
+
+
+Serdes_Ipw_GetStatus (uint8 Instance)
+{
+  Serdes_Ip_StatusType Status;
+  Serdes_StatusType RetStatus;
+  Serdes_StatusType _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  RetStatus_2 = 3;
+  # DEBUG RetStatus => RetStatus_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Status_6 = Serdes_Ip_GetStatus (Instance_4(D));
+  # DEBUG Status => Status_6
+  # DEBUG BEGIN_STMT
+  if (Status_6 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  RetStatus_9 = 1;
+  # DEBUG RetStatus => RetStatus_9
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (Status_6 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  RetStatus_8 = 2;
+  # DEBUG RetStatus => RetStatus_8
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  RetStatus_7 = 3;
+  # DEBUG RetStatus => RetStatus_7
+
+  <bb 7> :
+  # RetStatus_1 = PHI <RetStatus_9(3), RetStatus_8(5), RetStatus_7(6)>
+  # DEBUG RetStatus => RetStatus_1
+  # DEBUG BEGIN_STMT
+  _10 = RetStatus_1;
+  return _10;
+
+}
+
+
+Serdes_Ipw_MainFunction (uint8 Instance)
+{
+  Serdes_StatusType Status;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  Serdes_StatusType _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Status_5 = 3;
+  # DEBUG Status => Status_5
+  # DEBUG BEGIN_STMT
+  _1 = Serdes_Ip_GetJobResult (Instance_7(D));
+  if (_1 == 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Serdes_Ip_MainFunction (Instance_7(D));
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Status_10 = 1;
+  # DEBUG Status => Status_10
+
+  <bb 5> :
+  # Status_3 = PHI <Status_5(2), Status_5(3), Status_10(4)>
+  # DEBUG Status => Status_3
+  # DEBUG BEGIN_STMT
+  _11 = Status_3;
+  return _11;
+
+}
+
+
+Serdes_Ipw_InitChannel (const uint8 Instance, const struct Serdes_Ipw_HwChannelConfigType * ConfigPtr)
+{
+  Std_ReturnType StdStatus;
+  Serdes_Ip_StatusType Status;
+  const struct Serdes_Ip_ConfigType * _1;
+  Std_ReturnType _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  StdStatus_3 = 1;
+  # DEBUG StdStatus => StdStatus_3
+  # DEBUG BEGIN_STMT
+  _1 = ConfigPtr_5(D)->SerdesHwConfig;
+  Status_8 = Serdes_Ip_Init (Instance_6(D), _1);
+  # DEBUG Status => Status_8
+  # DEBUG BEGIN_STMT
+  if (Status_8 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  StdStatus_9 = 0;
+  # DEBUG StdStatus => StdStatus_9
+
+  <bb 4> :
+  # StdStatus_2 = PHI <StdStatus_3(2), StdStatus_9(3)>
+  # DEBUG StdStatus => StdStatus_2
+  # DEBUG BEGIN_STMT
+  _10 = StdStatus_2;
+  return _10;
+
+}
+
+

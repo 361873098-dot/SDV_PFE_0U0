@@ -1,0 +1,2803 @@
+Trivially needed symbols: altcp_default_get_port altcp_default_get_ip altcp_default_get_tcp_addrinfo altcp_default_dealloc altcp_default_setprio altcp_default_nagle_disabled altcp_default_nagle_enable altcp_default_nagle_disable altcp_default_sndqueuelen altcp_default_sndbuf altcp_default_mss altcp_default_output altcp_default_write altcp_default_shutdown altcp_default_bind altcp_default_recved altcp_default_set_poll altcp_get_port altcp_get_ip altcp_get_tcp_addrinfo altcp_setprio altcp_nagle_disabled altcp_nagle_enable altcp_nagle_disable altcp_sndqueuelen altcp_sndbuf altcp_mss altcp_output altcp_write altcp_shutdown altcp_close altcp_abort altcp_listen_with_backlog_and_err altcp_connect altcp_bind altcp_recved altcp_err altcp_poll altcp_sent altcp_recv altcp_accept altcp_arg altcp_new_ip_type altcp_new altcp_new_ip6 altcp_free altcp_alloc
+
+
+Initial Symbol table:
+
+altcp_tcp_new_ip_type/51 (altcp_tcp_new_ip_type) @07188380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_new_ip_type/5 
+  Calls: 
+memp_free/50 (memp_free) @07188000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_free/2 
+  Calls: 
+memset/49 (memset) @071818c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_alloc/1 
+  Calls: 
+memp_malloc/48 (memp_malloc) @07181620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_alloc/1 
+  Calls: 
+altcp_default_get_port/47 (altcp_default_get_port) @07181d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_port/30 
+altcp_default_get_ip/46 (altcp_default_get_ip) @07181a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07181d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_ip/29 
+altcp_default_get_tcp_addrinfo/45 (altcp_default_get_tcp_addrinfo) @071817e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07181a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_tcp_addrinfo/28 
+altcp_default_dealloc/44 (altcp_default_dealloc) @07181540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071817e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_default_setprio/43 (altcp_default_setprio) @071812a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07181540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_setprio/27 
+altcp_default_nagle_disabled/42 (altcp_default_nagle_disabled) @07181000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071812a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_disabled/26 
+altcp_default_nagle_enable/41 (altcp_default_nagle_enable) @0717db60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07181000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_enable/25 
+altcp_default_nagle_disable/40 (altcp_default_nagle_disable) @0717d620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0717db60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_disable/24 
+altcp_default_sndqueuelen/39 (altcp_default_sndqueuelen) @0717d0e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0717d620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_sndqueuelen/23 
+altcp_default_sndbuf/38 (altcp_default_sndbuf) @0717dd20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0717d0e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_sndbuf/22 
+altcp_default_mss/37 (altcp_default_mss) @0717da80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0717dd20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_mss/21 
+altcp_default_output/36 (altcp_default_output) @0717d7e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0717da80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_output/20 
+altcp_default_write/35 (altcp_default_write) @0717d540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0717d7e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_write/19 
+altcp_default_shutdown/34 (altcp_default_shutdown) @0717d2a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0717d540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_shutdown/18 
+   Indirect call
+altcp_default_bind/33 (altcp_default_bind) @0717d000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0717d2a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_bind/13 
+altcp_default_recved/32 (altcp_default_recved) @07176b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0717d000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_recved/12 
+altcp_default_set_poll/31 (altcp_default_set_poll) @07176620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07176b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_poll/10 
+altcp_get_port/30 (altcp_get_port) @071760e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07176620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_port/47 
+  Calls: 
+   Indirect call
+altcp_get_ip/29 (altcp_get_ip) @07176d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071760e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_ip/46 
+  Calls: 
+   Indirect call
+altcp_get_tcp_addrinfo/28 (altcp_get_tcp_addrinfo) @07176a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07176d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_tcp_addrinfo/45 
+  Calls: 
+   Indirect call
+altcp_setprio/27 (altcp_setprio) @071767e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07176a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_setprio/43 
+  Calls: 
+   Indirect call
+altcp_nagle_disabled/26 (altcp_nagle_disabled) @07176540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071767e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_disabled/42 
+  Calls: 
+   Indirect call
+altcp_nagle_enable/25 (altcp_nagle_enable) @071762a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07176540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_enable/41 
+  Calls: 
+   Indirect call
+altcp_nagle_disable/24 (altcp_nagle_disable) @07176000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071762a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_disable/40 
+  Calls: 
+   Indirect call
+altcp_sndqueuelen/23 (altcp_sndqueuelen) @07171b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07176000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_sndqueuelen/39 
+  Calls: 
+   Indirect call
+altcp_sndbuf/22 (altcp_sndbuf) @07171620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07171b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_sndbuf/38 
+  Calls: 
+   Indirect call
+altcp_mss/21 (altcp_mss) @071710e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07171620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_mss/37 
+  Calls: 
+   Indirect call
+altcp_output/20 (altcp_output) @07171d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071710e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_output/36 
+  Calls: 
+   Indirect call
+altcp_write/19 (altcp_write) @07171a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07171d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_write/35 
+  Calls: 
+   Indirect call
+altcp_shutdown/18 (altcp_shutdown) @071717e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07171a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_shutdown/34 
+  Calls: 
+   Indirect call
+altcp_close/17 (altcp_close) @07171540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071717e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_abort/16 (altcp_abort) @071712a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07171540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_listen_with_backlog_and_err/15 (altcp_listen_with_backlog_and_err) @07171000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071712a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_connect/14 (altcp_connect) @07159b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07171000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_bind/13 (altcp_bind) @07159620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07159b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_bind/33 
+  Calls: 
+   Indirect call
+altcp_recved/12 (altcp_recved) @071590e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07159620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_recved/32 
+  Calls: 
+   Indirect call
+altcp_err/11 (altcp_err) @07159d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071590e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_poll/10 (altcp_poll) @07159a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07159d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_set_poll/31 
+  Calls: 
+   Indirect call
+altcp_sent/9 (altcp_sent) @071597e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07159a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_recv/8 (altcp_recv) @07159540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071597e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_accept/7 (altcp_accept) @071592a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07159540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_arg/6 (altcp_arg) @07159000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071592a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_new_ip_type/5 (altcp_new_ip_type) @071517e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07159000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_new/4 altcp_new_ip6/3 
+  Calls: altcp_tcp_new_ip_type/51 
+   Indirect call
+altcp_new/4 (altcp_new) @071512a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071517e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_new_ip_type/5 
+altcp_new_ip6/3 (altcp_new_ip6) @07151700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @071512a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_new_ip_type/5 
+altcp_free/2 (altcp_free) @07151460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07151700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memp_free/50 
+   Indirect call
+altcp_alloc/1 (altcp_alloc) @07151000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07151460
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memset/49 memp_malloc/48 
+oal_swap_endian_long/0 (oal_swap_endian_long) @06f09620
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+altcp_tcp_new_ip_type/51 (altcp_tcp_new_ip_type) @07188380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_new_ip_type/5 
+  Calls: 
+memp_free/50 (memp_free) @07188000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_free/2 
+  Calls: 
+memset/49 (memset) @071818c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_alloc/1 
+  Calls: 
+memp_malloc/48 (memp_malloc) @07181620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_alloc/1 
+  Calls: 
+altcp_default_get_port/47 (altcp_default_get_port) @07181d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_port/30 
+altcp_default_get_ip/46 (altcp_default_get_ip) @07181a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_ip/29 
+altcp_default_get_tcp_addrinfo/45 (altcp_default_get_tcp_addrinfo) @071817e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_tcp_addrinfo/28 
+altcp_default_dealloc/44 (altcp_default_dealloc) @07181540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_default_setprio/43 (altcp_default_setprio) @071812a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_setprio/27 
+altcp_default_nagle_disabled/42 (altcp_default_nagle_disabled) @07181000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_disabled/26 
+altcp_default_nagle_enable/41 (altcp_default_nagle_enable) @0717db60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_enable/25 
+altcp_default_nagle_disable/40 (altcp_default_nagle_disable) @0717d620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_disable/24 
+altcp_default_sndqueuelen/39 (altcp_default_sndqueuelen) @0717d0e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_sndqueuelen/23 
+altcp_default_sndbuf/38 (altcp_default_sndbuf) @0717dd20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_sndbuf/22 
+altcp_default_mss/37 (altcp_default_mss) @0717da80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_mss/21 
+altcp_default_output/36 (altcp_default_output) @0717d7e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_output/20 
+altcp_default_write/35 (altcp_default_write) @0717d540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_write/19 
+altcp_default_shutdown/34 (altcp_default_shutdown) @0717d2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_shutdown/18 
+   Indirect call
+altcp_default_bind/33 (altcp_default_bind) @0717d000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_bind/13 
+altcp_default_recved/32 (altcp_default_recved) @07176b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_recved/12 
+altcp_default_set_poll/31 (altcp_default_set_poll) @07176620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_poll/10 
+altcp_get_port/30 (altcp_get_port) @071760e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_port/47 
+  Calls: 
+   Indirect call
+altcp_get_ip/29 (altcp_get_ip) @07176d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_ip/46 
+  Calls: 
+   Indirect call
+altcp_get_tcp_addrinfo/28 (altcp_get_tcp_addrinfo) @07176a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_tcp_addrinfo/45 
+  Calls: 
+   Indirect call
+altcp_setprio/27 (altcp_setprio) @071767e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_setprio/43 
+  Calls: 
+   Indirect call
+altcp_nagle_disabled/26 (altcp_nagle_disabled) @07176540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_disabled/42 
+  Calls: 
+   Indirect call
+altcp_nagle_enable/25 (altcp_nagle_enable) @071762a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_enable/41 
+  Calls: 
+   Indirect call
+altcp_nagle_disable/24 (altcp_nagle_disable) @07176000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_disable/40 
+  Calls: 
+   Indirect call
+altcp_sndqueuelen/23 (altcp_sndqueuelen) @07171b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_sndqueuelen/39 
+  Calls: 
+   Indirect call
+altcp_sndbuf/22 (altcp_sndbuf) @07171620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_sndbuf/38 
+  Calls: 
+   Indirect call
+altcp_mss/21 (altcp_mss) @071710e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_mss/37 
+  Calls: 
+   Indirect call
+altcp_output/20 (altcp_output) @07171d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_output/36 
+  Calls: 
+   Indirect call
+altcp_write/19 (altcp_write) @07171a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_write/35 
+  Calls: 
+   Indirect call
+altcp_shutdown/18 (altcp_shutdown) @071717e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_shutdown/34 
+  Calls: 
+   Indirect call
+altcp_close/17 (altcp_close) @07171540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_abort/16 (altcp_abort) @071712a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_listen_with_backlog_and_err/15 (altcp_listen_with_backlog_and_err) @07171000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_connect/14 (altcp_connect) @07159b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_bind/13 (altcp_bind) @07159620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_bind/33 
+  Calls: 
+   Indirect call
+altcp_recved/12 (altcp_recved) @071590e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_recved/32 
+  Calls: 
+   Indirect call
+altcp_err/11 (altcp_err) @07159d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_poll/10 (altcp_poll) @07159a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_set_poll/31 
+  Calls: 
+   Indirect call
+altcp_sent/9 (altcp_sent) @071597e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_recv/8 (altcp_recv) @07159540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_accept/7 (altcp_accept) @071592a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_arg/6 (altcp_arg) @07159000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_new_ip_type/5 (altcp_new_ip_type) @071517e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_new/4 altcp_new_ip6/3 
+  Calls: altcp_tcp_new_ip_type/51 
+   Indirect call
+altcp_new/4 (altcp_new) @071512a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_new_ip_type/5 
+altcp_new_ip6/3 (altcp_new_ip6) @07151700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_new_ip_type/5 
+altcp_free/2 (altcp_free) @07151460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memp_free/50 
+   Indirect call
+altcp_alloc/1 (altcp_alloc) @07151000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memset/49 memp_malloc/48 
+
+
+Initial Symbol table:
+
+altcp_tcp_new_ip_type/51 (altcp_tcp_new_ip_type) @07188380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_new_ip_type/5 
+  Calls: 
+memp_free/50 (memp_free) @07188000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_free/2 
+  Calls: 
+memset/49 (memset) @071818c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_alloc/1 
+  Calls: 
+memp_malloc/48 (memp_malloc) @07181620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_alloc/1 
+  Calls: 
+altcp_default_get_port/47 (altcp_default_get_port) @07181d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_port/30 
+altcp_default_get_ip/46 (altcp_default_get_ip) @07181a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_ip/29 
+altcp_default_get_tcp_addrinfo/45 (altcp_default_get_tcp_addrinfo) @071817e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_tcp_addrinfo/28 
+altcp_default_dealloc/44 (altcp_default_dealloc) @07181540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_default_setprio/43 (altcp_default_setprio) @071812a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_setprio/27 
+altcp_default_nagle_disabled/42 (altcp_default_nagle_disabled) @07181000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_disabled/26 
+altcp_default_nagle_enable/41 (altcp_default_nagle_enable) @0717db60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_enable/25 
+altcp_default_nagle_disable/40 (altcp_default_nagle_disable) @0717d620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_disable/24 
+altcp_default_sndqueuelen/39 (altcp_default_sndqueuelen) @0717d0e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_sndqueuelen/23 
+altcp_default_sndbuf/38 (altcp_default_sndbuf) @0717dd20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_sndbuf/22 
+altcp_default_mss/37 (altcp_default_mss) @0717da80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_mss/21 
+altcp_default_output/36 (altcp_default_output) @0717d7e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_output/20 
+altcp_default_write/35 (altcp_default_write) @0717d540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_write/19 
+altcp_default_shutdown/34 (altcp_default_shutdown) @0717d2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_shutdown/18 
+   Indirect call
+altcp_default_bind/33 (altcp_default_bind) @0717d000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_bind/13 
+altcp_default_recved/32 (altcp_default_recved) @07176b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_recved/12 
+altcp_default_set_poll/31 (altcp_default_set_poll) @07176620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_poll/10 
+altcp_get_port/30 (altcp_get_port) @071760e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_port/47 
+  Calls: 
+   Indirect call
+altcp_get_ip/29 (altcp_get_ip) @07176d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_ip/46 
+  Calls: 
+   Indirect call
+altcp_get_tcp_addrinfo/28 (altcp_get_tcp_addrinfo) @07176a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_tcp_addrinfo/45 
+  Calls: 
+   Indirect call
+altcp_setprio/27 (altcp_setprio) @071767e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_setprio/43 
+  Calls: 
+   Indirect call
+altcp_nagle_disabled/26 (altcp_nagle_disabled) @07176540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_disabled/42 
+  Calls: 
+   Indirect call
+altcp_nagle_enable/25 (altcp_nagle_enable) @071762a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_enable/41 
+  Calls: 
+   Indirect call
+altcp_nagle_disable/24 (altcp_nagle_disable) @07176000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_disable/40 
+  Calls: 
+   Indirect call
+altcp_sndqueuelen/23 (altcp_sndqueuelen) @07171b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_sndqueuelen/39 
+  Calls: 
+   Indirect call
+altcp_sndbuf/22 (altcp_sndbuf) @07171620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_sndbuf/38 
+  Calls: 
+   Indirect call
+altcp_mss/21 (altcp_mss) @071710e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_mss/37 
+  Calls: 
+   Indirect call
+altcp_output/20 (altcp_output) @07171d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_output/36 
+  Calls: 
+   Indirect call
+altcp_write/19 (altcp_write) @07171a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_write/35 
+  Calls: 
+   Indirect call
+altcp_shutdown/18 (altcp_shutdown) @071717e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_shutdown/34 
+  Calls: 
+   Indirect call
+altcp_close/17 (altcp_close) @07171540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_abort/16 (altcp_abort) @071712a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_listen_with_backlog_and_err/15 (altcp_listen_with_backlog_and_err) @07171000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_connect/14 (altcp_connect) @07159b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_bind/13 (altcp_bind) @07159620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_bind/33 
+  Calls: 
+   Indirect call
+altcp_recved/12 (altcp_recved) @071590e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_recved/32 
+  Calls: 
+   Indirect call
+altcp_err/11 (altcp_err) @07159d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_poll/10 (altcp_poll) @07159a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_set_poll/31 
+  Calls: 
+   Indirect call
+altcp_sent/9 (altcp_sent) @071597e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_recv/8 (altcp_recv) @07159540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_accept/7 (altcp_accept) @071592a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_arg/6 (altcp_arg) @07159000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_new_ip_type/5 (altcp_new_ip_type) @071517e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_new/4 altcp_new_ip6/3 
+  Calls: altcp_tcp_new_ip_type/51 
+   Indirect call
+altcp_new/4 (altcp_new) @071512a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_new_ip_type/5 
+altcp_new_ip6/3 (altcp_new_ip6) @07151700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_new_ip_type/5 
+altcp_free/2 (altcp_free) @07151460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memp_free/50 
+   Indirect call
+altcp_alloc/1 (altcp_alloc) @07151000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memset/49 memp_malloc/48 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+altcp_tcp_new_ip_type/51 (altcp_tcp_new_ip_type) @07188380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_new_ip_type/5 
+  Calls: 
+memp_free/50 (memp_free) @07188000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_free/2 
+  Calls: 
+memset/49 (memset) @071818c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_alloc/1 
+  Calls: 
+memp_malloc/48 (memp_malloc) @07181620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: altcp_alloc/1 
+  Calls: 
+altcp_default_get_port/47 (altcp_default_get_port) @07181d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_port/30 
+altcp_default_get_ip/46 (altcp_default_get_ip) @07181a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_ip/29 
+altcp_default_get_tcp_addrinfo/45 (altcp_default_get_tcp_addrinfo) @071817e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_get_tcp_addrinfo/28 
+altcp_default_dealloc/44 (altcp_default_dealloc) @07181540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_default_setprio/43 (altcp_default_setprio) @071812a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_setprio/27 
+altcp_default_nagle_disabled/42 (altcp_default_nagle_disabled) @07181000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_disabled/26 
+altcp_default_nagle_enable/41 (altcp_default_nagle_enable) @0717db60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_enable/25 
+altcp_default_nagle_disable/40 (altcp_default_nagle_disable) @0717d620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_nagle_disable/24 
+altcp_default_sndqueuelen/39 (altcp_default_sndqueuelen) @0717d0e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_sndqueuelen/23 
+altcp_default_sndbuf/38 (altcp_default_sndbuf) @0717dd20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_sndbuf/22 
+altcp_default_mss/37 (altcp_default_mss) @0717da80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_mss/21 
+altcp_default_output/36 (altcp_default_output) @0717d7e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_output/20 
+altcp_default_write/35 (altcp_default_write) @0717d540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_write/19 
+altcp_default_shutdown/34 (altcp_default_shutdown) @0717d2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_shutdown/18 
+   Indirect call
+altcp_default_bind/33 (altcp_default_bind) @0717d000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_bind/13 
+altcp_default_recved/32 (altcp_default_recved) @07176b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_recved/12 
+altcp_default_set_poll/31 (altcp_default_set_poll) @07176620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_poll/10 
+altcp_get_port/30 (altcp_get_port) @071760e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_port/47 
+  Calls: 
+   Indirect call
+altcp_get_ip/29 (altcp_get_ip) @07176d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_ip/46 
+  Calls: 
+   Indirect call
+altcp_get_tcp_addrinfo/28 (altcp_get_tcp_addrinfo) @07176a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_get_tcp_addrinfo/45 
+  Calls: 
+   Indirect call
+altcp_setprio/27 (altcp_setprio) @071767e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_setprio/43 
+  Calls: 
+   Indirect call
+altcp_nagle_disabled/26 (altcp_nagle_disabled) @07176540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_disabled/42 
+  Calls: 
+   Indirect call
+altcp_nagle_enable/25 (altcp_nagle_enable) @071762a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_enable/41 
+  Calls: 
+   Indirect call
+altcp_nagle_disable/24 (altcp_nagle_disable) @07176000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_nagle_disable/40 
+  Calls: 
+   Indirect call
+altcp_sndqueuelen/23 (altcp_sndqueuelen) @07171b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_sndqueuelen/39 
+  Calls: 
+   Indirect call
+altcp_sndbuf/22 (altcp_sndbuf) @07171620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_sndbuf/38 
+  Calls: 
+   Indirect call
+altcp_mss/21 (altcp_mss) @071710e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_mss/37 
+  Calls: 
+   Indirect call
+altcp_output/20 (altcp_output) @07171d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_output/36 
+  Calls: 
+   Indirect call
+altcp_write/19 (altcp_write) @07171a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_write/35 
+  Calls: 
+   Indirect call
+altcp_shutdown/18 (altcp_shutdown) @071717e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_shutdown/34 
+  Calls: 
+   Indirect call
+altcp_close/17 (altcp_close) @07171540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_abort/16 (altcp_abort) @071712a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_listen_with_backlog_and_err/15 (altcp_listen_with_backlog_and_err) @07171000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_connect/14 (altcp_connect) @07159b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+altcp_bind/13 (altcp_bind) @07159620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_bind/33 
+  Calls: 
+   Indirect call
+altcp_recved/12 (altcp_recved) @071590e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_recved/32 
+  Calls: 
+   Indirect call
+altcp_err/11 (altcp_err) @07159d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_poll/10 (altcp_poll) @07159a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_default_set_poll/31 
+  Calls: 
+   Indirect call
+altcp_sent/9 (altcp_sent) @071597e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_recv/8 (altcp_recv) @07159540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_accept/7 (altcp_accept) @071592a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_arg/6 (altcp_arg) @07159000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+altcp_new_ip_type/5 (altcp_new_ip_type) @071517e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: altcp_new/4 altcp_new_ip6/3 
+  Calls: altcp_tcp_new_ip_type/51 
+   Indirect call
+altcp_new/4 (altcp_new) @071512a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_new_ip_type/5 
+altcp_new_ip6/3 (altcp_new_ip6) @07151700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: altcp_new_ip_type/5 
+altcp_free/2 (altcp_free) @07151460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memp_free/50 
+   Indirect call
+altcp_alloc/1 (altcp_alloc) @07151000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memset/49 memp_malloc/48 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+altcp_tcp_new_ip_type/51 (altcp_tcp_new_ip_type) @07188380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_new_ip_type/5 (105334073 (estimated locally),0.10 per call) 
+  Calls: 
+memp_free/50 (memp_free) @07188000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_free/2 (751619278 (estimated locally),0.70 per call) 
+  Calls: 
+memset/49 (memset) @071818c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_alloc/1 (574129754 (estimated locally),0.53 per call) 
+  Calls: 
+memp_malloc/48 (memp_malloc) @07181620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: altcp_alloc/1 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+altcp_default_get_port/47 (altcp_default_get_port) @07181d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_get_port/30 (279527209 (estimated locally),0.26 per call) 
+altcp_default_get_ip/46 (altcp_default_get_ip) @07181a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_get_ip/29 (540759791 (estimated locally),0.50 per call) 
+altcp_default_get_tcp_addrinfo/45 (altcp_default_get_tcp_addrinfo) @071817e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_get_tcp_addrinfo/28 (1028955741 (estimated locally),0.96 per call) 
+altcp_default_dealloc/44 (altcp_default_dealloc) @07181540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_default_setprio/43 (altcp_default_setprio) @071812a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_setprio/27 (401890827 (estimated locally),0.37 per call) 
+altcp_default_nagle_disabled/42 (altcp_default_nagle_disabled) @07181000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_nagle_disabled/26 (279527209 (estimated locally),0.26 per call) 
+altcp_default_nagle_enable/41 (altcp_default_nagle_enable) @0717db60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_nagle_enable/25 (401890827 (estimated locally),0.37 per call) 
+altcp_default_nagle_disable/40 (altcp_default_nagle_disable) @0717d620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_nagle_disable/24 (401890827 (estimated locally),0.37 per call) 
+altcp_default_sndqueuelen/39 (altcp_default_sndqueuelen) @0717d0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_sndqueuelen/23 (279527209 (estimated locally),0.26 per call) 
+altcp_default_sndbuf/38 (altcp_default_sndbuf) @0717dd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_sndbuf/22 (279527209 (estimated locally),0.26 per call) 
+altcp_default_mss/37 (altcp_default_mss) @0717da80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_mss/21 (279527209 (estimated locally),0.26 per call) 
+altcp_default_output/36 (altcp_default_output) @0717d7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_output/20 (1028955741 (estimated locally),0.96 per call) 
+altcp_default_write/35 (altcp_default_write) @0717d540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_write/19 (1028955741 (estimated locally),0.96 per call) 
+altcp_default_shutdown/34 (altcp_default_shutdown) @0717d2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_shutdown/18 (930657026 (estimated locally),0.87 per call) 
+   Indirect call(101684819 (estimated locally),0.09 per call) 
+altcp_default_bind/33 (altcp_default_bind) @0717d000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_bind/13 (1028955741 (estimated locally),0.96 per call) 
+altcp_default_recved/32 (altcp_default_recved) @07176b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_recved/12 (401890827 (estimated locally),0.37 per call) 
+altcp_default_set_poll/31 (altcp_default_set_poll) @07176620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_poll/10 (401890827 (estimated locally),0.37 per call) 
+altcp_get_port/30 (altcp_get_port) @071760e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_get_port/47 (279527209 (estimated locally),0.26 per call) 
+  Calls: 
+   Indirect call(287216274 (estimated locally),0.27 per call) 
+altcp_get_ip/29 (altcp_get_ip) @07176d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_get_ip/46 (540759791 (estimated locally),0.50 per call) 
+  Calls: 
+   Indirect call(580404299 (estimated locally),0.54 per call) 
+altcp_get_tcp_addrinfo/28 (altcp_get_tcp_addrinfo) @07176a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_get_tcp_addrinfo/45 (1028955741 (estimated locally),0.96 per call) 
+  Calls: 
+   Indirect call(1037519150 (estimated locally),0.97 per call) 
+altcp_setprio/27 (altcp_setprio) @071767e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_setprio/43 (401890827 (estimated locally),0.37 per call) 
+  Calls: 
+   Indirect call(368293446 (estimated locally),0.34 per call) 
+altcp_nagle_disabled/26 (altcp_nagle_disabled) @07176540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_nagle_disabled/42 (279527209 (estimated locally),0.26 per call) 
+  Calls: 
+   Indirect call(287216274 (estimated locally),0.27 per call) 
+altcp_nagle_enable/25 (altcp_nagle_enable) @071762a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_nagle_enable/41 (401890827 (estimated locally),0.37 per call) 
+  Calls: 
+   Indirect call(368293446 (estimated locally),0.34 per call) 
+altcp_nagle_disable/24 (altcp_nagle_disable) @07176000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_nagle_disable/40 (401890827 (estimated locally),0.37 per call) 
+  Calls: 
+   Indirect call(368293446 (estimated locally),0.34 per call) 
+altcp_sndqueuelen/23 (altcp_sndqueuelen) @07171b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_sndqueuelen/39 (279527209 (estimated locally),0.26 per call) 
+  Calls: 
+   Indirect call(287216274 (estimated locally),0.27 per call) 
+altcp_sndbuf/22 (altcp_sndbuf) @07171620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_sndbuf/38 (279527209 (estimated locally),0.26 per call) 
+  Calls: 
+   Indirect call(287216274 (estimated locally),0.27 per call) 
+altcp_mss/21 (altcp_mss) @071710e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_mss/37 (279527209 (estimated locally),0.26 per call) 
+  Calls: 
+   Indirect call(287216274 (estimated locally),0.27 per call) 
+altcp_output/20 (altcp_output) @07171d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_output/36 (1028955741 (estimated locally),0.96 per call) 
+  Calls: 
+   Indirect call(1037519150 (estimated locally),0.97 per call) 
+altcp_write/19 (altcp_write) @07171a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_write/35 (1028955741 (estimated locally),0.96 per call) 
+  Calls: 
+   Indirect call(1037519150 (estimated locally),0.97 per call) 
+altcp_shutdown/18 (altcp_shutdown) @071717e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_shutdown/34 (930657026 (estimated locally),0.87 per call) 
+  Calls: 
+   Indirect call(1037519150 (estimated locally),0.97 per call) 
+altcp_close/17 (altcp_close) @07171540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(1037519150 (estimated locally),0.97 per call) 
+altcp_abort/16 (altcp_abort) @071712a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(368293446 (estimated locally),0.34 per call) 
+altcp_listen_with_backlog_and_err/15 (altcp_listen_with_backlog_and_err) @07171000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(580404299 (estimated locally),0.54 per call) 
+altcp_connect/14 (altcp_connect) @07159b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(1037519150 (estimated locally),0.97 per call) 
+altcp_bind/13 (altcp_bind) @07159620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_bind/33 (1028955741 (estimated locally),0.96 per call) 
+  Calls: 
+   Indirect call(1037519150 (estimated locally),0.97 per call) 
+altcp_recved/12 (altcp_recved) @071590e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_recved/32 (401890827 (estimated locally),0.37 per call) 
+  Calls: 
+   Indirect call(368293446 (estimated locally),0.34 per call) 
+altcp_err/11 (altcp_err) @07159d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_poll/10 (altcp_poll) @07159a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_default_set_poll/31 (401890827 (estimated locally),0.37 per call) 
+  Calls: 
+   Indirect call(368293446 (estimated locally),0.34 per call) 
+altcp_sent/9 (altcp_sent) @071597e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_recv/8 (altcp_recv) @07159540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_accept/7 (altcp_accept) @071592a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_arg/6 (altcp_arg) @07159000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_new_ip_type/5 (altcp_new_ip_type) @071517e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: altcp_new/4 (1073741824 (estimated locally),1.00 per call) altcp_new_ip6/3 (1073741824 (estimated locally),1.00 per call) 
+  Calls: altcp_tcp_new_ip_type/51 (105334073 (estimated locally),0.10 per call) 
+   Indirect call(888320430 (estimated locally),0.83 per call)  of param:0 loaded from aggregate passed by reference at offset 0 (vptr maybe changed)
+altcp_new/4 (altcp_new) @071512a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_new_ip_type/5 (1073741824 (estimated locally),1.00 per call) 
+altcp_new_ip6/3 (altcp_new_ip6) @07151700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: altcp_new_ip_type/5 (1073741824 (estimated locally),1.00 per call) 
+altcp_free/2 (altcp_free) @07151460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: memp_free/50 (751619278 (estimated locally),0.70 per call) 
+   Indirect call(368293446 (estimated locally),0.34 per call) 
+altcp_alloc/1 (altcp_alloc) @07151000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: memset/49 (574129754 (estimated locally),0.53 per call) memp_malloc/48 (1073741824 (estimated locally),1.00 per call) 
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:altcp_alloc:0
+Time profile order in expand_all_functions:altcp_free:0
+Time profile order in expand_all_functions:altcp_new_ip_type:0
+Time profile order in expand_all_functions:altcp_new_ip6:0
+Time profile order in expand_all_functions:altcp_new:0
+Time profile order in expand_all_functions:altcp_arg:0
+Time profile order in expand_all_functions:altcp_accept:0
+Time profile order in expand_all_functions:altcp_recv:0
+Time profile order in expand_all_functions:altcp_sent:0
+Time profile order in expand_all_functions:altcp_poll:0
+Time profile order in expand_all_functions:altcp_err:0
+Time profile order in expand_all_functions:altcp_recved:0
+Time profile order in expand_all_functions:altcp_bind:0
+Time profile order in expand_all_functions:altcp_connect:0
+Time profile order in expand_all_functions:altcp_listen_with_backlog_and_err:0
+Time profile order in expand_all_functions:altcp_abort:0
+Time profile order in expand_all_functions:altcp_close:0
+Time profile order in expand_all_functions:altcp_shutdown:0
+Time profile order in expand_all_functions:altcp_write:0
+Time profile order in expand_all_functions:altcp_output:0
+Time profile order in expand_all_functions:altcp_mss:0
+Time profile order in expand_all_functions:altcp_sndbuf:0
+Time profile order in expand_all_functions:altcp_sndqueuelen:0
+Time profile order in expand_all_functions:altcp_nagle_disable:0
+Time profile order in expand_all_functions:altcp_nagle_enable:0
+Time profile order in expand_all_functions:altcp_nagle_disabled:0
+Time profile order in expand_all_functions:altcp_setprio:0
+Time profile order in expand_all_functions:altcp_get_tcp_addrinfo:0
+Time profile order in expand_all_functions:altcp_get_ip:0
+Time profile order in expand_all_functions:altcp_get_port:0
+Time profile order in expand_all_functions:altcp_default_set_poll:0
+Time profile order in expand_all_functions:altcp_default_recved:0
+Time profile order in expand_all_functions:altcp_default_bind:0
+Time profile order in expand_all_functions:altcp_default_shutdown:0
+Time profile order in expand_all_functions:altcp_default_write:0
+Time profile order in expand_all_functions:altcp_default_output:0
+Time profile order in expand_all_functions:altcp_default_mss:0
+Time profile order in expand_all_functions:altcp_default_sndbuf:0
+Time profile order in expand_all_functions:altcp_default_sndqueuelen:0
+Time profile order in expand_all_functions:altcp_default_nagle_disable:0
+Time profile order in expand_all_functions:altcp_default_nagle_enable:0
+Time profile order in expand_all_functions:altcp_default_nagle_disabled:0
+Time profile order in expand_all_functions:altcp_default_setprio:0
+Time profile order in expand_all_functions:altcp_default_dealloc:0
+Time profile order in expand_all_functions:altcp_default_get_tcp_addrinfo:0
+Time profile order in expand_all_functions:altcp_default_get_ip:0
+Time profile order in expand_all_functions:altcp_default_get_port:0
+Trivially needed variables:
+Removing variables:
+
+Final Symbol table:
+
+altcp_tcp_new_ip_type/51 (altcp_tcp_new_ip_type) @07188380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+memp_free/50 (memp_free) @07188000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+memset/49 (memset) @071818c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+memp_malloc/48 (memp_malloc) @07181620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+altcp_default_get_port/47 (altcp_default_get_port) @07181d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_get_ip/46 (altcp_default_get_ip) @07181a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_get_tcp_addrinfo/45 (altcp_default_get_tcp_addrinfo) @071817e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_dealloc/44 (altcp_default_dealloc) @07181540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_default_setprio/43 (altcp_default_setprio) @071812a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_nagle_disabled/42 (altcp_default_nagle_disabled) @07181000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_nagle_enable/41 (altcp_default_nagle_enable) @0717db60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_nagle_disable/40 (altcp_default_nagle_disable) @0717d620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_sndqueuelen/39 (altcp_default_sndqueuelen) @0717d0e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_sndbuf/38 (altcp_default_sndbuf) @0717dd20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_mss/37 (altcp_default_mss) @0717da80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_output/36 (altcp_default_output) @0717d7e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_write/35 (altcp_default_write) @0717d540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_shutdown/34 (altcp_default_shutdown) @0717d2a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_bind/33 (altcp_default_bind) @0717d000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_recved/32 (altcp_default_recved) @07176b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_default_set_poll/31 (altcp_default_set_poll) @07176620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_get_port/30 (altcp_get_port) @071760e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_get_ip/29 (altcp_get_ip) @07176d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_get_tcp_addrinfo/28 (altcp_get_tcp_addrinfo) @07176a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_setprio/27 (altcp_setprio) @071767e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_nagle_disabled/26 (altcp_nagle_disabled) @07176540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_nagle_enable/25 (altcp_nagle_enable) @071762a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_nagle_disable/24 (altcp_nagle_disable) @07176000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_sndqueuelen/23 (altcp_sndqueuelen) @07171b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_sndbuf/22 (altcp_sndbuf) @07171620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_mss/21 (altcp_mss) @071710e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_output/20 (altcp_output) @07171d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_write/19 (altcp_write) @07171a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_shutdown/18 (altcp_shutdown) @071717e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_close/17 (altcp_close) @07171540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_abort/16 (altcp_abort) @071712a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_listen_with_backlog_and_err/15 (altcp_listen_with_backlog_and_err) @07171000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_connect/14 (altcp_connect) @07159b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_bind/13 (altcp_bind) @07159620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_recved/12 (altcp_recved) @071590e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_err/11 (altcp_err) @07159d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_poll/10 (altcp_poll) @07159a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_sent/9 (altcp_sent) @071597e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_recv/8 (altcp_recv) @07159540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_accept/7 (altcp_accept) @071592a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_arg/6 (altcp_arg) @07159000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+altcp_new_ip_type/5 (altcp_new_ip_type) @071517e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_new/4 (altcp_new) @071512a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_new_ip6/3 (altcp_new_ip6) @07151700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_free/2 (altcp_free) @07151460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+altcp_alloc/1 (altcp_alloc) @07151000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 

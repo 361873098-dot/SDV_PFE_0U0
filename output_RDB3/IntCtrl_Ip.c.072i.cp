@@ -1,0 +1,1356 @@
+
+IPA constant propagation start:
+Determining dynamic type for call: IntCtrl_Ip_InstallHandlerPrivileged (eIrqNumber_2(D), pfNewHandler_3(D), pfOldHandler_4(D));
+  Starting walk at: IntCtrl_Ip_InstallHandlerPrivileged (eIrqNumber_2(D), pfNewHandler_3(D), pfOldHandler_4(D));
+  instance pointer: pfNewHandler_3(D)  Outer instance pointer: pfNewHandler_3(D) offset: 0 (bits) vtbl reference: 
+Determining dynamic type for call: IntCtrl_Ip_InstallHandlerPrivileged (eIrqNumber_2(D), pfNewHandler_3(D), pfOldHandler_4(D));
+  Starting walk at: IntCtrl_Ip_InstallHandlerPrivileged (eIrqNumber_2(D), pfNewHandler_3(D), pfOldHandler_4(D));
+  instance pointer: pfOldHandler_4(D)  Outer instance pointer: pfOldHandler_4(D) offset: 0 (bits) vtbl reference: 
+Determining dynamic type for call: IntCtrl_Ip_InstallHandlerPrivileged (_14, _15, 0B);
+  Starting walk at: IntCtrl_Ip_InstallHandlerPrivileged (_14, _15, 0B);
+  instance pointer: _15  Outer instance pointer: _15 offset: 0 (bits) vtbl reference: 
+  Function call may change dynamic type:IntCtrl_Ip_SetPriorityPrivileged (_10, _11);
+  Function call may change dynamic type:IntCtrl_Ip_ClearPendingPrivileged (_7);
+  Function call may change dynamic type:DevAssert (_3);
+  Function call may change dynamic type:DevAssert (_1);
+  Function call may change dynamic type:IntCtrl_Ip_EnableIrqPrivileged (_19);
+  Function call may change dynamic type:IntCtrl_Ip_InstallHandlerPrivileged (_14, _15, 0B);
+  Function call may change dynamic type:IntCtrl_Ip_SetPriorityPrivileged (_10, _11);
+  Function call may change dynamic type:IntCtrl_Ip_ClearPendingPrivileged (_7);
+  Function call may change dynamic type:IntCtrl_Ip_DisableIrqPrivileged (_20);
+Determining dynamic type for call: IntCtrl_Ip_InstallHandlerPrivileged (_14, _15, 0B);
+  Starting walk at: IntCtrl_Ip_InstallHandlerPrivileged (_14, _15, 0B);
+  instance pointer: 0B  Outer instance pointer: 0B offset: 0 (bits) vtbl reference: 
+  Function call may change dynamic type:IntCtrl_Ip_SetPriorityPrivileged (_10, _11);
+  Function call may change dynamic type:IntCtrl_Ip_ClearPendingPrivileged (_7);
+  Function call may change dynamic type:DevAssert (_3);
+  Function call may change dynamic type:DevAssert (_1);
+  Function call may change dynamic type:IntCtrl_Ip_EnableIrqPrivileged (_19);
+  Function call may change dynamic type:IntCtrl_Ip_InstallHandlerPrivileged (_14, _15, 0B);
+  Function call may change dynamic type:IntCtrl_Ip_SetPriorityPrivileged (_10, _11);
+  Function call may change dynamic type:IntCtrl_Ip_ClearPendingPrivileged (_7);
+  Function call may change dynamic type:IntCtrl_Ip_DisableIrqPrivileged (_20);
+
+IPA structures before propagation:
+
+Jump functions:
+  Jump functions of caller  IntCtrl_Ip_GenerateDirectedCpuInterrupt/20:
+    callsite  IntCtrl_Ip_GenerateDirectedCpuInterrupt/20 -> IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+       param 1: PASS THROUGH: 1, op nop_expr
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_GetDirectedCpuInterrupt/19:
+    callsite  IntCtrl_Ip_GetDirectedCpuInterrupt/19 -> IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_ClearDirectedCpuInterrupt/18:
+    callsite  IntCtrl_Ip_ClearDirectedCpuInterrupt/18 -> IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_ClearPending/17:
+    callsite  IntCtrl_Ip_ClearPending/17 -> IntCtrl_Ip_ClearPendingPrivileged/7 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_GetPriority/16:
+    callsite  IntCtrl_Ip_GetPriority/16 -> IntCtrl_Ip_GetPriorityPrivileged/6 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_SetPriority/15:
+    callsite  IntCtrl_Ip_SetPriority/15 -> IntCtrl_Ip_SetPriorityPrivileged/5 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+       param 1: PASS THROUGH: 1, op nop_expr
+         value: 0x0, mask: 0xff
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_DisableIrq/14:
+    callsite  IntCtrl_Ip_DisableIrq/14 -> IntCtrl_Ip_DisableIrqPrivileged/4 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_EnableIrq/13:
+    callsite  IntCtrl_Ip_EnableIrq/13 -> IntCtrl_Ip_EnableIrqPrivileged/3 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_InstallHandler/12:
+    callsite  IntCtrl_Ip_InstallHandler/12 -> IntCtrl_Ip_InstallHandlerPrivileged/2 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+       param 1: PASS THROUGH: 1, op nop_expr, agg_preserved
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 2: PASS THROUGH: 2, op nop_expr, agg_preserved
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_Init/11:
+    callsite  IntCtrl_Ip_Init/11 -> IntCtrl_Ip_DisableIrqPrivileged/4 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+    callsite  IntCtrl_Ip_Init/11 -> IntCtrl_Ip_EnableIrqPrivileged/3 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+    callsite  IntCtrl_Ip_Init/11 -> IntCtrl_Ip_InstallHandlerPrivileged/2 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+       param 1: UNKNOWN
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 2: CONST: 0B
+         value: 0x0, mask: 0xfffffff8
+         Unknown VR
+    callsite  IntCtrl_Ip_Init/11 -> IntCtrl_Ip_SetPriorityPrivileged/5 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+       param 1: UNKNOWN
+         value: 0x0, mask: 0xff
+         Unknown VR
+    callsite  IntCtrl_Ip_Init/11 -> IntCtrl_Ip_ClearPendingPrivileged/7 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+         Unknown VR
+    callsite  IntCtrl_Ip_Init/11 -> DevAssert/0 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_Init/11 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op ne_expr 0B
+         value: 0x0, mask: 0x1
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10:
+    callsite  IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op le_expr 168
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op ge_expr 0
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10 -> DevAssert/0 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0x1
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9:
+    callsite  IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op le_expr 168
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op ge_expr 0
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9 -> DevAssert/0 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0x1
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8:
+    callsite  IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op le_expr 168
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op ge_expr 0
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8 -> DevAssert/0 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0x1
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_ClearPendingPrivileged/7:
+    callsite  IntCtrl_Ip_ClearPendingPrivileged/7 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op le_expr 230
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_ClearPendingPrivileged/7 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op ge_expr 0
+         value: 0x0, mask: 0x1
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_GetPriorityPrivileged/6:
+    callsite  IntCtrl_Ip_GetPriorityPrivileged/6 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op le_expr 230
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_GetPriorityPrivileged/6 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op ge_expr 0
+         value: 0x0, mask: 0x1
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_SetPriorityPrivileged/5:
+    callsite  IntCtrl_Ip_SetPriorityPrivileged/5 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 1, op le_expr 15
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_SetPriorityPrivileged/5 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op le_expr 230
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_SetPriorityPrivileged/5 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op ge_expr 0
+         value: 0x0, mask: 0x1
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_DisableIrqPrivileged/4:
+    callsite  IntCtrl_Ip_DisableIrqPrivileged/4 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op le_expr 230
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_DisableIrqPrivileged/4 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op ge_expr 0
+         value: 0x0, mask: 0x1
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_EnableIrqPrivileged/3:
+    callsite  IntCtrl_Ip_EnableIrqPrivileged/3 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op le_expr 230
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_EnableIrqPrivileged/3 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op ge_expr 0
+         value: 0x0, mask: 0x1
+         Unknown VR
+  Jump functions of caller  IntCtrl_Ip_InstallHandlerPrivileged/2:
+    callsite  IntCtrl_Ip_InstallHandlerPrivileged/2 -> DevAssert/0 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_InstallHandlerPrivileged/2 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op le_expr 230
+         value: 0x0, mask: 0x1
+         Unknown VR
+    callsite  IntCtrl_Ip_InstallHandlerPrivileged/2 -> DevAssert/0 : 
+       param 0: PASS THROUGH: 0, op ge_expr 0
+         value: 0x0, mask: 0x1
+         Unknown VR
+  Jump functions of caller  DevAssert/0:
+
+ Propagating constants:
+
+Not considering IntCtrl_Ip_GenerateDirectedCpuInterrupt for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_GetDirectedCpuInterrupt for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_ClearDirectedCpuInterrupt for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_ClearPending for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_GetPriority for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_SetPriority for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_DisableIrq for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_EnableIrq for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_InstallHandler for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_Init for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_GetDirectedCpuInterruptPrivileged for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_ClearPendingPrivileged for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_GetPriorityPrivileged for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_SetPriorityPrivileged for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_DisableIrqPrivileged for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_EnableIrqPrivileged for cloning; -fipa-cp-clone disabled.
+Not considering IntCtrl_Ip_InstallHandlerPrivileged for cloning; -fipa-cp-clone disabled.
+
+overall_size: 257, max_new_size: 11001
+
+IPA lattices after all propagation:
+
+Lattices:
+  Node: IntCtrl_Ip_GenerateDirectedCpuInterrupt/20:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_GetDirectedCpuInterrupt/19:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_ClearDirectedCpuInterrupt/18:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_ClearPending/17:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_GetPriority/16:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_SetPriority/15:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_DisableIrq/14:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_EnableIrq/13:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_InstallHandler/12:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [2]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_Init/11:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_ClearPendingPrivileged/7:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_GetPriorityPrivileged/6:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_SetPriorityPrivileged/5:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_DisableIrqPrivileged/4:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_EnableIrqPrivileged/3:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: IntCtrl_Ip_InstallHandlerPrivileged/2:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [2]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: DevAssert/0:
+    param [0]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+
+IPA decision stage:
+
+
+IPA constant propagation end
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+__RAM_INTERRUPT_START/21 (__RAM_INTERRUPT_START) @073fd4c8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: IntCtrl_Ip_InstallHandlerPrivileged/2 (addr)
+  Availability: not_available
+  Varpool flags:
+IntCtrl_Ip_GenerateDirectedCpuInterrupt/20 (IntCtrl_Ip_GenerateDirectedCpuInterrupt) @073fbc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_GetDirectedCpuInterrupt/19 (IntCtrl_Ip_GetDirectedCpuInterrupt) @073fb9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_ClearDirectedCpuInterrupt/18 (IntCtrl_Ip_ClearDirectedCpuInterrupt) @073fb700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_ClearPending/17 (IntCtrl_Ip_ClearPending) @073fb460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_ClearPendingPrivileged/7 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_GetPriority/16 (IntCtrl_Ip_GetPriority) @073fb1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_GetPriorityPrivileged/6 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_SetPriority/15 (IntCtrl_Ip_SetPriority) @073eeee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_SetPriorityPrivileged/5 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_DisableIrq/14 (IntCtrl_Ip_DisableIrq) @073ee8c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_DisableIrqPrivileged/4 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_EnableIrq/13 (IntCtrl_Ip_EnableIrq) @073ee380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_EnableIrqPrivileged/3 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_InstallHandler/12 (IntCtrl_Ip_InstallHandler) @073eee00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_InstallHandlerPrivileged/2 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_Init/11 (IntCtrl_Ip_Init) @073eea80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_DisableIrqPrivileged/4 (477815111 (estimated locally),4.05 per call) IntCtrl_Ip_EnableIrqPrivileged/3 (477815111 (estimated locally),4.05 per call) IntCtrl_Ip_InstallHandlerPrivileged/2 (955630223 (estimated locally),8.09 per call) IntCtrl_Ip_SetPriorityPrivileged/5 (955630223 (estimated locally),8.09 per call) IntCtrl_Ip_ClearPendingPrivileged/7 (955630223 (estimated locally),8.09 per call) DevAssert/0 (118111600 (estimated locally),1.00 per call) DevAssert/0 (118111600 (estimated locally),1.00 per call) 
+IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10 (IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged) @073ee7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: aMscmCore2CoreIrqId/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:350860936 (estimated locally) body optimize_size
+  Called by: IntCtrl_Ip_GenerateDirectedCpuInterrupt/20 (1073741824 (estimated locally),1.00 per call) 
+  Calls: DevAssert/0 (350860936 (estimated locally),1.00 per call) DevAssert/0 (350860936 (estimated locally),1.00 per call) DevAssert/0 (350860936 (estimated locally),1.00 per call) 
+IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9 (IntCtrl_Ip_GetDirectedCpuInterruptPrivileged) @073ee540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: aMscmCore2CoreIrqId/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: IntCtrl_Ip_GetDirectedCpuInterrupt/19 (1073741824 (estimated locally),1.00 per call) 
+  Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8 (IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged) @073ee2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: aMscmCore2CoreIrqId/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: IntCtrl_Ip_ClearDirectedCpuInterrupt/18 (1073741824 (estimated locally),1.00 per call) 
+  Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_ClearPendingPrivileged/7 (IntCtrl_Ip_ClearPendingPrivileged) @073ee000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: IntCtrl_Ip_Init/11 (955630223 (estimated locally),8.09 per call) IntCtrl_Ip_ClearPending/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_GetPriorityPrivileged/6 (IntCtrl_Ip_GetPriorityPrivileged) @073e8b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: IntCtrl_Ip_GetPriority/16 (1073741824 (estimated locally),1.00 per call) 
+  Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_SetPriorityPrivileged/5 (IntCtrl_Ip_SetPriorityPrivileged) @073e8620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: IntCtrl_Ip_Init/11 (955630223 (estimated locally),8.09 per call) IntCtrl_Ip_SetPriority/15 (1073741824 (estimated locally),1.00 per call) 
+  Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_DisableIrqPrivileged/4 (IntCtrl_Ip_DisableIrqPrivileged) @073e8d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: IntCtrl_Ip_Init/11 (477815111 (estimated locally),4.05 per call) IntCtrl_Ip_DisableIrq/14 (1073741824 (estimated locally),1.00 per call) 
+  Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_EnableIrqPrivileged/3 (IntCtrl_Ip_EnableIrqPrivileged) @073e8a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: IntCtrl_Ip_Init/11 (477815111 (estimated locally),4.05 per call) IntCtrl_Ip_EnableIrq/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+IntCtrl_Ip_InstallHandlerPrivileged/2 (IntCtrl_Ip_InstallHandlerPrivileged) @073e87e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: __RAM_INTERRUPT_START/21 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: IntCtrl_Ip_Init/11 (955630223 (estimated locally),8.09 per call) IntCtrl_Ip_InstallHandler/12 (1073741824 (estimated locally),1.00 per call) 
+  Calls: DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) DevAssert/0 (1073741824 (estimated locally),1.00 per call) 
+aMscmCore2CoreIrqId/1 (aMscmCore2CoreIrqId) @073b0dc8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9 (read)IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8 (read)IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10 (read)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+DevAssert/0 (DevAssert) @0737c9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:214748 (estimated locally) body local optimize_size
+  Called by: IntCtrl_Ip_Init/11 (118111600 (estimated locally),1.00 per call) IntCtrl_Ip_Init/11 (118111600 (estimated locally),1.00 per call) IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10 (350860936 (estimated locally),1.00 per call) IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10 (350860936 (estimated locally),1.00 per call) IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10 (350860936 (estimated locally),1.00 per call) IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_ClearPendingPrivileged/7 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_ClearPendingPrivileged/7 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_GetPriorityPrivileged/6 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_GetPriorityPrivileged/6 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_SetPriorityPrivileged/5 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_SetPriorityPrivileged/5 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_SetPriorityPrivileged/5 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_DisableIrqPrivileged/4 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_DisableIrqPrivileged/4 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_EnableIrqPrivileged/3 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_EnableIrqPrivileged/3 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_InstallHandlerPrivileged/2 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_InstallHandlerPrivileged/2 (1073741824 (estimated locally),1.00 per call) IntCtrl_Ip_InstallHandlerPrivileged/2 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+
+;; Function DevAssert (DevAssert, funcdef_no=0, decl_uid=6203, cgraph_uid=1, symbol_order=0)
+
+Modification phase of node DevAssert/0
+DevAssert (volatile boolean x)
+{
+  _Bool x.3_1;
+
+  <bb 2> [local count: 214748]:
+  # DEBUG BEGIN_STMT
+  x.3_1 ={v} x;
+  if (x.3_1 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0");
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_InstallHandlerPrivileged (IntCtrl_Ip_InstallHandlerPrivileged, funcdef_no=1, decl_uid=6235, cgraph_uid=2, symbol_order=2)
+
+Modification phase of node IntCtrl_Ip_InstallHandlerPrivileged/2
+IntCtrl_Ip_InstallHandlerPrivileged (IRQn_Type eIrqNumber, void (*IntCtrl_Ip_IrqHandlerType) (void) pfNewHandler, void (*IntCtrl_Ip_IrqHandlerType) (void) * const pfOldHandler)
+{
+  void (*IntCtrl_Ip_IrqHandlerType) (void) * pVectorRam;
+  _Bool _1;
+  _Bool _2;
+  long unsigned int _3;
+  long unsigned int __RAM_INTERRUPT_START.0_4;
+  _Bool _5;
+  long unsigned int _6;
+  sizetype eIrqNumber.1_7;
+  sizetype _8;
+  sizetype _9;
+  void (*IntCtrl_Ip_IrqHandlerType) (void) * _10;
+  void (*<T4e5>) (void) _11;
+  sizetype eIrqNumber.2_12;
+  sizetype _13;
+  sizetype _14;
+  void (*IntCtrl_Ip_IrqHandlerType) (void) * _15;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG s32Dev_irqNumber => eIrqNumber_17(D)
+  # DEBUG BEGIN_STMT
+  _1 = eIrqNumber_17(D) >= 0;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = eIrqNumber_17(D) <= 230;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct S32_SCB_Type *)3758153728B].VTOR;
+  __RAM_INTERRUPT_START.0_4 = (long unsigned int) &__RAM_INTERRUPT_START;
+  _5 = _3 >= __RAM_INTERRUPT_START.0_4;
+  DevAssert (_5);
+  # DEBUG BEGIN_STMT
+  _6 ={v} MEM[(struct S32_SCB_Type *)3758153728B].VTOR;
+  pVectorRam_22 = (void (*IntCtrl_Ip_IrqHandlerType) (void) *) _6;
+  # DEBUG pVectorRam => pVectorRam_22
+  # DEBUG BEGIN_STMT
+  if (pfOldHandler_23(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 4>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  eIrqNumber.1_7 = (sizetype) eIrqNumber_17(D);
+  _8 = eIrqNumber.1_7 + 16;
+  _9 = _8 * 4;
+  _10 = pVectorRam_22 + _9;
+  _11 = *_10;
+  *pfOldHandler_23(D) = _11;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  eIrqNumber.2_12 = (sizetype) eIrqNumber_17(D);
+  _13 = eIrqNumber.2_12 + 16;
+  _14 = _13 * 4;
+  _15 = pVectorRam_22 + _14;
+  *_15 = pfNewHandler_25(D);
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_EnableIrqPrivileged (IntCtrl_Ip_EnableIrqPrivileged, funcdef_no=2, decl_uid=6237, cgraph_uid=3, symbol_order=3)
+
+Modification phase of node IntCtrl_Ip_EnableIrqPrivileged/3
+IntCtrl_Ip_EnableIrqPrivileged (IRQn_Type eIrqNumber)
+{
+  _Bool _1;
+  _Bool _2;
+  long unsigned int eIrqNumber.4_3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = eIrqNumber_7(D) >= 0;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = eIrqNumber_7(D) <= 230;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  eIrqNumber.4_3 = (long unsigned int) eIrqNumber_7(D);
+  _4 = eIrqNumber.4_3 & 31;
+  _5 = eIrqNumber.4_3 >> 5;
+  _6 = 1 << _4;
+  MEM[(struct S32_NVIC_Type *)3758153728B].ISER[_5] ={v} _6;
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_DisableIrqPrivileged (IntCtrl_Ip_DisableIrqPrivileged, funcdef_no=3, decl_uid=6239, cgraph_uid=4, symbol_order=4)
+
+Modification phase of node IntCtrl_Ip_DisableIrqPrivileged/4
+IntCtrl_Ip_DisableIrqPrivileged (IRQn_Type eIrqNumber)
+{
+  _Bool _1;
+  _Bool _2;
+  long unsigned int eIrqNumber.6_3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = eIrqNumber_7(D) >= 0;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = eIrqNumber_7(D) <= 230;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  eIrqNumber.6_3 = (long unsigned int) eIrqNumber_7(D);
+  _4 = eIrqNumber.6_3 & 31;
+  _5 = eIrqNumber.6_3 >> 5;
+  _6 = 1 << _4;
+  MEM[(struct S32_NVIC_Type *)3758153728B].ICER[_5] ={v} _6;
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_SetPriorityPrivileged (IntCtrl_Ip_SetPriorityPrivileged, funcdef_no=4, decl_uid=6242, cgraph_uid=5, symbol_order=5)
+
+Modification phase of node IntCtrl_Ip_SetPriorityPrivileged/5
+IntCtrl_Ip_SetPriorityPrivileged (IRQn_Type eIrqNumber, uint8 u8Priority)
+{
+  _Bool _1;
+  _Bool _2;
+  _Bool _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int eIrqNumber.8_6;
+  unsigned char _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = eIrqNumber_8(D) >= 0;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = eIrqNumber_8(D) <= 230;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  _3 = u8Priority_12(D) <= 15;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  # DEBUG u8Shift => 4
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) u8Priority_12(D);
+  _5 = _4 << 4;
+  eIrqNumber.8_6 = (long unsigned int) eIrqNumber_8(D);
+  _7 = (unsigned char) _5;
+  MEM[(struct S32_NVIC_Type *)3758153728B].IP[eIrqNumber.8_6] ={v} _7;
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_GetPriorityPrivileged (IntCtrl_Ip_GetPriorityPrivileged, funcdef_no=5, decl_uid=6244, cgraph_uid=6, symbol_order=6)
+
+Modification phase of node IntCtrl_Ip_GetPriorityPrivileged/6
+IntCtrl_Ip_GetPriorityPrivileged (IRQn_Type eIrqNumber)
+{
+  uint8 u8Priority;
+  _Bool _1;
+  _Bool _2;
+  long unsigned int eIrqNumber.9_3;
+  unsigned char _4;
+  int _5;
+  int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = eIrqNumber_7(D) >= 0;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = eIrqNumber_7(D) <= 230;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG u8Shift => 4
+  # DEBUG BEGIN_STMT
+  eIrqNumber.9_3 = (long unsigned int) eIrqNumber_7(D);
+  _4 ={v} MEM[(struct S32_NVIC_Type *)3758153728B].IP[eIrqNumber.9_3];
+  _5 = (int) _4;
+  _6 = _5 >> 4;
+  u8Priority_11 = (uint8) _6;
+  # DEBUG u8Priority => u8Priority_11
+  # DEBUG BEGIN_STMT
+  return u8Priority_11;
+
+}
+
+
+
+;; Function IntCtrl_Ip_ClearPendingPrivileged (IntCtrl_Ip_ClearPendingPrivileged, funcdef_no=6, decl_uid=6246, cgraph_uid=7, symbol_order=7)
+
+Modification phase of node IntCtrl_Ip_ClearPendingPrivileged/7
+IntCtrl_Ip_ClearPendingPrivileged (IRQn_Type eIrqNumber)
+{
+  _Bool _1;
+  _Bool _2;
+  long unsigned int eIrqNumber.10_3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = eIrqNumber_7(D) >= 0;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = eIrqNumber_7(D) <= 230;
+  DevAssert (_2);
+  # DEBUG BEGIN_STMT
+  eIrqNumber.10_3 = (long unsigned int) eIrqNumber_7(D);
+  _4 = eIrqNumber.10_3 & 31;
+  _5 = eIrqNumber.10_3 >> 5;
+  _6 = 1 << _4;
+  MEM[(struct S32_NVIC_Type *)3758153728B].ICPR[_5] ={v} _6;
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged (IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged, funcdef_no=7, decl_uid=6251, cgraph_uid=8, symbol_order=8)
+
+Modification phase of node IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged/8
+IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged (IRQn_Type eIrqNumber)
+{
+  uint32 u32IrqId;
+  uint32 u32CurrentCpu;
+  long unsigned int eIrqNumber.12_1;
+  unsigned char _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  eIrqNumber.12_1 = (long unsigned int) eIrqNumber_7(D);
+  _2 = aMscmCore2CoreIrqId[eIrqNumber.12_1];
+  _3 = _2 != 255;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = eIrqNumber_7(D) >= 0;
+  DevAssert (_4);
+  # DEBUG BEGIN_STMT
+  _5 = eIrqNumber_7(D) <= 168;
+  DevAssert (_5);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 ={v} MEM[(struct MSCM_Type *)1075412992B].CPXNUM;
+  u32CurrentCpu_12 = _6 & 255;
+  # DEBUG u32CurrentCpu => u32CurrentCpu_12
+  # DEBUG BEGIN_STMT
+  u32IrqId_13 = (uint32) _2;
+  # DEBUG u32IrqId => u32IrqId_13
+  # DEBUG BEGIN_STMT
+  MEM[(volatile struct MSCM_IRCPnIRx_Type *)1075415648B].IRCPnIRx[u32CurrentCpu_12][u32IrqId_13].IntStatusR ={v} 127;
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_GetDirectedCpuInterruptPrivileged (IntCtrl_Ip_GetDirectedCpuInterruptPrivileged, funcdef_no=8, decl_uid=6253, cgraph_uid=9, symbol_order=9)
+
+Modification phase of node IntCtrl_Ip_GetDirectedCpuInterruptPrivileged/9
+IntCtrl_Ip_GetDirectedCpuInterruptPrivileged (IRQn_Type eIrqNumber)
+{
+  uint32 u32IrqId;
+  uint32 u32CurrentCpu;
+  long unsigned int eIrqNumber.14_1;
+  unsigned char _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  _Bool _8;
+  uint32 _16;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  eIrqNumber.14_1 = (long unsigned int) eIrqNumber_9(D);
+  _2 = aMscmCore2CoreIrqId[eIrqNumber.14_1];
+  _3 = _2 != 255;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = eIrqNumber_9(D) >= 0;
+  DevAssert (_4);
+  # DEBUG BEGIN_STMT
+  _5 = eIrqNumber_9(D) <= 168;
+  DevAssert (_5);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 ={v} MEM[(struct MSCM_Type *)1075412992B].CPXNUM;
+  u32CurrentCpu_14 = _6 & 255;
+  # DEBUG u32CurrentCpu => u32CurrentCpu_14
+  # DEBUG BEGIN_STMT
+  u32IrqId_15 = (uint32) _2;
+  # DEBUG u32IrqId => u32IrqId_15
+  # DEBUG BEGIN_STMT
+  _7 ={v} MEM[(volatile struct MSCM_IRCPnIRx_Type *)1075415648B].IRCPnIRx[u32CurrentCpu_14][u32IrqId_15].IntStatusR;
+  _8 = _7 != 0;
+  _16 = (uint32) _8;
+  return _16;
+
+}
+
+
+
+;; Function IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged (IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged, funcdef_no=9, decl_uid=6249, cgraph_uid=10, symbol_order=10)
+
+Modification phase of node IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged/10
+IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged (IRQn_Type eIrqNumber, IntCtrl_Ip_IrqTargetType eCpuTarget)
+{
+  uint32 u32IrqId;
+  uint32 u32Target;
+  uint32 u32Core;
+  long unsigned int eIrqNumber.16_1;
+  unsigned char _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 2> [local count: 350860936]:
+  # DEBUG BEGIN_STMT
+  eIrqNumber.16_1 = (long unsigned int) eIrqNumber_14(D);
+  _2 = aMscmCore2CoreIrqId[eIrqNumber.16_1];
+  _3 = _2 != 255;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  _4 = eIrqNumber_14(D) >= 0;
+  DevAssert (_4);
+  # DEBUG BEGIN_STMT
+  _5 = eIrqNumber_14(D) <= 168;
+  DevAssert (_5);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32IrqId_19 = (uint32) _2;
+  # DEBUG u32IrqId => u32IrqId_19
+  # DEBUG BEGIN_STMT
+  if (eCpuTarget_20(D) == -1)
+    goto <bb 12>; [34.00%]
+  else
+    goto <bb 7>; [66.00%]
+
+  <bb 12> [local count: 119292718]:
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 954449108]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 ={v} MEM[(struct MSCM_Type *)1075412992B].CPXNUM;
+  _7 = _6 & 255;
+  if (_7 != u32Core_9)
+    goto <bb 4>; [66.00%]
+  else
+    goto <bb 5>; [34.00%]
+
+  <bb 4> [local count: 629936412]:
+  # DEBUG BEGIN_STMT
+  MEM[(volatile struct MSCM_IRCPnIRx_Type *)1075415648B].IRCPnIRx[u32Core_9][u32IrqId_19].IGR ={v} 1;
+
+  <bb 5> [local count: 954449108]:
+  # DEBUG BEGIN_STMT
+  u32Core_25 = u32Core_9 + 1;
+  # DEBUG u32Core => u32Core_25
+
+  <bb 6> [local count: 1073741824]:
+  # u32Core_9 = PHI <u32Core_25(5), 0(12)>
+  # DEBUG u32Core => u32Core_9
+  # DEBUG BEGIN_STMT
+  if (u32Core_9 != 8)
+    goto <bb 3>; [88.89%]
+  else
+    goto <bb 11>; [11.11%]
+
+  <bb 7> [local count: 231568218]:
+  # DEBUG BEGIN_STMT
+  if (eCpuTarget_20(D) == -2)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 9>; [66.00%]
+
+  <bb 8> [local count: 78733194]:
+  # DEBUG BEGIN_STMT
+  _8 ={v} MEM[(struct MSCM_Type *)1075412992B].CPXNUM;
+  u32Target_22 = _8 & 255;
+  # DEBUG u32Target => u32Target_22
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 152835024]:
+  # DEBUG BEGIN_STMT
+  u32Target_21 = (uint32) eCpuTarget_20(D);
+  # DEBUG u32Target => u32Target_21
+
+  <bb 10> [local count: 231568218]:
+  # u32Target_10 = PHI <u32Target_22(8), u32Target_21(9)>
+  # DEBUG u32Target => u32Target_10
+  # DEBUG BEGIN_STMT
+  MEM[(volatile struct MSCM_IRCPnIRx_Type *)1075415648B].IRCPnIRx[u32Target_10][u32IrqId_19].IGR ={v} 1;
+
+  <bb 11> [local count: 350860934]:
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_Init (IntCtrl_Ip_Init, funcdef_no=10, decl_uid=6207, cgraph_uid=11, symbol_order=11)
+
+Modification phase of node IntCtrl_Ip_Init/11
+IntCtrl_Ip_Init (const struct IntCtrl_Ip_CtrlConfigType * pIntCtrlCtrlConfig)
+{
+  uint32 u32IrqIdx;
+  _Bool _1;
+  long unsigned int _2;
+  _Bool _3;
+  const struct IntCtrl_Ip_IrqConfigType * _4;
+  long unsigned int _5;
+  const struct IntCtrl_Ip_IrqConfigType * _6;
+  <unnamed type> _7;
+  const struct IntCtrl_Ip_IrqConfigType * _8;
+  const struct IntCtrl_Ip_IrqConfigType * _9;
+  <unnamed type> _10;
+  unsigned char _11;
+  const struct IntCtrl_Ip_IrqConfigType * _12;
+  const struct IntCtrl_Ip_IrqConfigType * _13;
+  <unnamed type> _14;
+  void (*<T4e5>) (void) _15;
+  const struct IntCtrl_Ip_IrqConfigType * _16;
+  const struct IntCtrl_Ip_IrqConfigType * _17;
+  _Bool _18;
+  <unnamed type> _19;
+  <unnamed type> _20;
+  long unsigned int _21;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  _1 = pIntCtrlCtrlConfig_25(D) != 0B;
+  DevAssert (_1);
+  # DEBUG BEGIN_STMT
+  _2 = pIntCtrlCtrlConfig_25(D)->u32ConfigIrqCount;
+  _3 = _2 <= 195;
+  DevAssert (_3);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG u32IrqIdx => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _4 = pIntCtrlCtrlConfig_25(D)->aIrqConfig;
+  _5 = u32IrqIdx_22 * 12;
+  _6 = _4 + _5;
+  _7 = _6->eIrqNumber;
+  # DEBUG eIrqNumber => _7
+  # DEBUG INLINE_ENTRY IntCtrl_Ip_ClearPending
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_ClearPendingPrivileged (_7);
+  # DEBUG eIrqNumber => NULL
+  # DEBUG BEGIN_STMT
+  _8 = pIntCtrlCtrlConfig_25(D)->aIrqConfig;
+  _9 = _8 + _5;
+  _10 = _9->eIrqNumber;
+  _11 = _9->u8IrqPriority;
+  # DEBUG eIrqNumber => _10
+  # DEBUG u8Priority => _11
+  # DEBUG INLINE_ENTRY IntCtrl_Ip_SetPriority
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_SetPriorityPrivileged (_10, _11);
+  # DEBUG eIrqNumber => NULL
+  # DEBUG u8Priority => NULL
+  # DEBUG BEGIN_STMT
+  _12 = pIntCtrlCtrlConfig_25(D)->aIrqConfig;
+  _13 = _12 + _5;
+  _14 = _13->eIrqNumber;
+  _15 = _13->pfHandler;
+  # DEBUG eIrqNumber => _14
+  # DEBUG pfNewHandler => _15
+  # DEBUG pfOldHandler => 0B
+  # DEBUG INLINE_ENTRY IntCtrl_Ip_InstallHandler
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_InstallHandlerPrivileged (_14, _15, 0B);
+  # DEBUG eIrqNumber => NULL
+  # DEBUG pfNewHandler => NULL
+  # DEBUG pfOldHandler => NULL
+  # DEBUG BEGIN_STMT
+  _16 = pIntCtrlCtrlConfig_25(D)->aIrqConfig;
+  _17 = _16 + _5;
+  _18 = _17->bIrqEnabled;
+  if (_18 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 477815111]:
+  # DEBUG BEGIN_STMT
+  _19 = _17->eIrqNumber;
+  # DEBUG eIrqNumber => _19
+  # DEBUG INLINE_ENTRY IntCtrl_Ip_EnableIrq
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_EnableIrqPrivileged (_19);
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 477815111]:
+  # DEBUG BEGIN_STMT
+  _20 = _17->eIrqNumber;
+  # DEBUG eIrqNumber => _20
+  # DEBUG INLINE_ENTRY IntCtrl_Ip_DisableIrq
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_DisableIrqPrivileged (_20);
+
+  <bb 6> [local count: 955630223]:
+  # DEBUG eIrqNumber => NULL
+  # DEBUG eIrqNumber => NULL
+  # DEBUG BEGIN_STMT
+  u32IrqIdx_29 = u32IrqIdx_22 + 1;
+  # DEBUG u32IrqIdx => u32IrqIdx_29
+
+  <bb 7> [local count: 1073741824]:
+  # u32IrqIdx_22 = PHI <0(2), u32IrqIdx_29(6)>
+  # DEBUG u32IrqIdx => u32IrqIdx_22
+  # DEBUG BEGIN_STMT
+  _21 = pIntCtrlCtrlConfig_25(D)->u32ConfigIrqCount;
+  if (_21 > u32IrqIdx_22)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+
+;; Function IntCtrl_Ip_InstallHandler (IntCtrl_Ip_InstallHandler, funcdef_no=11, decl_uid=6211, cgraph_uid=12, symbol_order=12)
+
+Modification phase of node IntCtrl_Ip_InstallHandler/12
+IntCtrl_Ip_InstallHandler (IRQn_Type eIrqNumber, void (*IntCtrl_Ip_IrqHandlerType) (void) pfNewHandler, void (*IntCtrl_Ip_IrqHandlerType) (void) * const pfOldHandler)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_InstallHandlerPrivileged (eIrqNumber_2(D), pfNewHandler_3(D), pfOldHandler_4(D));
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_EnableIrq (IntCtrl_Ip_EnableIrq, funcdef_no=12, decl_uid=6213, cgraph_uid=13, symbol_order=13)
+
+Modification phase of node IntCtrl_Ip_EnableIrq/13
+IntCtrl_Ip_EnableIrq (IRQn_Type eIrqNumber)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_EnableIrqPrivileged (eIrqNumber_2(D));
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_DisableIrq (IntCtrl_Ip_DisableIrq, funcdef_no=13, decl_uid=6215, cgraph_uid=14, symbol_order=14)
+
+Modification phase of node IntCtrl_Ip_DisableIrq/14
+IntCtrl_Ip_DisableIrq (IRQn_Type eIrqNumber)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_DisableIrqPrivileged (eIrqNumber_2(D));
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_SetPriority (IntCtrl_Ip_SetPriority, funcdef_no=14, decl_uid=6218, cgraph_uid=15, symbol_order=15)
+
+Modification phase of node IntCtrl_Ip_SetPriority/15
+IntCtrl_Ip_SetPriority (IRQn_Type eIrqNumber, uint8 u8Priority)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_SetPriorityPrivileged (eIrqNumber_2(D), u8Priority_3(D));
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_GetPriority (IntCtrl_Ip_GetPriority, funcdef_no=15, decl_uid=6220, cgraph_uid=16, symbol_order=16)
+
+Modification phase of node IntCtrl_Ip_GetPriority/16
+IntCtrl_Ip_GetPriority (IRQn_Type eIrqNumber)
+{
+  uint8 _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = IntCtrl_Ip_GetPriorityPrivileged (eIrqNumber_2(D));
+  return _4;
+
+}
+
+
+
+;; Function IntCtrl_Ip_ClearPending (IntCtrl_Ip_ClearPending, funcdef_no=16, decl_uid=6222, cgraph_uid=17, symbol_order=17)
+
+Modification phase of node IntCtrl_Ip_ClearPending/17
+IntCtrl_Ip_ClearPending (IRQn_Type eIrqNumber)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_ClearPendingPrivileged (eIrqNumber_2(D));
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_ClearDirectedCpuInterrupt (IntCtrl_Ip_ClearDirectedCpuInterrupt, funcdef_no=17, decl_uid=6224, cgraph_uid=18, symbol_order=18)
+
+Modification phase of node IntCtrl_Ip_ClearDirectedCpuInterrupt/18
+IntCtrl_Ip_ClearDirectedCpuInterrupt (IRQn_Type eIrqNumber)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_ClearDirectedCpuInterruptPrivileged (eIrqNumber_2(D));
+  return;
+
+}
+
+
+
+;; Function IntCtrl_Ip_GetDirectedCpuInterrupt (IntCtrl_Ip_GetDirectedCpuInterrupt, funcdef_no=18, decl_uid=6226, cgraph_uid=19, symbol_order=19)
+
+Modification phase of node IntCtrl_Ip_GetDirectedCpuInterrupt/19
+IntCtrl_Ip_GetDirectedCpuInterrupt (IRQn_Type eIrqNumber)
+{
+  long unsigned int _1;
+  boolean _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = IntCtrl_Ip_GetDirectedCpuInterruptPrivileged (eIrqNumber_3(D));
+  _5 = _1 != 0;
+  return _5;
+
+}
+
+
+
+;; Function IntCtrl_Ip_GenerateDirectedCpuInterrupt (IntCtrl_Ip_GenerateDirectedCpuInterrupt, funcdef_no=19, decl_uid=6229, cgraph_uid=20, symbol_order=20)
+
+Modification phase of node IntCtrl_Ip_GenerateDirectedCpuInterrupt/20
+IntCtrl_Ip_GenerateDirectedCpuInterrupt (IRQn_Type eIrqNumber, IntCtrl_Ip_IrqTargetType eCpuTarget)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_GenerateDirectedCpuInterruptPrivileged (eIrqNumber_2(D), eCpuTarget_3(D));
+  return;
+
+}
+
+

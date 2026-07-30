@@ -1,0 +1,487 @@
+
+
+ local analysis of EthSwt_EthTxFinishedIndication
+   scanning: return 0;
+Function is locally const.
+
+
+ local analysis of EthSwt_EthTxProcessFrame
+   scanning: return 0;
+Function is locally const.
+
+
+ local analysis of EthSwt_EthTxAdaptBufferLength
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of EthSwt_EthTxPrepareFrame
+   scanning: return 0;
+Function is locally const.
+
+
+ local analysis of EthSwt_EthRxFinishedIndication
+   scanning: return 0;
+Function is locally const.
+
+
+ local analysis of EthSwt_EthRxProcessFrame
+   scanning: *IsMgmtFrameOnlyPtr_2(D) = 0;
+    Indirect ref write is not const/pure
+  scanning: return 0;
+callgraph:
+
+EthSwt_EthRxFinishedIndication/7 (EthSwt_EthRxFinishedIndication) @06e6d8c0
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 1
+  Aux: @06a779f8
+  References: 
+  Referring: 
+  Function EthSwt_EthRxFinishedIndication/7 is inline copy in EthSwt_EthTxFinishedIndication/5
+  Clone of EthSwt_EthRxFinishedIndication/1
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EthSwt_EthTxFinishedIndication/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthSwt_EthTxPrepareFrame.constprop.0/6 (EthSwt_EthTxPrepareFrame.constprop) @06e6d7e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06a77878
+  References: 
+  Referring: 
+  Function EthSwt_EthTxPrepareFrame.constprop/6 is inline copy in EthSwt_EthTxProcessFrame/4
+  Clone of EthSwt_EthTxPrepareFrame/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local icf_merged optimize_size
+  Called by: EthSwt_EthTxProcessFrame/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthSwt_EthTxFinishedIndication/5 (EthSwt_EthTxFinishedIndication) @06e237e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a778f8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthSwt_EthRxFinishedIndication/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthSwt_EthTxProcessFrame/4 (EthSwt_EthTxProcessFrame) @06e23540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77918
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthSwt_EthTxPrepareFrame.constprop/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthSwt_EthTxAdaptBufferLength/3 (EthSwt_EthTxAdaptBufferLength) @06e232a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a58
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthTxPrepareFrame/2 (EthSwt_EthTxPrepareFrame) @06e23000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a98
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthRxFinishedIndication/1 (EthSwt_EthRxFinishedIndication) @06e20b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 7
+  Aux: @06a77758
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthRxProcessFrame/0 (EthSwt_EthRxProcessFrame) @06e20d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77958
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+EthSwt_EthRxFinishedIndication/7 (EthSwt_EthRxFinishedIndication) @06e6d8c0
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 1
+  Aux: @06a779f8
+  References: 
+  Referring: 
+  Function EthSwt_EthRxFinishedIndication/7 is inline copy in EthSwt_EthTxFinishedIndication/5
+  Clone of EthSwt_EthRxFinishedIndication/1
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EthSwt_EthTxFinishedIndication/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthSwt_EthTxPrepareFrame.constprop.0/6 (EthSwt_EthTxPrepareFrame.constprop) @06e6d7e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06a77878
+  References: 
+  Referring: 
+  Function EthSwt_EthTxPrepareFrame.constprop/6 is inline copy in EthSwt_EthTxProcessFrame/4
+  Clone of EthSwt_EthTxPrepareFrame/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local icf_merged optimize_size
+  Called by: EthSwt_EthTxProcessFrame/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthSwt_EthTxFinishedIndication/5 (EthSwt_EthTxFinishedIndication) @06e237e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a778f8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthSwt_EthRxFinishedIndication/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthSwt_EthTxProcessFrame/4 (EthSwt_EthTxProcessFrame) @06e23540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77918
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthSwt_EthTxPrepareFrame.constprop/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthSwt_EthTxAdaptBufferLength/3 (EthSwt_EthTxAdaptBufferLength) @06e232a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a58
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthTxPrepareFrame/2 (EthSwt_EthTxPrepareFrame) @06e23000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a98
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthRxFinishedIndication/1 (EthSwt_EthRxFinishedIndication) @06e20b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 7
+  Aux: @06a77758
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthRxProcessFrame/0 (EthSwt_EthRxProcessFrame) @06e20d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77958
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+EthSwt_EthRxFinishedIndication: malloc_bottom
+EthSwt_EthTxPrepareFrame.constprop: malloc_bottom
+EthSwt_EthTxFinishedIndication: malloc_bottom
+EthSwt_EthTxProcessFrame: malloc_bottom
+EthSwt_EthTxAdaptBufferLength: malloc_bottom
+EthSwt_EthTxPrepareFrame: malloc_bottom
+EthSwt_EthRxFinishedIndication: malloc_bottom
+EthSwt_EthRxProcessFrame: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+EthSwt_EthRxFinishedIndication: malloc_bottom
+EthSwt_EthTxPrepareFrame.constprop: malloc_bottom
+EthSwt_EthTxFinishedIndication: malloc_bottom
+EthSwt_EthTxProcessFrame: malloc_bottom
+EthSwt_EthTxAdaptBufferLength: malloc_bottom
+EthSwt_EthTxPrepareFrame: malloc_bottom
+EthSwt_EthRxFinishedIndication: malloc_bottom
+EthSwt_EthRxProcessFrame: malloc_bottom
+callgraph:
+
+EthSwt_EthRxFinishedIndication/7 (EthSwt_EthRxFinishedIndication) @06e6d8c0
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 1
+  Aux: @06a77a58
+  References: 
+  Referring: 
+  Function EthSwt_EthRxFinishedIndication/7 is inline copy in EthSwt_EthTxFinishedIndication/5
+  Clone of EthSwt_EthRxFinishedIndication/1
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EthSwt_EthTxFinishedIndication/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthSwt_EthTxPrepareFrame.constprop.0/6 (EthSwt_EthTxPrepareFrame.constprop) @06e6d7e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06a77ad8
+  References: 
+  Referring: 
+  Function EthSwt_EthTxPrepareFrame.constprop/6 is inline copy in EthSwt_EthTxProcessFrame/4
+  Clone of EthSwt_EthTxPrepareFrame/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local icf_merged optimize_size
+  Called by: EthSwt_EthTxProcessFrame/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthSwt_EthTxFinishedIndication/5 (EthSwt_EthTxFinishedIndication) @06e237e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77758
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthSwt_EthRxFinishedIndication/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthSwt_EthTxProcessFrame/4 (EthSwt_EthTxProcessFrame) @06e23540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a98
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthSwt_EthTxPrepareFrame.constprop/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthSwt_EthTxAdaptBufferLength/3 (EthSwt_EthTxAdaptBufferLength) @06e232a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a777f8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthTxPrepareFrame/2 (EthSwt_EthTxPrepareFrame) @06e23000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77778
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthRxFinishedIndication/1 (EthSwt_EthRxFinishedIndication) @06e20b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 7
+  Aux: @06a77918
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthRxProcessFrame/0 (EthSwt_EthRxProcessFrame) @06e20d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77798
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+EthSwt_EthTxFinishedIndication/5 (EthSwt_EthTxFinishedIndication) @06e237e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77758
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthSwt_EthRxFinishedIndication/7 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthSwt_EthRxFinishedIndication/7 (EthSwt_EthRxFinishedIndication) @06e6d8c0
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 1
+  Aux: @06a77a58
+  References: 
+  Referring: 
+  Function EthSwt_EthRxFinishedIndication/7 is inline copy in EthSwt_EthTxFinishedIndication/5
+  Clone of EthSwt_EthRxFinishedIndication/1
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EthSwt_EthTxFinishedIndication/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthSwt_EthTxProcessFrame/4 (EthSwt_EthTxProcessFrame) @06e23540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a98
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthSwt_EthTxPrepareFrame.constprop/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthSwt_EthTxPrepareFrame.constprop.0/6 (EthSwt_EthTxPrepareFrame.constprop) @06e6d7e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06a77ad8
+  References: 
+  Referring: 
+  Function EthSwt_EthTxPrepareFrame.constprop/6 is inline copy in EthSwt_EthTxProcessFrame/4
+  Clone of EthSwt_EthTxPrepareFrame/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local icf_merged optimize_size
+  Called by: EthSwt_EthTxProcessFrame/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthSwt_EthTxAdaptBufferLength/3 (EthSwt_EthTxAdaptBufferLength) @06e232a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a777f8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthTxPrepareFrame/2 (EthSwt_EthTxPrepareFrame) @06e23000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77778
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthRxFinishedIndication/1 (EthSwt_EthRxFinishedIndication) @06e20b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 7
+  Aux: @06a77918
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthSwt_EthRxProcessFrame/0 (EthSwt_EthRxProcessFrame) @06e20d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77798
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: EthSwt_EthRxProcessFrame
+Function found not to call free: EthSwt_EthRxFinishedIndication
+Function found not to call free: EthSwt_EthTxPrepareFrame
+Function found not to call free: EthSwt_EthTxAdaptBufferLength
+Function found not to call free: EthSwt_EthTxPrepareFrame.constprop
+Function found not to call free: EthSwt_EthTxProcessFrame
+Function found not to call free: EthSwt_EthRxFinishedIndication
+Function found not to call free: EthSwt_EthTxFinishedIndication
+EthSwt_EthTxFinishedIndication (uint8 CtrlIdx, Eth_BufIdxType BufIdx)
+{
+  Std_ReturnType retval.6;
+
+  <bb 2> [local count: 1073741824]:
+  retval.6_3 = EthSwt_EthRxFinishedIndication (CtrlIdx_1(D), BufIdx_2(D)); [tail call]
+  return retval.6_3;
+
+}
+
+
+EthSwt_EthTxProcessFrame (uint8 CtrlIdx, Eth_BufIdxType BufIdx, uint8 * * DataPtr, uint16 * LengthPtr)
+{
+  Std_ReturnType retval.7;
+
+  <bb 2> [local count: 1073741824]:
+  retval.7_5 = EthSwt_EthTxPrepareFrame (CtrlIdx_1(D), BufIdx_2(D), DataPtr_3(D), LengthPtr_4(D)); [tail call]
+  return retval.7_5;
+
+}
+
+
+EthSwt_EthTxAdaptBufferLength (uint16 * LengthPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthSwt_EthTxPrepareFrame (uint8 CtrlIdx, Eth_BufIdxType BufIdx, uint8 * * DataPtr, uint16 * LengthPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+EthSwt_EthRxFinishedIndication (uint8 CtrlIdx, Eth_BufIdxType BufIdx)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+EthSwt_EthRxProcessFrame (uint8 CtrlIdx, Eth_BufIdxType BufIdx, uint8 * * DataPtr, uint16 * LengthPtr, boolean * IsMgmtFrameOnlyPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *IsMgmtFrameOnlyPtr_2(D) = 0;
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+

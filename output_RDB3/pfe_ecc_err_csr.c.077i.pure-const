@@ -1,0 +1,428 @@
+
+
+ local analysis of pfe_ecc_err_cfg_irq_unmask_all
+   scanning: _1 = base_va_3(D) + 304;
+  scanning: _2 = (volatile uint32_t *) _1;
+  scanning: *_2 ={v} 3;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: return;
+
+
+ local analysis of pfe_ecc_err_cfg_irq_unmask
+   scanning: _1 = base_va_4(D) + 304;
+  scanning: _2 = (volatile uint32_t *) _1;
+  scanning: _3 ={v} *_2;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: reg_6 = _3 | 1;
+  scanning: *_2 ={v} reg_6;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: return;
+
+
+ local analysis of pfe_ecc_err_cfg_irq_mask
+   scanning: _1 = base_va_4(D) + 304;
+  scanning: _2 = (volatile uint32_t *) _1;
+  scanning: _3 ={v} *_2;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: reg_6 = _3 & 4294967294;
+  scanning: *_2 ={v} reg_6;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: return;
+
+
+ local analysis of pfe_ecc_err_cfg_isr
+   scanning: _1 = base_va_11(D) + 304;
+  scanning: _2 = (volatile uint32_t *) _1;
+  scanning: reg_en_13 ={v} *_2;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: _3 = reg_en_13 & 4294967294;
+  scanning: *_2 ={v} _3;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: _4 = base_va_11(D) + 300;
+  scanning: _5 = (volatile uint32_t *) _4;
+  scanning: reg_src_15 ={v} *_5;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: *_5 ={v} reg_src_15;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: _6 = reg_en_13 & reg_src_15;
+  scanning: trig_en_interrupts_17 = _6 & 3;
+  scanning: if (trig_en_interrupts_17 != 0)
+  scanning: pfe_hm_report (11, 2, 2, "[%s:%d] ", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_ecc_err_csr.c", 69, "");
+  scanning: Dem_SetEventStatus (33, 3);
+  scanning: _7 = ~reg_src_15;
+  scanning: _8 = _7 & reg_en_13;
+  scanning: *_2 ={v} _8;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: return ret_9;
+callgraph:
+
+Dem_SetEventStatus/18 (Dem_SetEventStatus) @07480620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_cfg_isr/13 (512926469 (estimated locally),0.48 per call) 
+  Calls: 
+pfe_hm_report/17 (pfe_hm_report) @074802a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_cfg_isr/13 (512926469 (estimated locally),0.48 per call) 
+  Calls: 
+pfe_ecc_err_cfg_irq_unmask_all/16 (pfe_ecc_err_cfg_irq_unmask_all) @07480b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a68
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_irq_unmask/15 (pfe_ecc_err_cfg_irq_unmask) @074808c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a777a8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_irq_mask/14 (pfe_ecc_err_cfg_irq_mask) @07480540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77b08
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_isr/13 (pfe_ecc_err_cfg_isr) @074801c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a777e8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Dem_SetEventStatus/18 (512926469 (estimated locally),0.48 per call) pfe_hm_report/17 (512926469 (estimated locally),0.48 per call) 
+
+
+ ordered call graph: reduced for nothrow
+pfe_ecc_err_cfg_irq_unmask_all/16 (pfe_ecc_err_cfg_irq_unmask_all) @07480b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a68
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_irq_unmask/15 (pfe_ecc_err_cfg_irq_unmask) @074808c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a777a8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_irq_mask/14 (pfe_ecc_err_cfg_irq_mask) @07480540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77b08
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_isr/13 (pfe_ecc_err_cfg_isr) @074801c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a777e8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Dem_SetEventStatus/18 (512926469 (estimated locally),0.48 per call) pfe_hm_report/17 (512926469 (estimated locally),0.48 per call) 
+
+
+
+MALLOC LATTICE Initial:
+pfe_ecc_err_cfg_irq_unmask_all: malloc_bottom
+pfe_ecc_err_cfg_irq_unmask: malloc_bottom
+pfe_ecc_err_cfg_irq_mask: malloc_bottom
+pfe_ecc_err_cfg_isr: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+pfe_ecc_err_cfg_irq_unmask_all: malloc_bottom
+pfe_ecc_err_cfg_irq_unmask: malloc_bottom
+pfe_ecc_err_cfg_irq_mask: malloc_bottom
+pfe_ecc_err_cfg_isr: malloc_bottom
+callgraph:
+
+Dem_SetEventStatus/18 (Dem_SetEventStatus) @07480620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_cfg_isr/13 (512926469 (estimated locally),0.48 per call) 
+  Calls: 
+pfe_hm_report/17 (pfe_hm_report) @074802a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_cfg_isr/13 (512926469 (estimated locally),0.48 per call) 
+  Calls: 
+pfe_ecc_err_cfg_irq_unmask_all/16 (pfe_ecc_err_cfg_irq_unmask_all) @07480b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a48
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_irq_unmask/15 (pfe_ecc_err_cfg_irq_unmask) @074808c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a68
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_irq_mask/14 (pfe_ecc_err_cfg_irq_mask) @07480540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77b08
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_isr/13 (pfe_ecc_err_cfg_isr) @074801c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a777e8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Dem_SetEventStatus/18 (512926469 (estimated locally),0.48 per call) pfe_hm_report/17 (512926469 (estimated locally),0.48 per call) 
+
+
+ ordered call graph: reduced
+pfe_ecc_err_cfg_irq_unmask_all/16 (pfe_ecc_err_cfg_irq_unmask_all) @07480b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a48
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_irq_unmask/15 (pfe_ecc_err_cfg_irq_unmask) @074808c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77a68
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_irq_mask/14 (pfe_ecc_err_cfg_irq_mask) @07480540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a77b08
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_ecc_err_cfg_isr/13 (pfe_ecc_err_cfg_isr) @074801c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a777e8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Dem_SetEventStatus/18 (512926469 (estimated locally),0.48 per call) pfe_hm_report/17 (512926469 (estimated locally),0.48 per call) 
+
+Function found not to call free: pfe_ecc_err_cfg_irq_mask
+Function found not to call free: pfe_ecc_err_cfg_irq_unmask
+Function found not to call free: pfe_ecc_err_cfg_irq_unmask_all
+pfe_ecc_err_cfg_irq_unmask_all (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 304;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 3;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_ecc_err_cfg_irq_unmask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 304;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 | 1;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_ecc_err_cfg_irq_mask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 304;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 & 4294967294;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_ecc_err_cfg_isr (addr_t base_va)
+{
+  uint32_t trig_en_interrupts;
+  errno_t ret;
+  uint32_t reg_src;
+  uint32_t reg_en;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_11(D) + 304;
+  _2 = (volatile uint32_t *) _1;
+  reg_en_13 ={v} *_2;
+  # DEBUG reg_en => reg_en_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = reg_en_13 & 4294967294;
+  *_2 ={v} _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_11(D) + 300;
+  _5 = (volatile uint32_t *) _4;
+  reg_src_15 ={v} *_5;
+  # DEBUG reg_src => reg_src_15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_5 ={v} reg_src_15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = reg_en_13 & reg_src_15;
+  trig_en_interrupts_17 = _6 & 3;
+  # DEBUG trig_en_interrupts => trig_en_interrupts_17
+  # DEBUG BEGIN_STMT
+  if (trig_en_interrupts_17 != 0)
+    goto <bb 3>; [47.77%]
+  else
+    goto <bb 4>; [52.23%]
+
+  <bb 3> [local count: 512926469]:
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (11, 2, 2, "[%s:%d] ", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_ecc_err_csr.c", 69, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (33, 3);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_9 = PHI <2(2), 0(3)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = ~reg_src_15;
+  _8 = _7 & reg_en_13;
+  *_2 ={v} _8;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_9;
+
+}
+
+

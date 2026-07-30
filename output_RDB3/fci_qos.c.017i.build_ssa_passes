@@ -1,0 +1,3824 @@
+fci_qos_policer_shp_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_qos_policer_shp_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  errno_t ret;
+  struct pfe_gpi_t * gpi;
+  struct pfe_phy_if_t * phy_if;
+  uint8_t shp_id;
+  struct fpp_qos_policer_shp_cmd_t * shp_cmd;
+  errno_t D.13443;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = fci_validate_cmd_params (msg, fci_ret, reply_buf, reply_len, 36);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *reply_len = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf, 0, 36);
+  # DEBUG BEGIN_STMT
+  shp_cmd = &msg->msg_cmd.payload;
+  # DEBUG BEGIN_STMT
+  _1 = &shp_cmd->if_name;
+  phy_if = fci_get_phy_if_by_name (_1);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  goto <bb 13>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  gpi = fci_qos_get_gpi (phy_if);
+  # DEBUG BEGIN_STMT
+  if (gpi == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  goto <bb 13>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  shp_id = shp_cmd->id;
+  # DEBUG BEGIN_STMT
+  if (shp_id > 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  _2 = shp_cmd->action;
+  _3 = (int) _2;
+  switch (_3) <default: <L9> [INV], case 4: <L7> [INV], case 6: <L8> [INV]>
+
+  <bb 10> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  ret = policer_shp_cmd_action_update (fci_ret, shp_cmd, gpi, shp_id);
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  ret = policer_shp_cmd_action_query (reply_buf, fci_ret, shp_cmd, gpi, shp_id);
+  # DEBUG BEGIN_STMT
+  *reply_len = 36;
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  D.13443 = ret;
+  return D.13443;
+
+}
+
+
+policer_shp_cmd_action_query (struct fpp_qos_policer_shp_cmd_t * reply_buf, uint16_t * fci_ret, struct fpp_qos_policer_shp_cmd_t * shp_cmd, struct pfe_gpi_t * gpi, uint8_t shp_id)
+{
+  int32_t shp_min_credit;
+  int32_t shp_max_credit;
+  uint32_t shp_isl;
+  fpp_iqos_shp_rate_mode_t shp_mode;
+  fpp_iqos_shp_type_t shp_type;
+  errno_t ret;
+  errno_t D.13481;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  shp_max_credit = 0;
+  # DEBUG BEGIN_STMT
+  shp_min_credit = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&shp_type, 0, 1);
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&shp_mode, 0, 1);
+  # DEBUG BEGIN_STMT
+  _1 = shp_cmd->action;
+  reply_buf->action = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &reply_buf->if_name;
+  _3 = &shp_cmd->if_name;
+  autolibc_strncpy (_2, _3, 16);
+  # DEBUG BEGIN_STMT
+  reply_buf->if_name[15] = 0;
+  # DEBUG BEGIN_STMT
+  reply_buf->id = shp_id;
+  # DEBUG BEGIN_STMT
+  _4 = pfe_gpi_shp_is_enabled (gpi, shp_id);
+  reply_buf->enable = _4;
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_shp_get_type (gpi, shp_id, &shp_type);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_shp_get_mode (gpi, shp_id, &shp_mode);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_shp_get_idle_slope (gpi, shp_id, &shp_isl);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_shp_get_limits (gpi, shp_id, &shp_max_credit, &shp_min_credit);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  shp_type.25_5 = shp_type;
+  reply_buf->type = shp_type.25_5;
+  # DEBUG BEGIN_STMT
+  shp_mode.26_6 = shp_mode;
+  reply_buf->mode = shp_mode.26_6;
+  # DEBUG BEGIN_STMT
+  shp_isl.27_7 = shp_isl;
+  _8 = shp_isl.27_7 >> 24;
+  shp_isl.28_9 = shp_isl;
+  _10 = shp_isl.28_9 >> 8;
+  _11 = _10 & 65280;
+  _12 = _8 | _11;
+  shp_isl.29_13 = shp_isl;
+  _14 = shp_isl.29_13 << 8;
+  _15 = _14 & 16711680;
+  _16 = _12 | _15;
+  shp_isl.30_17 = shp_isl;
+  _18 = shp_isl.30_17 << 24;
+  _19 = _16 | _18;
+  reply_buf->isl = _19;
+  # DEBUG BEGIN_STMT
+  shp_max_credit.31_20 = shp_max_credit;
+  shp_max_credit.32_21 = (long unsigned int) shp_max_credit.31_20;
+  _22 = shp_max_credit.32_21 >> 24;
+  shp_max_credit.33_23 = shp_max_credit;
+  shp_max_credit.34_24 = (long unsigned int) shp_max_credit.33_23;
+  _25 = shp_max_credit.34_24 >> 8;
+  _26 = _25 & 65280;
+  _27 = _22 | _26;
+  shp_max_credit.35_28 = shp_max_credit;
+  shp_max_credit.36_29 = (long unsigned int) shp_max_credit.35_28;
+  _30 = shp_max_credit.36_29 << 8;
+  _31 = _30 & 16711680;
+  _32 = _27 | _31;
+  shp_max_credit.37_33 = shp_max_credit;
+  shp_max_credit.38_34 = (long unsigned int) shp_max_credit.37_33;
+  _35 = shp_max_credit.38_34 << 24;
+  _36 = _32 | _35;
+  _37 = (long int) _36;
+  reply_buf->max_credit = _37;
+  # DEBUG BEGIN_STMT
+  shp_min_credit.39_38 = shp_min_credit;
+  shp_min_credit.40_39 = (long unsigned int) shp_min_credit.39_38;
+  _40 = shp_min_credit.40_39 >> 24;
+  shp_min_credit.41_41 = shp_min_credit;
+  shp_min_credit.42_42 = (long unsigned int) shp_min_credit.41_41;
+  _43 = shp_min_credit.42_42 >> 8;
+  _44 = _43 & 65280;
+  _45 = _40 | _44;
+  shp_min_credit.43_46 = shp_min_credit;
+  shp_min_credit.44_47 = (long unsigned int) shp_min_credit.43_46;
+  _48 = shp_min_credit.44_47 << 8;
+  _49 = _48 & 16711680;
+  _50 = _45 | _49;
+  shp_min_credit.45_51 = shp_min_credit;
+  shp_min_credit.46_52 = (long unsigned int) shp_min_credit.45_51;
+  _53 = shp_min_credit.46_52 << 24;
+  _54 = _50 | _53;
+  _55 = (long int) _54;
+  reply_buf->min_credit = _55;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  D.13481 = ret;
+  shp_type = {CLOBBER};
+  shp_mode = {CLOBBER};
+  shp_isl = {CLOBBER};
+  shp_max_credit = {CLOBBER};
+  shp_min_credit = {CLOBBER};
+  return D.13481;
+
+}
+
+
+policer_shp_cmd_action_update (uint16_t * fci_ret, struct fpp_qos_policer_shp_cmd_t * shp_cmd, struct pfe_gpi_t * gpi, uint8_t shp_id)
+{
+  bool_t switch_break;
+  int32_t shp_min_credit;
+  int32_t shp_max_credit;
+  uint32_t shp_isl;
+  fpp_iqos_shp_rate_mode_t shp_mode;
+  fpp_iqos_shp_type_t shp_type;
+  errno_t ret;
+  errno_t D.13466;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  shp_max_credit = 0;
+  # DEBUG BEGIN_STMT
+  shp_min_credit = 0;
+  # DEBUG BEGIN_STMT
+  switch_break = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&shp_type, 0, 1);
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&shp_mode, 0, 1);
+  # DEBUG BEGIN_STMT
+  _1 = shp_cmd->enable;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_shp_enable (gpi, shp_id);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_shp_disable (gpi, shp_id);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  switch_break = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (switch_break == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _2 = shp_cmd->type;
+  shp_type = _2;
+  # DEBUG BEGIN_STMT
+  _3 = shp_cmd->mode;
+  shp_mode = _3;
+  # DEBUG BEGIN_STMT
+  _4 = shp_cmd->isl;
+  _5 = _4 >> 24;
+  _6 = shp_cmd->isl;
+  _7 = _6 >> 8;
+  _8 = _7 & 65280;
+  _9 = _5 | _8;
+  _10 = shp_cmd->isl;
+  _11 = _10 << 8;
+  _12 = _11 & 16711680;
+  _13 = _9 | _12;
+  _14 = shp_cmd->isl;
+  _15 = _14 << 24;
+  shp_isl = _13 | _15;
+  # DEBUG BEGIN_STMT
+  _16 = shp_cmd->max_credit;
+  _17 = (long unsigned int) _16;
+  _18 = _17 >> 24;
+  _19 = shp_cmd->max_credit;
+  _20 = (long unsigned int) _19;
+  _21 = _20 >> 8;
+  _22 = _21 & 65280;
+  _23 = _18 | _22;
+  _24 = shp_cmd->max_credit;
+  _25 = (long unsigned int) _24;
+  _26 = _25 << 8;
+  _27 = _26 & 16711680;
+  _28 = _23 | _27;
+  _29 = shp_cmd->max_credit;
+  _30 = (long unsigned int) _29;
+  _31 = _30 << 24;
+  _32 = _28 | _31;
+  shp_max_credit = (int32_t) _32;
+  # DEBUG BEGIN_STMT
+  _33 = shp_cmd->min_credit;
+  _34 = (long unsigned int) _33;
+  _35 = _34 >> 24;
+  _36 = shp_cmd->min_credit;
+  _37 = (long unsigned int) _36;
+  _38 = _37 >> 8;
+  _39 = _38 & 65280;
+  _40 = _35 | _39;
+  _41 = shp_cmd->min_credit;
+  _42 = (long unsigned int) _41;
+  _43 = _42 << 8;
+  _44 = _43 & 16711680;
+  _45 = _40 | _44;
+  _46 = shp_cmd->min_credit;
+  _47 = (long unsigned int) _46;
+  _48 = _47 << 24;
+  _49 = _45 | _48;
+  shp_min_credit = (int32_t) _49;
+  # DEBUG BEGIN_STMT
+  shp_type.23_50 = shp_type;
+  ret = pfe_gpi_shp_set_type (gpi, shp_id, shp_type.23_50);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  shp_mode.24_51 = shp_mode;
+  ret = pfe_gpi_shp_set_mode (gpi, shp_id, shp_mode.24_51);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_shp_set_idle_slope (gpi, shp_id, shp_isl);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_shp_set_limits (gpi, shp_id, shp_max_credit, shp_min_credit);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  D.13466 = ret;
+  shp_type = {CLOBBER};
+  shp_mode = {CLOBBER};
+  return D.13466;
+
+}
+
+
+fci_qos_policer_wred_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_qos_policer_wred_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  errno_t ret;
+  struct pfe_gpi_t * gpi;
+  struct pfe_phy_if_t * phy_if;
+  fpp_iqos_queue_t queue;
+  struct fpp_qos_policer_wred_cmd_t * wred_cmd;
+  errno_t D.13394;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = fci_validate_cmd_params (msg, fci_ret, reply_buf, reply_len, 32);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *reply_len = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf, 0, 32);
+  # DEBUG BEGIN_STMT
+  wred_cmd = &msg->msg_cmd.payload;
+  # DEBUG BEGIN_STMT
+  _1 = &wred_cmd->if_name;
+  phy_if = fci_get_phy_if_by_name (_1);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  goto <bb 13>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  gpi = fci_qos_get_gpi (phy_if);
+  # DEBUG BEGIN_STMT
+  if (gpi == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  goto <bb 13>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  queue = wred_cmd->queue;
+  # DEBUG BEGIN_STMT
+  if (queue > 2)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  _2 = wred_cmd->action;
+  _3 = (int) _2;
+  switch (_3) <default: <L9> [INV], case 4: <L7> [INV], case 6: <L8> [INV]>
+
+  <bb 10> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  ret = policer_wred_cmd_action_update (fci_ret, wred_cmd, gpi, queue);
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  ret = policer_wred_cmd_action_query (reply_buf, fci_ret, wred_cmd, gpi, queue);
+  # DEBUG BEGIN_STMT
+  *reply_len = 32;
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  D.13394 = ret;
+  return D.13394;
+
+}
+
+
+policer_wred_cmd_action_query (struct fpp_qos_policer_wred_cmd_t * reply_buf, uint16_t * fci_ret, struct fpp_qos_policer_wred_cmd_t * wred_cmd, struct pfe_gpi_t * gpi, fpp_iqos_queue_t queue)
+{
+  uint16_t wred_thr;
+  uint32_t i;
+  errno_t ret;
+  errno_t D.13429;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = wred_cmd->action;
+  reply_buf->action = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &reply_buf->if_name;
+  _3 = &wred_cmd->if_name;
+  autolibc_strncpy (_2, _3, 16);
+  # DEBUG BEGIN_STMT
+  reply_buf->if_name[15] = 0;
+  # DEBUG BEGIN_STMT
+  reply_buf->queue = queue;
+  # DEBUG BEGIN_STMT
+  _4 = pfe_gpi_wred_is_enabled (gpi, queue);
+  reply_buf->enable = _4;
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _5 = (<unnamed type>) i;
+  ret = pfe_gpi_wred_get_thr (gpi, queue, _5, &wred_thr);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  wred_thr.22_6 = wred_thr;
+  _7 = wred_thr.22_6 r>> 8;
+  reply_buf->thr[i] = _7;
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (i <= 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _8 = (<unnamed type>) i;
+  _9 = &reply_buf->zprob[i];
+  ret = pfe_gpi_wred_get_prob (gpi, queue, _8, _9);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (i <= 3)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  D.13429 = ret;
+  wred_thr = {CLOBBER};
+  return D.13429;
+
+}
+
+
+policer_wred_cmd_action_update (uint16_t * fci_ret, struct fpp_qos_policer_wred_cmd_t * wred_cmd, struct pfe_gpi_t * gpi, fpp_iqos_queue_t queue)
+{
+  bool_t switch_break;
+  errno_t ret;
+  errno_t D.13411;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  switch_break = 0;
+  # DEBUG BEGIN_STMT
+  _1 = wred_cmd->enable;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_wred_enable (gpi, queue);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_wred_disable (gpi, queue);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  switch_break = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (switch_break == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 14>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ret = wred_thr_set_reg (gpi, queue, wred_cmd);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 14>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  ret = wred_prob_zone_set_reg (gpi, queue, wred_cmd);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  D.13411 = ret;
+  return D.13411;
+
+}
+
+
+wred_prob_zone_set_reg (struct pfe_gpi_t * gpi, fpp_iqos_queue_t queue, struct fpp_qos_policer_wred_cmd_t * wred_cmd)
+{
+  uint32_t i;
+  errno_t ret;
+  errno_t D.13423;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = wred_cmd->zprob[i];
+  if (_1 == 255)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = (<unnamed type>) i;
+  _3 = wred_cmd->zprob[i];
+  ret = pfe_gpi_wred_set_prob (gpi, queue, _2, _3);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (i <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.13423 = ret;
+  return D.13423;
+
+}
+
+
+wred_thr_set_reg (struct pfe_gpi_t * gpi, fpp_iqos_queue_t queue, struct fpp_qos_policer_wred_cmd_t * wred_cmd)
+{
+  uint32_t i;
+  uint16_t wred_thr;
+  errno_t ret;
+  errno_t D.13417;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = wred_cmd->thr[i];
+  wred_thr = _1 r>> 8;
+  # DEBUG BEGIN_STMT
+  if (wred_thr == 65535)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = (<unnamed type>) i;
+  ret = pfe_gpi_wred_set_thr (gpi, queue, _2, wred_thr);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (i <= 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.13417 = ret;
+  return D.13417;
+
+}
+
+
+fci_qos_policer_flow_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_qos_policer_flow_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  errno_t ret;
+  struct pfe_gpi_t * gpi;
+  struct pfe_phy_if_t * phy_if;
+  struct pfe_iqos_flow_spec_t gpi_flow;
+  struct fpp_qos_policer_flow_cmd_t * flow_cmd;
+  errno_t D.13362;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  gpi = 0B;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&gpi_flow, 0, 36);
+  # DEBUG BEGIN_STMT
+  ret = fci_validate_cmd_params (msg, fci_ret, reply_buf, reply_len, 56);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *reply_len = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf, 0, 56);
+  # DEBUG BEGIN_STMT
+  flow_cmd = &msg->msg_cmd.payload;
+  # DEBUG BEGIN_STMT
+  _1 = &flow_cmd->if_name;
+  phy_if = fci_get_phy_if_by_name (_1);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  goto <bb 17>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  gpi = fci_qos_get_gpi (phy_if);
+  # DEBUG BEGIN_STMT
+  if (gpi == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  goto <bb 17>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  _2 = flow_cmd->action;
+  _3 = (int) _2;
+  switch (_3) <default: <L13> [INV], case 0: <L5> [INV], case 1: <L6> [INV], case 6: <L7> [INV], case 7: <L10> [INV]>
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  ret = policer_flow_cmd_action_register (fci_ret, flow_cmd, &gpi_flow, gpi);
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 9> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  ret = policer_flow_cmd_action_deregister (fci_ret, flow_cmd, gpi);
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 10> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  _4 = flow_cmd->action;
+  reply_buf->action = _4;
+  # DEBUG BEGIN_STMT
+  _5 = &reply_buf->if_name;
+  _6 = &flow_cmd->if_name;
+  autolibc_strncpy (_5, _6, 16);
+  # DEBUG BEGIN_STMT
+  reply_buf->if_name[15] = 0;
+  # DEBUG BEGIN_STMT
+  _7 = &reply_buf->id;
+  ret = pfe_gpi_qos_get_first_flow (gpi, _7, &gpi_flow);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 62530;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _8 = &reply_buf->flow;
+  fci_qos_flow_entry_convert_from_gpi (&gpi_flow, _8);
+  # DEBUG BEGIN_STMT
+  *reply_len = 56;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 13> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  _9 = flow_cmd->action;
+  reply_buf->action = _9;
+  # DEBUG BEGIN_STMT
+  _10 = &reply_buf->if_name;
+  _11 = &flow_cmd->if_name;
+  autolibc_strncpy (_10, _11, 16);
+  # DEBUG BEGIN_STMT
+  reply_buf->if_name[15] = 0;
+  # DEBUG BEGIN_STMT
+  _12 = &reply_buf->id;
+  ret = pfe_gpi_qos_get_next_flow (gpi, _12, &gpi_flow);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 62530;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _13 = &reply_buf->flow;
+  fci_qos_flow_entry_convert_from_gpi (&gpi_flow, _13);
+  # DEBUG BEGIN_STMT
+  *reply_len = 56;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  D.13362 = ret;
+  gpi_flow = {CLOBBER};
+  return D.13362;
+
+}
+
+
+policer_flow_cmd_action_deregister (uint16_t * fci_ret, struct fpp_qos_policer_flow_cmd_t * flow_cmd, struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  errno_t D.13381;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  _1 = flow_cmd->id;
+  if (_1 > 63)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = flow_cmd->id;
+  ret = pfe_gpi_qos_rem_flow (gpi, _2);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  D.13381 = ret;
+  return D.13381;
+
+}
+
+
+policer_flow_cmd_action_register (uint16_t * fci_ret, struct fpp_qos_policer_flow_cmd_t * flow_cmd, struct pfe_iqos_flow_spec_t * gpi_flow, struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  errno_t D.13374;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  _1 = &flow_cmd->flow;
+  fci_qos_flow_entry_convert_to_gpi (_1, gpi_flow);
+  # DEBUG BEGIN_STMT
+  _2 = flow_cmd->id;
+  ret = pfe_gpi_qos_add_flow (gpi, _2, gpi_flow);
+  # DEBUG BEGIN_STMT
+  if (ret == 75)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 62529;
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (ret == 22)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.13374 = ret;
+  return D.13374;
+
+}
+
+
+fci_qos_flow_entry_convert_from_gpi (const struct pfe_iqos_flow_spec_t * gpi_flow, struct fpp_iqos_flow_spec_t * flow)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_flow->type_mask;
+  _2 = _1 r>> 8;
+  flow->type_mask = _2;
+  # DEBUG BEGIN_STMT
+  _3 = gpi_flow->arg_type_mask;
+  _4 = _3 r>> 8;
+  flow->arg_type_mask = _4;
+  # DEBUG BEGIN_STMT
+  _5 = gpi_flow->action;
+  flow->action = _5;
+  # DEBUG BEGIN_STMT
+  _6 = gpi_flow->args.vlan;
+  _7 = _6 r>> 8;
+  flow->args.vlan = _7;
+  # DEBUG BEGIN_STMT
+  _8 = gpi_flow->args.vlan_m;
+  _9 = _8 r>> 8;
+  flow->args.vlan_m = _9;
+  # DEBUG BEGIN_STMT
+  _10 = gpi_flow->args.sport_max;
+  _11 = _10 r>> 8;
+  flow->args.sport_max = _11;
+  # DEBUG BEGIN_STMT
+  _12 = gpi_flow->args.sport_min;
+  _13 = _12 r>> 8;
+  flow->args.sport_min = _13;
+  # DEBUG BEGIN_STMT
+  _14 = gpi_flow->args.dport_max;
+  _15 = _14 r>> 8;
+  flow->args.dport_max = _15;
+  # DEBUG BEGIN_STMT
+  _16 = gpi_flow->args.dport_min;
+  _17 = _16 r>> 8;
+  flow->args.dport_min = _17;
+  # DEBUG BEGIN_STMT
+  _18 = gpi_flow->args.sip;
+  _19 = _18 >> 24;
+  _20 = gpi_flow->args.sip;
+  _21 = _20 >> 8;
+  _22 = _21 & 65280;
+  _23 = _19 | _22;
+  _24 = gpi_flow->args.sip;
+  _25 = _24 << 8;
+  _26 = _25 & 16711680;
+  _27 = _23 | _26;
+  _28 = gpi_flow->args.sip;
+  _29 = _28 << 24;
+  _30 = _27 | _29;
+  flow->args.sip = _30;
+  # DEBUG BEGIN_STMT
+  _31 = gpi_flow->args.dip;
+  _32 = _31 >> 24;
+  _33 = gpi_flow->args.dip;
+  _34 = _33 >> 8;
+  _35 = _34 & 65280;
+  _36 = _32 | _35;
+  _37 = gpi_flow->args.dip;
+  _38 = _37 << 8;
+  _39 = _38 & 16711680;
+  _40 = _36 | _39;
+  _41 = gpi_flow->args.dip;
+  _42 = _41 << 24;
+  _43 = _40 | _42;
+  flow->args.dip = _43;
+  # DEBUG BEGIN_STMT
+  _44 = gpi_flow->args.tos;
+  flow->args.tos = _44;
+  # DEBUG BEGIN_STMT
+  _45 = gpi_flow->args.tos_m;
+  flow->args.tos_m = _45;
+  # DEBUG BEGIN_STMT
+  _46 = gpi_flow->args.l4proto;
+  flow->args.l4proto = _46;
+  # DEBUG BEGIN_STMT
+  _47 = gpi_flow->args.l4proto_m;
+  flow->args.l4proto_m = _47;
+  # DEBUG BEGIN_STMT
+  _48 = gpi_flow->args.sip_m;
+  flow->args.sip_m = _48;
+  # DEBUG BEGIN_STMT
+  _49 = gpi_flow->args.dip_m;
+  flow->args.dip_m = _49;
+  return;
+
+}
+
+
+fci_qos_flow_entry_convert_to_gpi (const struct fpp_iqos_flow_spec_t * flow, struct pfe_iqos_flow_spec_t * gpi_flow)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = flow->type_mask;
+  _2 = _1 r>> 8;
+  gpi_flow->type_mask = _2;
+  # DEBUG BEGIN_STMT
+  _3 = flow->arg_type_mask;
+  _4 = _3 r>> 8;
+  gpi_flow->arg_type_mask = _4;
+  # DEBUG BEGIN_STMT
+  _5 = flow->action;
+  gpi_flow->action = _5;
+  # DEBUG BEGIN_STMT
+  _6 = flow->args.vlan;
+  _7 = _6 r>> 8;
+  gpi_flow->args.vlan = _7;
+  # DEBUG BEGIN_STMT
+  _8 = flow->args.vlan_m;
+  _9 = _8 r>> 8;
+  gpi_flow->args.vlan_m = _9;
+  # DEBUG BEGIN_STMT
+  _10 = flow->args.sport_max;
+  _11 = _10 r>> 8;
+  gpi_flow->args.sport_max = _11;
+  # DEBUG BEGIN_STMT
+  _12 = flow->args.sport_min;
+  _13 = _12 r>> 8;
+  gpi_flow->args.sport_min = _13;
+  # DEBUG BEGIN_STMT
+  _14 = flow->args.dport_max;
+  _15 = _14 r>> 8;
+  gpi_flow->args.dport_max = _15;
+  # DEBUG BEGIN_STMT
+  _16 = flow->args.dport_min;
+  _17 = _16 r>> 8;
+  gpi_flow->args.dport_min = _17;
+  # DEBUG BEGIN_STMT
+  _18 = flow->args.sip;
+  _19 = _18 >> 24;
+  _20 = flow->args.sip;
+  _21 = _20 >> 8;
+  _22 = _21 & 65280;
+  _23 = _19 | _22;
+  _24 = flow->args.sip;
+  _25 = _24 << 8;
+  _26 = _25 & 16711680;
+  _27 = _23 | _26;
+  _28 = flow->args.sip;
+  _29 = _28 << 24;
+  _30 = _27 | _29;
+  gpi_flow->args.sip = _30;
+  # DEBUG BEGIN_STMT
+  _31 = flow->args.dip;
+  _32 = _31 >> 24;
+  _33 = flow->args.dip;
+  _34 = _33 >> 8;
+  _35 = _34 & 65280;
+  _36 = _32 | _35;
+  _37 = flow->args.dip;
+  _38 = _37 << 8;
+  _39 = _38 & 16711680;
+  _40 = _36 | _39;
+  _41 = flow->args.dip;
+  _42 = _41 << 24;
+  _43 = _40 | _42;
+  gpi_flow->args.dip = _43;
+  # DEBUG BEGIN_STMT
+  _44 = flow->args.tos;
+  gpi_flow->args.tos = _44;
+  # DEBUG BEGIN_STMT
+  _45 = flow->args.tos_m;
+  gpi_flow->args.tos_m = _45;
+  # DEBUG BEGIN_STMT
+  _46 = flow->args.l4proto;
+  gpi_flow->args.l4proto = _46;
+  # DEBUG BEGIN_STMT
+  _47 = flow->args.l4proto_m;
+  gpi_flow->args.l4proto_m = _47;
+  # DEBUG BEGIN_STMT
+  _48 = flow->args.sip_m;
+  gpi_flow->args.sip_m = _48;
+  # DEBUG BEGIN_STMT
+  _49 = flow->args.dip_m;
+  gpi_flow->args.dip_m = _49;
+  return;
+
+}
+
+
+fci_qos_policer_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_qos_policer_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  errno_t ret;
+  struct pfe_gpi_t * gpi;
+  struct pfe_phy_if_t * phy_if;
+  struct fpp_qos_policer_cmd_t * pol_cmd;
+  errno_t D.13340;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  gpi = 0B;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  ret = fci_validate_cmd_params (msg, fci_ret, reply_buf, reply_len, 20);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *reply_len = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf, 0, 20);
+  # DEBUG BEGIN_STMT
+  pol_cmd = &msg->msg_cmd.payload;
+  # DEBUG BEGIN_STMT
+  _1 = &pol_cmd->if_name;
+  phy_if = fci_get_phy_if_by_name (_1);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  goto <bb 15>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  gpi = fci_qos_get_gpi (phy_if);
+  # DEBUG BEGIN_STMT
+  if (gpi == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  goto <bb 15>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  _2 = pol_cmd->action;
+  _3 = (int) _2;
+  switch (_3) <default: <L12> [INV], case 4: <L5> [INV], case 6: <L11> [INV]>
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  _4 = pol_cmd->enable;
+  if (_4 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_qos_enable (gpi);
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_gpi_qos_disable (gpi);
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 15>; [INV]
+
+  <bb 13> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  _5 = pol_cmd->action;
+  reply_buf->action = _5;
+  # DEBUG BEGIN_STMT
+  _6 = &reply_buf->if_name;
+  _7 = &pol_cmd->if_name;
+  autolibc_strncpy (_6, _7, 16);
+  # DEBUG BEGIN_STMT
+  reply_buf->if_name[15] = 0;
+  # DEBUG BEGIN_STMT
+  _8 = pfe_gpi_qos_is_enabled (gpi);
+  reply_buf->enable = _8;
+  # DEBUG BEGIN_STMT
+  *reply_len = 20;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  D.13340 = ret;
+  return D.13340;
+
+}
+
+
+fci_validate_cmd_params (const struct fci_msg_t * msg, uint16_t * fci_ret, void * reply_buf, uint32_t * reply_len, uint32_t cmd_len)
+{
+  errno_t ret;
+  errno_t D.13344;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len;
+  if (cmd_len > _1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  D.13344 = ret;
+  return D.13344;
+
+}
+
+
+fci_qos_get_gpi (const struct pfe_phy_if_t * phy_if)
+{
+  struct pfe_gpi_t * gpi;
+  const struct pfe_emac_t * emac;
+  struct pfe_gpi_t * D.13348;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  emac = pfe_phy_if_get_emac (phy_if);
+  # DEBUG BEGIN_STMT
+  gpi = 0B;
+  # DEBUG BEGIN_STMT
+  if (emac != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  gpi = pfe_emac_get_gpi (emac);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  D.13348 = gpi;
+  return D.13348;
+
+}
+
+
+fci_qos_shaper_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_qos_shaper_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  const struct fci_t * fci;
+  errno_t ret;
+  struct fpp_qos_shaper_cmd_t * shp;
+  errno_t D.13266;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  fci = &context;
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len;
+  if (_1 <= 35)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *reply_len = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf, 0, 36);
+  # DEBUG BEGIN_STMT
+  shp = &msg->msg_cmd.payload;
+  # DEBUG BEGIN_STMT
+  _2 = shp->action;
+  _3 = (int) _2;
+  switch (_3) <default: <L4> [INV], case 4: <L2> [INV], case 6: <L3> [INV]>
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  ret = shaper_cmd_action_update (fci_ret, fci, shp);
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  ret = shaper_cmd_action_query (reply_buf, fci_ret, fci, shp);
+  # DEBUG BEGIN_STMT
+  *reply_len = 36;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.13266 = ret;
+  return D.13266;
+
+}
+
+
+shaper_cmd_action_query (struct fpp_qos_shaper_cmd_t * reply_buf, uint16_t * fci_ret, const struct fci_t * fci, struct fpp_qos_shaper_cmd_t * shp)
+{
+  uint32_t isl;
+  struct pfe_phy_if_t * phy_if;
+  errno_t ret;
+  errno_t D.13325;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &shp->if_name;
+  phy_if = fci_get_phy_if_by_name (_1);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 61700;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 14>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = fci->tmu;
+  _3 = pfe_phy_if_get_id (phy_if);
+  _4 = shp->id;
+  ret = pfe_tmu_check_shaper (_2, _3, _4);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 62497;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _5 = shp->action;
+  reply_buf->action = _5;
+  # DEBUG BEGIN_STMT
+  _6 = shp->id;
+  reply_buf->id = _6;
+  # DEBUG BEGIN_STMT
+  _7 = &reply_buf->if_name;
+  _8 = &shp->if_name;
+  autolibc_strncpy (_7, _8, 16);
+  # DEBUG BEGIN_STMT
+  reply_buf->if_name[15] = 0;
+  # DEBUG BEGIN_STMT
+  _9 = fci->tmu;
+  _10 = pfe_phy_if_get_id (phy_if);
+  _11 = shp->id;
+  _12 = pfe_tmu_shp_get_rate_mode (_9, _10, _11);
+  _13 = (int) _12;
+  switch (_13) <default: <L6> [INV], case 0: <L4> [INV], case 1: <L5> [INV]>
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  reply_buf->mode = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  reply_buf->mode = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  reply_buf->mode = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _14 = fci->tmu;
+  _15 = pfe_phy_if_get_id (phy_if);
+  _16 = shp->id;
+  _17 = &reply_buf->max_credit;
+  _18 = &reply_buf->min_credit;
+  ret = pfe_tmu_shp_get_limits (_14, _15, _16, _17, _18);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = shp->id;
+  _20 = (int) _19;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not get shaper %d limits: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 1074, _20, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _21 = reply_buf->max_credit;
+  _22 = (long unsigned int) _21;
+  _23 = _22 >> 24;
+  _24 = reply_buf->max_credit;
+  _25 = (long unsigned int) _24;
+  _26 = _25 >> 8;
+  _27 = _26 & 65280;
+  _28 = _23 | _27;
+  _29 = reply_buf->max_credit;
+  _30 = (long unsigned int) _29;
+  _31 = _30 << 8;
+  _32 = _31 & 16711680;
+  _33 = _28 | _32;
+  _34 = reply_buf->max_credit;
+  _35 = (long unsigned int) _34;
+  _36 = _35 << 24;
+  _37 = _33 | _36;
+  _38 = (long int) _37;
+  reply_buf->max_credit = _38;
+  # DEBUG BEGIN_STMT
+  _39 = reply_buf->min_credit;
+  _40 = (long unsigned int) _39;
+  _41 = _40 >> 24;
+  _42 = reply_buf->min_credit;
+  _43 = (long unsigned int) _42;
+  _44 = _43 >> 8;
+  _45 = _44 & 65280;
+  _46 = _41 | _45;
+  _47 = reply_buf->min_credit;
+  _48 = (long unsigned int) _47;
+  _49 = _48 << 8;
+  _50 = _49 & 16711680;
+  _51 = _46 | _50;
+  _52 = reply_buf->min_credit;
+  _53 = (long unsigned int) _52;
+  _54 = _53 << 24;
+  _55 = _51 | _54;
+  _56 = (long int) _55;
+  reply_buf->min_credit = _56;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _57 = fci->tmu;
+  _58 = pfe_phy_if_get_id (phy_if);
+  _59 = shp->id;
+  isl = pfe_tmu_shp_get_idle_slope (_57, _58, _59);
+  # DEBUG BEGIN_STMT
+  _60 = isl >> 24;
+  _61 = isl >> 8;
+  _62 = _61 & 65280;
+  _63 = _60 | _62;
+  _64 = isl << 8;
+  _65 = _64 & 16711680;
+  _66 = _63 | _65;
+  _67 = isl << 24;
+  _68 = _66 | _67;
+  reply_buf->isl = _68;
+  # DEBUG BEGIN_STMT
+  _69 = fci->tmu;
+  _70 = pfe_phy_if_get_id (phy_if);
+  _71 = shp->id;
+  _72 = pfe_tmu_shp_get_position (_69, _70, _71);
+  reply_buf->position = _72;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  D.13325 = ret;
+  return D.13325;
+
+}
+
+
+shaper_cmd_action_update (uint16_t * fci_ret, const struct fci_t * fci, struct fpp_qos_shaper_cmd_t * shp)
+{
+  struct pfe_phy_if_t * phy_if;
+  errno_t ret;
+  errno_t D.13283;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = &shp->if_name;
+  phy_if = fci_get_phy_if_by_name (_1);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 61700;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pfe_phy_if_get_id (phy_if);
+  if (_2 == 5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 61719;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = fci->tmu;
+  _4 = pfe_phy_if_get_id (phy_if);
+  _5 = shp->id;
+  ret = pfe_tmu_check_shaper (_3, _4, _5);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 62497;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _6 = shp->mode;
+  if (_6 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  shaper_disconnect_and_disable (fci_ret, fci, shp, phy_if);
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = fci->tmu;
+  _8 = pfe_phy_if_get_id (phy_if);
+  _9 = shp->id;
+  ret = pfe_tmu_shp_enable (_7, _8, _9);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = shp->id;
+  _11 = (int) _10;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not enable shaper %d: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 1001, _11, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  ret = set_shaper_cmd_props (fci_ret, fci, shp, phy_if);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  D.13283 = ret;
+  return D.13283;
+
+}
+
+
+shaper_disconnect_and_disable (uint16_t * fci_ret, const struct fci_t * fci, struct fpp_qos_shaper_cmd_t * shp, struct pfe_phy_if_t * phy_if)
+{
+  bool_t break_switch;
+  errno_t ret;
+  errno_t D.13293;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  break_switch = 0;
+  # DEBUG BEGIN_STMT
+  _1 = shp->position;
+  if (_1 == 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = fci->tmu;
+  _3 = pfe_phy_if_get_id (phy_if);
+  _4 = shp->id;
+  ret = pfe_tmu_shp_set_position (_2, _3, _4, 255);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = shp->id;
+  _6 = (int) _5;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not disconnect shaper %d: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 939, _6, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  # DEBUG BEGIN_STMT
+  break_switch = 1;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (break_switch == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = fci->tmu;
+  _8 = pfe_phy_if_get_id (phy_if);
+  _9 = shp->id;
+  ret = pfe_tmu_shp_disable (_7, _8, _9);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = shp->id;
+  _11 = (int) _10;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not disable shaper %d: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 951, _11, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.13293 = ret;
+  return D.13293;
+
+}
+
+
+set_shaper_cmd_props (uint16_t * fci_ret, const struct fci_t * fci, struct fpp_qos_shaper_cmd_t * shp, struct pfe_phy_if_t * phy_if)
+{
+  bool_t break_switch;
+  errno_t ret;
+  errno_t D.13314;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  # DEBUG BEGIN_STMT
+  break_switch = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = shp->mode;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = fci->tmu;
+  _3 = pfe_phy_if_get_id (phy_if);
+  _4 = shp->id;
+  ret = pfe_tmu_shp_set_rate_mode (_2, _3, _4, 0);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 = shp->mode;
+  if (_5 == 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _6 = fci->tmu;
+  _7 = pfe_phy_if_get_id (phy_if);
+  _8 = shp->id;
+  ret = pfe_tmu_shp_set_rate_mode (_6, _7, _8, 1);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = shp->mode;
+  _10 = (int) _9;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid shaper rate mode value: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 873, _10, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  break_switch = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (break_switch == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = shp->id;
+  _12 = (int) _11;
+  _13 = shp->mode;
+  _14 = (int) _13;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unable to set shaper %d rate mode %d: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 883, _12, _14, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 16>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _15 = fci->tmu;
+  _16 = pfe_phy_if_get_id (phy_if);
+  _17 = shp->id;
+  _18 = shp->max_credit;
+  _19 = (long unsigned int) _18;
+  _20 = _19 >> 24;
+  _21 = shp->max_credit;
+  _22 = (long unsigned int) _21;
+  _23 = _22 >> 8;
+  _24 = _23 & 65280;
+  _25 = _20 | _24;
+  _26 = shp->max_credit;
+  _27 = (long unsigned int) _26;
+  _28 = _27 << 8;
+  _29 = _28 & 16711680;
+  _30 = _25 | _29;
+  _31 = shp->max_credit;
+  _32 = (long unsigned int) _31;
+  _33 = _32 << 24;
+  _34 = _30 | _33;
+  _35 = (long int) _34;
+  _36 = shp->min_credit;
+  _37 = (long unsigned int) _36;
+  _38 = _37 >> 24;
+  _39 = shp->min_credit;
+  _40 = (long unsigned int) _39;
+  _41 = _40 >> 8;
+  _42 = _41 & 65280;
+  _43 = _38 | _42;
+  _44 = shp->min_credit;
+  _45 = (long unsigned int) _44;
+  _46 = _45 << 8;
+  _47 = _46 & 16711680;
+  _48 = _43 | _47;
+  _49 = shp->min_credit;
+  _50 = (long unsigned int) _49;
+  _51 = _50 << 24;
+  _52 = _48 | _51;
+  _53 = (long int) _52;
+  ret = pfe_tmu_shp_set_limits (_15, _16, _17, _35, _53);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 16>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _54 = fci->tmu;
+  _55 = pfe_phy_if_get_id (phy_if);
+  _56 = shp->id;
+  _57 = shp->position;
+  ret = pfe_tmu_shp_set_position (_54, _55, _56, _57);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 16>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _58 = fci->tmu;
+  _59 = pfe_phy_if_get_id (phy_if);
+  _60 = shp->id;
+  _61 = shp->isl;
+  _62 = _61 >> 24;
+  _63 = shp->isl;
+  _64 = _63 >> 8;
+  _65 = _64 & 65280;
+  _66 = _62 | _65;
+  _67 = shp->isl;
+  _68 = _67 << 8;
+  _69 = _68 & 16711680;
+  _70 = _66 | _69;
+  _71 = shp->isl;
+  _72 = _71 << 24;
+  _73 = _70 | _72;
+  ret = pfe_tmu_shp_set_idle_slope (_58, _59, _60, _73);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  D.13314 = ret;
+  return D.13314;
+
+}
+
+
+fci_qos_scheduler_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_qos_scheduler_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  const struct fci_t * fci;
+  errno_t ret;
+  struct fpp_qos_scheduler_cmd_t * sch;
+  errno_t D.13182;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  fci = &context;
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len;
+  if (_1 <= 187)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *reply_len = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf, 0, 188);
+  # DEBUG BEGIN_STMT
+  sch = &msg->msg_cmd.payload;
+  # DEBUG BEGIN_STMT
+  _2 = sch->action;
+  _3 = (int) _2;
+  switch (_3) <default: <L4> [INV], case 4: <L2> [INV], case 6: <L3> [INV]>
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  ret = scheduler_cmd_action_update (fci_ret, fci, sch);
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  ret = scheduler_cmd_action_query (reply_buf, fci_ret, fci, sch);
+  # DEBUG BEGIN_STMT
+  *reply_len = 188;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.13182 = ret;
+  return D.13182;
+
+}
+
+
+scheduler_cmd_action_query (struct fpp_qos_scheduler_cmd_t * reply_buf, uint16_t * fci_ret, const struct fci_t * fci, struct fpp_qos_scheduler_cmd_t * sch)
+{
+  struct pfe_phy_if_t * phy_if;
+  errno_t ret;
+  errno_t D.13250;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = &sch->if_name;
+  phy_if = fci_get_phy_if_by_name (_1);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  fci_ret.15_2 = fci_ret;
+  *fci_ret.15_2 = 61700;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = fci->tmu;
+  _4 = pfe_phy_if_get_id (phy_if);
+  _5 = sch->id;
+  ret = pfe_tmu_check_scheduler (_3, _4, _5);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  fci_ret.16_6 = fci_ret;
+  *fci_ret.16_6 = 62481;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  reply_buf.17_7 = reply_buf;
+  _8 = sch->action;
+  reply_buf.17_7->action = _8;
+  # DEBUG BEGIN_STMT
+  reply_buf.18_9 = reply_buf;
+  _10 = sch->id;
+  reply_buf.18_9->id = _10;
+  # DEBUG BEGIN_STMT
+  reply_buf.19_11 = reply_buf;
+  _12 = &reply_buf.19_11->if_name;
+  _13 = &sch->if_name;
+  autolibc_strncpy (_12, _13, 16);
+  # DEBUG BEGIN_STMT
+  reply_buf.20_14 = reply_buf;
+  reply_buf.20_14->if_name[15] = 0;
+  # DEBUG BEGIN_STMT
+  ret = fci_qos_scheduler_cmd_query_get_sch (fci, sch, &fci_ret, &reply_buf, phy_if);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.13250 = ret;
+  return D.13250;
+
+}
+
+
+scheduler_cmd_action_update (uint16_t * fci_ret, const struct fci_t * fci, struct fpp_qos_scheduler_cmd_t * sch)
+{
+  struct pfe_phy_if_t * phy_if;
+  errno_t ret;
+  errno_t D.13197;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  sch.6_1 = sch;
+  _2 = &sch.6_1->if_name;
+  phy_if = fci_get_phy_if_by_name (_2);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  fci_ret.7_3 = fci_ret;
+  *fci_ret.7_3 = 61700;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = fci->tmu;
+  _5 = pfe_phy_if_get_id (phy_if);
+  sch.8_6 = sch;
+  _7 = sch.8_6->id;
+  ret = pfe_tmu_check_scheduler (_4, _5, _7);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  fci_ret.9_8 = fci_ret;
+  *fci_ret.9_8 = 62481;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _9 = pfe_phy_if_get_id (phy_if);
+  if (_9 == 5)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  fci_ret.10_10 = fci_ret;
+  *fci_ret.10_10 = 61719;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  fci_ret.11_11 = fci_ret;
+  _12 = *fci_ret.11_11;
+  if (_12 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret = fci_qos_scheduler_cmd_update_set_mode (fci, &sch, &fci_ret, phy_if);
+  # DEBUG BEGIN_STMT
+  fci_ret.12_13 = fci_ret;
+  _14 = *fci_ret.12_13;
+  if (_14 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ret = fci_qos_scheduler_cmd_update_cfg_scheduler (fci, &sch, &fci_ret, phy_if);
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  D.13197 = ret;
+  return D.13197;
+
+}
+
+
+fci_qos_scheduler_cmd_query_get_sch (const struct fci_t * fci, struct fpp_qos_scheduler_cmd_t * sch, uint16_t * * fci_ret, struct fpp_qos_scheduler_cmd_t * * reply_buf, struct pfe_phy_if_t * phy_if)
+{
+  uint8_t queue;
+  uint8_t cnt;
+  uint8_t ii;
+  uint32_t weight;
+  errno_t ret;
+  errno_t D.13261;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = fci->tmu;
+  _2 = pfe_phy_if_get_id (phy_if);
+  _3 = sch->id;
+  _4 = pfe_tmu_sch_get_rate_mode (_1, _2, _3);
+  _5 = (int) _4;
+  switch (_5) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _6 = *reply_buf;
+  _6->mode = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _7 = *reply_buf;
+  _7->mode = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = sch->id;
+  _9 = (int) _8;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t get scheduler %d mode or the mode is invalid\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 639, _9, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = *fci_ret;
+  *_10 = 65535;
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _11 = fci->tmu;
+  _12 = pfe_phy_if_get_id (phy_if);
+  _13 = sch->id;
+  _14 = *reply_buf;
+  _15 = pfe_tmu_sch_get_algo (_11, _12, _13);
+  _14->algo = _15;
+  # DEBUG BEGIN_STMT
+  _16 = *reply_buf;
+  _17 = _16->algo;
+  if (_17 == 4)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = sch->id;
+  _19 = (int) _18;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t get scheduler %d algo or the algo is invalid\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 652, _19, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = *fci_ret;
+  *_20 = 65535;
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 17>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _21 = fci->tmu;
+  _22 = pfe_phy_if_get_id (phy_if);
+  _23 = sch->id;
+  cnt = pfe_tmu_sch_get_input_cnt (_21, _22, _23);
+  # DEBUG BEGIN_STMT
+  _24 = *reply_buf;
+  _24->input_en = 0;
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 15>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _25 = fci->tmu;
+  _26 = pfe_phy_if_get_id (phy_if);
+  _27 = sch->id;
+  queue = pfe_tmu_sch_get_bound_queue (_25, _26, _27, ii);
+  # DEBUG BEGIN_STMT
+  if (queue == 255)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _28 = fci->tmu;
+  _29 = pfe_phy_if_get_id (phy_if);
+  _30 = sch->id;
+  _31 = pfe_tmu_sch_get_bound_sch_output (_28, _29, _30, ii);
+  if (_31 == 255)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _32 = *reply_buf;
+  _33 = (int) ii;
+  _32->input_src[_33] = 255;
+  goto <bb 14>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _34 = fci->tmu;
+  _35 = pfe_phy_if_get_id (phy_if);
+  _36 = sch->id;
+  weight = pfe_tmu_sch_get_input_weight (_34, _35, _36, ii);
+  # DEBUG BEGIN_STMT
+  _37 = weight >> 24;
+  _38 = weight >> 8;
+  _39 = _38 & 65280;
+  _40 = _37 | _39;
+  _41 = weight << 8;
+  _42 = _41 & 16711680;
+  _43 = _40 | _42;
+  _44 = weight << 24;
+  _45 = *reply_buf;
+  _46 = (int) ii;
+  _47 = _43 | _44;
+  _45->input_w[_46] = _47;
+  # DEBUG BEGIN_STMT
+  _48 = *reply_buf;
+  _49 = (int) ii;
+  _48->input_src[_49] = 8;
+  # DEBUG BEGIN_STMT
+  _50 = *reply_buf;
+  _51 = _50->input_en;
+  _52 = (int) ii;
+  _53 = 1 << _52;
+  _54 = *reply_buf;
+  _55 = _51 | _53;
+  _54->input_en = _55;
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _56 = fci->tmu;
+  _57 = pfe_phy_if_get_id (phy_if);
+  _58 = sch->id;
+  weight = pfe_tmu_sch_get_input_weight (_56, _57, _58, ii);
+  # DEBUG BEGIN_STMT
+  _59 = weight >> 24;
+  _60 = weight >> 8;
+  _61 = _60 & 65280;
+  _62 = _59 | _61;
+  _63 = weight << 8;
+  _64 = _63 & 16711680;
+  _65 = _62 | _64;
+  _66 = weight << 24;
+  _67 = *reply_buf;
+  _68 = (int) ii;
+  _69 = _65 | _66;
+  _67->input_w[_68] = _69;
+  # DEBUG BEGIN_STMT
+  _70 = *reply_buf;
+  _71 = (int) ii;
+  _70->input_src[_71] = queue;
+  # DEBUG BEGIN_STMT
+  _72 = *reply_buf;
+  _73 = _72->input_en;
+  _74 = (int) ii;
+  _75 = 1 << _74;
+  _76 = *reply_buf;
+  _77 = _73 | _75;
+  _76->input_en = _77;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  ii.21_78 = ii;
+  ii = ii.21_78 + 1;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  if (ii < cnt)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _79 = *reply_buf;
+  _80 = _79->input_en;
+  _81 = _80 >> 24;
+  _82 = *reply_buf;
+  _83 = _82->input_en;
+  _84 = _83 >> 8;
+  _85 = _84 & 65280;
+  _86 = _81 | _85;
+  _87 = *reply_buf;
+  _88 = _87->input_en;
+  _89 = _88 << 8;
+  _90 = _89 & 16711680;
+  _91 = _86 | _90;
+  _92 = *reply_buf;
+  _93 = _92->input_en;
+  _94 = _93 << 24;
+  _95 = *reply_buf;
+  _96 = _91 | _94;
+  _95->input_en = _96;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  D.13261 = ret;
+  return D.13261;
+
+}
+
+
+fci_qos_scheduler_cmd_update_cfg_scheduler (const struct fci_t * fci, struct fpp_qos_scheduler_cmd_t * * sch, uint16_t * * fci_ret, struct pfe_phy_if_t * phy_if)
+{
+  uint8_t ii;
+  uint8_t cnt;
+  errno_t ret;
+  errno_t D.13235;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 1;
+  # DEBUG BEGIN_STMT
+  cnt = 0;
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  # DEBUG BEGIN_STMT
+  _1 = fci->tmu;
+  _2 = pfe_phy_if_get_id (phy_if);
+  _3 = *sch;
+  _4 = _3->id;
+  cnt = pfe_tmu_sch_get_input_cnt (_1, _2, _4);
+  # DEBUG BEGIN_STMT
+  _5 = *sch;
+  _6 = _5->input_en;
+  _7 = _6 >> 24;
+  _8 = *sch;
+  _9 = _8->input_en;
+  _10 = _9 >> 8;
+  _11 = _10 & 65280;
+  _12 = _7 | _11;
+  _13 = *sch;
+  _14 = _13->input_en;
+  _15 = _14 << 8;
+  _16 = _15 & 16711680;
+  _17 = _12 | _16;
+  _18 = *sch;
+  _19 = _18->input_en;
+  _20 = _19 << 24;
+  _21 = *sch;
+  _22 = _17 | _20;
+  _21->input_en = _22;
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 16>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _23 = check_scheduler_input (sch, ii);
+  if (_23 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = fci->tmu;
+  _25 = pfe_phy_if_get_id (phy_if);
+  _26 = *sch;
+  _27 = _26->id;
+  ret = pfe_tmu_sch_bind_queue (_24, _25, _27, ii, 255);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _28 = (int) ii;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not invalidate scheduler input %d: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 557, _28, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _29 = *fci_ret;
+  *_29 = 65535;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _30 = *sch;
+  _31 = (int) ii;
+  _32 = _30->input_src[_31];
+  if (_32 <= 7)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _33 = fci->tmu;
+  _34 = pfe_phy_if_get_id (phy_if);
+  _35 = *sch;
+  _36 = _35->id;
+  _37 = *sch;
+  _38 = (int) ii;
+  _39 = _37->input_src[_38];
+  ret = pfe_tmu_sch_bind_queue (_33, _34, _36, ii, _39);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _40 = *fci_ret;
+  *_40 = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _41 = *sch;
+  _42 = (int) ii;
+  _43 = _41->input_src[_42];
+  if (_43 == 8)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _44 = fci->tmu;
+  _45 = pfe_phy_if_get_id (phy_if);
+  _46 = *sch;
+  _47 = _46->id;
+  _48 = _47 + 255;
+  _49 = *sch;
+  _50 = _49->id;
+  ret = pfe_tmu_sch_bind_sch_output (_44, _45, _48, _50, ii);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _51 = *fci_ret;
+  *_51 = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _52 = *fci_ret;
+  *_52 = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _53 = fci->tmu;
+  _54 = pfe_phy_if_get_id (phy_if);
+  _55 = *sch;
+  _56 = _55->id;
+  _57 = *sch;
+  _58 = (int) ii;
+  _59 = _57->input_w[_58];
+  _60 = _59 >> 24;
+  _61 = *sch;
+  _62 = (int) ii;
+  _63 = _61->input_w[_62];
+  _64 = _63 >> 8;
+  _65 = _64 & 65280;
+  _66 = _60 | _65;
+  _67 = *sch;
+  _68 = (int) ii;
+  _69 = _67->input_w[_68];
+  _70 = _69 << 8;
+  _71 = _70 & 16711680;
+  _72 = _66 | _71;
+  _73 = *sch;
+  _74 = (int) ii;
+  _75 = _73->input_w[_74];
+  _76 = _75 << 24;
+  _77 = _72 | _76;
+  ret = pfe_tmu_sch_set_input_weight (_53, _54, _56, ii, _77);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _78 = *fci_ret;
+  *_78 = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  ii.13_79 = ii;
+  ii = ii.13_79 + 1;
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  if (ii < cnt)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  D.13235 = ret;
+  return D.13235;
+
+}
+
+
+check_scheduler_input (struct fpp_qos_scheduler_cmd_t * * sch, uint8_t ii)
+{
+  bool_t ret_value;
+  bool_t D.13242;
+  int iftmp.14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_value = 0;
+  # DEBUG BEGIN_STMT
+  _1 = *sch;
+  _2 = _1->input_en;
+  _3 = (int) ii;
+  _4 = _2 >> _3;
+  _5 = _4 & 1;
+  if (_5 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _6 = *sch;
+  _7 = (int) ii;
+  _8 = _6->input_src[_7];
+  if (_8 == 255)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.14 = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.14 = 0;
+
+  <bb 6> :
+  ret_value = (bool_t) iftmp.14;
+  # DEBUG BEGIN_STMT
+  D.13242 = ret_value;
+  return D.13242;
+
+}
+
+
+fci_qos_scheduler_cmd_update_set_mode (const struct fci_t * fci, struct fpp_qos_scheduler_cmd_t * * sch, uint16_t * * fci_ret, struct pfe_phy_if_t * phy_if)
+{
+  errno_t ret;
+  errno_t D.13216;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = *sch;
+  _2 = _1->mode;
+  if (_2 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = *sch;
+  _3->input_en = 0;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = *sch;
+  _5 = _4->mode;
+  if (_5 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = fci->tmu;
+  _7 = pfe_phy_if_get_id (phy_if);
+  _8 = *sch;
+  _9 = _8->id;
+  ret = pfe_tmu_sch_set_rate_mode (_6, _7, _9, 0);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _10 = *sch;
+  _11 = _10->mode;
+  if (_11 == 2)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = fci->tmu;
+  _13 = pfe_phy_if_get_id (phy_if);
+  _14 = *sch;
+  _15 = _14->id;
+  ret = pfe_tmu_sch_set_rate_mode (_12, _13, _15, 1);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = *fci_ret;
+  *_16 = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 15>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _17 = *sch;
+  _18 = _17->algo;
+  if (_18 > 3)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = *fci_ret;
+  *_19 = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 15>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = fci->tmu;
+  _21 = pfe_phy_if_get_id (phy_if);
+  _22 = *sch;
+  _23 = _22->id;
+  _24 = *sch;
+  _25 = _24->algo;
+  _26 = (int) _25;
+  _27 = sch_algos[_26];
+  ret = pfe_tmu_sch_set_algo (_20, _21, _23, _27);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _28 = *fci_ret;
+  *_28 = 65535;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  D.13216 = ret;
+  return D.13216;
+
+}
+
+
+fci_qos_queue_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_qos_queue_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  const struct fci_t * fci;
+  errno_t ret;
+  struct fpp_qos_queue_cmd_t * q;
+  errno_t D.13115;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  fci = &context;
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len;
+  if (_1 <= 59)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *reply_len = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf, 0, 60);
+  # DEBUG BEGIN_STMT
+  q = &msg->msg_cmd.payload;
+  # DEBUG BEGIN_STMT
+  _2 = q->action;
+  _3 = (int) _2;
+  switch (_3) <default: <L4> [INV], case 4: <L2> [INV], case 6: <L3> [INV]>
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  ret = qos_queue_cmd_action_update (fci_ret, q, fci);
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  ret = qos_queue_cmd_action_query (reply_buf, fci_ret, q, fci);
+  # DEBUG BEGIN_STMT
+  *reply_len = 60;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.13115 = ret;
+  return D.13115;
+
+}
+
+
+qos_queue_cmd_action_query (struct fpp_qos_queue_cmd_t * reply_buf, uint16_t * fci_ret, struct fpp_qos_queue_cmd_t * q, const struct fci_t * fci)
+{
+  struct pfe_phy_if_t * phy_if;
+  errno_t ret;
+  errno_t D.13170;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = &q->if_name;
+  phy_if = fci_get_phy_if_by_name (_1);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 61700;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = fci->tmu;
+  _3 = pfe_phy_if_get_id (phy_if);
+  _4 = q->id;
+  ret = pfe_tmu_check_queue (_2, _3, _4);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 62465;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _5 = q->action;
+  reply_buf->action = _5;
+  # DEBUG BEGIN_STMT
+  _6 = q->id;
+  reply_buf->id = _6;
+  # DEBUG BEGIN_STMT
+  _7 = &reply_buf->if_name;
+  _8 = &q->if_name;
+  autolibc_strncpy (_7, _8, 16);
+  # DEBUG BEGIN_STMT
+  reply_buf->if_name[15] = 0;
+  # DEBUG BEGIN_STMT
+  _9 = fci->tmu;
+  _10 = pfe_phy_if_get_id (phy_if);
+  _11 = q->id;
+  _12 = &reply_buf->min;
+  _13 = &reply_buf->max;
+  _14 = pfe_tmu_queue_get_mode (_9, _10, _11, _12, _13);
+  _15 = (int) _14;
+  switch (_15) <default: <L10> [INV], case 0: <L4> [INV], case 1: <L9> [INV], case 2: <L8> [INV]>
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  _16 = reply_buf->max;
+  if (_16 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  reply_buf->mode = 0;
+  # DEBUG BEGIN_STMT
+  reply_buf->max = 0;
+  # DEBUG BEGIN_STMT
+  reply_buf->min = 0;
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  reply_buf->mode = 2;
+  # DEBUG BEGIN_STMT
+  _17 = reply_buf->max;
+  _18 = _17 >> 24;
+  _19 = reply_buf->max;
+  _20 = _19 >> 8;
+  _21 = _20 & 65280;
+  _22 = _18 | _21;
+  _23 = reply_buf->max;
+  _24 = _23 << 8;
+  _25 = _24 & 16711680;
+  _26 = _22 | _25;
+  _27 = reply_buf->max;
+  _28 = _27 << 24;
+  _29 = _26 | _28;
+  reply_buf->max = _29;
+  # DEBUG BEGIN_STMT
+  reply_buf->min = 0;
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  reply_buf->mode = 1;
+  # DEBUG BEGIN_STMT
+  _30 = reply_buf->max;
+  _31 = _30 >> 24;
+  _32 = reply_buf->max;
+  _33 = _32 >> 8;
+  _34 = _33 & 65280;
+  _35 = _31 | _34;
+  _36 = reply_buf->max;
+  _37 = _36 << 8;
+  _38 = _37 & 16711680;
+  _39 = _35 | _38;
+  _40 = reply_buf->max;
+  _41 = _40 << 24;
+  _42 = _39 | _41;
+  reply_buf->max = _42;
+  # DEBUG BEGIN_STMT
+  _43 = reply_buf->min;
+  _44 = _43 >> 24;
+  _45 = reply_buf->min;
+  _46 = _45 >> 8;
+  _47 = _46 & 65280;
+  _48 = _44 | _47;
+  _49 = reply_buf->min;
+  _50 = _49 << 8;
+  _51 = _50 & 16711680;
+  _52 = _48 | _51;
+  _53 = reply_buf->min;
+  _54 = _53 << 24;
+  _55 = _52 | _54;
+  reply_buf->max = _55;
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  reply_buf->mode = 3;
+  # DEBUG BEGIN_STMT
+  _56 = reply_buf->max;
+  _57 = _56 >> 24;
+  _58 = reply_buf->max;
+  _59 = _58 >> 8;
+  _60 = _59 & 65280;
+  _61 = _57 | _60;
+  _62 = reply_buf->max;
+  _63 = _62 << 8;
+  _64 = _63 & 16711680;
+  _65 = _61 | _64;
+  _66 = reply_buf->max;
+  _67 = _66 << 24;
+  _68 = _65 | _67;
+  reply_buf->max = _68;
+  # DEBUG BEGIN_STMT
+  _69 = reply_buf->min;
+  _70 = _69 >> 24;
+  _71 = reply_buf->min;
+  _72 = _71 >> 8;
+  _73 = _72 & 65280;
+  _74 = _70 | _73;
+  _75 = reply_buf->min;
+  _76 = _75 << 8;
+  _77 = _76 & 16711680;
+  _78 = _74 | _77;
+  _79 = reply_buf->min;
+  _80 = _79 << 24;
+  _81 = _78 | _80;
+  reply_buf->min = _81;
+  # DEBUG BEGIN_STMT
+  ret = get_wred_zone_probs (reply_buf, fci_ret, q, fci, phy_if);
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _82 = q->id;
+  _83 = (int) _82;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t get queue %d mode\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 380, _83, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  # DEBUG BEGIN_STMT
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  D.13170 = ret;
+  return D.13170;
+
+}
+
+
+get_wred_zone_probs (struct fpp_qos_queue_cmd_t * reply_buf, uint16_t * fci_ret, struct fpp_qos_queue_cmd_t * q, const struct fci_t * fci, struct pfe_phy_if_t * phy_if)
+{
+  uint8_t ii;
+  uint8_t cnt;
+  errno_t ret;
+  errno_t D.13177;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = fci->tmu;
+  _2 = pfe_phy_if_get_id (phy_if);
+  _3 = q->id;
+  cnt = pfe_tmu_queue_get_wred_zones (_1, _2, _3);
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (ii < cnt)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = fci->tmu;
+  _5 = pfe_phy_if_get_id (phy_if);
+  _6 = q->id;
+  _7 = (int) ii;
+  _8 = &reply_buf->zprob[_7];
+  ret = pfe_tmu_queue_get_wred_prob (_4, _5, _6, ii, _8);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = q->id;
+  _10 = (int) _9;
+  _11 = (int) ii;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not get queue %d zone %d probability: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 293, _10, _11, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _12 = (int) ii;
+  reply_buf->zprob[_12] = 255;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ii.5_13 = ii;
+  ii = ii.5_13 + 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ii <= 31)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  D.13177 = ret;
+  return D.13177;
+
+}
+
+
+qos_queue_cmd_action_update (uint16_t * fci_ret, struct fpp_qos_queue_cmd_t * q, const struct fci_t * fci)
+{
+  uint8_t cnt;
+  struct pfe_phy_if_t * phy_if;
+  errno_t ret;
+  errno_t D.13138;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &q->if_name;
+  phy_if = fci_get_phy_if_by_name (_1);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 61700;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 18>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pfe_phy_if_get_id (phy_if);
+  if (_2 == 5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 61719;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 18>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = fci->tmu;
+  _4 = pfe_phy_if_get_id (phy_if);
+  cnt = pfe_tmu_queue_get_cnt (_3, _4);
+  # DEBUG BEGIN_STMT
+  _5 = q->id;
+  if (cnt < _5)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 62465;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 18>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = q->mode;
+  if (_6 > 3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 18>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _7 = q->mode;
+  if (_7 == 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _8 = fci->tmu;
+  _9 = pfe_phy_if_get_id (phy_if);
+  _10 = q->id;
+  ret = pfe_tmu_queue_set_mode (_8, _9, _10, 0, 0, 0);
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _11 = fci->tmu;
+  _12 = pfe_phy_if_get_id (phy_if);
+  _13 = q->id;
+  _14 = q->mode;
+  _15 = (int) _14;
+  _16 = fci_qmode_to_qmode[_15];
+  _17 = q->min;
+  _18 = _17 >> 24;
+  _19 = q->min;
+  _20 = _19 >> 8;
+  _21 = _20 & 65280;
+  _22 = _18 | _21;
+  _23 = q->min;
+  _24 = _23 << 8;
+  _25 = _24 & 16711680;
+  _26 = _22 | _25;
+  _27 = q->min;
+  _28 = _27 << 24;
+  _29 = _26 | _28;
+  _30 = q->max;
+  _31 = _30 >> 24;
+  _32 = q->max;
+  _33 = _32 >> 8;
+  _34 = _33 & 65280;
+  _35 = _31 | _34;
+  _36 = q->max;
+  _37 = _36 << 8;
+  _38 = _37 & 16711680;
+  _39 = _35 | _38;
+  _40 = q->max;
+  _41 = _40 << 24;
+  _42 = _39 | _41;
+  ret = pfe_tmu_queue_set_mode (_11, _12, _13, _16, _29, _42);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  if (ret == 113)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 62466;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  ret = queue_mode_wred (fci_ret, q, fci, phy_if);
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  D.13138 = ret;
+  return D.13138;
+
+}
+
+
+queue_mode_wred (uint16_t * fci_ret, struct fpp_qos_queue_cmd_t * q, const struct fci_t * fci, struct pfe_phy_if_t * phy_if)
+{
+  uint8_t ii;
+  uint8_t cnt;
+  errno_t ret;
+  errno_t D.13159;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = q->mode;
+  if (_1 == 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = fci->tmu;
+  _3 = pfe_phy_if_get_id (phy_if);
+  cnt = pfe_tmu_queue_get_cnt (_2, _3);
+  # DEBUG BEGIN_STMT
+  if (cnt > 32)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid zones count...\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 171, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = fci->tmu;
+  _5 = pfe_phy_if_get_id (phy_if);
+  _6 = q->id;
+  _7 = (int) ii;
+  _8 = q->zprob[_7];
+  ret = pfe_tmu_queue_set_wred_prob (_4, _5, _6, ii, _8);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  ii.4_9 = ii;
+  ii = ii.4_9 + 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (ii < cnt)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.13159 = ret;
+  return D.13159;
+
+}
+
+
+fci_get_phy_if_by_name (char_t * name)
+{
+  uint32_t sid;
+  errno_t ret;
+  struct pfe_phy_if_t * phy_if;
+  struct pfe_if_db_entry_t * entry;
+  struct fci_t * fci;
+  struct pfe_phy_if_t * D.13149;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci = &context;
+  # DEBUG BEGIN_STMT
+  entry = 0B;
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = pfe_if_db_lock (&sid);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = fci->phy_if_db;
+  sid.0_2 = sid;
+  ret = pfe_if_db_get_first (_1, sid.0_2, 3, name, &entry);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry.1_3 = entry;
+  if (entry.1_3 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  entry.2_4 = entry;
+  phy_if = pfe_if_db_entry_get_phy_if (entry.2_4);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  sid.3_5 = sid;
+  ret = pfe_if_db_unlock (sid.3_5);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Interface DB unlock failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_qos.c", 150, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.13149 = phy_if;
+  entry = {CLOBBER};
+  sid = {CLOBBER};
+  return D.13149;
+
+}
+
+

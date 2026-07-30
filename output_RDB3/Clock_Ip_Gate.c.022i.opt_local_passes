@@ -1,0 +1,203 @@
+Clock_Ip_ClockUpdateGateMcMePartitionCollectionClockRequestWithoutStat (Clock_Ip_NameType ClockName, boolean Gate)
+{
+  struct Clock_Ip_GateConfigType Config;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Config.Name = ClockName_3(D);
+  # DEBUG BEGIN_STMT
+  if (Gate_5(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Config.Enable = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Config.Enable = 1;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_ClockSetGateMcMePartitionCollectionClockRequestWithoutStat (&Config);
+  Config ={v} {CLOBBER};
+  return;
+
+}
+
+
+Clock_Ip_ClockSetGateMcMePartitionCollectionClockRequestWithoutStat (const struct Clock_Ip_GateConfigType * Config)
+{
+  uint32 EnableRequest;
+  uint32 Collection;
+  uint32 Partition;
+  const struct Clock_Ip_GateInfoType * GateInformation;
+  <unnamed type> _1;
+  unsigned char _2;
+  int _3;
+  unsigned char _4;
+  unsigned char _5;
+  short unsigned int _6;
+  volatile struct Clock_Ip_McmePartitionSetType * _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  volatile struct Clock_Ip_McmePartitionSetType * _10;
+  long unsigned int _11;
+  volatile struct Clock_Ip_McmePartitionSetType * _12;
+  long unsigned int _13;
+  volatile struct Clock_Ip_McmePartitionTriggerType * _14;
+  long unsigned int _15;
+  volatile struct Clock_Ip_McmePartitionTriggerType * _16;
+  long unsigned int _17;
+  volatile struct Clock_Ip_McmePartitionTriggerType * _18;
+  long unsigned int _19;
+  volatile struct Clock_Ip_McmePartitionTriggerType * _20;
+  long unsigned int _21;
+  volatile struct Clock_Ip_McmePartitionSetType * _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  volatile struct Clock_Ip_McmePartitionSetType * _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  volatile struct Clock_Ip_McmePartitionSetType * _28;
+  long unsigned int _29;
+  volatile struct Clock_Ip_McmePartitionTriggerType * _30;
+  long unsigned int _31;
+  volatile struct Clock_Ip_McmePartitionTriggerType * _32;
+  long unsigned int _33;
+  volatile struct Clock_Ip_McmePartitionTriggerType * _34;
+  long unsigned int _35;
+  volatile struct Clock_Ip_McmePartitionTriggerType * _36;
+  long unsigned int _37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (Config_39(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = Config_39(D)->Name;
+  _2 = Clock_Ip_au8ClockFeatures[_1][6];
+  _3 = (int) _2;
+  GateInformation_41 = &Clock_Ip_axGateInfo[_3];
+  # DEBUG GateInformation => GateInformation_41
+  # DEBUG BEGIN_STMT
+  _4 = GateInformation_41->PartitionValue;
+  Partition_42 = (uint32) _4;
+  # DEBUG Partition => Partition_42
+  # DEBUG BEGIN_STMT
+  _5 = GateInformation_41->ColectionValue;
+  Collection_43 = (uint32) _5;
+  # DEBUG Collection => Collection_43
+  # DEBUG BEGIN_STMT
+  EnableRequest_44 = GateInformation_41->RequestValueMask;
+  # DEBUG EnableRequest => EnableRequest_44
+  # DEBUG BEGIN_STMT
+  _6 = Config_39(D)->Enable;
+  if (_6 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _7 = Clock_Ip_apxMcMeSetPartitions[Partition_42];
+  _8 ={v} _7->PRTN_COFB_CLKEN[Collection_43];
+  _9 = EnableRequest_44 & _8;
+  if (_9 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _10 = Clock_Ip_apxMcMeSetPartitions[Partition_42];
+  _11 ={v} _10->PRTN_COFB_CLKEN[Collection_43];
+  _12 = Clock_Ip_apxMcMeSetPartitions[Partition_42];
+  _13 = EnableRequest_44 | _11;
+  _12->PRTN_COFB_CLKEN[Collection_43] ={v} _13;
+  # DEBUG BEGIN_STMT
+  _14 = Clock_Ip_apxMcMeTriggerPartitions[Partition_42];
+  _15 ={v} _14->PRTN_PCONF;
+  _16 = Clock_Ip_apxMcMeTriggerPartitions[Partition_42];
+  _17 = _15 | 1;
+  _16->PRTN_PCONF ={v} _17;
+  # DEBUG BEGIN_STMT
+  _18 = Clock_Ip_apxMcMeTriggerPartitions[Partition_42];
+  _19 ={v} _18->PRTN_PUPD;
+  _20 = Clock_Ip_apxMcMeTriggerPartitions[Partition_42];
+  _21 = _19 | 1;
+  _20->PRTN_PUPD ={v} _21;
+  # DEBUG BEGIN_STMT
+  Clock_Ip_McMeEnterKey ();
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _22 = Clock_Ip_apxMcMeSetPartitions[Partition_42];
+  _23 ={v} _22->PRTN_COFB_CLKEN[Collection_43];
+  _24 = EnableRequest_44 & _23;
+  if (_24 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _25 = Clock_Ip_apxMcMeSetPartitions[Partition_42];
+  _26 ={v} _25->PRTN_COFB_CLKEN[Collection_43];
+  _27 = ~EnableRequest_44;
+  _28 = Clock_Ip_apxMcMeSetPartitions[Partition_42];
+  _29 = _26 & _27;
+  _28->PRTN_COFB_CLKEN[Collection_43] ={v} _29;
+  # DEBUG BEGIN_STMT
+  _30 = Clock_Ip_apxMcMeTriggerPartitions[Partition_42];
+  _31 ={v} _30->PRTN_PCONF;
+  _32 = Clock_Ip_apxMcMeTriggerPartitions[Partition_42];
+  _33 = _31 | 1;
+  _32->PRTN_PCONF ={v} _33;
+  # DEBUG BEGIN_STMT
+  _34 = Clock_Ip_apxMcMeTriggerPartitions[Partition_42];
+  _35 ={v} _34->PRTN_PUPD;
+  _36 = Clock_Ip_apxMcMeTriggerPartitions[Partition_42];
+  _37 = _35 | 1;
+  _36->PRTN_PUPD ={v} _37;
+  # DEBUG BEGIN_STMT
+  Clock_Ip_McMeEnterKey ();
+
+  <bb 8> :
+  return;
+
+}
+
+
+Clock_Ip_ClockUpdateGateEmpty (Clock_Ip_NameType ClockName, boolean Gate)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Clock_Ip_ClockSetGateEmpty (const struct Clock_Ip_GateConfigType * Config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

@@ -1,0 +1,531 @@
+fci_owner_clear_floating_lock ()
+{
+  errno_t ret;
+  struct fci_t * fci_context;
+  errno_t _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_1 = &context;
+  # DEBUG fci_context => fci_context_1
+  # DEBUG BEGIN_STMT
+  ret_2 = 0;
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fci_owner_context.lock_owner_if = 10;
+  # DEBUG BEGIN_STMT
+  _5 = ret_2;
+  return _5;
+
+}
+
+
+fci_owner_unlock_cmd (pfe_ct_phy_if_id_t sender, uint16_t * fci_ret)
+{
+  errno_t ret;
+  struct fci_t * fci_context;
+  <unnamed type> _1;
+  errno_t _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_3 = &context;
+  # DEBUG fci_context => fci_context_3
+  # DEBUG BEGIN_STMT
+  ret_4 = 0;
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = fci_owner_context.lock_owner_if;
+  if (sender_6(D) == _1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  fci_owner_context.lock_owner_if = 10;
+  # DEBUG BEGIN_STMT
+  *fci_ret_7(D) = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_7(D) = 62724;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _11 = ret_4;
+  return _11;
+
+}
+
+
+fci_owner_get_floating_lock (pfe_ct_phy_if_id_t sender, uint16_t * fci_ret, bool_t * floating_lock)
+{
+  errno_t ret;
+  pfe_fci_owner_hif_id_t chnl_bit_mask;
+  struct fci_t * fci_context;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  unsigned int _3;
+  errno_t _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_6 = &context;
+  # DEBUG fci_context => fci_context_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_7 = 0;
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = fci_owner_context.lock_owner_if;
+  if (_1 != 10)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 62724;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  chnl_bit_mask_11 = pfe_fci_owner_hif_from_phy_id (sender_9(D));
+  # DEBUG chnl_bit_mask => chnl_bit_mask_11
+  # DEBUG BEGIN_STMT
+  if (chnl_bit_mask_11 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_18 = 22;
+  # DEBUG ret => ret_18
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = fci_owner_context.hif_fci_owner_chnls_mask;
+  _3 = chnl_bit_mask_11 & _2;
+  if (_3 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 62722;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  fci_owner_context.lock_owner_if = sender_9(D);
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 0;
+  # DEBUG BEGIN_STMT
+  *floating_lock_15(D) = 1;
+
+  <bb 9> :
+  # ret_4 = PHI <ret_7(3), ret_18(5), ret_7(7), ret_7(8)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _20 = ret_4;
+  return _20;
+
+}
+
+
+fci_owner_lock_cmd (pfe_ct_phy_if_id_t sender, uint16_t * fci_ret)
+{
+  errno_t ret;
+  pfe_fci_owner_hif_id_t chnl_bit_mask;
+  struct fci_t * fci_context;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  unsigned int _3;
+  <unnamed type> _4;
+  errno_t _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_7 = &context;
+  # DEBUG fci_context => fci_context_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_8 = 0;
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = fci_owner_context.lock_owner_if;
+  if (sender_10(D) == _1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 0;
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  chnl_bit_mask_12 = pfe_fci_owner_hif_from_phy_id (sender_10(D));
+  # DEBUG chnl_bit_mask => chnl_bit_mask_12
+  # DEBUG BEGIN_STMT
+  if (chnl_bit_mask_12 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_18 = 22;
+  # DEBUG ret => ret_18
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = fci_owner_context.hif_fci_owner_chnls_mask;
+  _3 = chnl_bit_mask_12 & _2;
+  if (_3 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 62722;
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _4 = fci_owner_context.lock_owner_if;
+  if (_4 == 10)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  fci_owner_context.lock_owner_if = sender_10(D);
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 62723;
+
+  <bb 11> :
+  # ret_5 = PHI <ret_8(3), ret_18(5), ret_8(7), ret_8(9), ret_8(10)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  _20 = ret_5;
+  return _20;
+
+}
+
+
+fci_owner_mutex_unlock ()
+{
+  errno_t ret;
+  struct fci_t * fci_context;
+  errno_t _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_1 = &context;
+  # DEBUG fci_context => fci_context_1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (99);
+  # DEBUG BEGIN_STMT
+  ret_4 = 0;
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _5 = ret_4;
+  return _5;
+
+}
+
+
+fci_owner_mutex_lock ()
+{
+  errno_t ret;
+  struct fci_t * fci_context;
+  errno_t _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_1 = &context;
+  # DEBUG fci_context => fci_context_1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (99);
+  # DEBUG BEGIN_STMT
+  ret_4 = 0;
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _5 = ret_4;
+  return _5;
+
+}
+
+
+fci_sender_get_phy_if_id (uint32_t sender, pfe_ct_phy_if_id_t * phy_if_id)
+{
+  errno_t ret;
+  <unnamed type> _1;
+  errno_t _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_4 = 0;
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  switch (sender_5(D)) <default: <L5> [INV], case 4: <L0> [INV], case 6 ... 9: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 = (<unnamed type>) sender_5(D);
+  *phy_if_id_7(D) = _1;
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  ret_9 = 22;
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+  # ret_2 = PHI <ret_4(3), ret_9(4)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _10 = ret_2;
+  return _10;
+
+}
+
+
+fci_owner_authorize (pfe_ct_phy_if_id_t sender, bool_t * auth_ret)
+{
+  errno_t ret;
+  struct fci_t * fci_context;
+  <unnamed type> _1;
+  _Bool _2;
+  unsigned char _3;
+  errno_t _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_4 = &context;
+  # DEBUG fci_context => fci_context_4
+  # DEBUG BEGIN_STMT
+  ret_5 = 0;
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = fci_owner_context.lock_owner_if;
+  _2 = sender_7(D) == _1;
+  _3 = (unsigned char) _2;
+  *auth_ret_8(D) = _3;
+  # DEBUG BEGIN_STMT
+  _10 = ret_5;
+  return _10;
+
+}
+
+
+fci_owner_session_cmd (pfe_ct_phy_if_id_t sender, uint32_t code, uint16_t * fci_ret)
+{
+  errno_t ret;
+  errno_t _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_3 = 0;
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  *fci_ret_5(D) = 0;
+  # DEBUG BEGIN_STMT
+  switch (code_7(D)) <default: <L6> [INV], case 62720: <L0> [INV], case 62721: <L3> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  ret_13 = fci_owner_lock_cmd (sender_8(D), fci_ret_5(D));
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (ret_13 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_5(D) = 65535;
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  ret_10 = fci_owner_unlock_cmd (sender_8(D), fci_ret_5(D));
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_5(D) = 65535;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_5(D) = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # ret_1 = PHI <ret_13(4), ret_10(6), ret_3(7), ret_13(3), ret_10(5)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  _16 = ret_1;
+  return _16;
+
+}
+
+
+fci_owner_init (struct fci_init_info_t * info)
+{
+  errno_t ret;
+  <unnamed type> _1;
+  pfe_fci_owner_hif_id_t iftmp.0_2;
+  pfe_fci_owner_hif_id_t iftmp.0_5;
+  pfe_fci_owner_hif_id_t iftmp.0_6;
+  errno_t _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = info_4(D)->hif_fci_owner_chnls_mask;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.0_6 = info_4(D)->hif_fci_owner_chnls_mask;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.0_5 = 31;
+
+  <bb 5> :
+  # iftmp.0_2 = PHI <iftmp.0_6(3), iftmp.0_5(4)>
+  fci_owner_context.hif_fci_owner_chnls_mask = iftmp.0_2;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fci_owner_context.lock_owner_if = 10;
+  # DEBUG BEGIN_STMT
+  ret_9 = 0;
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  _10 = ret_9;
+  return _10;
+
+}
+
+
+pfe_fci_owner_hif_from_phy_id (pfe_ct_phy_if_id_t phy)
+{
+  pfe_fci_owner_hif_id_t ret_val;
+  int _1;
+  pfe_fci_owner_hif_id_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_val_3 = 0;
+  # DEBUG ret_val => ret_val_3
+  # DEBUG BEGIN_STMT
+  if (phy_4(D) <= 10)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) phy_4(D);
+  ret_val_6 = pfe_fci_owner_hif_ids[_1];
+  # DEBUG ret_val => ret_val_6
+
+  <bb 4> :
+  # ret_val_2 = PHI <ret_val_3(2), ret_val_6(3)>
+  # DEBUG ret_val => ret_val_2
+  # DEBUG BEGIN_STMT
+  _7 = ret_val_2;
+  return _7;
+
+}
+
+
+oal_mutex_unlock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

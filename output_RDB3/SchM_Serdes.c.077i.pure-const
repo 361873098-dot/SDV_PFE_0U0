@@ -1,0 +1,83 @@
+
+
+ local analysis of Serdes_schm_read_msr
+   scanning: __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_1);
+    volatile is not const/pure
+  scanning: return reg_tmp_1;
+Function is locally looping.
+Function can locally free.
+callgraph:
+
+Serdes_schm_read_msr/0 (Serdes_schm_read_msr) @06dcad20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a07dd0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+Serdes_schm_read_msr/0 (Serdes_schm_read_msr) @06dcad20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a07dd0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+Serdes_schm_read_msr: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+Serdes_schm_read_msr: malloc_bottom
+callgraph:
+
+Serdes_schm_read_msr/0 (Serdes_schm_read_msr) @06dcad20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a07e10
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+Serdes_schm_read_msr/0 (Serdes_schm_read_msr) @06dcad20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06a07e10
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Serdes_schm_read_msr ()
+{
+  register uint32 reg_tmp;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_1);
+  # DEBUG reg_tmp => reg_tmp_1
+  # DEBUG BEGIN_STMT
+  return reg_tmp_1;
+
+}
+
+

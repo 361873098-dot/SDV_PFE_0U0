@@ -1,0 +1,884 @@
+Histogram:
+pfe_bmu_cfg_get_err_poll (addr_t base_va)
+{
+  uint32_t int_src;
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 32;
+  _2 = (volatile uint32_t *) _1;
+  int_src_6 ={v} *_2;
+  # DEBUG int_src => int_src_6
+  # DEBUG BEGIN_STMT
+  if (int_src_6 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} int_src_6;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return int_src_6;
+
+}
+
+
+pfe_bmu_cfg_get_special_stats (addr_t base_va, struct pfe_bmu_stats_special_t * special_stats)
+{
+  uint32_t stat_value;
+  uint32_t stat_value;
+  uint32_t stat_value;
+  uint32_t stat_value;
+  uint32_t stat_value;
+  uint32_t stat_value;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _18;
+  volatile uint32_t * _19;
+  long unsigned int _21;
+  volatile uint32_t * _22;
+  volatile uint32_t * _26;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 0
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _26 = (volatile uint32_t *) base_va_9(D);
+  stat_value_27 ={v} *_26;
+  # DEBUG stat_value => stat_value_27
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _1 = stat_value_27 >> 24;
+  special_stats_10(D)->revision = _1;
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 0
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  stat_value_25 ={v} *_26;
+  # DEBUG stat_value => stat_value_25
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _2 = stat_value_25 >> 16;
+  _3 = _2 & 255;
+  special_stats_10(D)->version = _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 0
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  stat_value_24 ={v} *_26;
+  # DEBUG stat_value => stat_value_24
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _4 = stat_value_24 & 255;
+  special_stats_10(D)->id = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 20
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _21 = base_va_9(D) + 20;
+  _22 = (volatile uint32_t *) _21;
+  stat_value_23 ={v} *_22;
+  # DEBUG stat_value => stat_value_23
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _5 = stat_value_23 >> 16;
+  special_stats_10(D)->free_error_cnt = _5;
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 16
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = base_va_9(D) + 16;
+  _19 = (volatile uint32_t *) _18;
+  stat_value_20 ={v} *_19;
+  # DEBUG stat_value => stat_value_20
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _6 = 1 << stat_value_20;
+  special_stats_10(D)->buff_size = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 20
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  stat_value_17 ={v} *_22;
+  # DEBUG stat_value => stat_value_17
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _7 = stat_value_17 & 65535;
+  special_stats_10(D)->active_buff = _7;
+  return;
+
+}
+
+
+pfe_bmu_cfg_get_stat_value (addr_t base_va, uint32_t stat_id)
+{
+  uint32_t stat_value;
+  long unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + stat_id_4(D);
+  _2 = (volatile uint32_t *) _1;
+  stat_value_6 ={v} *_2;
+  # DEBUG stat_value => stat_value_6
+  # DEBUG BEGIN_STMT
+  return stat_value_6;
+
+}
+
+
+pfe_bmu_cfg_free_buf (addr_t base_va, addr_t buffer)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 52;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} buffer_5(D);
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_bmu_cfg_alloc_buf (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  void * _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 48;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  _6 = (void *) _3;
+  return _6;
+
+}
+
+
+pfe_bmu_cfg_disable (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 4;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_bmu_cfg_enable (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 4;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 1;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_bmu_cfg_reset (addr_t base_va)
+{
+  errno_t ret;
+  uint32_t ii;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 69202660]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_8(D) + 4;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 2;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  ii_11 = ii_5 + 1;
+  # DEBUG ii => ii_11
+  if (ii_11 == 1001)
+    goto <bb 6>; [1.00%]
+  else
+    goto <bb 4>; [99.00%]
+
+  <bb 4> [local count: 1004539164]:
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+
+  <bb 5> [local count: 1073741824]:
+  # ii_5 = PHI <0(2), ii_11(4)>
+  # DEBUG ii => ii_5
+  # DEBUG BEGIN_STMT
+  _3 ={v} *_2;
+  _4 = _3 & 2;
+  if (_4 != 0)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 6> [local count: 69202661]:
+  # ret_6 = PHI <110(3), 0(5)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  return ret_6;
+
+}
+
+
+pfe_bmu_cfg_fini (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  unsigned int _5;
+  volatile uint32_t * _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_7(D) + 4;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_7(D) + 36;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = base_va_7(D) + 32;
+  _6 = (volatile uint32_t *) _5;
+  *_6 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_bmu_cfg_init (addr_t base_va, const struct pfe_bmu_cfg_t * cfg)
+{
+  uint32_t bmu_buf_size_exp;
+  long unsigned int _1;
+  int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long int _6;
+  long int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  unsigned int _14;
+  volatile uint32_t * _15;
+  unsigned int _16;
+  long unsigned int _17;
+  unsigned int _18;
+  volatile uint32_t * _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  unsigned int _23;
+  volatile uint32_t * _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  unsigned int _28;
+  volatile uint32_t * _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  unsigned int _33;
+  volatile uint32_t * _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  unsigned int _38;
+  volatile uint32_t * _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  int iftmp.3_44;
+
+  <bb 2> [local count: 99778653]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = cfg_48(D)->buf_size;
+  if (_1 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 49889327]:
+  _4 = _1 + 4294967295;
+  _5 = _1 & _4;
+  if (_5 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 74833990]:
+
+  <bb 5> [local count: 99778653]:
+  # iftmp.3_44 = PHI <1(3), 0(4)>
+  _3 = iftmp.3_44 ^ 1;
+  _6 = _3;
+  _7 = __builtin_expect (_6, 0);
+  if (_7 != 0)
+    goto <bb 6>; [10.00%]
+  else
+    goto <bb 7>; [90.00%]
+
+  <bb 6> [local count: 9977865]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] BMU buffer size is not power of 2\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_bmu_csr.c", 231, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [100.00%]
+
+  <bb 7> [local count: 89800788]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = base_va_49(D) + 4;
+  _9 = (volatile uint32_t *) _8;
+  *_9 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = base_va_49(D) + 36;
+  _11 = (volatile uint32_t *) _10;
+  *_11 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = base_va_49(D) + 32;
+  _13 = (volatile uint32_t *) _12;
+  *_13 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = base_va_49(D) + 12;
+  _15 = (volatile uint32_t *) _14;
+  _16 = cfg_48(D)->pool_pa;
+  *_15 ={v} _16;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = cfg_48(D)->max_buf_cnt;
+  _18 = base_va_49(D) + 8;
+  _19 = (volatile uint32_t *) _18;
+  _20 = _17 & 65535;
+  *_19 ={v} _20;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG bmu_buf_size_exp => 0
+  goto <bb 11>; [100.00%]
+
+  <bb 8> [local count: 1041207447]:
+  # DEBUG BEGIN_STMT
+  _21 = cfg_48(D)->buf_size;
+  _22 = 1 << bmu_buf_size_exp_43;
+  if (_21 == _22)
+    goto <bb 9>; [5.50%]
+  else
+    goto <bb 10>; [94.50%]
+
+  <bb 9> [local count: 57266410]:
+  # bmu_buf_size_exp_2 = PHI <bmu_buf_size_exp_43(8)>
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _23 = base_va_49(D) + 16;
+  _24 = (volatile uint32_t *) _23;
+  _25 = bmu_buf_size_exp_2;
+  *_24 ={v} _25;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 10> [local count: 983941036]:
+  # DEBUG BEGIN_STMT
+  bmu_buf_size_exp_55 = bmu_buf_size_exp_43 + 1;
+  # DEBUG bmu_buf_size_exp => bmu_buf_size_exp_55
+
+  <bb 11> [local count: 1073741824]:
+  # bmu_buf_size_exp_43 = PHI <0(7), bmu_buf_size_exp_55(10)>
+  # DEBUG bmu_buf_size_exp => bmu_buf_size_exp_43
+  # DEBUG BEGIN_STMT
+  if (bmu_buf_size_exp_43 != 32)
+    goto <bb 8>; [96.97%]
+  else
+    goto <bb 12>; [3.03%]
+
+  <bb 12> [local count: 89800787]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _26 = cfg_48(D)->max_buf_cnt;
+  _27 = _26 * 75;
+  _28 = base_va_49(D) + 24;
+  _29 = (volatile uint32_t *) _28;
+  _30 = _27 / 100;
+  *_29 ={v} _30;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _31 = cfg_48(D)->max_buf_cnt;
+  _32 = _31 * 5;
+  _33 = base_va_49(D) + 80;
+  _34 = (volatile uint32_t *) _33;
+  _35 = _32 / 100;
+  *_34 ={v} _35;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _36 = cfg_48(D)->max_buf_cnt;
+  _37 = _36 * 10;
+  _38 = base_va_49(D) + 84;
+  _39 = (volatile uint32_t *) _38;
+  _40 = _37 / 100;
+  *_39 ={v} _40;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _41 = cfg_48(D)->int_mem_loc_cnt;
+  pfe_bmu_cfg_clear_internal_memory (base_va_49(D), _41);
+  # DEBUG BEGIN_STMT
+  _42 = cfg_48(D)->buf_mem_loc_cnt;
+  pfe_bmu_cfg_clear_buf_cnt_memory (base_va_49(D), _42);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_11 ={v} 4294967294;
+
+  <bb 13> [local count: 99778652]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_bmu_cfg_irq_unmask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 36;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 | 1;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_bmu_cfg_irq_mask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 36;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 & 4294967294;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_bmu_cfg_isr (addr_t base_va, addr_t cbus_base_va)
+{
+  addr_t bmu_offset;
+  errno_t ret;
+  uint32_t reg_reen;
+  uint32_t reg;
+  uint32_t reg_en;
+  uint32_t reg_src;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  void * bmu_offset.0_11;
+  long unsigned int _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  long unsigned int _15;
+  void * bmu_offset.1_16;
+  unsigned int _17;
+  volatile uint32_t * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  void * bmu_offset.2_21;
+  long unsigned int _22;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG reg_reen => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  bmu_offset_37 = base_va_35(D) - cbus_base_va_36(D);
+  # DEBUG bmu_offset => bmu_offset_37
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_35(D) + 36;
+  _2 = (volatile uint32_t *) _1;
+  reg_en_39 ={v} *_2;
+  # DEBUG reg_en => reg_en_39
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_35(D) + 32;
+  _4 = (volatile uint32_t *) _3;
+  reg_src_41 ={v} *_4;
+  # DEBUG reg_src => reg_src_41
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_4 ={v} reg_src_41;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = ~reg_src_41;
+  _6 = _5 & reg_en_39;
+  _7 = _6 | 16;
+  *_2 ={v} _7;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = reg_en_39 & reg_src_41;
+  _9 = _8 & 2;
+  if (_9 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG reg_reen => 12
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # reg_reen_23 = PHI <0(2), 12(3)>
+  # ret_26 = PHI <2(2), 0(3)>
+  # DEBUG ret => ret_26
+  # DEBUG reg_reen => reg_reen_23
+  # DEBUG BEGIN_STMT
+  _10 = _8 & 4;
+  if (_10 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  bmu_offset.0_11 = (void *) bmu_offset_37;
+  pfe_hm_report (16, 2, 170, "[%s:%d] (BMU @ p0x%p)", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_bmu_csr.c", 140, bmu_offset.0_11, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (52, 3);
+  # DEBUG BEGIN_STMT
+  reg_reen_46 = reg_reen_23 | 2;
+  # DEBUG reg_reen => reg_reen_46
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 6> [local count: 1073741824]:
+  # reg_reen_24 = PHI <reg_reen_23(4), reg_reen_46(5)>
+  # ret_27 = PHI <ret_26(4), 0(5)>
+  # DEBUG ret => ret_27
+  # DEBUG reg_reen => reg_reen_24
+  # DEBUG BEGIN_STMT
+  _12 = _8 & 8;
+  if (_12 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _13 = base_va_35(D) + 24;
+  _14 = (volatile uint32_t *) _13;
+  reg_47 ={v} *_14;
+  # DEBUG reg => reg_47
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  reg_reen_48 = reg_reen_24 | 2;
+  # DEBUG reg_reen => reg_reen_48
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 8> [local count: 1073741824]:
+  # reg_reen_25 = PHI <reg_reen_24(6), reg_reen_48(7)>
+  # ret_28 = PHI <ret_27(6), 0(7)>
+  # DEBUG ret => ret_28
+  # DEBUG reg_reen => reg_reen_25
+  # DEBUG BEGIN_STMT
+  _15 = _8 & 16;
+  if (_15 != 0)
+    goto <bb 9>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 9> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  bmu_offset.1_16 = (void *) bmu_offset_37;
+  _17 = base_va_35(D) + 56;
+  _18 = (volatile uint32_t *) _17;
+  _19 ={v} *_18;
+  pfe_hm_report (16, 2, 171, "[%s:%d] (BMU @ p0x%p) address 0x%x", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_bmu_csr.c", 165, bmu_offset.1_16, _19, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (53, 3);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 10> [local count: 1073741824]:
+  # ret_29 = PHI <ret_28(8), 0(9)>
+  # DEBUG ret => ret_29
+  # DEBUG BEGIN_STMT
+  _20 = _8 & 480;
+  if (_20 != 0)
+    goto <bb 11>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 11> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  bmu_offset.2_21 = (void *) bmu_offset_37;
+  pfe_hm_report (16, 2, 172, "[%s:%d] (BMU @ p0x%p)", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_bmu_csr.c", 175, bmu_offset.2_21, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (53, 3);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 12> [local count: 1073741824]:
+  # ret_30 = PHI <ret_29(10), 0(11)>
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  if (reg_reen_25 != 0)
+    goto <bb 13>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 13> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  reg_53 ={v} *_2;
+  # DEBUG reg => reg_53
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _22 = reg_reen_25 | reg_53;
+  *_2 ={v} _22;
+
+  <bb 14> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_30;
+
+}
+
+
+pfe_bmu_cfg_clear_internal_memory (addr_t base_va, uint32_t cnt)
+{
+  uint32_t ii;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  unsigned int _5;
+  volatile uint32_t * _6;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_11(D) + 264;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} ii_7;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_11(D) + 256;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = base_va_11(D) + 260;
+  _6 = (volatile uint32_t *) _5;
+  *_6 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_15 = ii_7 + 1;
+  # DEBUG ii => ii_15
+
+  <bb 4> [local count: 1073741824]:
+  # ii_7 = PHI <0(2), ii_15(3)>
+  # DEBUG ii => ii_7
+  # DEBUG BEGIN_STMT
+  if (ii_7 < cnt_10(D))
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  return;
+
+}
+
+
+pfe_bmu_cfg_clear_buf_cnt_memory (addr_t base_va, uint32_t cnt)
+{
+  uint32_t ii;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  unsigned int _5;
+  volatile uint32_t * _6;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_11(D) + 276;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} ii_7;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_11(D) + 268;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = base_va_11(D) + 272;
+  _6 = (volatile uint32_t *) _5;
+  *_6 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_15 = ii_7 + 1;
+  # DEBUG ii => ii_15
+
+  <bb 4> [local count: 1073741824]:
+  # ii_7 = PHI <0(2), ii_15(3)>
+  # DEBUG ii => ii_7
+  # DEBUG BEGIN_STMT
+  if (ii_7 < cnt_10(D))
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  return;
+
+}
+
+

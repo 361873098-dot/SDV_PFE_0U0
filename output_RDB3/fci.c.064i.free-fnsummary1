@@ -1,0 +1,1302 @@
+fci_init_param_validate.isra.0 (struct fci_t * fci_context)
+{
+  errno_t err;
+  unsigned char _2;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG identifier s=> identifier
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG err => 0
+  # DEBUG BEGIN_STMT
+  _2 = fci_context_1(D)->fci_initialized;
+  if (_2 == 1)
+    goto <bb 3>; [21.72%]
+  else
+    goto <bb 4>; [78.28%]
+
+  <bb 3> [local count: 233216724]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FCI has already been initialized!\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci.c", 116, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG err => 22
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 840525101]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (fci_context_1(D), 0, 6536);
+  # DEBUG BEGIN_STMT
+  fci_context_1(D)->log_if_db_initialized = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_1(D)->phy_if_db_initialized = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_1(D)->rt_db_initialized = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_1(D)->rtable_initialized = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_1(D)->tmu_initialized = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_1(D)->hm_cb_registered = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_1(D)->is_some_client = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_1(D)->fci_owner_initialized = 0;
+
+  <bb 5> [local count: 1073741824]:
+  # err_3 = PHI <22(3), 0(4)>
+  # DEBUG err => err_3
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return err_3;
+
+}
+
+
+oal_mutex_unlock.part.0 (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _2;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_1(D)];
+  _2 ();
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock.part.0 (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _2;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_1(D)];
+  _2 ();
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+fci_fini ()
+{
+  uint32_t session_id;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  struct fci_core_t * _4;
+  unsigned char _5;
+  unsigned char _6;
+  long unsigned int session_id.7_7;
+  unsigned char _8;
+  unsigned char _9;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  session_id = 0;
+  # DEBUG BEGIN_STMT
+  _1 = context.fci_initialized;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 18>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _2 = context.rt_db_initialized;
+  if (_2 == 1)
+    goto <bb 4>; [20.24%]
+  else
+    goto <bb 5>; [79.76%]
+
+  <bb 4> [local count: 73890617]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 98
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (98);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_all ();
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 98
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (98);
+
+  <bb 5> [local count: 365072220]:
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _3 = context.hm_cb_registered;
+  if (_3 == 1)
+    goto <bb 6>; [20.24%]
+  else
+    goto <bb 7>; [79.76%]
+
+  <bb 6> [local count: 73890617]:
+  # DEBUG BEGIN_STMT
+  fci_hm_cb_deregister ();
+  # DEBUG BEGIN_STMT
+  context.hm_cb_registered = 0;
+  # DEBUG BEGIN_STMT
+  context.is_some_client = 0;
+
+  <bb 7> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _4 = context.core;
+  if (_4 != 0B)
+    goto <bb 8>; [53.47%]
+  else
+    goto <bb 9>; [46.53%]
+
+  <bb 8> [local count: 195204116]:
+  # DEBUG BEGIN_STMT
+  fci_core_fini ();
+  # DEBUG BEGIN_STMT
+  context.core = 0B;
+
+  <bb 9> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  pfe_if_db_lock (&session_id);
+  # DEBUG BEGIN_STMT
+  _5 = context.log_if_db_initialized;
+  if (_5 == 1)
+    goto <bb 10>; [34.00%]
+  else
+    goto <bb 11>; [66.00%]
+
+  <bb 10> [local count: 124124555]:
+  # DEBUG BEGIN_STMT
+  context.log_if_db = 0B;
+  # DEBUG BEGIN_STMT
+  context.log_if_db_initialized = 0;
+
+  <bb 11> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _6 = context.phy_if_db_initialized;
+  if (_6 == 1)
+    goto <bb 12>; [34.00%]
+  else
+    goto <bb 13>; [66.00%]
+
+  <bb 12> [local count: 124124555]:
+  # DEBUG BEGIN_STMT
+  context.phy_if_db = 0B;
+  # DEBUG BEGIN_STMT
+  context.phy_if_db_initialized = 0;
+
+  <bb 13> [local count: 365072221]:
+  # DEBUG BEGIN_STMT
+  session_id.7_7 = session_id;
+  pfe_if_db_unlock (session_id.7_7);
+  # DEBUG BEGIN_STMT
+  _8 = context.rt_db_initialized;
+  if (_8 == 1)
+    goto <bb 14>; [20.24%]
+  else
+    goto <bb 15>; [79.76%]
+
+  <bb 14> [local count: 73890617]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 98
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (98);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_all ();
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 98
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (98);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  context.rt_db_initialized = 0;
+
+  <bb 15> [local count: 365072221]:
+  # DEBUG BEGIN_STMT
+  context.rtable = 0B;
+  # DEBUG BEGIN_STMT
+  context.rtable_initialized = 0;
+  # DEBUG BEGIN_STMT
+  _9 = context.fci_owner_initialized;
+  if (_9 == 1)
+    goto <bb 16>; [34.00%]
+  else
+    goto <bb 17>; [66.00%]
+
+  <bb 16> [local count: 124124555]:
+  # DEBUG BEGIN_STMT
+  context.fci_owner_initialized = 0;
+
+  <bb 17> [local count: 365072221]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&context, 0, 6536);
+  # DEBUG BEGIN_STMT
+  context.fci_initialized = 0;
+
+  <bb 18> [local count: 1073741824]:
+  session_id ={v} {CLOBBER};
+  return;
+
+}
+
+
+fci_init (struct fci_init_info_t * info, const char_t * const identifier)
+{
+  errno_t err;
+  int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG err => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG D#2 => identifier_8(D)
+  err_10 = fci_init_param_validate.isra.0 (&context);
+  # DEBUG err => err_10
+  # DEBUG BEGIN_STMT
+  if (err_10 != 22)
+    goto <bb 3>; [48.88%]
+  else
+    goto <bb 13>; [51.12%]
+
+  <bb 3> [local count: 524845004]:
+  # DEBUG BEGIN_STMT
+  err_12 = fci_core_init (identifier_8(D));
+  # DEBUG err => err_12
+  # DEBUG BEGIN_STMT
+  if (err_12 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 262422502]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not create FCI core\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci.c", 783, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fci_fini ();
+  goto <bb 13>; [100.00%]
+
+  <bb 5> [local count: 262422502]:
+  # DEBUG BEGIN_STMT
+  err_15 = fci_owner_init (info_13(D));
+  # DEBUG err => err_15
+  # DEBUG BEGIN_STMT
+  if (err_15 == 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 131211251]:
+  # DEBUG BEGIN_STMT
+  context.fci_owner_initialized = 1;
+
+  <bb 7> [local count: 262422502]:
+  # DEBUG BEGIN_STMT
+  if (err_15 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 131211251]:
+  # DEBUG BEGIN_STMT
+  fci_fini ();
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 131211251]:
+  # DEBUG BEGIN_STMT
+  fci_init_context_info (&context, info_13(D));
+
+  <bb 10> [local count: 262422502]:
+  # DEBUG BEGIN_STMT
+  _1 = fci_hm_cb_register ();
+  if (_1 == 0)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 11> [local count: 131211251]:
+  # DEBUG BEGIN_STMT
+  context.hm_cb_registered = 1;
+
+  <bb 12> [local count: 262422502]:
+  # DEBUG BEGIN_STMT
+  context.default_timeouts.timeout_tcp = 432000;
+  # DEBUG BEGIN_STMT
+  context.default_timeouts.timeout_udp = 300;
+  # DEBUG BEGIN_STMT
+  context.default_timeouts.timeout_other = 240;
+  # DEBUG BEGIN_STMT
+  context.fci_initialized = 1;
+
+  <bb 13> [local count: 1073741824]:
+  # err_2 = PHI <err_10(2), err_12(4), err_15(12)>
+  # DEBUG err => err_2
+  # DEBUG BEGIN_STMT
+  return err_2;
+
+}
+
+
+fci_process_ipc_message (struct fci_msg_t * msg, struct fci_msg_t * rep_msg)
+{
+  struct fci_vars_t passed_vars;
+  uint16_t * reply_retval_ptr;
+  uint32_t * reply_buf_len_ptr;
+  uint32_t * reply_buf_ptr;
+  uint16_t fci_ret;
+  errno_t ret;
+  uint8_t * _1;
+  uint32_t * _2;
+  <unnamed type> _3;
+  unsigned char _4;
+  <unnamed type> _5;
+  unsigned char _6;
+  uint32_t * reply_buf_len_ptr.1_7;
+  long unsigned int _8;
+  long unsigned int _9;
+  uint8_t[256] * _10;
+  short unsigned int fci_ret.3_11;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  reply_retval_ptr = 0B;
+  # DEBUG BEGIN_STMT
+  passed_vars.p_msg = msg_22(D);
+  passed_vars.p_rep_msg = rep_msg_24(D);
+  passed_vars.fci_floating_lock = 0;
+  passed_vars.bCheckRet = 0;
+  # DEBUG BEGIN_STMT
+  _1 = &rep_msg_24(D)->msg_cmd.payload[4];
+  reply_buf_ptr = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &rep_msg_24(D)->msg_cmd.length;
+  reply_buf_len_ptr = _2;
+  # DEBUG BEGIN_STMT
+  *_2 = 252;
+  # DEBUG BEGIN_STMT
+  _3 = msg_22(D)->type;
+  if (_3 == 4099)
+    goto <bb 3>; [20.24%]
+  else
+    goto <bb 4>; [79.76%]
+
+  <bb 3> [local count: 217325345]:
+  # DEBUG BEGIN_STMT
+  ret_32 = fci_check_credentials (&passed_vars, &fci_ret, &reply_buf_len_ptr, &reply_retval_ptr);
+  # DEBUG ret => ret_32
+
+  <bb 4> [local count: 1073741824]:
+  # ret_12 = PHI <0(2), ret_32(3)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  _4 = passed_vars.bCheckRet;
+  if (_4 != 1)
+    goto <bb 5>; [66.00%]
+  else
+    goto <bb 12>; [34.00%]
+
+  <bb 5> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  _5 = msg_22(D)->type;
+  if (_5 == 4099)
+    goto <bb 6>; [32.03%]
+  else
+    goto <bb 12>; [67.97%]
+
+  <bb 6> [local count: 226986874]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  ret_34 = execute_fci_cmd (msg_22(D), &fci_ret, &reply_buf_ptr, &reply_buf_len_ptr);
+  # DEBUG ret => ret_34
+  # DEBUG BEGIN_STMT
+  _6 = passed_vars.fci_floating_lock;
+  if (_6 == 1)
+    goto <bb 7>; [20.24%]
+  else
+    goto <bb 11>; [79.76%]
+
+  <bb 7> [local count: 45942143]:
+  # DEBUG BEGIN_STMT
+  ret_36 = fci_owner_clear_floating_lock ();
+  # DEBUG ret => ret_36
+  # DEBUG BEGIN_STMT
+  if (ret_36 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 22971072]:
+  # DEBUG BEGIN_STMT
+  fci_ret = 65535;
+
+  <bb 9> [local count: 45942143]:
+  # DEBUG BEGIN_STMT
+  ret_39 = fci_owner_mutex_unlock ();
+  # DEBUG ret => ret_39
+  # DEBUG BEGIN_STMT
+  if (ret_39 != 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 10> [local count: 22971072]:
+  # DEBUG BEGIN_STMT
+  fci_ret = 65535;
+
+  <bb 11> [local count: 226986874]:
+  # ret_13 = PHI <ret_34(6), ret_39(9), ret_39(10)>
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  reply_buf_len_ptr.1_7 = reply_buf_len_ptr;
+  _8 = *reply_buf_len_ptr.1_7;
+  _9 = _8 + 4;
+  rep_msg_24(D)->msg_cmd.length = _9;
+  # DEBUG BEGIN_STMT
+  _10 = &rep_msg_24(D)->msg_cmd.payload;
+  # DEBUG BEGIN_STMT
+  fci_ret.3_11 = fci_ret;
+  MEM[(uint16_t *)_10] = fci_ret.3_11;
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 1073741824]:
+  # ret_14 = PHI <ret_12(4), ret_13(11), 22(5)>
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  fci_ret ={v} {CLOBBER};
+  reply_buf_ptr ={v} {CLOBBER};
+  reply_buf_len_ptr ={v} {CLOBBER};
+  reply_retval_ptr ={v} {CLOBBER};
+  passed_vars ={v} {CLOBBER};
+  return ret_14;
+
+}
+
+
+fci_check_credentials (struct fci_vars_t * vars, uint16_t * fci_ret, uint32_t * * reply_buf_len_ptr, uint16_t * * reply_retval_ptr)
+{
+  errno_t ret;
+  bool_t fci_cmd_execute;
+  pfe_ct_phy_if_id_t sender_phy_if_id;
+  struct fci_msg_t * _1;
+  long unsigned int _2;
+  struct fci_msg_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  <unnamed type> sender_phy_if_id.4_6;
+  bool_t * _7;
+  <unnamed type> sender_phy_if_id.5_8;
+  unsigned char _9;
+  unsigned char fci_cmd_execute.6_10;
+  uint32_t * _11;
+  long unsigned int _12;
+  struct fci_msg_t * _13;
+  long unsigned int _14;
+  uint8_t[256] * _15;
+  short unsigned int _16;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  sender_phy_if_id = 10;
+  # DEBUG BEGIN_STMT
+  fci_cmd_execute = 0;
+  # DEBUG BEGIN_STMT
+  ret_28 = fci_owner_mutex_lock ();
+  # DEBUG ret => ret_28
+  # DEBUG BEGIN_STMT
+  if (ret_28 == 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _1 = vars_29(D)->p_msg;
+  _2 = _1->msg_cmd.sender;
+  ret_31 = fci_sender_get_phy_if_id (_2, &sender_phy_if_id);
+  # DEBUG ret => ret_31
+  # DEBUG BEGIN_STMT
+  if (ret_31 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 4> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  _3 = vars_29(D)->p_msg;
+  _4 = _3->msg_cmd.code;
+  _5 = _4 + 4294904576;
+  if (_5 <= 1)
+    goto <bb 5>; [41.00%]
+  else
+    goto <bb 6>; [59.00%]
+
+  <bb 5> [local count: 72638634]:
+  # DEBUG BEGIN_STMT
+  sender_phy_if_id.4_6 = sender_phy_if_id;
+  ret_37 = fci_owner_session_cmd (sender_phy_if_id.4_6, _4, fci_ret_33(D));
+  # DEBUG ret => ret_37
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 104528767]:
+  # DEBUG BEGIN_STMT
+  _7 = &vars_29(D)->fci_floating_lock;
+  sender_phy_if_id.5_8 = sender_phy_if_id;
+  ret_35 = fci_authorize_and_lock (reply_buf_len_ptr_32(D), _7, fci_ret_33(D), &fci_cmd_execute, sender_phy_if_id.5_8);
+  # DEBUG ret => ret_35
+
+  <bb 7> [local count: 354334802]:
+  # ret_17 = PHI <ret_31(3), ret_37(5), ret_35(6)>
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  if (ret_17 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_33(D) = 65535;
+
+  <bb 9> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _9 = vars_29(D)->fci_floating_lock;
+  if (_9 == 0)
+    goto <bb 10>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 10> [local count: 116930485]:
+  # DEBUG BEGIN_STMT
+  ret_40 = fci_owner_mutex_unlock ();
+  # DEBUG ret => ret_40
+
+  <bb 11> [local count: 1073741824]:
+  # ret_18 = PHI <ret_28(2), ret_17(9), ret_40(10)>
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  if (ret_18 != 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 12> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_33(D) = 65535;
+
+  <bb 13> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  fci_cmd_execute.6_10 = fci_cmd_execute;
+  if (fci_cmd_execute.6_10 == 0)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 14> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _11 = *reply_buf_len_ptr_32(D);
+  _12 = *_11;
+  # DEBUG BEGIN_STMT
+  _13 = vars_29(D)->p_rep_msg;
+  _14 = _12 + 4;
+  _13->msg_cmd.length = _14;
+  # DEBUG BEGIN_STMT
+  _15 = &_13->msg_cmd.payload;
+  *reply_retval_ptr_43(D) = _15;
+  # DEBUG BEGIN_STMT
+  _16 = *fci_ret_33(D);
+  MEM[(uint16_t *)_15] = _16;
+  # DEBUG BEGIN_STMT
+  vars_29(D)->bCheckRet = 1;
+
+  <bb 15> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  sender_phy_if_id ={v} {CLOBBER};
+  fci_cmd_execute ={v} {CLOBBER};
+  return ret_18;
+
+}
+
+
+fci_authorize_and_lock (uint32_t * * reply_buf_len_ptr, bool_t * floating_lock, uint16_t * fci_ret, bool_t * fci_cmd_execute, pfe_ct_phy_if_id_t sender_phy_if_id)
+{
+  errno_t ret;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  uint32_t * _4;
+
+  <bb 2> [local count: 1073741821]:
+  # DEBUG BEGIN_STMT
+  ret_12 = fci_owner_authorize (sender_phy_if_id_9(D), fci_cmd_execute_10(D));
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 3> [local count: 536870910]:
+  _1 = *fci_cmd_execute_10(D);
+  if (_1 == 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 4> [local count: 177167400]:
+  # DEBUG BEGIN_STMT
+  ret_16 = fci_owner_get_floating_lock (sender_phy_if_id_9(D), fci_ret_13(D), floating_lock_14(D));
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 88583700]:
+  # DEBUG BEGIN_STMT
+  _2 = *floating_lock_14(D);
+  *fci_cmd_execute_10(D) = _2;
+
+  <bb 6> [local count: 1073741823]:
+  # ret_5 = PHI <ret_12(2), 0(3), ret_16(4), 0(5)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  if (ret_5 == 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 7> [local count: 536870911]:
+  _3 = *fci_cmd_execute_10(D);
+  if (_3 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  _4 = *reply_buf_len_ptr_18(D);
+  *_4 = 0;
+
+  <bb 9> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+fci_init_context_info (struct fci_t * fci_context, struct fci_init_info_t * info)
+{
+  struct pfe_class_t * _1;
+  struct pfe_if_db_t * _2;
+  struct pfe_if_db_t * _3;
+  struct pfe_tmu_t * _4;
+  struct fci_rt_db_t * _5;
+  struct pfe_rtable_t * _6;
+  struct pfe_l2br_t * _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  fci_fp_db_init ();
+  # DEBUG BEGIN_STMT
+  if (info_15(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 13>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _1 = info_15(D)->class;
+  fci_context_16(D)->class = _1;
+  # DEBUG BEGIN_STMT
+  _2 = info_15(D)->phy_if_db;
+  if (_2 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 4> [local count: 526133494]:
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->phy_if_db = _2;
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->phy_if_db_initialized = 1;
+
+  <bb 5> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _3 = info_15(D)->log_if_db;
+  if (_3 != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 6> [local count: 526133494]:
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->log_if_db = _3;
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->log_if_db_initialized = 1;
+
+  <bb 7> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _4 = info_15(D)->tmu;
+  if (_4 != 0B)
+    goto <bb 8>; [70.00%]
+  else
+    goto <bb 9>; [30.00%]
+
+  <bb 8> [local count: 526133494]:
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->tmu = _4;
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->tmu_initialized = 1;
+
+  <bb 9> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _5 = &fci_context_16(D)->route_db;
+  fci_rt_db_init (_5);
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->rt_db_initialized = 1;
+  # DEBUG BEGIN_STMT
+  _6 = info_15(D)->rtable;
+  if (_6 != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 11>; [30.00%]
+
+  <bb 10> [local count: 526133494]:
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->rtable = _6;
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->rtable_initialized = 1;
+
+  <bb 11> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _7 = info_15(D)->l2_bridge;
+  if (_7 != 0B)
+    goto <bb 12>; [70.00%]
+  else
+    goto <bb 13>; [30.00%]
+
+  <bb 12> [local count: 526133494]:
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->l2_bridge = _7;
+  # DEBUG BEGIN_STMT
+  fci_context_16(D)->l2_bridge_initialized = 1;
+
+  <bb 13> [local count: 1073741824]:
+  return;
+
+}
+
+
+execute_fci_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, uint32_t * * reply_buf_ptr, uint32_t * * reply_buf_len_ptr)
+{
+  struct pfe_ct_buffer_t buf;
+  errno_t ret;
+  long unsigned int _1;
+  unsigned char _2;
+  uint8_t[64] * _3;
+  long unsigned int _4;
+  struct pfe_class_t * _5;
+  uint32_t * _6;
+  uint32_t * _7;
+  uint32_t * _8;
+  uint32_t * _9;
+  uint32_t * _10;
+  uint32_t * _11;
+  uint32_t * _12;
+  uint32_t * _13;
+  uint32_t * _14;
+  uint32_t * _15;
+  uint32_t * _16;
+  uint32_t * _17;
+  uint32_t * _18;
+  uint32_t * _19;
+  uint32_t * _20;
+  uint32_t * _21;
+  uint32_t * _22;
+  uint32_t * _23;
+  uint32_t * _24;
+  uint32_t * _25;
+  uint32_t * _26;
+  uint32_t * _27;
+  uint32_t * _28;
+  uint32_t * _29;
+  uint32_t * _30;
+  uint32_t * _31;
+  uint32_t * _32;
+  uint32_t * _33;
+  uint32_t * _34;
+  uint32_t * _35;
+  uint32_t * _36;
+  uint32_t * _37;
+  uint32_t * _38;
+  uint32_t * _39;
+  uint32_t * _40;
+  uint32_t * _41;
+  uint32_t * _42;
+  uint32_t * _43;
+  uint32_t * _44;
+  uint32_t * _45;
+  uint32_t * _46;
+  uint32_t * _47;
+  uint32_t * _48;
+  uint32_t * _49;
+  uint32_t * _50;
+  uint32_t * _51;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  _1 = msg_57(D)->msg_cmd.code;
+  switch (_1) <default: <L39> [3.33%], case 21 ... 22: <L7> [3.33%], case 787: <L48> [3.33%], case 788: <L50> [3.33%], case 790: <L52> [3.33%], case 793: <L49> [3.33%], case 1044: <L51> [3.33%], case 1046: <L53> [3.33%], case 61696: <L10> [3.33%], case 61697: <L9> [3.33%], case 61728: <L11> [3.33%], case 61744: <L27> [3.33%], case 61952: <L18> [3.33%], case 61984: <L20> [3.33%], case 61985: <L21> [3.33%], case 62032: <L22> [3.33%], case 62048: <L23> [3.33%], case 62208: <L0> [3.33%], case 62272: <L19> [3.33%], case 62336: <L32> [3.33%], case 62352: <L32> [3.33%], case 62368: <L32> [3.33%], case 62464: <L24> [3.33%], case 62480: <L25> [3.33%], case 62496: <L26> [3.33%], case 62512: <L28> [3.33%], case 62528: <L29> [3.33%], case 62544: <L30> [3.33%], case 62560: <L31> [3.33%], case 62720 ... 62721: <L35> [3.33%], case 62752: <L37> [3.33%], case 62753: <L38> [3.33%]>
+
+  <bb 3> [local count: 35755603]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  buf = {};
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => &msg_57(D)->msg_cmd.payload
+  # DEBUG fci_buf => D#1
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct fpp_buf_cmd_t *)msg_57(D) + 16B].len;
+  if (_2 > 64)
+    goto <bb 4>; [67.00%]
+  else
+    goto <bb 5>; [33.00%]
+
+  <bb 4> [local count: 23956254]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  *fci_ret_60(D) = 65535;
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 11799349]:
+  # DEBUG BEGIN_STMT
+  buf.flags = 1;
+  # DEBUG BEGIN_STMT
+  buf.len = _2;
+  # DEBUG BEGIN_STMT
+  _3 = &MEM[(struct fpp_buf_cmd_t *)msg_57(D) + 16B].payload;
+  _4 = (long unsigned int) _2;
+  autolibc_memcpy (&buf.payload, _3, _4);
+  # DEBUG BEGIN_STMT
+  _5 = context.class;
+  ret_89 = pfe_class_put_data (_5, &buf);
+  # DEBUG ret => ret_89
+  # DEBUG BEGIN_STMT
+  if (ret_89 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 5899674]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_60(D) = 65535;
+
+  <bb 7> [local count: 35755603]:
+  # ret_52 = PHI <ret_89(5), 22(4), ret_89(6)>
+  # DEBUG ret => ret_52
+  # DEBUG BEGIN_STMT
+  buf ={v} {CLOBBER};
+  goto <bb 37>; [100.00%]
+
+  <bb 8> [local count: 35755603]:
+<L7>:
+  # DEBUG BEGIN_STMT
+  ret_122 = fci_interfaces_session_cmd (_1, fci_ret_60(D));
+  # DEBUG ret => ret_122
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 9> [local count: 35755603]:
+<L9>:
+  # DEBUG BEGIN_STMT
+  _6 = *reply_buf_ptr_58(D);
+  _7 = *reply_buf_len_ptr_59(D);
+  ret_108 = fci_interfaces_log_cmd (msg_57(D), fci_ret_60(D), _6, _7);
+  # DEBUG ret => ret_108
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 10> [local count: 35755603]:
+<L10>:
+  # DEBUG BEGIN_STMT
+  _8 = *reply_buf_ptr_58(D);
+  _9 = *reply_buf_len_ptr_59(D);
+  ret_110 = fci_interfaces_phy_cmd (msg_57(D), fci_ret_60(D), _8, _9);
+  # DEBUG ret => ret_110
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 11> [local count: 35755603]:
+<L11>:
+  # DEBUG BEGIN_STMT
+  _10 = *reply_buf_ptr_58(D);
+  _11 = *reply_buf_len_ptr_59(D);
+  ret_106 = fci_interfaces_mac_cmd (msg_57(D), fci_ret_60(D), _10, _11);
+  # DEBUG ret => ret_106
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 12> [local count: 35755603]:
+<L48>:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (97);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _12 = *reply_buf_ptr_58(D);
+  _13 = *reply_buf_len_ptr_59(D);
+  ret_120 = fci_routes_cmd (msg_57(D), fci_ret_60(D), _12, _13);
+  # DEBUG ret => ret_120
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (97);
+  goto <bb 37>; [100.00%]
+
+  <bb 13> [local count: 35755603]:
+<L49>:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (97);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _14 = *reply_buf_ptr_58(D);
+  _15 = *reply_buf_len_ptr_59(D);
+  ret_115 = fci_connections_ipv4_timeout_cmd (msg_57(D), fci_ret_60(D), _14, _15);
+  # DEBUG ret => ret_115
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (97);
+  goto <bb 37>; [100.00%]
+
+  <bb 14> [local count: 35755603]:
+<L50>:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (97);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _16 = *reply_buf_ptr_58(D);
+  _17 = *reply_buf_len_ptr_59(D);
+  ret_118 = fci_connections_ipv4_ct_cmd (msg_57(D), fci_ret_60(D), _16, _17);
+  # DEBUG ret => ret_118
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (97);
+  goto <bb 37>; [100.00%]
+
+  <bb 15> [local count: 35755603]:
+<L51>:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (97);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _18 = *reply_buf_ptr_58(D);
+  _19 = *reply_buf_len_ptr_59(D);
+  ret_113 = fci_connections_ipv6_ct_cmd (msg_57(D), fci_ret_60(D), _18, _19);
+  # DEBUG ret => ret_113
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (97);
+  goto <bb 37>; [100.00%]
+
+  <bb 16> [local count: 35755603]:
+<L52>:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (97);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_all_ipv4 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (97);
+  goto <bb 37>; [100.00%]
+
+  <bb 17> [local count: 35755603]:
+<L53>:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (97);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_all_ipv6 ();
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 97
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (97);
+  goto <bb 37>; [100.00%]
+
+  <bb 18> [local count: 35755603]:
+<L18>:
+  # DEBUG BEGIN_STMT
+  _20 = *reply_buf_ptr_58(D);
+  _21 = *reply_buf_len_ptr_59(D);
+  ret_102 = fci_l2br_domain_cmd (msg_57(D), fci_ret_60(D), _20, _21);
+  # DEBUG ret => ret_102
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 19> [local count: 35755603]:
+<L19>:
+  # DEBUG BEGIN_STMT
+  _22 = *reply_buf_ptr_58(D);
+  _23 = *reply_buf_len_ptr_59(D);
+  ret_83 = fci_l2br_static_entry_cmd (msg_57(D), fci_ret_60(D), _22, _23);
+  # DEBUG ret => ret_83
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 20> [local count: 35755603]:
+<L20>:
+  # DEBUG BEGIN_STMT
+  _24 = *reply_buf_ptr_58(D);
+  _25 = *reply_buf_len_ptr_59(D);
+  ret_100 = fci_fp_table_cmd (msg_57(D), fci_ret_60(D), _24, _25);
+  # DEBUG ret => ret_100
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 21> [local count: 35755603]:
+<L21>:
+  # DEBUG BEGIN_STMT
+  _26 = *reply_buf_ptr_58(D);
+  _27 = *reply_buf_len_ptr_59(D);
+  ret_98 = fci_fp_rule_cmd (msg_57(D), fci_ret_60(D), _26, _27);
+  # DEBUG ret => ret_98
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 22> [local count: 35755603]:
+<L22>:
+  # DEBUG BEGIN_STMT
+  _28 = *reply_buf_ptr_58(D);
+  _29 = *reply_buf_len_ptr_59(D);
+  ret_96 = fci_fw_features_cmd (msg_57(D), fci_ret_60(D), _28, _29);
+  # DEBUG ret => ret_96
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 23> [local count: 35755603]:
+<L23>:
+  # DEBUG BEGIN_STMT
+  _30 = *reply_buf_ptr_58(D);
+  _31 = *reply_buf_len_ptr_59(D);
+  ret_94 = fci_fw_features_element_cmd (msg_57(D), fci_ret_60(D), _30, _31);
+  # DEBUG ret => ret_94
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 24> [local count: 35755603]:
+<L24>:
+  # DEBUG BEGIN_STMT
+  _32 = *reply_buf_ptr_58(D);
+  _33 = *reply_buf_len_ptr_59(D);
+  ret_79 = fci_qos_queue_cmd (msg_57(D), fci_ret_60(D), _32, _33);
+  # DEBUG ret => ret_79
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 25> [local count: 35755603]:
+<L25>:
+  # DEBUG BEGIN_STMT
+  _34 = *reply_buf_ptr_58(D);
+  _35 = *reply_buf_len_ptr_59(D);
+  ret_77 = fci_qos_scheduler_cmd (msg_57(D), fci_ret_60(D), _34, _35);
+  # DEBUG ret => ret_77
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 26> [local count: 35755603]:
+<L26>:
+  # DEBUG BEGIN_STMT
+  _36 = *reply_buf_ptr_58(D);
+  _37 = *reply_buf_len_ptr_59(D);
+  ret_75 = fci_qos_shaper_cmd (msg_57(D), fci_ret_60(D), _36, _37);
+  # DEBUG ret => ret_75
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 27> [local count: 35755603]:
+<L27>:
+  # DEBUG BEGIN_STMT
+  _38 = *reply_buf_ptr_58(D);
+  _39 = *reply_buf_len_ptr_59(D);
+  ret_104 = fci_mirror_cmd (msg_57(D), fci_ret_60(D), _38, _39);
+  # DEBUG ret => ret_104
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 28> [local count: 35755603]:
+<L28>:
+  # DEBUG BEGIN_STMT
+  _40 = *reply_buf_ptr_58(D);
+  _41 = *reply_buf_len_ptr_59(D);
+  ret_73 = fci_qos_policer_cmd (msg_57(D), fci_ret_60(D), _40, _41);
+  # DEBUG ret => ret_73
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 29> [local count: 35755603]:
+<L29>:
+  # DEBUG BEGIN_STMT
+  _42 = *reply_buf_ptr_58(D);
+  _43 = *reply_buf_len_ptr_59(D);
+  ret_71 = fci_qos_policer_flow_cmd (msg_57(D), fci_ret_60(D), _42, _43);
+  # DEBUG ret => ret_71
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 30> [local count: 35755603]:
+<L30>:
+  # DEBUG BEGIN_STMT
+  _44 = *reply_buf_ptr_58(D);
+  _45 = *reply_buf_len_ptr_59(D);
+  ret_69 = fci_qos_policer_wred_cmd (msg_57(D), fci_ret_60(D), _44, _45);
+  # DEBUG ret => ret_69
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 31> [local count: 35755603]:
+<L31>:
+  # DEBUG BEGIN_STMT
+  _46 = *reply_buf_ptr_58(D);
+  _47 = *reply_buf_len_ptr_59(D);
+  ret_67 = fci_qos_policer_shp_cmd (msg_57(D), fci_ret_60(D), _46, _47);
+  # DEBUG ret => ret_67
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 32> [local count: 35755603]:
+<L32>:
+  # DEBUG BEGIN_STMT
+  ret_81 = fci_l2br_flush_cmd (_1, fci_ret_60(D));
+  # DEBUG ret => ret_81
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 33> [local count: 35755603]:
+<L35>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_60(D) = 62725;
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 34> [local count: 35755603]:
+<L37>:
+  # DEBUG BEGIN_STMT
+  _48 = *reply_buf_ptr_58(D);
+  _49 = *reply_buf_len_ptr_59(D);
+  ret_64 = fci_timer_owner_lock_cmd (msg_57(D), fci_ret_60(D), _48, _49);
+  # DEBUG ret => ret_64
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 35> [local count: 35755603]:
+<L38>:
+  # DEBUG BEGIN_STMT
+  _50 = *reply_buf_ptr_58(D);
+  _51 = *reply_buf_len_ptr_59(D);
+  ret_62 = fci_timer_owner_unlock_cmd (msg_57(D), fci_ret_60(D), _50, _51);
+  # DEBUG ret => ret_62
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [100.00%]
+
+  <bb 36> [local count: 35755603]:
+<L39>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  *fci_ret_60(D) = 1;
+  # DEBUG BEGIN_STMT
+
+  <bb 37> [local count: 1072668090]:
+  # ret_53 = PHI <ret_52(7), ret_122(8), ret_108(9), ret_110(10), ret_106(11), ret_120(12), ret_115(13), ret_118(14), ret_113(15), 0(16), 0(17), ret_102(18), ret_83(19), ret_100(20), ret_98(21), ret_96(22), ret_94(23), ret_79(24), ret_77(25), ret_75(26), ret_104(27), ret_73(28), ret_71(29), ret_69(30), ret_67(31), ret_81(32), 0(33), ret_64(34), ret_62(35), 22(36)>
+  # DEBUG mutex => NULL
+  # DEBUG mutex => NULL
+  # DEBUG mutex => NULL
+  # DEBUG mutex => NULL
+  # DEBUG mutex => NULL
+  # DEBUG mutex => NULL
+  # DEBUG ret => ret_53
+  # DEBUG BEGIN_STMT
+  return ret_53;
+
+}
+
+

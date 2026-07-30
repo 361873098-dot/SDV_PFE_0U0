@@ -1,0 +1,3492 @@
+Histogram:
+pfe_l2br_iterator_save_macvlan.part.0 (struct pfe_l2br_table_iterator_t * l2t_iter, const struct pfe_l2br_table_entry_t * entry)
+{
+  uint8_t[6] * _2;
+  const uint8_t[6] * _4;
+  <unnamed-unsigned:13> _5;
+  short unsigned int _6;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = &l2t_iter_1(D)->cur_macvlan.mac;
+  _4 = &entry_3(D)->u.mac2f_entry.mac;
+  autolibc_memcpy (_2, _4, 6);
+  # DEBUG BEGIN_STMT
+  _5 = entry_3(D)->u.mac2f_entry.vlan;
+  _6 = (short unsigned int) _5;
+  l2t_iter_1(D)->cur_macvlan.vlan = _6;
+
+  <bb 3> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_l2br_table_init_cmd.part.0 (struct pfe_l2br_table_t * l2br)
+{
+  errno_t ret;
+  uint32_t status;
+  const uint32_t space_depth_total;
+  unsigned int _2;
+  volatile uint32_t * _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  unsigned int _6;
+  volatile uint32_t * _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  short unsigned int _13;
+  unsigned int _14;
+  volatile uint32_t * _15;
+  long unsigned int _16;
+  short unsigned int _17;
+  long unsigned int _18;
+  unsigned int _20;
+  volatile uint32_t * _21;
+  long unsigned int _22;
+  unsigned int _23;
+  volatile uint32_t * _24;
+
+  <bb 6> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = l2br_1(D)->regs.mac1_addr_reg;
+  _3 = (volatile uint32_t *) _2;
+  *_3 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = l2br_1(D)->regs.mac2_addr_reg;
+  _5 = (volatile uint32_t *) _4;
+  *_5 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = l2br_1(D)->regs.mac3_addr_reg;
+  _7 = (volatile uint32_t *) _6;
+  *_7 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = l2br_1(D)->regs.mac4_addr_reg;
+  _9 = (volatile uint32_t *) _8;
+  *_9 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = l2br_1(D)->regs.mac5_addr_reg;
+  _11 = (volatile uint32_t *) _10;
+  *_11 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_12 = pfe_l2br_table_col_entries_init (l2br_1(D));
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 == 0)
+    goto <bb 3>; [67.00%]
+  else
+    goto <bb 4>; [33.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = l2br_1(D)->hash_space_depth;
+  _14 = l2br_1(D)->regs.free_head_ptr_reg;
+  _15 = (volatile uint32_t *) _14;
+  _16 = (long unsigned int) _13;
+  *_15 ={v} _16;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = l2br_1(D)->coll_space_depth;
+  _18 = (long unsigned int) _17;
+  space_depth_total_19 = _16 + _18;
+  # DEBUG space_depth_total => space_depth_total_19
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = l2br_1(D)->regs.free_tail_ptr_reg;
+  _21 = (volatile uint32_t *) _20;
+  _22 = space_depth_total_19 + 4294967295;
+  *_21 ={v} _22;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _23 = l2br_1(D)->regs.free_entries_reg;
+  _24 = (volatile uint32_t *) _23;
+  *_24 ={v} _18;
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Init failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1426, ret_12, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 5> [local count: 1073741824]:
+  # ret_25 = PHI <0(3), ret_12(4)>
+  # DEBUG ret => ret_25
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  status ={v} {CLOBBER};
+  return ret_25;
+
+}
+
+
+pfe_l2br_wait_for_cmd_done.isra.0 (const addr_t * ISRA.32, uint32_t * status_val)
+{
+  uint32_t ii;
+  errno_t ret;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int _9;
+  volatile uint32_t * _10;
+  long unsigned int _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+
+  <bb 11> [local count: 69202660]:
+  # DEBUG l2br s=> l2br
+
+  <bb 2> [local count: 69202660]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 100
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  ii_2 = ii_1 + 4294967295;
+  # DEBUG ii => ii_2
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+  # DEBUG BEGIN_STMT
+  if (ii_2 == 0)
+    goto <bb 6>; [1.00%]
+  else
+    goto <bb 4>; [99.00%]
+
+  <bb 4> [local count: 1004539164]:
+
+  <bb 5> [local count: 1073741824]:
+  # ii_1 = PHI <100(2), ii_2(4)>
+  # DEBUG ii => ii_1
+  # DEBUG BEGIN_STMT
+  _4 = *ISRA.32_23(D);
+  _5 = (volatile uint32_t *) _4;
+  _6 ={v} *_5;
+  _7 = _6 & 1;
+  if (_7 == 0)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 6> [local count: 69202661]:
+  # ii_14 = PHI <ii_2(3), ii_1(5)>
+  # DEBUG ii => ii_14
+  # DEBUG BEGIN_STMT
+  if (status_val_8(D) != 0B)
+    goto <bb 7>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 7> [local count: 48441862]:
+  # DEBUG BEGIN_STMT
+  _9 = *ISRA.32_23(D);
+  _10 = (volatile uint32_t *) _9;
+  _11 ={v} *_10;
+  *status_val_8(D) = _11;
+
+  <bb 8> [local count: 69202661]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = *ISRA.32_23(D);
+  _13 = (volatile uint32_t *) _12;
+  *_13 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ii_14 == 0)
+    goto <bb 10>; [35.00%]
+  else
+    goto <bb 9>; [65.00%]
+
+  <bb 9> [local count: 44981729]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 10> [local count: 69202661]:
+  # ret_15 = PHI <110(8), 0(9)>
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  return ret_15;
+
+}
+
+
+pfe_l2br_table_get_col_ptr.part.0 ()
+{
+  uint32_t ret;
+  const struct pfe_l2br_table_entry_t * entry;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#20 s=> entry
+  # DEBUG entry => D#20
+
+  <bb 2> [local count: 1073741824]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 306, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 1073741824]:
+  # ret_1 = PHI <0(2)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  return ret_1;
+
+}
+
+
+pfe_l2br_table_entry_match_criterion.isra.0.part.0 ()
+{
+  bool_t match;
+  const struct pfe_l2br_table_t * l2br;
+  const struct pfe_l2br_table_iterator_t * l2t_iter;
+  const pfe_l2br_table_type_t * ISRA.28;
+  const pfe_l2br_table_get_criterion_t ISRA.29;
+  const struct pfe_l2br_table_entry_t * entry;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#18 s=> ISRA.28
+  # DEBUG ISRA.28 => D#18
+  # DEBUG D#17 s=> ISRA.29
+  # DEBUG ISRA.29 => D#17
+  # DEBUG D#16 s=> entry
+  # DEBUG entry => D#16
+
+  <bb 2> [local count: 1073741824]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 225, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 1073741824]:
+  # match_1 = PHI <0(2)>
+<L1>:
+  # DEBUG match => match_1
+  # DEBUG BEGIN_STMT
+  return match_1;
+
+}
+
+
+pfe_l2br_table_entry_match_criterion.isra.0 (const pfe_l2br_table_type_t * ISRA.28, const pfe_l2br_table_get_criterion_t ISRA.29, const struct pfe_l2br_table_entry_t * entry)
+{
+  bool_t match;
+  <unnamed type> _2;
+  <unnamed type> _4;
+  <unnamed-unsigned:4> _6;
+  <unnamed-unsigned:4> _7;
+  _Bool _8;
+  <unnamed-unsigned:4> _10;
+  <unnamed-unsigned:4> _11;
+  _Bool _12;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG l2br s=> l2br
+  # DEBUG l2t_iter s=> l2t_iter
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 0
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.29_18(D);
+  switch (_2) <default: <L4> [33.33%], case 0: <L5> [33.33%], case 1: <L0> [33.33%]>
+
+  <bb 3> [local count: 357878150]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  _4 = *ISRA.28_19(D);
+  switch (_4) <default: <L3> [33.33%], case 1: <L1> [33.33%], case 2: <L2> [33.33%]>
+
+  <bb 4> [local count: 119280787]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  _6 = entry_5(D)->u.mac2f_entry.flags;
+  _7 = _6 & 8;
+  _8 = _7 != 0;
+  match_9 = (bool_t) _8;
+  # DEBUG match => match_9
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 119280787]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  _10 = entry_5(D)->u.vlan_entry.flags;
+  _11 = _10 & 8;
+  _12 = _11 != 0;
+  match_13 = (bool_t) _12;
+  # DEBUG match => match_13
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 119292718]:
+<L3>:
+  # DEBUG D#13 => ISRA.28_19(D)
+  # DEBUG D#14 => ISRA.29_18(D)
+  # DEBUG D#15 => entry_5(D)
+  match_20 = pfe_l2br_table_entry_match_criterion.isra.0.part.0 ();
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 357878150]:
+<L4>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 235, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073598663]:
+  # match_14 = PHI <1(2), match_9(4), match_13(5), match_20(6), 0(7)>
+<L5>:
+  # DEBUG match => match_14
+  # DEBUG BEGIN_STMT
+  return match_14;
+
+}
+
+
+pfe_l2br_table_compile_search_cmd.isra.0 (pfe_l2br_table_type_t ISRA.26, struct pfe_l2br_table_entry_t * entry, uint32_t * cmd)
+{
+  errno_t ret;
+  <unnamed type> _2;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned char _6;
+  unsigned int _7;
+  unsigned int _8;
+  long unsigned int _9;
+  <unnamed-unsigned:4> _10;
+  int _11;
+  int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  unsigned char _17;
+  unsigned char _18;
+  unsigned int _19;
+  unsigned int _20;
+  long unsigned int _21;
+  <unnamed-unsigned:4> _22;
+  int _23;
+  int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+
+  <bb 10> [local count: 1073741824]:
+  # DEBUG l2br s=> l2br
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.26_35(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _4 = BIT_FIELD_REF <MEM[(void *)entry_3(D)], 32, 160>;
+  _5 = _4 & 16776960;
+  if (_5 == 0)
+    goto <bb 9>; [35.00%]
+  else
+    goto <bb 4>; [65.00%]
+
+  <bb 4> [local count: 237296943]:
+  # DEBUG BEGIN_STMT
+  _6 = entry_3(D)->u.mac2f_entry.field_valids;
+  _7 = (unsigned int) _6;
+  _8 = _7 << 8;
+  _9 = _8 & 7936;
+  _10 = entry_3(D)->u.mac2f_entry.port;
+  _11 = (int) _10;
+  _12 = _11 << 16;
+  _13 = (long unsigned int) _12;
+  _14 = _9 | _13;
+  _15 = _14 | 5;
+  *cmd_16(D) = _15;
+  goto <bb 9>; [100.00%]
+
+  <bb 5> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  if (_2 == 2)
+    goto <bb 6>; [66.01%]
+  else
+    goto <bb 8>; [33.99%]
+
+  <bb 6> [local count: 467792806]:
+  # DEBUG BEGIN_STMT
+  _17 = entry_3(D)->vlan_set;
+  if (_17 == 0)
+    goto <bb 9>; [35.00%]
+  else
+    goto <bb 7>; [65.00%]
+
+  <bb 7> [local count: 304065324]:
+  # DEBUG BEGIN_STMT
+  _18 = entry_3(D)->u.vlan_entry.field_valids;
+  _19 = (unsigned int) _18;
+  _20 = _19 << 8;
+  _21 = _20 & 7936;
+  _22 = entry_3(D)->u.vlan_entry.port;
+  _23 = (int) _22;
+  _24 = _23 << 16;
+  _25 = (long unsigned int) _24;
+  _26 = _21 | _25;
+  _27 = _26 | 5;
+  *cmd_16(D) = _27;
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 240876798]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 665, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+
+  <bb 9> [local count: 1073741824]:
+  # ret_28 = PHI <22(3), 0(4), 22(6), 0(7), 22(8)>
+  # DEBUG ret => ret_28
+  # DEBUG BEGIN_STMT
+  return ret_28;
+
+}
+
+
+pfe_l2br_table_compile_add_cmd.isra.0 (pfe_l2br_table_type_t ISRA.24, struct pfe_l2br_table_entry_t * entry, uint32_t * cmd)
+{
+  errno_t ret;
+  <unnamed type> _2;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned char _6;
+  unsigned char _7;
+  unsigned int _8;
+  unsigned int _9;
+  long unsigned int _10;
+  <unnamed-unsigned:4> _11;
+  int _12;
+  int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  unsigned char _18;
+  unsigned char _19;
+  unsigned char _20;
+  unsigned int _21;
+  unsigned int _22;
+  long unsigned int _23;
+  <unnamed-unsigned:4> _24;
+  int _25;
+  int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+
+  <bb 12> [local count: 1073741823]:
+  # DEBUG l2br s=> l2br
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.24_37(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _4 = BIT_FIELD_REF <MEM[(void *)entry_3(D)], 32, 160>;
+  _5 = _4 & 16776960;
+  if (_5 == 0)
+    goto <bb 11>; [35.00%]
+  else
+    goto <bb 4>; [65.00%]
+
+  <bb 4> [local count: 237296943]:
+  _6 = entry_3(D)->action_data_set;
+  if (_6 == 0)
+    goto <bb 11>; [35.00%]
+  else
+    goto <bb 5>; [65.00%]
+
+  <bb 5> [local count: 154243013]:
+  # DEBUG BEGIN_STMT
+  _7 = entry_3(D)->u.mac2f_entry.field_valids;
+  _8 = (unsigned int) _7;
+  _9 = _8 << 8;
+  _10 = _9 & 7936;
+  _11 = entry_3(D)->u.mac2f_entry.port;
+  _12 = (int) _11;
+  _13 = _12 << 16;
+  _14 = (long unsigned int) _13;
+  _15 = _10 | _14;
+  _16 = _15 | 2;
+  *cmd_17(D) = _16;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 11>; [100.00%]
+
+  <bb 6> [local count: 708669604]:
+  # DEBUG BEGIN_STMT
+  if (_2 == 2)
+    goto <bb 7>; [66.01%]
+  else
+    goto <bb 10>; [33.99%]
+
+  <bb 7> [local count: 467792805]:
+  # DEBUG BEGIN_STMT
+  _18 = entry_3(D)->vlan_set;
+  if (_18 == 0)
+    goto <bb 11>; [35.00%]
+  else
+    goto <bb 8>; [65.00%]
+
+  <bb 8> [local count: 304065324]:
+  _19 = entry_3(D)->action_data_set;
+  if (_19 == 0)
+    goto <bb 11>; [35.00%]
+  else
+    goto <bb 9>; [65.00%]
+
+  <bb 9> [local count: 197642460]:
+  # DEBUG BEGIN_STMT
+  _20 = entry_3(D)->u.vlan_entry.field_valids;
+  _21 = (unsigned int) _20;
+  _22 = _21 << 8;
+  _23 = _22 & 7936;
+  _24 = entry_3(D)->u.vlan_entry.port;
+  _25 = (int) _24;
+  _26 = _25 << 16;
+  _27 = (long unsigned int) _26;
+  _28 = _23 | _27;
+  _29 = _28 | 2;
+  *cmd_17(D) = _29;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 11>; [100.00%]
+
+  <bb 10> [local count: 240876798]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 577, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 11> [local count: 1073741824]:
+  # ret_30 = PHI <22(3), 22(4), 0(5), 22(7), 22(8), 0(9), 22(10)>
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_30;
+
+}
+
+
+pfe_l2br_table_compile_del_cmd.isra.0 (pfe_l2br_table_type_t ISRA.22, struct pfe_l2br_table_entry_t * entry, uint32_t * cmd)
+{
+  errno_t ret;
+  <unnamed type> _2;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned char _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned char _12;
+  unsigned char _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+
+  <bb 10> [local count: 1073741824]:
+  # DEBUG l2br s=> l2br
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.22_25(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _4 = BIT_FIELD_REF <MEM[(void *)entry_3(D)], 32, 160>;
+  _5 = _4 & 16776960;
+  if (_5 == 0)
+    goto <bb 9>; [35.00%]
+  else
+    goto <bb 4>; [65.00%]
+
+  <bb 4> [local count: 237296943]:
+  # DEBUG BEGIN_STMT
+  _6 = entry_3(D)->u.mac2f_entry.field_valids;
+  _7 = (long unsigned int) _6;
+  _8 = _7 << 8;
+  _9 = _8 & 7936;
+  _10 = _9 | 3;
+  *cmd_11(D) = _10;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 9>; [100.00%]
+
+  <bb 5> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  if (_2 == 2)
+    goto <bb 6>; [66.01%]
+  else
+    goto <bb 8>; [33.99%]
+
+  <bb 6> [local count: 467792806]:
+  # DEBUG BEGIN_STMT
+  _12 = entry_3(D)->vlan_set;
+  if (_12 == 0)
+    goto <bb 9>; [35.00%]
+  else
+    goto <bb 7>; [65.00%]
+
+  <bb 7> [local count: 304065324]:
+  # DEBUG BEGIN_STMT
+  _13 = entry_3(D)->u.vlan_entry.field_valids;
+  _14 = (long unsigned int) _13;
+  _15 = _14 << 8;
+  _16 = _15 & 7936;
+  _17 = _16 | 3;
+  *cmd_11(D) = _17;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 240876798]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 494, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 9> [local count: 1073741824]:
+  # ret_18 = PHI <22(3), 0(4), 22(6), 0(7), 22(8)>
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_18;
+
+}
+
+
+pfe_l2br_table_compile_update_cmd.isra.0 (pfe_l2br_table_type_t ISRA.20, struct pfe_l2br_table_entry_t * entry, uint32_t * cmd)
+{
+  errno_t ret;
+  <unnamed type> _2;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned char _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned char _12;
+  unsigned char _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+
+  <bb 10> [local count: 1073741824]:
+  # DEBUG l2br s=> l2br
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.20_25(D);
+  if (_2 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _4 = BIT_FIELD_REF <MEM[(void *)entry_3(D)], 32, 160>;
+  _5 = _4 & 16776960;
+  if (_5 == 0)
+    goto <bb 9>; [35.00%]
+  else
+    goto <bb 4>; [65.00%]
+
+  <bb 4> [local count: 237296943]:
+  # DEBUG BEGIN_STMT
+  _6 = entry_3(D)->u.mac2f_entry.field_valids;
+  _7 = (long unsigned int) _6;
+  _8 = _7 << 8;
+  _9 = _8 & 7936;
+  _10 = _9 | 4;
+  *cmd_11(D) = _10;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 9>; [100.00%]
+
+  <bb 5> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  if (_2 == 2)
+    goto <bb 6>; [66.01%]
+  else
+    goto <bb 8>; [33.99%]
+
+  <bb 6> [local count: 467792806]:
+  # DEBUG BEGIN_STMT
+  _12 = entry_3(D)->vlan_set;
+  if (_12 == 0)
+    goto <bb 9>; [35.00%]
+  else
+    goto <bb 7>; [65.00%]
+
+  <bb 7> [local count: 304065324]:
+  # DEBUG BEGIN_STMT
+  _13 = entry_3(D)->u.vlan_entry.field_valids;
+  _14 = (long unsigned int) _13;
+  _15 = _14 << 8;
+  _16 = _15 & 7936;
+  _17 = _16 | 4;
+  *cmd_11(D) = _17;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 240876798]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 404, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 9> [local count: 1073741824]:
+  # ret_18 = PHI <22(3), 0(4), 22(6), 0(7), 22(8)>
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_18;
+
+}
+
+
+pfe_l2br_entry_to_cmd_args.part.0 ()
+{
+  uint32_t * entry32;
+  uint64_t action_data;
+  errno_t ret;
+  const struct pfe_l2br_table_t * l2br;
+  struct pfe_l2br_table_entry_t * entry;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#6 s=> l2br
+  # DEBUG l2br => D#6
+  # DEBUG D#5 s=> entry
+  # DEBUG entry => D#5
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 364, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+
+  <bb 3> [local count: 1073741824]:
+  # ret_1 = PHI <22(2)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  return ret_1;
+
+}
+
+
+__attribute__((pure))
+pfe_l2br_table_entry_is_static (const struct pfe_l2br_table_entry_t * entry)
+{
+  bool_t ret;
+  <unnamed-unsigned:31> _1;
+  long unsigned int _2;
+  <unnamed type> _3;
+  unsigned char _4;
+  _Bool _5;
+  unsigned char _9;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = entry_8(D)->u.mac2f_entry.action_data;
+  _2 = (long unsigned int) _1;
+  # DEBUG BEGIN_STMT
+  # DEBUG mac_entry => &action_data
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = entry_8(D)->type;
+  if (_3 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _9 = BIT_FIELD_REF <_2, 8, 24>;
+  _4 = _9 & 64;
+  _5 = _4 != 0;
+  ret_10 = (bool_t) _5;
+  # DEBUG ret => ret_10
+
+  <bb 4> [local count: 1073741824]:
+  # ret_6 = PHI <ret_10(3), 0(2)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  return ret_6;
+
+}
+
+
+pfe_l2br_table_entry_set_static (const struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry, bool_t is_static)
+{
+  errno_t ret;
+  uint32_t action_data;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  <unnamed-unsigned:31> _3;
+  long unsigned int _4;
+  long unsigned int action_data.15_5;
+  <unnamed-unsigned:31> _6;
+  <unnamed-unsigned:1> iftmp.14_8;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG mac_entry => &action_data
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_11(D)->type;
+  if (_1 != 1)
+    goto <bb 7>; [51.11%]
+  else
+    goto <bb 3>; [48.89%]
+
+  <bb 3> [local count: 524952378]:
+  _2 = entry_12(D)->type;
+  if (_2 != 1)
+    goto <bb 7>; [51.11%]
+  else
+    goto <bb 4>; [48.89%]
+
+  <bb 4> [local count: 256649217]:
+  # DEBUG BEGIN_STMT
+  _3 = entry_12(D)->u.mac2f_entry.action_data;
+  _4 = (long unsigned int) _3;
+  action_data = _4;
+  # DEBUG BEGIN_STMT
+  if (is_static_14(D) == 1)
+    goto <bb 6>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 5> [local count: 169388483]:
+
+  <bb 6> [local count: 256649217]:
+  # iftmp.14_8 = PHI <1(4), 0(5)>
+  MEM[(union pfe_ct_mac_table_result_t *)&action_data].item.static_flag = iftmp.14_8;
+  # DEBUG BEGIN_STMT
+  action_data.15_5 = action_data;
+  _6 = (<unnamed-unsigned:31>) action_data.15_5;
+  entry_12(D)->u.mac2f_entry.action_data = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 7> [local count: 1073741824]:
+  # ret_7 = PHI <22(3), 0(6), 22(2)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  action_data ={v} {CLOBBER};
+  return ret_7;
+
+}
+
+
+__attribute__((pure))
+pfe_l2br_table_entry_is_fresh (const struct pfe_l2br_table_entry_t * entry)
+{
+  bool_t ret;
+  <unnamed-unsigned:31> _1;
+  long unsigned int _2;
+  <unnamed type> _3;
+  unsigned char _4;
+  _Bool _5;
+  unsigned char _9;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = entry_8(D)->u.mac2f_entry.action_data;
+  _2 = (long unsigned int) _1;
+  # DEBUG BEGIN_STMT
+  # DEBUG mac_entry => &action_data
+  # DEBUG BEGIN_STMT
+  _3 = entry_8(D)->type;
+  if (_3 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _9 = BIT_FIELD_REF <_2, 8, 24>;
+  _4 = _9 & 32;
+  _5 = _4 != 0;
+  ret_10 = (bool_t) _5;
+  # DEBUG ret => ret_10
+
+  <bb 4> [local count: 1073741824]:
+  # ret_6 = PHI <ret_10(3), 0(2)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  return ret_6;
+
+}
+
+
+pfe_l2br_table_entry_set_fresh (const struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry, bool_t is_fresh)
+{
+  errno_t ret;
+  uint32_t action_data;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  <unnamed-unsigned:31> _3;
+  long unsigned int _4;
+  long unsigned int action_data.13_5;
+  <unnamed-unsigned:31> _6;
+  <unnamed-unsigned:1> iftmp.12_8;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG mac_entry => &action_data
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_11(D)->type;
+  if (_1 != 1)
+    goto <bb 7>; [51.11%]
+  else
+    goto <bb 3>; [48.89%]
+
+  <bb 3> [local count: 524952378]:
+  _2 = entry_12(D)->type;
+  if (_2 != 1)
+    goto <bb 7>; [51.11%]
+  else
+    goto <bb 4>; [48.89%]
+
+  <bb 4> [local count: 256649217]:
+  # DEBUG BEGIN_STMT
+  _3 = entry_12(D)->u.mac2f_entry.action_data;
+  _4 = (long unsigned int) _3;
+  action_data = _4;
+  # DEBUG BEGIN_STMT
+  if (is_fresh_14(D) == 1)
+    goto <bb 6>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 5> [local count: 169388483]:
+
+  <bb 6> [local count: 256649217]:
+  # iftmp.12_8 = PHI <1(4), 0(5)>
+  MEM[(union pfe_ct_mac_table_result_t *)&action_data].item.fresh_flag = iftmp.12_8;
+  # DEBUG BEGIN_STMT
+  action_data.13_5 = action_data;
+  _6 = (<unnamed-unsigned:31>) action_data.13_5;
+  entry_12(D)->u.mac2f_entry.action_data = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 7> [local count: 1073741824]:
+  # ret_7 = PHI <22(3), 0(6), 22(2)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  action_data ={v} {CLOBBER};
+  return ret_7;
+
+}
+
+
+__attribute__((pure))
+pfe_l2br_table_entry_get_action_data (const struct pfe_l2br_table_entry_t * entry)
+{
+  <unnamed-unsigned:31> _1;
+  uint64_t _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = entry_3(D)->u.mac2f_entry.action_data;
+  _4 = (uint64_t) _1;
+  return _4;
+
+}
+
+
+pfe_l2br_table_entry_set_action_data (struct pfe_l2br_table_entry_t * entry, uint64_t action_data)
+{
+  errno_t ret;
+  <unnamed type> _1;
+  <unnamed-unsigned:31> _2;
+  <unnamed-unsigned:55> _3;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = entry_6(D)->type;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = (<unnamed-unsigned:31>) action_data_7(D);
+  entry_6(D)->u.mac2f_entry.action_data = _2;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 708669604]:
+  # DEBUG BEGIN_STMT
+  if (_1 == 2)
+    goto <bb 6>; [48.89%]
+  else
+    goto <bb 8>; [51.11%]
+
+  <bb 6> [local count: 346468569]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = (<unnamed-unsigned:55>) action_data_7(D);
+  entry_6(D)->u.vlan_entry.action_data = _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 711540790]:
+  # DEBUG BEGIN_STMT
+  entry_6(D)->action_data_set = 1;
+
+  <bb 8> [local count: 1073741824]:
+  # ret_11 = PHI <22(4), 0(7)>
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  return ret_11;
+
+}
+
+
+__attribute__((pure))
+pfe_l2br_table_entry_get_vlan (const struct pfe_l2br_table_entry_t * entry)
+{
+  <unnamed-unsigned:13> _1;
+  uint32_t _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = entry_3(D)->u.mac2f_entry.vlan;
+  _4 = (uint32_t) _1;
+  return _4;
+
+}
+
+
+pfe_l2br_table_entry_set_vlan (struct pfe_l2br_table_entry_t * entry, uint16_t vlan)
+{
+  errno_t ret;
+  <unnamed type> _1;
+  <unnamed-unsigned:13> _2;
+  unsigned char _3;
+  unsigned char _4;
+  <unnamed-unsigned:13> _5;
+  unsigned char _6;
+  unsigned char _7;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = entry_10(D)->type;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _2 = (<unnamed-unsigned:13>) vlan_11(D);
+  entry_10(D)->u.mac2f_entry.vlan = _2;
+  # DEBUG BEGIN_STMT
+  _3 = entry_10(D)->u.mac2f_entry.field_valids;
+  _4 = _3 | 2;
+  entry_10(D)->u.mac2f_entry.field_valids = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 708669604]:
+  # DEBUG BEGIN_STMT
+  if (_1 == 2)
+    goto <bb 6>; [48.89%]
+  else
+    goto <bb 8>; [51.11%]
+
+  <bb 6> [local count: 346468569]:
+  # DEBUG BEGIN_STMT
+  _5 = (<unnamed-unsigned:13>) vlan_11(D);
+  entry_10(D)->u.vlan_entry.vlan = _5;
+  # DEBUG BEGIN_STMT
+  _6 = entry_10(D)->u.vlan_entry.field_valids;
+  _7 = _6 | 1;
+  entry_10(D)->u.vlan_entry.field_valids = _7;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 711540790]:
+  # DEBUG BEGIN_STMT
+  entry_10(D)->vlan_set = 1;
+
+  <bb 8> [local count: 1073741824]:
+  # ret_17 = PHI <22(4), 0(7)>
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  return ret_17;
+
+}
+
+
+pfe_l2br_table_entry_set_mac_addr (struct pfe_l2br_table_entry_t * entry, const uint8_t * mac_addr)
+{
+  errno_t ret;
+  <unnamed type> _1;
+  uint8_t[6] * _2;
+  unsigned char _3;
+  unsigned char _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = entry_7(D)->type;
+  if (_1 == 1)
+    goto <bb 3>; [20.24%]
+  else
+    goto <bb 4>; [79.76%]
+
+  <bb 3> [local count: 217325345]:
+  # DEBUG BEGIN_STMT
+  _2 = &entry_7(D)->u.mac2f_entry.mac;
+  autolibc_memcpy (_2, mac_addr_8(D), 6);
+  # DEBUG BEGIN_STMT
+  _3 = entry_7(D)->u.mac2f_entry.field_valids;
+  _4 = _3 | 1;
+  entry_7(D)->u.mac2f_entry.field_valids = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_7(D)->mac_addr_set = 1;
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 856416480]:
+  # DEBUG BEGIN_STMT
+  if (_1 == 2)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 8> [local count: 565234877]:
+
+  <bb 7> [local count: 1073741824]:
+  # ret_12 = PHI <115(4), 0(3), 22(8)>
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  return ret_12;
+
+}
+
+
+pfe_l2br_table_entry_destroy (const struct pfe_l2br_table_entry_t * entry)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+pfe_l2br_table_entry_create (const struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  <unnamed type> _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (entry_3(D) != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (entry_3(D), 0, 24);
+  # DEBUG BEGIN_STMT
+  _1 = l2br_6(D)->type;
+  entry_3(D)->type = _1;
+  # DEBUG BEGIN_STMT
+  entry_3(D)->action_data_set = 0;
+  # DEBUG BEGIN_STMT
+  entry_3(D)->mac_addr_set = 0;
+  # DEBUG BEGIN_STMT
+  entry_3(D)->vlan_set = 0;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => entry_3(D)
+  # DEBUG BEGIN_STMT
+  return entry_3(D);
+
+}
+
+
+pfe_l2br_table_flush (struct pfe_l2br_table_t * l2br)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_4 = pfe_l2br_table_flush_cmd (l2br_2(D));
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  return ret_4;
+
+}
+
+
+pfe_l2br_table_init (struct pfe_l2br_table_t * l2br)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_4 = pfe_l2br_table_init_cmd (l2br_2(D));
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  return ret_4;
+
+}
+
+
+pfe_l2br_table_create (addr_t cbus_base_va, pfe_l2br_table_type_t type)
+{
+  struct pfe_l2br_table_t * l2br;
+  errno_t ret;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned int _16;
+  unsigned int _17;
+  unsigned int _18;
+  unsigned int _19;
+  unsigned int _20;
+  unsigned int _21;
+  unsigned int _22;
+  unsigned int _23;
+  unsigned int _24;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG l2br => 0B
+  # DEBUG BEGIN_STMT
+  switch (type_29(D)) <default: <L2> [33.33%], case 1: <L0> [33.33%], case 2: <L1> [33.33%]>
+
+  <bb 3> [local count: 357878150]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  # DEBUG l2br => &mactab_instance
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&mactab_instance, 0, 60);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = cbus_base_va_32(D) + 590880;
+  mactab_instance.regs.cmd_reg = _1;
+  # DEBUG BEGIN_STMT
+  _2 = cbus_base_va_32(D) + 590884;
+  mactab_instance.regs.mac1_addr_reg = _2;
+  # DEBUG BEGIN_STMT
+  _3 = cbus_base_va_32(D) + 590888;
+  mactab_instance.regs.mac2_addr_reg = _3;
+  # DEBUG BEGIN_STMT
+  _4 = cbus_base_va_32(D) + 590892;
+  mactab_instance.regs.mac3_addr_reg = _4;
+  # DEBUG BEGIN_STMT
+  _5 = cbus_base_va_32(D) + 590896;
+  mactab_instance.regs.mac4_addr_reg = _5;
+  # DEBUG BEGIN_STMT
+  _6 = cbus_base_va_32(D) + 590900;
+  mactab_instance.regs.mac5_addr_reg = _6;
+  # DEBUG BEGIN_STMT
+  _7 = cbus_base_va_32(D) + 590904;
+  mactab_instance.regs.entry_reg = _7;
+  # DEBUG BEGIN_STMT
+  _8 = cbus_base_va_32(D) + 590908;
+  mactab_instance.regs.status_reg = _8;
+  # DEBUG BEGIN_STMT
+  _9 = cbus_base_va_32(D) + 590912;
+  mactab_instance.regs.direct_reg = _9;
+  # DEBUG BEGIN_STMT
+  _10 = cbus_base_va_32(D) + 590952;
+  mactab_instance.regs.free_entries_reg = _10;
+  # DEBUG BEGIN_STMT
+  _11 = cbus_base_va_32(D) + 590956;
+  mactab_instance.regs.free_head_ptr_reg = _11;
+  # DEBUG BEGIN_STMT
+  _12 = cbus_base_va_32(D) + 590960;
+  mactab_instance.regs.free_tail_ptr_reg = _12;
+  # DEBUG BEGIN_STMT
+  mactab_instance.hash_space_depth = 256;
+  # DEBUG BEGIN_STMT
+  mactab_instance.coll_space_depth = 256;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 357878150]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  # DEBUG l2br => &vlantab_instance
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&vlantab_instance, 0, 60);
+  # DEBUG BEGIN_STMT
+  _13 = cbus_base_va_32(D) + 590964;
+  vlantab_instance.regs.cmd_reg = _13;
+  # DEBUG BEGIN_STMT
+  _14 = cbus_base_va_32(D) + 590968;
+  vlantab_instance.regs.mac1_addr_reg = _14;
+  # DEBUG BEGIN_STMT
+  _15 = cbus_base_va_32(D) + 590972;
+  vlantab_instance.regs.mac2_addr_reg = _15;
+  # DEBUG BEGIN_STMT
+  _16 = cbus_base_va_32(D) + 590976;
+  vlantab_instance.regs.mac3_addr_reg = _16;
+  # DEBUG BEGIN_STMT
+  _17 = cbus_base_va_32(D) + 590980;
+  vlantab_instance.regs.mac4_addr_reg = _17;
+  # DEBUG BEGIN_STMT
+  _18 = cbus_base_va_32(D) + 590984;
+  vlantab_instance.regs.mac5_addr_reg = _18;
+  # DEBUG BEGIN_STMT
+  _19 = cbus_base_va_32(D) + 590988;
+  vlantab_instance.regs.entry_reg = _19;
+  # DEBUG BEGIN_STMT
+  _20 = cbus_base_va_32(D) + 590992;
+  vlantab_instance.regs.status_reg = _20;
+  # DEBUG BEGIN_STMT
+  _21 = cbus_base_va_32(D) + 590996;
+  vlantab_instance.regs.direct_reg = _21;
+  # DEBUG BEGIN_STMT
+  _22 = cbus_base_va_32(D) + 591036;
+  vlantab_instance.regs.free_entries_reg = _22;
+  # DEBUG BEGIN_STMT
+  _23 = cbus_base_va_32(D) + 591040;
+  vlantab_instance.regs.free_head_ptr_reg = _23;
+  # DEBUG BEGIN_STMT
+  _24 = cbus_base_va_32(D) + 591044;
+  vlantab_instance.regs.free_tail_ptr_reg = _24;
+  # DEBUG BEGIN_STMT
+  vlantab_instance.hash_space_depth = 64;
+  # DEBUG BEGIN_STMT
+  vlantab_instance.coll_space_depth = 64;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 357878150]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1540, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG l2br => 0B
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 715756301]:
+  # l2br_25 = PHI <&mactab_instance(3), &vlantab_instance(4)>
+  # DEBUG l2br => l2br_25
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  l2br_25->type = type_29(D);
+  # DEBUG BEGIN_STMT
+  l2br_25->cbus_base_va = cbus_base_va_32(D);
+  # DEBUG BEGIN_STMT
+  ret_67 = pfe_l2br_table_init_cmd (l2br_25);
+  # DEBUG ret => ret_67
+  # DEBUG BEGIN_STMT
+  if (ret_67 != 0)
+    goto <bb 7>; [16.75%]
+  else
+    goto <bb 8>; [83.25%]
+
+  <bb 7> [local count: 119889180]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Table initialization failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1554, ret_67, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG l2br => 0B
+
+  <bb 8> [local count: 1073634450]:
+  # l2br_26 = PHI <0B(5), l2br_25(6), 0B(7)>
+  # DEBUG l2br => l2br_26
+  # DEBUG BEGIN_STMT
+  return l2br_26;
+
+}
+
+
+pfe_l2br_table_flush_cmd (struct pfe_l2br_table_t * l2br)
+{
+  errno_t ret;
+  <unnamed type> _1;
+  unsigned int _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  unsigned int _5;
+  volatile uint32_t * _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  unsigned int _9;
+  volatile uint32_t * _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  const addr_t * _29;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_18(D)->type;
+  _2 = _1 + 4294967295;
+  if (_2 <= 1)
+    goto <bb 3>; [56.34%]
+  else
+    goto <bb 4>; [43.66%]
+
+  <bb 3> [local count: 604946144]:
+  # DEBUG BEGIN_STMT
+  # DEBUG cmd => 16392
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = l2br_18(D)->regs.mac1_addr_reg;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = l2br_18(D)->regs.mac2_addr_reg;
+  _6 = (volatile uint32_t *) _5;
+  *_6 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = l2br_18(D)->regs.mac3_addr_reg;
+  _8 = (volatile uint32_t *) _7;
+  *_8 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = l2br_18(D)->regs.mac4_addr_reg;
+  _10 = (volatile uint32_t *) _9;
+  *_10 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = l2br_18(D)->regs.mac5_addr_reg;
+  _12 = (volatile uint32_t *) _11;
+  *_12 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = l2br_18(D)->regs.cmd_reg;
+  _14 = (volatile uint32_t *) _13;
+  *_14 ={v} 16392;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _29 = &MEM[(unsigned int *)l2br_18(D) + 36B];
+  # DEBUG D#21 => l2br_18(D)
+  ret_28 = pfe_l2br_wait_for_cmd_done.isra.0 (_29, 0B);
+  # DEBUG ret => ret_28
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 468795680]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1467, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+
+  <bb 5> [local count: 1073741824]:
+  # ret_15 = PHI <ret_28(3), 22(4)>
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  return ret_15;
+
+}
+
+
+pfe_l2br_table_init_cmd (struct pfe_l2br_table_t * l2br)
+{
+  uint32_t status;
+  errno_t ret;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int status.11_3;
+  long unsigned int _4;
+  const addr_t * _17;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_10(D)->regs.cmd_reg;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = &MEM[(unsigned int *)l2br_10(D) + 36B];
+  # DEBUG D#21 => l2br_10(D)
+  ret_13 = pfe_l2br_wait_for_cmd_done.isra.0 (_17, &status);
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (ret_13 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  status.11_3 = status;
+  _4 = status.11_3 & 4;
+  if (_4 == 0)
+    goto <bb 4>; [35.00%]
+  else
+    goto <bb 5>; [65.00%]
+
+  <bb 4> [local count: 187904819]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Table INIT CMD failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1403, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 114
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 348966093]:
+  ret_5 = pfe_l2br_table_init_cmd.part.0 (l2br_10(D));
+
+  <bb 6> [local count: 1073741824]:
+  # ret_8 = PHI <ret_13(2), 114(4), ret_5(5)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  status ={v} {CLOBBER};
+  return ret_8;
+
+}
+
+
+pfe_l2br_table_col_entries_init (struct pfe_l2br_table_t * l2br)
+{
+  uint32_t ii;
+  struct pfe_l2br_table_entry_t entry;
+  errno_t ret;
+  <unnamed type> _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  short unsigned int _8;
+  short unsigned int _9;
+  short unsigned int _10;
+  short unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  short unsigned int _14;
+  long unsigned int _15;
+
+  <bb 2> [local count: 106251948]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  entry = {};
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 10>; [100.00%]
+
+  <bb 3> [local count: 1034442873]:
+  # DEBUG BEGIN_STMT
+  _1 = l2br_25(D)->type;
+  if (_1 == 1)
+    goto <bb 4>; [20.24%]
+  else
+    goto <bb 5>; [79.76%]
+
+  <bb 4> [local count: 209371237]:
+  # DEBUG BEGIN_STMT
+  _2 = l2br_25(D)->hash_space_depth;
+  _3 = (short unsigned int) ii_19;
+  _4 = _2 + _3;
+  _5 = _4 + 1;
+  entry.u.mac2f_entry.col_ptr = _5;
+  # DEBUG BEGIN_STMT
+  entry.u.mac2f_entry.flags = 4;
+  # DEBUG BEGIN_STMT
+  _6 = (long unsigned int) _2;
+  _7 = _6 + ii_19;
+  ret_35 = pfe_l2br_table_write_cmd (l2br_25(D), _7, &entry);
+  # DEBUG ret => ret_35
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 825071635]:
+  # DEBUG BEGIN_STMT
+  if (_1 == 2)
+    goto <bb 6>; [96.34%]
+  else
+    goto <bb 7>; [3.66%]
+
+  <bb 6> [local count: 794874013]:
+  # DEBUG BEGIN_STMT
+  _8 = l2br_25(D)->hash_space_depth;
+  _9 = (short unsigned int) ii_19;
+  _10 = _8 + _9;
+  _11 = _10 + 1;
+  entry.u.vlan_entry.col_ptr = _11;
+  # DEBUG BEGIN_STMT
+  entry.u.vlan_entry.flags = 4;
+  # DEBUG BEGIN_STMT
+  _12 = (long unsigned int) _8;
+  _13 = _12 + ii_19;
+  ret_31 = pfe_l2br_table_write_cmd (l2br_25(D), _13, &entry);
+  # DEBUG ret => ret_31
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 30197622]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1360, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [100.00%]
+
+  <bb 8> [local count: 1004245251]:
+  # ret_16 = PHI <ret_35(4), ret_31(6)>
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 != 0)
+    goto <bb 11>; [3.66%]
+  else
+    goto <bb 9>; [96.34%]
+
+  <bb 9> [local count: 967489875]:
+  # DEBUG BEGIN_STMT
+  ii_36 = ii_19 + 1;
+  # DEBUG ii => ii_36
+
+  <bb 10> [local count: 1073741824]:
+  # ret_17 = PHI <0(2), 0(9)>
+  # ii_19 = PHI <0(2), ii_36(9)>
+  # DEBUG ii => ii_19
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  _14 = l2br_25(D)->coll_space_depth;
+  _15 = (long unsigned int) _14;
+  if (_15 > ii_19)
+    goto <bb 3>; [96.34%]
+  else
+    goto <bb 11>; [3.66%]
+
+  <bb 11> [local count: 106251949]:
+  # ret_18 = PHI <ret_16(8), ret_17(10), 22(7)>
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  entry ={v} {CLOBBER};
+  return ret_18;
+
+}
+
+
+pfe_l2br_table_read_cmd (struct pfe_l2br_table_t * l2br, uint32_t addr, struct pfe_l2br_table_entry_t * entry)
+{
+  uint16_t data16;
+  uint32_t data32;
+  uint32_t * rdata;
+  errno_t ret;
+  short unsigned int _1;
+  long unsigned int _2;
+  short unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  <unnamed type> _6;
+  long unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  long unsigned int _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  long unsigned int _13;
+  unsigned int _14;
+  volatile uint32_t * _15;
+  long unsigned int _16;
+  unsigned int _17;
+  volatile uint32_t * _18;
+  long unsigned int _19;
+  unsigned int _20;
+  volatile uint32_t * _21;
+  long unsigned int _22;
+  <unnamed type> _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  short unsigned int _33;
+  short unsigned int _34;
+  uint8_t * _35;
+  uint8_t * _36;
+  <unnamed type> _37;
+  const addr_t * _71;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_42(D)->hash_space_depth;
+  _2 = (long unsigned int) _1;
+  _3 = l2br_42(D)->coll_space_depth;
+  _4 = (long unsigned int) _3;
+  _5 = _2 + _4;
+  if (_5 <= addr_43(D))
+    goto <bb 3>; [20.96%]
+  else
+    goto <bb 4>; [79.04%]
+
+  <bb 3> [local count: 225056286]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Hash table address 0x%x is out of range\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1278, addr_43(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  goto <bb 14>; [100.00%]
+
+  <bb 4> [local count: 848685536]:
+  # DEBUG BEGIN_STMT
+  _6 = l2br_42(D)->type;
+  if (_6 == 1)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 288553082]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rdata_49 = &entry_47(D)->u.mac2f_entry;
+  # DEBUG rdata => rdata_49
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 560132455]:
+  # DEBUG BEGIN_STMT
+  if (_6 == 2)
+    goto <bb 7>; [66.01%]
+  else
+    goto <bb 8>; [33.99%]
+
+  <bb 7> [local count: 369743433]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rdata_48 = &entry_47(D)->u.vlan_entry;
+  # DEBUG rdata => rdata_48
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 190389021]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1295, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG rdata => rdata_46(D)
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 9> [local count: 658296516]:
+  # rdata_72 = PHI <rdata_48(7), rdata_49(5)>
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = addr_43(D) << 16;
+  _8 = l2br_42(D)->regs.cmd_reg;
+  _9 = (volatile uint32_t *) _8;
+  _10 = _7 | 6;
+  *_9 ={v} _10;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _71 = &MEM[(unsigned int *)l2br_42(D) + 36B];
+  # DEBUG D#21 => l2br_42(D)
+  ret_52 = pfe_l2br_wait_for_cmd_done.isra.0 (_71, 0B);
+  # DEBUG ret => ret_52
+  # DEBUG BEGIN_STMT
+  if (ret_52 != 0)
+    goto <bb 10>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 10> [local count: 217237850]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Table read failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1307, ret_52, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 11> [local count: 441058665]:
+  # DEBUG BEGIN_STMT
+  _11 = l2br_42(D)->regs.mac1_addr_reg;
+  _12 = (volatile uint32_t *) _11;
+  _13 ={v} *_12;
+  *rdata_72 = _13;
+  # DEBUG BEGIN_STMT
+  _14 = l2br_42(D)->regs.mac2_addr_reg;
+  _15 = (volatile uint32_t *) _14;
+  _16 ={v} *_15;
+  MEM[(uint32_t *)rdata_72 + 4B] = _16;
+  # DEBUG BEGIN_STMT
+  _17 = l2br_42(D)->regs.mac3_addr_reg;
+  _18 = (volatile uint32_t *) _17;
+  _19 ={v} *_18;
+  MEM[(uint32_t *)rdata_72 + 8B] = _19;
+  # DEBUG BEGIN_STMT
+  _20 = l2br_42(D)->regs.mac4_addr_reg;
+  _21 = (volatile uint32_t *) _20;
+  _22 ={v} *_21;
+  MEM[(uint32_t *)rdata_72 + 12B] = _22;
+  # DEBUG BEGIN_STMT
+  _23 = l2br_42(D)->type;
+  if (_23 == 1)
+    goto <bb 12>; [20.24%]
+  else
+    goto <bb 13>; [79.76%]
+
+  <bb 12> [local count: 89270274]:
+  # DEBUG BEGIN_STMT
+  _24 = _13 >> 24;
+  _25 = _13 >> 8;
+  _26 = _25 & 65280;
+  _27 = _24 | _26;
+  _28 = _13 << 8;
+  _29 = _28 & 16711680;
+  _30 = _27 | _29;
+  _31 = _13 << 24;
+  _32 = _30 | _31;
+  data32 = _32;
+  # DEBUG BEGIN_STMT
+  _33 = (short unsigned int) _16;
+  _34 = _33 r>> 8;
+  data16 = _34;
+  # DEBUG BEGIN_STMT
+  _35 = &entry_47(D)->u.mac2f_entry.mac[0];
+  autolibc_memcpy (_35, &data32, 4);
+  # DEBUG BEGIN_STMT
+  _36 = &entry_47(D)->u.mac2f_entry.mac[4];
+  autolibc_memcpy (_36, &data16, 2);
+  # DEBUG BEGIN_STMT
+  entry_47(D)->mac_addr_set = 1;
+  data32 ={v} {CLOBBER};
+  data16 ={v} {CLOBBER};
+
+  <bb 13> [local count: 441058665]:
+  # DEBUG BEGIN_STMT
+  _37 = l2br_42(D)->type;
+  entry_47(D)->type = _37;
+  # DEBUG BEGIN_STMT
+  entry_47(D)->vlan_set = 1;
+  # DEBUG BEGIN_STMT
+  entry_47(D)->action_data_set = 1;
+
+  <bb 14> [local count: 1073741824]:
+  # ret_38 = PHI <22(3), 22(8), ret_52(10), 0(13)>
+  # DEBUG ret => ret_38
+  # DEBUG BEGIN_STMT
+  return ret_38;
+
+}
+
+
+pfe_l2br_table_write_cmd (struct pfe_l2br_table_t * l2br, uint32_t addr, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+  uint32_t * wdata;
+  short unsigned int _1;
+  long unsigned int _2;
+  short unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  <unnamed type> _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  long unsigned int _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  long unsigned int _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  long unsigned int _15;
+  unsigned int _16;
+  volatile uint32_t * _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  unsigned int _20;
+  volatile uint32_t * _21;
+  long unsigned int _22;
+  const addr_t * _42;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG wdata => entry_25(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_27(D)->hash_space_depth;
+  _2 = (long unsigned int) _1;
+  _3 = l2br_27(D)->coll_space_depth;
+  _4 = (long unsigned int) _3;
+  _5 = _2 + _4;
+  if (_5 <= addr_28(D))
+    goto <bb 3>; [20.96%]
+  else
+    goto <bb 4>; [79.04%]
+
+  <bb 3> [local count: 225056286]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Hash table address 0x%x is out of range\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1212, addr_28(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  goto <bb 10>; [100.00%]
+
+  <bb 4> [local count: 848685538]:
+  # DEBUG BEGIN_STMT
+  _6 = l2br_27(D)->type;
+  if (_6 == 1)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 288553083]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  wdata_32 = &entry_25(D)->u.mac2f_entry;
+  # DEBUG wdata => wdata_32
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG wdata => wdata_32
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 560132456]:
+  # DEBUG BEGIN_STMT
+  if (_6 == 2)
+    goto <bb 7>; [66.01%]
+  else
+    goto <bb 8>; [33.99%]
+
+  <bb 7> [local count: 369743434]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  wdata_31 = &entry_25(D)->u.vlan_entry;
+  # DEBUG wdata => wdata_31
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG wdata => wdata_31
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 190389022]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid table type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 1231, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG wdata => entry_25(D)
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 658296517]:
+  # wdata_43 = PHI <wdata_31(7), wdata_32(5)>
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = l2br_27(D)->regs.mac1_addr_reg;
+  _8 = (volatile uint32_t *) _7;
+  _9 = *wdata_43;
+  *_8 ={v} _9;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = l2br_27(D)->regs.mac2_addr_reg;
+  _11 = (volatile uint32_t *) _10;
+  _12 = MEM[(uint32_t *)wdata_43 + 4B];
+  *_11 ={v} _12;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = l2br_27(D)->regs.mac3_addr_reg;
+  _14 = (volatile uint32_t *) _13;
+  _15 = MEM[(uint32_t *)wdata_43 + 8B];
+  *_14 ={v} _15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = l2br_27(D)->regs.mac4_addr_reg;
+  _17 = (volatile uint32_t *) _16;
+  _18 = MEM[(uint32_t *)wdata_43 + 12B];
+  *_17 ={v} _18;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = addr_28(D) << 16;
+  _20 = l2br_27(D)->regs.cmd_reg;
+  _21 = (volatile uint32_t *) _20;
+  _22 = _19 | 7;
+  *_21 ={v} _22;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _42 = &MEM[(unsigned int *)l2br_27(D) + 36B];
+  # DEBUG D#21 => l2br_27(D)
+  ret_39 = pfe_l2br_wait_for_cmd_done.isra.0 (_42, 0B);
+  # DEBUG ret => ret_39
+
+  <bb 10> [local count: 1073741824]:
+  # ret_23 = PHI <22(3), 22(8), ret_39(9)>
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  return ret_23;
+
+}
+
+
+pfe_l2br_table_get_next (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_iterator_t * l2t_iter, struct pfe_l2br_table_entry_t * entry)
+{
+  bool_t skip;
+  errno_t RetVal;
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned char skip.10_4;
+  unsigned char _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  short unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  const pfe_l2br_table_type_t * _36;
+  <unnamed type> _37;
+
+  <bb 2> [local count: 57523246]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG RetVal => 2
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 3> [local count: 1054092351]:
+  # DEBUG BEGIN_STMT
+  skip = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG stop => 0
+  # DEBUG BEGIN_STMT
+  _1 = l2t_iter_20(D)->next_coll_addr;
+  if (_1 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 4> [local count: 527046175]:
+  # DEBUG BEGIN_STMT
+  ret_27 = pfe_l2br_table_read_cmd (l2br_21(D), _7, entry_23(D));
+  # DEBUG ret => ret_27
+  # DEBUG BEGIN_STMT
+  if (ret_27 == 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 5> [local count: 173925238]:
+  # DEBUG BEGIN_STMT
+  _2 = l2t_iter_20(D)->cur_hash_addr;
+  l2t_iter_20(D)->cur_coll_addr = _2;
+  # DEBUG BEGIN_STMT
+  _3 = _2 + 1;
+  l2t_iter_20(D)->cur_hash_addr = _3;
+  # DEBUG BEGIN_STMT
+  pfe_l2br_iterator_save_macvlan (l2t_iter_20(D), entry_23(D));
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 527046175]:
+  # DEBUG BEGIN_STMT
+  ret_25 = pfe_l2br_table_read_collision_space (l2br_21(D), l2t_iter_20(D), entry_23(D), &skip);
+  # DEBUG ret => ret_25
+
+  <bb 7> [local count: 1054092351]:
+  # ret_11 = PHI <0(5), ret_25(6), ret_27(4)>
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  skip.10_4 = skip;
+  if (skip.10_4 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 8> [local count: 527046175]:
+  # DEBUG BEGIN_STMT
+  if (ret_11 != 0)
+    goto <bb 14>; [3.66%]
+  else
+    goto <bb 10>; [96.34%]
+
+  <bb 10> [local count: 507756285]:
+  # DEBUG BEGIN_STMT
+  _36 = &MEM[(<unnamed type> *)l2br_21(D) + 4B];
+  # DEBUG D#11 => l2br_21(D)
+  _37 = MEM[(<unnamed type> *)l2t_iter_20(D)];
+  # DEBUG D#12 => l2t_iter_20(D)
+  _5 = pfe_l2br_table_entry_match_criterion.isra.0 (_36, _37, entry_23(D));
+  if (_5 == 1)
+    goto <bb 12>; [3.66%]
+  else
+    goto <bb 13>; [96.34%]
+
+  <bb 12> [local count: 18583880]:
+  # DEBUG BEGIN_STMT
+  _6 = pfe_l2br_table_get_col_ptr (entry_23(D));
+  l2t_iter_20(D)->next_coll_addr = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG RetVal => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG stop => 1
+  # DEBUG RetVal => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 13> [local count: 1016218581]:
+  # RetVal_12 = PHI <RetVal_13(7), 22(10)>
+  # DEBUG stop => NULL
+  # DEBUG RetVal => RetVal_12
+  skip ={v} {CLOBBER};
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 37873770]:
+  # RetVal_38 = PHI <0(12), 22(8)>
+  # DEBUG stop => NULL
+  # DEBUG RetVal => NULL
+  skip ={v} {CLOBBER};
+  goto <bb 17>; [100.00%]
+
+  <bb 15> [local count: 1073741824]:
+  # RetVal_13 = PHI <2(2), RetVal_12(13)>
+  # DEBUG RetVal => RetVal_13
+  # DEBUG BEGIN_STMT
+  _7 = l2t_iter_20(D)->cur_hash_addr;
+  _8 = l2br_21(D)->hash_space_depth;
+  _9 = (long unsigned int) _8;
+  if (_7 < _9)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 16>; [50.00%]
+
+  <bb 16> [local count: 536870913]:
+  _10 = l2t_iter_20(D)->next_coll_addr;
+  if (_10 != 0)
+    goto <bb 3>; [96.34%]
+  else
+    goto <bb 17>; [3.66%]
+
+  <bb 17> [local count: 57523245]:
+  # RetVal_14 = PHI <RetVal_38(14), RetVal_13(16)>
+  # DEBUG RetVal => RetVal_14
+  # DEBUG BEGIN_STMT
+  return RetVal_14;
+
+}
+
+
+pfe_l2br_table_read_collision_space (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_iterator_t * l2t_iter, struct pfe_l2br_table_entry_t * entry, bool_t * skip)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned char _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  unsigned char _10;
+  long unsigned int _11;
+  unsigned char _12;
+  long unsigned int _13;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2t_iter_17(D)->next_coll_addr;
+  ret_21 = pfe_l2br_table_read_cmd (l2br_18(D), _1, entry_19(D));
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  if (ret_21 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _2 = l2t_iter_17(D)->cur_hash_addr;
+  # DEBUG BEGIN_STMT
+  _3 = _2 + 4294967295;
+  _4 = pfe_l2br_entry_get_hash (entry_19(D));
+  _5 = (long unsigned int) _4;
+  if (_3 == _5)
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 4> [local count: 182536110]:
+  # DEBUG BEGIN_STMT
+  _6 = l2t_iter_17(D)->next_coll_addr;
+  l2t_iter_17(D)->cur_coll_addr = _6;
+  # DEBUG BEGIN_STMT
+  pfe_l2br_iterator_save_macvlan (l2t_iter_17(D), entry_19(D));
+  goto <bb 11>; [100.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _7 = l2t_iter_17(D)->cur_coll_addr;
+  ret_23 = pfe_l2br_table_read_cmd (l2br_18(D), _7, entry_19(D));
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  if (ret_23 == 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 6> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  _8 = l2t_iter_17(D)->cur_hash_addr;
+  _9 = _8 + 4294967295;
+  _10 = pfe_l2br_entry_get_hash (entry_19(D));
+  _11 = (long unsigned int) _10;
+  if (_9 == _11)
+    goto <bb 7>; [20.24%]
+  else
+    goto <bb 10>; [79.76%]
+
+  <bb 7> [local count: 35858682]:
+  # DEBUG BEGIN_STMT
+  _12 = pfe_l2br_iterator_is_macvlan_match (l2t_iter_17(D), entry_19(D));
+  if (_12 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 17929341]:
+  # DEBUG BEGIN_STMT
+  _13 = pfe_l2br_table_get_col_ptr (entry_19(D));
+  l2t_iter_17(D)->next_coll_addr = _13;
+  # DEBUG BEGIN_STMT
+  *skip_25(D) = 1;
+  goto <bb 11>; [100.00%]
+
+  <bb 9> [local count: 17929341]:
+  # DEBUG BEGIN_STMT
+  pfe_l2br_iterator_save_macvlan (l2t_iter_17(D), entry_19(D));
+  goto <bb 11>; [100.00%]
+
+  <bb 10> [local count: 141308719]:
+  # DEBUG BEGIN_STMT
+  l2t_iter_17(D)->next_coll_addr = 0;
+  # DEBUG BEGIN_STMT
+  *skip_25(D) = 1;
+
+  <bb 11> [local count: 1073741824]:
+  # ret_14 = PHI <ret_21(2), 0(4), ret_23(5), 0(9), 0(10), 0(8)>
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  return ret_14;
+
+}
+
+
+pfe_l2br_table_get_first (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_iterator_t * l2t_iter, pfe_l2br_table_get_criterion_t crit, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+  struct 
+{
+  uint8_t mac[6];
+  uint16_t vlan;
+} * _1;
+  long unsigned int _2;
+  unsigned char _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  short unsigned int _10;
+  long unsigned int _11;
+  const pfe_l2br_table_type_t * _33;
+  <unnamed type> _34;
+
+  <bb 2> [local count: 113634470]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  l2t_iter_16(D)->cur_crit = crit_17(D);
+  # DEBUG BEGIN_STMT
+  _1 = &l2t_iter_16(D)->cur_macvlan;
+  autolibc_memset (_1, 0, 8);
+  # DEBUG BEGIN_STMT
+  l2t_iter_16(D)->cur_hash_addr = 0;
+  l2t_iter_16(D)->cur_coll_addr = 0;
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 1034442874]:
+  # DEBUG BEGIN_STMT
+  ret_25 = pfe_l2br_table_read_cmd (l2br_22(D), _9, entry_23(D));
+  # DEBUG ret => ret_25
+  # DEBUG BEGIN_STMT
+  if (ret_25 != 0)
+    goto <bb 8>; [3.66%]
+  else
+    goto <bb 4>; [96.34%]
+
+  <bb 4> [local count: 996582265]:
+  # DEBUG BEGIN_STMT
+  _2 = l2t_iter_16(D)->cur_hash_addr;
+  l2t_iter_16(D)->cur_coll_addr = _2;
+  # DEBUG BEGIN_STMT
+  pfe_l2br_iterator_save_macvlan (l2t_iter_16(D), entry_23(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _33 = &MEM[(<unnamed type> *)l2br_22(D) + 4B];
+  # DEBUG D#11 => l2br_22(D)
+  _34 = MEM[(<unnamed type> *)l2t_iter_16(D)];
+  # DEBUG D#12 => l2t_iter_16(D)
+  _3 = pfe_l2br_table_entry_match_criterion.isra.0 (_33, _34, entry_23(D));
+  if (_3 == 1)
+    goto <bb 5>; [3.66%]
+  else
+    goto <bb 6>; [96.34%]
+
+  <bb 5> [local count: 36474911]:
+  # DEBUG BEGIN_STMT
+  _4 = pfe_l2br_table_get_col_ptr (entry_23(D));
+  l2t_iter_16(D)->next_coll_addr = _4;
+  # DEBUG BEGIN_STMT
+  _5 = l2t_iter_16(D)->cur_hash_addr;
+  _6 = _5 + 1;
+  l2t_iter_16(D)->cur_hash_addr = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 960107354]:
+  # DEBUG BEGIN_STMT
+  _7 = l2t_iter_16(D)->cur_hash_addr;
+  _8 = _7 + 1;
+  l2t_iter_16(D)->cur_hash_addr = _8;
+
+  <bb 7> [local count: 1073741824]:
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _9 = l2t_iter_16(D)->cur_hash_addr;
+  _10 = l2br_22(D)->hash_space_depth;
+  _11 = (long unsigned int) _10;
+  if (_9 < _11)
+    goto <bb 3>; [96.34%]
+  else
+    goto <bb 8>; [3.66%]
+
+  <bb 8> [local count: 113634471]:
+  # ret_12 = PHI <2(3), 0(5), 2(7)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  return ret_12;
+
+}
+
+
+pfe_l2br_iterator_is_macvlan_match (const struct pfe_l2br_table_iterator_t * l2t_iter, const struct pfe_l2br_table_entry_t * entry)
+{
+  bool_t is_match;
+  <unnamed type> _1;
+  const uint8_t[6] * _2;
+  const uint8_t[6] * _3;
+  long int _4;
+  short unsigned int _5;
+  <unnamed-unsigned:13> _6;
+  short unsigned int _7;
+  short unsigned int _8;
+  <unnamed-unsigned:13> _9;
+  short unsigned int _10;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG is_match => 0
+  # DEBUG BEGIN_STMT
+  _1 = entry_14(D)->type;
+  if (_1 == 1)
+    goto <bb 3>; [20.24%]
+  else
+    goto <bb 6>; [79.76%]
+
+  <bb 3> [local count: 217325345]:
+  # DEBUG BEGIN_STMT
+  _2 = &l2t_iter_15(D)->cur_macvlan.mac;
+  _3 = &entry_14(D)->u.mac2f_entry.mac;
+  _4 = autolibc_memcmp (_2, _3, 6);
+  if (_4 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 4> [local count: 108662672]:
+  # DEBUG BEGIN_STMT
+  _5 = l2t_iter_15(D)->cur_macvlan.vlan;
+  _6 = entry_14(D)->u.mac2f_entry.vlan;
+  _7 = (short unsigned int) _6;
+  if (_5 == _7)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 5> [local count: 36945309]:
+  # DEBUG BEGIN_STMT
+  # DEBUG is_match => 1
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 856416478]:
+  # DEBUG BEGIN_STMT
+  _8 = l2t_iter_15(D)->cur_macvlan.vlan;
+  _9 = entry_14(D)->u.vlan_entry.vlan;
+  _10 = (short unsigned int) _9;
+  if (_8 == _10)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 7> [local count: 291181602]:
+  # DEBUG BEGIN_STMT
+  # DEBUG is_match => 1
+
+  <bb 8> [local count: 1073741824]:
+  # is_match_11 = PHI <0(4), 0(6), 1(7), 0(3), 1(5)>
+  # DEBUG is_match => is_match_11
+  # DEBUG BEGIN_STMT
+  return is_match_11;
+
+}
+
+
+pfe_l2br_iterator_save_macvlan (struct pfe_l2br_table_iterator_t * l2t_iter, const struct pfe_l2br_table_entry_t * entry)
+{
+  <unnamed type> _1;
+  <unnamed-unsigned:13> _2;
+  short unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = entry_5(D)->type;
+  if (_1 == 1)
+    goto <bb 3>; [20.24%]
+  else
+    goto <bb 4>; [79.76%]
+
+  <bb 3> [local count: 217325344]:
+  pfe_l2br_iterator_save_macvlan.part.0 (l2t_iter_6(D), entry_5(D));
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 856416480]:
+  # DEBUG BEGIN_STMT
+  _2 = entry_5(D)->u.vlan_entry.vlan;
+  _3 = (short unsigned int) _2;
+  l2t_iter_6(D)->cur_macvlan.vlan = _3;
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_l2br_entry_get_hash (const struct pfe_l2br_table_entry_t * entry)
+{
+  uint16_t hash;
+  <unnamed type> _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  short unsigned int _8;
+  short unsigned int _9;
+  <unnamed-unsigned:13> _10;
+  short unsigned int _11;
+  <unnamed-unsigned:13> _12;
+  <unnamed-unsigned:13> _14;
+  uint8_t _20;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG hash => 0
+  # DEBUG BEGIN_STMT
+  _1 = entry_16(D)->type;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => &entry_16(D)->u.mac2f_entry.mac
+  # DEBUG p => D#1
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(const uint16_t *)entry_16(D)];
+  _3 = _2 r>> 8;
+  _4 = MEM[(const uint16_t *)entry_16(D) + 2B];
+  _5 = _4 r>> 8;
+  _6 = _3 ^ _5;
+  _7 = MEM[(const uint16_t *)entry_16(D) + 4B];
+  _8 = _7 r>> 8;
+  _9 = _6 ^ _8;
+  _10 = entry_16(D)->u.mac2f_entry.vlan;
+  _11 = (short unsigned int) _10;
+  hash_18 = _9 ^ _11;
+  # DEBUG hash => hash_18
+  # DEBUG BEGIN_STMT
+  hash_19 = hash_18 & 255;
+  # DEBUG hash => hash_19
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  _12 = entry_16(D)->u.vlan_entry.vlan;
+  _14 = _12 & 63;
+  hash_17 = (uint16_t) _14;
+  # DEBUG hash => hash_17
+
+  <bb 5> [local count: 1073741824]:
+  # hash_13 = PHI <hash_19(3), hash_17(4)>
+  # DEBUG hash => hash_13
+  # DEBUG BEGIN_STMT
+  _20 = (uint8_t) hash_13;
+  return _20;
+
+}
+
+
+pfe_l2br_iterator_destroy (const struct pfe_l2br_table_iterator_t * inst)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+pfe_l2br_iterator_create (struct pfe_l2br_table_iterator_t * loop_inst)
+{
+  struct 
+{
+  uint8_t mac[6];
+  uint16_t vlan;
+} * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (loop_inst_3(D) != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  loop_inst_3(D)->cur_hash_addr = 0;
+  # DEBUG BEGIN_STMT
+  loop_inst_3(D)->cur_coll_addr = 0;
+  # DEBUG BEGIN_STMT
+  loop_inst_3(D)->next_coll_addr = 0;
+  # DEBUG BEGIN_STMT
+  loop_inst_3(D)->cur_crit = 0;
+  # DEBUG BEGIN_STMT
+  _1 = &loop_inst_3(D)->cur_macvlan;
+  autolibc_memset (_1, 0, 8);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return loop_inst_3(D);
+
+}
+
+
+pfe_l2br_table_search_entry (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  ret_5 = pfe_l2br_table_do_search_entry_nolock (l2br_2(D), entry_3(D));
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_l2br_table_add_entry (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  ret_5 = pfe_l2br_table_do_add_entry_nolock (l2br_2(D), entry_3(D));
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_l2br_table_del_entry (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  ret_5 = pfe_l2br_table_do_del_entry_nolock (l2br_2(D), entry_3(D));
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_l2br_table_update_entry (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  ret_5 = pfe_l2br_table_do_update_entry_nolock (l2br_2(D), entry_3(D));
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_l2br_table_do_search_entry_nolock (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+  uint32_t cmd;
+  uint32_t status;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int cmd.7_3;
+  long unsigned int status.8_4;
+  long unsigned int _5;
+  long unsigned int _6;
+  <unnamed type> _24;
+  const addr_t * _25;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  ret_13 = pfe_l2br_entry_to_cmd_args (l2br_10(D), entry_11(D));
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (ret_13 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Entry-to-args conversion failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 694, ret_13, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _24 = MEM[(<unnamed type> *)l2br_10(D) + 4B];
+  # DEBUG D#10 => l2br_10(D)
+  ret_15 = pfe_l2br_table_compile_search_cmd.isra.0 (_24, entry_11(D), &cmd);
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  if (ret_15 == 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 5> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_10(D)->regs.cmd_reg;
+  _2 = (volatile uint32_t *) _1;
+  cmd.7_3 = cmd;
+  *_2 ={v} cmd.7_3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _25 = &MEM[(unsigned int *)l2br_10(D) + 36B];
+  # DEBUG D#21 => l2br_10(D)
+  ret_18 = pfe_l2br_wait_for_cmd_done.isra.0 (_25, &status);
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  if (ret_18 == 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 6> [local count: 88583701]:
+  # DEBUG BEGIN_STMT
+  status.8_4 = status;
+  _5 = status.8_4 & 2;
+  if (_5 != 0)
+    goto <bb 9>; [35.00%]
+  else
+    goto <bb 7>; [65.00%]
+
+  <bb 7> [local count: 57579405]:
+  # DEBUG BEGIN_STMT
+  _6 = status.8_4 & 16;
+  if (_6 == 0)
+    goto <bb 9>; [52.23%]
+  else
+    goto <bb 8>; [47.77%]
+
+  <bb 8> [local count: 27505682]:
+  # DEBUG BEGIN_STMT
+  pfe_l2br_get_data (l2br_10(D), entry_11(D));
+
+  <bb 9> [local count: 1073741824]:
+  # ret_7 = PHI <ret_13(3), ret_15(4), ret_18(5), 2(6), 2(7), 0(8)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  status ={v} {CLOBBER};
+  cmd ={v} {CLOBBER};
+  return ret_7;
+
+}
+
+
+pfe_l2br_table_do_add_entry_nolock (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+  uint32_t cmd;
+  uint32_t status;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int cmd.5_3;
+  long unsigned int status.6_4;
+  long unsigned int _5;
+  <unnamed type> _24;
+  const addr_t * _25;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  ret_12 = pfe_l2br_entry_to_cmd_args (l2br_9(D), entry_10(D));
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870911]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Entry-to-args conversion failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 604, ret_12, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 4> [local count: 536870911]:
+  # DEBUG BEGIN_STMT
+  _24 = MEM[(<unnamed type> *)l2br_9(D) + 4B];
+  # DEBUG D#9 => l2br_9(D)
+  ret_14 = pfe_l2br_table_compile_add_cmd.isra.0 (_24, entry_10(D), &cmd);
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 == 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 5> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_9(D)->regs.cmd_reg;
+  _2 = (volatile uint32_t *) _1;
+  cmd.5_3 = cmd;
+  *_2 ={v} cmd.5_3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _25 = &MEM[(unsigned int *)l2br_9(D) + 36B];
+  # DEBUG D#21 => l2br_9(D)
+  ret_17 = pfe_l2br_wait_for_cmd_done.isra.0 (_25, &status);
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  if (ret_17 == 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 6> [local count: 88583700]:
+  # DEBUG BEGIN_STMT
+  status.6_4 = status;
+  _5 = status.6_4 & 8;
+  if (_5 == 0)
+    goto <bb 7>; [20.96%]
+  else
+    goto <bb 8>; [79.04%]
+
+  <bb 7> [local count: 18567144]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Table entry ADD CMD failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 619, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 114
+
+  <bb 8> [local count: 1073741824]:
+  # ret_6 = PHI <ret_12(3), ret_14(4), ret_17(5), 0(6), 114(7)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  status ={v} {CLOBBER};
+  cmd ={v} {CLOBBER};
+  return ret_6;
+
+}
+
+
+pfe_l2br_table_do_del_entry_nolock (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+  uint32_t cmd;
+  uint32_t status;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int cmd.3_3;
+  <unnamed type> _20;
+  const addr_t * _21;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  ret_10 = pfe_l2br_entry_to_cmd_args (l2br_7(D), entry_8(D));
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870911]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Entry-to-args conversion failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 520, ret_10, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 536870911]:
+  # DEBUG BEGIN_STMT
+  _20 = MEM[(<unnamed type> *)l2br_7(D) + 4B];
+  # DEBUG D#8 => l2br_7(D)
+  ret_12 = pfe_l2br_table_compile_del_cmd.isra.0 (_20, entry_8(D), &cmd);
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 == 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 5> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_7(D)->regs.cmd_reg;
+  _2 = (volatile uint32_t *) _1;
+  cmd.3_3 = cmd;
+  *_2 ={v} cmd.3_3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _21 = &MEM[(unsigned int *)l2br_7(D) + 36B];
+  # DEBUG D#21 => l2br_7(D)
+  ret_15 = pfe_l2br_wait_for_cmd_done.isra.0 (_21, &status);
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  if (ret_15 == 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 88583700]:
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1073741824]:
+  # ret_4 = PHI <ret_10(3), ret_12(4), ret_15(5), 0(6)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  status ={v} {CLOBBER};
+  cmd ={v} {CLOBBER};
+  return ret_4;
+
+}
+
+
+pfe_l2br_table_do_update_entry_nolock (struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+  uint32_t cmd;
+  uint32_t status;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int cmd.0_3;
+  long unsigned int status.1_4;
+  long unsigned int _5;
+  long unsigned int status.2_6;
+  long unsigned int _7;
+  <unnamed type> _26;
+  const addr_t * _27;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  ret_14 = pfe_l2br_entry_to_cmd_args (l2br_11(D), entry_12(D));
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Entry-to-args conversion failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 431, ret_14, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _26 = MEM[(<unnamed type> *)l2br_11(D) + 4B];
+  # DEBUG D#7 => l2br_11(D)
+  ret_16 = pfe_l2br_table_compile_update_cmd.isra.0 (_26, entry_12(D), &cmd);
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 == 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 5> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_11(D)->regs.cmd_reg;
+  _2 = (volatile uint32_t *) _1;
+  cmd.0_3 = cmd;
+  *_2 ={v} cmd.0_3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _27 = &MEM[(unsigned int *)l2br_11(D) + 36B];
+  # DEBUG D#21 => l2br_11(D)
+  ret_19 = pfe_l2br_wait_for_cmd_done.isra.0 (_27, &status);
+  # DEBUG ret => ret_19
+  # DEBUG BEGIN_STMT
+  if (ret_19 == 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 88583701]:
+  status.1_4 = status;
+  _5 = status.1_4 & 2;
+  if (_5 != 0)
+    goto <bb 10>; [35.00%]
+  else
+    goto <bb 7>; [65.00%]
+
+  <bb 7> [local count: 146163106]:
+  # DEBUG BEGIN_STMT
+  if (ret_19 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 8> [local count: 73081553]:
+  status.2_6 = status;
+  _7 = status.2_6 & 8;
+  if (_7 == 0)
+    goto <bb 9>; [20.96%]
+  else
+    goto <bb 10>; [79.04%]
+
+  <bb 9> [local count: 15317894]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Table entry UPDATE CMD failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_l2br_table.c", 449, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 114
+
+  <bb 10> [local count: 1073741824]:
+  # ret_8 = PHI <ret_14(3), ret_16(4), 2(6), ret_19(7), 0(8), 114(9)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  status ={v} {CLOBBER};
+  cmd ={v} {CLOBBER};
+  return ret_8;
+
+}
+
+
+pfe_l2br_entry_to_cmd_args (const struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  errno_t ret;
+  <unnamed type> _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  short unsigned int _15;
+  short unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  unsigned int _19;
+  volatile uint32_t * _20;
+  long unsigned int _21;
+  <unnamed-unsigned:31> _22;
+  unsigned int _23;
+  volatile uint32_t * _24;
+  long unsigned int _25;
+  <unnamed-unsigned:13> _26;
+  unsigned int _27;
+  volatile uint32_t * _28;
+  long unsigned int _29;
+  <unnamed-unsigned:55> _30;
+  unsigned int _32;
+  volatile uint32_t * _33;
+  long unsigned int _34;
+  <unnamed-unsigned:55> _35;
+  unsigned int _36;
+  volatile uint32_t * _37;
+  long unsigned int _38;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG entry32 => entry_40(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG action_data => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_43(D)->type;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(uint32_t *)entry_40(D)];
+  _3 = _2 >> 24;
+  _4 = _2 >> 8;
+  _5 = _4 & 65280;
+  _6 = _3 | _5;
+  _7 = _2 << 8;
+  _8 = _7 & 16711680;
+  _9 = _6 | _8;
+  _10 = _2 << 24;
+  _11 = l2br_43(D)->regs.mac1_addr_reg;
+  _12 = (volatile uint32_t *) _11;
+  _13 = _9 | _10;
+  *_12 ={v} _13;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = MEM[(uint32_t *)entry_40(D) + 4B];
+  _15 = (short unsigned int) _14;
+  _16 = _15 r>> 8;
+  _17 = (long unsigned int) _16;
+  _18 = _14 & 4294901760;
+  _19 = l2br_43(D)->regs.mac2_addr_reg;
+  _20 = (volatile uint32_t *) _19;
+  _21 = _17 | _18;
+  *_20 ={v} _21;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _22 = entry_40(D)->u.mac2f_entry.action_data;
+  _23 = l2br_43(D)->regs.entry_reg;
+  _24 = (volatile uint32_t *) _23;
+  _25 = (long unsigned int) _22;
+  *_24 ={v} _25;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  if (_1 == 2)
+    goto <bb 5>; [66.01%]
+  else
+    goto <bb 6>; [33.99%]
+
+  <bb 5> [local count: 467792806]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _26 = entry_40(D)->u.vlan_entry.vlan;
+  _27 = l2br_43(D)->regs.mac1_addr_reg;
+  _28 = (volatile uint32_t *) _27;
+  _29 = (long unsigned int) _26;
+  *_28 ={v} _29;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _30 = entry_40(D)->u.vlan_entry.action_data;
+  # DEBUG D#2 => _30 & 4294967295
+  # DEBUG action_data => (uint64_t) D#2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _32 = l2br_43(D)->regs.entry_reg;
+  _33 = (volatile uint32_t *) _32;
+  _34 = (long unsigned int) _30;
+  *_33 ={v} _34;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _35 = _30 >> 32;
+  # DEBUG action_data => (long long unsigned int) _35
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _36 = l2br_43(D)->regs.direct_reg;
+  _37 = (volatile uint32_t *) _36;
+  _38 = (long unsigned int) _35;
+  *_37 ={v} _38;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 240876800]:
+  # DEBUG D#3 => l2br_43(D)
+  # DEBUG D#4 => entry_40(D)
+  ret_31 = pfe_l2br_entry_to_cmd_args.part.0 ();
+
+  <bb 7> [local count: 1073741824]:
+  # ret_39 = PHI <0(3), 0(5), ret_31(6)>
+  # DEBUG ret => ret_39
+  # DEBUG BEGIN_STMT
+  return ret_39;
+
+}
+
+
+pfe_l2br_table_get_col_ptr (const struct pfe_l2br_table_entry_t * entry)
+{
+  uint32_t ret;
+  <unnamed type> _1;
+  <unnamed-unsigned:4> _2;
+  short unsigned int _4;
+  <unnamed-unsigned:4> _5;
+  short unsigned int _8;
+  <unnamed-unsigned:4> _10;
+  <unnamed-unsigned:4> _15;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = entry_12(D)->type;
+  switch (_1) <default: <L6> [33.33%], case 1: <L0> [33.33%], case 2: <L3> [33.33%]>
+
+  <bb 3> [local count: 357878150]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  _2 = entry_12(D)->u.mac2f_entry.flags;
+  _15 = _2 & 4;
+  if (_15 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 4> [local count: 178939075]:
+  # DEBUG BEGIN_STMT
+  _4 = entry_12(D)->u.mac2f_entry.col_ptr;
+  ret_14 = (uint32_t) _4;
+  # DEBUG ret => ret_14
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 357878150]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  _5 = entry_12(D)->u.vlan_entry.flags;
+  _10 = _5 & 4;
+  if (_10 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 6> [local count: 178939075]:
+  # DEBUG BEGIN_STMT
+  _8 = entry_12(D)->u.vlan_entry.col_ptr;
+  ret_13 = (uint32_t) _8;
+  # DEBUG ret => ret_13
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 357913944]:
+<L6>:
+  # DEBUG D#19 => entry_12(D)
+  ret_6 = pfe_l2br_table_get_col_ptr.part.0 ();
+
+  <bb 8> [local count: 1073634451]:
+  # ret_9 = PHI <ret_14(4), ret_13(6), ret_6(7), 0(3), 0(5)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  return ret_9;
+
+}
+
+
+pfe_l2br_get_data (const struct pfe_l2br_table_t * l2br, struct pfe_l2br_table_entry_t * entry)
+{
+  uint64_t vlan_action_data;
+  <unnamed type> _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+  long unsigned int _4;
+  <unnamed-unsigned:31> _5;
+  unsigned int _6;
+  volatile uint32_t * _7;
+  long unsigned int _8;
+  unsigned int _9;
+  volatile uint32_t * _10;
+  long unsigned int _11;
+  long long unsigned int _12;
+  <unnamed-unsigned:55> _13;
+  long long unsigned int _18;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = l2br_16(D)->type;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  _2 = l2br_16(D)->regs.entry_reg;
+  _3 = (volatile uint32_t *) _2;
+  _4 ={v} *_3;
+  # DEBUG mac_action_data => _4 & 2147483647
+  # DEBUG BEGIN_STMT
+  _5 = (<unnamed-unsigned:31>) _4;
+  entry_20(D)->u.mac2f_entry.action_data = _5;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  _6 = l2br_16(D)->regs.entry_reg;
+  _7 = (volatile uint32_t *) _6;
+  _8 ={v} *_7;
+  vlan_action_data_17 = (uint64_t) _8;
+  # DEBUG vlan_action_data => vlan_action_data_17
+  # DEBUG BEGIN_STMT
+  _9 = l2br_16(D)->regs.direct_reg;
+  _10 = (volatile uint32_t *) _9;
+  _11 ={v} *_10;
+  _12 = (long long unsigned int) _11;
+  _18 = _12 << 32;
+  vlan_action_data_19 = vlan_action_data_17 | _18;
+  # DEBUG vlan_action_data => vlan_action_data_19
+  # DEBUG BEGIN_STMT
+  _13 = (<unnamed-unsigned:55>) vlan_action_data_19;
+  entry_20(D)->u.vlan_entry.action_data = _13;
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+

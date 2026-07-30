@@ -1,0 +1,133 @@
+====================================================================================================
+STACK USAGE ANALYSIS REPORT - RDB3 Configuration
+Generated from GCC -fstack-usage output (.su files)
+====================================================================================================
+
+--- SUMMARY ---
+Total functions analyzed: 4306
+Total stack (sum of all functions): 61440 bytes (60.0 KB)
+Maximum single function stack: 872 bytes
+Functions using >256 bytes: 13
+Functions using >128 bytes: 41
+Functions using >64 bytes:  87
+
+====================================================================================================
+TOP 50 FUNCTIONS BY STACK USAGE
+====================================================================================================
+Rank  Function                                           Stack(B) Source File                           Line
+----------------------------------------------------------------------------------------------------
+1     pfe_platform_idex_rpc_cbk                               872 pfe_platform_master.c                  188
+2     fci_command                                             576 libfci_autosar.c                       297
+3     pfe_idex_send_frame                                     464 pfe_idex.c                            1077
+4     pfe_class_check_pes                                     392 pfe_class.c                            107
+5     SampleAppFciTestTask                                    392 sample_app_fci.c                       768
+6     fci_hm_cb                                               376 fci_hm.c                                64
+7     fci_connections_drop_one                                360 fci_connections.c                     1738
+8     pfe_platform_bind_ifaces                                344 pfe_platform_master.c                 2326
+9     sample_fci_phy_if_get_by_name                           336 sample_app_fci.c                       217
+10    sample_fci_phy_if_print_all                             328 sample_app_fci.c                       174
+11    fci_routes_drop_one                                     312 fci_routes.c                           424
+12    fci_core_fini                                           288 fci_core_autosar.c                     225
+13    fci_catch                                               288 libfci_autosar.c                       225
+14    pfe_l2br_create                                         256 pfe_l2br.c                            2970
+15    pfe_phy_if_create                                       256 pfe_phy_if.c                           780
+16    pfe_tmu_queue_set_mode                                  256 pfe_tmu.c                              695
+17    pfe_class_load_firmware                                 248 pfe_class.c                            458
+18    pfe_class_get_stats                                     248 pfe_class.c                           1307
+19    pfe_rtable_create                                       248 pfe_rtable.c                          2761
+20    pfe_util_load_firmware                                  248 pfe_util.c                             386
+21    pfe_platform_init                                       240 pfe_platform_master.c                 3050
+22    pfe_l2br_destroy                                        232 pfe_l2br.c                            3010
+23    pfe_pe_get_fw_feature_entry                             232 pfe_pe.c                              2108
+24    pfe_rtable_destroy                                      232 pfe_rtable.c                          2847
+25    pfe_pe_get_data_nolock                                  224 pfe_pe.c                              2630
+26    pfe_pe_put_data_nolock                                  224 pfe_pe.c                              2686
+27    pfe_hif_drv_client_xmit_pkt                             216 pfe_hif_drv.c                         2001
+28    pfe_pe_check_mmap                                       216 pfe_pe.c                              2321
+29    pfe_class_get_mmap                                      208 pfe_class.c                            621
+30    pfe_class_get_fw_version                                208 pfe_class.c                           1533
+31    pfe_phy_if_set_op_mode                                  208 pfe_phy_if.c                          1232
+32    pfe_util_get_fw_version                                 208 pfe_util.c                             798
+33    sample_fci_phy_if_enable                                184 sample_app_fci.c                       265
+34    sample_fci_phy_if_promisc_on                            184 sample_app_fci.c                       374
+35    sample_fci_bd_add_if.constprop                          176 sample_app_fci.c                       484
+36    sample_fci_phy_if_set_mode.constprop                    176 sample_app_fci.c                       306
+37    fci_interfaces_log_cmd                                  160 fci_interfaces.c                      1960
+38    ipc_shm_init_instance                                   160 ipc-shm.c                             1049
+39    ipvx_ct_compile_fci_reply                               152 fci_connections.c                     1431
+40    fci_connections_ipvx_ct_cmd.part.0                      144 fci_connections.c                     1532
+41    fci_mirror_cmd                                          136 fci_mirror.c                           554
+42    Eth_PFE_LLD_InterfacePrepare                            128 Eth_PFE_LLD.c                         2321
+43    pfe_pe_load_firmware                                    128 pfe_pe.c                              1951
+44    Eth_43_PFE_LLD_GetTmuStats                              120 Eth_PFE_LLD.c                         4811
+45    fci_process_ipc_message                                 120 fci.c                                  644
+46    pfe_l2br_add_vlan_hash_entry                            120 pfe_l2br.c                             564
+47    fci_interfaces_phy_cmd                                  112 fci_interfaces.c                      2116
+48    pfe_l2br_domain_flush_by_if                             112 pfe_l2br.c                            1601
+49    fci_routes_cmd                                          104 fci_routes.c                           308
+50    pfe_rtable_add_entry                                    104 pfe_rtable.c                          2171
+
+====================================================================================================
+STACK DISTRIBUTION
+====================================================================================================
+  0-8B          3177 ( 73.8%)  #########################################################################
+  9-16B          356 (  8.3%)  ########
+  17-32B         451 ( 10.5%)  ##########
+  33-64B         235 (  5.5%)  #####
+  65-128B         46 (  1.1%)  #
+  129-256B        28 (  0.7%)  #
+  257-512B        11 (  0.3%)  #
+  513+B            2 (  0.0%)  #
+
+====================================================================================================
+TOP 30 MODULES BY TOTAL STACK USAGE
+====================================================================================================
+Module                              Total(B)   Max(B)  Funcs  Max Function                       
+----------------------------------------------------------------------------------------------------
+SchM_Eth_43_PFE                         4096        8    513  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_00
+pfe_l2br                                2120      256     55  pfe_l2br_create                    
+sample_app_fci                          1848      392      9  SampleAppFciTestTask               
+Eth_PFE_LLD                             1832      128     65  Eth_PFE_LLD_InterfacePrepare       
+pfe_pe                                  1816      232     40  pfe_pe_get_fw_feature_entry        
+pfe_class                               1668      392     35  pfe_class_check_pes                
+pfe_platform_master                     1624      872     11  pfe_platform_idex_rpc_cbk          
+SchM_Adc                                1568        8    197  SchM_Enter_Adc_ADC_EXCLUSIVE_AREA_00
+pfe_rtable                              1508      248     61  pfe_rtable_create                  
+pfe_phy_if                              1344      256     58  pfe_phy_if_create                  
+pfe_tmu                                 1216      256     45  pfe_tmu_queue_set_mode             
+pfe_feature_mgr                         1076       64     31  pfe_feature_mgr_set_val            
+pfe_hif_drv                             1060      216     34  pfe_hif_drv_client_xmit_pkt        
+SchM_Can_43_LLCE                        1040        8    131  SchM_Enter_Can_43_LLCE_CAN_EXCLUSIVE_AREA_00
+SchM_Fr_43_LLCE                         1040        8    131  SchM_Enter_Fr_43_LLCE_FR_EXCLUSIVE_AREA_00
+libfci_autosar                           952      576      9  fci_command                        
+pfe_tmu_csr                              892       64     47  pfe_tmu_q_reset_tail_drop_policy   
+tasks                                    892       56     61  vTaskList                          
+fci_connections                          864      360     14  fci_connections_drop_one           
+SchM_Gpt                                 832        8    105  SchM_Enter_Gpt_GPT_EXCLUSIVE_AREA_00
+SchM_Mcl                                 752        8     95  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_00
+pfe_idex                                 736      464     10  pfe_idex_send_frame                
+pfe_emac                                 712       64     56  pfe_emac_create                    
+SchM_Icu                                 688        8     87  SchM_Enter_Icu_ICU_EXCLUSIVE_AREA_00
+pfe_hif_chnl                             664       64     49  pfe_hif_chnl_rx_va                 
+Serdes_Ip_HwAccess                       656       48     40  Serdes_Ip_PcsWaitBits              
+pfe_util                                 640      248     17  pfe_util_load_firmware             
+pfe_gpi                                  640       96     37  pfe_gpi_qos_add_flow               
+ipc-shm                                  592      160     15  ipc_shm_init_instance              
+pfe_l2br_table                           592       72     31  pfe_l2br_table_init_cmd            
+
+====================================================================================================
+HIGH-RISK FUNCTIONS (>256 bytes stack) - POTENTIAL STACK OVERFLOW CANDIDATES
+====================================================================================================
+  pfe_platform_idex_rpc_cbk                               872 bytes  pfe_platform_master.c               line 188
+  fci_command                                             576 bytes  libfci_autosar.c                    line 297
+  pfe_idex_send_frame                                     464 bytes  pfe_idex.c                          line 1077
+  pfe_class_check_pes                                     392 bytes  pfe_class.c                         line 107
+  SampleAppFciTestTask                                    392 bytes  sample_app_fci.c                    line 768
+  fci_hm_cb                                               376 bytes  fci_hm.c                            line 64
+  fci_connections_drop_one                                360 bytes  fci_connections.c                   line 1738
+  pfe_platform_bind_ifaces                                344 bytes  pfe_platform_master.c               line 2326
+  sample_fci_phy_if_get_by_name                           336 bytes  sample_app_fci.c                    line 217
+  sample_fci_phy_if_print_all                             328 bytes  sample_app_fci.c                    line 174
+  fci_routes_drop_one                                     312 bytes  fci_routes.c                        line 424
+  fci_core_fini                                           288 bytes  fci_core_autosar.c                  line 225
+  fci_catch                                               288 bytes  libfci_autosar.c                    line 225

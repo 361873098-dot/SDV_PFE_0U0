@@ -1,0 +1,3193 @@
+Trivially needed symbols: tcp_trigger_input_pcb_close tcp_input tcp_input_pcb
+
+
+Initial Symbol table:
+
+tcp_segs_free/64 (tcp_segs_free) @06fbbc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 
+  Calls: 
+pbuf_clen/63 (pbuf_clen) @06fbba80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_free_acked_segments/21 
+  Calls: 
+tcp_seg_copy/62 (tcp_seg_copy) @06fbb8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: 
+tcp_update_rcv_ann_wnd/61 (tcp_update_rcv_ann_wnd) @06fbb7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 
+  Calls: 
+pbuf_realloc/60 (pbuf_realloc) @06fbb700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: 
+tcp_rexmit_fast/59 (tcp_rexmit_fast) @06fbb620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 
+  Calls: 
+tcp_pcb_purge/58 (tcp_pcb_purge) @06fbb0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 
+  Calls: 
+tcp_rexmit/57 (tcp_rexmit) @06fbb000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 
+  Calls: 
+tcp_rexmit_rto/56 (tcp_rexmit_rto) @07293d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 
+  Calls: 
+tcp_seg_free/55 (tcp_seg_free) @07293380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_process/19 
+  Calls: 
+tcp_abandon/54 (tcp_abandon) @072939a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_enqueue_flags/53 (tcp_enqueue_flags) @072938c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_eff_send_mss_netif/52 (tcp_eff_send_mss_netif) @072937e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: 
+ip4_route/51 (ip4_route) @07293700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: 
+tcp_active_pcbs_changed/50 (tcp_active_pcbs_changed) @07296f78
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_listen_input/17 (write)tcp_process/19 (write)tcp_process/19 (write)tcp_process/19 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_timer_needed/49 (tcp_timer_needed) @07293620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 tcp_listen_input/17 
+  Calls: 
+tcp_next_iss/48 (tcp_next_iss) @07293540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_alloc/47 (tcp_alloc) @07293460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_ticks/46 (tcp_ticks) @072963f0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_timewait_input/18 (read)tcp_process/19 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_rst/45 (tcp_rst) @07293000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_listen_input/17 tcp_timewait_input/18 tcp_input/15 
+  Calls: 
+tcp_output/44 (tcp_output) @07249620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 tcp_timewait_input/18 tcp_input/15 
+  Calls: 
+pbuf_cat/43 (pbuf_cat) @07249540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_input/15 
+  Calls: 
+tcp_recv_null/42 (tcp_recv_null) @07249460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_abort/41 (tcp_abort) @072490e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_input/15 
+  Calls: 
+pbuf_split_64k/40 (pbuf_split_64k) @07249ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_free/39 (tcp_free) @07249e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input_delayed_close/16 tcp_input/15 
+  Calls: 
+tcp_pcb_remove/38 (tcp_pcb_remove) @07249d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input_delayed_close/16 tcp_input/15 
+  Calls: 
+tcp_send_empty_ack/37 (tcp_send_empty_ack) @07249c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_input/15 
+  Calls: 
+tcp_process_refused_data/36 (tcp_process_refused_data) @07249b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_listen_pcbs/35 (tcp_listen_pcbs) @07291288
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)
+  Availability: not-ready
+  Varpool flags:
+pbuf_free/34 (pbuf_free) @07249a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+tcp_tw_pcbs/33 (tcp_tw_pcbs) @072911b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs/32 (tcp_active_pcbs) @07291168
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (addr)tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_input_delayed_close/16 (addr)
+  Availability: not-ready
+  Varpool flags:
+lwip_htonl/31 (lwip_htonl) @072499a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_input/15 tcp_input/15 
+  Calls: 
+pbuf_remove_header/30 (pbuf_remove_header) @072498c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+lwip_htons/29 (lwip_htons) @072497e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_oos_insert_segment/20 tcp_oos_insert_segment/20 tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+ip4_addr_isbroadcast_u32/28 (ip4_addr_isbroadcast_u32) @07249700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+ip_data/27 (ip_data) @07269dc8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (addr)tcp_input/15 (addr)tcp_timewait_input/18 (addr)tcp_timewait_input/18 (addr)tcp_listen_input/17 (addr)tcp_listen_input/17 (addr)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_process/19 (addr)tcp_process/19 (addr)tcp_process/19 (addr)tcp_process/19 (addr)
+  Availability: not-ready
+  Varpool flags:
+lwip_stats/26 (lwip_stats) @07269d80
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_listen_input/17 (read)tcp_listen_input/17 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_trigger_input_pcb_close/25 (tcp_trigger_input_pcb_close) @07249000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: recv_flags/12 (read)recv_flags/12 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_parseopt/24 (tcp_parseopt) @07235ee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071c9c40
+  References: tcphdr_optlen/3 (read)tcp_optidx/6 (write)tcp_optidx/6 (read)tcphdr_optlen/3 (read)tcp_optidx/6 (read)tcphdr_optlen/3 (read)flags/11 (read)tcp_optidx/6 (read)tcp_optidx/6 (write)tcp_optidx/6 (read)tcphdr_optlen/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 
+tcp_get_next_optbyte/23 (tcp_get_next_optbyte) @07235a80
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071c9c40
+  References: tcp_optidx/6 (read)tcp_optidx/6 (write)tcphdr_opt2/5 (read)tcphdr_opt1len/4 (read)tcphdr/2 (read)tcphdr_opt1len/4 (read)tcphdr_opt2/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 
+  Calls: 
+tcp_receive/22 (tcp_receive) @072357e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071b3b60
+  References: flags/11 (read)seqno/7 (read)seqno/7 (read)ackno/8 (read)ackno/8 (read)tcphdr/2 (read)tcphdr/2 (read)seqno/7 (read)ackno/8 (read)ackno/8 (read)tcplen/10 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)recv_acked/9 (read)ackno/8 (read)tcp_ticks/46 (read)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)inseg/1 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)seqno/7 (write)inseg/1 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)seqno/7 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)tcplen/10 (read)inseg/1 (read)inseg/1 (read)recv_data/13 (write)inseg/1 (write)inseg/1 (read)recv_flags/12 (read)recv_flags/12 (write)seqno/7 (write)recv_data/13 (read)recv_data/13 (read)recv_data/13 (write)recv_flags/12 (read)recv_flags/12 (write)inseg/1 (addr)seqno/7 (read)inseg/1 (read)inseg/1 (addr)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)seqno/7 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 
+  Calls: tcp_send_empty_ack/37 tcp_send_empty_ack/37 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 lwip_htons/29 lwip_htons/29 pbuf_realloc/60 tcp_seg_copy/62 lwip_htons/29 tcp_oos_insert_segment/20 pbuf_realloc/60 tcp_seg_copy/62 tcp_oos_insert_segment/20 tcp_seg_copy/62 tcp_oos_insert_segment/20 tcp_seg_copy/62 tcp_seg_copy/62 tcp_seg_free/55 lwip_htons/29 pbuf_cat/43 tcp_update_rcv_ann_wnd/61 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 tcp_update_rcv_ann_wnd/61 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 pbuf_remove_header/30 tcp_send_empty_ack/37 lwip_htonl/31 lwip_htonl/31 tcp_free_acked_segments/21 tcp_free_acked_segments/21 tcp_rexmit_fast/59 
+tcp_free_acked_segments/21 (tcp_free_acked_segments) @0720d380
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071c9540
+  References: recv_acked/9 (read)recv_acked/9 (write)ackno/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 
+  Calls: lwip_htons/29 lwip_htonl/31 tcp_seg_free/55 pbuf_clen/63 
+tcp_oos_insert_segment/20 (tcp_oos_insert_segment) @071c9540
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071b3b60
+  References: seqno/7 (read)seqno/7 (read)seqno/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: pbuf_realloc/60 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 tcp_segs_free/64 lwip_htons/29 
+tcp_process/19 (tcp_process) @071c9c40
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071b3b60
+  References: flags/11 (read)ackno/8 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)recv_flags/12 (read)recv_flags/12 (write)flags/11 (read)tcp_ticks/46 (read)flags/11 (read)ackno/8 (read)seqno/7 (read)ackno/8 (read)tcphdr/2 (read)seqno/7 (read)flags/11 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)ackno/8 (read)ackno/8 (read)recv_acked/9 (read)recv_acked/9 (read)recv_acked/9 (write)recv_flags/12 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)seqno/7 (read)recv_flags/12 (read)recv_flags/12 (read)flags/11 (read)ackno/8 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)recv_flags/12 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)recv_flags/12 (read)recv_flags/12 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_receive/22 tcp_rexmit/57 tcp_rst/45 tcp_receive/22 tcp_abort/41 tcp_rexmit_rto/56 tcp_rst/45 tcp_seg_free/55 tcp_eff_send_mss_netif/52 ip4_route/51 tcp_parseopt/24 
+   Indirect call
+   Indirect call
+tcp_timewait_input/18 (tcp_timewait_input) @071c9460
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071c90e0
+  References: flags/11 (read)flags/11 (read)seqno/7 (read)seqno/7 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)tcp_ticks/46 (read)tcplen/10 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_output/44 tcp_rst/45 
+tcp_listen_input/17 (tcp_listen_input) @071c90e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @071c9c40
+  References: flags/11 (read)flags/11 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)lwip_stats/26 (read)lwip_stats/26 (write)ip_data/27 (read)ip_data/27 (read)tcphdr/2 (read)seqno/7 (read)seqno/7 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs_changed/50 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_output/44 tcp_abandon/54 tcp_enqueue_flags/53 tcp_eff_send_mss_netif/52 ip4_route/51 tcp_parseopt/24 tcp_timer_needed/49 tcp_next_iss/48 tcp_alloc/47 tcp_rst/45 
+   Indirect call
+tcp_input_delayed_close/16 (tcp_input_delayed_close) @071b3b60
+  Type: function definition analyzed
+  Visibility:
+  Aux: @07249000
+  References: recv_flags/12 (read)tcp_active_pcbs/32 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 tcp_input/15 
+  Calls: tcp_free/39 tcp_pcb_remove/38 
+   Indirect call
+tcp_input/15 (tcp_input) @071b38c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07249000
+  References: lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr/2 (write)lwip_stats/26 (read)lwip_stats/26 (write)ip_data/27 (read)ip_data/27 (read)ip_data/27 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr_optlen/3 (write)tcphdr_opt2/5 (write)tcphdr_optlen/3 (read)tcphdr_opt1len/4 (write)tcphdr_opt1len/4 (write)tcphdr_optlen/3 (read)tcphdr_opt1len/4 (read)tcphdr_opt1len/4 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr_opt2/5 (write)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)seqno/7 (write)tcphdr/2 (read)tcphdr/2 (read)ackno/8 (write)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)flags/11 (write)tcplen/10 (write)flags/11 (read)tcplen/10 (read)tcplen/10 (write)tcplen/10 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcp_active_pcbs/32 (read)ip_data/27 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (read)ip_data/27 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_tw_pcbs/33 (read)ip_data/27 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (read)ip_data/27 (read)tcp_listen_pcbs/35 (read)ip_data/27 (read)tcphdr/2 (read)ip_data/27 (read)tcp_listen_pcbs/35 (read)tcp_listen_pcbs/35 (write)lwip_stats/26 (read)lwip_stats/26 (write)inseg/1 (write)inseg/1 (write)inseg/1 (write)tcphdr/2 (read)inseg/1 (write)recv_data/13 (write)recv_flags/12 (write)recv_acked/9 (write)flags/11 (read)tcplen/10 (read)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_input_pcb/14 (write)recv_flags/12 (read)tcp_active_pcbs/32 (addr)recv_acked/9 (read)recv_acked/9 (read)recv_acked/9 (write)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (write)recv_data/13 (read)recv_flags/12 (read)tcp_input_pcb/14 (write)tcp_input_pcb/14 (write)recv_data/13 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/34 pbuf_free/34 tcp_rst/45 lwip_htons/29 pbuf_free/34 tcp_output/44 tcp_input_delayed_close/16 pbuf_cat/43 pbuf_free/34 tcp_recv_null/42 tcp_abort/41 pbuf_free/34 pbuf_free/34 pbuf_split_64k/40 tcp_input_delayed_close/16 tcp_free/39 tcp_pcb_remove/38 tcp_process/19 tcp_send_empty_ack/37 tcp_process_refused_data/36 pbuf_free/34 tcp_listen_input/17 pbuf_free/34 tcp_timewait_input/18 lwip_htons/29 lwip_htons/29 lwip_htonl/31 lwip_htonl/31 lwip_htons/29 lwip_htons/29 pbuf_remove_header/30 pbuf_remove_header/30 pbuf_remove_header/30 pbuf_remove_header/30 lwip_htons/29 ip4_addr_isbroadcast_u32/28 
+   Indirect call
+   Indirect call
+   Indirect call
+   Indirect call
+tcp_input_pcb/14 (tcp_input_pcb) @0716d948
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @071b38c0
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)
+  Availability: not-ready
+  Varpool flags:
+recv_data/13 (recv_data) @0716d900
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d360
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)
+  Availability: not-ready
+  Varpool flags:
+recv_flags/12 (recv_flags) @0716d870
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d900
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_input_delayed_close/16 (read)tcp_trigger_input_pcb_close/25 (read)tcp_trigger_input_pcb_close/25 (write)
+  Availability: not-ready
+  Varpool flags:
+flags/11 (flags) @0716d7e0
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d678
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_parseopt/24 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+tcplen/10 (tcplen) @0716d798
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d7e0
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+recv_acked/9 (recv_acked) @0716d708
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d870
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_receive/22 (read)tcp_free_acked_segments/21 (read)tcp_free_acked_segments/21 (write)
+  Availability: not-ready
+  Varpool flags:
+ackno/8 (ackno) @0716d678
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d630
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_free_acked_segments/21 (read)
+  Availability: not-ready
+  Varpool flags:
+seqno/7 (seqno) @0716d630
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d4c8
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_oos_insert_segment/20 (read)tcp_oos_insert_segment/20 (read)tcp_oos_insert_segment/20 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_optidx/6 (tcp_optidx) @0716d5e8
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @07235a80
+  References: 
+  Referring: tcp_parseopt/24 (write)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (write)tcp_parseopt/24 (read)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (write)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_opt2/5 (tcphdr_opt2) @0716d558
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d438
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_opt1len/4 (tcphdr_opt1len) @0716d4c8
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d558
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_optlen/3 (tcphdr_optlen) @0716d438
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d3a8
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr/2 (tcphdr) @0716d3a8
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @071c9460
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_get_next_optbyte/23 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+inseg/1 (inseg) @0716d360
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0716d798
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (addr)tcp_receive/22 (read)tcp_receive/22 (addr)tcp_receive/22 (addr)tcp_receive/22 (addr)tcp_receive/22 (addr)
+  Availability: not-ready
+  Varpool flags:
+oal_swap_endian_long/0 (oal_swap_endian_long) @06f2b620
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+tcp_segs_free/64 (tcp_segs_free) @06fbbc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 
+  Calls: 
+pbuf_clen/63 (pbuf_clen) @06fbba80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_free_acked_segments/21 
+  Calls: 
+tcp_seg_copy/62 (tcp_seg_copy) @06fbb8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: 
+tcp_update_rcv_ann_wnd/61 (tcp_update_rcv_ann_wnd) @06fbb7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 
+  Calls: 
+pbuf_realloc/60 (pbuf_realloc) @06fbb700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: 
+tcp_rexmit_fast/59 (tcp_rexmit_fast) @06fbb620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 
+  Calls: 
+tcp_pcb_purge/58 (tcp_pcb_purge) @06fbb0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 
+  Calls: 
+tcp_rexmit/57 (tcp_rexmit) @06fbb000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 
+  Calls: 
+tcp_rexmit_rto/56 (tcp_rexmit_rto) @07293d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 
+  Calls: 
+tcp_seg_free/55 (tcp_seg_free) @07293380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_process/19 
+  Calls: 
+tcp_abandon/54 (tcp_abandon) @072939a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_enqueue_flags/53 (tcp_enqueue_flags) @072938c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_eff_send_mss_netif/52 (tcp_eff_send_mss_netif) @072937e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: 
+ip4_route/51 (ip4_route) @07293700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: 
+tcp_active_pcbs_changed/50 (tcp_active_pcbs_changed) @07296f78
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_listen_input/17 (write)tcp_process/19 (write)tcp_process/19 (write)tcp_process/19 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_timer_needed/49 (tcp_timer_needed) @07293620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 tcp_listen_input/17 
+  Calls: 
+tcp_next_iss/48 (tcp_next_iss) @07293540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_alloc/47 (tcp_alloc) @07293460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_ticks/46 (tcp_ticks) @072963f0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_timewait_input/18 (read)tcp_process/19 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_rst/45 (tcp_rst) @07293000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_listen_input/17 tcp_timewait_input/18 tcp_input/15 
+  Calls: 
+tcp_output/44 (tcp_output) @07249620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 tcp_timewait_input/18 tcp_input/15 
+  Calls: 
+pbuf_cat/43 (pbuf_cat) @07249540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_input/15 
+  Calls: 
+tcp_recv_null/42 (tcp_recv_null) @07249460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_abort/41 (tcp_abort) @072490e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_input/15 
+  Calls: 
+pbuf_split_64k/40 (pbuf_split_64k) @07249ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_free/39 (tcp_free) @07249e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input_delayed_close/16 tcp_input/15 
+  Calls: 
+tcp_pcb_remove/38 (tcp_pcb_remove) @07249d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input_delayed_close/16 tcp_input/15 
+  Calls: 
+tcp_send_empty_ack/37 (tcp_send_empty_ack) @07249c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_input/15 
+  Calls: 
+tcp_process_refused_data/36 (tcp_process_refused_data) @07249b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_listen_pcbs/35 (tcp_listen_pcbs) @07291288
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)
+  Availability: not-ready
+  Varpool flags:
+pbuf_free/34 (pbuf_free) @07249a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+tcp_tw_pcbs/33 (tcp_tw_pcbs) @072911b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs/32 (tcp_active_pcbs) @07291168
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (addr)tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_input_delayed_close/16 (addr)
+  Availability: not-ready
+  Varpool flags:
+lwip_htonl/31 (lwip_htonl) @072499a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_input/15 tcp_input/15 
+  Calls: 
+pbuf_remove_header/30 (pbuf_remove_header) @072498c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+lwip_htons/29 (lwip_htons) @072497e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_oos_insert_segment/20 tcp_oos_insert_segment/20 tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+ip4_addr_isbroadcast_u32/28 (ip4_addr_isbroadcast_u32) @07249700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+ip_data/27 (ip_data) @07269dc8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (addr)tcp_input/15 (addr)tcp_timewait_input/18 (addr)tcp_timewait_input/18 (addr)tcp_listen_input/17 (addr)tcp_listen_input/17 (addr)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_process/19 (addr)tcp_process/19 (addr)tcp_process/19 (addr)tcp_process/19 (addr)
+  Availability: not-ready
+  Varpool flags:
+lwip_stats/26 (lwip_stats) @07269d80
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_listen_input/17 (read)tcp_listen_input/17 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_trigger_input_pcb_close/25 (tcp_trigger_input_pcb_close) @07249000
+  Type: function definition analyzed
+  Visibility: public
+  References: recv_flags/12 (read)recv_flags/12 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_parseopt/24 (tcp_parseopt) @07235ee0
+  Type: function definition analyzed
+  Visibility:
+  References: tcphdr_optlen/3 (read)tcp_optidx/6 (write)tcp_optidx/6 (read)tcphdr_optlen/3 (read)tcp_optidx/6 (read)tcphdr_optlen/3 (read)flags/11 (read)tcp_optidx/6 (read)tcp_optidx/6 (write)tcp_optidx/6 (read)tcphdr_optlen/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 
+tcp_get_next_optbyte/23 (tcp_get_next_optbyte) @07235a80
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_optidx/6 (read)tcp_optidx/6 (write)tcphdr_opt2/5 (read)tcphdr_opt1len/4 (read)tcphdr/2 (read)tcphdr_opt1len/4 (read)tcphdr_opt2/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 
+  Calls: 
+tcp_receive/22 (tcp_receive) @072357e0
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)seqno/7 (read)seqno/7 (read)ackno/8 (read)ackno/8 (read)tcphdr/2 (read)tcphdr/2 (read)seqno/7 (read)ackno/8 (read)ackno/8 (read)tcplen/10 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)recv_acked/9 (read)ackno/8 (read)tcp_ticks/46 (read)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)inseg/1 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)seqno/7 (write)inseg/1 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)seqno/7 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)tcplen/10 (read)inseg/1 (read)inseg/1 (read)recv_data/13 (write)inseg/1 (write)inseg/1 (read)recv_flags/12 (read)recv_flags/12 (write)seqno/7 (write)recv_data/13 (read)recv_data/13 (read)recv_data/13 (write)recv_flags/12 (read)recv_flags/12 (write)inseg/1 (addr)seqno/7 (read)inseg/1 (read)inseg/1 (addr)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)seqno/7 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 
+  Calls: tcp_send_empty_ack/37 tcp_send_empty_ack/37 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 lwip_htons/29 lwip_htons/29 pbuf_realloc/60 tcp_seg_copy/62 lwip_htons/29 tcp_oos_insert_segment/20 pbuf_realloc/60 tcp_seg_copy/62 tcp_oos_insert_segment/20 tcp_seg_copy/62 tcp_oos_insert_segment/20 tcp_seg_copy/62 tcp_seg_copy/62 tcp_seg_free/55 lwip_htons/29 pbuf_cat/43 tcp_update_rcv_ann_wnd/61 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 tcp_update_rcv_ann_wnd/61 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 pbuf_remove_header/30 tcp_send_empty_ack/37 lwip_htonl/31 lwip_htonl/31 tcp_free_acked_segments/21 tcp_free_acked_segments/21 tcp_rexmit_fast/59 
+tcp_free_acked_segments/21 (tcp_free_acked_segments) @0720d380
+  Type: function definition analyzed
+  Visibility:
+  References: recv_acked/9 (read)recv_acked/9 (write)ackno/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 
+  Calls: lwip_htons/29 lwip_htonl/31 tcp_seg_free/55 pbuf_clen/63 
+tcp_oos_insert_segment/20 (tcp_oos_insert_segment) @071c9540
+  Type: function definition analyzed
+  Visibility:
+  References: seqno/7 (read)seqno/7 (read)seqno/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: pbuf_realloc/60 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 tcp_segs_free/64 lwip_htons/29 
+tcp_process/19 (tcp_process) @071c9c40
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)ackno/8 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)recv_flags/12 (read)recv_flags/12 (write)flags/11 (read)tcp_ticks/46 (read)flags/11 (read)ackno/8 (read)seqno/7 (read)ackno/8 (read)tcphdr/2 (read)seqno/7 (read)flags/11 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)ackno/8 (read)ackno/8 (read)recv_acked/9 (read)recv_acked/9 (read)recv_acked/9 (write)recv_flags/12 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)seqno/7 (read)recv_flags/12 (read)recv_flags/12 (read)flags/11 (read)ackno/8 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)recv_flags/12 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)recv_flags/12 (read)recv_flags/12 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_receive/22 tcp_rexmit/57 tcp_rst/45 tcp_receive/22 tcp_abort/41 tcp_rexmit_rto/56 tcp_rst/45 tcp_seg_free/55 tcp_eff_send_mss_netif/52 ip4_route/51 tcp_parseopt/24 
+   Indirect call
+   Indirect call
+tcp_timewait_input/18 (tcp_timewait_input) @071c9460
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)flags/11 (read)seqno/7 (read)seqno/7 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)tcp_ticks/46 (read)tcplen/10 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_output/44 tcp_rst/45 
+tcp_listen_input/17 (tcp_listen_input) @071c90e0
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)flags/11 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)lwip_stats/26 (read)lwip_stats/26 (write)ip_data/27 (read)ip_data/27 (read)tcphdr/2 (read)seqno/7 (read)seqno/7 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs_changed/50 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_output/44 tcp_abandon/54 tcp_enqueue_flags/53 tcp_eff_send_mss_netif/52 ip4_route/51 tcp_parseopt/24 tcp_timer_needed/49 tcp_next_iss/48 tcp_alloc/47 tcp_rst/45 
+   Indirect call
+tcp_input_delayed_close/16 (tcp_input_delayed_close) @071b3b60
+  Type: function definition analyzed
+  Visibility:
+  References: recv_flags/12 (read)tcp_active_pcbs/32 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 tcp_input/15 
+  Calls: tcp_free/39 tcp_pcb_remove/38 
+   Indirect call
+tcp_input/15 (tcp_input) @071b38c0
+  Type: function definition analyzed
+  Visibility: public
+  References: lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr/2 (write)lwip_stats/26 (read)lwip_stats/26 (write)ip_data/27 (read)ip_data/27 (read)ip_data/27 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr_optlen/3 (write)tcphdr_opt2/5 (write)tcphdr_optlen/3 (read)tcphdr_opt1len/4 (write)tcphdr_opt1len/4 (write)tcphdr_optlen/3 (read)tcphdr_opt1len/4 (read)tcphdr_opt1len/4 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr_opt2/5 (write)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)seqno/7 (write)tcphdr/2 (read)tcphdr/2 (read)ackno/8 (write)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)flags/11 (write)tcplen/10 (write)flags/11 (read)tcplen/10 (read)tcplen/10 (write)tcplen/10 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcp_active_pcbs/32 (read)ip_data/27 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (read)ip_data/27 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_tw_pcbs/33 (read)ip_data/27 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (read)ip_data/27 (read)tcp_listen_pcbs/35 (read)ip_data/27 (read)tcphdr/2 (read)ip_data/27 (read)tcp_listen_pcbs/35 (read)tcp_listen_pcbs/35 (write)lwip_stats/26 (read)lwip_stats/26 (write)inseg/1 (write)inseg/1 (write)inseg/1 (write)tcphdr/2 (read)inseg/1 (write)recv_data/13 (write)recv_flags/12 (write)recv_acked/9 (write)flags/11 (read)tcplen/10 (read)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_input_pcb/14 (write)recv_flags/12 (read)tcp_active_pcbs/32 (addr)recv_acked/9 (read)recv_acked/9 (read)recv_acked/9 (write)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (write)recv_data/13 (read)recv_flags/12 (read)tcp_input_pcb/14 (write)tcp_input_pcb/14 (write)recv_data/13 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/34 pbuf_free/34 tcp_rst/45 lwip_htons/29 pbuf_free/34 tcp_output/44 tcp_input_delayed_close/16 pbuf_cat/43 pbuf_free/34 tcp_recv_null/42 tcp_abort/41 pbuf_free/34 pbuf_free/34 pbuf_split_64k/40 tcp_input_delayed_close/16 tcp_free/39 tcp_pcb_remove/38 tcp_process/19 tcp_send_empty_ack/37 tcp_process_refused_data/36 pbuf_free/34 tcp_listen_input/17 pbuf_free/34 tcp_timewait_input/18 lwip_htons/29 lwip_htons/29 lwip_htonl/31 lwip_htonl/31 lwip_htons/29 lwip_htons/29 pbuf_remove_header/30 pbuf_remove_header/30 pbuf_remove_header/30 pbuf_remove_header/30 lwip_htons/29 ip4_addr_isbroadcast_u32/28 
+   Indirect call
+   Indirect call
+   Indirect call
+   Indirect call
+tcp_input_pcb/14 (tcp_input_pcb) @0716d948
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)
+  Availability: not-ready
+  Varpool flags:
+recv_data/13 (recv_data) @0716d900
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)
+  Availability: not-ready
+  Varpool flags:
+recv_flags/12 (recv_flags) @0716d870
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_input_delayed_close/16 (read)tcp_trigger_input_pcb_close/25 (read)tcp_trigger_input_pcb_close/25 (write)
+  Availability: not-ready
+  Varpool flags:
+flags/11 (flags) @0716d7e0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_parseopt/24 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+tcplen/10 (tcplen) @0716d798
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+recv_acked/9 (recv_acked) @0716d708
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_receive/22 (read)tcp_free_acked_segments/21 (read)tcp_free_acked_segments/21 (write)
+  Availability: not-ready
+  Varpool flags:
+ackno/8 (ackno) @0716d678
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_free_acked_segments/21 (read)
+  Availability: not-ready
+  Varpool flags:
+seqno/7 (seqno) @0716d630
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_oos_insert_segment/20 (read)tcp_oos_insert_segment/20 (read)tcp_oos_insert_segment/20 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_optidx/6 (tcp_optidx) @0716d5e8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_parseopt/24 (write)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (write)tcp_parseopt/24 (read)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (write)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_opt2/5 (tcphdr_opt2) @0716d558
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_opt1len/4 (tcphdr_opt1len) @0716d4c8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_optlen/3 (tcphdr_optlen) @0716d438
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr/2 (tcphdr) @0716d3a8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_get_next_optbyte/23 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+inseg/1 (inseg) @0716d360
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (addr)tcp_receive/22 (read)tcp_receive/22 (addr)tcp_receive/22 (addr)tcp_receive/22 (addr)tcp_receive/22 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+
+Initial Symbol table:
+
+tcp_segs_free/64 (tcp_segs_free) @06fbbc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 
+  Calls: 
+pbuf_clen/63 (pbuf_clen) @06fbba80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_free_acked_segments/21 
+  Calls: 
+tcp_seg_copy/62 (tcp_seg_copy) @06fbb8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: 
+tcp_update_rcv_ann_wnd/61 (tcp_update_rcv_ann_wnd) @06fbb7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 
+  Calls: 
+pbuf_realloc/60 (pbuf_realloc) @06fbb700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: 
+tcp_rexmit_fast/59 (tcp_rexmit_fast) @06fbb620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 
+  Calls: 
+tcp_pcb_purge/58 (tcp_pcb_purge) @06fbb0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 
+  Calls: 
+tcp_rexmit/57 (tcp_rexmit) @06fbb000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 
+  Calls: 
+tcp_rexmit_rto/56 (tcp_rexmit_rto) @07293d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 
+  Calls: 
+tcp_seg_free/55 (tcp_seg_free) @07293380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_process/19 
+  Calls: 
+tcp_abandon/54 (tcp_abandon) @072939a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_enqueue_flags/53 (tcp_enqueue_flags) @072938c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_eff_send_mss_netif/52 (tcp_eff_send_mss_netif) @072937e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: 
+ip4_route/51 (ip4_route) @07293700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: 
+tcp_active_pcbs_changed/50 (tcp_active_pcbs_changed) @07296f78
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_listen_input/17 (write)tcp_process/19 (write)tcp_process/19 (write)tcp_process/19 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_timer_needed/49 (tcp_timer_needed) @07293620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 tcp_listen_input/17 
+  Calls: 
+tcp_next_iss/48 (tcp_next_iss) @07293540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_alloc/47 (tcp_alloc) @07293460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_ticks/46 (tcp_ticks) @072963f0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_timewait_input/18 (read)tcp_process/19 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_rst/45 (tcp_rst) @07293000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_listen_input/17 tcp_timewait_input/18 tcp_input/15 
+  Calls: 
+tcp_output/44 (tcp_output) @07249620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 tcp_timewait_input/18 tcp_input/15 
+  Calls: 
+pbuf_cat/43 (pbuf_cat) @07249540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_input/15 
+  Calls: 
+tcp_recv_null/42 (tcp_recv_null) @07249460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_abort/41 (tcp_abort) @072490e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_input/15 
+  Calls: 
+pbuf_split_64k/40 (pbuf_split_64k) @07249ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_free/39 (tcp_free) @07249e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input_delayed_close/16 tcp_input/15 
+  Calls: 
+tcp_pcb_remove/38 (tcp_pcb_remove) @07249d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input_delayed_close/16 tcp_input/15 
+  Calls: 
+tcp_send_empty_ack/37 (tcp_send_empty_ack) @07249c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_input/15 
+  Calls: 
+tcp_process_refused_data/36 (tcp_process_refused_data) @07249b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_listen_pcbs/35 (tcp_listen_pcbs) @07291288
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)
+  Availability: not-ready
+  Varpool flags:
+pbuf_free/34 (pbuf_free) @07249a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+tcp_tw_pcbs/33 (tcp_tw_pcbs) @072911b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs/32 (tcp_active_pcbs) @07291168
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (addr)tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_input_delayed_close/16 (addr)
+  Availability: not-ready
+  Varpool flags:
+lwip_htonl/31 (lwip_htonl) @072499a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_input/15 tcp_input/15 
+  Calls: 
+pbuf_remove_header/30 (pbuf_remove_header) @072498c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+lwip_htons/29 (lwip_htons) @072497e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_oos_insert_segment/20 tcp_oos_insert_segment/20 tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+ip4_addr_isbroadcast_u32/28 (ip4_addr_isbroadcast_u32) @07249700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+ip_data/27 (ip_data) @07269dc8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (addr)tcp_input/15 (addr)tcp_timewait_input/18 (addr)tcp_timewait_input/18 (addr)tcp_listen_input/17 (addr)tcp_listen_input/17 (addr)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_process/19 (addr)tcp_process/19 (addr)tcp_process/19 (addr)tcp_process/19 (addr)
+  Availability: not-ready
+  Varpool flags:
+lwip_stats/26 (lwip_stats) @07269d80
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_listen_input/17 (read)tcp_listen_input/17 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_trigger_input_pcb_close/25 (tcp_trigger_input_pcb_close) @07249000
+  Type: function definition analyzed
+  Visibility: public
+  References: recv_flags/12 (read)recv_flags/12 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_parseopt/24 (tcp_parseopt) @07235ee0
+  Type: function definition analyzed
+  Visibility:
+  References: tcphdr_optlen/3 (read)tcp_optidx/6 (write)tcp_optidx/6 (read)tcphdr_optlen/3 (read)tcp_optidx/6 (read)tcphdr_optlen/3 (read)flags/11 (read)tcp_optidx/6 (read)tcp_optidx/6 (write)tcp_optidx/6 (read)tcphdr_optlen/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 
+tcp_get_next_optbyte/23 (tcp_get_next_optbyte) @07235a80
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_optidx/6 (read)tcp_optidx/6 (write)tcphdr_opt2/5 (read)tcphdr_opt1len/4 (read)tcphdr/2 (read)tcphdr_opt1len/4 (read)tcphdr_opt2/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 
+  Calls: 
+tcp_receive/22 (tcp_receive) @072357e0
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)seqno/7 (read)seqno/7 (read)ackno/8 (read)ackno/8 (read)tcphdr/2 (read)tcphdr/2 (read)seqno/7 (read)ackno/8 (read)ackno/8 (read)tcplen/10 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)recv_acked/9 (read)ackno/8 (read)tcp_ticks/46 (read)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)inseg/1 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)seqno/7 (write)inseg/1 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)seqno/7 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)tcplen/10 (read)inseg/1 (read)inseg/1 (read)recv_data/13 (write)inseg/1 (write)inseg/1 (read)recv_flags/12 (read)recv_flags/12 (write)seqno/7 (write)recv_data/13 (read)recv_data/13 (read)recv_data/13 (write)recv_flags/12 (read)recv_flags/12 (write)inseg/1 (addr)seqno/7 (read)inseg/1 (read)inseg/1 (addr)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)seqno/7 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 
+  Calls: tcp_send_empty_ack/37 tcp_send_empty_ack/37 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 lwip_htons/29 lwip_htons/29 pbuf_realloc/60 tcp_seg_copy/62 lwip_htons/29 tcp_oos_insert_segment/20 pbuf_realloc/60 tcp_seg_copy/62 tcp_oos_insert_segment/20 tcp_seg_copy/62 tcp_oos_insert_segment/20 tcp_seg_copy/62 tcp_seg_copy/62 tcp_seg_free/55 lwip_htons/29 pbuf_cat/43 tcp_update_rcv_ann_wnd/61 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 tcp_update_rcv_ann_wnd/61 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 pbuf_remove_header/30 tcp_send_empty_ack/37 lwip_htonl/31 lwip_htonl/31 tcp_free_acked_segments/21 tcp_free_acked_segments/21 tcp_rexmit_fast/59 
+tcp_free_acked_segments/21 (tcp_free_acked_segments) @0720d380
+  Type: function definition analyzed
+  Visibility:
+  References: recv_acked/9 (read)recv_acked/9 (write)ackno/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 
+  Calls: lwip_htons/29 lwip_htonl/31 tcp_seg_free/55 pbuf_clen/63 
+tcp_oos_insert_segment/20 (tcp_oos_insert_segment) @071c9540
+  Type: function definition analyzed
+  Visibility:
+  References: seqno/7 (read)seqno/7 (read)seqno/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: pbuf_realloc/60 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 tcp_segs_free/64 lwip_htons/29 
+tcp_process/19 (tcp_process) @071c9c40
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)ackno/8 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)recv_flags/12 (read)recv_flags/12 (write)flags/11 (read)tcp_ticks/46 (read)flags/11 (read)ackno/8 (read)seqno/7 (read)ackno/8 (read)tcphdr/2 (read)seqno/7 (read)flags/11 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)ackno/8 (read)ackno/8 (read)recv_acked/9 (read)recv_acked/9 (read)recv_acked/9 (write)recv_flags/12 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)seqno/7 (read)recv_flags/12 (read)recv_flags/12 (read)flags/11 (read)ackno/8 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)recv_flags/12 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)recv_flags/12 (read)recv_flags/12 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_receive/22 tcp_rexmit/57 tcp_rst/45 tcp_receive/22 tcp_abort/41 tcp_rexmit_rto/56 tcp_rst/45 tcp_seg_free/55 tcp_eff_send_mss_netif/52 ip4_route/51 tcp_parseopt/24 
+   Indirect call
+   Indirect call
+tcp_timewait_input/18 (tcp_timewait_input) @071c9460
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)flags/11 (read)seqno/7 (read)seqno/7 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)tcp_ticks/46 (read)tcplen/10 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_output/44 tcp_rst/45 
+tcp_listen_input/17 (tcp_listen_input) @071c90e0
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)flags/11 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)lwip_stats/26 (read)lwip_stats/26 (write)ip_data/27 (read)ip_data/27 (read)tcphdr/2 (read)seqno/7 (read)seqno/7 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs_changed/50 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_output/44 tcp_abandon/54 tcp_enqueue_flags/53 tcp_eff_send_mss_netif/52 ip4_route/51 tcp_parseopt/24 tcp_timer_needed/49 tcp_next_iss/48 tcp_alloc/47 tcp_rst/45 
+   Indirect call
+tcp_input_delayed_close/16 (tcp_input_delayed_close) @071b3b60
+  Type: function definition analyzed
+  Visibility:
+  References: recv_flags/12 (read)tcp_active_pcbs/32 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 tcp_input/15 
+  Calls: tcp_free/39 tcp_pcb_remove/38 
+   Indirect call
+tcp_input/15 (tcp_input) @071b38c0
+  Type: function definition analyzed
+  Visibility: public
+  References: lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr/2 (write)lwip_stats/26 (read)lwip_stats/26 (write)ip_data/27 (read)ip_data/27 (read)ip_data/27 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr_optlen/3 (write)tcphdr_opt2/5 (write)tcphdr_optlen/3 (read)tcphdr_opt1len/4 (write)tcphdr_opt1len/4 (write)tcphdr_optlen/3 (read)tcphdr_opt1len/4 (read)tcphdr_opt1len/4 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr_opt2/5 (write)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)seqno/7 (write)tcphdr/2 (read)tcphdr/2 (read)ackno/8 (write)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)flags/11 (write)tcplen/10 (write)flags/11 (read)tcplen/10 (read)tcplen/10 (write)tcplen/10 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcp_active_pcbs/32 (read)ip_data/27 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (read)ip_data/27 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_tw_pcbs/33 (read)ip_data/27 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (read)ip_data/27 (read)tcp_listen_pcbs/35 (read)ip_data/27 (read)tcphdr/2 (read)ip_data/27 (read)tcp_listen_pcbs/35 (read)tcp_listen_pcbs/35 (write)lwip_stats/26 (read)lwip_stats/26 (write)inseg/1 (write)inseg/1 (write)inseg/1 (write)tcphdr/2 (read)inseg/1 (write)recv_data/13 (write)recv_flags/12 (write)recv_acked/9 (write)flags/11 (read)tcplen/10 (read)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_input_pcb/14 (write)recv_flags/12 (read)tcp_active_pcbs/32 (addr)recv_acked/9 (read)recv_acked/9 (read)recv_acked/9 (write)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (write)recv_data/13 (read)recv_flags/12 (read)tcp_input_pcb/14 (write)tcp_input_pcb/14 (write)recv_data/13 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/34 pbuf_free/34 tcp_rst/45 lwip_htons/29 pbuf_free/34 tcp_output/44 tcp_input_delayed_close/16 pbuf_cat/43 pbuf_free/34 tcp_recv_null/42 tcp_abort/41 pbuf_free/34 pbuf_free/34 pbuf_split_64k/40 tcp_input_delayed_close/16 tcp_free/39 tcp_pcb_remove/38 tcp_process/19 tcp_send_empty_ack/37 tcp_process_refused_data/36 pbuf_free/34 tcp_listen_input/17 pbuf_free/34 tcp_timewait_input/18 lwip_htons/29 lwip_htons/29 lwip_htonl/31 lwip_htonl/31 lwip_htons/29 lwip_htons/29 pbuf_remove_header/30 pbuf_remove_header/30 pbuf_remove_header/30 pbuf_remove_header/30 lwip_htons/29 ip4_addr_isbroadcast_u32/28 
+   Indirect call
+   Indirect call
+   Indirect call
+   Indirect call
+tcp_input_pcb/14 (tcp_input_pcb) @0716d948
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)
+  Availability: not-ready
+  Varpool flags:
+recv_data/13 (recv_data) @0716d900
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)
+  Availability: not-ready
+  Varpool flags:
+recv_flags/12 (recv_flags) @0716d870
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_input_delayed_close/16 (read)tcp_trigger_input_pcb_close/25 (read)tcp_trigger_input_pcb_close/25 (write)
+  Availability: not-ready
+  Varpool flags:
+flags/11 (flags) @0716d7e0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_parseopt/24 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+tcplen/10 (tcplen) @0716d798
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+recv_acked/9 (recv_acked) @0716d708
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_receive/22 (read)tcp_free_acked_segments/21 (read)tcp_free_acked_segments/21 (write)
+  Availability: not-ready
+  Varpool flags:
+ackno/8 (ackno) @0716d678
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_free_acked_segments/21 (read)
+  Availability: not-ready
+  Varpool flags:
+seqno/7 (seqno) @0716d630
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_oos_insert_segment/20 (read)tcp_oos_insert_segment/20 (read)tcp_oos_insert_segment/20 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_optidx/6 (tcp_optidx) @0716d5e8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_parseopt/24 (write)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (write)tcp_parseopt/24 (read)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (write)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_opt2/5 (tcphdr_opt2) @0716d558
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_opt1len/4 (tcphdr_opt1len) @0716d4c8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_optlen/3 (tcphdr_optlen) @0716d438
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr/2 (tcphdr) @0716d3a8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_get_next_optbyte/23 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+inseg/1 (inseg) @0716d360
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (addr)tcp_receive/22 (read)tcp_receive/22 (addr)tcp_receive/22 (addr)tcp_receive/22 (addr)tcp_receive/22 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+tcp_segs_free/64 (tcp_segs_free) @06fbbc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 
+  Calls: 
+pbuf_clen/63 (pbuf_clen) @06fbba80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_free_acked_segments/21 
+  Calls: 
+tcp_seg_copy/62 (tcp_seg_copy) @06fbb8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: 
+tcp_update_rcv_ann_wnd/61 (tcp_update_rcv_ann_wnd) @06fbb7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 
+  Calls: 
+pbuf_realloc/60 (pbuf_realloc) @06fbb700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: 
+tcp_rexmit_fast/59 (tcp_rexmit_fast) @06fbb620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 
+  Calls: 
+tcp_pcb_purge/58 (tcp_pcb_purge) @06fbb0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 
+  Calls: 
+tcp_rexmit/57 (tcp_rexmit) @06fbb000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 
+  Calls: 
+tcp_rexmit_rto/56 (tcp_rexmit_rto) @07293d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 
+  Calls: 
+tcp_seg_free/55 (tcp_seg_free) @07293380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_process/19 
+  Calls: 
+tcp_abandon/54 (tcp_abandon) @072939a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_enqueue_flags/53 (tcp_enqueue_flags) @072938c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_eff_send_mss_netif/52 (tcp_eff_send_mss_netif) @072937e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: 
+ip4_route/51 (ip4_route) @07293700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: 
+tcp_active_pcbs_changed/50 (tcp_active_pcbs_changed) @07296f78
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_listen_input/17 (write)tcp_process/19 (write)tcp_process/19 (write)tcp_process/19 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_timer_needed/49 (tcp_timer_needed) @07293620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 tcp_listen_input/17 
+  Calls: 
+tcp_next_iss/48 (tcp_next_iss) @07293540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_alloc/47 (tcp_alloc) @07293460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 
+  Calls: 
+tcp_ticks/46 (tcp_ticks) @072963f0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_timewait_input/18 (read)tcp_process/19 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_rst/45 (tcp_rst) @07293000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_listen_input/17 tcp_timewait_input/18 tcp_input/15 
+  Calls: 
+tcp_output/44 (tcp_output) @07249620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 tcp_timewait_input/18 tcp_input/15 
+  Calls: 
+pbuf_cat/43 (pbuf_cat) @07249540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_input/15 
+  Calls: 
+tcp_recv_null/42 (tcp_recv_null) @07249460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_abort/41 (tcp_abort) @072490e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_process/19 tcp_input/15 
+  Calls: 
+pbuf_split_64k/40 (pbuf_split_64k) @07249ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_free/39 (tcp_free) @07249e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input_delayed_close/16 tcp_input/15 
+  Calls: 
+tcp_pcb_remove/38 (tcp_pcb_remove) @07249d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input_delayed_close/16 tcp_input/15 
+  Calls: 
+tcp_send_empty_ack/37 (tcp_send_empty_ack) @07249c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_input/15 
+  Calls: 
+tcp_process_refused_data/36 (tcp_process_refused_data) @07249b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+tcp_listen_pcbs/35 (tcp_listen_pcbs) @07291288
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)
+  Availability: not-ready
+  Varpool flags:
+pbuf_free/34 (pbuf_free) @07249a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+tcp_tw_pcbs/33 (tcp_tw_pcbs) @072911b0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_active_pcbs/32 (tcp_active_pcbs) @07291168
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (addr)tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_input_delayed_close/16 (addr)
+  Availability: not-ready
+  Varpool flags:
+lwip_htonl/31 (lwip_htonl) @072499a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_input/15 tcp_input/15 
+  Calls: 
+pbuf_remove_header/30 (pbuf_remove_header) @072498c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_receive/22 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+lwip_htons/29 (lwip_htons) @072497e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment/20 tcp_oos_insert_segment/20 tcp_oos_insert_segment/20 tcp_free_acked_segments/21 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_receive/22 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 tcp_input/15 
+  Calls: 
+ip4_addr_isbroadcast_u32/28 (ip4_addr_isbroadcast_u32) @07249700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: tcp_input/15 
+  Calls: 
+ip_data/27 (ip_data) @07269dc8
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (addr)tcp_input/15 (addr)tcp_timewait_input/18 (addr)tcp_timewait_input/18 (addr)tcp_listen_input/17 (addr)tcp_listen_input/17 (addr)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_process/19 (addr)tcp_process/19 (addr)tcp_process/19 (addr)tcp_process/19 (addr)
+  Availability: not-ready
+  Varpool flags:
+lwip_stats/26 (lwip_stats) @07269d80
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_listen_input/17 (read)tcp_listen_input/17 (write)
+  Availability: not-ready
+  Varpool flags:
+tcp_trigger_input_pcb_close/25 (tcp_trigger_input_pcb_close) @07249000
+  Type: function definition analyzed
+  Visibility: public
+  References: recv_flags/12 (read)recv_flags/12 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+tcp_parseopt/24 (tcp_parseopt) @07235ee0
+  Type: function definition analyzed
+  Visibility:
+  References: tcphdr_optlen/3 (read)tcp_optidx/6 (write)tcp_optidx/6 (read)tcphdr_optlen/3 (read)tcp_optidx/6 (read)tcphdr_optlen/3 (read)flags/11 (read)tcp_optidx/6 (read)tcp_optidx/6 (write)tcp_optidx/6 (read)tcphdr_optlen/3 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_process/19 tcp_listen_input/17 
+  Calls: tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 tcp_get_next_optbyte/23 
+tcp_get_next_optbyte/23 (tcp_get_next_optbyte) @07235a80
+  Type: function definition analyzed
+  Visibility:
+  References: tcp_optidx/6 (read)tcp_optidx/6 (write)tcphdr_opt2/5 (read)tcphdr_opt1len/4 (read)tcphdr/2 (read)tcphdr_opt1len/4 (read)tcphdr_opt2/5 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 tcp_parseopt/24 
+  Calls: 
+tcp_receive/22 (tcp_receive) @072357e0
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)seqno/7 (read)seqno/7 (read)ackno/8 (read)ackno/8 (read)tcphdr/2 (read)tcphdr/2 (read)seqno/7 (read)ackno/8 (read)ackno/8 (read)tcplen/10 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)ackno/8 (read)recv_acked/9 (read)ackno/8 (read)tcp_ticks/46 (read)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)inseg/1 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)seqno/7 (write)inseg/1 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)seqno/7 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)tcplen/10 (read)inseg/1 (read)inseg/1 (read)recv_data/13 (write)inseg/1 (write)inseg/1 (read)recv_flags/12 (read)recv_flags/12 (write)seqno/7 (write)recv_data/13 (read)recv_data/13 (read)recv_data/13 (write)recv_flags/12 (read)recv_flags/12 (write)inseg/1 (addr)seqno/7 (read)inseg/1 (read)inseg/1 (addr)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)seqno/7 (read)inseg/1 (addr)seqno/7 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)seqno/7 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 tcp_process/19 
+  Calls: tcp_send_empty_ack/37 tcp_send_empty_ack/37 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 lwip_htons/29 lwip_htons/29 pbuf_realloc/60 tcp_seg_copy/62 lwip_htons/29 tcp_oos_insert_segment/20 pbuf_realloc/60 tcp_seg_copy/62 tcp_oos_insert_segment/20 tcp_seg_copy/62 tcp_oos_insert_segment/20 tcp_seg_copy/62 tcp_seg_copy/62 tcp_seg_free/55 lwip_htons/29 pbuf_cat/43 tcp_update_rcv_ann_wnd/61 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 tcp_update_rcv_ann_wnd/61 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 pbuf_realloc/60 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 lwip_htons/29 pbuf_remove_header/30 tcp_send_empty_ack/37 lwip_htonl/31 lwip_htonl/31 tcp_free_acked_segments/21 tcp_free_acked_segments/21 tcp_rexmit_fast/59 
+tcp_free_acked_segments/21 (tcp_free_acked_segments) @0720d380
+  Type: function definition analyzed
+  Visibility:
+  References: recv_acked/9 (read)recv_acked/9 (write)ackno/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 
+  Calls: lwip_htons/29 lwip_htonl/31 tcp_seg_free/55 pbuf_clen/63 
+tcp_oos_insert_segment/20 (tcp_oos_insert_segment) @071c9540
+  Type: function definition analyzed
+  Visibility:
+  References: seqno/7 (read)seqno/7 (read)seqno/7 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_receive/22 tcp_receive/22 tcp_receive/22 
+  Calls: pbuf_realloc/60 tcp_seg_free/55 lwip_htons/29 lwip_htons/29 tcp_segs_free/64 lwip_htons/29 
+tcp_process/19 (tcp_process) @071c9c40
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)ackno/8 (read)seqno/7 (read)seqno/7 (read)seqno/7 (read)recv_flags/12 (read)recv_flags/12 (write)flags/11 (read)tcp_ticks/46 (read)flags/11 (read)ackno/8 (read)seqno/7 (read)ackno/8 (read)tcphdr/2 (read)seqno/7 (read)flags/11 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)ackno/8 (read)ackno/8 (read)recv_acked/9 (read)recv_acked/9 (read)recv_acked/9 (write)recv_flags/12 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)seqno/7 (read)recv_flags/12 (read)recv_flags/12 (read)flags/11 (read)ackno/8 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)recv_flags/12 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs/32 (read)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)recv_flags/12 (read)recv_flags/12 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_timer_needed/49 tcp_pcb_purge/58 tcp_receive/22 tcp_receive/22 tcp_rexmit/57 tcp_rst/45 tcp_receive/22 tcp_abort/41 tcp_rexmit_rto/56 tcp_rst/45 tcp_seg_free/55 tcp_eff_send_mss_netif/52 ip4_route/51 tcp_parseopt/24 
+   Indirect call
+   Indirect call
+tcp_timewait_input/18 (tcp_timewait_input) @071c9460
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)flags/11 (read)seqno/7 (read)seqno/7 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)tcp_ticks/46 (read)tcplen/10 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_output/44 tcp_rst/45 
+tcp_listen_input/17 (tcp_listen_input) @071c90e0
+  Type: function definition analyzed
+  Visibility:
+  References: flags/11 (read)flags/11 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)lwip_stats/26 (read)lwip_stats/26 (write)ip_data/27 (read)ip_data/27 (read)tcphdr/2 (read)seqno/7 (read)seqno/7 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs_changed/50 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 
+  Calls: tcp_output/44 tcp_abandon/54 tcp_enqueue_flags/53 tcp_eff_send_mss_netif/52 ip4_route/51 tcp_parseopt/24 tcp_timer_needed/49 tcp_next_iss/48 tcp_alloc/47 tcp_rst/45 
+   Indirect call
+tcp_input_delayed_close/16 (tcp_input_delayed_close) @071b3b60
+  Type: function definition analyzed
+  Visibility:
+  References: recv_flags/12 (read)tcp_active_pcbs/32 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: tcp_input/15 tcp_input/15 
+  Calls: tcp_free/39 tcp_pcb_remove/38 
+   Indirect call
+tcp_input/15 (tcp_input) @071b38c0
+  Type: function definition analyzed
+  Visibility: public
+  References: lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr/2 (write)lwip_stats/26 (read)lwip_stats/26 (write)ip_data/27 (read)ip_data/27 (read)ip_data/27 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr_optlen/3 (write)tcphdr_opt2/5 (write)tcphdr_optlen/3 (read)tcphdr_opt1len/4 (write)tcphdr_opt1len/4 (write)tcphdr_optlen/3 (read)tcphdr_opt1len/4 (read)tcphdr_opt1len/4 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr_opt2/5 (write)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)seqno/7 (write)tcphdr/2 (read)tcphdr/2 (read)ackno/8 (write)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)flags/11 (write)tcplen/10 (write)flags/11 (read)tcplen/10 (read)tcplen/10 (write)tcplen/10 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcp_active_pcbs/32 (read)ip_data/27 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (read)ip_data/27 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_tw_pcbs/33 (read)ip_data/27 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (read)ip_data/27 (read)tcp_listen_pcbs/35 (read)ip_data/27 (read)tcphdr/2 (read)ip_data/27 (read)tcp_listen_pcbs/35 (read)tcp_listen_pcbs/35 (write)lwip_stats/26 (read)lwip_stats/26 (write)inseg/1 (write)inseg/1 (write)inseg/1 (write)tcphdr/2 (read)inseg/1 (write)recv_data/13 (write)recv_flags/12 (write)recv_acked/9 (write)flags/11 (read)tcplen/10 (read)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_input_pcb/14 (write)recv_flags/12 (read)tcp_active_pcbs/32 (addr)recv_acked/9 (read)recv_acked/9 (read)recv_acked/9 (write)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (write)recv_data/13 (read)recv_flags/12 (read)tcp_input_pcb/14 (write)tcp_input_pcb/14 (write)recv_data/13 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pbuf_free/34 pbuf_free/34 tcp_rst/45 lwip_htons/29 pbuf_free/34 tcp_output/44 tcp_input_delayed_close/16 pbuf_cat/43 pbuf_free/34 tcp_recv_null/42 tcp_abort/41 pbuf_free/34 pbuf_free/34 pbuf_split_64k/40 tcp_input_delayed_close/16 tcp_free/39 tcp_pcb_remove/38 tcp_process/19 tcp_send_empty_ack/37 tcp_process_refused_data/36 pbuf_free/34 tcp_listen_input/17 pbuf_free/34 tcp_timewait_input/18 lwip_htons/29 lwip_htons/29 lwip_htonl/31 lwip_htonl/31 lwip_htons/29 lwip_htons/29 pbuf_remove_header/30 pbuf_remove_header/30 pbuf_remove_header/30 pbuf_remove_header/30 lwip_htons/29 ip4_addr_isbroadcast_u32/28 
+   Indirect call
+   Indirect call
+   Indirect call
+   Indirect call
+tcp_input_pcb/14 (tcp_input_pcb) @0716d948
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)
+  Availability: not-ready
+  Varpool flags:
+recv_data/13 (recv_data) @0716d900
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)
+  Availability: not-ready
+  Varpool flags:
+recv_flags/12 (recv_flags) @0716d870
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_input_delayed_close/16 (read)tcp_trigger_input_pcb_close/25 (read)tcp_trigger_input_pcb_close/25 (write)
+  Availability: not-ready
+  Varpool flags:
+flags/11 (flags) @0716d7e0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_parseopt/24 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+tcplen/10 (tcplen) @0716d798
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+recv_acked/9 (recv_acked) @0716d708
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_receive/22 (read)tcp_free_acked_segments/21 (read)tcp_free_acked_segments/21 (write)
+  Availability: not-ready
+  Varpool flags:
+ackno/8 (ackno) @0716d678
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_free_acked_segments/21 (read)
+  Availability: not-ready
+  Varpool flags:
+seqno/7 (seqno) @0716d630
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_oos_insert_segment/20 (read)tcp_oos_insert_segment/20 (read)tcp_oos_insert_segment/20 (read)
+  Availability: not-ready
+  Varpool flags:
+tcp_optidx/6 (tcp_optidx) @0716d5e8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_parseopt/24 (write)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (write)tcp_parseopt/24 (read)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (write)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_opt2/5 (tcphdr_opt2) @0716d558
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_opt1len/4 (tcphdr_opt1len) @0716d4c8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr_optlen/3 (tcphdr_optlen) @0716d438
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)tcp_parseopt/24 (read)
+  Availability: not-ready
+  Varpool flags:
+tcphdr/2 (tcphdr) @0716d3a8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_timewait_input/18 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_get_next_optbyte/23 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_receive/22 (read)tcp_receive/22 (read)
+  Availability: not-ready
+  Varpool flags:
+inseg/1 (inseg) @0716d360
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (read)tcp_receive/22 (write)tcp_receive/22 (read)tcp_receive/22 (addr)tcp_receive/22 (read)tcp_receive/22 (addr)tcp_receive/22 (addr)tcp_receive/22 (addr)tcp_receive/22 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+tcp_receive.part.0/69 (tcp_receive.part.0) @07489460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: flags/11 (read)seqno/7 (read)ackno/8 (read)ackno/8 (read)tcphdr/2 (read)tcphdr/2 (read)ackno/8 (read)ackno/8 (read)tcplen/10 (read)recv_acked/9 (read)ackno/8 (read)tcp_ticks/46 (read)tcplen/10 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)inseg/1 (write)seqno/7 (write)inseg/1 (read)seqno/7 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)seqno/7 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)tcplen/10 (read)seqno/7 (read)tcplen/10 (read)seqno/7 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (write)inseg/1 (read)inseg/1 (read)inseg/1 (read)inseg/1 (read)tcplen/10 (write)seqno/7 (read)tcplen/10 (read)seqno/7 (read)inseg/1 (read)recv_data/13 (write)inseg/1 (write)inseg/1 (read)recv_flags/12 (read)recv_flags/12 (write)seqno/7 (write)recv_data/13 (read)recv_data/13 (write)recv_flags/12 (read)recv_flags/12 (write)inseg/1 (addr)inseg/1 (read)inseg/1 (addr)inseg/1 (addr)inseg/1 (addr)seqno/7 (read)inseg/1 (addr)seqno/7 (read)tcplen/10 (read)seqno/7 (read)seqno/7 (read)tcplen/10 (write)seqno/7 (read)seqno/7 (read)
+  Referring: 
+  Function tcp_receive.part.0/69 is inline copy in tcp_receive/22
+  Availability: local
+  Function flags: count:107374 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_receive/22 (inlined) (107374 (estimated locally),0.35 per call) 
+  Calls: tcp_rexmit_fast/59 (248 (estimated locally),0.00 per call) tcp_free_acked_segments.isra.0/67 (18536 (estimated locally),0.06 per call) tcp_free_acked_segments.isra.0/67 (18536 (estimated locally),0.06 per call) lwip_htonl/31 (2306 (estimated locally),0.01 per call) lwip_htonl/31 (4956 (estimated locally),0.02 per call) tcp_send_empty_ack/37 (13139 (estimated locally),0.04 per call) pbuf_remove_header/30 (1136 (estimated locally),0.00 per call) lwip_htons/29 (1328 (estimated locally),0.00 per call) lwip_htons/29 (438 (estimated locally),0.00 per call) lwip_htons/29 (145 (estimated locally),0.00 per call) lwip_htons/29 (145 (estimated locally),0.00 per call) lwip_htons/29 (145 (estimated locally),0.00 per call) pbuf_realloc/60 (145 (estimated locally),0.00 per call) lwip_htons/29 (145 (estimated locally),0.00 per call) lwip_htons/29 (502 (estimated locally),0.00 per call) tcp_seg_free/55 (2032 (estimated locally),0.01 per call) lwip_htons/29 (2096 (estimated locally),0.01 per call) lwip_htons/29 (692 (estimated locally),0.00 per call) lwip_htons/29 (228 (estimated locally),0.00 per call) lwip_htons/29 (228 (estimated locally),0.00 per call) tcp_seg_free/55 (2096 (estimated locally),0.01 per call) lwip_htons/29 (73 (estimated locally),0.00 per call) pbuf_realloc/60 (73 (estimated locally),0.00 per call) lwip_htons/29 (73 (estimated locally),0.00 per call) tcp_update_rcv_ann_wnd/61 (294 (estimated locally),0.00 per call) lwip_htons/29 (294 (estimated locally),0.00 per call) lwip_htons/29 (2579 (estimated locally),0.01 per call) lwip_htons/29 (2579 (estimated locally),0.01 per call) lwip_htons/29 (2484 (estimated locally),0.01 per call) tcp_update_rcv_ann_wnd/61 (2484 (estimated locally),0.01 per call) pbuf_cat/43 (664 (estimated locally),0.00 per call) lwip_htons/29 (2484 (estimated locally),0.01 per call) tcp_seg_free/55 (2484 (estimated locally),0.01 per call) tcp_seg_copy/62 (912 (estimated locally),0.00 per call) tcp_seg_copy/62 (474 (estimated locally),0.00 per call) tcp_oos_insert_segment/20 (332 (estimated locally),0.00 per call) tcp_seg_copy/62 (422 (estimated locally),0.00 per call) tcp_oos_insert_segment/20 (225 (estimated locally),0.00 per call) tcp_seg_copy/62 (580 (estimated locally),0.00 per call) pbuf_realloc/60 (168 (estimated locally),0.00 per call) tcp_oos_insert_segment/20 (406 (estimated locally),0.00 per call) lwip_htons/29 (415 (estimated locally),0.00 per call) tcp_seg_copy/62 (137 (estimated locally),0.00 per call) pbuf_realloc/60 (40 (estimated locally),0.00 per call) lwip_htons/29 (40 (estimated locally),0.00 per call) lwip_htons/29 (13 (estimated locally),0.00 per call) lwip_htons/29 (13 (estimated locally),0.00 per call) pbuf_realloc/60 (40 (estimated locally),0.00 per call) lwip_htons/29 (40 (estimated locally),0.00 per call) tcp_send_empty_ack/37 (5208 (estimated locally),0.02 per call) tcp_send_empty_ack/37 (14923 (estimated locally),0.05 per call) 
+tcp_oos_insert_segment.part.0/68 (tcp_oos_insert_segment.part.0) @0736cd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: seqno/7 (read)seqno/7 (read)
+  Referring: 
+  Function tcp_oos_insert_segment.part.0/68 is inline copy in tcp_oos_insert_segment/20
+  Availability: local
+  Function flags: count:123389 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_oos_insert_segment/20 (inlined) (123389 (estimated locally),0.53 per call) 
+  Calls: lwip_htons/29 (123389 (estimated locally),0.53 per call) tcp_segs_free/64 (40718 (estimated locally),0.18 per call) lwip_htons/29 (690133 (estimated locally),2.99 per call) lwip_htons/29 (227744 (estimated locally),0.99 per call) tcp_seg_free/55 (690133 (estimated locally),2.99 per call) pbuf_realloc/60 (24004 (estimated locally),0.10 per call) 
+tcp_free_acked_segments.isra.0/67 (tcp_free_acked_segments.isra.0) @074682a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: recv_acked/9 (read)recv_acked/9 (write)ackno/8 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:346980 (estimated locally) body local optimize_size
+  Called by: tcp_receive.part.0/69 (18536 (estimated locally),0.06 per call) tcp_receive.part.0/69 (18536 (estimated locally),0.06 per call) 
+  Calls: lwip_htons/29 (4014919 (estimated locally),11.57 per call) lwip_htonl/31 (4014919 (estimated locally),11.57 per call) tcp_seg_free/55 (3797135 (estimated locally),10.94 per call) pbuf_clen/63 (3904509 (estimated locally),11.25 per call) 
+tcp_input_delayed_close.part.0/66 (tcp_input_delayed_close.part.0) @07468460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: tcp_active_pcbs/32 (addr)
+  Referring: 
+  Function tcp_input_delayed_close.part.0/66 is inline copy in tcp_input_delayed_close/16
+  Availability: local
+  Function flags: count:85183 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_input_delayed_close/16 (inlined) (85183 (estimated locally),0.24 per call) 
+  Calls: tcp_pcb_remove/38 (85183 (estimated locally),0.24 per call) tcp_free/39 (85183 (estimated locally),0.24 per call) 
+   Indirect call(29814 (estimated locally),0.08 per call)  of param:0 loaded from aggregate passed by reference at offset 1312 (vptr maybe changed)
+tcp_parseopt.part.0/65 (tcp_parseopt.part.0) @06f2b620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: tcp_optidx/6 (write)tcp_optidx/6 (read)tcphdr_optlen/3 (read)tcp_optidx/6 (read)tcphdr_optlen/3 (read)flags/11 (read)tcp_optidx/6 (read)tcp_optidx/6 (write)tcp_optidx/6 (read)tcphdr_optlen/3 (read)
+  Referring: 
+  Function tcp_parseopt.part.0/65 is inline copy in tcp_parseopt/24
+  Availability: local
+  Function flags: count:125270 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: tcp_parseopt/24 (inlined) (125270 (estimated locally),0.35 per call) 
+  Calls: tcp_get_next_optbyte/23 (512905 (estimated locally),1.43 per call) tcp_get_next_optbyte/23 (102581 (estimated locally),0.29 per call) tcp_get_next_optbyte/23 (98519 (estimated locally),0.28 per call) tcp_get_next_optbyte/23 (98519 (estimated locally),0.28 per call) tcp_get_next_optbyte/23 (102581 (estimated locally),0.29 per call) tcp_get_next_optbyte/23 (98519 (estimated locally),0.28 per call) tcp_get_next_optbyte/23 (102581 (estimated locally),0.29 per call) 
+tcp_segs_free/64 (tcp_segs_free) @06fbbc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_oos_insert_segment.part.0/68 (40718 (estimated locally),0.18 per call) 
+  Calls: 
+pbuf_clen/63 (pbuf_clen) @06fbba80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_free_acked_segments.isra.0/67 (3904509 (estimated locally),11.25 per call) 
+  Calls: 
+tcp_seg_copy/62 (tcp_seg_copy) @06fbb8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_receive.part.0/69 (912 (estimated locally),0.00 per call) tcp_receive.part.0/69 (474 (estimated locally),0.00 per call) tcp_receive.part.0/69 (422 (estimated locally),0.00 per call) tcp_receive.part.0/69 (580 (estimated locally),0.00 per call) tcp_receive.part.0/69 (137 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_update_rcv_ann_wnd/61 (tcp_update_rcv_ann_wnd) @06fbb7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_receive.part.0/69 (294 (estimated locally),0.00 per call) tcp_receive.part.0/69 (2484 (estimated locally),0.01 per call) 
+  Calls: 
+pbuf_realloc/60 (pbuf_realloc) @06fbb700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_receive.part.0/69 (145 (estimated locally),0.00 per call) tcp_receive.part.0/69 (73 (estimated locally),0.00 per call) tcp_receive.part.0/69 (168 (estimated locally),0.00 per call) tcp_receive.part.0/69 (40 (estimated locally),0.00 per call) tcp_receive.part.0/69 (40 (estimated locally),0.00 per call) tcp_oos_insert_segment.part.0/68 (24004 (estimated locally),0.10 per call) 
+  Calls: 
+tcp_rexmit_fast/59 (tcp_rexmit_fast) @06fbb620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_receive.part.0/69 (248 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_pcb_purge/58 (tcp_pcb_purge) @06fbb0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_process/19 (1 (estimated locally),0.00 per call) tcp_process/19 (9 (estimated locally),0.00 per call) tcp_process/19 (0 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_rexmit/57 (tcp_rexmit) @06fbb000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_process/19 (1 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_rexmit_rto/56 (tcp_rexmit_rto) @07293d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_process/19 (3 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_seg_free/55 (tcp_seg_free) @07293380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_process/19 (1 (estimated locally),0.00 per call) tcp_receive.part.0/69 (2032 (estimated locally),0.01 per call) tcp_receive.part.0/69 (2096 (estimated locally),0.01 per call) tcp_receive.part.0/69 (2484 (estimated locally),0.01 per call) tcp_oos_insert_segment.part.0/68 (690133 (estimated locally),2.99 per call) tcp_free_acked_segments.isra.0/67 (3797135 (estimated locally),10.94 per call) 
+  Calls: 
+tcp_abandon/54 (tcp_abandon) @072939a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 (4 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_enqueue_flags/53 (tcp_enqueue_flags) @072938c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 (10 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_eff_send_mss_netif/52 (tcp_eff_send_mss_netif) @072937e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_process/19 (2 (estimated locally),0.00 per call) tcp_listen_input/17 (10 (estimated locally),0.00 per call) 
+  Calls: 
+ip4_route/51 (ip4_route) @07293700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_process/19 (2 (estimated locally),0.00 per call) tcp_listen_input/17 (10 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_active_pcbs_changed/50 (tcp_active_pcbs_changed) @07296f78
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: tcp_listen_input/17 (write)tcp_process/19 (write)tcp_process/19 (write)tcp_process/19 (write)
+  Availability: not_available
+  Varpool flags:
+tcp_timer_needed/49 (tcp_timer_needed) @07293620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_process/19 (1 (estimated locally),0.00 per call) tcp_process/19 (9 (estimated locally),0.00 per call) tcp_process/19 (0 (estimated locally),0.00 per call) tcp_listen_input/17 (10 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_next_iss/48 (tcp_next_iss) @07293540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 (10 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_alloc/47 (tcp_alloc) @07293460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_listen_input/17 (15 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_ticks/46 (tcp_ticks) @072963f0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: tcp_receive.part.0/69 (read)tcp_timewait_input/18 (read)tcp_process/19 (read)
+  Availability: not_available
+  Varpool flags:
+tcp_rst/45 (tcp_rst) @07293000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (79 (estimated locally),0.00 per call) tcp_process/19 (10 (estimated locally),0.00 per call) tcp_process/19 (9 (estimated locally),0.00 per call) tcp_listen_input/17 (22 (estimated locally),0.00 per call) tcp_timewait_input/18 (0 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_output/44 (tcp_output) @07249620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (25 (estimated locally),0.00 per call) tcp_listen_input/17 (7 (estimated locally),0.00 per call) tcp_timewait_input/18 (1 (estimated locally),0.00 per call) 
+  Calls: 
+pbuf_cat/43 (pbuf_cat) @07249540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (13 (estimated locally),0.00 per call) tcp_receive.part.0/69 (664 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_recv_null/42 (tcp_recv_null) @07249460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (201 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_abort/41 (tcp_abort) @072490e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (26 (estimated locally),0.00 per call) tcp_process/19 (0 (estimated locally),0.00 per call) 
+  Calls: 
+pbuf_split_64k/40 (pbuf_split_64k) @07249ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (1207 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_free/39 (tcp_free) @07249e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (268 (estimated locally),0.00 per call) tcp_input_delayed_close.part.0/66 (85183 (estimated locally),0.24 per call) 
+  Calls: 
+tcp_pcb_remove/38 (tcp_pcb_remove) @07249d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (268 (estimated locally),0.00 per call) tcp_input_delayed_close.part.0/66 (85183 (estimated locally),0.24 per call) 
+  Calls: 
+tcp_send_empty_ack/37 (tcp_send_empty_ack) @07249c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (104 (estimated locally),0.00 per call) tcp_receive.part.0/69 (13139 (estimated locally),0.04 per call) tcp_receive.part.0/69 (5208 (estimated locally),0.02 per call) tcp_receive.part.0/69 (14923 (estimated locally),0.05 per call) 
+  Calls: 
+tcp_process_refused_data/36 (tcp_process_refused_data) @07249b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (789 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_listen_pcbs/35 (tcp_listen_pcbs) @07291288
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: tcp_input/15 (read)tcp_input/15 (write)
+  Availability: not_available
+  Varpool flags:
+pbuf_free/34 (pbuf_free) @07249a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (233248 (estimated locally),0.65 per call) tcp_input/15 (238 (estimated locally),0.00 per call) tcp_input/15 (589 (estimated locally),0.00 per call) tcp_input/15 (14 (estimated locally),0.00 per call) tcp_input/15 (14 (estimated locally),0.00 per call) tcp_input/15 (26 (estimated locally),0.00 per call) tcp_input/15 (146 (estimated locally),0.00 per call) tcp_input/15 (7 (estimated locally),0.00 per call) 
+  Calls: 
+tcp_tw_pcbs/33 (tcp_tw_pcbs) @072911b0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_input/15 (read)
+  Availability: not_available
+  Varpool flags:
+tcp_active_pcbs/32 (tcp_active_pcbs) @07291168
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: tcp_process/19 (read)tcp_process/19 (write)tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_input_delayed_close.part.0/66 (addr)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (addr)
+  Availability: not_available
+  Varpool flags:
+lwip_htonl/31 (lwip_htonl) @072499a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (8232 (estimated locally),0.02 per call) tcp_input/15 (8232 (estimated locally),0.02 per call) tcp_receive.part.0/69 (2306 (estimated locally),0.01 per call) tcp_receive.part.0/69 (4956 (estimated locally),0.02 per call) tcp_free_acked_segments.isra.0/67 (4014919 (estimated locally),11.57 per call) 
+  Calls: 
+pbuf_remove_header/30 (pbuf_remove_header) @072498c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (4007 (estimated locally),0.01 per call) tcp_input/15 (8197 (estimated locally),0.02 per call) tcp_input/15 (8197 (estimated locally),0.02 per call) tcp_input/15 (7551 (estimated locally),0.02 per call) tcp_receive.part.0/69 (1136 (estimated locally),0.00 per call) 
+  Calls: 
+lwip_htons/29 (lwip_htons) @072497e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (238 (estimated locally),0.00 per call) tcp_input/15 (8232 (estimated locally),0.02 per call) tcp_input/15 (8232 (estimated locally),0.02 per call) tcp_input/15 (8232 (estimated locally),0.02 per call) tcp_input/15 (8232 (estimated locally),0.02 per call) tcp_input/15 (52529 (estimated locally),0.15 per call) tcp_receive.part.0/69 (1328 (estimated locally),0.00 per call) tcp_receive.part.0/69 (438 (estimated locally),0.00 per call) tcp_receive.part.0/69 (145 (estimated locally),0.00 per call) tcp_receive.part.0/69 (145 (estimated locally),0.00 per call) tcp_receive.part.0/69 (145 (estimated locally),0.00 per call) tcp_receive.part.0/69 (145 (estimated locally),0.00 per call) tcp_receive.part.0/69 (502 (estimated locally),0.00 per call) tcp_receive.part.0/69 (2096 (estimated locally),0.01 per call) tcp_receive.part.0/69 (692 (estimated locally),0.00 per call) tcp_receive.part.0/69 (228 (estimated locally),0.00 per call) tcp_receive.part.0/69 (228 (estimated locally),0.00 per call) tcp_receive.part.0/69 (73 (estimated locally),0.00 per call) tcp_receive.part.0/69 (73 (estimated locally),0.00 per call) tcp_receive.part.0/69 (294 (estimated locally),0.00 per call) tcp_receive.part.0/69 (2579 (estimated locally),0.01 per call) tcp_receive.part.0/69 (2579 (estimated locally),0.01 per call) tcp_receive.part.0/69 (2484 (estimated locally),0.01 per call) tcp_receive.part.0/69 (2484 (estimated locally),0.01 per call) tcp_receive.part.0/69 (415 (estimated locally),0.00 per call) tcp_receive.part.0/69 (40 (estimated locally),0.00 per call) tcp_receive.part.0/69 (13 (estimated locally),0.00 per call) tcp_receive.part.0/69 (13 (estimated locally),0.00 per call) tcp_receive.part.0/69 (40 (estimated locally),0.00 per call) tcp_oos_insert_segment.part.0/68 (123389 (estimated locally),0.53 per call) tcp_oos_insert_segment.part.0/68 (690133 (estimated locally),2.99 per call) tcp_oos_insert_segment.part.0/68 (227744 (estimated locally),0.99 per call) tcp_free_acked_segments.isra.0/67 (4014919 (estimated locally),11.57 per call) 
+  Calls: 
+ip4_addr_isbroadcast_u32/28 (ip4_addr_isbroadcast_u32) @07249700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: tcp_input/15 (122464 (estimated locally),0.34 per call) 
+  Calls: 
+ip_data/27 (ip_data) @07269dc8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: tcp_listen_input/17 (addr)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_timewait_input/18 (addr)tcp_timewait_input/18 (addr)tcp_process/19 (addr)tcp_process/19 (addr)tcp_process/19 (addr)tcp_process/19 (addr)tcp_listen_input/17 (addr)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (addr)tcp_input/15 (addr)
+  Availability: not_available
+  Varpool flags:
+lwip_stats/26 (lwip_stats) @07269d80
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_listen_input/17 (read)tcp_listen_input/17 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)
+  Availability: not_available
+  Varpool flags:
+tcp_trigger_input_pcb_close/25 (tcp_trigger_input_pcb_close) @07249000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: recv_flags/12 (read)recv_flags/12 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_parseopt/24 (tcp_parseopt) @07235ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: tcphdr_optlen/3 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) body local optimize_size
+  Called by: tcp_process/19 (224 (estimated locally),0.00 per call) tcp_listen_input/17 (10 (estimated locally),0.00 per call) 
+  Calls: tcp_parseopt.part.0/65 (inlined) (125270 (estimated locally),0.35 per call) 
+tcp_get_next_optbyte/23 (tcp_get_next_optbyte) @07235a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: tcp_optidx/6 (read)tcp_optidx/6 (write)tcphdr_opt2/5 (read)tcphdr_opt1len/4 (read)tcphdr/2 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: tcp_parseopt.part.0/65 (512905 (estimated locally),1.43 per call) tcp_parseopt.part.0/65 (102581 (estimated locally),0.29 per call) tcp_parseopt.part.0/65 (98519 (estimated locally),0.28 per call) tcp_parseopt.part.0/65 (98519 (estimated locally),0.28 per call) tcp_parseopt.part.0/65 (102581 (estimated locally),0.29 per call) tcp_parseopt.part.0/65 (98519 (estimated locally),0.28 per call) tcp_parseopt.part.0/65 (102581 (estimated locally),0.29 per call) 
+  Calls: 
+tcp_receive/22 (tcp_receive) @072357e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:306783 (estimated locally) body local optimize_size
+  Called by: tcp_process/19 (28 (estimated locally),0.00 per call) tcp_process/19 (28 (estimated locally),0.00 per call) tcp_process/19 (28 (estimated locally),0.00 per call) tcp_process/19 (28 (estimated locally),0.00 per call) tcp_process/19 (28 (estimated locally),0.00 per call) tcp_process/19 (3 (estimated locally),0.00 per call) 
+  Calls: tcp_receive.part.0/69 (inlined) (107374 (estimated locally),0.35 per call) 
+tcp_oos_insert_segment/20 (tcp_oos_insert_segment) @071c9540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:230763 (estimated locally) body local optimize_size
+  Called by: tcp_receive.part.0/69 (332 (estimated locally),0.00 per call) tcp_receive.part.0/69 (225 (estimated locally),0.00 per call) tcp_receive.part.0/69 (406 (estimated locally),0.00 per call) 
+  Calls: tcp_oos_insert_segment.part.0/68 (inlined) (123389 (estimated locally),0.53 per call) 
+tcp_process/19 (tcp_process) @071c9c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: flags/11 (read)ackno/8 (read)seqno/7 (read)recv_flags/12 (read)recv_flags/12 (write)tcp_ticks/46 (read)flags/11 (read)ackno/8 (read)seqno/7 (read)tcphdr/2 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)flags/11 (read)ackno/8 (read)recv_acked/9 (read)recv_acked/9 (write)recv_flags/12 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)seqno/7 (read)recv_flags/12 (read)recv_flags/12 (read)flags/11 (read)ackno/8 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)recv_flags/12 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs_changed/50 (write)tcp_tw_pcbs/33 (read)tcp_tw_pcbs/33 (write)flags/11 (read)ackno/8 (read)recv_flags/12 (read)recv_flags/12 (write)
+  Referring: 
+  Function tcp_process/19 is inline copy in tcp_input/15
+  Availability: local
+  Function flags: count:813 (estimated locally) body local optimize_size
+  Called by: tcp_input/15 (inlined) (813 (estimated locally),0.00 per call) 
+  Calls: tcp_receive/22 (28 (estimated locally),0.00 per call) tcp_timer_needed/49 (1 (estimated locally),0.00 per call) tcp_pcb_purge/58 (1 (estimated locally),0.00 per call) tcp_receive/22 (28 (estimated locally),0.00 per call) tcp_timer_needed/49 (9 (estimated locally),0.00 per call) tcp_pcb_purge/58 (9 (estimated locally),0.00 per call) tcp_receive/22 (28 (estimated locally),0.00 per call) tcp_timer_needed/49 (0 (estimated locally),0.00 per call) tcp_pcb_purge/58 (0 (estimated locally),0.00 per call) tcp_receive/22 (28 (estimated locally),0.00 per call) tcp_receive/22 (28 (estimated locally),0.00 per call) tcp_rexmit/57 (1 (estimated locally),0.00 per call) tcp_rst/45 (10 (estimated locally),0.00 per call) tcp_receive/22 (3 (estimated locally),0.00 per call) tcp_abort/41 (0 (estimated locally),0.00 per call) tcp_rexmit_rto/56 (3 (estimated locally),0.00 per call) tcp_rst/45 (9 (estimated locally),0.00 per call) tcp_seg_free/55 (1 (estimated locally),0.00 per call) tcp_eff_send_mss_netif/52 (2 (estimated locally),0.00 per call) ip4_route/51 (2 (estimated locally),0.00 per call) tcp_parseopt/24 (224 (estimated locally),0.00 per call) 
+   Indirect call(3 (estimated locally),0.00 per call) 
+   Indirect call(1 (estimated locally),0.00 per call) 
+tcp_timewait_input/18 (tcp_timewait_input) @071c9460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: flags/11 (read)seqno/7 (read)ackno/8 (read)tcplen/10 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)tcp_ticks/46 (read)tcplen/10 (read)
+  Referring: 
+  Function tcp_timewait_input/18 is inline copy in tcp_input/15
+  Availability: local
+  Function flags: count:7 (estimated locally) body local optimize_size
+  Called by: tcp_input/15 (inlined) (7 (estimated locally),0.00 per call) 
+  Calls: tcp_output/44 (1 (estimated locally),0.00 per call) tcp_rst/45 (0 (estimated locally),0.00 per call) 
+tcp_listen_input/17 (tcp_listen_input) @071c90e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: flags/11 (read)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)lwip_stats/26 (read)lwip_stats/26 (write)ip_data/27 (read)ip_data/27 (read)tcphdr/2 (read)seqno/7 (read)seqno/7 (read)tcp_active_pcbs/32 (read)tcp_active_pcbs/32 (write)tcp_active_pcbs_changed/50 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)
+  Referring: 
+  Function tcp_listen_input/17 is inline copy in tcp_input/15
+  Availability: local
+  Function flags: count:146 (estimated locally) body local optimize_size
+  Called by: tcp_input/15 (inlined) (146 (estimated locally),0.00 per call) 
+  Calls: tcp_output/44 (7 (estimated locally),0.00 per call) tcp_abandon/54 (4 (estimated locally),0.00 per call) tcp_enqueue_flags/53 (10 (estimated locally),0.00 per call) tcp_eff_send_mss_netif/52 (10 (estimated locally),0.00 per call) ip4_route/51 (10 (estimated locally),0.00 per call) tcp_parseopt/24 (10 (estimated locally),0.00 per call) tcp_timer_needed/49 (10 (estimated locally),0.00 per call) tcp_next_iss/48 (10 (estimated locally),0.00 per call) tcp_alloc/47 (15 (estimated locally),0.00 per call) tcp_rst/45 (22 (estimated locally),0.00 per call) 
+   Indirect call(3 (estimated locally),0.00 per call) 
+tcp_input_delayed_close/16 (tcp_input_delayed_close) @071b3b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: recv_flags/12 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) body local optimize_size
+  Called by: tcp_input/15 (50 (estimated locally),0.00 per call) tcp_input/15 (197 (estimated locally),0.00 per call) 
+  Calls: tcp_input_delayed_close.part.0/66 (inlined) (85183 (estimated locally),0.24 per call) 
+tcp_input/15 (tcp_input) @071b38c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr/2 (write)lwip_stats/26 (read)lwip_stats/26 (write)ip_data/27 (read)ip_data/27 (read)ip_data/27 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr_optlen/3 (write)tcphdr_opt2/5 (write)tcphdr_opt1len/4 (write)tcphdr_opt1len/4 (write)tcphdr_optlen/3 (read)lwip_stats/26 (read)lwip_stats/26 (write)tcphdr_opt2/5 (write)tcphdr/2 (read)tcphdr/2 (read)tcphdr/2 (read)seqno/7 (write)tcphdr/2 (read)ackno/8 (write)tcphdr/2 (read)tcphdr/2 (read)flags/11 (write)tcplen/10 (write)tcplen/10 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_active_pcbs/32 (read)ip_data/27 (read)tcphdr/2 (read)ip_data/27 (read)ip_data/27 (read)tcp_active_pcbs/32 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_tw_pcbs/33 (read)ip_data/27 (read)tcphdr/2 (read)ip_data/27 (read)ip_data/27 (read)tcp_listen_pcbs/35 (read)ip_data/27 (read)tcphdr/2 (read)ip_data/27 (read)tcp_listen_pcbs/35 (write)lwip_stats/26 (read)lwip_stats/26 (write)inseg/1 (write)inseg/1 (write)inseg/1 (write)tcphdr/2 (read)inseg/1 (write)recv_data/13 (write)recv_flags/12 (write)recv_acked/9 (write)tcplen/10 (read)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)tcp_input_pcb/14 (write)recv_flags/12 (read)tcp_active_pcbs/32 (addr)recv_acked/9 (read)recv_acked/9 (write)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (read)recv_data/13 (write)recv_data/13 (read)recv_flags/12 (read)tcp_input_pcb/14 (write)tcp_input_pcb/14 (write)recv_data/13 (write)inseg/1 (read)inseg/1 (write)tcphdr/2 (read)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)ackno/8 (read)tcplen/10 (read)seqno/7 (read)tcphdr/2 (read)ip_data/27 (addr)ip_data/27 (addr)lwip_stats/26 (read)lwip_stats/26 (write)lwip_stats/26 (read)lwip_stats/26 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_free/34 (233248 (estimated locally),0.65 per call) pbuf_free/34 (238 (estimated locally),0.00 per call) tcp_rst/45 (79 (estimated locally),0.00 per call) lwip_htons/29 (238 (estimated locally),0.00 per call) pbuf_free/34 (589 (estimated locally),0.00 per call) tcp_output/44 (25 (estimated locally),0.00 per call) tcp_input_delayed_close/16 (50 (estimated locally),0.00 per call) pbuf_cat/43 (13 (estimated locally),0.00 per call) pbuf_free/34 (14 (estimated locally),0.00 per call) tcp_recv_null/42 (201 (estimated locally),0.00 per call) tcp_abort/41 (26 (estimated locally),0.00 per call) pbuf_free/34 (14 (estimated locally),0.00 per call) pbuf_free/34 (26 (estimated locally),0.00 per call) pbuf_split_64k/40 (1207 (estimated locally),0.00 per call) tcp_input_delayed_close/16 (197 (estimated locally),0.00 per call) tcp_free/39 (268 (estimated locally),0.00 per call) tcp_pcb_remove/38 (268 (estimated locally),0.00 per call) tcp_process/19 (inlined) (813 (estimated locally),0.00 per call) tcp_send_empty_ack/37 (104 (estimated locally),0.00 per call) tcp_process_refused_data/36 (789 (estimated locally),0.00 per call) pbuf_free/34 (146 (estimated locally),0.00 per call) tcp_listen_input/17 (inlined) (146 (estimated locally),0.00 per call) pbuf_free/34 (7 (estimated locally),0.00 per call) tcp_timewait_input/18 (inlined) (7 (estimated locally),0.00 per call) lwip_htons/29 (8232 (estimated locally),0.02 per call) lwip_htons/29 (8232 (estimated locally),0.02 per call) lwip_htonl/31 (8232 (estimated locally),0.02 per call) lwip_htonl/31 (8232 (estimated locally),0.02 per call) lwip_htons/29 (8232 (estimated locally),0.02 per call) lwip_htons/29 (8232 (estimated locally),0.02 per call) pbuf_remove_header/30 (4007 (estimated locally),0.01 per call) pbuf_remove_header/30 (8197 (estimated locally),0.02 per call) pbuf_remove_header/30 (8197 (estimated locally),0.02 per call) pbuf_remove_header/30 (7551 (estimated locally),0.02 per call) lwip_htons/29 (52529 (estimated locally),0.15 per call) ip4_addr_isbroadcast_u32/28 (122464 (estimated locally),0.34 per call) 
+   Indirect call(7 (estimated locally),0.00 per call) 
+   Indirect call(953 (estimated locally),0.00 per call) 
+   Indirect call(1302 (estimated locally),0.00 per call) 
+   Indirect call(188 (estimated locally),0.00 per call) 
+tcp_input_pcb/14 (tcp_input_pcb) @0716d948
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)
+  Availability: available
+  Varpool flags:
+recv_data/13 (recv_data) @0716d900
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)
+  Availability: available
+  Varpool flags:
+recv_flags/12 (recv_flags) @0716d870
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_input_delayed_close/16 (read)tcp_input/15 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_receive.part.0/69 (read)tcp_process/19 (read)tcp_input/15 (read)tcp_process/19 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_input/15 (write)tcp_trigger_input_pcb_close/25 (read)tcp_trigger_input_pcb_close/25 (write)
+  Availability: available
+  Varpool flags:
+flags/11 (flags) @0716d7e0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_parseopt.part.0/65 (read)tcp_process/19 (read)tcp_receive.part.0/69 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_input/15 (write)
+  Availability: available
+  Varpool flags:
+tcplen/10 (tcplen) @0716d798
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_process/19 (read)tcp_timewait_input/18 (read)tcp_process/19 (read)tcp_timewait_input/18 (read)tcp_listen_input/17 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)
+  Availability: available
+  Varpool flags:
+recv_acked/9 (recv_acked) @0716d708
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_free_acked_segments.isra.0/67 (write)tcp_input/15 (write)tcp_free_acked_segments.isra.0/67 (read)tcp_receive.part.0/69 (read)tcp_process/19 (write)tcp_process/19 (read)tcp_input/15 (read)tcp_input/15 (write)
+  Availability: available
+  Varpool flags:
+ackno/8 (ackno) @0716d678
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_timewait_input/18 (read)tcp_process/19 (read)tcp_listen_input/17 (read)tcp_input/15 (read)tcp_free_acked_segments.isra.0/67 (read)tcp_receive.part.0/69 (read)tcp_process/19 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_input/15 (write)
+  Availability: available
+  Varpool flags:
+seqno/7 (seqno) @0716d630
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_timewait_input/18 (read)tcp_receive.part.0/69 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (read)tcp_oos_insert_segment.part.0/68 (read)tcp_oos_insert_segment.part.0/68 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_input/15 (write)tcp_input/15 (read)
+  Availability: available
+  Varpool flags:
+tcp_optidx/6 (tcp_optidx) @0716d5e8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_get_next_optbyte/23 (read)tcp_get_next_optbyte/23 (write)tcp_parseopt.part.0/65 (write)tcp_parseopt.part.0/65 (read)tcp_parseopt.part.0/65 (read)tcp_parseopt.part.0/65 (read)tcp_parseopt.part.0/65 (write)tcp_parseopt.part.0/65 (read)
+  Availability: available
+  Varpool flags:
+tcphdr_opt2/5 (tcphdr_opt2) @0716d558
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_get_next_optbyte/23 (read)tcp_input/15 (write)tcp_input/15 (write)
+  Availability: available
+  Varpool flags:
+tcphdr_opt1len/4 (tcphdr_opt1len) @0716d4c8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_get_next_optbyte/23 (read)tcp_input/15 (write)tcp_input/15 (write)
+  Availability: available
+  Varpool flags:
+tcphdr_optlen/3 (tcphdr_optlen) @0716d438
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_parseopt.part.0/65 (read)tcp_parseopt.part.0/65 (read)tcp_parseopt/24 (read)tcp_parseopt.part.0/65 (read)tcp_input/15 (write)tcp_input/15 (read)
+  Availability: available
+  Varpool flags:
+tcphdr/2 (tcphdr) @0716d3a8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_timewait_input/18 (read)tcp_process/19 (read)tcp_listen_input/17 (read)tcp_get_next_optbyte/23 (read)tcp_listen_input/17 (read)tcp_listen_input/17 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_process/19 (read)tcp_process/19 (read)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)tcp_input/15 (read)
+  Availability: available
+  Varpool flags:
+inseg/1 (inseg) @0716d360
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (addr)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (addr)tcp_receive.part.0/69 (addr)tcp_receive.part.0/69 (addr)tcp_receive.part.0/69 (addr)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (read)tcp_receive.part.0/69 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (write)tcp_input/15 (read)tcp_input/15 (write)
+  Availability: available
+  Varpool flags:
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:tcp_get_next_optbyte:0
+Time profile order in expand_all_functions:tcp_parseopt:0
+Time profile order in expand_all_functions:tcp_input_delayed_close:0
+Time profile order in expand_all_functions:tcp_free_acked_segments.isra.0:0
+Time profile order in expand_all_functions:tcp_oos_insert_segment:0
+Time profile order in expand_all_functions:tcp_receive:0
+Time profile order in expand_all_functions:tcp_input:0
+Time profile order in expand_all_functions:tcp_trigger_input_pcb_close:0
+Trivially needed variables: tcp_input_pcb recv_data recv_flags flags tcplen recv_acked ackno seqno tcp_optidx tcphdr_opt2 tcphdr_opt1len tcphdr_optlen tcphdr inseg
+Removing variables:
+
+Final Symbol table:
+
+tcp_free_acked_segments.isra.0/67 (tcp_free_acked_segments.isra.0) @074682a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:346980 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+tcp_segs_free/64 (tcp_segs_free) @06fbbc40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pbuf_clen/63 (pbuf_clen) @06fbba80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_seg_copy/62 (tcp_seg_copy) @06fbb8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_update_rcv_ann_wnd/61 (tcp_update_rcv_ann_wnd) @06fbb7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pbuf_realloc/60 (pbuf_realloc) @06fbb700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_rexmit_fast/59 (tcp_rexmit_fast) @06fbb620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_pcb_purge/58 (tcp_pcb_purge) @06fbb0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_rexmit/57 (tcp_rexmit) @06fbb000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_rexmit_rto/56 (tcp_rexmit_rto) @07293d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_seg_free/55 (tcp_seg_free) @07293380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_abandon/54 (tcp_abandon) @072939a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_enqueue_flags/53 (tcp_enqueue_flags) @072938c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_eff_send_mss_netif/52 (tcp_eff_send_mss_netif) @072937e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ip4_route/51 (ip4_route) @07293700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_active_pcbs_changed/50 (tcp_active_pcbs_changed) @07296f78
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+tcp_timer_needed/49 (tcp_timer_needed) @07293620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_next_iss/48 (tcp_next_iss) @07293540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_alloc/47 (tcp_alloc) @07293460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_ticks/46 (tcp_ticks) @072963f0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+tcp_rst/45 (tcp_rst) @07293000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_output/44 (tcp_output) @07249620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pbuf_cat/43 (pbuf_cat) @07249540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_recv_null/42 (tcp_recv_null) @07249460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_abort/41 (tcp_abort) @072490e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pbuf_split_64k/40 (pbuf_split_64k) @07249ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_free/39 (tcp_free) @07249e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_pcb_remove/38 (tcp_pcb_remove) @07249d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_send_empty_ack/37 (tcp_send_empty_ack) @07249c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_process_refused_data/36 (tcp_process_refused_data) @07249b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_listen_pcbs/35 (tcp_listen_pcbs) @07291288
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+pbuf_free/34 (pbuf_free) @07249a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+tcp_tw_pcbs/33 (tcp_tw_pcbs) @072911b0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+tcp_active_pcbs/32 (tcp_active_pcbs) @07291168
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+lwip_htonl/31 (lwip_htonl) @072499a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pbuf_remove_header/30 (pbuf_remove_header) @072498c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+lwip_htons/29 (lwip_htons) @072497e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ip4_addr_isbroadcast_u32/28 (ip4_addr_isbroadcast_u32) @07249700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ip_data/27 (ip_data) @07269dc8
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+lwip_stats/26 (lwip_stats) @07269d80
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+tcp_trigger_input_pcb_close/25 (tcp_trigger_input_pcb_close) @07249000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_parseopt/24 (tcp_parseopt) @07235ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+tcp_get_next_optbyte/23 (tcp_get_next_optbyte) @07235a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+tcp_receive/22 (tcp_receive) @072357e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:306783 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+tcp_oos_insert_segment/20 (tcp_oos_insert_segment) @071c9540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:230763 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+tcp_input_delayed_close/16 (tcp_input_delayed_close) @071b3b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:357913 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+tcp_input/15 (tcp_input) @071b38c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+tcp_input_pcb/14 (tcp_input_pcb) @0716d948
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+recv_data/13 (recv_data) @0716d900
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d948
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+recv_flags/12 (recv_flags) @0716d870
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d900
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+flags/11 (flags) @0716d7e0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d870
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+tcplen/10 (tcplen) @0716d798
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d7e0
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+recv_acked/9 (recv_acked) @0716d708
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d798
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+ackno/8 (ackno) @0716d678
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d708
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+seqno/7 (seqno) @0716d630
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d678
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+tcp_optidx/6 (tcp_optidx) @0716d5e8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d630
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+tcphdr_opt2/5 (tcphdr_opt2) @0716d558
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d5e8
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+tcphdr_opt1len/4 (tcphdr_opt1len) @0716d4c8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d558
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+tcphdr_optlen/3 (tcphdr_optlen) @0716d438
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d4c8
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+tcphdr/2 (tcphdr) @0716d3a8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d438
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+inseg/1 (inseg) @0716d360
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @0716d3a8
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:

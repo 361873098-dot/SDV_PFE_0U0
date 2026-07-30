@@ -1,0 +1,451 @@
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+CSWTCH.8/14 (CSWTCH.8) @079a7048
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: 
+  Referring: SystemInit/6 (read)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+SystemWfiConfig.part.0/12 (SystemWfiConfig.part.0) @07649d20
+  Type: function definition analyzed
+  Visibility: artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: SystemWfiConfig/10 (134217728 (estimated locally),0.12 per call) 
+  Calls: 
+NVIC_SetPriorityGrouping/11 (NVIC_SetPriorityGrouping) @078d4380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SystemInit/6 (10737418 (estimated locally),1.00 per call) 
+  Calls: 
+SystemWfiConfig/10 (SystemWfiConfig) @07649620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: SystemInit/6 (10737419 (estimated locally),1.00 per call) 
+  Calls: SystemWfiConfig.part.0/12 (134217728 (estimated locally),0.12 per call) 
+SystemInit/6 (SystemInit) @076497e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: CSWTCH.8/14 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:10737418 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SystemWfiConfig/10 (10737419 (estimated locally),1.00 per call) NVIC_SetPriorityGrouping/11 (10737418 (estimated locally),1.00 per call) 
+Sys_GetCoreID/5 (Sys_GetCoreID) @07649540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+default_interrupt_routine/4 (default_interrupt_routine) @076492a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body executed_once optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/3 (startup_go_to_user_mode) @07649000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+RESET_CATCH_CORE/2 (RESET_CATCH_CORE) @076477e0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+SystemWfiConfig.part.0 ()
+{
+  uint32 u32EdbStatus;
+  uint32 U32MajorMinor;
+  uint8 Minor;
+  uint8 Major;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct MDM_AP_Type *)1372587520B].DAP_EN_CTRL;
+  _2 = _1 & 2147483647;
+  MEM[(struct MDM_AP_Type *)1372587520B].DAP_EN_CTRL ={v} _2;
+  # DEBUG BEGIN_STMT
+  _3 ={v} MEM[(struct MDM_AP_Type *)1372587520B].DAP_EN_CTRL;
+  _4 = _3 & 3221225471;
+  MEM[(struct MDM_AP_Type *)1372587520B].DAP_EN_CTRL ={v} _4;
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct MDM_AP_Type *)1372587520B].DAP_EN_CTRL;
+  _6 = _5 & 3758096383;
+  MEM[(struct MDM_AP_Type *)1372587520B].DAP_EN_CTRL ={v} _6;
+  # DEBUG BEGIN_STMT
+  _7 ={v} MEM[(struct MDM_AP_Type *)1372587520B].DAP_EN_CTRL;
+  _8 = _7 & 4026531839;
+  MEM[(struct MDM_AP_Type *)1372587520B].DAP_EN_CTRL ={v} _8;
+  # DEBUG BEGIN_STMT
+  _9 ={v} MEM[(struct MDM_AP_Type *)1372587520B].CONTROL;
+  _10 = _9 | 256;
+  MEM[(struct MDM_AP_Type *)1372587520B].CONTROL ={v} _10;
+  # DEBUG BEGIN_STMT
+  _11 ={v} MEM[(struct MDM_AP_Type *)1372587520B].CONTROL;
+  _12 = _11 | 512;
+  MEM[(struct MDM_AP_Type *)1372587520B].CONTROL ={v} _12;
+  # DEBUG BEGIN_STMT
+  _13 ={v} MEM[(struct MDM_AP_Type *)1372587520B].CONTROL;
+  _14 = _13 | 1024;
+  MEM[(struct MDM_AP_Type *)1372587520B].CONTROL ={v} _14;
+  # DEBUG BEGIN_STMT
+  _15 ={v} MEM[(struct MDM_AP_Type *)1372587520B].CORTEX_A53_A0_IP_DBG;
+  _16 = _15 | 32;
+  MEM[(struct MDM_AP_Type *)1372587520B].CORTEX_A53_A0_IP_DBG ={v} _16;
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+SystemWfiConfig ()
+{
+  uint8 Major;
+  uint8 Minor;
+  uint32 U32MajorMinor;
+  uint32 u32EdbStatus;
+  unsigned char _2;
+  long unsigned int _3;
+  unsigned char _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG u32EdbStatus => 0
+  # DEBUG BEGIN_STMT
+  U32MajorMinor_8 ={v} MEM[(struct SIUL2_Type *)1074380800B].MIDR1;
+  # DEBUG U32MajorMinor => U32MajorMinor_8
+  # DEBUG BEGIN_STMT
+  _2 = (unsigned char) U32MajorMinor_8;
+  Minor_9 = _2 & 15;
+  # DEBUG Minor => Minor_9
+  # DEBUG BEGIN_STMT
+  _3 = U32MajorMinor_8 >> 4;
+  _4 = (unsigned char) _3;
+  Major_10 = _4 & 15;
+  # DEBUG Major => Major_10
+  # DEBUG BEGIN_STMT
+  if (Major_10 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  if (Minor_9 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 4> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct SECURITY_Type *)1074252032B].EXT_DBGSTAT;
+  u32EdbStatus_11 = _5 & 1;
+  # DEBUG u32EdbStatus => u32EdbStatus_11
+  # DEBUG BEGIN_STMT
+  if (u32EdbStatus_11 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 134217728]:
+  SystemWfiConfig.part.0 ();
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+SystemInit ()
+{
+  uint32 ccsidr;
+  uint32 sets;
+  uint32 ways;
+  uint32 coreMask;
+  uint32 i;
+  unsigned char _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _14;
+  long unsigned int _28;
+  long unsigned int _30;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  unsigned int _45;
+  long unsigned int _48;
+
+  <bb 2> [local count: 10737418]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY Sys_GetCoreID
+  # DEBUG BEGIN_STMT
+  _44 ={v} MEM[(struct MSCM_Type *)1075412992B].CPXNUM;
+  _48 = _44 & 255;
+  # DEBUG coreId => _48
+  # DEBUG BEGIN_STMT
+  _45 = _48;
+  if (_45 <= 7)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 5368709]:
+<L14>:
+  coreMask_15 = 0;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 5368709]:
+<L15>:
+  _1 = CSWTCH.8[_45];
+  _14 = (long unsigned int) _1;
+  coreMask_13 = _14;
+
+  <bb 5> [local count: 10737418]:
+  # coreMask_10 = PHI <coreMask_13(4), coreMask_15(3)>
+<L16>:
+<L13>:
+  # DEBUG coreMask => coreMask_10
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 1063004407]:
+  # DEBUG BEGIN_STMT
+  _2 ={v} MEM[(struct MSCM_Type *)1075412992B].IRSPRC[i_9];
+  _3 = (short unsigned int) coreMask_10;
+  _4 = _2 | _3;
+  MEM[(struct MSCM_Type *)1075412992B].IRSPRC[i_9] ={v} _4;
+  # DEBUG BEGIN_STMT
+  i_26 = i_9 + 1;
+  # DEBUG i => i_26
+
+  <bb 7> [local count: 1073741824]:
+  # i_9 = PHI <0(5), i_26(6)>
+  # DEBUG i => i_9
+  # DEBUG BEGIN_STMT
+  if (i_9 != 240)
+    goto <bb 6>; [99.00%]
+  else
+    goto <bb 8>; [1.00%]
+
+  <bb 8> [local count: 10737418]:
+  # DEBUG BEGIN_STMT
+  NVIC_SetPriorityGrouping (0);
+  # DEBUG BEGIN_STMT
+  _5 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CCR;
+  _6 = _5 | 1;
+  MEM[(struct S32_SCB_Type *)3758153728B].CCR ={v} _6;
+  # DEBUG BEGIN_STMT
+  MEM[(struct S32_SCB_Type *)3758153728B].SHPR3 ={v} 0;
+  # DEBUG BEGIN_STMT
+  _7 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CPACR;
+  _8 = _7 | 15728640;
+  MEM[(struct S32_SCB_Type *)3758153728B].CPACR ={v} _8;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY sys_m7_cache_init
+  # DEBUG BEGIN_STMT
+  # DEBUG ccsidr => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG sets => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG ways => 0
+  # DEBUG BEGIN_STMT
+  MEM[(struct S32_SCB_Type *)3758153728B].CSSELR ={v} 0;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  ccsidr_27 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CCSIDR;
+  # DEBUG ccsidr => ccsidr_27
+  # DEBUG BEGIN_STMT
+  _28 = ccsidr_27 >> 13;
+  sets_29 = _28 & 32767;
+  # DEBUG sets => sets_29
+
+  <bb 9> [local count: 97612895]:
+  # sets_32 = PHI <sets_29(8), sets_39(13)>
+  # DEBUG sets => sets_32
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _30 = ccsidr_27 >> 3;
+  ways_31 = _30 & 1023;
+  # DEBUG ways => ways_31
+
+  <bb 10> [local count: 887389963]:
+  # ways_35 = PHI <ways_31(9), ways_38(14)>
+  # DEBUG ways => ways_35
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _33 = sets_32 << 5;
+  _34 = _33 & 16352;
+  _36 = ways_35 << 30;
+  _37 = _34 | _36;
+  MEM[(struct S32_SCB_Type *)3758153728B].DCISW ={v} _37;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  ways_38 = ways_35 + 4294967295;
+  # DEBUG ways => ways_38
+  if (ways_35 != 0)
+    goto <bb 14>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 14> [local count: 789777066]:
+  goto <bb 10>; [100.00%]
+
+  <bb 11> [local count: 97612896]:
+  # DEBUG BEGIN_STMT
+  sets_39 = sets_32 + 4294967295;
+  # DEBUG sets => sets_39
+  if (sets_32 != 0)
+    goto <bb 13>; [89.00%]
+  else
+    goto <bb 12>; [11.00%]
+
+  <bb 13> [local count: 86875477]:
+  goto <bb 9>; [100.00%]
+
+  <bb 12> [local count: 10737419]:
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  _40 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CCR;
+  _41 = _40 | 65536;
+  MEM[(struct S32_SCB_Type *)3758153728B].CCR ={v} _41;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  # DEBUG BEGIN_STMT
+  MEM[(struct S32_SCB_Type *)3758153728B].ICIALLU ={v} 0;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  # DEBUG BEGIN_STMT
+  _42 ={v} MEM[(struct S32_SCB_Type *)3758153728B].CCR;
+  _43 = _42 | 131072;
+  MEM[(struct S32_SCB_Type *)3758153728B].CCR ={v} _43;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  # DEBUG ways => NULL
+  # DEBUG sets => NULL
+  # DEBUG ccsidr => NULL
+  # DEBUG BEGIN_STMT
+  SystemWfiConfig ();
+  return;
+
+}
+
+
+Sys_GetCoreID ()
+{
+  long unsigned int _1;
+  uint8 _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct MSCM_Type *)1075412992B].CPXNUM;
+  _3 = (uint8) _1;
+  return _3;
+
+}
+
+
+default_interrupt_routine ()
+{
+  <bb 2> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+}
+
+
+startup_go_to_user_mode ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

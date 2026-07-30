@@ -1,0 +1,81 @@
+pfe_ecc_err_irq_unmask (const struct pfe_ecc_err_t * ecc_err)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = ecc_err->ecc_err_base_va;
+  pfe_ecc_err_cfg_irq_unmask (_1);
+  return;
+
+}
+
+
+pfe_ecc_err_irq_mask (const struct pfe_ecc_err_t * ecc_err)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = ecc_err->ecc_err_base_va;
+  pfe_ecc_err_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_ecc_err_isr (const struct pfe_ecc_err_t * ecc_err)
+{
+  errno_t ret;
+  errno_t D.7290;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  # DEBUG BEGIN_STMT
+  _1 = ecc_err->ecc_err_base_va;
+  ret = pfe_ecc_err_cfg_isr (_1);
+  # DEBUG BEGIN_STMT
+  D.7290 = ret;
+  return D.7290;
+
+}
+
+
+pfe_ecc_err_destroy (struct pfe_ecc_err_t * ecc_err)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = ecc_err->ecc_err_base_va;
+  pfe_ecc_err_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_ecc_err_create (addr_t cbus_base_va, addr_t ecc_err_base)
+{
+  struct pfe_ecc_err_t * ecc_err;
+  struct pfe_ecc_err_t * D.7288;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ecc_err = &ecc_err_instance;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (ecc_err, 0, 12);
+  # DEBUG BEGIN_STMT
+  ecc_err->cbus_base_va = cbus_base_va;
+  # DEBUG BEGIN_STMT
+  ecc_err->ecc_err_base_offset = ecc_err_base;
+  # DEBUG BEGIN_STMT
+  _1 = ecc_err->cbus_base_va;
+  _2 = ecc_err->ecc_err_base_offset;
+  _3 = _1 + _2;
+  ecc_err->ecc_err_base_va = _3;
+  # DEBUG BEGIN_STMT
+  _4 = ecc_err->ecc_err_base_va;
+  pfe_ecc_err_cfg_irq_unmask_all (_4);
+  # DEBUG BEGIN_STMT
+  D.7288 = ecc_err;
+  return D.7288;
+
+}
+
+

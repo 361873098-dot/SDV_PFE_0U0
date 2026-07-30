@@ -1,0 +1,148 @@
+oal_job_create (void (*oal_job_func) (void *) func, void * arg, const char_t * name, oal_prio_t prio, struct oal_job_t * new_job)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG job => new_job_1(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  new_job_1(D)->func = func_3(D);
+  # DEBUG BEGIN_STMT
+  new_job_1(D)->arg = arg_5(D);
+  # DEBUG BEGIN_STMT
+  new_job_1(D)->name = name_7(D);
+  # DEBUG BEGIN_STMT
+  return new_job_1(D);
+
+}
+
+
+oal_job_drain (const struct oal_job_t * job)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret_val => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+oal_job_run (struct oal_job_t * job)
+{
+  errno_t ret_val;
+  const char_t * _1;
+  long int _2;
+  void (*<Te3>) (void *) _3;
+  void * _4;
+  const char_t * _5;
+  long int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = job_12(D)->name;
+  _2 = autolibc_strcmp ("HIF TX JOB", _1);
+  if (_2 == 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (94);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 = job_12(D)->func;
+  if (_3 == 0B)
+    goto <bb 5>; [10.21%]
+  else
+    goto <bb 6>; [89.79%]
+
+  <bb 5> [local count: 109629040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Job pointer was NULL\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/oal_job_autosar.c", 70, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret_val => 22
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 964112785]:
+  # DEBUG BEGIN_STMT
+  _4 = job_12(D)->arg;
+  _3 (_4);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret_val => 0
+
+  <bb 7> [local count: 1073741824]:
+  # ret_val_7 = PHI <22(5), 0(6)>
+  # DEBUG ret_val => ret_val_7
+  # DEBUG BEGIN_STMT
+  _5 = job_12(D)->name;
+  _6 = autolibc_strcmp ("HIF TX JOB", _5);
+  if (_6 == 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 8> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (94);
+
+  <bb 9> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return ret_val_7;
+
+}
+
+
+oal_mutex_unlock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

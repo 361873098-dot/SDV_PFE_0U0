@@ -1,0 +1,255 @@
+
+
+ local analysis of sio_tryread
+   scanning: return 0;
+Function is locally const.
+
+
+ local analysis of sio_send
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of sio_open
+   scanning: return 0B;
+Function is locally const.
+
+
+ local analysis of sys_now
+   scanning: _2 = g_sys_milliseconds;
+  scanning: return _2;
+Function is locally const.
+callgraph:
+
+sio_tryread/4 (sio_tryread) @06df0b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7888
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sio_send/3 (sio_send) @06df08c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7a68
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sio_open/2 (sio_open) @06df0620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7708
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sys_now/1 (sys_now) @06df0380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7928
+  References: g_sys_milliseconds/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+sio_tryread/4 (sio_tryread) @06df0b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7888
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sio_send/3 (sio_send) @06df08c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7a68
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sio_open/2 (sio_open) @06df0620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7708
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sys_now/1 (sys_now) @06df0380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7928
+  References: g_sys_milliseconds/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+sio_tryread: malloc_bottom
+sio_send: malloc_bottom
+sio_open: malloc_bottom
+sys_now: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+sio_tryread: malloc_bottom
+sio_send: malloc_bottom
+sio_open: malloc_bottom
+sys_now: malloc_bottom
+callgraph:
+
+sio_tryread/4 (sio_tryread) @06df0b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7a68
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sio_send/3 (sio_send) @06df08c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7708
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sio_open/2 (sio_open) @06df0620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7988
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sys_now/1 (sys_now) @06df0380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7a88
+  References: g_sys_milliseconds/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+sio_tryread/4 (sio_tryread) @06df0b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7a68
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sio_send/3 (sio_send) @06df08c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7708
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sio_open/2 (sio_open) @06df0620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7988
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+sys_now/1 (sys_now) @06df0380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ab7a88
+  References: g_sys_milliseconds/5 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: sys_now
+Function found not to call free: sio_open
+Function found not to call free: sio_send
+Function found not to call free: sio_tryread
+sio_tryread (void * fd, u8_t * data, u32_t len)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+sio_send (u8_t c, void * fd)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+sio_open (u8_t devnum)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0B;
+
+}
+
+
+sys_now ()
+{
+  u32_t _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = g_sys_milliseconds;
+  return _2;
+
+}
+
+

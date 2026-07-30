@@ -1,0 +1,1492 @@
+pfe_if_db_unlock (uint32_t session_id)
+{
+  errno_t ret;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  errno_t _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_8 = 120;
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (90);
+  # DEBUG BEGIN_STMT
+  _1 = if_db_context.is_locked;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _2 = if_db_context.session_id;
+  if (session_id_11(D) == _2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = if_db_context.session_id;
+  _4 = ~_3;
+  _5 = _4 << 4;
+  if_db_context.session_id = _5;
+  # DEBUG BEGIN_STMT
+  if_db_context.is_locked = 0;
+  # DEBUG BEGIN_STMT
+  ret_14 = 0;
+  # DEBUG ret => ret_14
+
+  <bb 5> :
+  # ret_6 = PHI <ret_8(2), ret_8(3), ret_14(4)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (90);
+  # DEBUG BEGIN_STMT
+  _16 = ret_6;
+  return _16;
+
+}
+
+
+pfe_if_db_lock_owned (uint32_t owner_id)
+{
+  errno_t ret;
+  unsigned char _1;
+  errno_t _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_4 = 120;
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (89);
+  # DEBUG BEGIN_STMT
+  _1 = if_db_context.is_locked;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  if (owner_id_7(D) <= 15)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if_db_context.session_id = owner_id_7(D);
+  # DEBUG BEGIN_STMT
+  if_db_context.is_locked = 1;
+  # DEBUG BEGIN_STMT
+  ret_10 = 0;
+  # DEBUG ret => ret_10
+
+  <bb 5> :
+  # ret_2 = PHI <ret_4(2), ret_4(3), ret_10(4)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (89);
+  # DEBUG BEGIN_STMT
+  _12 = ret_2;
+  return _12;
+
+}
+
+
+pfe_if_db_lock (uint32_t * session_id)
+{
+  errno_t ret;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  errno_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (88);
+  # DEBUG BEGIN_STMT
+  _1 = if_db_context.is_locked;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = if_db_context.seed;
+  _3 = _2 + 1;
+  if_db_context.seed = _3;
+  # DEBUG BEGIN_STMT
+  _4 = if_db_context.seed;
+  _5 = _4 << 4;
+  if_db_context.session_id = _5;
+  # DEBUG BEGIN_STMT
+  _6 = if_db_context.session_id;
+  *session_id_14(D) = _6;
+  # DEBUG BEGIN_STMT
+  if_db_context.is_locked = 1;
+  # DEBUG BEGIN_STMT
+  ret_17 = 0;
+  # DEBUG ret => ret_17
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_11 = 120;
+  # DEBUG ret => ret_11
+
+  <bb 5> :
+  # ret_7 = PHI <ret_17(3), ret_11(4)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (88);
+  # DEBUG BEGIN_STMT
+  _19 = ret_7;
+  return _19;
+
+}
+
+
+pfe_log_if_db_drop_all (const struct pfe_if_db_t * db, uint32_t session_id)
+{
+  int32_t ii;
+  errno_t ret;
+  int _1;
+  <unnamed type> _2;
+  long unsigned int _3;
+  signed int _4;
+  long unsigned int _5;
+  long int _6;
+  long unsigned int ii.11_7;
+  errno_t _29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_if_db_check_precondition (&if_db_context, session_id_16(D));
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_28 = 115;
+  # DEBUG ret => ret_28
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = db_18(D)->type;
+  if (_2 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ii_24 = 9;
+  # DEBUG ii => ii_24
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  pfe_if_db_phy_ifs[ii_9].info.iface = 0B;
+  # DEBUG BEGIN_STMT
+  ii_26 = ii_9 + -1;
+  # DEBUG ii => ii_26
+
+  <bb 7> :
+  # ii_9 = PHI <ii_24(5), ii_26(6)>
+  # DEBUG ii => ii_9
+  # DEBUG BEGIN_STMT
+  if (ii_9 >= 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (87);
+  # DEBUG BEGIN_STMT
+  _3 = pfe_if_db_log_ifs.occupied_items_count;
+  _4 = (signed int) _3;
+  # DEBUG BEGIN_STMT
+  _5 = pfe_if_db_log_ifs.occupied_items_count;
+  _6 = (long int) _5;
+  ii_20 = _6 + -1;
+  # DEBUG ii => ii_20
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ii.11_7 = (long unsigned int) ii_10;
+  isa_release_subscript (&pfe_if_db_log_ifs, ii.11_7);
+  # DEBUG BEGIN_STMT
+  ii_23 = ii_10 + -1;
+  # DEBUG ii => ii_23
+
+  <bb 10> :
+  # ii_10 = PHI <ii_20(8), ii_23(9)>
+  # DEBUG ii => ii_10
+  # DEBUG BEGIN_STMT
+  if (ii_10 >= 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (87);
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  ret_27 = 0;
+  # DEBUG ret => ret_27
+
+  <bb 13> :
+  # ret_8 = PHI <ret_28(3), ret_27(12)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _29 = ret_8;
+  return _29;
+
+}
+
+
+pfe_if_db_get_next (struct pfe_if_db_t * db, uint32_t session_id, struct pfe_if_db_entry_t * * db_entry)
+{
+  errno_t ret;
+  int _1;
+  <unnamed type> _2;
+  uint32_t * _3;
+  struct pfe_if_db_entry_t * _4;
+  errno_t _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_if_db_check_precondition (&if_db_context, session_id_8(D));
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_15 = 115;
+  # DEBUG ret => ret_15
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = db_10(D)->cur_crit;
+  _3 = &db_10(D)->next_item;
+  _4 = pfe_if_db_get_single_entry (db_10(D), _2, db_10(D)->cur_crit_arg, _3);
+  *db_entry_12(D) = _4;
+  # DEBUG BEGIN_STMT
+  ret_14 = 0;
+  # DEBUG ret => ret_14
+
+  <bb 5> :
+  # ret_5 = PHI <ret_15(3), ret_14(4)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  _16 = ret_5;
+  return _16;
+
+}
+
+
+pfe_if_db_get_single (const struct pfe_if_db_t * db, uint32_t session_id, pfe_if_db_get_criterion_t crit, void * arg, struct pfe_if_db_entry_t * * db_entry)
+{
+  const addr_t owner;
+  uint32_t iter;
+  errno_t ret;
+  union crit_arg_t argument;
+  int arg.9_1;
+  unsigned char _2;
+  unsigned int arg.10_3;
+  <unnamed type> _4;
+  int _5;
+  struct pfe_if_db_entry_t * _6;
+  errno_t _35;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  argument = {};
+  # DEBUG BEGIN_STMT
+  ret_14 = 0;
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (crit_15(D)) <default: <L5> [INV], case 0: <L15> [INV], case 1: <L1> [INV], case 2: <L2> [INV], case 3: <L3> [INV], case 4: <L4> [INV]>
+
+  <bb 3> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  arg.9_1 = (int) arg_16(D);
+  _2 = (unsigned char) arg.9_1;
+  argument.if_id = _2;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  ret_23 = pfe_if_db_assign_arg (arg_16(D), crit_15(D), &argument, db_entry_19(D));
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  ret_21 = pfe_if_db_assign_arg (arg_16(D), crit_15(D), &argument, db_entry_19(D));
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  arg.10_3 = (unsigned int) arg_16(D);
+  owner_17 = arg.10_3 & 255;
+  # DEBUG owner => owner_17
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = (<unnamed type>) owner_17;
+  argument.owner = _4;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_if_db.c", 808, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_27 = 115;
+  # DEBUG ret => ret_27
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # ret_7 = PHI <ret_14(2), ret_14(3), ret_23(4), ret_21(5), ret_14(6), ret_27(7)>
+<L15>:
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _5 = pfe_if_db_check_precondition (&if_db_context, session_id_28(D));
+  if (_5 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ret_30 = 115;
+  # DEBUG ret => ret_30
+
+  <bb 11> :
+  # ret_8 = PHI <ret_7(9), ret_30(10)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  if (ret_8 != 115)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  iter = 0;
+  # DEBUG BEGIN_STMT
+  _6 = pfe_if_db_get_single_entry (db_32(D), crit_15(D), argument, &iter);
+  *db_entry_19(D) = _6;
+
+  <bb 13> :
+  # ret_9 = PHI <ret_7(8), ret_8(11), ret_8(12)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  _35 = ret_9;
+  argument ={v} {CLOBBER};
+  iter ={v} {CLOBBER};
+  return _35;
+
+}
+
+
+pfe_if_db_get_first (struct pfe_if_db_t * db, uint32_t session_id, pfe_if_db_get_criterion_t crit, void * arg, struct pfe_if_db_entry_t * * db_entry)
+{
+  const addr_t owner;
+  errno_t ret;
+  int _1;
+  <unnamed type> _2;
+  int arg.7_3;
+  unsigned char _4;
+  union crit_arg_t * _5;
+  union crit_arg_t * _6;
+  unsigned int arg.8_7;
+  <unnamed type> _8;
+  <unnamed type> _9;
+  uint32_t * _10;
+  struct pfe_if_db_entry_t * _11;
+  errno_t _39;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_16 = 0;
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  _1 = pfe_if_db_check_precondition (&if_db_context, session_id_18(D));
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_38 = 115;
+  # DEBUG ret => ret_38
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  db_20(D)->cur_crit = crit_21(D);
+  # DEBUG BEGIN_STMT
+  _2 = db_20(D)->cur_crit;
+  switch (_2) <default: <L7> [INV], case 0: <L13> [INV], case 1: <L3> [INV], case 2: <L4> [INV], case 3: <L5> [INV], case 4: <L6> [INV]>
+
+  <bb 5> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  arg.7_3 = (int) arg_23(D);
+  _4 = (unsigned char) arg.7_3;
+  db_20(D)->cur_crit_arg.if_id = _4;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  _5 = &db_20(D)->cur_crit_arg;
+  ret_30 = pfe_if_db_assign_arg (arg_23(D), crit_21(D), _5, db_entry_26(D));
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 7> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  _6 = &db_20(D)->cur_crit_arg;
+  ret_28 = pfe_if_db_assign_arg (arg_23(D), crit_21(D), _6, db_entry_26(D));
+  # DEBUG ret => ret_28
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  arg.8_7 = (unsigned int) arg_23(D);
+  owner_24 = arg.8_7 & 255;
+  # DEBUG owner => owner_24
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = (<unnamed type>) owner_24;
+  db_20(D)->cur_crit_arg.owner = _8;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_if_db.c", 724, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_34 = 115;
+  # DEBUG ret => ret_34
+  # DEBUG BEGIN_STMT
+
+  <bb 10> :
+  # ret_12 = PHI <ret_16(4), ret_16(5), ret_30(6), ret_28(7), ret_16(8), ret_34(9)>
+<L13>:
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 == 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  db_20(D)->next_item = 0;
+  # DEBUG BEGIN_STMT
+  _9 = db_20(D)->cur_crit;
+  _10 = &db_20(D)->next_item;
+  _11 = pfe_if_db_get_single_entry (db_20(D), _9, db_20(D)->cur_crit_arg, _10);
+  *db_entry_26(D) = _11;
+
+  <bb 12> :
+  # ret_13 = PHI <ret_38(3), ret_12(10), ret_12(11)>
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  _39 = ret_13;
+  return _39;
+
+}
+
+
+pfe_if_db_remove (struct pfe_if_db_t * db, uint32_t session_id, struct pfe_if_db_entry_t * entry)
+{
+  int32_t item_index;
+  errno_t ret;
+  int _1;
+  <unnamed type> _2;
+  long unsigned int _3;
+  long unsigned int item_index.6_4;
+  long unsigned int _5;
+  long unsigned int _6;
+  errno_t _29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_12 = 22;
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  _1 = pfe_if_db_check_precondition (&if_db_context, session_id_14(D));
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_28 = 115;
+  # DEBUG ret => ret_28
+  goto <bb 15>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = db_16(D)->type;
+  if (_2 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (entry_18(D) >= &pfe_if_db_phy_ifs[0])
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  if (entry_18(D) < &pfe_if_db_phy_ifs[10])
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  entry_18(D)->info.iface = 0B;
+  # DEBUG BEGIN_STMT
+  ret_26 = 0;
+  # DEBUG ret => ret_26
+  goto <bb 15>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  ret_27 = 2;
+  # DEBUG ret => ret_27
+  goto <bb 15>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (86);
+  # DEBUG BEGIN_STMT
+  item_index_20 = isa_release (&pfe_if_db_log_ifs, entry_18(D));
+  # DEBUG item_index => item_index_20
+  # DEBUG BEGIN_STMT
+  if (item_index_20 != -1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _3 = db_16(D)->next_item;
+  item_index.6_4 = (long unsigned int) item_index_20;
+  if (_3 > item_index.6_4)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _5 = db_16(D)->next_item;
+  _6 = _5 + 4294967295;
+  db_16(D)->next_item = _6;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  ret_23 = 0;
+  # DEBUG ret => ret_23
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  ret_21 = 2;
+  # DEBUG ret => ret_21
+
+  <bb 14> :
+  # ret_7 = PHI <ret_23(12), ret_21(13)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (86);
+
+  <bb 15> :
+  # ret_8 = PHI <ret_28(3), ret_27(8), ret_7(14), ret_26(7)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _29 = ret_8;
+  return _29;
+
+}
+
+
+pfe_if_db_add (struct pfe_if_db_t * db, uint32_t session_id, void * iface, pfe_ct_phy_if_id_t owner)
+{
+  pfe_ct_phy_if_id_t id;
+  errno_t ret;
+  struct pfe_if_db_entry_t * new_entry;
+  <unnamed type> _1;
+  int _2;
+  void * _3;
+  int _4;
+  struct pfe_if_db_entry_t * _5;
+  int _6;
+  struct pfe_if_db_entry_t * new_entry.0_7;
+  void * _8;
+  struct pfe_if_db_entry_t * new_entry.1_9;
+  struct pfe_if_db_entry_t * new_entry.2_10;
+  struct pfe_if_db_entry_t * new_entry.3_11;
+  struct pfe_if_db_entry_t * new_entry.4_12;
+  struct pfe_if_db_entry_t * new_entry.5_13;
+  errno_t _43;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  new_entry = 0B;
+  # DEBUG BEGIN_STMT
+  ret_21 = 22;
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = db_22(D)->type;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  id_36 = pfe_phy_if_get_id (iface_24(D));
+  # DEBUG id => id_36
+  # DEBUG BEGIN_STMT
+  _2 = (int) id_36;
+  _3 = pfe_if_db_phy_ifs[_2].info.iface;
+  if (_3 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = (int) id_36;
+  _5 = &pfe_if_db_phy_ifs[_4];
+  new_entry = _5;
+  # DEBUG BEGIN_STMT
+  ret_39 = 0;
+  # DEBUG ret => ret_39
+  goto <bb 15>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_37 = 115;
+  # DEBUG ret => ret_37
+  goto <bb 15>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_26 = pfe_if_db_get_first (db_22(D), session_id_23(D), 2, iface_24(D), &new_entry);
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  _6 = pfe_if_db_check_precondition (&if_db_context, session_id_23(D));
+  if (_6 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ret_35 = 115;
+  # DEBUG ret => ret_35
+  goto <bb 15>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  new_entry.0_7 = new_entry;
+  if (new_entry.0_7 == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 9> :
+  if (ret_26 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (85);
+  # DEBUG BEGIN_STMT
+  _8 = isa_reserve (&pfe_if_db_log_ifs);
+  new_entry = _8;
+  # DEBUG BEGIN_STMT
+  new_entry.1_9 = new_entry;
+  if (new_entry.1_9 == 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  ret_32 = 11;
+  # DEBUG ret => ret_32
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  new_entry.2_10 = new_entry;
+  autolibc_memset (new_entry.2_10, 0, 8);
+
+  <bb 13> :
+  # ret_14 = PHI <ret_32(11), ret_26(12)>
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (85);
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  ret_34 = 115;
+  # DEBUG ret => ret_34
+
+  <bb 15> :
+  # ret_15 = PHI <ret_37(5), ret_35(7), ret_14(13), ret_34(14), ret_39(4)>
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  new_entry.3_11 = new_entry;
+  if (new_entry.3_11 != 0B)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  new_entry.4_12 = new_entry;
+  new_entry.4_12->info.iface = iface_24(D);
+  # DEBUG BEGIN_STMT
+  new_entry.5_13 = new_entry;
+  new_entry.5_13->owner = owner_41(D);
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  _43 = ret_15;
+  new_entry ={v} {CLOBBER};
+  return _43;
+
+}
+
+
+__attribute__((pure))
+pfe_if_db_entry_get_log_if (const struct pfe_if_db_entry_t * entry)
+{
+  struct pfe_log_if_t * log_if_entry;
+  struct pfe_log_if_t * _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (entry_2(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  log_if_entry_5 = entry_2(D)->info.log_if;
+  # DEBUG log_if_entry => log_if_entry_5
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  log_if_entry_3 = 0B;
+  # DEBUG log_if_entry => log_if_entry_3
+
+  <bb 5> :
+  # log_if_entry_1 = PHI <log_if_entry_5(3), log_if_entry_3(4)>
+  # DEBUG log_if_entry => log_if_entry_1
+  # DEBUG BEGIN_STMT
+  _6 = log_if_entry_1;
+  return _6;
+
+}
+
+
+__attribute__((pure))
+pfe_if_db_entry_get_phy_if (const struct pfe_if_db_entry_t * entry)
+{
+  struct pfe_phy_if_t * phy_if_entry;
+  struct pfe_phy_if_t * _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (entry_2(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  phy_if_entry_5 = entry_2(D)->info.phy_if;
+  # DEBUG phy_if_entry => phy_if_entry_5
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  phy_if_entry_3 = 0B;
+  # DEBUG phy_if_entry => phy_if_entry_3
+
+  <bb 5> :
+  # phy_if_entry_1 = PHI <phy_if_entry_5(3), phy_if_entry_3(4)>
+  # DEBUG phy_if_entry => phy_if_entry_1
+  # DEBUG BEGIN_STMT
+  _6 = phy_if_entry_1;
+  return _6;
+
+}
+
+
+pfe_if_db_destroy (const struct pfe_if_db_t * db)
+{
+  <unnamed type> _1;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+  unsigned char _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (84);
+  # DEBUG BEGIN_STMT
+  _1 = db_11(D)->type;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_if_db_phy_ifs, 0, 80);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  isa_init (&pfe_if_db_log_ifs, &pfe_if_db_log_ifs_isa_def);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _2 = if_db_context.ref_cnt;
+  if (_2 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = if_db_context.ref_cnt;
+  _4 = _3 + 255;
+  if_db_context.ref_cnt = _4;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (84);
+  # DEBUG BEGIN_STMT
+  _5 = if_db_context.ref_cnt;
+  if (_5 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if_db_context.is_locked = 1;
+
+  <bb 9> :
+  return;
+
+}
+
+
+pfe_if_db_create (pfe_if_db_type_t type)
+{
+  struct pfe_if_db_t * db;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  unsigned char _4;
+  unsigned char _5;
+  unsigned char _6;
+  struct pfe_if_db_t * _29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = type_11(D) > 1;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unrecognized DB type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_if_db.c", 370, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  db_28 = 0B;
+  # DEBUG db => db_28
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  db_12 = &xxx_if_db_instance[type_11(D)];
+  # DEBUG db => db_12
+  # DEBUG BEGIN_STMT
+  autolibc_memset (db_12, 0, 16);
+  # DEBUG BEGIN_STMT
+  db_12->next_item = 0;
+  # DEBUG BEGIN_STMT
+  db_12->type = type_11(D);
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (83);
+  # DEBUG BEGIN_STMT
+  if (type_11(D) == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_if_db_phy_ifs, 0, 80);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  isa_init (&pfe_if_db_log_ifs, &pfe_if_db_log_ifs_isa_def);
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_if_db_log_ifs_pool, 0, 2048);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _4 = if_db_context.ref_cnt;
+  if (_4 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if_db_context.is_locked = 0;
+  # DEBUG BEGIN_STMT
+  if_db_context.session_id = 0;
+  # DEBUG BEGIN_STMT
+  if_db_context.seed = 123;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _5 = if_db_context.ref_cnt;
+  _6 = _5 + 1;
+  if_db_context.ref_cnt = _6;
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (83);
+
+  <bb 10> :
+  # db_7 = PHI <db_28(3), db_12(9)>
+  # DEBUG db => db_7
+  # DEBUG BEGIN_STMT
+  _29 = db_7;
+  return _29;
+
+}
+
+
+pfe_if_db_get_single_entry (const struct pfe_if_db_t * db, pfe_if_db_get_criterion_t crit, union crit_arg_t argument, uint32_t * next_iter)
+{
+  uint32_t ii;
+  struct pfe_if_db_entry_t * entry;
+  bool_t match;
+  <unnamed type> _1;
+  void * _2;
+  unsigned char _3;
+  unsigned char _4;
+  long unsigned int _5;
+  struct pfe_if_db_entry_t * _39;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  match_19 = 0;
+  # DEBUG match => match_19
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_22 = *next_iter_21(D);
+  # DEBUG ii => ii_22
+  # DEBUG BEGIN_STMT
+  _1 = db_23(D)->type;
+  if (_1 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  entry_32 = &pfe_if_db_phy_ifs[ii_11];
+  # DEBUG entry => entry_32
+  # DEBUG BEGIN_STMT
+  _2 = entry_32->info.iface;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = pfe_if_db_match_criterion (db_23(D), crit_27(D), &argument, entry_32);
+  if (_3 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ii_34 = ii_11 + 1;
+  # DEBUG ii => ii_34
+  # DEBUG BEGIN_STMT
+  match_35 = 1;
+  # DEBUG match => match_35
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ii_36 = ii_11 + 1;
+  # DEBUG ii => ii_36
+
+  <bb 7> :
+  # entry_7 = PHI <entry_24(D)(2), entry_32(6)>
+  # ii_11 = PHI <ii_22(2), ii_36(6)>
+  # DEBUG ii => ii_11
+  # DEBUG entry => entry_7
+  # DEBUG BEGIN_STMT
+  if (ii_11 <= 9)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  entry_26 = isa_item (&pfe_if_db_log_ifs, ii_12);
+  # DEBUG entry => entry_26
+  # DEBUG BEGIN_STMT
+  if (entry_26 != 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _4 = pfe_if_db_match_criterion (db_23(D), crit_27(D), &argument, entry_26);
+  if (_4 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ii_29 = ii_12 + 1;
+  # DEBUG ii => ii_29
+  # DEBUG BEGIN_STMT
+  match_30 = 1;
+  # DEBUG match => match_30
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  ii_31 = ii_12 + 1;
+  # DEBUG ii => ii_31
+
+  <bb 12> :
+  # entry_8 = PHI <entry_24(D)(2), entry_26(11)>
+  # ii_12 = PHI <ii_22(2), ii_31(11)>
+  # DEBUG ii => ii_12
+  # DEBUG entry => entry_8
+  # DEBUG BEGIN_STMT
+  _5 = pfe_if_db_log_ifs.occupied_items_count;
+  if (ii_12 < _5)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # match_6 = PHI <match_19(7), match_30(10), match_19(12), match_35(5)>
+  # entry_9 = PHI <entry_7(7), entry_26(10), entry_8(12), entry_32(5)>
+  # ii_13 = PHI <ii_11(7), ii_29(10), ii_12(12), ii_34(5)>
+  # DEBUG ii => ii_13
+  # DEBUG entry => entry_9
+  # DEBUG match => match_6
+  # DEBUG BEGIN_STMT
+  *next_iter_21(D) = ii_13;
+  # DEBUG BEGIN_STMT
+  if (match_6 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  entry_38 = 0B;
+  # DEBUG entry => entry_38
+
+  <bb 15> :
+  # entry_10 = PHI <entry_9(13), entry_38(14)>
+  # DEBUG entry => entry_10
+  # DEBUG BEGIN_STMT
+  _39 = entry_10;
+  return _39;
+
+}
+
+
+pfe_if_db_match_criterion (const struct pfe_if_db_t * db, pfe_if_db_get_criterion_t crit, const union crit_arg_t * arg, const struct pfe_if_db_entry_t * entry)
+{
+  bool_t match;
+  <unnamed type> _1;
+  unsigned char _2;
+  struct pfe_phy_if_t * _3;
+  <unnamed type> _4;
+  _Bool _5;
+  unsigned char _6;
+  struct pfe_log_if_t * _7;
+  unsigned char _8;
+  _Bool _9;
+  void * _10;
+  void * _11;
+  _Bool _12;
+  <unnamed type> _13;
+  char_t * _14;
+  struct pfe_phy_if_t * _15;
+  const char_t * _16;
+  long int _17;
+  _Bool _18;
+  char_t * _19;
+  struct pfe_log_if_t * _20;
+  const char_t * _21;
+  long int _22;
+  _Bool _23;
+  <unnamed type> _24;
+  <unnamed type> _25;
+  _Bool _26;
+  bool_t _47;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  match_29 = 0;
+  # DEBUG match => match_29
+  # DEBUG BEGIN_STMT
+  switch (crit_30(D)) <default: <L11> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L5> [INV], case 3: <L6> [INV], case 4: <L10> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  match_43 = 1;
+  # DEBUG match => match_43
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _1 = db_35(D)->type;
+  if (_1 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _2 = arg_32(D)->if_id;
+  _3 = entry_33(D)->info.phy_if;
+  _4 = pfe_phy_if_get_id (_3);
+  _5 = _2 == _4;
+  match_42 = (bool_t) _5;
+  # DEBUG match => match_42
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _6 = arg_32(D)->if_id;
+  _7 = entry_33(D)->info.log_if;
+  _8 = pfe_log_if_get_id (_7);
+  _9 = _6 == _8;
+  match_41 = (bool_t) _9;
+  # DEBUG match => match_41
+  goto <bb 13>; [INV]
+
+  <bb 7> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  _10 = arg_32(D)->iface;
+  _11 = entry_33(D)->info.iface;
+  _12 = _10 == _11;
+  match_40 = (bool_t) _12;
+  # DEBUG match => match_40
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  _13 = db_35(D)->type;
+  if (_13 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _14 = arg_32(D)->name;
+  _15 = entry_33(D)->info.phy_if;
+  _16 = pfe_phy_if_get_name (_15);
+  _17 = autolibc_strcmp (_14, _16);
+  _18 = _17 == 0;
+  match_39 = (bool_t) _18;
+  # DEBUG match => match_39
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _19 = arg_32(D)->name;
+  _20 = entry_33(D)->info.log_if;
+  _21 = pfe_log_if_get_name (_20);
+  _22 = autolibc_strcmp (_19, _21);
+  _23 = _22 == 0;
+  match_37 = (bool_t) _23;
+  # DEBUG match => match_37
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  _24 = arg_32(D)->owner;
+  _25 = entry_33(D)->owner;
+  _26 = _24 == _25;
+  match_34 = (bool_t) _26;
+  # DEBUG match => match_34
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_if_db.c", 283, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  match_46 = 0;
+  # DEBUG match => match_46
+  # DEBUG BEGIN_STMT
+
+  <bb 13> :
+  # match_27 = PHI <match_43(3), match_41(6), match_40(7), match_37(10), match_34(11), match_46(12), match_42(5), match_39(9)>
+  # DEBUG match => match_27
+  # DEBUG BEGIN_STMT
+  _47 = match_27;
+  return _47;
+
+}
+
+
+pfe_if_db_check_precondition (const struct if_db_context_t * pr_if_db_context, uint32_t session_id)
+{
+  errno_t ret;
+  unsigned char _1;
+  long unsigned int _2;
+  errno_t _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pr_if_db_context_5(D)->is_locked;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_9 = 115;
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pr_if_db_context_5(D)->session_id;
+  if (session_id_6(D) != _2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_8 = 115;
+  # DEBUG ret => ret_8
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_7 = 0;
+  # DEBUG ret => ret_7
+
+  <bb 7> :
+  # ret_3 = PHI <ret_9(3), ret_8(5), ret_7(6)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  _10 = ret_3;
+  return _10;
+
+}
+
+
+pfe_if_db_assign_arg (void * arg, pfe_if_db_get_criterion_t crit, union crit_arg_t * argument, struct pfe_if_db_entry_t * * db_entry)
+{
+  errno_t ret;
+  errno_t _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_2 = 0;
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (crit_3(D) == 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  argument_5(D)->iface = arg_6(D);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  argument_5(D)->name = arg_6(D);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _9 = ret_2;
+  return _9;
+
+}
+
+
+oal_mutex_unlock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

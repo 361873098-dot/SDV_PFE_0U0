@@ -1,0 +1,6182 @@
+Parsed function:pfe_platform_create_gpi.isra.0
+Parsed function:pfe_platform_create_class.isra.0
+Parsed function:pfe_platform_bmu_isr.part.0
+Parsed function:check_irq_vector.isra.0
+Parsed function:pfe_platform_create_pfe_errors.isra.0
+Parsed function:pfe_platform_get_fw_versions
+Parsed function:pfe_platform_get_instance
+Parsed function:pfe_platform_remove_sw_if
+Parsed function:pfe_platform_remove
+Parsed function:pfe_platform_destroy_group2
+Parsed function:pfe_platform_destroy_group1
+Parsed function:pfe_platform_init
+Parsed function:pfe_platform_init_mirror_spd_acc_features
+Parsed function:pfe_platform_init_tmu_mirror_queue_ifaces_fci
+Parsed function:pfe_platform_init_etgpi_l2br_rtable_hifs
+Parsed function:pfe_platform_init_hm_fw_features
+Parsed function:pfe_platform_create_err_bmu_class_tmu_emac_util
+Parsed function:pfe_platform_create_gpis_add_modules
+Parsed function:pfe_platform_soft_reset
+Parsed function:pfe_platform_destroy_ifaces
+Parsed function:pfe_platform_destroy_pfe_phy_ifs
+Parsed function:pfe_platform_destroy_pfe_log_ifs
+Parsed function:pfe_platform_create_ifaces
+Parsed function:pfe_platform_bind_ifaces
+Parsed function:pfe_platform_prepare_phy_if
+Parsed function:pfe_platform_prepare_phy_if_emac
+Parsed function:pfe_platform_prepare_phy_if_hif
+Parsed function:pfe_platform_create_default_log_if
+Parsed function:pfe_platform_get_phy_if_by_id
+Parsed function:pfe_platform_register_phy_if
+Parsed function:pfe_platform_create_fci
+Parsed function:pfe_platform_destroy_pfe_errors
+Parsed function:pfe_platform_create_failures
+Parsed function:pfe_platform_irq_unmask_fails_and_errors
+Parsed function:pfe_platform_irq_unmask_parity_wdt
+Parsed function:pfe_platform_destroy_emac
+Parsed function:pfe_platform_enable_ts
+Parsed function:pfe_platform_create_emac
+Parsed function:pfe_platform_destroy_util
+Parsed function:pfe_platform_create_util
+Parsed function:pfe_platform_default_init_util
+Parsed function:pfe_platform_destroy_tmu
+Parsed function:pfe_platform_create_tmu
+Parsed function:pfe_platform_destroy_rtable
+Parsed function:pfe_platform_create_rtable
+Parsed function:pfe_platform_destroy_l2_bridge
+Parsed function:pfe_platform_create_l2_bridge
+Parsed function:pfe_platform_destroy_class
+Parsed function:pfe_platform_create_class_object
+Parsed function:pfe_platform_destroy_hgpi
+Parsed function:pfe_platform_create_hgpi
+Parsed function:pfe_platform_destroy_etgpi
+Parsed function:pfe_platform_create_etgpi
+Parsed function:pfe_platform_destroy_gpi
+Parsed function:pfe_platform_destroy_bmu
+Parsed function:pfe_platform_create_bmu
+Parsed function:pfe_platform_create_hif_nocpy
+Parsed function:pfe_platform_destroy_hif
+Parsed function:pfe_platform_create_hif
+Parsed function:pfe_platform_idex_rpc_cbk
+Parsed function:pfe_platform_bmu_isr
+Dump after hash based groups
+Congruence classes: 55 (unique hash values: 55), with total: 61 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 52 classes
+[2]: 1 classes
+[3]: 1 classes
+[4]: 1 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 59 (unique hash values: 55), with total: 61 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 58 classes
+[3]: 1 classes
+
+
+Worklist has been filled with: 53
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 59 (unique hash values: 55), with total: 61 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 58 classes
+[3]: 1 classes
+
+
+Init called for 3 items (4.92%).
+Dump after full equality comparison of groups
+Congruence classes: 61 (unique hash values: 55), with total: 61 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 61 classes
+
+
+Worklist has been filled with: 55
+Address reference subdivision created: 0 new classes.
+Congruence classes: 61 (unique hash values: 55), with total: 61 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 61 classes
+
+
+
+Item count: 61
+Congruent classes before: 61, after: 61
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+pfe_platform_create_gpi.isra.0 (struct pfe_platform_t * platform, const bool_t * ISRA.59)
+{
+  struct pfe_gpi_cfg_t gpi_cfg_tmp;
+  uint32_t aseq_len;
+  errno_t ret;
+  long unsigned int _2;
+  unsigned char _4;
+  unsigned int _6;
+  struct pfe_gpi_t * _7;
+  unsigned int _8;
+  struct pfe_gpi_t * _9;
+  unsigned int _10;
+  struct pfe_gpi_t * _11;
+
+  <bb 12> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG aseq_len => 80
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = platform_1(D)->pfe_version;
+  if (_2 == 257)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.lmem_header_size = 48;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.g2_ordered_class_writes = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG aseq_len => 16
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.lmem_header_size = 112;
+  # DEBUG BEGIN_STMT
+  _4 = *ISRA.59_45(D);
+  gpi_cfg_tmp.g2_ordered_class_writes = _4;
+
+  <bb 5> [local count: 1073741824]:
+  # aseq_len_5 = PHI <16(3), 80(4)>
+  # DEBUG aseq_len => aseq_len_5
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.alloc_retry_cycles = 512;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_tmlf_txthres = 376;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_dtx_aseq_len = aseq_len_5;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.emac_1588_ts_en = 1;
+  # DEBUG BEGIN_STMT
+  _6 = platform_1(D)->cbus_baseaddr;
+  _7 = pfe_gpi_create (_6, 704512, &gpi_cfg_tmp, 0);
+  platform_1(D)->gpi[0] = _7;
+  # DEBUG BEGIN_STMT
+  if (_7 == 0B)
+    goto <bb 6>; [18.75%]
+  else
+    goto <bb 7>; [81.25%]
+
+  <bb 6> [local count: 201326592]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create GPI1 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1112, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 11>; [100.00%]
+
+  <bb 7> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.alloc_retry_cycles = 512;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_tmlf_txthres = 376;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_dtx_aseq_len = aseq_len_5;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.emac_1588_ts_en = 1;
+  # DEBUG BEGIN_STMT
+  _8 = platform_1(D)->cbus_baseaddr;
+  _9 = pfe_gpi_create (_8, 720896, &gpi_cfg_tmp, 1);
+  platform_1(D)->gpi[1] = _9;
+  # DEBUG BEGIN_STMT
+  if (_9 == 0B)
+    goto <bb 8>; [18.75%]
+  else
+    goto <bb 9>; [81.25%]
+
+  <bb 8> [local count: 163577856]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create GPI2 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1126, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 11>; [100.00%]
+
+  <bb 9> [local count: 708837377]:
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.alloc_retry_cycles = 512;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_tmlf_txthres = 376;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_dtx_aseq_len = aseq_len_5;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.emac_1588_ts_en = 1;
+  # DEBUG BEGIN_STMT
+  _10 = platform_1(D)->cbus_baseaddr;
+  _11 = pfe_gpi_create (_10, 737280, &gpi_cfg_tmp, 2);
+  platform_1(D)->gpi[2] = _11;
+  # DEBUG BEGIN_STMT
+  if (_11 == 0B)
+    goto <bb 10>; [10.21%]
+  else
+    goto <bb 11>; [89.79%]
+
+  <bb 10> [local count: 72372296]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create GPI3 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1140, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 11> [local count: 1073741824]:
+  # ret_12 = PHI <19(6), 19(8), 0(9), 19(10)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp ={v} {CLOBBER};
+  return ret_12;
+
+}
+
+
+pfe_platform_create_class.isra.0 (struct pfe_platform_t * platform, const bool_t ISRA.53)
+{
+  errno_t ret;
+  struct pfe_class_cfg_t class_cfg;
+  unsigned char _2;
+  struct pfe_fw_t * _4;
+  const void * _5;
+
+  <bb 10> [local count: 1073741823]:
+  # DEBUG conf s=> conf
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  class_cfg = {};
+  class_cfg.pe_sys_clk_ratio = 1;
+  class_cfg.pkt_parse_offset = 6;
+  _2 = ISRA.53_22(D);
+  class_cfg.g2_ordered_class_writes = _2;
+  # DEBUG BEGIN_STMT
+  if (_2 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  pfe_feature_mgr_is_available ("drv_run_on_g3");
+
+  <bb 4> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = platform_3(D)->fw;
+  if (_4 == 0B)
+    goto <bb 5>; [10.21%]
+  else
+    goto <bb 6>; [89.79%]
+
+  <bb 5> [local count: 109629040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] The CLASS firmware is NULL\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1418, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 964112783]:
+  # DEBUG BEGIN_STMT
+  _5 = _4->class_data;
+  if (_5 == 0B)
+    goto <bb 7>; [18.75%]
+  else
+    goto <bb 8>; [81.25%]
+
+  <bb 7> [local count: 180771147]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] The CLASS firmware is not loaded\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1424, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 5
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 783341637]:
+  # DEBUG BEGIN_STMT
+  ret_6 = pfe_platform_create_class_object (platform_3(D), class_cfg);
+  # DEBUG ret => ret_6
+
+  <bb 9> [local count: 1073741824]:
+  # ret_7 = PHI <19(5), 5(7), ret_6(8)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  class_cfg ={v} {CLOBBER};
+  return ret_7;
+
+}
+
+
+pfe_platform_bmu_isr.part.0 (void * arg)
+{
+  const struct pfe_platform_t * platform;
+  bool_t handled;
+  struct pfe_bmu_t * _2;
+  int _3;
+  struct pfe_bmu_t * _4;
+  int _5;
+  struct pfe_bmu_t * _6;
+  struct pfe_bmu_t * _7;
+
+  <bb 11> [count: 0]:
+
+  <bb 2> [count: 0]:
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(const struct pfe_platform_t *)arg_1(D)].bmu[0];
+  _3 = pfe_bmu_isr (_2);
+  if (_3 == 0)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 4>; [0.00%]
+
+  <bb 3> [count: 0]:
+  # DEBUG BEGIN_STMT
+  # DEBUG handled => 1
+
+  <bb 4> [count: 0]:
+  # handled_9 = PHI <0(2), 1(3)>
+  # DEBUG handled => handled_9
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(const struct pfe_platform_t *)arg_1(D)].bmu[1];
+  _5 = pfe_bmu_isr (_4);
+  if (_5 == 0)
+    goto <bb 5>; [0.00%]
+  else
+    goto <bb 6>; [0.00%]
+
+  <bb 5> [count: 0]:
+  # DEBUG BEGIN_STMT
+  # DEBUG handled => 1
+
+  <bb 6> [count: 0]:
+  # handled_8 = PHI <handled_9(4), 1(5)>
+  # DEBUG handled => handled_8
+  # DEBUG BEGIN_STMT
+  _6 = MEM[(const struct pfe_platform_t *)arg_1(D)].bmu[0];
+  if (_6 != 0B)
+    goto <bb 7>; [0.00%]
+  else
+    goto <bb 8>; [0.00%]
+
+  <bb 7> [count: 0]:
+  # DEBUG BEGIN_STMT
+  pfe_bmu_irq_unmask (_6);
+
+  <bb 8> [count: 0]:
+  # DEBUG BEGIN_STMT
+  _7 = MEM[(const struct pfe_platform_t *)arg_1(D)].bmu[1];
+  if (_7 != 0B)
+    goto <bb 9>; [0.00%]
+  else
+    goto <bb 10>; [0.00%]
+
+  <bb 9> [count: 0]:
+  # DEBUG BEGIN_STMT
+  pfe_bmu_irq_unmask (_7);
+
+  <bb 10> [count: 0]:
+  # DEBUG BEGIN_STMT
+  return handled_8;
+
+}
+
+
+check_irq_vector.isra.0 (struct pfe_platform_t * platform, const uint32_t * ISRA.48)
+{
+  errno_t ret;
+  struct oal_irq_t * _2;
+  long unsigned int _4;
+  int _5;
+  struct pfe_bmu_t * _6;
+  struct pfe_bmu_t * _7;
+
+  <bb 8> [local count: 1073741824]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _2 = platform_1(D)->irq_bmu;
+  if (_2 == 0B)
+    goto <bb 3>; [18.75%]
+  else
+    goto <bb 4>; [81.25%]
+
+  <bb 3> [local count: 201326592]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = *ISRA.48_19(D);
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not create BMU IRQ vector %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 952, _4, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  _5 = oal_irq_add_handler (_2, pfe_platform_bmu_isr, platform_1(D), 0B);
+  if (_5 != 0)
+    goto <bb 5>; [35.00%]
+  else
+    goto <bb 6>; [65.00%]
+
+  <bb 5> [local count: 305345331]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not add IRQ handler for the BMU[0]\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 959, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 567069902]:
+  # DEBUG BEGIN_STMT
+  _6 = platform_1(D)->bmu[0];
+  pfe_bmu_irq_unmask (_6);
+  # DEBUG BEGIN_STMT
+  _7 = platform_1(D)->bmu[1];
+  pfe_bmu_irq_unmask (_7);
+  # DEBUG BEGIN_STMT
+  bDetectBmuInit ={v} 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 7> [local count: 1073741824]:
+  # ret_8 = PHI <19(3), 19(5), 0(6)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  return ret_8;
+
+}
+
+
+pfe_platform_create_pfe_errors.isra.0 (struct pfe_platform_t * platform)
+{
+  errno_t ret;
+  bool_t bFeatureOnG3;
+  unsigned int _2;
+  struct pfe_parity_t * _3;
+  unsigned int _4;
+  struct pfe_wdt_t * _5;
+  unsigned int _8;
+  unsigned char _11;
+
+  <bb 13> [local count: 1073741821]:
+  # DEBUG config s=> config
+
+  <bb 2> [local count: 1073741821]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = platform_1(D)->cbus_baseaddr;
+  _3 = pfe_parity_create (_2, 606208);
+  platform_1(D)->parity = _3;
+  # DEBUG BEGIN_STMT
+  if (_3 == 0B)
+    goto <bb 4>; [30.00%]
+  else
+    goto <bb 3>; [70.00%]
+
+  <bb 3> [local count: 751619275]:
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = platform_1(D)->cbus_baseaddr;
+  _5 = pfe_wdt_create (_4, 606208);
+  platform_1(D)->wdt = _5;
+  # DEBUG BEGIN_STMT
+  if (_5 == 0B)
+    goto <bb 5>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 4> [local count: 322122546]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create PFE_ERRORS:Parity instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1975, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 131007240]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create PFE_ERRORS:Watchdog instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1990, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 6> [local count: 1073741821]:
+  # ret_7 = PHI <0(3), 19(4), 19(5)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  bFeatureOnG3_6 = pfe_feature_mgr_is_available ("drv_run_on_g3");
+  # DEBUG bFeatureOnG3 => bFeatureOnG3_6
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 7> [local count: 536870910]:
+  if (bFeatureOnG3_6 == 1)
+    goto <bb 8>; [20.24%]
+  else
+    goto <bb 9>; [79.76%]
+
+  <bb 8> [local count: 108662672]:
+  # DEBUG BEGIN_STMT
+  _8 = platform_1(D)->cbus_baseaddr;
+  ret_9 = pfe_platform_create_failures (platform_1(D), _8, 606208);
+  # DEBUG ret => ret_9
+
+  <bb 9> [local count: 1073741823]:
+  # ret_10 = PHI <ret_7(6), 0(7), ret_9(8)>
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 == 0)
+    goto <bb 10>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 10> [local count: 354334801]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_irq_unmask_parity_wdt (platform_1(D));
+  # DEBUG BEGIN_STMT
+  _11 = pfe_feature_mgr_is_available ("drv_run_on_g3");
+  if (_11 == 1)
+    goto <bb 11>; [20.24%]
+  else
+    goto <bb 12>; [79.76%]
+
+  <bb 11> [local count: 71717364]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_irq_unmask_fails_and_errors (platform_1(D));
+
+  <bb 12> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return ret_10;
+
+}
+
+
+pfe_platform_get_fw_versions (const struct pfe_platform_t * platform, struct pfe_ct_version_t * class_fw, struct pfe_ct_version_t * util_fw)
+{
+  struct pfe_class_t * _1;
+  struct pfe_util_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (class_fw_5(D) != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_7(D)->classifier;
+  pfe_class_get_fw_version (_1, class_fw_5(D));
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (util_fw_9(D) != 0B)
+    goto <bb 5>; [53.47%]
+  else
+    goto <bb 6>; [46.53%]
+
+  <bb 5> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  _2 = platform_7(D)->util;
+  pfe_util_get_fw_version (_2, util_fw_9(D));
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+pfe_platform_get_instance ()
+{
+  struct pfe_platform_t * pfe_platform;
+  unsigned char _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pfe_platform => 0B
+  # DEBUG BEGIN_STMT
+  _1 ={v} pfe.probed;
+  if (_1 == 1)
+    goto <bb 3>; [55.78%]
+  else
+    goto <bb 4>; [44.22%]
+
+  <bb 3> [local count: 598933190]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pfe_platform => &pfe
+
+  <bb 4> [local count: 1073741824]:
+  # pfe_platform_2 = PHI <0B(2), &pfe(3)>
+  # DEBUG pfe_platform => pfe_platform_2
+  # DEBUG BEGIN_STMT
+  return pfe_platform_2;
+
+}
+
+
+pfe_platform_remove_sw_if ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pfe.log_if_db = 0B;
+  # DEBUG BEGIN_STMT
+  pfe.phy_if_db = 0B;
+  return;
+
+}
+
+
+pfe_platform_remove ()
+{
+  errno_t ret;
+  struct oal_irq_t * _1;
+  unsigned int _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  unsigned int _5;
+  void * _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = pfe.irq_global;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  oal_irq_destroy (_1);
+  # DEBUG BEGIN_STMT
+  pfe.irq_global = 0B;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = pfe.cbus_baseaddr;
+  if (_2 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = _2 + 606240;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} 0;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_destroy ();
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_group1 ();
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_group2 ();
+  # DEBUG BEGIN_STMT
+  pfe_feature_mgr_fini ();
+  # DEBUG BEGIN_STMT
+  _5 = pfe.cbus_baseaddr;
+  if (_5 != 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 8> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _6 = (void *) _5;
+  ret_20 = oal_mm_dev_unmap (_6, 16777216);
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  if (ret_20 != 0)
+    goto <bb 9>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 9> [local count: 116930485]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t unmap PPFE CBUS: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 3131, ret_20, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 10> [local count: 354334802]:
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_20 == 0)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 11> [local count: 896574424]:
+  # ret_25 = PHI <ret_20(10), 0(6)>
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  pfe.cbus_baseaddr = 0;
+  # DEBUG BEGIN_STMT
+  pfe.probed ={v} 0;
+
+  <bb 12> [local count: 1073741824]:
+  # ret_26 = PHI <ret_20(10), ret_25(11)>
+  # DEBUG BEGIN_STMT
+  return ret_26;
+
+}
+
+
+pfe_platform_destroy_group2 ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pfe_mirror_deinit ();
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_class (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_util (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_tmu (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_emac (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_pfe_errors (&pfe);
+  return;
+
+}
+
+
+pfe_platform_destroy_group1 ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG platform => &pfe
+  # DEBUG INLINE_ENTRY pfe_platform_destroy_fci
+  # DEBUG BEGIN_STMT
+  fci_fini ();
+  # DEBUG BEGIN_STMT
+  pfe.fci_created = 0;
+  # DEBUG platform => NULL
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_ifaces (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_hif (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_gpi (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_etgpi (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_hgpi (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_bmu (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_rtable (&pfe);
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_l2_bridge (&pfe);
+  return;
+
+}
+
+
+pfe_platform_init (const struct pfe_platform_config_t * config)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  ret_6 = pfe_platform_init_hm_fw_features (config_4(D));
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  if (ret_6 == 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  ret_8 = pfe_platform_init_mirror_spd_acc_features (config_4(D));
+  # DEBUG ret => ret_8
+
+  <bb 4> [local count: 1073741824]:
+  # ret_1 = PHI <ret_6(2), ret_8(3)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  return ret_1;
+
+}
+
+
+pfe_platform_init_mirror_spd_acc_features (const struct pfe_platform_config_t * config)
+{
+  uint32_t * addr;
+  uint32_t val;
+  errno_t ret;
+  struct pfe_class_t * _1;
+  struct pfe_bmu_t * _2;
+  struct pfe_bmu_t * _3;
+  struct pfe_gpi_t * _4;
+  struct pfe_gpi_t * _5;
+  struct pfe_gpi_t * _6;
+  struct pfe_gpi_t * _7;
+  struct pfe_gpi_t * _8;
+  struct pfe_gpi_t * _9;
+  struct pfe_gpi_t * _10;
+  struct pfe_tmu_t * _11;
+  unsigned char _12;
+  struct pfe_util_t * _13;
+  unsigned int _14;
+  unsigned int _15;
+  long unsigned int _16;
+  struct pfe_emac_t * _17;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG val => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_24 = pfe_platform_init_etgpi_l2br_rtable_hifs (config_22(D));
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  if (ret_24 == 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _1 = pfe.classifier;
+  pfe_class_enable (_1);
+  # DEBUG BEGIN_STMT
+  ret_27 = pfe_platform_init_tmu_mirror_queue_ifaces_fci ();
+  # DEBUG ret => ret_27
+  # DEBUG BEGIN_STMT
+  if (ret_27 == 0)
+    goto <bb 4>; [0.00%]
+  else
+    goto <bb 7>; [100.00%]
+
+  <bb 4> [count: 0]:
+  # DEBUG BEGIN_STMT
+  _2 = pfe.bmu[0];
+  pfe_bmu_enable (_2);
+  # DEBUG BEGIN_STMT
+  _3 = pfe.bmu[1];
+  pfe_bmu_enable (_3);
+  # DEBUG BEGIN_STMT
+  _4 = pfe.gpi[0];
+  pfe_gpi_enable (_4);
+  # DEBUG BEGIN_STMT
+  _5 = pfe.gpi[1];
+  pfe_gpi_enable (_5);
+  # DEBUG BEGIN_STMT
+  _6 = pfe.gpi[2];
+  pfe_gpi_enable (_6);
+  # DEBUG BEGIN_STMT
+  _7 = pfe.etgpi[0];
+  pfe_gpi_enable (_7);
+  # DEBUG BEGIN_STMT
+  _8 = pfe.etgpi[1];
+  pfe_gpi_enable (_8);
+  # DEBUG BEGIN_STMT
+  _9 = pfe.etgpi[2];
+  pfe_gpi_enable (_9);
+  # DEBUG BEGIN_STMT
+  _10 = pfe.hgpi[0];
+  pfe_gpi_enable (_10);
+  # DEBUG BEGIN_STMT
+  _11 = pfe.tmu;
+  pfe_tmu_enable (_11);
+  # DEBUG BEGIN_STMT
+  _12 = config_22(D)->enable_util;
+  if (_12 != 0)
+    goto <bb 5>; [0.00%]
+  else
+    goto <bb 6>; [0.00%]
+
+  <bb 5> [count: 0]:
+  # DEBUG BEGIN_STMT
+  _13 = pfe.util;
+  pfe_util_enable (_13);
+
+  <bb 6> [count: 0]:
+  # DEBUG BEGIN_STMT
+  _14 = pfe.cbus_baseaddr;
+  _15 = _14 + 606240;
+  addr_39 = (uint32_t *) _15;
+  # DEBUG addr => addr_39
+  # DEBUG BEGIN_STMT
+  val_40 ={v} MEM[(volatile uint32_t *)addr_39];
+  # DEBUG val => val_40
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = val_40 | 2147483651;
+  MEM[(volatile uint32_t *)addr_39] ={v} _16;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe.probed ={v} 1;
+  # DEBUG BEGIN_STMT
+  pfe_platform_enable_ts (&pfe);
+  # DEBUG BEGIN_STMT
+  _17 = pfe.emac[0];
+  pfe_emac_pps0_configure (_17, 0, 0, 0);
+
+  <bb 7> [local count: 1073741824]:
+  # ret_18 = PHI <ret_24(2), ret_27(3), 0(6)>
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  return ret_18;
+
+}
+
+
+pfe_platform_init_tmu_mirror_queue_ifaces_fci ()
+{
+  uint8_t flg;
+  errno_t ret;
+  struct pfe_tmu_t * _1;
+  unsigned char _2;
+  struct pfe_class_t * _3;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = pfe.tmu;
+  ret_10 = pfe_tmu_queue_reset_tail_drop_policy (_1);
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870911]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 15>; [100.00%]
+
+  <bb 4> [local count: 536870911]:
+  # DEBUG BEGIN_STMT
+  _2 = pfe_feature_mgr_is_available ("err051211_workaround");
+  if (_2 == 1)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 5> [local count: 182536110]:
+  # DEBUG BEGIN_STMT
+  flg = 0;
+  # DEBUG BEGIN_STMT
+  ret_16 = pfe_feature_mgr_get_val ("err051211_workaround", &flg);
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 == 0)
+    goto <bb 7>; [67.00%]
+  else
+    goto <bb 6>; [33.00%]
+
+  <bb 6> [local count: 60236916]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Feature err051211_workaround status unknown\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2946, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 7> [local count: 182536110]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  flg ={v} {CLOBBER};
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Feature err051211_workaround is not supported in firmware\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2959, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 9> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = pfe.classifier;
+  ret_21 = pfe_mirror_init (_3);
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  if (ret_21 != 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 10> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 15>; [100.00%]
+
+  <bb 11> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  ret_23 = pfe_platform_create_ifaces ();
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  if (ret_23 != 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 12> [local count: 134217728]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 15>; [100.00%]
+
+  <bb 13> [local count: 134217728]:
+  # DEBUG BEGIN_STMT
+  pfe.poller_state = 0;
+  # DEBUG BEGIN_STMT
+  ret_26 = pfe_platform_create_fci (&pfe);
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  if (ret_26 != 0)
+    goto <bb 14>; [33.00%]
+  else
+    goto <bb 15>; [67.00%]
+
+  <bb 14> [local count: 44291850]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+
+  <bb 15> [local count: 1073741824]:
+  # ret_4 = PHI <ret_10(3), ret_21(10), ret_23(12), ret_26(13), ret_26(14)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  return ret_4;
+
+}
+
+
+pfe_platform_init_etgpi_l2br_rtable_hifs (const struct pfe_platform_config_t * config)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  ret_5 = pfe_platform_create_etgpi (&pfe);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  if (ret_5 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 12>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  ret_8 = pfe_platform_create_l2_bridge (&pfe, config_6(D));
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  if (ret_8 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  ret_10 = pfe_platform_create_rtable (&pfe, config_6(D));
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 134217728]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 12>; [100.00%]
+
+  <bb 8> [local count: 134217728]:
+  # DEBUG BEGIN_STMT
+  ret_12 = pfe_platform_create_hif (&pfe, config_6(D));
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 != 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 9> [local count: 67108864]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 12>; [100.00%]
+
+  <bb 10> [local count: 67108864]:
+  # DEBUG BEGIN_STMT
+  ret_14 = pfe_platform_create_hif_nocpy (&pfe);
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 != 0)
+    goto <bb 11>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 11> [local count: 22145925]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+
+  <bb 12> [local count: 1073741824]:
+  # ret_1 = PHI <ret_5(3), ret_8(5), ret_10(7), ret_12(9), ret_14(10), ret_14(11)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  return ret_1;
+
+}
+
+
+pfe_platform_init_hm_fw_features (const struct pfe_platform_config_t * config)
+{
+  volatile uint32_t * ii;
+  uint32_t * addr;
+  errno_t ret;
+  struct pfe_fw_t * _1;
+  unsigned int _2;
+  void * _3;
+  unsigned int _4;
+  void * _5;
+  unsigned int _6;
+  unsigned int _7;
+  uint32_t * _8;
+  long unsigned int _9;
+  unsigned char _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned int ii.20_16;
+  unsigned int _17;
+  struct pfe_fw_t * _18;
+
+  <bb 2> [local count: 33038209]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe, 0, 212);
+  # DEBUG BEGIN_STMT
+  pfe.fci_created = 0;
+  # DEBUG BEGIN_STMT
+  _1 = config_28(D)->fw;
+  pfe.fw = _1;
+  # DEBUG BEGIN_STMT
+  _2 = config_28(D)->cbus_base;
+  _3 = (void *) _2;
+  _4 = config_28(D)->cbus_len;
+  _5 = oal_mm_dev_map (_3, _4);
+  _6 = (unsigned int) _5;
+  pfe.cbus_baseaddr = _6;
+  # DEBUG BEGIN_STMT
+  if (_6 == 0)
+    goto <bb 3>; [35.00%]
+  else
+    goto <bb 4>; [65.00%]
+
+  <bb 3> [local count: 11563373]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t map PPFE CBUS\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2769, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 13>; [100.00%]
+
+  <bb 4> [local count: 21474836]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = _6 + 606208;
+  _8 = (uint32_t *) _7;
+  _9 = *_8;
+  pfe.pfe_version = _9;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_34 = pfe_feature_mgr_init (_5);
+  # DEBUG ret => ret_34
+  # DEBUG BEGIN_STMT
+  if (ret_34 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 10737418]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Initialize the features failed.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2785, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 13>; [100.00%]
+
+  <bb 6> [local count: 10737418]:
+  # DEBUG BEGIN_STMT
+  _10 = pfe_feature_mgr_is_available ("drv_run_on_g3");
+  if (_10 == 1)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 7> [local count: 3650722]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = pfe.cbus_baseaddr;
+  _12 = _11 + 606400;
+  addr_36 = (uint32_t *) _12;
+  # DEBUG addr => addr_36
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32_t *)addr_36] ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = _11 + 606388;
+  addr_38 = (uint32_t *) _13;
+  # DEBUG addr => addr_38
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32_t *)addr_38] ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = _11 + 606512;
+  addr_40 = (uint32_t *) _14;
+  # DEBUG addr => addr_40
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32_t *)addr_40] ={v} 0;
+
+  <bb 8> [local count: 10737418]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _15 = pfe.cbus_baseaddr;
+  addr_42 = (uint32_t *) _15;
+  # DEBUG addr => addr_42
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => addr_42
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 1063004408]:
+  # DEBUG BEGIN_STMT
+  *ii_20 ={v} 0;
+  # DEBUG BEGIN_STMT
+  ii_57 = ii_20 + 4;
+  # DEBUG ii => ii_57
+
+  <bb 10> [local count: 1073741824]:
+  # ii_20 = PHI <addr_42(8), ii_57(9)>
+  # DEBUG ii => ii_20
+  # DEBUG BEGIN_STMT
+  ii.20_16 = (unsigned int) ii_20;
+  _17 = ii.20_16 - _15;
+  if (_17 <= 131071)
+    goto <bb 9>; [99.00%]
+  else
+    goto <bb 11>; [1.00%]
+
+  <bb 11> [local count: 10737418]:
+  # DEBUG BEGIN_STMT
+  pfe.emac_count = 3;
+  # DEBUG BEGIN_STMT
+  pfe.gpi_count = 3;
+  # DEBUG BEGIN_STMT
+  pfe.etgpi_count = 3;
+  # DEBUG BEGIN_STMT
+  pfe.hgpi_count = 1;
+  # DEBUG BEGIN_STMT
+  pfe.bmu_count = 2;
+  # DEBUG BEGIN_STMT
+  pfe.class_pe_count = 8;
+  # DEBUG BEGIN_STMT
+  pfe.util_pe_count = 1;
+  # DEBUG BEGIN_STMT
+  pfe.tmu_pe_count = 0;
+  # DEBUG BEGIN_STMT
+  pfe_hm_init ();
+  # DEBUG BEGIN_STMT
+  ret_53 = pfe_platform_create_err_bmu_class_tmu_emac_util (config_28(D));
+  # DEBUG ret => ret_53
+  # DEBUG BEGIN_STMT
+  if (ret_53 == 0)
+    goto <bb 12>; [33.00%]
+  else
+    goto <bb 13>; [67.00%]
+
+  <bb 12> [local count: 3543348]:
+  # DEBUG BEGIN_STMT
+  ret_55 = pfe_platform_create_gpis_add_modules (config_28(D));
+  # DEBUG ret => ret_55
+
+  <bb 13> [local count: 33038210]:
+  # ret_19 = PHI <22(3), ret_34(5), ret_53(11), ret_55(12)>
+  # DEBUG ret => ret_19
+  # DEBUG BEGIN_STMT
+  _18 = pfe.fw;
+  if (_18 != 0B)
+    goto <bb 14>; [70.00%]
+  else
+    goto <bb 15>; [30.00%]
+
+  <bb 14> [local count: 23126747]:
+  # DEBUG BEGIN_STMT
+  _18->class_data = 0B;
+  # DEBUG BEGIN_STMT
+  _18->util_data = 0B;
+
+  <bb 15> [local count: 33038210]:
+  # DEBUG BEGIN_STMT
+  pfe.fw = 0B;
+  # DEBUG BEGIN_STMT
+  return ret_19;
+
+}
+
+
+pfe_platform_create_err_bmu_class_tmu_emac_util (const struct pfe_platform_config_t * config)
+{
+  errno_t ret;
+  unsigned char _1;
+  struct pfe_util_t * _2;
+  unsigned char _24;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => config_7(D)
+  ret_9 = pfe_platform_create_pfe_errors.isra.0 (&pfe);
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 == 0)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 10>; [100.00%]
+
+  <bb 3> [count: 0]:
+  # DEBUG BEGIN_STMT
+  ret_11 = pfe_platform_create_bmu (&pfe, config_7(D));
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  if (ret_11 == 0)
+    goto <bb 4>; [0.00%]
+  else
+    goto <bb 10>; [0.00%]
+
+  <bb 4> [count: 0]:
+  # DEBUG BEGIN_STMT
+  _24 = MEM[(unsigned char *)config_7(D) + 92B];
+  # DEBUG D#3 => config_7(D)
+  ret_13 = pfe_platform_create_class.isra.0 (&pfe, _24);
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (ret_13 == 0)
+    goto <bb 5>; [0.00%]
+  else
+    goto <bb 10>; [0.00%]
+
+  <bb 5> [count: 0]:
+  # DEBUG BEGIN_STMT
+  ret_15 = pfe_platform_create_tmu (&pfe);
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  if (ret_15 == 0)
+    goto <bb 6>; [0.00%]
+  else
+    goto <bb 10>; [0.00%]
+
+  <bb 6> [count: 0]:
+  # DEBUG BEGIN_STMT
+  ret_17 = pfe_platform_create_emac (&pfe, config_7(D));
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  if (ret_17 == 0)
+    goto <bb 7>; [0.00%]
+  else
+    goto <bb 10>; [0.00%]
+
+  <bb 7> [count: 0]:
+  # DEBUG BEGIN_STMT
+  _1 = config_7(D)->enable_util;
+  if (_1 != 0)
+    goto <bb 8>; [0.00%]
+  else
+    goto <bb 9>; [0.00%]
+
+  <bb 8> [count: 0]:
+  # DEBUG BEGIN_STMT
+  ret_22 = pfe_platform_create_util (&pfe);
+  # DEBUG ret => ret_22
+  goto <bb 10>; [0.00%]
+
+  <bb 9> [count: 0]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_platform_default_init_util (&pfe);
+  # DEBUG BEGIN_STMT
+  _2 = pfe.util;
+  pfe_util_destroy (_2);
+  # DEBUG BEGIN_STMT
+  pfe.util = 0B;
+
+  <bb 10> [local count: 1073741824]:
+  # ret_3 = PHI <ret_9(2), ret_11(3), ret_13(4), ret_15(5), ret_17(6), ret_22(8), 0(9)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  if (ret_3 != 0)
+    goto <bb 11>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 11> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+
+  <bb 12> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+
+pfe_platform_create_gpis_add_modules (const struct pfe_platform_config_t * config)
+{
+  errno_t ret;
+  int _1;
+  struct pfe_class_t * _2;
+  struct pfe_util_t * _3;
+  struct pfe_tmu_t * _4;
+  const bool_t * _23;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  pfe_hif_cfg_stop_all_chnl_dma ();
+  # DEBUG BEGIN_STMT
+  _1 = pfe_platform_soft_reset (&pfe);
+  if (_1 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Platform reset failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2665, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 4> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = pfe.classifier;
+  _3 = pfe.util;
+  _4 = pfe.tmu;
+  ret_14 = pfe_feature_mgr_add_modules (_2, _3, _4);
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 536870911]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 10>; [100.00%]
+
+  <bb 6> [local count: 536870911]:
+  # DEBUG BEGIN_STMT
+  _23 = &MEM[(unsigned char *)config_15(D) + 92B];
+  # DEBUG D#4 => config_15(D)
+  ret_17 = pfe_platform_create_gpi.isra.0 (&pfe, _23);
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  if (ret_17 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+  goto <bb 10>; [100.00%]
+
+  <bb 8> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  ret_19 = pfe_platform_create_hgpi (&pfe);
+  # DEBUG ret => ret_19
+  # DEBUG BEGIN_STMT
+  if (ret_19 != 0)
+    goto <bb 9>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 9> [local count: 88583700]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_remove ();
+
+  <bb 10> [local count: 1073741824]:
+  # ret_5 = PHI <ret_14(5), ret_17(7), ret_19(8), ret_19(9)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_platform_soft_reset (const struct pfe_platform_t * platform)
+{
+  errno_t ret;
+  uint32_t timeout;
+  bool_t run_on_g3;
+  uint32_t regval;
+  addr_t addr_dbug;
+  addr_t addr_gen;
+  unsigned char _1;
+  unsigned int _2;
+  volatile uint32_t * addr_gen.11_3;
+  volatile uint32_t * addr_dbug.15_5;
+  long unsigned int _6;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+
+  <bb 2> [local count: 135372966]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG run_on_g3 => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG timeout => 1000
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_feature_mgr_is_available ("drv_run_on_g3");
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 46026808]:
+  # DEBUG BEGIN_STMT
+  # DEBUG run_on_g3 => 1
+
+  <bb 4> [local count: 135372966]:
+  # run_on_g3_8 = PHI <0(2), 1(3)>
+  # DEBUG run_on_g3 => run_on_g3_8
+  # DEBUG BEGIN_STMT
+  _2 = pfe.cbus_baseaddr;
+  addr_gen_18 = _2 + 606240;
+  # DEBUG addr_gen => addr_gen_18
+  # DEBUG BEGIN_STMT
+  addr_gen.11_3 = (volatile uint32_t *) addr_gen_18;
+  regval_19 ={v} *addr_gen.11_3;
+  # DEBUG regval => regval_19
+  # DEBUG BEGIN_STMT
+  if (run_on_g3_8 == 1)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 46026808]:
+  # DEBUG BEGIN_STMT
+  regval_20 = regval_19 | 939524096;
+  # DEBUG regval => regval_20
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *addr_gen.11_3 ={v} regval_20;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = regval_19 & 3355443199;
+  # DEBUG regval => _13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *addr_gen.11_3 ={v} _13;
+
+  <bb 6> [local count: 135372966]:
+  # regval_7 = PHI <regval_19(4), _13(5)>
+  # DEBUG regval => regval_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regval_23 = regval_7 | 1073741824;
+  # DEBUG regval => regval_23
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *addr_gen.11_3 ={v} regval_23;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (run_on_g3_8 == 1)
+    goto <bb 7>; [51.12%]
+  else
+    goto <bb 12>; [48.88%]
+
+  <bb 7> [local count: 69202660]:
+  # DEBUG BEGIN_STMT
+  addr_dbug_27 = _2 + 606372;
+  # DEBUG addr_dbug => addr_dbug_27
+
+  <bb 8> [local count: 1073741824]:
+  # timeout_9 = PHI <1000(7), timeout_29(14)>
+  # DEBUG timeout => timeout_9
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  addr_dbug.15_5 = (volatile uint32_t *) addr_dbug_27;
+  _6 ={v} *addr_dbug.15_5;
+  regval_28 = _6 & 524288;
+  # DEBUG regval => regval_28
+  # DEBUG BEGIN_STMT
+  timeout_29 = timeout_9 + 4294967295;
+  # DEBUG timeout => timeout_29
+  # DEBUG BEGIN_STMT
+  if (regval_28 == 0)
+    goto <bb 9>; [94.50%]
+  else
+    goto <bb 10>; [5.50%]
+
+  <bb 9> [local count: 1014686025]:
+  if (timeout_29 != 0)
+    goto <bb 14>; [99.00%]
+  else
+    goto <bb 10>; [1.00%]
+
+  <bb 14> [local count: 1004539165]:
+  goto <bb 8>; [100.00%]
+
+  <bb 10> [local count: 69202661]:
+  # timeout_4 = PHI <timeout_29(8), timeout_29(9)>
+  # DEBUG BEGIN_STMT
+  if (timeout_4 == 0)
+    goto <bb 13>; [35.00%]
+  else
+    goto <bb 11>; [65.00%]
+
+  <bb 11> [local count: 44981729]:
+  # DEBUG BEGIN_STMT
+  regval_30 ={v} *addr_gen.11_3;
+  # DEBUG regval => regval_30
+  # DEBUG BEGIN_STMT
+  regval_31 = regval_30 & 3221225471;
+  # DEBUG regval => regval_31
+  # DEBUG BEGIN_STMT
+  regval_32 = regval_31 | 939524096;
+  # DEBUG regval => regval_32
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *addr_gen.11_3 ={v} regval_32;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _15 = regval_30 & 2281701375;
+  # DEBUG regval => _15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *addr_gen.11_3 ={v} _15;
+  goto <bb 13>; [100.00%]
+
+  <bb 12> [local count: 66170306]:
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (5);
+  # DEBUG BEGIN_STMT
+  _14 = regval_7 & 3221225471;
+  # DEBUG regval => _14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *addr_gen.11_3 ={v} _14;
+
+  <bb 13> [local count: 135372967]:
+  # ret_10 = PHI <0(11), 0(12), 110(10)>
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_10;
+
+}
+
+
+pfe_platform_destroy_ifaces (struct pfe_platform_t * platform)
+{
+  struct pfe_if_db_t * _1;
+  struct pfe_if_db_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_6(D)->log_if_db;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_pfe_log_ifs (platform_6(D));
+  # DEBUG BEGIN_STMT
+  pfe_log_ifs_deinit ();
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = platform_6(D)->phy_if_db;
+  if (_2 != 0B)
+    goto <bb 5>; [53.47%]
+  else
+    goto <bb 6>; [46.53%]
+
+  <bb 5> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_platform_destroy_pfe_phy_ifs (platform_6(D));
+
+  <bb 6> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_platform_destroy_pfe_phy_ifs (struct pfe_platform_t * platform)
+{
+  uint32_t session_id;
+  struct pfe_phy_if_t * phy_if;
+  struct pfe_if_db_entry_t * entry;
+  struct pfe_if_db_t * _1;
+  long unsigned int session_id.35_2;
+  struct pfe_if_db_t * _3;
+  long unsigned int session_id.37_4;
+  struct pfe_if_db_t * _5;
+  long unsigned int session_id.39_6;
+  struct pfe_if_db_entry_t * entry.40_7;
+  long unsigned int session_id.41_8;
+  struct pfe_if_db_t * _9;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  entry = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  session_id = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_if_db_lock (&session_id);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = platform_16(D)->phy_if_db;
+  session_id.35_2 = session_id;
+  pfe_if_db_get_first (_1, session_id.35_2, 0, 0B, &entry);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  phy_if_23 = pfe_if_db_entry_get_phy_if (entry.40_7);
+  # DEBUG phy_if => phy_if_23
+  # DEBUG BEGIN_STMT
+  _3 = platform_16(D)->phy_if_db;
+  session_id.37_4 = session_id;
+  pfe_if_db_remove (_3, session_id.37_4, entry.40_7);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_phy_if_destroy (phy_if_23);
+  # DEBUG BEGIN_STMT
+  # DEBUG phy_if => 0B
+  # DEBUG BEGIN_STMT
+  entry = 0B;
+  # DEBUG BEGIN_STMT
+  _5 = platform_16(D)->phy_if_db;
+  session_id.39_6 = session_id;
+  pfe_if_db_get_next (_5, session_id.39_6, &entry);
+  # DEBUG ret => NULL
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  entry.40_7 = entry;
+  if (entry.40_7 != 0B)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  session_id.41_8 = session_id;
+  pfe_if_db_unlock (session_id.41_8);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = platform_16(D)->phy_if_db;
+  if (_9 != 0B)
+    goto <bb 6>; [53.47%]
+  else
+    goto <bb 7>; [46.53%]
+
+  <bb 6> [local count: 63154273]:
+  # DEBUG BEGIN_STMT
+  pfe_if_db_destroy (_9);
+  # DEBUG BEGIN_STMT
+  platform_16(D)->phy_if_db = 0B;
+
+  <bb 7> [local count: 118111601]:
+  entry ={v} {CLOBBER};
+  session_id ={v} {CLOBBER};
+  return;
+
+}
+
+
+pfe_platform_destroy_pfe_log_ifs (struct pfe_platform_t * platform)
+{
+  uint32_t session_id;
+  struct pfe_log_if_t * log_if;
+  struct pfe_if_db_entry_t * entry;
+  struct pfe_if_db_t * _1;
+  long unsigned int session_id.28_2;
+  struct pfe_if_db_t * _3;
+  long unsigned int session_id.30_4;
+  struct pfe_if_db_t * _5;
+  long unsigned int session_id.32_6;
+  struct pfe_if_db_entry_t * entry.33_7;
+  long unsigned int session_id.34_8;
+  struct pfe_if_db_t * _9;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  entry = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  session_id = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_if_db_lock (&session_id);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = platform_16(D)->log_if_db;
+  session_id.28_2 = session_id;
+  pfe_if_db_get_first (_1, session_id.28_2, 0, 0B, &entry);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  log_if_23 = pfe_if_db_entry_get_log_if (entry.33_7);
+  # DEBUG log_if => log_if_23
+  # DEBUG BEGIN_STMT
+  _3 = platform_16(D)->log_if_db;
+  session_id.30_4 = session_id;
+  pfe_if_db_remove (_3, session_id.30_4, entry.33_7);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_log_if_destroy (log_if_23);
+  # DEBUG BEGIN_STMT
+  entry = 0B;
+  # DEBUG BEGIN_STMT
+  _5 = platform_16(D)->log_if_db;
+  session_id.32_6 = session_id;
+  pfe_if_db_get_next (_5, session_id.32_6, &entry);
+  # DEBUG ret => NULL
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  entry.33_7 = entry;
+  if (entry.33_7 != 0B)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  session_id.34_8 = session_id;
+  pfe_if_db_unlock (session_id.34_8);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = platform_16(D)->log_if_db;
+  if (_9 != 0B)
+    goto <bb 6>; [53.47%]
+  else
+    goto <bb 7>; [46.53%]
+
+  <bb 6> [local count: 63154273]:
+  # DEBUG BEGIN_STMT
+  pfe_if_db_destroy (_9);
+  # DEBUG BEGIN_STMT
+  platform_16(D)->log_if_db = 0B;
+
+  <bb 7> [local count: 118111601]:
+  entry ={v} {CLOBBER};
+  session_id ={v} {CLOBBER};
+  return;
+
+}
+
+
+pfe_platform_create_ifaces ()
+{
+  errno_t ret;
+  struct pfe_if_db_t * _1;
+  struct pfe_if_db_t * _2;
+  struct pfe_if_db_t * _3;
+  struct pfe_if_db_t * _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = pfe.log_if_db;
+  if (_1 == 0B)
+    goto <bb 4>; [17.43%]
+  else
+    goto <bb 7>; [82.57%]
+
+  <bb 4> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  _2 = pfe_if_db_create (1);
+  pfe.log_if_db = _2;
+  # DEBUG BEGIN_STMT
+  if (_2 == 0B)
+    goto <bb 10>; [31.91%]
+  else
+    goto <bb 5>; [68.09%]
+
+  <bb 5> [local count: 127432614]:
+  # DEBUG BEGIN_STMT
+  pfe_log_ifs_init ();
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1014021239]:
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  _3 = pfe.phy_if_db;
+  if (_3 == 0B)
+    goto <bb 8>; [17.43%]
+  else
+    goto <bb 10>; [82.57%]
+
+  <bb 8> [local count: 176743902]:
+  # DEBUG BEGIN_STMT
+  _4 = pfe_if_db_create (0);
+  pfe.phy_if_db = _4;
+  # DEBUG BEGIN_STMT
+  if (_4 == 0B)
+    goto <bb 10>; [31.91%]
+  else
+    goto <bb 9>; [68.09%]
+
+  <bb 9> [local count: 120344923]:
+  # DEBUG BEGIN_STMT
+  ret_14 = pfe_platform_bind_ifaces ();
+  # DEBUG ret => ret_14
+
+  <bb 10> [local count: 1073741824]:
+  # ret_5 = PHI <19(4), 0(7), 19(8), ret_14(9)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_platform_bind_ifaces ()
+{
+  const struct pfe_platform_pfy_if phy_ifs[10];
+  struct pfe_hif_chnl_t * channel_hifncpy;
+  struct pfe_hif_chnl_t * channel_hif3;
+  struct pfe_hif_chnl_t * channel_hif2;
+  struct pfe_hif_chnl_t * channel_hif1;
+  struct pfe_hif_chnl_t * channel_hif0;
+  struct pfe_if_db_entry_t * entry;
+  uint32_t session_id;
+  struct pfe_phy_if_t * phy_if;
+  int32_t ii;
+  errno_t ret;
+  struct pfe_hif_t * _1;
+  struct pfe_hif_t * _2;
+  struct pfe_hif_t * _3;
+  struct pfe_hif_t * _4;
+  struct pfe_hif_nocpy_t * _5;
+  struct pfe_emac_t * _6;
+  struct pfe_gpi_t * _7;
+  struct pfe_emac_t * _8;
+  struct pfe_gpi_t * _9;
+  struct pfe_emac_t * _10;
+  struct pfe_gpi_t * _11;
+  int _12;
+  struct pfe_if_db_t * _13;
+  long unsigned int session_id.24_14;
+  unsigned int _16;
+  void * _17;
+  struct pfe_if_db_entry_t * entry.25_18;
+  struct pfe_class_t * _19;
+  <unnamed type> _20;
+  const char_t * _21;
+  const char_t * _22;
+  const struct pfe_platform_pfy_if * _23;
+  long unsigned int session_id.26_24;
+  <unnamed type> _25;
+  long unsigned int session_id.27_26;
+  int _27;
+
+  <bb 2> [local count: 61599606]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG phy_if => 0B
+  # DEBUG BEGIN_STMT
+  session_id = 0;
+  # DEBUG BEGIN_STMT
+  entry = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG channel_hif0 => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG channel_hif1 => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG channel_hif2 => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG channel_hif3 => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG channel_hifncpy => 0B
+  # DEBUG BEGIN_STMT
+  _1 = pfe.hif;
+  channel_hif0_45 = pfe_hif_get_channel (_1, 1);
+  # DEBUG channel_hif0 => channel_hif0_45
+  # DEBUG BEGIN_STMT
+  _2 = pfe.hif;
+  channel_hif1_47 = pfe_hif_get_channel (_2, 2);
+  # DEBUG channel_hif1 => channel_hif1_47
+  # DEBUG BEGIN_STMT
+  _3 = pfe.hif;
+  channel_hif2_49 = pfe_hif_get_channel (_3, 4);
+  # DEBUG channel_hif2 => channel_hif2_49
+  # DEBUG BEGIN_STMT
+  _4 = pfe.hif;
+  channel_hif3_51 = pfe_hif_get_channel (_4, 8);
+  # DEBUG channel_hif3 => channel_hif3_51
+  # DEBUG BEGIN_STMT
+  _5 = pfe.hif_nocpy;
+  channel_hifncpy_53 = pfe_hif_nocpy_get_channel (_5, 1000);
+  # DEBUG channel_hifncpy => channel_hifncpy_53
+  # DEBUG BEGIN_STMT
+  phy_ifs[0].name = "emac0";
+  phy_ifs[0].id = 0;
+  phy_ifs[0].mac = "\x00\n\v\f\r\x0e";
+  _6 = pfe.emac[0];
+  phy_ifs[0].phy.emac = _6;
+  _7 = pfe.gpi[0];
+  phy_ifs[0].phy.gpi = _7;
+  phy_ifs[0].phy.chnl = 0B;
+  phy_ifs[1].name = "emac1";
+  phy_ifs[1].id = 1;
+  phy_ifs[1].mac = "\x00\x1a\x1b\x1c\x1d\x1e";
+  _8 = pfe.emac[1];
+  phy_ifs[1].phy.emac = _8;
+  _9 = pfe.gpi[1];
+  phy_ifs[1].phy.gpi = _9;
+  phy_ifs[1].phy.chnl = 0B;
+  phy_ifs[2].name = "emac2";
+  phy_ifs[2].id = 2;
+  phy_ifs[2].mac = "\x00*+,-.";
+  _10 = pfe.emac[2];
+  phy_ifs[2].phy.emac = _10;
+  _11 = pfe.gpi[2];
+  phy_ifs[2].phy.gpi = _11;
+  phy_ifs[2].phy.chnl = 0B;
+  phy_ifs[3].name = "util";
+  phy_ifs[3].id = 5;
+  phy_ifs[3].mac = "\x00";
+  phy_ifs[3].phy.emac = 0B;
+  phy_ifs[3].phy.gpi = 0B;
+  phy_ifs[3].phy.chnl = 0B;
+  phy_ifs[4].name = "hif0";
+  phy_ifs[4].id = 6;
+  phy_ifs[4].mac = "\x00";
+  phy_ifs[4].phy.emac = 0B;
+  phy_ifs[4].phy.gpi = 0B;
+  phy_ifs[4].phy.chnl = channel_hif0_45;
+  phy_ifs[5].name = "hif1";
+  phy_ifs[5].id = 7;
+  phy_ifs[5].mac = "\x00";
+  phy_ifs[5].phy.emac = 0B;
+  phy_ifs[5].phy.gpi = 0B;
+  phy_ifs[5].phy.chnl = channel_hif1_47;
+  phy_ifs[6].name = "hif2";
+  phy_ifs[6].id = 8;
+  phy_ifs[6].mac = "\x00";
+  phy_ifs[6].phy.emac = 0B;
+  phy_ifs[6].phy.gpi = 0B;
+  phy_ifs[6].phy.chnl = channel_hif2_49;
+  phy_ifs[7].name = "hif3";
+  phy_ifs[7].id = 9;
+  phy_ifs[7].mac = "\x00";
+  phy_ifs[7].phy.emac = 0B;
+  phy_ifs[7].phy.gpi = 0B;
+  phy_ifs[7].phy.chnl = channel_hif3_51;
+  phy_ifs[8].name = "hifncpy";
+  phy_ifs[8].id = 4;
+  phy_ifs[8].mac = "\x00";
+  phy_ifs[8].phy.emac = 0B;
+  phy_ifs[8].phy.gpi = 0B;
+  phy_ifs[8].phy.chnl = channel_hifncpy_53;
+  phy_ifs[9].name = 0B;
+  phy_ifs[9].id = 10;
+  phy_ifs[9].mac = "\x00";
+  phy_ifs[9].phy.emac = 0B;
+  phy_ifs[9].phy.gpi = 0B;
+  phy_ifs[9].phy.chnl = 0B;
+  # DEBUG BEGIN_STMT
+  _12 = pfe_if_db_lock (&session_id);
+  if (_12 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 3> [local count: 20327870]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] DB lock failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2361, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 12> [local count: 61599606]:
+  # ret_32 = PHI <0(3), 0(2)>
+  # ii_42 = PHI <0(3), 0(2)>
+  goto <bb 16>; [100.00%]
+
+  <bb 5> [local count: 1034442875]:
+  # DEBUG BEGIN_STMT
+  _13 = pfe.phy_if_db;
+  session_id.24_14 = session_id;
+  _16 = (unsigned int) _25;
+  _17 = (void *) _16;
+  pfe_if_db_get_first (_13, session_id.24_14, 1, _17, &entry);
+  # DEBUG BEGIN_STMT
+  entry.25_18 = entry;
+  if (entry.25_18 != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 6> [local count: 724110013]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by continue predictor.
+  goto <bb 11>; [100.00%]
+
+  <bb 7> [local count: 310332862]:
+  # DEBUG BEGIN_STMT
+  _19 = pfe.classifier;
+  _20 = phy_ifs[ii_31].id;
+  _21 = phy_ifs[ii_31].name;
+  phy_if_119 = pfe_phy_if_create (_19, _20, _21);
+  # DEBUG phy_if => phy_if_119
+  # DEBUG BEGIN_STMT
+  if (phy_if_119 == 0B)
+    goto <bb 8>; [3.66%]
+  else
+    goto <bb 9>; [96.34%]
+
+  <bb 8> [local count: 11358183]:
+  # ii_15 = PHI <ii_31(7)>
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _22 = phy_ifs[ii_15].name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create %s\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2380, _22, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [100.00%]
+
+  <bb 9> [local count: 298974679]:
+  # DEBUG BEGIN_STMT
+  _23 = &phy_ifs[ii_31];
+  session_id.26_24 = session_id;
+  ret_121 = pfe_platform_prepare_phy_if (phy_if_119, _23, session_id.26_24);
+  # DEBUG ret => ret_121
+  # DEBUG BEGIN_STMT
+  if (ret_121 != 0)
+    goto <bb 10>; [3.66%]
+  else
+    goto <bb 11>; [96.34%]
+
+  <bb 10> [local count: 10942473]:
+  # phy_if_37 = PHI <phy_if_119(9)>
+  # ret_38 = PHI <ret_121(9)>
+  # DEBUG BEGIN_STMT
+  pfe_phy_if_destroy (phy_if_37);
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [100.00%]
+
+  <bb 11> [local count: 1012142219]:
+  # ret_28 = PHI <ret_29(6), ret_121(9)>
+  # DEBUG ret => ret_28
+  # DEBUG BEGIN_STMT
+  ii_125 = ii_31 + 1;
+  # DEBUG ii => ii_125
+
+  <bb 16> [local count: 1073741824]:
+  # ret_29 = PHI <ret_32(12), ret_28(11)>
+  # ii_31 = PHI <ii_42(12), ii_125(11)>
+  # DEBUG ii => ii_31
+  # DEBUG ret => ret_29
+  # DEBUG BEGIN_STMT
+  _25 = phy_ifs[ii_31].id;
+  if (_25 != 10)
+    goto <bb 5>; [96.34%]
+  else
+    goto <bb 13>; [3.66%]
+
+  <bb 13> [local count: 61599607]:
+  # ret_30 = PHI <19(8), ret_38(10), ret_29(16)>
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  session_id.27_26 = session_id;
+  _27 = pfe_if_db_unlock (session_id.27_26);
+  if (_27 != 0)
+    goto <bb 14>; [33.00%]
+  else
+    goto <bb 15>; [67.00%]
+
+  <bb 14> [local count: 20327870]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] DB unlock failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2397, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 15> [local count: 61599607]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  session_id ={v} {CLOBBER};
+  entry ={v} {CLOBBER};
+  phy_ifs ={v} {CLOBBER};
+  return ret_30;
+
+}
+
+
+pfe_platform_prepare_phy_if (struct pfe_phy_if_t * phy_if, const struct pfe_platform_pfy_if * p_phy_ifs, uint32_t session_id)
+{
+  pfe_ct_phy_if_id_t phy_if_id;
+  errno_t ret;
+  int _1;
+  const char_t * _2;
+  int _3;
+  const char_t * _4;
+  int _5;
+  const char_t * _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_phy_if_set_op_mode (phy_if_12(D), 0);
+  if (_1 != 0)
+    goto <bb 3>; [20.96%]
+  else
+    goto <bb 4>; [79.04%]
+
+  <bb 3> [local count: 225056286]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = p_phy_ifs_15(D)->name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not set default operational mode (%s)\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2282, _2, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 14>; [100.00%]
+
+  <bb 4> [local count: 848685538]:
+  # DEBUG BEGIN_STMT
+  phy_if_id_14 = pfe_phy_if_get_id (phy_if_12(D));
+  # DEBUG phy_if_id => phy_if_id_14
+  # DEBUG BEGIN_STMT
+  if (phy_if_id_14 <= 2)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 280066228]:
+  # DEBUG BEGIN_STMT
+  ret_23 = pfe_platform_prepare_phy_if_emac (phy_if_12(D), p_phy_ifs_15(D), session_id_16(D));
+  # DEBUG ret => ret_23
+  goto <bb 11>; [100.00%]
+
+  <bb 6> [local count: 568619310]:
+  # DEBUG BEGIN_STMT
+  if (phy_if_id_14 == 5)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 10>; [66.00%]
+
+  <bb 7> [local count: 193330565]:
+  # DEBUG BEGIN_STMT
+  _3 = pfe_phy_if_bind_util (phy_if_12(D));
+  if (_3 != 0)
+    goto <bb 9>; [20.96%]
+  else
+    goto <bb 12>; [79.04%]
+
+  <bb 9> [local count: 40522086]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = p_phy_ifs_15(D)->name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t initialize UTIL PHY (%s)\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2300, _4, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 10> [local count: 375288744]:
+  # DEBUG BEGIN_STMT
+  ret_18 = pfe_platform_prepare_phy_if_hif (phy_if_12(D), p_phy_ifs_15(D), session_id_16(D));
+  # DEBUG ret => ret_18
+
+  <bb 11> [local count: 655354973]:
+  # ret_7 = PHI <ret_23(5), ret_18(10)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 12> [local count: 480485965]:
+  # ret_29 = PHI <ret_7(11), 0(7)>
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  _5 = pfe_platform_register_phy_if (session_id_16(D), phy_if_12(D));
+  if (_5 != 0)
+    goto <bb 13>; [20.96%]
+  else
+    goto <bb 14>; [79.04%]
+
+  <bb 13> [local count: 100709858]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = pfe_phy_if_get_name (phy_if_12(D));
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not register %s\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2315, _6, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 14> [local count: 1073741824]:
+  # ret_8 = PHI <19(3), ret_7(11), ret_29(12), 19(13), 19(9)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  return ret_8;
+
+}
+
+
+pfe_platform_prepare_phy_if_emac (struct pfe_phy_if_t * phy_if, const struct pfe_platform_pfy_if * p_phy_ifs, uint32_t session_id)
+{
+  errno_t ret;
+  struct pfe_emac_t * _1;
+  int _2;
+  const char_t * _3;
+  struct pfe_emac_t * _4;
+  struct pfe_gpi_t * _5;
+  int _6;
+  const char_t * _7;
+  const char_t * _8;
+  int _9;
+  const char_t * _10;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  # DEBUG BEGIN_STMT
+  _1 = p_phy_ifs_14(D)->phy.emac;
+  _2 = pfe_phy_if_bind_emac (phy_if_15(D), _1);
+  if (_2 != 0)
+    goto <bb 3>; [35.00%]
+  else
+    goto <bb 4>; [65.00%]
+
+  <bb 3> [local count: 375809639]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = p_phy_ifs_14(D)->name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t bind interface with EMAC (%s)\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2252, _3, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 4> [local count: 697932186]:
+  # DEBUG BEGIN_STMT
+  _4 = p_phy_ifs_14(D)->phy.emac;
+  _5 = p_phy_ifs_14(D)->phy.gpi;
+  _6 = pfe_emac_bind_gpi (_4, _5);
+  if (_6 != 0)
+    goto <bb 5>; [35.00%]
+  else
+    goto <bb 6>; [65.00%]
+
+  <bb 5> [local count: 244276265]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = p_phy_ifs_14(D)->name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t bind interface with GPI (%s)\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2257, _7, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 453655921]:
+  # DEBUG BEGIN_STMT
+  _8 = p_phy_ifs_14(D)->name;
+  _9 = pfe_platform_create_default_log_if (phy_if_15(D), _8, session_id_18(D));
+  if (_9 != 0)
+    goto <bb 7>; [20.96%]
+  else
+    goto <bb 8>; [79.04%]
+
+  <bb 7> [local count: 95086281]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = p_phy_ifs_14(D)->name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t create default log_if for %s\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2261, _10, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  # ret_11 = PHI <19(3), 19(5), 19(7), 0(6)>
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  return ret_11;
+
+}
+
+
+pfe_platform_prepare_phy_if_hif (struct pfe_phy_if_t * phy_if, const struct pfe_platform_pfy_if * p_phy_ifs, uint32_t session_id)
+{
+  errno_t ret;
+  struct pfe_hif_chnl_t * _1;
+  int _2;
+  const char_t * _3;
+  const char_t * _4;
+  int _5;
+  const char_t * _6;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = p_phy_ifs_10(D)->phy.chnl;
+  if (_1 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 4> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  _2 = pfe_phy_if_bind_hif (phy_if_11(D), _1);
+  if (_2 != 0)
+    goto <bb 5>; [20.96%]
+  else
+    goto <bb 7>; [79.04%]
+
+  <bb 5> [local count: 157539400]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = p_phy_ifs_10(D)->name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t bind interface with HIF (%s)\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2226, _3, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [100.00%]
+
+  <bb 7> [local count: 916202423]:
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  _4 = p_phy_ifs_10(D)->name;
+  _5 = pfe_platform_create_default_log_if (phy_if_11(D), _4, session_id_15(D));
+  if (_5 != 0)
+    goto <bb 8>; [20.96%]
+  else
+    goto <bb 9>; [79.04%]
+
+  <bb 8> [local count: 192036028]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = p_phy_ifs_10(D)->name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t create default log_if for %s\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2234, _6, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 9> [local count: 1073741824]:
+  # ret_7 = PHI <19(5), 0(7), 19(8)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  return ret_7;
+
+}
+
+
+pfe_platform_create_default_log_if (struct pfe_phy_if_t * phy_if, const char * if_name, uint32_t session_id)
+{
+  errno_t ret;
+  struct pfe_log_if_t * log_if;
+  struct pfe_if_db_t * _1;
+  int _2;
+  int _3;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  log_if_10 = pfe_log_if_create (phy_if_7(D), if_name_8(D));
+  # DEBUG log_if => log_if_10
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  # DEBUG BEGIN_STMT
+  if (log_if_10 == 0B)
+    goto <bb 3>; [18.75%]
+  else
+    goto <bb 4>; [81.25%]
+
+  <bb 3> [local count: 201326592]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create LOG_IF for %s\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2192, if_name_8(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 872415231]:
+  # DEBUG BEGIN_STMT
+  _1 = pfe.log_if_db;
+  _2 = pfe_if_db_add (_1, session_id_11(D), log_if_10, 6);
+  if (_2 != 0)
+    goto <bb 5>; [35.00%]
+  else
+    goto <bb 6>; [65.00%]
+
+  <bb 5> [local count: 305345331]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not register LOG_IF %s\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2197, if_name_8(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_log_if_destroy (log_if_10);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 567069901]:
+  # DEBUG BEGIN_STMT
+  _3 = pfe_log_if_promisc_enable (log_if_10);
+  if (_3 != 0)
+    goto <bb 7>; [35.00%]
+  else
+    goto <bb 8>; [65.00%]
+
+  <bb 7> [local count: 198474465]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not configure LOG_IF %s\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2202, if_name_8(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_log_if_destroy (log_if_10);
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 368595435]:
+  # DEBUG BEGIN_STMT
+  ret_15 = pfe_log_if_enable (log_if_10);
+  # DEBUG ret => ret_15
+
+  <bb 9> [local count: 1073741824]:
+  # ret_4 = PHI <19(3), 19(5), 19(7), ret_15(8)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  return ret_4;
+
+}
+
+
+pfe_platform_get_phy_if_by_id (const struct pfe_platform_t * platform, pfe_ct_phy_if_id_t id)
+{
+  struct pfe_phy_if_t * phyif;
+  uint32_t session_id;
+  struct pfe_if_db_entry_t * entry;
+  struct pfe_if_db_t * _1;
+  long unsigned int session_id.8_2;
+  unsigned int _3;
+  void * _4;
+  long unsigned int session_id.9_5;
+  struct pfe_if_db_entry_t * entry.10_6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  entry = 0B;
+  # DEBUG BEGIN_STMT
+  session_id = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_if_db_lock (&session_id);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = platform_11(D)->phy_if_db;
+  session_id.8_2 = session_id;
+  _3 = (unsigned int) id_12(D);
+  _4 = (void *) _3;
+  pfe_if_db_get_first (_1, session_id.8_2, 1, _4, &entry);
+  # DEBUG BEGIN_STMT
+  session_id.9_5 = session_id;
+  pfe_if_db_unlock (session_id.9_5);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry.10_6 = entry;
+  phyif_15 = pfe_if_db_entry_get_phy_if (entry.10_6);
+  # DEBUG phyif => phyif_15
+  # DEBUG BEGIN_STMT
+  entry ={v} {CLOBBER};
+  session_id ={v} {CLOBBER};
+  return phyif_15;
+
+}
+
+
+pfe_platform_register_phy_if (uint32_t session_id, struct pfe_phy_if_t * phy_if)
+{
+  errno_t ret;
+  struct pfe_if_db_t * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe.phy_if_db;
+  ret_6 = pfe_if_db_add (_1, session_id_3(D), phy_if_4(D), 6);
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  return ret_6;
+
+}
+
+
+pfe_platform_create_fci (struct pfe_platform_t * platform)
+{
+  errno_t ret;
+  struct fci_init_info_t fci_init_info;
+  struct pfe_rtable_t * _1;
+  struct pfe_l2br_t * _2;
+  struct pfe_class_t * _3;
+  struct pfe_if_db_t * _4;
+  struct pfe_if_db_t * _5;
+  struct pfe_tmu_t * _6;
+  <unnamed type> _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = platform_10(D)->rtable;
+  fci_init_info.rtable = _1;
+  # DEBUG BEGIN_STMT
+  _2 = platform_10(D)->l2_bridge;
+  fci_init_info.l2_bridge = _2;
+  # DEBUG BEGIN_STMT
+  _3 = platform_10(D)->classifier;
+  fci_init_info.class = _3;
+  # DEBUG BEGIN_STMT
+  _4 = platform_10(D)->phy_if_db;
+  fci_init_info.phy_if_db = _4;
+  # DEBUG BEGIN_STMT
+  _5 = platform_10(D)->log_if_db;
+  fci_init_info.log_if_db = _5;
+  # DEBUG BEGIN_STMT
+  _6 = platform_10(D)->tmu;
+  fci_init_info.tmu = _6;
+  # DEBUG BEGIN_STMT
+  _7 = platform_10(D)->hif_fci_owner_chnls_mask;
+  fci_init_info.hif_fci_owner_chnls_mask = _7;
+  # DEBUG BEGIN_STMT
+  ret_19 = fci_init (&fci_init_info, "pfe_fci");
+  # DEBUG ret => ret_19
+  # DEBUG BEGIN_STMT
+  if (ret_19 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not create the FCI endpoint\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 2092, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  platform_10(D)->fci_created = 1;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  fci_init_info ={v} {CLOBBER};
+  return ret_19;
+
+}
+
+
+pfe_platform_destroy_pfe_errors (struct pfe_platform_t * platform)
+{
+  struct pfe_ecc_err_t * _1;
+  struct pfe_fail_stop_t * _2;
+  struct pfe_host_fail_stop_t * _3;
+  struct pfe_fw_fail_stop_t * _4;
+  struct pfe_bus_err_t * _5;
+  struct pfe_parity_t * _6;
+  struct pfe_wdt_t * _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_16(D)->ecc_err;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_ecc_err_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_16(D)->ecc_err = 0B;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = platform_16(D)->fail_stop;
+  if (_2 != 0B)
+    goto <bb 5>; [53.47%]
+  else
+    goto <bb 6>; [46.53%]
+
+  <bb 5> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_fail_stop_destroy (_2);
+  # DEBUG BEGIN_STMT
+  platform_16(D)->fail_stop = 0B;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 = platform_16(D)->host_fail_stop;
+  if (_3 != 0B)
+    goto <bb 7>; [53.47%]
+  else
+    goto <bb 8>; [46.53%]
+
+  <bb 7> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_host_fail_stop_destroy (_3);
+  # DEBUG BEGIN_STMT
+  platform_16(D)->host_fail_stop = 0B;
+
+  <bb 8> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = platform_16(D)->fw_fail_stop;
+  if (_4 != 0B)
+    goto <bb 9>; [53.47%]
+  else
+    goto <bb 10>; [46.53%]
+
+  <bb 9> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_fw_fail_stop_destroy (_4);
+  # DEBUG BEGIN_STMT
+  platform_16(D)->fw_fail_stop = 0B;
+
+  <bb 10> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _5 = platform_16(D)->bus_err;
+  if (_5 != 0B)
+    goto <bb 11>; [53.47%]
+  else
+    goto <bb 12>; [46.53%]
+
+  <bb 11> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_bus_err_destroy (_5);
+  # DEBUG BEGIN_STMT
+  platform_16(D)->bus_err = 0B;
+
+  <bb 12> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _6 = platform_16(D)->parity;
+  if (_6 != 0B)
+    goto <bb 13>; [53.47%]
+  else
+    goto <bb 14>; [46.53%]
+
+  <bb 13> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_parity_destroy (_6);
+  # DEBUG BEGIN_STMT
+  platform_16(D)->parity = 0B;
+
+  <bb 14> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _7 = platform_16(D)->wdt;
+  if (_7 != 0B)
+    goto <bb 15>; [53.47%]
+  else
+    goto <bb 16>; [46.53%]
+
+  <bb 15> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_wdt_destroy (_7);
+  # DEBUG BEGIN_STMT
+  platform_16(D)->wdt = 0B;
+
+  <bb 16> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_platform_create_failures (struct pfe_platform_t * platform, addr_t cbus_base_va, addr_t parity_base)
+{
+  errno_t ret;
+  struct pfe_bus_err_t * _1;
+  struct pfe_fw_fail_stop_t * _2;
+  struct pfe_host_fail_stop_t * _3;
+  struct pfe_fail_stop_t * _4;
+  struct pfe_ecc_err_t * _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = pfe_bus_err_create (cbus_base_va_17(D), parity_base_18(D));
+  platform_20(D)->bus_err = _1;
+  # DEBUG BEGIN_STMT
+  if (_1 == 0B)
+    goto <bb 3>; [17.43%]
+  else
+    goto <bb 4>; [82.57%]
+
+  <bb 3> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create PFE_ERRORS:Bus Error instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1899, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 4> [local count: 1073741824]:
+  # ret_6 = PHI <0(2), 19(3)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = pfe_fw_fail_stop_create (cbus_base_va_17(D), parity_base_18(D));
+  platform_20(D)->fw_fail_stop = _2;
+  # DEBUG BEGIN_STMT
+  if (_2 == 0B)
+    goto <bb 5>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 5> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create PFE_ERRORS:FW Fail Stop instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1912, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 6> [local count: 1073741824]:
+  # ret_7 = PHI <ret_6(4), 19(5)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = pfe_host_fail_stop_create (cbus_base_va_17(D), parity_base_18(D));
+  platform_20(D)->host_fail_stop = _3;
+  # DEBUG BEGIN_STMT
+  if (_3 == 0B)
+    goto <bb 7>; [17.43%]
+  else
+    goto <bb 8>; [82.57%]
+
+  <bb 7> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create PFE_ERRORS:Host Fail Stop instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1925, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 8> [local count: 1073741824]:
+  # ret_8 = PHI <ret_7(6), 19(7)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = pfe_fail_stop_create (cbus_base_va_17(D), parity_base_18(D));
+  platform_20(D)->fail_stop = _4;
+  # DEBUG BEGIN_STMT
+  if (_4 == 0B)
+    goto <bb 9>; [17.43%]
+  else
+    goto <bb 10>; [82.57%]
+
+  <bb 9> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create PFE_ERRORS:Fail Stop instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1938, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 10> [local count: 1073741824]:
+  # ret_9 = PHI <ret_8(8), 19(9)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = pfe_ecc_err_create (cbus_base_va_17(D), parity_base_18(D));
+  platform_20(D)->ecc_err = _5;
+  # DEBUG BEGIN_STMT
+  if (_5 == 0B)
+    goto <bb 11>; [10.21%]
+  else
+    goto <bb 12>; [89.79%]
+
+  <bb 11> [local count: 109629040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create PFE_ERRORS:ECC Err instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1951, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 12> [local count: 1073741824]:
+  # ret_10 = PHI <ret_9(10), 19(11)>
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_10;
+
+}
+
+
+pfe_platform_irq_unmask_fails_and_errors (struct pfe_platform_t * platform)
+{
+  struct pfe_bus_err_t * _1;
+  struct pfe_fw_fail_stop_t * _2;
+  struct pfe_host_fail_stop_t * _3;
+  struct pfe_fail_stop_t * _4;
+  struct pfe_ecc_err_t * _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_7(D)->bus_err;
+  pfe_bus_err_irq_unmask (_1);
+  # DEBUG BEGIN_STMT
+  _2 = platform_7(D)->fw_fail_stop;
+  pfe_fw_fail_stop_irq_unmask (_2);
+  # DEBUG BEGIN_STMT
+  _3 = platform_7(D)->host_fail_stop;
+  pfe_host_fail_stop_irq_unmask (_3);
+  # DEBUG BEGIN_STMT
+  _4 = platform_7(D)->fail_stop;
+  pfe_fail_stop_irq_unmask (_4);
+  # DEBUG BEGIN_STMT
+  _5 = platform_7(D)->ecc_err;
+  pfe_ecc_err_irq_unmask (_5);
+  return;
+
+}
+
+
+pfe_platform_irq_unmask_parity_wdt (struct pfe_platform_t * platform)
+{
+  struct pfe_parity_t * _1;
+  struct pfe_wdt_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_4(D)->parity;
+  pfe_parity_irq_unmask (_1);
+  # DEBUG BEGIN_STMT
+  _2 = platform_4(D)->wdt;
+  pfe_wdt_irq_unmask (_2);
+  return;
+
+}
+
+
+pfe_platform_destroy_emac (struct pfe_platform_t * platform)
+{
+  uint32_t ii;
+  struct pfe_emac_t * _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 805306369]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_7(D)->emac[ii_3];
+  if (_1 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 430597315]:
+  # DEBUG BEGIN_STMT
+  pfe_emac_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_7(D)->emac[ii_3] = 0B;
+
+  <bb 5> [local count: 805306369]:
+  # DEBUG BEGIN_STMT
+  ii_10 = ii_3 + 1;
+  # DEBUG ii => ii_10
+
+  <bb 6> [local count: 1073741824]:
+  # ii_3 = PHI <0(2), ii_10(5)>
+  # DEBUG ii => ii_3
+  # DEBUG BEGIN_STMT
+  _2 = platform_7(D)->emac_count;
+  if (_2 > ii_3)
+    goto <bb 3>; [75.00%]
+  else
+    goto <bb 7>; [25.00%]
+
+  <bb 7> [local count: 268435456]:
+  return;
+
+}
+
+
+pfe_platform_enable_ts (struct pfe_platform_t * platform)
+{
+  struct pfe_emac_t * _1;
+  int _2;
+  struct pfe_emac_t * _3;
+  int _4;
+  struct pfe_emac_t * _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_8(D)->emac[0];
+  _2 = pfe_emac_enable_ts (_1, 200000000, 100000000);
+  if (_2 != 0)
+    goto <bb 5>; [67.00%]
+  else
+    goto <bb 3>; [33.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _3 = platform_8(D)->emac[1];
+  _4 = pfe_emac_enable_ts (_3, 200000000, 100000000);
+  if (_4 != 0)
+    goto <bb 5>; [67.00%]
+  else
+    goto <bb 4>; [33.00%]
+
+  <bb 4> [local count: 116930485]:
+  # DEBUG BEGIN_STMT
+  _5 = platform_8(D)->emac[2];
+  pfe_emac_enable_ts (_5, 200000000, 100000000);
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_platform_create_emac (struct pfe_platform_t * platform, const struct pfe_platform_config_t * config)
+{
+  errno_t ret;
+  unsigned int _1;
+  <unnamed type> _2;
+  struct pfe_emac_t * _3;
+  struct pfe_emac_t * _4;
+  struct pfe_emac_t * _5;
+  unsigned int _6;
+  <unnamed type> _7;
+  struct pfe_emac_t * _8;
+  struct pfe_emac_t * _9;
+  struct pfe_emac_t * _10;
+  unsigned int _11;
+  <unnamed type> _12;
+  struct pfe_emac_t * _13;
+  struct pfe_emac_t * _14;
+  struct pfe_emac_t * _15;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = platform_21(D)->cbus_baseaddr;
+  _2 = config_22(D)->emac_mode[0];
+  _3 = pfe_emac_create (_1, 655360, _2, 3, 2);
+  platform_21(D)->emac[0] = _3;
+  # DEBUG BEGIN_STMT
+  if (_3 == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 3> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create EMAC1 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1767, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  pfe_emac_set_max_frame_length (_3, 1522);
+  # DEBUG BEGIN_STMT
+  _4 = platform_21(D)->emac[0];
+  pfe_emac_enable_rx_flow_control (_4);
+  # DEBUG BEGIN_STMT
+  _5 = platform_21(D)->emac[0];
+  pfe_emac_enable_broadcast (_5);
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = platform_21(D)->cbus_baseaddr;
+  _7 = config_22(D)->emac_mode[1];
+  _8 = pfe_emac_create (_6, 671744, _7, 3, 2);
+  platform_21(D)->emac[1] = _8;
+  # DEBUG BEGIN_STMT
+  if (_8 == 0B)
+    goto <bb 5>; [18.75%]
+  else
+    goto <bb 6>; [81.25%]
+
+  <bb 5> [local count: 140928614]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create EMAC2 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1786, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [100.00%]
+
+  <bb 6> [local count: 610690663]:
+  # DEBUG BEGIN_STMT
+  pfe_emac_set_max_frame_length (_8, 1522);
+  # DEBUG BEGIN_STMT
+  _9 = platform_21(D)->emac[1];
+  pfe_emac_enable_rx_flow_control (_9);
+  # DEBUG BEGIN_STMT
+  _10 = platform_21(D)->emac[1];
+  pfe_emac_enable_broadcast (_10);
+
+  <bb 7> [local count: 932813210]:
+  # ret_16 = PHI <0(6), 19(3)>
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 == 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 8> [local count: 307828359]:
+  # DEBUG BEGIN_STMT
+  _11 = platform_21(D)->cbus_baseaddr;
+  _12 = config_22(D)->emac_mode[2];
+  _13 = pfe_emac_create (_11, 688128, _12, 3, 2);
+  platform_21(D)->emac[2] = _13;
+  # DEBUG BEGIN_STMT
+  if (_13 == 0B)
+    goto <bb 9>; [18.75%]
+  else
+    goto <bb 10>; [81.25%]
+
+  <bb 9> [local count: 57717817]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create EMAC3 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1806, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 11>; [100.00%]
+
+  <bb 10> [local count: 250110542]:
+  # DEBUG BEGIN_STMT
+  pfe_emac_set_max_frame_length (_13, 1522);
+  # DEBUG BEGIN_STMT
+  _14 = platform_21(D)->emac[2];
+  pfe_emac_enable_rx_flow_control (_14);
+  # DEBUG BEGIN_STMT
+  _15 = platform_21(D)->emac[2];
+  pfe_emac_enable_broadcast (_15);
+
+  <bb 11> [local count: 1073741824]:
+  # ret_17 = PHI <ret_16(7), 19(9), 0(10), 19(5)>
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  return ret_17;
+
+}
+
+
+pfe_platform_destroy_util (struct pfe_platform_t * platform)
+{
+  struct pfe_util_t * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_4(D)->util;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_util_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_4(D)->util = 0B;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_platform_create_util (struct pfe_platform_t * platform)
+{
+  struct ELF_File_t elf;
+  struct pfe_util_cfg_t util_cfg;
+  errno_t ret;
+  unsigned char _1;
+  unsigned int _2;
+  long unsigned int _3;
+  struct pfe_util_t * _4;
+  struct pfe_fw_t * _5;
+  const void * _6;
+  unsigned char _7;
+  struct pfe_util_t * _8;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  util_cfg.pe_sys_clk_ratio = 1;
+  util_cfg.on_g3 = 0;
+  # DEBUG BEGIN_STMT
+  _1 = pfe_feature_mgr_is_available ("drv_run_on_g3");
+  util_cfg.on_g3 = _1;
+  # DEBUG BEGIN_STMT
+  _2 = platform_18(D)->cbus_baseaddr;
+  _3 = platform_18(D)->util_pe_count;
+  _4 = pfe_util_create (_2, _3, &util_cfg);
+  platform_18(D)->util = _4;
+  # DEBUG BEGIN_STMT
+  if (_4 == 0B)
+    goto <bb 3>; [10.21%]
+  else
+    goto <bb 4>; [89.79%]
+
+  <bb 3> [local count: 109629040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create UTIL instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1705, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 10>; [100.00%]
+
+  <bb 4> [local count: 964112783]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = platform_18(D)->fw;
+  _6 = _5->util_data;
+  if (_6 == 0B)
+    goto <bb 9>; [46.53%]
+  else
+    goto <bb 5>; [53.47%]
+
+  <bb 5> [local count: 515511105]:
+  # DEBUG BEGIN_STMT
+  _7 = ELF_Open (&elf, _6);
+  if (_7 == 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 257755553]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t parse UTIL firmware\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1721, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 5
+  goto <bb 9>; [100.00%]
+
+  <bb 7> [local count: 257755553]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = platform_18(D)->util;
+  ret_23 = pfe_util_load_firmware (_8, &elf);
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  ELF_Close (&elf);
+  # DEBUG BEGIN_STMT
+  if (ret_23 != 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 8> [local count: 85059332]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Error during upload of UTIL firmware: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1733, ret_23, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 5
+
+  <bb 9> [local count: 964112785]:
+  # ret_9 = PHI <0(4), 5(6), ret_23(7), 5(8)>
+  # DEBUG ret => ret_9
+  elf ={v} {CLOBBER};
+
+  <bb 10> [local count: 1073741824]:
+  # ret_10 = PHI <19(3), ret_9(9)>
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  util_cfg ={v} {CLOBBER};
+  return ret_10;
+
+}
+
+
+pfe_platform_default_init_util (struct pfe_platform_t * platform)
+{
+  struct pfe_util_cfg_t util_cfg;
+  errno_t ret;
+  unsigned int _1;
+  long unsigned int _2;
+  struct pfe_util_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(struct  *)&util_cfg + 4B] = {};
+  util_cfg.pe_sys_clk_ratio = 1;
+  # DEBUG BEGIN_STMT
+  _1 = platform_9(D)->cbus_baseaddr;
+  _2 = platform_9(D)->util_pe_count;
+  _3 = pfe_util_create (_1, _2, &util_cfg);
+  platform_9(D)->util = _3;
+  # DEBUG BEGIN_STMT
+  if (_3 == 0B)
+    goto <bb 3>; [18.75%]
+  else
+    goto <bb 4>; [81.25%]
+
+  <bb 3> [local count: 201326592]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create UTIL instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1677, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  ret_13 = pfe_util_default_init (_3);
+  # DEBUG ret => ret_13
+
+  <bb 5> [local count: 1073741824]:
+  # ret_4 = PHI <19(3), ret_13(4)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  util_cfg ={v} {CLOBBER};
+  return ret_4;
+
+}
+
+
+pfe_platform_destroy_tmu (struct pfe_platform_t * platform)
+{
+  struct pfe_tmu_t * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_4(D)->tmu;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_tmu_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_4(D)->tmu = 0B;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_platform_create_tmu (struct pfe_platform_t * platform)
+{
+  struct pfe_tmu_cfg_t tmu_cfg;
+  errno_t ret;
+  unsigned char _1;
+  unsigned int _2;
+  long unsigned int _3;
+  struct pfe_class_t * _4;
+  struct pfe_tmu_t * _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  tmu_cfg.pe_sys_clk_ratio = 1;
+  tmu_cfg.on_g3 = 0;
+  # DEBUG BEGIN_STMT
+  _1 = pfe_feature_mgr_is_available ("drv_run_on_g3");
+  tmu_cfg.on_g3 = _1;
+  # DEBUG BEGIN_STMT
+  _2 = platform_13(D)->cbus_baseaddr;
+  _3 = platform_13(D)->tmu_pe_count;
+  _4 = platform_13(D)->classifier;
+  _5 = pfe_tmu_create (_2, _3, &tmu_cfg, _4);
+  platform_13(D)->tmu = _5;
+  # DEBUG BEGIN_STMT
+  if (_5 == 0B)
+    goto <bb 3>; [10.21%]
+  else
+    goto <bb 4>; [89.79%]
+
+  <bb 3> [local count: 109629040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create TMU instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1639, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 4> [local count: 1073741824]:
+  # ret_6 = PHI <19(3), 0(2)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  tmu_cfg ={v} {CLOBBER};
+  return ret_6;
+
+}
+
+
+pfe_platform_destroy_rtable (struct pfe_platform_t * platform)
+{
+  struct pfe_rtable_t * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_4(D)->rtable;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_rtable_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_4(D)->rtable = 0B;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  platform_4(D)->rtable_va = 0B;
+  return;
+
+}
+
+
+pfe_platform_create_rtable (struct pfe_platform_t * platform, const struct pfe_platform_config_t * config)
+{
+  struct pfe_class_table_sizes_t temp_table;
+  errno_t ret;
+  uint32_t pool_offs;
+  addr_t pool_mem;
+  addr_t htable_mem;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  struct pfe_class_t * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  struct pfe_l2br_t * _11;
+  struct pfe_rtable_t * _12;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_16(D)->rtable_hash_size;
+  if (_1 > 1048576)
+    goto <bb 3>; [35.00%]
+  else
+    goto <bb 4>; [65.00%]
+
+  <bb 3> [local count: 375809639]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Required HASH size exceeds allowed range.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1566, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  goto <bb 8>; [100.00%]
+
+  <bb 4> [local count: 697932186]:
+  # DEBUG BEGIN_STMT
+  _2 = pfe_rtable_get_entry_size ();
+  pool_offs_18 = _1 * _2;
+  # DEBUG pool_offs => pool_offs_18
+  # DEBUG BEGIN_STMT
+  _3 = config_16(D)->rtable_hash_size;
+  _4 = config_16(D)->rtable_collision_size;
+  _5 = _3 + _4;
+  _6 = pfe_rtable_get_entry_size ();
+  _7 = _5 * _6;
+  platform_20(D)->rtable_size = _7;
+  # DEBUG BEGIN_STMT
+  platform_20(D)->rtable_va = &pfe_rtable_buffers;
+  # DEBUG BEGIN_STMT
+  htable_mem_23 = (addr_t) &pfe_rtable_buffers;
+  # DEBUG htable_mem => htable_mem_23
+  # DEBUG BEGIN_STMT
+  pool_mem_24 = pool_offs_18 + htable_mem_23;
+  # DEBUG pool_mem => pool_mem_24
+  # DEBUG BEGIN_STMT
+  _8 = platform_20(D)->classifier;
+  if (_8 == 0B)
+    goto <bb 5>; [18.75%]
+  else
+    goto <bb 6>; [81.25%]
+
+  <bb 5> [local count: 130862285]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Valid classifier instance required\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1581, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 567069901]:
+  # DEBUG BEGIN_STMT
+  temp_table.htable_base_va = htable_mem_23;
+  # DEBUG BEGIN_STMT
+  _9 = config_16(D)->rtable_hash_size;
+  temp_table.htable_size = _9;
+  # DEBUG BEGIN_STMT
+  temp_table.pool_base_va = pool_mem_24;
+  # DEBUG BEGIN_STMT
+  _10 = config_16(D)->rtable_collision_size;
+  temp_table.pool_size = _10;
+  # DEBUG BEGIN_STMT
+  _11 = platform_20(D)->l2_bridge;
+  _12 = pfe_rtable_create (_8, _11, temp_table);
+  platform_20(D)->rtable = _12;
+  # DEBUG BEGIN_STMT
+  if (_12 == 0B)
+    goto <bb 7>; [10.21%]
+  else
+    goto <bb 8>; [89.79%]
+
+  <bb 7> [local count: 57897837]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create routing table instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1594, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 8> [local count: 1073741824]:
+  # ret_13 = PHI <22(3), 19(5), 19(7), 0(6)>
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  temp_table ={v} {CLOBBER};
+  return ret_13;
+
+}
+
+
+pfe_platform_destroy_l2_bridge (struct pfe_platform_t * platform)
+{
+  struct pfe_l2br_t * _1;
+  struct pfe_l2br_table_t * _2;
+  struct pfe_l2br_table_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_8(D)->l2_bridge;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_l2br_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_8(D)->l2_bridge = 0B;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = platform_8(D)->mactab;
+  if (_2 != 0B)
+    goto <bb 5>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 5> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  platform_8(D)->mactab = 0B;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 = platform_8(D)->vlantab;
+  if (_3 != 0B)
+    goto <bb 7>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 7> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  platform_8(D)->vlantab = 0B;
+
+  <bb 8> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_platform_create_l2_bridge (struct pfe_platform_t * platform, const struct pfe_platform_config_t * config)
+{
+  errno_t ret;
+  uint16_t vlan_stats_size;
+  uint16_t vlan_id;
+  unsigned int _1;
+  struct pfe_l2br_table_t * _2;
+  unsigned int _3;
+  struct pfe_l2br_table_t * _4;
+  short unsigned int _5;
+  short unsigned int _6;
+  struct pfe_class_t * _7;
+  struct pfe_l2br_table_t * _8;
+  struct pfe_l2br_t * _9;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  vlan_id_16 = config_15(D)->vlan_id;
+  # DEBUG vlan_id => vlan_id_16
+  # DEBUG BEGIN_STMT
+  vlan_stats_size_17 = config_15(D)->vlan_stats_size;
+  # DEBUG vlan_stats_size => vlan_stats_size_17
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = platform_18(D)->cbus_baseaddr;
+  _2 = pfe_l2br_table_create (_1, 1);
+  platform_18(D)->mactab = _2;
+  # DEBUG BEGIN_STMT
+  if (_2 == 0B)
+    goto <bb 3>; [18.75%]
+  else
+    goto <bb 4>; [81.25%]
+
+  <bb 3> [local count: 201326592]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create MAC table instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1486, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 12>; [100.00%]
+
+  <bb 4> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  _3 = platform_18(D)->cbus_baseaddr;
+  _4 = pfe_l2br_table_create (_3, 2);
+  platform_18(D)->vlantab = _4;
+  # DEBUG BEGIN_STMT
+  if (_4 == 0B)
+    goto <bb 5>; [10.21%]
+  else
+    goto <bb 6>; [89.79%]
+
+  <bb 5> [local count: 89073595]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create VLAN table instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1495, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 783341638]:
+  # DEBUG BEGIN_STMT
+  _5 = vlan_id_16 + 65535;
+  if (_5 > 4093)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 391670819]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG vlan_id => 1
+
+  <bb 8> [local count: 783341638]:
+  # vlan_id_10 = PHI <vlan_id_16(6), 1(7)>
+  # DEBUG vlan_id => vlan_id_10
+  # DEBUG BEGIN_STMT
+  _6 = vlan_stats_size_17 + 65534;
+  if (_6 > 126)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 9> [local count: 391670819]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG vlan_stats_size => 20
+
+  <bb 10> [local count: 783341638]:
+  # vlan_stats_size_11 = PHI <vlan_stats_size_17(8), 20(9)>
+  # DEBUG vlan_stats_size => vlan_stats_size_11
+  # DEBUG BEGIN_STMT
+  _7 = platform_18(D)->classifier;
+  _8 = platform_18(D)->mactab;
+  _9 = pfe_l2br_create (_7, vlan_id_10, 300, vlan_stats_size_11, _8, _4);
+  platform_18(D)->l2_bridge = _9;
+  # DEBUG BEGIN_STMT
+  if (_9 == 0B)
+    goto <bb 11>; [10.21%]
+  else
+    goto <bb 12>; [89.79%]
+
+  <bb 11> [local count: 79979181]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not create L2 Bridge\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1515, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 12> [local count: 1073741824]:
+  # ret_12 = PHI <19(3), 19(5), 19(11), 0(10)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  return ret_12;
+
+}
+
+
+pfe_platform_destroy_class (struct pfe_platform_t * platform)
+{
+  struct pfe_class_t * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_4(D)->classifier;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_class_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_4(D)->classifier = 0B;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_platform_create_class_object (struct pfe_platform_t * platform, struct pfe_class_cfg_t class_cfg)
+{
+  const uint8_t * temp;
+  struct ELF_File_t elf;
+  errno_t ret;
+  long unsigned int _1;
+  unsigned int _2;
+  long unsigned int _3;
+  struct pfe_class_t * _4;
+  struct pfe_fw_t * _5;
+  unsigned char _6;
+  unsigned char _7;
+  unsigned char _8;
+  unsigned char _9;
+  unsigned char _10;
+  struct pfe_class_t * _11;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = platform_16(D)->pfe_version;
+  if (_1 == 257)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  class_cfg.lmem_header_size = 48;
+  # DEBUG BEGIN_STMT
+  class_cfg.ro_header_size = 512;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  class_cfg.lmem_header_size = 112;
+  # DEBUG BEGIN_STMT
+  class_cfg.ro_header_size = 256;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = platform_16(D)->cbus_baseaddr;
+  _3 = platform_16(D)->class_pe_count;
+  _4 = pfe_class_create (_2, _3, &class_cfg);
+  platform_16(D)->classifier = _4;
+  # DEBUG BEGIN_STMT
+  if (_4 == 0B)
+    goto <bb 6>; [10.21%]
+  else
+    goto <bb 7>; [89.79%]
+
+  <bb 6> [local count: 109629040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create classifier instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1347, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 16>; [100.00%]
+
+  <bb 7> [local count: 964112785]:
+  # DEBUG BEGIN_STMT
+  _5 = platform_16(D)->fw;
+  temp_23 = _5->class_data;
+  # DEBUG temp => temp_23
+  # DEBUG BEGIN_STMT
+  _6 = *temp_23;
+  if (_6 == 127)
+    goto <bb 8>; [66.01%]
+  else
+    goto <bb 15>; [33.99%]
+
+  <bb 8> [local count: 636410850]:
+  _7 = MEM[(const uint8_t *)temp_23 + 1B];
+  if (_7 == 69)
+    goto <bb 9>; [48.89%]
+  else
+    goto <bb 15>; [51.11%]
+
+  <bb 9> [local count: 311141264]:
+  _8 = MEM[(const uint8_t *)temp_23 + 2B];
+  if (_8 == 76)
+    goto <bb 10>; [48.89%]
+  else
+    goto <bb 15>; [51.11%]
+
+  <bb 10> [local count: 152116964]:
+  _9 = MEM[(const uint8_t *)temp_23 + 3B];
+  if (_9 == 70)
+    goto <bb 11>; [32.03%]
+  else
+    goto <bb 15>; [67.97%]
+
+  <bb 11> [local count: 48723064]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = ELF_Open (&elf, temp_23);
+  if (_10 == 0)
+    goto <bb 12>; [35.00%]
+  else
+    goto <bb 13>; [65.00%]
+
+  <bb 12> [local count: 17053072]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t parse CLASS firmware\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1364, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 5
+  goto <bb 16>; [100.00%]
+
+  <bb 13> [local count: 31669991]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = platform_16(D)->classifier;
+  ret_26 = pfe_class_load_firmware (_11, &elf);
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  ELF_Close (&elf);
+  # DEBUG BEGIN_STMT
+  if (ret_26 != 0)
+    goto <bb 14>; [20.96%]
+  else
+    goto <bb 16>; [79.04%]
+
+  <bb 14> [local count: 6638030]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Error during upload of CLASS firmware: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1376, ret_26, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 5
+  goto <bb 16>; [100.00%]
+
+  <bb 15> [local count: 915389721]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Only ELF format is supported\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1383, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 16> [local count: 1073741824]:
+  # ret_12 = PHI <19(6), ret_26(13), 19(15), 5(12), 5(14)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  elf ={v} {CLOBBER};
+  return ret_12;
+
+}
+
+
+pfe_platform_destroy_hgpi (struct pfe_platform_t * platform)
+{
+  uint32_t ii;
+  struct pfe_gpi_t * _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_7(D)->hgpi[ii_3];
+  if (_1 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 287064877]:
+  # DEBUG BEGIN_STMT
+  pfe_gpi_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_7(D)->hgpi[ii_3] = 0B;
+
+  <bb 5> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  ii_10 = ii_3 + 1;
+  # DEBUG ii => ii_10
+
+  <bb 6> [local count: 1073741824]:
+  # ii_3 = PHI <0(2), ii_10(5)>
+  # DEBUG ii => ii_3
+  # DEBUG BEGIN_STMT
+  _2 = platform_7(D)->hgpi_count;
+  if (_2 > ii_3)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 536870913]:
+  return;
+
+}
+
+
+pfe_platform_create_hgpi (struct pfe_platform_t * platform)
+{
+  uint32_t aseq_len;
+  errno_t ret;
+  struct pfe_gpi_cfg_t hgpi_cfg;
+  long unsigned int _1;
+  unsigned int _2;
+  struct pfe_gpi_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG aseq_len => 64
+  # DEBUG BEGIN_STMT
+  _1 = platform_9(D)->pfe_version;
+  if (_1 == 257)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  hgpi_cfg.lmem_header_size = 48;
+  # DEBUG BEGIN_STMT
+  hgpi_cfg.g2_ordered_class_writes = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG aseq_len => 16
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  hgpi_cfg.lmem_header_size = 112;
+  # DEBUG BEGIN_STMT
+  hgpi_cfg.g2_ordered_class_writes = 0;
+
+  <bb 5> [local count: 1073741824]:
+  # aseq_len_5 = PHI <16(3), 64(4)>
+  # DEBUG aseq_len => aseq_len_5
+  # DEBUG BEGIN_STMT
+  hgpi_cfg.alloc_retry_cycles = 512;
+  # DEBUG BEGIN_STMT
+  hgpi_cfg.gpi_tmlf_txthres = 376;
+  # DEBUG BEGIN_STMT
+  hgpi_cfg.gpi_dtx_aseq_len = aseq_len_5;
+  # DEBUG BEGIN_STMT
+  hgpi_cfg.emac_1588_ts_en = 0;
+  # DEBUG BEGIN_STMT
+  _2 = platform_9(D)->cbus_baseaddr;
+  _3 = pfe_gpi_create (_2, 638976, &hgpi_cfg, 6);
+  platform_9(D)->hgpi[0] = _3;
+  # DEBUG BEGIN_STMT
+  if (_3 == 0B)
+    goto <bb 6>; [10.21%]
+  else
+    goto <bb 7>; [89.79%]
+
+  <bb 6> [local count: 109629040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create HGPI instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1295, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 7> [local count: 1073741824]:
+  # ret_4 = PHI <19(6), 0(5)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  hgpi_cfg ={v} {CLOBBER};
+  return ret_4;
+
+}
+
+
+pfe_platform_destroy_etgpi (struct pfe_platform_t * platform)
+{
+  uint32_t ii;
+  struct pfe_gpi_t * _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 805306369]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_7(D)->etgpi[ii_3];
+  if (_1 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 430597315]:
+  # DEBUG BEGIN_STMT
+  pfe_gpi_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_7(D)->etgpi[ii_3] = 0B;
+
+  <bb 5> [local count: 805306369]:
+  # DEBUG BEGIN_STMT
+  ii_10 = ii_3 + 1;
+  # DEBUG ii => ii_10
+
+  <bb 6> [local count: 1073741824]:
+  # ii_3 = PHI <0(2), ii_10(5)>
+  # DEBUG ii => ii_3
+  # DEBUG BEGIN_STMT
+  _2 = platform_7(D)->etgpi_count;
+  if (_2 > ii_3)
+    goto <bb 3>; [75.00%]
+  else
+    goto <bb 7>; [25.00%]
+
+  <bb 7> [local count: 268435456]:
+  return;
+
+}
+
+
+pfe_platform_create_etgpi (struct pfe_platform_t * platform)
+{
+  uint32_t aseq_len;
+  errno_t ret;
+  struct pfe_gpi_cfg_t gpi_cfg_tmp;
+  long unsigned int _1;
+  unsigned int _2;
+  struct pfe_gpi_t * _3;
+  unsigned int _4;
+  struct pfe_gpi_t * _5;
+  unsigned int _6;
+  struct pfe_gpi_t * _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG aseq_len => 64
+  # DEBUG BEGIN_STMT
+  _1 = platform_13(D)->pfe_version;
+  if (_1 == 257)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.lmem_header_size = 48;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.g2_ordered_class_writes = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG aseq_len => 16
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.lmem_header_size = 112;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.g2_ordered_class_writes = 0;
+
+  <bb 5> [local count: 1073741824]:
+  # aseq_len_9 = PHI <16(3), 64(4)>
+  # DEBUG aseq_len => aseq_len_9
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.alloc_retry_cycles = 512;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_tmlf_txthres = 188;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_dtx_aseq_len = aseq_len_9;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.emac_1588_ts_en = 1;
+  # DEBUG BEGIN_STMT
+  _2 = platform_13(D)->cbus_baseaddr;
+  _3 = pfe_gpi_create (_2, 753664, &gpi_cfg_tmp, 3);
+  platform_13(D)->etgpi[0] = _3;
+  # DEBUG BEGIN_STMT
+  if (_3 == 0B)
+    goto <bb 6>; [18.75%]
+  else
+    goto <bb 7>; [81.25%]
+
+  <bb 6> [local count: 201326592]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create ETGPI1 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1204, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 11>; [100.00%]
+
+  <bb 7> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.alloc_retry_cycles = 512;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_tmlf_txthres = 188;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_dtx_aseq_len = aseq_len_9;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.emac_1588_ts_en = 1;
+  # DEBUG BEGIN_STMT
+  _4 = platform_13(D)->cbus_baseaddr;
+  _5 = pfe_gpi_create (_4, 770048, &gpi_cfg_tmp, 4);
+  platform_13(D)->etgpi[1] = _5;
+  # DEBUG BEGIN_STMT
+  if (_5 == 0B)
+    goto <bb 8>; [18.75%]
+  else
+    goto <bb 9>; [81.25%]
+
+  <bb 8> [local count: 163577856]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create ETGPI2 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1218, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 11>; [100.00%]
+
+  <bb 9> [local count: 708837377]:
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.alloc_retry_cycles = 512;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_tmlf_txthres = 188;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.gpi_dtx_aseq_len = aseq_len_9;
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp.emac_1588_ts_en = 1;
+  # DEBUG BEGIN_STMT
+  _6 = platform_13(D)->cbus_baseaddr;
+  _7 = pfe_gpi_create (_6, 786432, &gpi_cfg_tmp, 5);
+  platform_13(D)->etgpi[2] = _7;
+  # DEBUG BEGIN_STMT
+  if (_7 == 0B)
+    goto <bb 10>; [10.21%]
+  else
+    goto <bb 11>; [89.79%]
+
+  <bb 10> [local count: 72372296]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create ETGPI3 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1232, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+
+  <bb 11> [local count: 1073741824]:
+  # ret_8 = PHI <19(6), 19(8), 19(10), 0(9)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  gpi_cfg_tmp ={v} {CLOBBER};
+  return ret_8;
+
+}
+
+
+pfe_platform_destroy_gpi (struct pfe_platform_t * platform)
+{
+  uint32_t ii;
+  struct pfe_gpi_t * _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 805306369]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_7(D)->gpi[ii_3];
+  if (_1 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 430597315]:
+  # DEBUG BEGIN_STMT
+  pfe_gpi_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_7(D)->gpi[ii_3] = 0B;
+
+  <bb 5> [local count: 805306369]:
+  # DEBUG BEGIN_STMT
+  ii_10 = ii_3 + 1;
+  # DEBUG ii => ii_10
+
+  <bb 6> [local count: 1073741824]:
+  # ii_3 = PHI <0(2), ii_10(5)>
+  # DEBUG ii => ii_3
+  # DEBUG BEGIN_STMT
+  _2 = platform_7(D)->gpi_count;
+  if (_2 > ii_3)
+    goto <bb 3>; [75.00%]
+  else
+    goto <bb 7>; [25.00%]
+
+  <bb 7> [local count: 268435456]:
+  return;
+
+}
+
+
+pfe_platform_destroy_bmu (struct pfe_platform_t * platform)
+{
+  uint32_t ii;
+  struct pfe_bmu_t * _1;
+  long unsigned int _2;
+  struct oal_irq_t * _3;
+
+  <bb 2> [local count: 357878150]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 715863676]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_9(D)->bmu[ii_4];
+  if (_1 != 0B)
+    goto <bb 4>; [0.00%]
+  else
+    goto <bb 5>; [100.00%]
+
+  <bb 4> [count: 0]:
+  # DEBUG BEGIN_STMT
+  pfe_bmu_destroy (_1);
+  # DEBUG BEGIN_STMT
+  platform_9(D)->bmu[ii_4] = 0B;
+
+  <bb 5> [local count: 715863676]:
+  # DEBUG BEGIN_STMT
+  ii_16 = ii_4 + 1;
+  # DEBUG ii => ii_16
+
+  <bb 6> [local count: 1073741824]:
+  # ii_4 = PHI <0(2), ii_16(5)>
+  # DEBUG ii => ii_4
+  # DEBUG BEGIN_STMT
+  _2 = pfe.bmu_count;
+  if (_2 > ii_4)
+    goto <bb 3>; [66.67%]
+  else
+    goto <bb 7>; [33.33%]
+
+  <bb 7> [local count: 357878150]:
+  # DEBUG BEGIN_STMT
+  _3 = platform_9(D)->irq_bmu;
+  if (_3 != 0B)
+    goto <bb 8>; [53.47%]
+  else
+    goto <bb 9>; [46.53%]
+
+  <bb 8> [local count: 191357447]:
+  # DEBUG BEGIN_STMT
+  oal_irq_destroy (_3);
+  # DEBUG BEGIN_STMT
+  platform_9(D)->irq_bmu = 0B;
+
+  <bb 9> [local count: 357878150]:
+  # DEBUG BEGIN_STMT
+  bDetectBmuInit ={v} 0;
+  # DEBUG BEGIN_STMT
+  platform_9(D)->bmu_buffers_va = 0B;
+  return;
+
+}
+
+
+pfe_platform_create_bmu (struct pfe_platform_t * platform, const struct pfe_platform_config_t * config)
+{
+  errno_t ret;
+  struct pfe_bmu_cfg_t bmu_cfg;
+  unsigned int _1;
+  struct pfe_bmu_t * _2;
+  long unsigned int _3;
+  unsigned int pfe_bmu_buffers.22_4;
+  unsigned int _5;
+  void * _6;
+  unsigned int _7;
+  unsigned int _8;
+  struct pfe_bmu_t * _9;
+  long unsigned int _10;
+  long int _11;
+  struct oal_irq_t * _12;
+  const uint32_t * _53;
+
+  <bb 2> [count: 0]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct  *)&bmu_cfg + 4B] = {};
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  bmu_cfg.pool_pa = 3221225472;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  bmu_cfg.max_buf_cnt = 512;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.buf_size = 256;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.bmu_ucast_thres = 512;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.bmu_mcast_thres = 512;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.int_mem_loc_cnt = 64;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.buf_mem_loc_cnt = 64;
+  # DEBUG BEGIN_STMT
+  platform_24(D)->bmu[1] = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = platform_24(D)->cbus_baseaddr;
+  _2 = pfe_bmu_create (_1, 557056, &bmu_cfg, 0);
+  platform_24(D)->bmu[0] = _2;
+  # DEBUG BEGIN_STMT
+  if (_2 == 0B)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 4>; [0.00%]
+
+  <bb 3> [count: 0]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create BMU1 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 997, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 10>; [0.00%]
+
+  <bb 4> [count: 0]:
+  # DEBUG BEGIN_STMT
+  _3 = platform_24(D)->bmu_count;
+  if (_3 <= 1)
+    goto <bb 10>; [0.00%]
+  else
+    goto <bb 5>; [0.00%]
+
+  <bb 5> [count: 0]:
+  # DEBUG BEGIN_STMT
+  pfe_bmu_buffers.22_4 = (unsigned int) &pfe_bmu_buffers;
+  _5 = pfe_bmu_buffers.22_4 & 524287;
+  if (_5 != 0)
+    goto <bb 6>; [0.00%]
+  else
+    goto <bb 7>; [0.00%]
+
+  <bb 6> [count: 0]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] The BMU memory is not properly aligned\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1008, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  goto <bb 10>; [0.00%]
+
+  <bb 7> [count: 0]:
+  # DEBUG BEGIN_STMT
+  platform_24(D)->bmu_buffers_size = 524288;
+  # DEBUG BEGIN_STMT
+  platform_24(D)->bmu_buffers_va = &pfe_bmu_buffers;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.pool_va = pfe_bmu_buffers.22_4;
+  # DEBUG BEGIN_STMT
+  _6 = oal_mm_virt_to_phys_contig (&pfe_bmu_buffers);
+  _7 = (unsigned int) _6;
+  bmu_cfg.pool_pa = _7;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  bmu_cfg.max_buf_cnt = 256;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.buf_size = 2048;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.bmu_ucast_thres = 2048;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.bmu_mcast_thres = 512;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.int_mem_loc_cnt = 1024;
+  # DEBUG BEGIN_STMT
+  bmu_cfg.buf_mem_loc_cnt = 1024;
+  # DEBUG BEGIN_STMT
+  _8 = platform_24(D)->cbus_baseaddr;
+  _9 = pfe_bmu_create (_8, 573440, &bmu_cfg, 1);
+  platform_24(D)->bmu[1] = _9;
+  # DEBUG BEGIN_STMT
+  if (_9 == 0B)
+    goto <bb 8>; [0.00%]
+  else
+    goto <bb 9>; [0.00%]
+
+  <bb 8> [count: 0]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create BMU2 instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 1038, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 10>; [0.00%]
+
+  <bb 9> [count: 0]:
+  # DEBUG BEGIN_STMT
+  _10 = config_41(D)->irq_vector_bmu;
+  _11 = (long int) _10;
+  _12 = oal_irq_create (_11, 0, "PFE BMU IRQ");
+  platform_24(D)->irq_bmu = _12;
+  # DEBUG BEGIN_STMT
+  _53 = &MEM[(long unsigned int *)config_41(D) + 20B];
+  # DEBUG D#2 => config_41(D)
+  ret_45 = check_irq_vector.isra.0 (platform_24(D), _53);
+  # DEBUG ret => ret_45
+
+  <bb 10> [count: 0]:
+  # ret_13 = PHI <19(3), 0(4), 22(6), 19(8), ret_45(9)>
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  bmu_cfg ={v} {CLOBBER};
+  return ret_13;
+
+}
+
+
+pfe_platform_create_hif_nocpy (struct pfe_platform_t * platform)
+{
+  errno_t ReVal;
+  uint16_t lmem_header_size;
+  long unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  struct pfe_bmu_t * _4;
+  struct pfe_hif_nocpy_t * _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = platform_10(D)->pfe_version;
+  if (_1 == 257)
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 3>; [66.00%]
+
+  <bb 3> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  # DEBUG lmem_header_size => 112
+
+  <bb 4> [local count: 1073741824]:
+  # lmem_header_size_6 = PHI <48(2), 112(3)>
+  # DEBUG lmem_header_size => lmem_header_size_6
+  # DEBUG BEGIN_STMT
+  _2 = pfe.cbus_baseaddr;
+  _3 = _2 + 851968;
+  _4 = platform_10(D)->bmu[1];
+  _5 = pfe_hif_nocpy_create (_3, _4, lmem_header_size_6);
+  platform_10(D)->hif_nocpy = _5;
+  # DEBUG BEGIN_STMT
+  if (_5 == 0B)
+    goto <bb 5>; [10.21%]
+  else
+    goto <bb 6>; [89.79%]
+
+  <bb 5> [local count: 109629040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create HIF NOCPY instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 906, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ReVal => 19
+
+  <bb 6> [local count: 1073741824]:
+  # ReVal_7 = PHI <19(5), 0(4)>
+  # DEBUG ReVal => ReVal_7
+  # DEBUG BEGIN_STMT
+  return ReVal_7;
+
+}
+
+
+pfe_platform_destroy_hif (struct pfe_platform_t * platform)
+{
+  struct pfe_hif_t * _1;
+  struct pfe_hif_t * _2;
+  struct pfe_hif_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = platform_6(D)->hif;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_hif_clear_master_up (_1);
+  # DEBUG BEGIN_STMT
+  _2 = platform_6(D)->hif;
+  pfe_hif_irq_mask (_2);
+  # DEBUG BEGIN_STMT
+  _3 = platform_6(D)->hif;
+  pfe_hif_destroy (_3);
+  # DEBUG BEGIN_STMT
+  platform_6(D)->hif = 0B;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_platform_create_hif (struct pfe_platform_t * platform, const struct pfe_platform_config_t * config)
+{
+  errno_t ret;
+  <unnamed type> _1;
+  unsigned int _2;
+  unsigned int _3;
+  <unnamed type> _4;
+  struct pfe_hif_t * _5;
+  unsigned char _6;
+  _Bool _7;
+  unsigned char _8;
+  struct pfe_hif_t * _9;
+  struct pfe_hif_t * _10;
+  struct pfe_hif_t * _11;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = config_15(D)->hif_fci_owner_chnls_mask;
+  platform_16(D)->hif_fci_owner_chnls_mask = _1;
+  # DEBUG BEGIN_STMT
+  _2 = platform_16(D)->cbus_baseaddr;
+  _3 = _2 + 622592;
+  _4 = config_15(D)->hif_chnls_mask;
+  _5 = pfe_hif_create (_3, _4);
+  platform_16(D)->hif = _5;
+  # DEBUG BEGIN_STMT
+  if (_5 == 0B)
+    goto <bb 3>; [18.75%]
+  else
+    goto <bb 4>; [81.25%]
+
+  <bb 3> [local count: 201326592]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Couldn\'t create HIF instance\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 841, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 19
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  _6 = config_15(D)->disable_master_detect;
+  _7 = _6 == 0;
+  _8 = (unsigned char) _7;
+  pfe_hif_set_master_detect_cfg (_5, _8);
+  # DEBUG BEGIN_STMT
+  _9 = platform_16(D)->hif;
+  pfe_hif_irq_unmask (_9);
+  # DEBUG BEGIN_STMT
+  _10 = platform_16(D)->hif;
+  pfe_hif_clear_master_up (_10);
+  # DEBUG BEGIN_STMT
+  _11 = platform_16(D)->hif;
+  pfe_hif_init_emac_timer_ownership (_11);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_12 = PHI <19(3), 0(4)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  return ret_12;
+
+}
+
+
+pfe_platform_idex_rpc_cbk (pfe_ct_phy_if_id_t sender, uint32_t id, void * buf, uint16_t buf_len, void * arg)
+{
+  uint32_t key;
+  struct pfe_emac_t * emac;
+  struct pfe_platform_rpc_mdio_proxy_ret_t rpc_ret;
+  struct fci_msg_t rep_msg;
+  struct fci_msg_t msg;
+  struct pfe_platform_rpc_pfe_fci_proxy_ret_t rpc_ret;
+  struct pfe_emac_t * emac;
+  uint32_t stat_val;
+  struct pfe_platform_rpc_pfe_phy_if_get_stat_value_ret_t rpc_ret;
+  struct pfe_platform_rpc_pfe_phy_if_stats_ret_t rpc_ret;
+  bool_t status;
+  struct pfe_platform_rpc_pfe_phy_if_is_promisc_ret_t rpc_ret;
+  bool_t status;
+  struct pfe_platform_rpc_pfe_phy_if_is_enabled_ret_t rpc_ret;
+  pfe_ct_if_op_mode_t mode;
+  struct pfe_platform_rpc_pfe_phy_if_get_op_mode_ret_t rpc_ret;
+  pfe_ct_block_state_t block_state;
+  struct pfe_platform_rpc_pfe_phy_if_get_block_state_ret_t rpc_ret;
+  uint8_t mac_addr[6];
+  uint8_t mac_addr[6];
+  errno_t ret;
+  struct pfe_if_db_entry_t * entry;
+  struct pfe_phy_if_t * phy_if_arg;
+  long unsigned int _1;
+  struct pfe_if_db_t * _2;
+  long unsigned int _3;
+  unsigned char _4;
+  unsigned int _5;
+  void * _6;
+  struct pfe_if_db_entry_t * entry.0_7;
+  long unsigned int _8;
+  int _9;
+  long unsigned int _10;
+  int _11;
+  int _12;
+  int _13;
+  int _14;
+  int _15;
+  int _16;
+  int _17;
+  int _18;
+  int _19;
+  int _20;
+  int _21;
+  int _22;
+  uint8_t[6] * _23;
+  int _24;
+  uint8_t[6] * _25;
+  int _26;
+  <unnamed type> _27;
+  <unnamed type> _28;
+  int _29;
+  <unnamed type> _30;
+  int _31;
+  <unnamed type> block_state.2_32;
+  int _33;
+  int _34;
+  int _35;
+  int _36;
+  int _37;
+  <unnamed type> _38;
+  int _39;
+  int _40;
+  int _41;
+  long unsigned int _42;
+  int _43;
+  msg_type_t * _44;
+  struct fci_msg_cmd_t * _45;
+  long unsigned int _46;
+  int _47;
+  unsigned char _48;
+  int _49;
+  int _50;
+  int _51;
+  <unnamed type> _52;
+  unsigned char _53;
+  short unsigned int _54;
+  unsigned char _55;
+  long unsigned int key.3_56;
+  int _57;
+  unsigned char _58;
+  short unsigned int _59;
+  unsigned char _60;
+  short unsigned int _61;
+  long unsigned int key.4_62;
+  int _63;
+  unsigned char _64;
+  unsigned char _65;
+  short unsigned int _66;
+  long unsigned int key.5_67;
+  int _68;
+  unsigned char _69;
+  unsigned char _70;
+  short unsigned int _71;
+  short unsigned int _72;
+  long unsigned int key.6_73;
+  int _74;
+  int _75;
+  long unsigned int key.7_76;
+  int _77;
+  int _78;
+
+  <bb 2> [local count: 1072669162]:
+  # DEBUG BEGIN_STMT
+  # DEBUG platform => arg_132(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG phy_if_arg => 0B
+  # DEBUG BEGIN_STMT
+  entry = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = id_135(D) + 4294967195;
+  if (_1 <= 20)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 3> [local count: 353980823]:
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct pfe_platform_t *)arg_132(D)].phy_if_db;
+  _3 = (long unsigned int) sender_136(D);
+  _4 = MEM[(struct pfe_platform_rpc_pfe_phy_if_generic_t *)buf_137(D)].phy_if_id;
+  _5 = (unsigned int) _4;
+  _6 = (void *) _5;
+  ret_139 = pfe_if_db_get_first (_2, _3, 1, _6, &entry);
+  # DEBUG ret => ret_139
+  # DEBUG BEGIN_STMT
+  if (ret_139 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 4> [local count: 176990412]:
+  entry.0_7 = entry;
+  if (entry.0_7 != 0B)
+    goto <bb 5>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 5> [local count: 123893288]:
+  # DEBUG BEGIN_STMT
+  phy_if_arg_140 = pfe_if_db_entry_get_phy_if (entry.0_7);
+  # DEBUG phy_if_arg => phy_if_arg_140
+
+  <bb 6> [local count: 1072669162]:
+  # phy_if_arg_79 = PHI <0B(2), phy_if_arg_140(5), 0B(4), 0B(3)>
+  # ret_80 = PHI <0(2), 0(5), 2(4), 2(3)>
+  # DEBUG ret => ret_80
+  # DEBUG phy_if_arg => phy_if_arg_79
+  # DEBUG BEGIN_STMT
+  switch (id_135(D)) <default: <L163> [3.85%], case 100: <L12> [3.85%], case 101: <L15> [3.85%], case 102: <L20> [3.85%], case 103: <L25> [3.85%], case 104: <L30> [3.85%], case 105: <L65> [3.85%], case 106: <L71> [3.85%], case 109: <L93> [3.85%], case 110: <L99> [3.85%], case 111: <L105> [3.85%], case 112: <L111> [3.85%], case 113: <L77> [3.85%], case 114: <L55> [3.85%], case 115: <L60> [3.85%], case 116: <L35> [3.85%], case 117: <L40> [3.85%], case 118: <L45> [3.85%], case 119: <L50> [3.85%], case 120: <L82> [3.85%], case 121: <L87> [3.85%], case 122: <L117> [3.85%], case 190: <L6> [3.85%], case 191: <L9> [3.85%], case 300: <L127> [3.85%], case 310: <L133> [3.85%]>
+
+  <bb 7> [local count: 41297763]:
+<L6>:
+  # DEBUG BEGIN_STMT
+  _8 = (long unsigned int) sender_136(D);
+  ret_204 = pfe_if_db_lock_owned (_8);
+  # DEBUG ret => ret_204
+  # DEBUG BEGIN_STMT
+  _9 = pfe_idex_set_rpc_ret_val (ret_204, 0B, 0);
+  if (_9 != 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 8> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 230, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 9> [local count: 41297763]:
+<L9>:
+  # DEBUG BEGIN_STMT
+  _10 = (long unsigned int) sender_136(D);
+  ret_199 = pfe_if_db_unlock (_10);
+  # DEBUG ret => ret_199
+  # DEBUG BEGIN_STMT
+  _11 = pfe_idex_set_rpc_ret_val (ret_199, 0B, 0);
+  if (_11 != 0)
+    goto <bb 10>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 10> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 242, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 11> [local count: 41297763]:
+<L12>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = pfe_idex_set_rpc_ret_val (ret_80, 0B, 0);
+  if (_12 != 0)
+    goto <bb 12>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 12> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 254, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 13> [local count: 41297763]:
+<L15>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 14>; [33.00%]
+  else
+    goto <bb 15>; [67.00%]
+
+  <bb 14> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_333 = pfe_phy_if_enable (phy_if_arg_79);
+  # DEBUG ret => ret_333
+
+  <bb 15> [local count: 41297763]:
+  # ret_81 = PHI <ret_80(13), ret_333(14)>
+  # DEBUG ret => ret_81
+  # DEBUG BEGIN_STMT
+  _13 = pfe_idex_set_rpc_ret_val (ret_81, 0B, 0);
+  if (_13 != 0)
+    goto <bb 16>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 16> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 272, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 17> [local count: 41297763]:
+<L20>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 18>; [33.00%]
+  else
+    goto <bb 19>; [67.00%]
+
+  <bb 18> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_328 = pfe_phy_if_disable (phy_if_arg_79);
+  # DEBUG ret => ret_328
+
+  <bb 19> [local count: 41297763]:
+  # ret_82 = PHI <ret_80(17), ret_328(18)>
+  # DEBUG ret => ret_82
+  # DEBUG BEGIN_STMT
+  _14 = pfe_idex_set_rpc_ret_val (ret_82, 0B, 0);
+  if (_14 != 0)
+    goto <bb 20>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 20> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 290, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 21> [local count: 41297763]:
+<L25>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 22>; [33.00%]
+  else
+    goto <bb 23>; [67.00%]
+
+  <bb 22> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_323 = pfe_phy_if_promisc_enable (phy_if_arg_79);
+  # DEBUG ret => ret_323
+
+  <bb 23> [local count: 41297763]:
+  # ret_83 = PHI <ret_80(21), ret_323(22)>
+  # DEBUG ret => ret_83
+  # DEBUG BEGIN_STMT
+  _15 = pfe_idex_set_rpc_ret_val (ret_83, 0B, 0);
+  if (_15 != 0)
+    goto <bb 24>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 24> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 308, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 25> [local count: 41297763]:
+<L30>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 26>; [33.00%]
+  else
+    goto <bb 27>; [67.00%]
+
+  <bb 26> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_318 = pfe_phy_if_promisc_disable (phy_if_arg_79);
+  # DEBUG ret => ret_318
+
+  <bb 27> [local count: 41297763]:
+  # ret_84 = PHI <ret_80(25), ret_318(26)>
+  # DEBUG ret => ret_84
+  # DEBUG BEGIN_STMT
+  _16 = pfe_idex_set_rpc_ret_val (ret_84, 0B, 0);
+  if (_16 != 0)
+    goto <bb 28>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 28> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 326, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 29> [local count: 41297763]:
+<L35>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 30>; [33.00%]
+  else
+    goto <bb 31>; [67.00%]
+
+  <bb 30> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_253 = pfe_phy_if_loopback_enable (phy_if_arg_79);
+  # DEBUG ret => ret_253
+
+  <bb 31> [local count: 41297763]:
+  # ret_85 = PHI <ret_80(29), ret_253(30)>
+  # DEBUG ret => ret_85
+  # DEBUG BEGIN_STMT
+  _17 = pfe_idex_set_rpc_ret_val (ret_85, 0B, 0);
+  if (_17 != 0)
+    goto <bb 32>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 32> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 344, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 33> [local count: 41297763]:
+<L40>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 34>; [33.00%]
+  else
+    goto <bb 35>; [67.00%]
+
+  <bb 34> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_248 = pfe_phy_if_loopback_disable (phy_if_arg_79);
+  # DEBUG ret => ret_248
+
+  <bb 35> [local count: 41297763]:
+  # ret_86 = PHI <ret_80(33), ret_248(34)>
+  # DEBUG ret => ret_86
+  # DEBUG BEGIN_STMT
+  _18 = pfe_idex_set_rpc_ret_val (ret_86, 0B, 0);
+  if (_18 != 0)
+    goto <bb 36>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 36> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 362, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 37> [local count: 41297763]:
+<L45>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 38>; [33.00%]
+  else
+    goto <bb 39>; [67.00%]
+
+  <bb 38> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_243 = pfe_phy_if_loadbalance_enable (phy_if_arg_79);
+  # DEBUG ret => ret_243
+
+  <bb 39> [local count: 41297763]:
+  # ret_87 = PHI <ret_80(37), ret_243(38)>
+  # DEBUG ret => ret_87
+  # DEBUG BEGIN_STMT
+  _19 = pfe_idex_set_rpc_ret_val (ret_87, 0B, 0);
+  if (_19 != 0)
+    goto <bb 40>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 40> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 380, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 41> [local count: 41297763]:
+<L50>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 42>; [33.00%]
+  else
+    goto <bb 43>; [67.00%]
+
+  <bb 42> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_238 = pfe_phy_if_loadbalance_disable (phy_if_arg_79);
+  # DEBUG ret => ret_238
+
+  <bb 43> [local count: 41297763]:
+  # ret_88 = PHI <ret_80(41), ret_238(42)>
+  # DEBUG ret => ret_88
+  # DEBUG BEGIN_STMT
+  _20 = pfe_idex_set_rpc_ret_val (ret_88, 0B, 0);
+  if (_20 != 0)
+    goto <bb 44>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 44> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 398, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 45> [local count: 41297763]:
+<L55>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 46>; [33.00%]
+  else
+    goto <bb 47>; [67.00%]
+
+  <bb 46> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_263 = pfe_phy_if_allmulti_enable (phy_if_arg_79);
+  # DEBUG ret => ret_263
+
+  <bb 47> [local count: 41297763]:
+  # ret_89 = PHI <ret_80(45), ret_263(46)>
+  # DEBUG ret => ret_89
+  # DEBUG BEGIN_STMT
+  _21 = pfe_idex_set_rpc_ret_val (ret_89, 0B, 0);
+  if (_21 != 0)
+    goto <bb 48>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 48> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 416, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 49> [local count: 41297763]:
+<L60>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 50>; [33.00%]
+  else
+    goto <bb 51>; [67.00%]
+
+  <bb 50> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_258 = pfe_phy_if_allmulti_disable (phy_if_arg_79);
+  # DEBUG ret => ret_258
+
+  <bb 51> [local count: 41297763]:
+  # ret_90 = PHI <ret_80(49), ret_258(50)>
+  # DEBUG ret => ret_90
+  # DEBUG BEGIN_STMT
+  _22 = pfe_idex_set_rpc_ret_val (ret_90, 0B, 0);
+  if (_22 != 0)
+    goto <bb 52>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 52> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 434, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 53> [local count: 41297763]:
+<L65>:
+  # DEBUG BEGIN_STMT
+  # DEBUG rpc_arg => buf_137(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 54>; [33.00%]
+  else
+    goto <bb 55>; [67.00%]
+
+  <bb 54> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _23 = &MEM[(struct pfe_platform_rpc_pfe_phy_if_add_mac_addr_arg_t *)buf_137(D)].mac_addr;
+  autolibc_memcpy (&mac_addr, _23, 6);
+  # DEBUG BEGIN_STMT
+  ret_312 = pfe_phy_if_add_mac_addr (phy_if_arg_79, &mac_addr, sender_136(D));
+  # DEBUG ret => ret_312
+
+  <bb 55> [local count: 41297763]:
+  # ret_91 = PHI <ret_80(53), ret_312(54)>
+  # DEBUG ret => ret_91
+  # DEBUG BEGIN_STMT
+  _24 = pfe_idex_set_rpc_ret_val (ret_91, 0B, 0);
+  if (_24 != 0)
+    goto <bb 56>; [33.00%]
+  else
+    goto <bb 57>; [67.00%]
+
+  <bb 56> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 457, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 57> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  mac_addr ={v} {CLOBBER};
+  goto <bb 131>; [100.00%]
+
+  <bb 58> [local count: 41297763]:
+<L71>:
+  # DEBUG BEGIN_STMT
+  # DEBUG rpc_arg => buf_137(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 59>; [33.00%]
+  else
+    goto <bb 60>; [67.00%]
+
+  <bb 59> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _25 = &MEM[(struct pfe_platform_rpc_pfe_phy_if_del_mac_addr_arg_t *)buf_137(D)].mac_addr;
+  autolibc_memcpy (&mac_addr, _25, 6);
+  # DEBUG BEGIN_STMT
+  ret_305 = pfe_phy_if_del_mac_addr (phy_if_arg_79, &mac_addr, sender_136(D));
+  # DEBUG ret => ret_305
+
+  <bb 60> [local count: 41297763]:
+  # ret_92 = PHI <ret_80(58), ret_305(59)>
+  # DEBUG ret => ret_92
+  # DEBUG BEGIN_STMT
+  _26 = pfe_idex_set_rpc_ret_val (ret_92, 0B, 0);
+  if (_26 != 0)
+    goto <bb 61>; [33.00%]
+  else
+    goto <bb 62>; [67.00%]
+
+  <bb 61> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 480, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 62> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  mac_addr ={v} {CLOBBER};
+  goto <bb 131>; [100.00%]
+
+  <bb 63> [local count: 41297763]:
+<L77>:
+  # DEBUG BEGIN_STMT
+  # DEBUG rpc_arg => buf_137(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 64>; [33.00%]
+  else
+    goto <bb 65>; [67.00%]
+
+  <bb 64> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  _27 = MEM[(struct pfe_platform_rpc_pfe_phy_if_flush_mac_addrs_arg_t *)buf_137(D)].crit;
+  _28 = MEM[(struct pfe_platform_rpc_pfe_phy_if_flush_mac_addrs_arg_t *)buf_137(D)].type;
+  ret_268 = pfe_phy_if_flush_mac_addrs (phy_if_arg_79, _27, _28, sender_136(D));
+  # DEBUG ret => ret_268
+
+  <bb 65> [local count: 41297763]:
+  # ret_93 = PHI <ret_80(63), ret_268(64)>
+  # DEBUG ret => ret_93
+  # DEBUG BEGIN_STMT
+  _29 = pfe_idex_set_rpc_ret_val (ret_93, 0B, 0);
+  if (_29 != 0)
+    goto <bb 66>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 66> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 500, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 67> [local count: 41297763]:
+<L82>:
+  # DEBUG BEGIN_STMT
+  # DEBUG rpc_arg => buf_137(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 68>; [33.00%]
+  else
+    goto <bb 69>; [67.00%]
+
+  <bb 68> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  _30 = MEM[(struct pfe_platform_rpc_pfe_phy_if_set_block_state_arg_t *)buf_137(D)].block_state;
+  ret_233 = pfe_phy_if_set_block_state (phy_if_arg_79, _30);
+  # DEBUG ret => ret_233
+
+  <bb 69> [local count: 41297763]:
+  # ret_94 = PHI <ret_80(67), ret_233(68)>
+  # DEBUG ret => ret_94
+  # DEBUG BEGIN_STMT
+  _31 = pfe_idex_set_rpc_ret_val (ret_94, 0B, 0);
+  if (_31 != 0)
+    goto <bb 70>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 70> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 520, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 131>; [100.00%]
+
+  <bb 71> [local count: 41297763]:
+<L87>:
+  # DEBUG BEGIN_STMT
+  rpc_ret.state = 0;
+  # DEBUG BEGIN_STMT
+  block_state = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 72>; [33.00%]
+  else
+    goto <bb 73>; [67.00%]
+
+  <bb 72> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  ret_225 = pfe_phy_if_get_block_state (phy_if_arg_79, &block_state);
+  # DEBUG ret => ret_225
+  # DEBUG BEGIN_STMT
+  block_state.2_32 = block_state;
+  rpc_ret.state = block_state.2_32;
+
+  <bb 73> [local count: 41297763]:
+  # ret_95 = PHI <ret_80(71), ret_225(72)>
+  # DEBUG ret => ret_95
+  # DEBUG BEGIN_STMT
+  _33 = pfe_idex_set_rpc_ret_val (ret_95, &rpc_ret, 4);
+  if (_33 != 0)
+    goto <bb 74>; [33.00%]
+  else
+    goto <bb 75>; [67.00%]
+
+  <bb 74> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 542, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 75> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rpc_ret ={v} {CLOBBER};
+  block_state ={v} {CLOBBER};
+  goto <bb 131>; [100.00%]
+
+  <bb 76> [local count: 41297763]:
+<L93>:
+  # DEBUG BEGIN_STMT
+  rpc_ret.mode = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG mode => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 77>; [33.00%]
+  else
+    goto <bb 78>; [67.00%]
+
+  <bb 77> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  mode_297 = pfe_phy_if_get_op_mode (phy_if_arg_79);
+  # DEBUG mode => mode_297
+  # DEBUG BEGIN_STMT
+  rpc_ret.mode = mode_297;
+
+  <bb 78> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  _34 = pfe_idex_set_rpc_ret_val (ret_80, &rpc_ret, 4);
+  if (_34 != 0)
+    goto <bb 79>; [33.00%]
+  else
+    goto <bb 80>; [67.00%]
+
+  <bb 79> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 564, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 80> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rpc_ret ={v} {CLOBBER};
+  goto <bb 131>; [100.00%]
+
+  <bb 81> [local count: 41297763]:
+<L99>:
+  # DEBUG BEGIN_STMT
+  rpc_ret.status = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG status => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 82>; [33.00%]
+  else
+    goto <bb 83>; [67.00%]
+
+  <bb 82> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  status_289 = pfe_phy_if_is_enabled (phy_if_arg_79);
+  # DEBUG status => status_289
+  # DEBUG BEGIN_STMT
+  rpc_ret.status = status_289;
+
+  <bb 83> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  _35 = pfe_idex_set_rpc_ret_val (ret_80, &rpc_ret, 4);
+  if (_35 != 0)
+    goto <bb 84>; [33.00%]
+  else
+    goto <bb 85>; [67.00%]
+
+  <bb 84> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 587, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 85> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rpc_ret ={v} {CLOBBER};
+  goto <bb 131>; [100.00%]
+
+  <bb 86> [local count: 41297763]:
+<L105>:
+  # DEBUG BEGIN_STMT
+  rpc_ret.status = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG status => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 87>; [33.00%]
+  else
+    goto <bb 88>; [67.00%]
+
+  <bb 87> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  status_281 = pfe_phy_if_is_promisc (phy_if_arg_79);
+  # DEBUG status => status_281
+  # DEBUG BEGIN_STMT
+  rpc_ret.status = status_281;
+
+  <bb 88> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  _36 = pfe_idex_set_rpc_ret_val (ret_80, &rpc_ret, 4);
+  if (_36 != 0)
+    goto <bb 89>; [33.00%]
+  else
+    goto <bb 90>; [67.00%]
+
+  <bb 89> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 610, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 90> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rpc_ret ={v} {CLOBBER};
+  goto <bb 131>; [100.00%]
+
+  <bb 91> [local count: 41297763]:
+<L111>:
+  # DEBUG BEGIN_STMT
+  rpc_ret = {};
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 92>; [33.00%]
+  else
+    goto <bb 93>; [67.00%]
+
+  <bb 92> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_274 = pfe_phy_if_get_stats (phy_if_arg_79, &rpc_ret.stats);
+  # DEBUG ret => ret_274
+
+  <bb 93> [local count: 41297763]:
+  # ret_96 = PHI <ret_80(91), ret_274(92)>
+  # DEBUG ret => ret_96
+  # DEBUG BEGIN_STMT
+  _37 = pfe_idex_set_rpc_ret_val (ret_96, &rpc_ret, 16);
+  if (_37 != 0)
+    goto <bb 94>; [33.00%]
+  else
+    goto <bb 95>; [67.00%]
+
+  <bb 94> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 631, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 95> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rpc_ret ={v} {CLOBBER};
+  goto <bb 131>; [100.00%]
+
+  <bb 96> [local count: 41297763]:
+<L117>:
+  # DEBUG BEGIN_STMT
+  # DEBUG rpc_arg => buf_137(D)
+  # DEBUG BEGIN_STMT
+  rpc_ret.stat_val = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG stat_val => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 97>; [67.00%]
+  else
+    goto <bb 101>; [33.00%]
+
+  <bb 97> [local count: 27669501]:
+  # DEBUG BEGIN_STMT
+  _38 = MEM[(struct pfe_platform_rpc_pfe_phy_if_get_stat_value_arg_t *)buf_137(D)].phy_if_id;
+  if (_38 > 2)
+    goto <bb 98>; [50.00%]
+  else
+    goto <bb 100>; [50.00%]
+
+  <bb 98> [local count: 13834750]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _39 = (int) _38;
+  pfe_hm_report (1, 2, 1, "[%s:%d] RPC: PFE_PLATFORM_RPC_PFE_PHY_IF_GET_STAT_VALUE: invalid EMAC id: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 650, _39, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _40 = pfe_idex_set_rpc_ret_val (22, 0B, 0);
+  if (_40 != 0)
+    goto <bb 99>; [33.00%]
+  else
+    goto <bb 103>; [67.00%]
+
+  <bb 99> [local count: 4565468]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 654, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 103>; [100.00%]
+
+  <bb 100> [local count: 13834750]:
+  # DEBUG BEGIN_STMT
+  _41 = (int) _38;
+  emac_209 = pfe.emac[_41];
+  # DEBUG emac => emac_209
+  # DEBUG BEGIN_STMT
+  _42 = MEM[(struct pfe_platform_rpc_pfe_phy_if_get_stat_value_arg_t *)buf_137(D)].stat_id;
+  stat_val_211 = pfe_emac_get_stat_value (emac_209, _42);
+  # DEBUG stat_val => stat_val_211
+  # DEBUG BEGIN_STMT
+  rpc_ret.stat_val = stat_val_211;
+
+  <bb 101> [local count: 27463012]:
+  # DEBUG BEGIN_STMT
+  _43 = pfe_idex_set_rpc_ret_val (ret_80, &rpc_ret, 4);
+  if (_43 != 0)
+    goto <bb 102>; [33.00%]
+  else
+    goto <bb 103>; [67.00%]
+
+  <bb 102> [local count: 9062794]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 669, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 103> [local count: 41297763]:
+  rpc_ret ={v} {CLOBBER};
+  goto <bb 131>; [100.00%]
+
+  <bb 104> [local count: 41297763]:
+<L127>:
+  # DEBUG BEGIN_STMT
+  # DEBUG rpc_arg => buf_137(D)
+  # DEBUG BEGIN_STMT
+  rpc_ret = {};
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 105>; [33.00%]
+  else
+    goto <bb 106>; [67.00%]
+
+  <bb 105> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _44 = &MEM[(struct pfe_platform_rpc_pfe_fci_proxy_arg_t *)buf_137(D)].type;
+  autolibc_memcpy (&msg.type, _44, 4);
+  # DEBUG BEGIN_STMT
+  _45 = &MEM[(struct pfe_platform_rpc_pfe_fci_proxy_arg_t *)buf_137(D)].msg_cmd;
+  autolibc_memcpy (&msg.msg_cmd, _45, 268);
+  # DEBUG BEGIN_STMT
+  rep_msg = {};
+  rep_msg.type = 4099;
+  # DEBUG BEGIN_STMT
+  _46 = (long unsigned int) sender_136(D);
+  msg.msg_cmd.sender = _46;
+  # DEBUG BEGIN_STMT
+  ret_190 = fci_process_ipc_message (&msg, &rep_msg);
+  # DEBUG ret => ret_190
+  # DEBUG BEGIN_STMT
+  rpc_ret.msg_cmd = rep_msg.msg_cmd;
+  msg ={v} {CLOBBER};
+  rep_msg ={v} {CLOBBER};
+
+  <bb 106> [local count: 41297763]:
+  # ret_97 = PHI <ret_80(104), ret_190(105)>
+  # DEBUG ret => ret_97
+  # DEBUG BEGIN_STMT
+  _47 = pfe_idex_set_rpc_ret_val (ret_97, &rpc_ret, 268);
+  if (_47 != 0)
+    goto <bb 107>; [33.00%]
+  else
+    goto <bb 108>; [67.00%]
+
+  <bb 107> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 707, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 108> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rpc_ret ={v} {CLOBBER};
+  goto <bb 131>; [100.00%]
+
+  <bb 109> [local count: 41297763]:
+<L133>:
+  # DEBUG BEGIN_STMT
+  # DEBUG rpc_arg => buf_137(D)
+  # DEBUG BEGIN_STMT
+  rpc_ret.val = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_80 == 0)
+    goto <bb 110>; [50.00%]
+  else
+    goto <bb 128>; [50.00%]
+
+  <bb 110> [local count: 20648881]:
+  # DEBUG BEGIN_STMT
+  _48 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].emac_id;
+  if (_48 > 2)
+    goto <bb 111>; [50.00%]
+  else
+    goto <bb 113>; [50.00%]
+
+  <bb 111> [local count: 10324441]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _49 = (int) _48;
+  pfe_hm_report (1, 2, 1, "[%s:%d] RPC: PFE_PLATFORM_RPC_MDIO_PROXY: invalid EMAC id: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 726, _49, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _50 = pfe_idex_set_rpc_ret_val (22, 0B, 0);
+  if (_50 != 0)
+    goto <bb 112>; [33.00%]
+  else
+    goto <bb 128>; [67.00%]
+
+  <bb 112> [local count: 3407065]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 730, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 128>; [100.00%]
+
+  <bb 113> [local count: 10324441]:
+  # DEBUG BEGIN_STMT
+  _51 = (int) _48;
+  emac_142 = pfe.emac[_51];
+  # DEBUG emac => emac_142
+  # DEBUG BEGIN_STMT
+  ret_144 = pfe_emac_mdio_lock (emac_142, &key);
+  # DEBUG ret => ret_144
+  # DEBUG BEGIN_STMT
+  if (ret_144 == 0)
+    goto <bb 114>; [67.00%]
+  else
+    goto <bb 126>; [33.00%]
+
+  <bb 114> [local count: 6917375]:
+  # DEBUG BEGIN_STMT
+  _52 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].op;
+  switch (_52) <default: <L152> [20.00%], case 101: <L140> [20.00%], case 102: <L143> [20.00%], case 103: <L146> [20.00%], case 104: <L149> [20.00%]>
+
+  <bb 115> [local count: 1383475]:
+<L140>:
+  # DEBUG BEGIN_STMT
+  _53 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].pa;
+  _54 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].ra;
+  _55 = (unsigned char) _54;
+  key.3_56 = key;
+  ret_166 = pfe_emac_mdio_read22 (emac_142, _53, _55, &rpc_ret.val, key.3_56);
+  # DEBUG ret => ret_166
+  # DEBUG BEGIN_STMT
+  _57 = pfe_idex_set_rpc_ret_val (ret_166, &rpc_ret, 4);
+  if (_57 != 0)
+    goto <bb 116>; [33.00%]
+  else
+    goto <bb 125>; [67.00%]
+
+  <bb 116> [local count: 456547]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 749, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 125>; [100.00%]
+
+  <bb 117> [local count: 1383475]:
+<L143>:
+  # DEBUG BEGIN_STMT
+  _58 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].pa;
+  _59 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].ra;
+  _60 = (unsigned char) _59;
+  _61 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].val;
+  key.4_62 = key;
+  ret_161 = pfe_emac_mdio_write22 (emac_142, _58, _60, _61, key.4_62);
+  # DEBUG ret => ret_161
+  # DEBUG BEGIN_STMT
+  _63 = pfe_idex_set_rpc_ret_val (ret_161, 0B, 0);
+  if (_63 != 0)
+    goto <bb 118>; [33.00%]
+  else
+    goto <bb 125>; [67.00%]
+
+  <bb 118> [local count: 456547]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 759, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 125>; [100.00%]
+
+  <bb 119> [local count: 1383475]:
+<L146>:
+  # DEBUG BEGIN_STMT
+  _64 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].pa;
+  _65 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].dev;
+  _66 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].ra;
+  key.5_67 = key;
+  ret_156 = pfe_emac_mdio_read45 (emac_142, _64, _65, _66, &rpc_ret.val, key.5_67);
+  # DEBUG ret => ret_156
+  # DEBUG BEGIN_STMT
+  _68 = pfe_idex_set_rpc_ret_val (ret_156, &rpc_ret, 4);
+  if (_68 != 0)
+    goto <bb 120>; [33.00%]
+  else
+    goto <bb 125>; [67.00%]
+
+  <bb 120> [local count: 456547]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 769, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 125>; [100.00%]
+
+  <bb 121> [local count: 1383475]:
+<L149>:
+  # DEBUG BEGIN_STMT
+  _69 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].pa;
+  _70 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].dev;
+  _71 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].ra;
+  _72 = MEM[(struct pfe_platform_rpc_mdio_proxy_arg_t *)buf_137(D)].val;
+  key.6_73 = key;
+  ret_151 = pfe_emac_mdio_write45 (emac_142, _69, _70, _71, _72, key.6_73);
+  # DEBUG ret => ret_151
+  # DEBUG BEGIN_STMT
+  _74 = pfe_idex_set_rpc_ret_val (ret_151, 0B, 0);
+  if (_74 != 0)
+    goto <bb 122>; [33.00%]
+  else
+    goto <bb 125>; [67.00%]
+
+  <bb 122> [local count: 456547]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 779, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 125>; [100.00%]
+
+  <bb 123> [local count: 1383475]:
+<L152>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid MDIO operation\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 785, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _75 = pfe_idex_set_rpc_ret_val (22, 0B, 0);
+  if (_75 != 0)
+    goto <bb 124>; [33.00%]
+  else
+    goto <bb 125>; [67.00%]
+
+  <bb 124> [local count: 456547]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 789, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 125> [local count: 6917375]:
+  # DEBUG BEGIN_STMT
+  key.7_76 = key;
+  pfe_emac_mdio_unlock (emac_142, key.7_76);
+  goto <bb 128>; [100.00%]
+
+  <bb 126> [local count: 3407065]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Lock the MDIO bus failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 799, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _77 = pfe_idex_set_rpc_ret_val (115, 0B, 0);
+  if (_77 != 0)
+    goto <bb 127>; [33.00%]
+  else
+    goto <bb 128>; [67.00%]
+
+  <bb 127> [local count: 1124332]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 803, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 128> [local count: 41297763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rpc_ret ={v} {CLOBBER};
+  key ={v} {CLOBBER};
+  goto <bb 131>; [100.00%]
+
+  <bb 129> [local count: 41297763]:
+<L163>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _78 = pfe_idex_set_rpc_ret_val (22, 0B, 0);
+  if (_78 != 0)
+    goto <bb 130>; [33.00%]
+  else
+    goto <bb 131>; [67.00%]
+
+  <bb 130> [local count: 13628262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not send RPC response\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_platform_master.c", 818, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 131> [local count: 1073741824]:
+  entry ={v} {CLOBBER};
+  return;
+
+}
+
+
+pfe_platform_bmu_isr (void * arg)
+{
+  bool_t handled;
+  struct pfe_bmu_t * _1;
+  struct pfe_bmu_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG platform => arg_7(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG handled => 0
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(const struct pfe_platform_t *)arg_7(D)].bmu[0];
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pfe_bmu_irq_mask (_1);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(const struct pfe_platform_t *)arg_7(D)].bmu[1];
+  if (_3 != 0B)
+    goto <bb 5>; [100.00%]
+  else
+    goto <bb 6>; [0.00%]
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pfe_bmu_irq_mask (_3);
+
+  <bb 6> [count: 0]:
+  handled_2 = pfe_platform_bmu_isr.part.0 (arg_7(D));
+  # DEBUG BEGIN_STMT
+  return handled_2;
+
+}
+
+

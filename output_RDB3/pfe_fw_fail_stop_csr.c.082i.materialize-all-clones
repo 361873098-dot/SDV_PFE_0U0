@@ -1,0 +1,137 @@
+pfe_fw_fail_stop_cfg_irq_unmask_all (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 204;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 3;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_fw_fail_stop_cfg_irq_unmask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 204;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 | 1;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_fw_fail_stop_cfg_irq_mask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 204;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 & 4294967294;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_fw_fail_stop_cfg_isr (addr_t base_va)
+{
+  uint32_t trig_en_interrupts;
+  errno_t ret;
+  uint32_t reg_src;
+  uint32_t reg_en;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_11(D) + 204;
+  _2 = (volatile uint32_t *) _1;
+  reg_en_13 ={v} *_2;
+  # DEBUG reg_en => reg_en_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = reg_en_13 & 4294967294;
+  *_2 ={v} _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_11(D) + 200;
+  _5 = (volatile uint32_t *) _4;
+  reg_src_15 ={v} *_5;
+  # DEBUG reg_src => reg_src_15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_5 ={v} reg_src_15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = reg_en_13 & reg_src_15;
+  trig_en_interrupts_17 = _6 & 3;
+  # DEBUG trig_en_interrupts => trig_en_interrupts_17
+  # DEBUG BEGIN_STMT
+  if (trig_en_interrupts_17 != 0)
+    goto <bb 3>; [47.77%]
+  else
+    goto <bb 4>; [52.23%]
+
+  <bb 3> [local count: 512926469]:
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (9, 2, 150, "[%s:%d] ", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_fw_fail_stop_csr.c", 69, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (50, 3);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_9 = PHI <2(2), 0(3)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = ~reg_src_15;
+  _8 = _7 & reg_en_13;
+  *_2 ={v} _8;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_9;
+
+}
+
+

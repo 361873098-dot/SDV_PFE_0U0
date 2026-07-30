@@ -1,0 +1,382 @@
+SampleAppEthInit ()
+{
+  uint8 pfeCtrlIndex;
+  Std_ReturnType stdRet;
+  unsigned char pfeCtrlIndex.7_1;
+  Std_ReturnType _10;
+  unsigned char _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  stdRet_5 = 0;
+  # DEBUG stdRet => stdRet_5
+  # DEBUG BEGIN_STMT
+  pfeCtrlIndex_6 = 0;
+  # DEBUG pfeCtrlIndex => pfeCtrlIndex_6
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_Init (0B);
+  # DEBUG BEGIN_STMT
+  pfeCtrlIndex_9 = 0;
+  # DEBUG pfeCtrlIndex => pfeCtrlIndex_9
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _12 = Eth_43_PFE_SetControllerMode (pfeCtrlIndex_3, 1);
+  stdRet_13 = _12 | stdRet_2;
+  # DEBUG stdRet => stdRet_13
+  # DEBUG BEGIN_STMT
+  pfeCtrlIndex.7_1 = pfeCtrlIndex_3;
+  pfeCtrlIndex_14 = pfeCtrlIndex.7_1 + 1;
+  # DEBUG pfeCtrlIndex => pfeCtrlIndex_14
+
+  <bb 4> :
+  # stdRet_2 = PHI <stdRet_5(2), stdRet_13(3)>
+  # pfeCtrlIndex_3 = PHI <pfeCtrlIndex_9(2), pfeCtrlIndex_14(3)>
+  # DEBUG pfeCtrlIndex => pfeCtrlIndex_3
+  # DEBUG stdRet => stdRet_2
+  # DEBUG BEGIN_STMT
+  if (pfeCtrlIndex_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _10 = stdRet_2;
+  return _10;
+
+}
+
+
+Tst_Pfe_SendDummyFrame (uint8 srcCtrlIndex, uint8 * dstMacAddr, frame_type_t frmType)
+{
+  Eth_FrameType frameType;
+  uint16 u16DesPort;
+  uint16 u16SrcPort;
+  uint8 u8DesIpOffset;
+  uint8 u8SrcIpOffset;
+  uint8 srcMac[6];
+  char * pDstIpAddr;
+  char * pSrcIpAddr;
+  uint32 dstIpAddr;
+  uint32 srcIpAddr;
+  BufReq_ReturnType ProvideTxBufferResult;
+  uint16 u16TempLengthInBytes;
+  uint16 LengthInBytes;
+  Eth_BufIdxType BufferIndex;
+  Eth_DataType * bufPtr;
+  Std_ReturnType tempRet;
+  volatile uint32_t * pfeTxCtr.0_1;
+  unsigned int _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned char Priority.1_7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  int _36;
+  uint8_t * _37;
+  int _38;
+  uint8_t * _39;
+  Eth_DataType * bufPtr.2_40;
+  int _41;
+  uint8_t * _42;
+  int _43;
+  uint8_t * _44;
+  Eth_DataType * bufPtr.3_45;
+  long unsigned int BufferIndex.4_46;
+  volatile uint32_t * pfeTxErrorCtr.5_47;
+  unsigned int _48;
+  unsigned int _49;
+  volatile uint32_t * _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  unsigned char Priority.6_53;
+  int _54;
+  int _55;
+  unsigned int _56;
+  unsigned int _57;
+  unsigned char _58;
+  Std_ReturnType _119;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  tempRet_68 = 1;
+  # DEBUG tempRet => tempRet_68
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pSrcIpAddr_69 = 0B;
+  # DEBUG pSrcIpAddr => pSrcIpAddr_69
+  # DEBUG BEGIN_STMT
+  pDstIpAddr_70 = 0B;
+  # DEBUG pDstIpAddr => pDstIpAddr_70
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u8SrcIpOffset_71 = 14;
+  # DEBUG u8SrcIpOffset => u8SrcIpOffset_71
+  # DEBUG BEGIN_STMT
+  u8DesIpOffset_72 = 24;
+  # DEBUG u8DesIpOffset => u8DesIpOffset_72
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  frameType_73 = 2054;
+  # DEBUG frameType => frameType_73
+  # DEBUG BEGIN_STMT
+  pfeTxCtr.0_1 = pfeTxCtr;
+  _2 = (unsigned int) srcCtrlIndex_75(D);
+  _3 = _2 * 4;
+  _4 = pfeTxCtr.0_1 + _3;
+  _5 ={v} *_4;
+  _6 = _5 + 1;
+  *_4 ={v} _6;
+  # DEBUG BEGIN_STMT
+  if (frmType_77(D) == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  LengthInBytes_79 = 52;
+  # DEBUG LengthInBytes => LengthInBytes_79
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  LengthInBytes_78 = 28;
+  # DEBUG LengthInBytes => LengthInBytes_78
+
+  <bb 5> :
+  # LengthInBytes_60 = PHI <LengthInBytes_79(3), LengthInBytes_78(4)>
+  # DEBUG LengthInBytes => LengthInBytes_60
+  # DEBUG BEGIN_STMT
+  u16TempLengthInBytes = LengthInBytes_60;
+  # DEBUG BEGIN_STMT
+  Priority.1_7 = Priority;
+  ProvideTxBufferResult_82 = Eth_43_PFE_ProvideTxBuffer (srcCtrlIndex_75(D), Priority.1_7, &BufferIndex, &bufPtr, &u16TempLengthInBytes);
+  # DEBUG ProvideTxBufferResult => ProvideTxBufferResult_82
+  # DEBUG BEGIN_STMT
+  if (ProvideTxBufferResult_82 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (frmType_77(D) == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  frameType_87 = 2048;
+  # DEBUG frameType => frameType_87
+  # DEBUG BEGIN_STMT
+  pSrcIpAddr_88 = "11.41.48.100";
+  # DEBUG pSrcIpAddr => pSrcIpAddr_88
+  # DEBUG BEGIN_STMT
+  pDstIpAddr_89 = "12.41.48.100";
+  # DEBUG pDstIpAddr => pDstIpAddr_89
+  # DEBUG BEGIN_STMT
+  u8SrcIpOffset_90 = 12;
+  # DEBUG u8SrcIpOffset => u8SrcIpOffset_90
+  # DEBUG BEGIN_STMT
+  u8DesIpOffset_91 = 16;
+  # DEBUG u8DesIpOffset => u8DesIpOffset_91
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (srcCtrlIndex_75(D) == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  pSrcIpAddr_85 = "192.168.21.23";
+  # DEBUG pSrcIpAddr => pSrcIpAddr_85
+  # DEBUG BEGIN_STMT
+  pDstIpAddr_86 = "192.168.21.23";
+  # DEBUG pDstIpAddr => pDstIpAddr_86
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  pSrcIpAddr_83 = "";
+  # DEBUG pSrcIpAddr => pSrcIpAddr_83
+  # DEBUG BEGIN_STMT
+  pDstIpAddr_84 = "";
+  # DEBUG pDstIpAddr => pDstIpAddr_84
+
+  <bb 11> :
+  # pSrcIpAddr_61 = PHI <pSrcIpAddr_88(7), pSrcIpAddr_85(9), pSrcIpAddr_83(10)>
+  # pDstIpAddr_62 = PHI <pDstIpAddr_89(7), pDstIpAddr_86(9), pDstIpAddr_84(10)>
+  # u8SrcIpOffset_63 = PHI <u8SrcIpOffset_90(7), u8SrcIpOffset_71(9), u8SrcIpOffset_71(10)>
+  # u8DesIpOffset_64 = PHI <u8DesIpOffset_91(7), u8DesIpOffset_72(9), u8DesIpOffset_72(10)>
+  # frameType_65 = PHI <frameType_87(7), frameType_73(9), frameType_73(10)>
+  # DEBUG frameType => frameType_65
+  # DEBUG u8DesIpOffset => u8DesIpOffset_64
+  # DEBUG u8SrcIpOffset => u8SrcIpOffset_63
+  # DEBUG pDstIpAddr => pDstIpAddr_62
+  # DEBUG pSrcIpAddr => pSrcIpAddr_61
+  # DEBUG BEGIN_STMT
+  _8 = ipv4_string_to_int (pSrcIpAddr_61);
+  _9 = _8 >> 24;
+  _10 = _9 & 255;
+  _11 = ipv4_string_to_int (pSrcIpAddr_61);
+  _12 = _11 >> 8;
+  _13 = _12 & 65280;
+  _14 = _10 | _13;
+  _15 = ipv4_string_to_int (pSrcIpAddr_61);
+  _16 = _15 << 8;
+  _17 = _16 & 16711680;
+  _18 = _14 | _17;
+  _19 = ipv4_string_to_int (pSrcIpAddr_61);
+  _20 = _19 << 24;
+  _21 = _18 | _20;
+  srcIpAddr = _21;
+  # DEBUG BEGIN_STMT
+  _22 = ipv4_string_to_int (pDstIpAddr_62);
+  _23 = _22 >> 24;
+  _24 = _23 & 255;
+  _25 = ipv4_string_to_int (pDstIpAddr_62);
+  _26 = _25 >> 8;
+  _27 = _26 & 65280;
+  _28 = _24 | _27;
+  _29 = ipv4_string_to_int (pDstIpAddr_62);
+  _30 = _29 << 8;
+  _31 = _30 & 16711680;
+  _32 = _28 | _31;
+  _33 = ipv4_string_to_int (pDstIpAddr_62);
+  _34 = _33 << 24;
+  _35 = _32 | _34;
+  dstIpAddr = _35;
+  # DEBUG BEGIN_STMT
+  if (frmType_77(D) == 1)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _36 = (int) u8SrcIpOffset_63;
+  _37 = &tst_ipv4_tcp_frm_data[_36];
+  autolibc_memcpy (_37, &srcIpAddr, 4);
+  # DEBUG BEGIN_STMT
+  _38 = (int) u8DesIpOffset_64;
+  _39 = &tst_ipv4_tcp_frm_data[_38];
+  autolibc_memcpy (_39, &dstIpAddr, 4);
+  # DEBUG BEGIN_STMT
+  u16SrcPort = 2816;
+  # DEBUG BEGIN_STMT
+  u16DesPort = 3072;
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (&tst_ipv4_tcp_frm_data[20], &u16SrcPort, 2);
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (&tst_ipv4_tcp_frm_data[22], &u16DesPort, 2);
+  # DEBUG BEGIN_STMT
+  bufPtr.2_40 = bufPtr;
+  autolibc_memcpy (bufPtr.2_40, &tst_ipv4_tcp_frm_data, 52);
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _41 = (int) u8SrcIpOffset_63;
+  _42 = &tst_arp_frm_data[_41];
+  autolibc_memcpy (_42, &srcIpAddr, 4);
+  # DEBUG BEGIN_STMT
+  _43 = (int) u8DesIpOffset_64;
+  _44 = &tst_arp_frm_data[_43];
+  autolibc_memcpy (_44, &dstIpAddr, 4);
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_GetPhysAddr (srcCtrlIndex_75(D), &srcMac[0]);
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (&tst_arp_frm_data[8], &srcMac[0], 6);
+  # DEBUG BEGIN_STMT
+  bufPtr.3_45 = bufPtr;
+  autolibc_memcpy (bufPtr.3_45, &tst_arp_frm_data, 28);
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  BufferIndex.4_46 = BufferIndex;
+  tempRet_116 = Eth_43_PFE_Transmit (srcCtrlIndex_75(D), BufferIndex.4_46, frameType_65, 1, LengthInBytes_60, dstMacAddr_114(D));
+  # DEBUG tempRet => tempRet_116
+  # DEBUG BEGIN_STMT
+  if (tempRet_116 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  pfeTxErrorCtr.5_47 = pfeTxErrorCtr;
+  _48 = (unsigned int) srcCtrlIndex_75(D);
+  _49 = _48 * 4;
+  _50 = pfeTxErrorCtr.5_47 + _49;
+  _51 ={v} *_50;
+  _52 = _51 + 1;
+  *_50 ={v} _52;
+
+  <bb 16> :
+  # tempRet_59 = PHI <tempRet_68(5), tempRet_116(14), tempRet_116(15)>
+  # DEBUG tempRet => tempRet_59
+  # DEBUG BEGIN_STMT
+  Priority.6_53 = Priority;
+  _54 = (int) Priority.6_53;
+  _55 = _54 + 1;
+  _56 = (unsigned int) _55;
+  _57 = _56 % 7;
+  _58 = (unsigned char) _57;
+  Priority = _58;
+  # DEBUG BEGIN_STMT
+  _119 = tempRet_59;
+  bufPtr ={v} {CLOBBER};
+  BufferIndex ={v} {CLOBBER};
+  u16TempLengthInBytes ={v} {CLOBBER};
+  srcIpAddr ={v} {CLOBBER};
+  dstIpAddr ={v} {CLOBBER};
+  srcMac ={v} {CLOBBER};
+  u16SrcPort ={v} {CLOBBER};
+  u16DesPort ={v} {CLOBBER};
+  return _119;
+
+}
+
+

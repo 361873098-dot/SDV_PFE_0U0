@@ -1,0 +1,660 @@
+ipc_os_poll_channels (const uint8 instance)
+{
+  sint8 err;
+  sint8 D.6319;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  err = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  _2 = ipc_os_priv.id[_1].rx_irq_num;
+  if (_2 == -1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) instance;
+  _4 = ipc_os_priv.id[_3].rx_cb;
+  _4 (instance, 128);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  err = -3;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.6319 = err;
+  return D.6319;
+
+}
+
+
+ipc_os_get_remote_shm (const uint8 instance)
+{
+  uintptr D.6314;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  D.6314 = ipc_os_priv.id[_1].remote_shm;
+  return D.6314;
+
+}
+
+
+ipc_os_get_local_shm (const uint8 instance)
+{
+  uintptr D.6312;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  D.6312 = ipc_os_priv.id[_1].local_shm;
+  return D.6312;
+
+}
+
+
+ipc_shm_hardirq_instance (const uint8 instance)
+{
+  UBaseType_t task_critical_status_from_isr;
+  BaseType_t higher_prio_task_woken;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  higher_prio_task_woken = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = ipc_os_priv.task_is_initialized;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  task_critical_status_from_isr = ulPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  _2 = (int) instance;
+  _3 = ipc_os_priv.id[_2].state;
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ipc_hw_irq_disable (instance);
+  # DEBUG BEGIN_STMT
+  ipc_hw_irq_clear (instance);
+  # DEBUG BEGIN_STMT
+  _4 = (int) instance;
+  _5 = ipc_os_priv.id[_4].msg_received;
+  if (_5 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _6 = (int) instance;
+  ipc_os_priv.id[_6].msg_received = 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _7 = ipc_os_priv.softirq_handle;
+  vTaskGenericNotifyGiveFromISR (_7, 0, &higher_prio_task_woken);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (task_critical_status_from_isr);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  higher_prio_task_woken.6_8 = higher_prio_task_woken;
+  if (higher_prio_task_woken.6_8 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _9 = 3758157060B;
+  *_9 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  higher_prio_task_woken = {CLOBBER};
+  return;
+
+}
+
+
+ipc_shm_hardirq ()
+{
+  uint8 i;
+  UBaseType_t task_critical_status_from_isr;
+  BaseType_t higher_prio_task_woken;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  higher_prio_task_woken = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i = 0;
+  # DEBUG BEGIN_STMT
+  _1 = ipc_os_priv.task_is_initialized;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  task_critical_status_from_isr = ulPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = (int) i;
+  _3 = ipc_os_priv.id[_2].state;
+  if (_3 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by continue predictor.
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ipc_hw_irq_disable (i);
+  # DEBUG BEGIN_STMT
+  ipc_hw_irq_clear (i);
+  # DEBUG BEGIN_STMT
+  _4 = (int) i;
+  ipc_os_priv.id[_4].msg_received = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  i.4_5 = i;
+  i = i.4_5 + 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (i == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _6 = ipc_os_priv.softirq_handle;
+  vTaskGenericNotifyGiveFromISR (_6, 0, &higher_prio_task_woken);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (task_critical_status_from_isr);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  higher_prio_task_woken.5_7 = higher_prio_task_woken;
+  if (higher_prio_task_woken.5_7 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _8 = 3758157060B;
+  *_8 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  higher_prio_task_woken = {CLOBBER};
+  return;
+
+}
+
+
+ipc_shm_softirq ()
+{
+  uint8 i;
+  uint32 work;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  work = 0;
+  # DEBUG BEGIN_STMT
+  i = 0;
+  # DEBUG BEGIN_STMT
+  ulTaskGenericNotifyTake (0, 1, 4294967295);
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) i;
+  _2 = ipc_os_priv.id[_1].state;
+  if (_2 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _3 = (int) i;
+  _4 = ipc_os_priv.id[_3].msg_received;
+  if (_4 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _5 = (int) i;
+  _6 = ipc_os_priv.id[_5].rx_irq_num;
+  if (_6 == -1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by continue predictor.
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = (int) i;
+  _8 = ipc_os_priv.id[_7].rx_cb;
+  work = _8 (i, 128);
+  # DEBUG BEGIN_STMT
+  _9 = 3758157060B;
+  *_9 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (work > 127)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _10 = (int) i;
+  ipc_os_priv.id[_10].msg_received = 0;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  i.0_11 = i;
+  i = i.0_11 + 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (i == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _12 = (int) i;
+  _13 = ipc_os_priv.id[_12].state;
+  if (_13 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by continue predictor.
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  ipc_hw_irq_enable (i);
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  i.1_14 = i;
+  i = i.1_14 + 1;
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  if (i == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  ulTaskGenericNotifyTake (0, 1, 4294967295);
+  # DEBUG BEGIN_STMT
+  goto <bb 3>; [INV]
+
+}
+
+
+ipc_os_free (const uint8 instance)
+{
+  int keep_softirq_active;
+  uint8 instance_id;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  instance_id = 0;
+  # DEBUG BEGIN_STMT
+  keep_softirq_active = 0;
+  # DEBUG BEGIN_STMT
+  ipc_os_free_irq (instance);
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  ipc_os_priv.id[_1].rx_cb = 0B;
+  # DEBUG BEGIN_STMT
+  _2 = (int) instance;
+  ipc_os_priv.id[_2].state = 0;
+  # DEBUG BEGIN_STMT
+  instance_id = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) instance_id;
+  _4 = ipc_os_priv.id[_3].state;
+  if (_4 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  _5 = (int) instance_id;
+  _6 = ipc_os_priv.id[_5].rx_irq_num;
+  if (_6 != -1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  keep_softirq_active = keep_softirq_active + 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  instance_id.2_7 = instance_id;
+  instance_id = instance_id.2_7 + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (instance_id == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _8 = (int) instance;
+  _9 = ipc_os_priv.id[_8].rx_irq_num;
+  if (_9 != -1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  if (keep_softirq_active == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _10 = ipc_os_priv.task_is_initialized;
+  if (_10 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _11 = ipc_os_priv.softirq_handle;
+  vTaskDelete (_11);
+  # DEBUG BEGIN_STMT
+  ipc_os_priv.task_is_initialized = 0;
+
+  <bb 12> :
+  return;
+
+}
+
+
+ipc_os_free_irq (const uint8 instance)
+{
+  uint8 i;
+  int keep_irq_enable;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  keep_irq_enable = 0;
+  # DEBUG BEGIN_STMT
+  i = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  _2 = ipc_os_priv.id[_1].rx_irq_num;
+  if (_2 != -1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (instance == i)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by continue predictor.
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) i;
+  _4 = ipc_os_priv.id[_3].rx_irq_num;
+  _5 = (int) instance;
+  _6 = ipc_os_priv.id[_5].rx_irq_num;
+  if (_4 == _6)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  keep_irq_enable = keep_irq_enable + 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  i.3_7 = i;
+  i = i.3_7 + 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (i == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (keep_irq_enable == 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  ipc_hw_irq_disable (instance);
+
+  <bb 12> :
+  return;
+
+}
+
+
+ipc_os_init (const uint8 instance, const struct ipc_shm_cfg * cfg, uint32 (*<T4c4>) (const uint8, uint32) rx_cb)
+{
+  sint8 err;
+  BaseType_t os_status;
+  sint8 D.6270;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  os_status = 0;
+  # DEBUG BEGIN_STMT
+  err = -3;
+  # DEBUG BEGIN_STMT
+  if (rx_cb != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  _2 = cfg->local_shm_addr;
+  ipc_os_priv.id[_1].local_shm = _2;
+  # DEBUG BEGIN_STMT
+  _3 = (int) instance;
+  _4 = cfg->remote_shm_addr;
+  ipc_os_priv.id[_3].remote_shm = _4;
+  # DEBUG BEGIN_STMT
+  _5 = (int) instance;
+  ipc_os_priv.id[_5].state = 1;
+  # DEBUG BEGIN_STMT
+  _6 = (int) instance;
+  ipc_os_priv.id[_6].rx_cb = rx_cb;
+  # DEBUG BEGIN_STMT
+  _7 = (int) instance;
+  _8 = cfg->inter_core_rx_irq;
+  ipc_os_priv.id[_7].rx_irq_num = _8;
+  # DEBUG BEGIN_STMT
+  _9 = (int) instance;
+  ipc_os_priv.id[_9].msg_received = 0;
+  # DEBUG BEGIN_STMT
+  _10 = (int) instance;
+  _11 = ipc_os_priv.id[_10].rx_irq_num;
+  if (_11 == -1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _12 = ipc_os_priv.task_is_initialized;
+  if (_12 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  err = 0;
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  os_status = xTaskCreate (ipc_shm_softirq, "softirq", 256, 0B, 9, &ipc_os_priv.softirq_handle);
+  # DEBUG BEGIN_STMT
+  if (os_status != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  err = -2;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  ipc_os_priv.task_is_initialized = 1;
+  # DEBUG BEGIN_STMT
+  err = 0;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  D.6270 = err;
+  return D.6270;
+
+}
+
+
+__attribute__((always_inline))
+vPortSetBASEPRI (uint32_t ulNewMaskValue)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	msr basepri, %0	" :  : "r" ulNewMaskValue : "memory");
+  return;
+
+}
+
+
+__attribute__((always_inline))
+ulPortRaiseBASEPRI ()
+{
+  uint32_t ulNewBASEPRI;
+  uint32_t ulOriginalBASEPRI;
+  uint32_t D.6302;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mrs %0, basepri											
+	mov %1, %2												
+	cpsid i													
+	msr basepri, %1											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulOriginalBASEPRI, "=r" ulNewBASEPRI : "i" 16 : "memory");
+  # DEBUG BEGIN_STMT
+  D.6302 = ulOriginalBASEPRI;
+  return D.6302;
+
+}
+
+

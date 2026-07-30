@@ -1,0 +1,607 @@
+pfe_class_cfg_bridge_lookup_disable (const addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 590396;
+  _2 = (volatile uint32_t *) _1;
+  reg_6 ={v} *_2;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = reg_6 & 4294967263;
+  *_2 ={v} _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_class_cfg_bridge_lookup_enable (const addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 590396;
+  _2 = (volatile uint32_t *) _1;
+  reg_6 ={v} *_2;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = reg_6 | 32;
+  *_2 ={v} _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_class_cfg_rtable_lookup_disable (const addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 590396;
+  _2 = (volatile uint32_t *) _1;
+  reg_6 ={v} *_2;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = reg_6 & 4294967287;
+  *_2 ={v} _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_class_cfg_rtable_lookup_enable (const addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 590396;
+  _2 = (volatile uint32_t *) _1;
+  reg_6 ={v} *_2;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = reg_6 | 8;
+  *_2 ={v} _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_class_cfg_set_def_vlan (addr_t base_va, uint16_t vlan)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) vlan_7(D);
+  _2 = _1 << 1;
+  _3 = _2 & 8190;
+  _4 = base_va_8(D) + 590408;
+  _5 = (volatile uint32_t *) _4;
+  _6 = _3 | 1;
+  *_5 ={v} _6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_class_cfg_set_rtable (addr_t base_va, addr_t rtable_pa, uint32_t rtable_len, uint32_t entry_size)
+{
+  uint8_t rtable_idx;
+  errno_t ret;
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  unsigned char rtable_idx.0_6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  long unsigned int _12;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (rtable_pa_15(D) == 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  pfe_class_cfg_rtable_lookup_disable (base_va_17(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 11>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  if (entry_size_16(D) > 1023)
+    goto <bb 5>; [20.96%]
+  else
+    goto <bb 6>; [79.04%]
+
+  <bb 5> [local count: 150787712]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Entry size exceeds maximum value\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class_csr.c", 213, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  goto <bb 11>; [100.00%]
+
+  <bb 6> [local count: 568619311]:
+  # DEBUG BEGIN_STMT
+  _1 = base_va_17(D) + 590396;
+  _2 = (volatile uint32_t *) _1;
+  reg_19 ={v} *_2;
+  # DEBUG reg => reg_19
+  # DEBUG BEGIN_STMT
+  _3 = reg_19 & 8;
+  if (_3 != 0)
+    goto <bb 7>; [67.00%]
+  else
+    goto <bb 9>; [33.00%]
+
+  <bb 7> [local count: 380974938]:
+  # DEBUG BEGIN_STMT
+  if (entry_size_16(D) != 128)
+    goto <bb 8>; [33.99%]
+  else
+    goto <bb 9>; [66.01%]
+
+  <bb 8> [local count: 129493381]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FATAL: Route table entry length exceeds 128bytes\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class_csr.c", 224, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [100.00%]
+
+  <bb 9> [local count: 439125929]:
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  ret_24 = pfe_class_cfg_validate_rtable_len (rtable_len_22(D), &rtable_idx);
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  if (ret_24 == 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 10> [local count: 219562964]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_17(D) + 590392;
+  _5 = (volatile uint32_t *) _4;
+  *_5 ={v} rtable_pa_15(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rtable_idx.0_6 = rtable_idx;
+  _7 = (long unsigned int) rtable_idx.0_6;
+  _8 = _7 << 16;
+  _9 = entry_size_16(D);
+  _10 = base_va_17(D) + 590388;
+  _11 = (volatile uint32_t *) _10;
+  _12 = _8 | _9;
+  *_11 ={v} _12;
+
+  <bb 11> [local count: 1073741824]:
+  # ret_13 = PHI <0(3), 22(5), 22(8), ret_24(9), 0(10)>
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rtable_idx ={v} {CLOBBER};
+  return ret_13;
+
+}
+
+
+pfe_class_cfg_validate_rtable_len (uint32_t rtable_len, uint8_t * rtable_idx)
+{
+  uint8_t idx;
+  errno_t ret;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned char _8;
+  int _9;
+
+  <bb 2> [local count: 89800788]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG idx => 0
+  goto <bb 9>; [100.00%]
+
+  <bb 3> [local count: 1041207448]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) idx_11;
+  _2 = rtable_len_14(D) >> _1;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 4>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 4> [local count: 57266410]:
+  # _9 = PHI <_1(3)>
+  # idx_4 = PHI <idx_11(3)>
+  # DEBUG BEGIN_STMT
+  _5 = 1 << _9;
+  _6 = ~_5;
+  _7 = _6 & rtable_len_14(D);
+  if (_7 != 0)
+    goto <bb 5>; [20.96%]
+  else
+    goto <bb 6>; [79.04%]
+
+  <bb 5> [local count: 12003039]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Routing table length is not a power of 2\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class_csr.c", 166, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  goto <bb 10>; [100.00%]
+
+  <bb 6> [local count: 45263370]:
+  # DEBUG BEGIN_STMT
+  _8 = idx_4 + 250;
+  if (_8 > 14)
+    goto <bb 7>; [20.96%]
+  else
+    goto <bb 10>; [79.04%]
+
+  <bb 7> [local count: 9487202]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Table length out of boundaries\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class_csr.c", 171, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  goto <bb 10>; [100.00%]
+
+  <bb 8> [local count: 983941038]:
+  # DEBUG BEGIN_STMT
+  idx_15 = idx_11 + 1;
+  # DEBUG idx => idx_15
+
+  <bb 9> [local count: 1073741824]:
+  # idx_11 = PHI <0(2), idx_15(8)>
+  # DEBUG idx => idx_11
+  # DEBUG BEGIN_STMT
+  if (idx_11 != 32)
+    goto <bb 3>; [96.97%]
+  else
+    goto <bb 10>; [3.03%]
+
+  <bb 10> [local count: 89800787]:
+  # ret_10 = PHI <22(7), 0(9), 22(5), 0(6)>
+  # idx_22 = PHI <idx_4(7), idx_11(9), idx_4(5), idx_4(6)>
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  *rtable_idx_20(D) = idx_22;
+  # DEBUG BEGIN_STMT
+  return ret_10;
+
+}
+
+
+pfe_class_cfg_disable (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 589828;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_class_cfg_enable (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 589828;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 1;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_class_cfg_reset (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 589828;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 2;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_class_cfg_set_config (addr_t base_va, const struct pfe_class_cfg_t * cfg)
+{
+  uint32_t regval;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  unsigned int _5;
+  volatile uint32_t * _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  unsigned int _9;
+  volatile uint32_t * _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  unsigned int _15;
+  volatile uint32_t * _16;
+  unsigned int _17;
+  volatile uint32_t * _18;
+  unsigned int _19;
+  volatile uint32_t * _20;
+  unsigned int _21;
+  volatile uint32_t * _22;
+  unsigned int _23;
+  volatile uint32_t * _24;
+  short unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  short unsigned int _28;
+  long unsigned int _29;
+  unsigned int _30;
+  volatile uint32_t * _31;
+  long unsigned int _32;
+  unsigned int _33;
+  volatile uint32_t * _34;
+  unsigned int _35;
+  volatile uint32_t * _36;
+  unsigned int _37;
+  volatile uint32_t * _38;
+  unsigned int _39;
+  volatile uint32_t * _40;
+  unsigned char _41;
+  unsigned char _42;
+  unsigned int _43;
+  volatile uint32_t * _44;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_46(D) + 590412;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 3221782580;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_46(D) + 589920;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} 33554432;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = base_va_46(D) + 589924;
+  _6 = (volatile uint32_t *) _5;
+  *_6 ={v} 100664320;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = base_va_46(D) + 589856;
+  _8 = (volatile uint32_t *) _7;
+  *_8 ={v} 33554432;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = base_va_46(D) + 589860;
+  _10 = (volatile uint32_t *) _9;
+  *_10 ={v} 100664320;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = base_va_46(D) + 590100;
+  _12 = (volatile uint32_t *) _11;
+  *_12 ={v} 3221749768;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = base_va_46(D) + 590348;
+  _14 = (volatile uint32_t *) _13;
+  *_14 ={v} 24;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _15 = base_va_46(D) + 590340;
+  _16 = (volatile uint32_t *) _15;
+  *_16 ={v} 20;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = base_va_46(D) + 590576;
+  _18 = (volatile uint32_t *) _17;
+  *_18 ={v} 960;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = base_va_46(D) + 590416;
+  _20 = (volatile uint32_t *) _19;
+  *_20 ={v} 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _21 = base_va_46(D) + 590336;
+  _22 = (volatile uint32_t *) _21;
+  *_22 ={v} 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _23 = base_va_46(D) + 590496;
+  _24 = (volatile uint32_t *) _23;
+  *_24 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _25 = cfg_60(D)->ro_header_size;
+  _26 = (long unsigned int) _25;
+  _27 = _26 << 16;
+  _28 = cfg_60(D)->lmem_header_size;
+  _29 = (long unsigned int) _28;
+  _30 = base_va_46(D) + 589844;
+  _31 = (volatile uint32_t *) _30;
+  _32 = _27 | _29;
+  *_31 ={v} _32;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _33 = base_va_46(D) + 590404;
+  _34 = (volatile uint32_t *) _33;
+  *_34 ={v} 256;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _35 = base_va_46(D) + 590488;
+  _36 = (volatile uint32_t *) _35;
+  *_36 ={v} 2292744448;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _37 = base_va_46(D) + 590492;
+  _38 = (volatile uint32_t *) _37;
+  *_38 ={v} 37120;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _39 = base_va_46(D) + 591116;
+  _40 = (volatile uint32_t *) _39;
+  regval_65 ={v} *_40;
+  # DEBUG regval => regval_65
+  # DEBUG BEGIN_STMT
+  _41 = pfe_feature_mgr_is_available ("drv_run_on_g3");
+  if (_41 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  regval_69 = regval_65 & 4294950927;
+  # DEBUG regval => regval_69
+  # DEBUG BEGIN_STMT
+  # DEBUG regval => regval_69 | 8192
+  # DEBUG BEGIN_STMT
+  regval_70 = regval_69 | 8195;
+  # DEBUG regval => regval_70
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_40 ={v} regval_70;
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  _42 = cfg_60(D)->g2_ordered_class_writes;
+  if (_42 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  regval_67 = regval_65 | 3;
+  # DEBUG regval => regval_67
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_40 ={v} regval_67;
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _43 = base_va_46(D) + 590396;
+  _44 = (volatile uint32_t *) _43;
+  *_44 ={v} 45072;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

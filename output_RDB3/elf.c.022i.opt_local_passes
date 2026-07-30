@@ -1,0 +1,3052 @@
+ELF_PrintSections (const struct ELF_File_t * pElfFile)
+{
+  unsigned char _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_4(D)->bIs64Bit;
+  if (_1 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ELF32_PrintSections (pElfFile_4(D));
+
+  <bb 4> :
+  return;
+
+}
+
+
+ELF_SectLoad (const struct ELF_File_t * pElfFile, uint32_t u32SectIdx, addr_t AccessAddr, addr_t AllocSize)
+{
+  bool_t bRetVal;
+  signed int u32SectIdx.5_1;
+  unsigned char _2;
+  long unsigned int _3;
+  bool_t _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bRetVal_6 = 0;
+  # DEBUG bRetVal => bRetVal_6
+  # DEBUG BEGIN_STMT
+  u32SectIdx.5_1 = (signed int) u32SectIdx_7(D);
+  if (u32SectIdx.5_1 >= 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF_SectLoad: Expecting index from function ELF_SectFindName\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 1589, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  bRetVal_16 = 0;
+  # DEBUG bRetVal => bRetVal_16
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pElfFile_9(D)->bIs64Bit;
+  if (_2 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = u32SectIdx_7(D) & 2147483647;
+  bRetVal_13 = ELF32_SectLoad (pElfFile_9(D), _3, AccessAddr_10(D), AllocSize_11(D));
+  # DEBUG bRetVal => bRetVal_13
+
+  <bb 6> :
+  # bRetVal_4 = PHI <bRetVal_16(3), bRetVal_6(4), bRetVal_13(5)>
+  # DEBUG bRetVal => bRetVal_4
+  # DEBUG BEGIN_STMT
+  _17 = bRetVal_4;
+  return _17;
+
+}
+
+
+ELF_SectFindName (const struct ELF_File_t * pElfFile, const char_t * szSectionName, uint32_t * pu32SectIdx, uint64_t * pu64LoadAddr, uint64_t * pu64Length)
+{
+  bool_t bRetVal;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  bool_t _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bRetVal_6 = 0;
+  # DEBUG bRetVal => bRetVal_6
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_8(D)->bIs64Bit;
+  if (_1 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  bRetVal_14 = ELF32_SectFindName (pElfFile_8(D), szSectionName_9(D), pu32SectIdx_10(D), pu64LoadAddr_11(D), pu64Length_12(D));
+  # DEBUG bRetVal => bRetVal_14
+
+  <bb 4> :
+  # bRetVal_4 = PHI <bRetVal_6(2), bRetVal_14(3)>
+  # DEBUG bRetVal => bRetVal_4
+  # DEBUG BEGIN_STMT
+  _2 = *pu32SectIdx_10(D);
+  _3 = _2 | 2147483648;
+  *pu32SectIdx_10(D) = _3;
+  # DEBUG BEGIN_STMT
+  _16 = bRetVal_4;
+  return _16;
+
+}
+
+
+ELF_ProgSectLoad (const struct ELF_File_t * pElfFile, uint32_t u32ProgIdx, addr_t AccessAddr, addr_t AllocSize)
+{
+  bool_t bRetVal;
+  signed int u32ProgIdx.3_1;
+  unsigned char _2;
+  bool_t _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bRetVal_5 = 0;
+  # DEBUG bRetVal => bRetVal_5
+  # DEBUG BEGIN_STMT
+  u32ProgIdx.3_1 = (signed int) u32ProgIdx_6(D);
+  if (u32ProgIdx.3_1 < 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF_ProgSectLoad: Expecting index from function ELF_ProgSectFindNext\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 1494, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  bRetVal_15 = 0;
+  # DEBUG bRetVal => bRetVal_15
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pElfFile_8(D)->bIs64Bit;
+  if (_2 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  bRetVal_12 = ELF32_ProgSectLoad (pElfFile_8(D), u32ProgIdx_6(D), AccessAddr_9(D), AllocSize_10(D));
+  # DEBUG bRetVal => bRetVal_12
+
+  <bb 6> :
+  # bRetVal_3 = PHI <bRetVal_15(3), bRetVal_5(4), bRetVal_12(5)>
+  # DEBUG bRetVal => bRetVal_3
+  # DEBUG BEGIN_STMT
+  _16 = bRetVal_3;
+  return _16;
+
+}
+
+
+ELF_ProgSectFindNext (struct ELF_File_t * pElfFile, uint32_t * pu32ProgIdx, uint64_t * pu64LoadVAddr, uint64_t * pu64LoadPAddr, uint64_t * pu64Length)
+{
+  bool_t bRetVal;
+  unsigned char _1;
+  bool_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bRetVal_4 = 0;
+  # DEBUG bRetVal => bRetVal_4
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_6(D)->bIs64Bit;
+  if (_1 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  bRetVal_12 = ELF32_ProgSectFindNext (pElfFile_6(D), pu32ProgIdx_7(D), pu64LoadVAddr_8(D), pu64LoadPAddr_9(D), pu64Length_10(D));
+  # DEBUG bRetVal => bRetVal_12
+
+  <bb 4> :
+  # bRetVal_2 = PHI <bRetVal_4(2), bRetVal_12(3)>
+  # DEBUG bRetVal => bRetVal_2
+  # DEBUG BEGIN_STMT
+  _13 = bRetVal_2;
+  return _13;
+
+}
+
+
+ELF_Close (struct ELF_File_t * pElfFile)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ELF_FreePtr (pElfFile_2(D));
+  return;
+
+}
+
+
+ELF_Open (struct ELF_File_t * pElfFile, const void * pvFile)
+{
+  uint32_t u32NamesSectionSize;
+  uint32_t u32NamesSectionOffset;
+  bool_t bRetVal;
+  struct Elf64_Ehdr * _1;
+  long unsigned int _2;
+  unsigned char _3;
+  unsigned char _4;
+  const void * _5;
+  long unsigned int u32NamesSectionOffset.0_6;
+  int8_t * _7;
+  bool_t _40;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bRetVal_13 = 0;
+  # DEBUG bRetVal => bRetVal_13
+  # DEBUG BEGIN_STMT
+  u32NamesSectionOffset = 0;
+  # DEBUG BEGIN_STMT
+  u32NamesSectionSize = 0;
+  # DEBUG BEGIN_STMT
+  pElfFile_17(D)->arProgHead64 = 0B;
+  # DEBUG BEGIN_STMT
+  pElfFile_17(D)->arSectHead64 = 0B;
+  # DEBUG BEGIN_STMT
+  pElfFile_17(D)->arProgHead32 = 0B;
+  # DEBUG BEGIN_STMT
+  pElfFile_17(D)->arSectHead32 = 0B;
+  # DEBUG BEGIN_STMT
+  pElfFile_17(D)->acSectNames = 0B;
+  # DEBUG BEGIN_STMT
+  pElfFile_17(D)->pvData = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = &pElfFile_17(D)->Header.r64;
+  _2 = buf_read (pvFile_24(D), 0, _1, 64);
+  if (_2 != 64)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF_Open: Failed to read ELF header\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 1367, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = CheckElfVersion (pElfFile_17(D));
+  if (_3 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF_Open: This is not ELF version 1\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 1372, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  pElfFile_17(D)->pvData = pvFile_24(D);
+  # DEBUG BEGIN_STMT
+  _4 = ELF_Is64bit (pElfFile_17(D));
+  pElfFile_17(D)->bIs64Bit = _4;
+  # DEBUG BEGIN_STMT
+  pElfFile_17(D)->u32ProgScanIdx = 0;
+  # DEBUG BEGIN_STMT
+  bRetVal_32 = ELF_LoadTables (pElfFile_17(D), &u32NamesSectionOffset, &u32NamesSectionSize);
+  # DEBUG bRetVal => bRetVal_32
+
+  <bb 7> :
+  # bRetVal_8 = PHI <bRetVal_13(3), bRetVal_13(5), bRetVal_32(6)>
+  # DEBUG bRetVal => bRetVal_8
+  # DEBUG BEGIN_STMT
+  if (bRetVal_8 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _5 = pElfFile_17(D)->pvData;
+  u32NamesSectionOffset.0_6 = u32NamesSectionOffset;
+  _7 = _5 + u32NamesSectionOffset.0_6;
+  pElfFile_17(D)->acSectNames = _7;
+  # DEBUG BEGIN_STMT
+  bRetVal_38 = 1;
+  # DEBUG bRetVal => bRetVal_38
+
+  <bb 9> :
+  # bRetVal_9 = PHI <bRetVal_8(7), bRetVal_38(8)>
+  # DEBUG bRetVal => bRetVal_9
+  # DEBUG BEGIN_STMT
+  if (bRetVal_9 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ELF_FreePtr (pElfFile_17(D));
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _40 = bRetVal_9;
+  u32NamesSectionOffset ={v} {CLOBBER};
+  u32NamesSectionSize ={v} {CLOBBER};
+  return _40;
+
+}
+
+
+ELF_FreePtr (struct ELF_File_t * pElfFile)
+{
+  struct Elf64_Phdr * _1;
+  struct Elf64_Shdr * _2;
+  struct Elf32_Phdr * _3;
+  struct Elf32_Shdr * _4;
+  int8_t * _5;
+  const void * _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_14(D)->arProgHead64;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pElfFile_14(D)->arProgHead64 = 0B;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pElfFile_14(D)->arSectHead64;
+  if (_2 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  pElfFile_14(D)->arSectHead64 = 0B;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = pElfFile_14(D)->arProgHead32;
+  if (_3 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  pElfFile_14(D)->arProgHead32 = 0B;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _4 = pElfFile_14(D)->arSectHead32;
+  if (_4 != 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  pElfFile_14(D)->arSectHead32 = 0B;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _5 = pElfFile_14(D)->acSectNames;
+  if (_5 != 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  pElfFile_14(D)->acSectNames = 0B;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _6 = pElfFile_14(D)->pvData;
+  if (_6 != 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  pElfFile_14(D)->pvData = 0B;
+
+  <bb 14> :
+  return;
+
+}
+
+
+ELF_LoadTables (struct ELF_File_t * pElfFile, uint32_t * u32NamesSectionOffset, uint32_t * u32NamesSectionSize)
+{
+  bool_t bRetVal;
+  unsigned char _1;
+  bool_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bRetVal_4 = 0;
+  # DEBUG bRetVal => bRetVal_4
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_6(D)->bIs64Bit;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Support for Elf64 was not compiled\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 1288, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  bRetVal_10 = ELF32_Load (pElfFile_6(D), u32NamesSectionOffset_7(D), u32NamesSectionSize_8(D));
+  # DEBUG bRetVal => bRetVal_10
+
+  <bb 5> :
+  # bRetVal_2 = PHI <bRetVal_4(3), bRetVal_10(4)>
+  # DEBUG bRetVal => bRetVal_2
+  # DEBUG BEGIN_STMT
+  _13 = bRetVal_2;
+  return _13;
+
+}
+
+
+buf_read (const void * src_buf, uint32_t u32Offset, void * dst_buf, uint32_t nbytes)
+{
+  uint8_t * pu8dst;
+  const uint8_t * pu8src;
+  uint32_t u32i;
+  long unsigned int src_buf.1_1;
+  long unsigned int _2;
+  unsigned char _3;
+  uint32_t _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32i_8 = 0;
+  # DEBUG u32i => u32i_8
+  # DEBUG BEGIN_STMT
+  src_buf.1_1 = (long unsigned int) src_buf_9(D);
+  _2 = u32Offset_10(D) + src_buf.1_1;
+  pu8src_11 = (const uint8_t *) _2;
+  # DEBUG pu8src => pu8src_11
+  # DEBUG BEGIN_STMT
+  pu8dst_13 = dst_buf_12(D);
+  # DEBUG pu8dst => pu8dst_13
+  # DEBUG BEGIN_STMT
+  u32i_14 = 0;
+  # DEBUG u32i => u32i_14
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = *pu8src_5;
+  *pu8dst_6 = _3;
+  # DEBUG BEGIN_STMT
+  pu8dst_19 = pu8dst_6 + 1;
+  # DEBUG pu8dst => pu8dst_19
+  # DEBUG BEGIN_STMT
+  pu8src_20 = pu8src_5 + 1;
+  # DEBUG pu8src => pu8src_20
+  # DEBUG BEGIN_STMT
+  u32i_21 = u32i_4 + 1;
+  # DEBUG u32i => u32i_21
+
+  <bb 4> :
+  # u32i_4 = PHI <u32i_14(2), u32i_21(3)>
+  # pu8src_5 = PHI <pu8src_11(2), pu8src_20(3)>
+  # pu8dst_6 = PHI <pu8dst_13(2), pu8dst_19(3)>
+  # DEBUG pu8dst => pu8dst_6
+  # DEBUG pu8src => pu8src_5
+  # DEBUG u32i => u32i_4
+  # DEBUG BEGIN_STMT
+  if (u32i_4 < nbytes_16(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _17 = u32i_4;
+  return _17;
+
+}
+
+
+ELF32_PrintSections (const struct ELF_File_t * pElfFile)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+ELF32_SectLoad (const struct ELF_File_t * pElfFile, uint32_t u32SectIdx, addr_t AccessAddr, addr_t AllocSize)
+{
+  bool_t bSuccess;
+  short unsigned int _1;
+  long unsigned int _2;
+  struct Elf32_Shdr * _3;
+  long unsigned int _4;
+  struct Elf32_Shdr * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  struct Elf32_Shdr * _8;
+  long unsigned int _9;
+  struct Elf32_Shdr * _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  struct Elf32_Shdr * _14;
+  long unsigned int _15;
+  struct Elf32_Shdr * _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  struct Elf32_Shdr * _21;
+  long unsigned int _22;
+  struct Elf32_Shdr * _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  struct Elf32_Shdr * _28;
+  long unsigned int _29;
+  struct Elf32_Shdr * _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  struct Elf32_Shdr * _33;
+  long unsigned int _34;
+  struct Elf32_Shdr * _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  struct Elf32_Shdr * _39;
+  long unsigned int _40;
+  struct Elf32_Shdr * _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  struct Elf32_Shdr * _46;
+  long unsigned int _47;
+  struct Elf32_Shdr * _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  void * AccessAddr.6_53;
+  struct Elf32_Shdr * _54;
+  long unsigned int _55;
+  struct Elf32_Shdr * _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  struct Elf32_Shdr * _59;
+  long unsigned int _60;
+  struct Elf32_Shdr * _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  long unsigned int _64;
+  struct Elf32_Shdr * _65;
+  long unsigned int _66;
+  struct Elf32_Shdr * _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  struct Elf32_Shdr * _72;
+  long unsigned int _73;
+  struct Elf32_Shdr * _74;
+  long unsigned int _75;
+  long unsigned int _76;
+  long unsigned int _77;
+  long unsigned int _78;
+  struct Elf32_Shdr * _79;
+  long unsigned int _80;
+  struct Elf32_Shdr * _81;
+  long unsigned int _82;
+  long unsigned int _83;
+  struct Elf32_Shdr * _84;
+  long unsigned int _85;
+  struct Elf32_Shdr * _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  struct Elf32_Shdr * _90;
+  long unsigned int _91;
+  struct Elf32_Shdr * _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  struct Elf32_Shdr * _97;
+  long unsigned int _98;
+  struct Elf32_Shdr * _99;
+  long unsigned int _100;
+  long unsigned int _101;
+  long unsigned int _102;
+  long unsigned int _103;
+  struct Elf32_Shdr * _104;
+  long unsigned int _105;
+  struct Elf32_Shdr * _106;
+  long unsigned int _107;
+  long unsigned int _108;
+  struct Elf32_Shdr * _109;
+  long unsigned int _110;
+  struct Elf32_Shdr * _111;
+  long unsigned int _112;
+  long unsigned int _113;
+  long unsigned int _114;
+  struct Elf32_Shdr * _115;
+  long unsigned int _116;
+  struct Elf32_Shdr * _117;
+  long unsigned int _118;
+  long unsigned int _119;
+  long unsigned int _120;
+  long unsigned int _121;
+  struct Elf32_Shdr * _122;
+  long unsigned int _123;
+  struct Elf32_Shdr * _124;
+  long unsigned int _125;
+  long unsigned int _126;
+  long unsigned int _127;
+  long unsigned int _128;
+  void * AccessAddr.7_129;
+  unsigned char _130;
+  bool_t _149;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bSuccess_133 = 0;
+  # DEBUG bSuccess => bSuccess_133
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_135(D)->Header.r32.e_shnum;
+  _2 = (long unsigned int) _1;
+  if (u32SectIdx_136(D) >= _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF32_SectLoad: Invalid section index: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 666, u32SectIdx_136(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = pElfFile_135(D)->arSectHead32;
+  _4 = u32SectIdx_136(D) * 40;
+  _5 = _3 + _4;
+  _6 = _5->sh_size;
+  _7 = _6 >> 24;
+  _8 = pElfFile_135(D)->arSectHead32;
+  _9 = u32SectIdx_136(D) * 40;
+  _10 = _8 + _9;
+  _11 = _10->sh_size;
+  _12 = _11 << 24;
+  _13 = _7 | _12;
+  _14 = pElfFile_135(D)->arSectHead32;
+  _15 = u32SectIdx_136(D) * 40;
+  _16 = _14 + _15;
+  _17 = _16->sh_size;
+  _18 = _17 >> 8;
+  _19 = _18 & 65280;
+  _20 = _13 | _19;
+  _21 = pElfFile_135(D)->arSectHead32;
+  _22 = u32SectIdx_136(D) * 40;
+  _23 = _21 + _22;
+  _24 = _23->sh_size;
+  _25 = _24 << 8;
+  _26 = _25 & 16711680;
+  _27 = _20 | _26;
+  if (AllocSize_137(D) < _27)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF32_SectLoad: Section does not fit to allocated memory\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 670, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _28 = pElfFile_135(D)->arSectHead32;
+  _29 = u32SectIdx_136(D) * 40;
+  _30 = _28 + _29;
+  _31 = _30->sh_type;
+  _32 = _31 >> 24;
+  _33 = pElfFile_135(D)->arSectHead32;
+  _34 = u32SectIdx_136(D) * 40;
+  _35 = _33 + _34;
+  _36 = _35->sh_type;
+  _37 = _36 << 24;
+  _38 = _32 | _37;
+  _39 = pElfFile_135(D)->arSectHead32;
+  _40 = u32SectIdx_136(D) * 40;
+  _41 = _39 + _40;
+  _42 = _41->sh_type;
+  _43 = _42 >> 8;
+  _44 = _43 & 65280;
+  _45 = _38 | _44;
+  _46 = pElfFile_135(D)->arSectHead32;
+  _47 = u32SectIdx_136(D) * 40;
+  _48 = _46 + _47;
+  _49 = _48->sh_type;
+  _50 = _49 << 8;
+  _51 = _50 & 16711680;
+  _52 = _45 | _51;
+  if (_52 == 8)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  AccessAddr.6_53 = (void *) AccessAddr_138(D);
+  _54 = pElfFile_135(D)->arSectHead32;
+  _55 = u32SectIdx_136(D) * 40;
+  _56 = _54 + _55;
+  _57 = _56->sh_size;
+  _58 = _57 >> 24;
+  _59 = pElfFile_135(D)->arSectHead32;
+  _60 = u32SectIdx_136(D) * 40;
+  _61 = _59 + _60;
+  _62 = _61->sh_size;
+  _63 = _62 << 24;
+  _64 = _58 | _63;
+  _65 = pElfFile_135(D)->arSectHead32;
+  _66 = u32SectIdx_136(D) * 40;
+  _67 = _65 + _66;
+  _68 = _67->sh_size;
+  _69 = _68 >> 8;
+  _70 = _69 & 65280;
+  _71 = _64 | _70;
+  _72 = pElfFile_135(D)->arSectHead32;
+  _73 = u32SectIdx_136(D) * 40;
+  _74 = _72 + _73;
+  _75 = _74->sh_size;
+  _76 = _75 << 8;
+  _77 = _76 & 16711680;
+  _78 = _71 | _77;
+  autolibc_memset (AccessAddr.6_53, 0, _78);
+  # DEBUG BEGIN_STMT
+  bSuccess_144 = 1;
+  # DEBUG bSuccess => bSuccess_144
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _79 = pElfFile_135(D)->arSectHead32;
+  _80 = u32SectIdx_136(D) * 40;
+  _81 = _79 + _80;
+  _82 = _81->sh_offset;
+  _83 = _82 >> 24;
+  _84 = pElfFile_135(D)->arSectHead32;
+  _85 = u32SectIdx_136(D) * 40;
+  _86 = _84 + _85;
+  _87 = _86->sh_offset;
+  _88 = _87 << 24;
+  _89 = _83 | _88;
+  _90 = pElfFile_135(D)->arSectHead32;
+  _91 = u32SectIdx_136(D) * 40;
+  _92 = _90 + _91;
+  _93 = _92->sh_offset;
+  _94 = _93 >> 8;
+  _95 = _94 & 65280;
+  _96 = _89 | _95;
+  _97 = pElfFile_135(D)->arSectHead32;
+  _98 = u32SectIdx_136(D) * 40;
+  _99 = _97 + _98;
+  _100 = _99->sh_offset;
+  _101 = _100 << 8;
+  _102 = _101 & 16711680;
+  _103 = _96 | _102;
+  _104 = pElfFile_135(D)->arSectHead32;
+  _105 = u32SectIdx_136(D) * 40;
+  _106 = _104 + _105;
+  _107 = _106->sh_size;
+  _108 = _107 >> 24;
+  _109 = pElfFile_135(D)->arSectHead32;
+  _110 = u32SectIdx_136(D) * 40;
+  _111 = _109 + _110;
+  _112 = _111->sh_size;
+  _113 = _112 << 24;
+  _114 = _108 | _113;
+  _115 = pElfFile_135(D)->arSectHead32;
+  _116 = u32SectIdx_136(D) * 40;
+  _117 = _115 + _116;
+  _118 = _117->sh_size;
+  _119 = _118 >> 8;
+  _120 = _119 & 65280;
+  _121 = _114 | _120;
+  _122 = pElfFile_135(D)->arSectHead32;
+  _123 = u32SectIdx_136(D) * 40;
+  _124 = _122 + _123;
+  _125 = _124->sh_size;
+  _126 = _125 << 8;
+  _127 = _126 & 16711680;
+  _128 = _121 | _127;
+  AccessAddr.7_129 = (void *) AccessAddr_138(D);
+  _130 = LoadFileData (pElfFile_135(D), _103, _128, AccessAddr.7_129);
+  if (_130 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF32_SectLoad: Failed to load section from file\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 689, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  bSuccess_140 = 1;
+  # DEBUG bSuccess => bSuccess_140
+
+  <bb 11> :
+  # bSuccess_131 = PHI <bSuccess_133(3), bSuccess_133(5), bSuccess_144(7), bSuccess_133(9), bSuccess_140(10)>
+  # DEBUG bSuccess => bSuccess_131
+  # DEBUG BEGIN_STMT
+  _149 = bSuccess_131;
+  return _149;
+
+}
+
+
+ELF32_SectFindName (const struct ELF_File_t * pElfFile, const char_t * szSectionName, uint32_t * pu32SectIdx, uint64_t * pu64LoadAddr, uint64_t * pu64Length)
+{
+  uint32_t SectIdx;
+  bool_t bFound;
+  bool_t bRetVal;
+  int8_t * _1;
+  struct Elf32_Shdr * _2;
+  long unsigned int _3;
+  struct Elf32_Shdr * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  struct Elf32_Shdr * _7;
+  long unsigned int _8;
+  struct Elf32_Shdr * _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  struct Elf32_Shdr * _13;
+  long unsigned int _14;
+  struct Elf32_Shdr * _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  struct Elf32_Shdr * _20;
+  long unsigned int _21;
+  struct Elf32_Shdr * _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  int8_t * _27;
+  long int _28;
+  struct Elf32_Shdr * _29;
+  long unsigned int _30;
+  struct Elf32_Shdr * _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long long unsigned int _34;
+  struct Elf32_Shdr * _35;
+  long unsigned int _36;
+  struct Elf32_Shdr * _37;
+  long unsigned int _38;
+  long long unsigned int _39;
+  long long unsigned int _40;
+  long long unsigned int _41;
+  long long unsigned int _42;
+  struct Elf32_Shdr * _43;
+  long unsigned int _44;
+  struct Elf32_Shdr * _45;
+  long unsigned int _46;
+  long long unsigned int _47;
+  long long unsigned int _48;
+  long long unsigned int _49;
+  long long unsigned int _50;
+  struct Elf32_Shdr * _51;
+  long unsigned int _52;
+  struct Elf32_Shdr * _53;
+  long unsigned int _54;
+  long long unsigned int _55;
+  long long unsigned int _56;
+  long long unsigned int _57;
+  long long unsigned int _58;
+  struct Elf32_Shdr * _59;
+  long unsigned int _60;
+  struct Elf32_Shdr * _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  long long unsigned int _64;
+  struct Elf32_Shdr * _65;
+  long unsigned int _66;
+  struct Elf32_Shdr * _67;
+  long unsigned int _68;
+  long long unsigned int _69;
+  long long unsigned int _70;
+  long long unsigned int _71;
+  long long unsigned int _72;
+  struct Elf32_Shdr * _73;
+  long unsigned int _74;
+  struct Elf32_Shdr * _75;
+  long unsigned int _76;
+  long long unsigned int _77;
+  long long unsigned int _78;
+  long long unsigned int _79;
+  long long unsigned int _80;
+  struct Elf32_Shdr * _81;
+  long unsigned int _82;
+  struct Elf32_Shdr * _83;
+  long unsigned int _84;
+  long long unsigned int _85;
+  long long unsigned int _86;
+  long long unsigned int _87;
+  long long unsigned int _88;
+  short unsigned int _89;
+  long unsigned int _90;
+  bool_t _114;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bRetVal_98 = 0;
+  # DEBUG bRetVal => bRetVal_98
+  # DEBUG BEGIN_STMT
+  bFound_99 = 0;
+  # DEBUG bFound => bFound_99
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SectIdx_100 = 0;
+  # DEBUG SectIdx => SectIdx_100
+  goto <bb 12>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_102(D)->acSectNames;
+  _2 = pElfFile_102(D)->arSectHead32;
+  _3 = SectIdx_92 * 40;
+  _4 = _2 + _3;
+  _5 = _4->sh_name;
+  _6 = _5 >> 24;
+  _7 = pElfFile_102(D)->arSectHead32;
+  _8 = SectIdx_92 * 40;
+  _9 = _7 + _8;
+  _10 = _9->sh_name;
+  _11 = _10 << 24;
+  _12 = _6 | _11;
+  _13 = pElfFile_102(D)->arSectHead32;
+  _14 = SectIdx_92 * 40;
+  _15 = _13 + _14;
+  _16 = _15->sh_name;
+  _17 = _16 >> 8;
+  _18 = _17 & 65280;
+  _19 = _12 | _18;
+  _20 = pElfFile_102(D)->arSectHead32;
+  _21 = SectIdx_92 * 40;
+  _22 = _20 + _21;
+  _23 = _22->sh_name;
+  _24 = _23 << 8;
+  _25 = _24 & 16711680;
+  _26 = _19 | _25;
+  _27 = _1 + _26;
+  _28 = autolibc_strcmp (_27, szSectionName_103(D));
+  if (_28 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (pu32SectIdx_106(D) != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *pu32SectIdx_106(D) = SectIdx_92;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (pu64Length_108(D) != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _29 = pElfFile_102(D)->arSectHead32;
+  _30 = SectIdx_92 * 40;
+  _31 = _29 + _30;
+  _32 = _31->sh_size;
+  _33 = _32 >> 24;
+  _34 = (long long unsigned int) _33;
+  _35 = pElfFile_102(D)->arSectHead32;
+  _36 = SectIdx_92 * 40;
+  _37 = _35 + _36;
+  _38 = _37->sh_size;
+  _39 = (long long unsigned int) _38;
+  _40 = _39 << 24;
+  _41 = _40 & 4294967295;
+  _42 = _34 | _41;
+  _43 = pElfFile_102(D)->arSectHead32;
+  _44 = SectIdx_92 * 40;
+  _45 = _43 + _44;
+  _46 = _45->sh_size;
+  _47 = (long long unsigned int) _46;
+  _48 = _47 >> 8;
+  _49 = _48 & 65280;
+  _50 = _42 | _49;
+  _51 = pElfFile_102(D)->arSectHead32;
+  _52 = SectIdx_92 * 40;
+  _53 = _51 + _52;
+  _54 = _53->sh_size;
+  _55 = (long long unsigned int) _54;
+  _56 = _55 << 8;
+  _57 = _56 & 16711680;
+  _58 = _50 | _57;
+  *pu64Length_108(D) = _58;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (pu64LoadAddr_110(D) != 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _59 = pElfFile_102(D)->arSectHead32;
+  _60 = SectIdx_92 * 40;
+  _61 = _59 + _60;
+  _62 = _61->sh_addr;
+  _63 = _62 >> 24;
+  _64 = (long long unsigned int) _63;
+  _65 = pElfFile_102(D)->arSectHead32;
+  _66 = SectIdx_92 * 40;
+  _67 = _65 + _66;
+  _68 = _67->sh_addr;
+  _69 = (long long unsigned int) _68;
+  _70 = _69 << 24;
+  _71 = _70 & 4294967295;
+  _72 = _64 | _71;
+  _73 = pElfFile_102(D)->arSectHead32;
+  _74 = SectIdx_92 * 40;
+  _75 = _73 + _74;
+  _76 = _75->sh_addr;
+  _77 = (long long unsigned int) _76;
+  _78 = _77 >> 8;
+  _79 = _78 & 65280;
+  _80 = _72 | _79;
+  _81 = pElfFile_102(D)->arSectHead32;
+  _82 = SectIdx_92 * 40;
+  _83 = _81 + _82;
+  _84 = _83->sh_addr;
+  _85 = (long long unsigned int) _84;
+  _86 = _85 << 8;
+  _87 = _86 & 16711680;
+  _88 = _80 | _87;
+  *pu64LoadAddr_110(D) = _88;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  bFound_112 = 1;
+  # DEBUG bFound => bFound_112
+  # DEBUG BEGIN_STMT
+  bRetVal_113 = 1;
+  # DEBUG bRetVal => bRetVal_113
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  SectIdx_105 = SectIdx_92 + 1;
+  # DEBUG SectIdx => SectIdx_105
+
+  <bb 12> :
+  # SectIdx_92 = PHI <SectIdx_100(2), SectIdx_105(11)>
+  # DEBUG SectIdx => SectIdx_92
+  # DEBUG BEGIN_STMT
+  _89 = pElfFile_102(D)->Header.r32.e_shnum;
+  _90 = (long unsigned int) _89;
+  if (SectIdx_92 < _90)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # bRetVal_91 = PHI <bRetVal_98(12), bRetVal_113(10)>
+  # DEBUG bRetVal => bRetVal_91
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _114 = bRetVal_91;
+  return _114;
+
+}
+
+
+ELF32_ProgSectLoad (const struct ELF_File_t * pElfFile, uint32_t u32ProgIdx, addr_t AccessAddr, addr_t AllocSize)
+{
+  bool_t bSuccess;
+  short unsigned int _1;
+  long unsigned int _2;
+  struct Elf32_Phdr * _3;
+  long unsigned int _4;
+  struct Elf32_Phdr * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  struct Elf32_Phdr * _8;
+  long unsigned int _9;
+  struct Elf32_Phdr * _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  struct Elf32_Phdr * _14;
+  long unsigned int _15;
+  struct Elf32_Phdr * _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  struct Elf32_Phdr * _21;
+  long unsigned int _22;
+  struct Elf32_Phdr * _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  struct Elf32_Phdr * _28;
+  long unsigned int _29;
+  struct Elf32_Phdr * _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  struct Elf32_Phdr * _33;
+  long unsigned int _34;
+  struct Elf32_Phdr * _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  struct Elf32_Phdr * _39;
+  long unsigned int _40;
+  struct Elf32_Phdr * _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  struct Elf32_Phdr * _46;
+  long unsigned int _47;
+  struct Elf32_Phdr * _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  struct Elf32_Phdr * _53;
+  long unsigned int _54;
+  struct Elf32_Phdr * _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  struct Elf32_Phdr * _58;
+  long unsigned int _59;
+  struct Elf32_Phdr * _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  struct Elf32_Phdr * _64;
+  long unsigned int _65;
+  struct Elf32_Phdr * _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  struct Elf32_Phdr * _71;
+  long unsigned int _72;
+  struct Elf32_Phdr * _73;
+  long unsigned int _74;
+  long unsigned int _75;
+  long unsigned int _76;
+  long unsigned int _77;
+  struct Elf32_Phdr * _78;
+  long unsigned int _79;
+  struct Elf32_Phdr * _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  struct Elf32_Phdr * _83;
+  long unsigned int _84;
+  struct Elf32_Phdr * _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  struct Elf32_Phdr * _89;
+  long unsigned int _90;
+  struct Elf32_Phdr * _91;
+  long unsigned int _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  struct Elf32_Phdr * _96;
+  long unsigned int _97;
+  struct Elf32_Phdr * _98;
+  long unsigned int _99;
+  long unsigned int _100;
+  long unsigned int _101;
+  long unsigned int _102;
+  bool_t _121;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bSuccess_105 = 0;
+  # DEBUG bSuccess => bSuccess_105
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_107(D)->Header.r32.e_phnum;
+  _2 = (long unsigned int) _1;
+  if (u32ProgIdx_108(D) >= _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF32_ProgSectLoad: Invalid program index: %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 577, u32ProgIdx_108(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = pElfFile_107(D)->arProgHead32;
+  _4 = u32ProgIdx_108(D) * 32;
+  _5 = _3 + _4;
+  _6 = _5->p_type;
+  _7 = _6 >> 24;
+  _8 = pElfFile_107(D)->arProgHead32;
+  _9 = u32ProgIdx_108(D) * 32;
+  _10 = _8 + _9;
+  _11 = _10->p_type;
+  _12 = _11 << 24;
+  _13 = _7 | _12;
+  _14 = pElfFile_107(D)->arProgHead32;
+  _15 = u32ProgIdx_108(D) * 32;
+  _16 = _14 + _15;
+  _17 = _16->p_type;
+  _18 = _17 >> 8;
+  _19 = _18 & 65280;
+  _20 = _13 | _19;
+  _21 = pElfFile_107(D)->arProgHead32;
+  _22 = u32ProgIdx_108(D) * 32;
+  _23 = _21 + _22;
+  _24 = _23->p_type;
+  _25 = _24 << 8;
+  _26 = _25 & 16711680;
+  _27 = _20 | _26;
+  if (_27 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF32_ProgSectLoad: This section has no associated RAM area\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 581, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _28 = pElfFile_107(D)->arProgHead32;
+  _29 = u32ProgIdx_108(D) * 32;
+  _30 = _28 + _29;
+  _31 = _30->p_memsz;
+  _32 = _31 >> 24;
+  _33 = pElfFile_107(D)->arProgHead32;
+  _34 = u32ProgIdx_108(D) * 32;
+  _35 = _33 + _34;
+  _36 = _35->p_memsz;
+  _37 = _36 << 24;
+  _38 = _32 | _37;
+  _39 = pElfFile_107(D)->arProgHead32;
+  _40 = u32ProgIdx_108(D) * 32;
+  _41 = _39 + _40;
+  _42 = _41->p_memsz;
+  _43 = _42 >> 8;
+  _44 = _43 & 65280;
+  _45 = _38 | _44;
+  _46 = pElfFile_107(D)->arProgHead32;
+  _47 = u32ProgIdx_108(D) * 32;
+  _48 = _46 + _47;
+  _49 = _48->p_memsz;
+  _50 = _49 << 8;
+  _51 = _50 & 16711680;
+  _52 = _45 | _51;
+  if (AllocSize_109(D) < _52)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF32_ProgSectLoad: Section does not fit to allocated memory\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 585, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _53 = pElfFile_107(D)->arProgHead32;
+  _54 = u32ProgIdx_108(D) * 32;
+  _55 = _53 + _54;
+  _56 = _55->p_filesz;
+  _57 = _56 >> 24;
+  _58 = pElfFile_107(D)->arProgHead32;
+  _59 = u32ProgIdx_108(D) * 32;
+  _60 = _58 + _59;
+  _61 = _60->p_filesz;
+  _62 = _61 << 24;
+  _63 = _57 | _62;
+  _64 = pElfFile_107(D)->arProgHead32;
+  _65 = u32ProgIdx_108(D) * 32;
+  _66 = _64 + _65;
+  _67 = _66->p_filesz;
+  _68 = _67 >> 8;
+  _69 = _68 & 65280;
+  _70 = _63 | _69;
+  _71 = pElfFile_107(D)->arProgHead32;
+  _72 = u32ProgIdx_108(D) * 32;
+  _73 = _71 + _72;
+  _74 = _73->p_filesz;
+  _75 = _74 << 8;
+  _76 = _75 & 16711680;
+  _77 = _70 | _76;
+  _78 = pElfFile_107(D)->arProgHead32;
+  _79 = u32ProgIdx_108(D) * 32;
+  _80 = _78 + _79;
+  _81 = _80->p_memsz;
+  _82 = _81 >> 24;
+  _83 = pElfFile_107(D)->arProgHead32;
+  _84 = u32ProgIdx_108(D) * 32;
+  _85 = _83 + _84;
+  _86 = _85->p_memsz;
+  _87 = _86 << 24;
+  _88 = _82 | _87;
+  _89 = pElfFile_107(D)->arProgHead32;
+  _90 = u32ProgIdx_108(D) * 32;
+  _91 = _89 + _90;
+  _92 = _91->p_memsz;
+  _93 = _92 >> 8;
+  _94 = _93 & 65280;
+  _95 = _88 | _94;
+  _96 = pElfFile_107(D)->arProgHead32;
+  _97 = u32ProgIdx_108(D) * 32;
+  _98 = _96 + _97;
+  _99 = _98->p_memsz;
+  _100 = _99 << 8;
+  _101 = _100 & 16711680;
+  _102 = _95 | _101;
+  if (_77 > _102)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF32_ProgSectLoad: Section size mismatch.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 589, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  bSuccess_112 = ELF32_ProgSectLoadActual (pElfFile_107(D), u32ProgIdx_108(D), AccessAddr_110(D));
+  # DEBUG bSuccess => bSuccess_112
+
+  <bb 11> :
+  # bSuccess_103 = PHI <bSuccess_105(3), bSuccess_105(5), bSuccess_105(7), bSuccess_105(9), bSuccess_112(10)>
+  # DEBUG bSuccess => bSuccess_103
+  # DEBUG BEGIN_STMT
+  _121 = bSuccess_103;
+  return _121;
+
+}
+
+
+ELF32_ProgSectLoadActual (const struct ELF_File_t * pElfFile, uint32_t u32ProgIdx, addr_t AccessAddr)
+{
+  bool_t bSuccess;
+  struct Elf32_Phdr * _1;
+  long unsigned int _2;
+  struct Elf32_Phdr * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  struct Elf32_Phdr * _6;
+  long unsigned int _7;
+  struct Elf32_Phdr * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  struct Elf32_Phdr * _12;
+  long unsigned int _13;
+  struct Elf32_Phdr * _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  struct Elf32_Phdr * _19;
+  long unsigned int _20;
+  struct Elf32_Phdr * _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  struct Elf32_Phdr * _26;
+  long unsigned int _27;
+  struct Elf32_Phdr * _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  struct Elf32_Phdr * _31;
+  long unsigned int _32;
+  struct Elf32_Phdr * _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  struct Elf32_Phdr * _37;
+  long unsigned int _38;
+  struct Elf32_Phdr * _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  struct Elf32_Phdr * _44;
+  long unsigned int _45;
+  struct Elf32_Phdr * _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  struct Elf32_Phdr * _51;
+  long unsigned int _52;
+  struct Elf32_Phdr * _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  struct Elf32_Phdr * _56;
+  long unsigned int _57;
+  struct Elf32_Phdr * _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  struct Elf32_Phdr * _62;
+  long unsigned int _63;
+  struct Elf32_Phdr * _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  struct Elf32_Phdr * _69;
+  long unsigned int _70;
+  struct Elf32_Phdr * _71;
+  long unsigned int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  long unsigned int _75;
+  void * AccessAddr.4_76;
+  unsigned char _77;
+  struct Elf32_Phdr * _78;
+  long unsigned int _79;
+  struct Elf32_Phdr * _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  struct Elf32_Phdr * _83;
+  long unsigned int _84;
+  struct Elf32_Phdr * _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  struct Elf32_Phdr * _89;
+  long unsigned int _90;
+  struct Elf32_Phdr * _91;
+  long unsigned int _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  struct Elf32_Phdr * _96;
+  long unsigned int _97;
+  struct Elf32_Phdr * _98;
+  long unsigned int _99;
+  long unsigned int _100;
+  long unsigned int _101;
+  long unsigned int _102;
+  struct Elf32_Phdr * _103;
+  long unsigned int _104;
+  struct Elf32_Phdr * _105;
+  long unsigned int _106;
+  long unsigned int _107;
+  struct Elf32_Phdr * _108;
+  long unsigned int _109;
+  struct Elf32_Phdr * _110;
+  long unsigned int _111;
+  long unsigned int _112;
+  long unsigned int _113;
+  struct Elf32_Phdr * _114;
+  long unsigned int _115;
+  struct Elf32_Phdr * _116;
+  long unsigned int _117;
+  long unsigned int _118;
+  long unsigned int _119;
+  long unsigned int _120;
+  struct Elf32_Phdr * _121;
+  long unsigned int _122;
+  struct Elf32_Phdr * _123;
+  long unsigned int _124;
+  long unsigned int _125;
+  long unsigned int _126;
+  long unsigned int _127;
+  struct Elf32_Phdr * _128;
+  long unsigned int _129;
+  struct Elf32_Phdr * _130;
+  long unsigned int _131;
+  long unsigned int _132;
+  struct Elf32_Phdr * _133;
+  long unsigned int _134;
+  struct Elf32_Phdr * _135;
+  long unsigned int _136;
+  long unsigned int _137;
+  long unsigned int _138;
+  struct Elf32_Phdr * _139;
+  long unsigned int _140;
+  struct Elf32_Phdr * _141;
+  long unsigned int _142;
+  long unsigned int _143;
+  long unsigned int _144;
+  long unsigned int _145;
+  struct Elf32_Phdr * _146;
+  long unsigned int _147;
+  struct Elf32_Phdr * _148;
+  long unsigned int _149;
+  long unsigned int _150;
+  long unsigned int _151;
+  long unsigned int _152;
+  long unsigned int _153;
+  void * _154;
+  struct Elf32_Phdr * _155;
+  long unsigned int _156;
+  struct Elf32_Phdr * _157;
+  long unsigned int _158;
+  long unsigned int _159;
+  struct Elf32_Phdr * _160;
+  long unsigned int _161;
+  struct Elf32_Phdr * _162;
+  long unsigned int _163;
+  long unsigned int _164;
+  long unsigned int _165;
+  struct Elf32_Phdr * _166;
+  long unsigned int _167;
+  struct Elf32_Phdr * _168;
+  long unsigned int _169;
+  long unsigned int _170;
+  long unsigned int _171;
+  long unsigned int _172;
+  struct Elf32_Phdr * _173;
+  long unsigned int _174;
+  struct Elf32_Phdr * _175;
+  long unsigned int _176;
+  long unsigned int _177;
+  long unsigned int _178;
+  long unsigned int _179;
+  struct Elf32_Phdr * _180;
+  long unsigned int _181;
+  struct Elf32_Phdr * _182;
+  long unsigned int _183;
+  long unsigned int _184;
+  struct Elf32_Phdr * _185;
+  long unsigned int _186;
+  struct Elf32_Phdr * _187;
+  long unsigned int _188;
+  long unsigned int _189;
+  long unsigned int _190;
+  struct Elf32_Phdr * _191;
+  long unsigned int _192;
+  struct Elf32_Phdr * _193;
+  long unsigned int _194;
+  long unsigned int _195;
+  long unsigned int _196;
+  long unsigned int _197;
+  struct Elf32_Phdr * _198;
+  long unsigned int _199;
+  struct Elf32_Phdr * _200;
+  long unsigned int _201;
+  long unsigned int _202;
+  long unsigned int _203;
+  long unsigned int _204;
+  long unsigned int _205;
+  bool_t _220;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bSuccess_209 = 0;
+  # DEBUG bSuccess => bSuccess_209
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_211(D)->arProgHead32;
+  _2 = u32ProgIdx_212(D) * 32;
+  _3 = _1 + _2;
+  _4 = _3->p_filesz;
+  _5 = _4 >> 24;
+  _6 = pElfFile_211(D)->arProgHead32;
+  _7 = u32ProgIdx_212(D) * 32;
+  _8 = _6 + _7;
+  _9 = _8->p_filesz;
+  _10 = _9 << 24;
+  _11 = _5 | _10;
+  _12 = pElfFile_211(D)->arProgHead32;
+  _13 = u32ProgIdx_212(D) * 32;
+  _14 = _12 + _13;
+  _15 = _14->p_filesz;
+  _16 = _15 >> 8;
+  _17 = _16 & 65280;
+  _18 = _11 | _17;
+  _19 = pElfFile_211(D)->arProgHead32;
+  _20 = u32ProgIdx_212(D) * 32;
+  _21 = _19 + _20;
+  _22 = _21->p_filesz;
+  _23 = _22 << 8;
+  _24 = _23 & 16711680;
+  _25 = _18 | _24;
+  if (_25 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _26 = pElfFile_211(D)->arProgHead32;
+  _27 = u32ProgIdx_212(D) * 32;
+  _28 = _26 + _27;
+  _29 = _28->p_offset;
+  _30 = _29 >> 24;
+  _31 = pElfFile_211(D)->arProgHead32;
+  _32 = u32ProgIdx_212(D) * 32;
+  _33 = _31 + _32;
+  _34 = _33->p_offset;
+  _35 = _34 << 24;
+  _36 = _30 | _35;
+  _37 = pElfFile_211(D)->arProgHead32;
+  _38 = u32ProgIdx_212(D) * 32;
+  _39 = _37 + _38;
+  _40 = _39->p_offset;
+  _41 = _40 >> 8;
+  _42 = _41 & 65280;
+  _43 = _36 | _42;
+  _44 = pElfFile_211(D)->arProgHead32;
+  _45 = u32ProgIdx_212(D) * 32;
+  _46 = _44 + _45;
+  _47 = _46->p_offset;
+  _48 = _47 << 8;
+  _49 = _48 & 16711680;
+  _50 = _43 | _49;
+  _51 = pElfFile_211(D)->arProgHead32;
+  _52 = u32ProgIdx_212(D) * 32;
+  _53 = _51 + _52;
+  _54 = _53->p_filesz;
+  _55 = _54 >> 24;
+  _56 = pElfFile_211(D)->arProgHead32;
+  _57 = u32ProgIdx_212(D) * 32;
+  _58 = _56 + _57;
+  _59 = _58->p_filesz;
+  _60 = _59 << 24;
+  _61 = _55 | _60;
+  _62 = pElfFile_211(D)->arProgHead32;
+  _63 = u32ProgIdx_212(D) * 32;
+  _64 = _62 + _63;
+  _65 = _64->p_filesz;
+  _66 = _65 >> 8;
+  _67 = _66 & 65280;
+  _68 = _61 | _67;
+  _69 = pElfFile_211(D)->arProgHead32;
+  _70 = u32ProgIdx_212(D) * 32;
+  _71 = _69 + _70;
+  _72 = _71->p_filesz;
+  _73 = _72 << 8;
+  _74 = _73 & 16711680;
+  _75 = _68 | _74;
+  AccessAddr.4_76 = (void *) AccessAddr_214(D);
+  _77 = LoadFileData (pElfFile_211(D), _50, _75, AccessAddr.4_76);
+  if (_77 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF32_ProgSectLoad: Failed to load section from file\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 534, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  bSuccess_216 = 1;
+  # DEBUG bSuccess => bSuccess_216
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  bSuccess_213 = 1;
+  # DEBUG bSuccess => bSuccess_213
+
+  <bb 7> :
+  # bSuccess_206 = PHI <bSuccess_216(5), bSuccess_213(6), bSuccess_209(4)>
+  # DEBUG bSuccess => bSuccess_206
+  # DEBUG BEGIN_STMT
+  if (bSuccess_206 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  _78 = pElfFile_211(D)->arProgHead32;
+  _79 = u32ProgIdx_212(D) * 32;
+  _80 = _78 + _79;
+  _81 = _80->p_memsz;
+  _82 = _81 >> 24;
+  _83 = pElfFile_211(D)->arProgHead32;
+  _84 = u32ProgIdx_212(D) * 32;
+  _85 = _83 + _84;
+  _86 = _85->p_memsz;
+  _87 = _86 << 24;
+  _88 = _82 | _87;
+  _89 = pElfFile_211(D)->arProgHead32;
+  _90 = u32ProgIdx_212(D) * 32;
+  _91 = _89 + _90;
+  _92 = _91->p_memsz;
+  _93 = _92 >> 8;
+  _94 = _93 & 65280;
+  _95 = _88 | _94;
+  _96 = pElfFile_211(D)->arProgHead32;
+  _97 = u32ProgIdx_212(D) * 32;
+  _98 = _96 + _97;
+  _99 = _98->p_memsz;
+  _100 = _99 << 8;
+  _101 = _100 & 16711680;
+  _102 = _95 | _101;
+  _103 = pElfFile_211(D)->arProgHead32;
+  _104 = u32ProgIdx_212(D) * 32;
+  _105 = _103 + _104;
+  _106 = _105->p_filesz;
+  _107 = _106 >> 24;
+  _108 = pElfFile_211(D)->arProgHead32;
+  _109 = u32ProgIdx_212(D) * 32;
+  _110 = _108 + _109;
+  _111 = _110->p_filesz;
+  _112 = _111 << 24;
+  _113 = _107 | _112;
+  _114 = pElfFile_211(D)->arProgHead32;
+  _115 = u32ProgIdx_212(D) * 32;
+  _116 = _114 + _115;
+  _117 = _116->p_filesz;
+  _118 = _117 >> 8;
+  _119 = _118 & 65280;
+  _120 = _113 | _119;
+  _121 = pElfFile_211(D)->arProgHead32;
+  _122 = u32ProgIdx_212(D) * 32;
+  _123 = _121 + _122;
+  _124 = _123->p_filesz;
+  _125 = _124 << 8;
+  _126 = _125 & 16711680;
+  _127 = _120 | _126;
+  if (_102 > _127)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _128 = pElfFile_211(D)->arProgHead32;
+  _129 = u32ProgIdx_212(D) * 32;
+  _130 = _128 + _129;
+  _131 = _130->p_filesz;
+  _132 = _131 >> 24;
+  _133 = pElfFile_211(D)->arProgHead32;
+  _134 = u32ProgIdx_212(D) * 32;
+  _135 = _133 + _134;
+  _136 = _135->p_filesz;
+  _137 = _136 << 24;
+  _138 = _132 | _137;
+  _139 = pElfFile_211(D)->arProgHead32;
+  _140 = u32ProgIdx_212(D) * 32;
+  _141 = _139 + _140;
+  _142 = _141->p_filesz;
+  _143 = _142 >> 8;
+  _144 = _143 & 65280;
+  _145 = _138 | _144;
+  _146 = pElfFile_211(D)->arProgHead32;
+  _147 = u32ProgIdx_212(D) * 32;
+  _148 = _146 + _147;
+  _149 = _148->p_filesz;
+  _150 = _149 << 8;
+  _151 = _150 & 16711680;
+  _152 = _145 | _151;
+  _153 = AccessAddr_214(D) + _152;
+  _154 = (void *) _153;
+  _155 = pElfFile_211(D)->arProgHead32;
+  _156 = u32ProgIdx_212(D) * 32;
+  _157 = _155 + _156;
+  _158 = _157->p_memsz;
+  _159 = _158 >> 24;
+  _160 = pElfFile_211(D)->arProgHead32;
+  _161 = u32ProgIdx_212(D) * 32;
+  _162 = _160 + _161;
+  _163 = _162->p_memsz;
+  _164 = _163 << 24;
+  _165 = _159 | _164;
+  _166 = pElfFile_211(D)->arProgHead32;
+  _167 = u32ProgIdx_212(D) * 32;
+  _168 = _166 + _167;
+  _169 = _168->p_memsz;
+  _170 = _169 >> 8;
+  _171 = _170 & 65280;
+  _172 = _165 | _171;
+  _173 = pElfFile_211(D)->arProgHead32;
+  _174 = u32ProgIdx_212(D) * 32;
+  _175 = _173 + _174;
+  _176 = _175->p_memsz;
+  _177 = _176 << 8;
+  _178 = _177 & 16711680;
+  _179 = _172 | _178;
+  _180 = pElfFile_211(D)->arProgHead32;
+  _181 = u32ProgIdx_212(D) * 32;
+  _182 = _180 + _181;
+  _183 = _182->p_filesz;
+  _184 = _183 >> 24;
+  _185 = pElfFile_211(D)->arProgHead32;
+  _186 = u32ProgIdx_212(D) * 32;
+  _187 = _185 + _186;
+  _188 = _187->p_filesz;
+  _189 = _188 << 24;
+  _190 = _184 | _189;
+  _191 = pElfFile_211(D)->arProgHead32;
+  _192 = u32ProgIdx_212(D) * 32;
+  _193 = _191 + _192;
+  _194 = _193->p_filesz;
+  _195 = _194 >> 8;
+  _196 = _195 & 65280;
+  _197 = _190 | _196;
+  _198 = pElfFile_211(D)->arProgHead32;
+  _199 = u32ProgIdx_212(D) * 32;
+  _200 = _198 + _199;
+  _201 = _200->p_filesz;
+  _202 = _201 << 8;
+  _203 = _202 & 16711680;
+  _204 = _197 | _203;
+  _205 = _179 - _204;
+  autolibc_memset (_154, 0, _205);
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _220 = bSuccess_206;
+  return _220;
+
+}
+
+
+ELF32_ProgSectFindNext (struct ELF_File_t * pElfFile, uint32_t * pu32ProgIdx, uint64_t * pu64LoadVAddr, uint64_t * pu64LoadPAddr, uint64_t * pu64Length)
+{
+  bool_t bRetVal;
+  struct Elf32_Phdr * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  struct Elf32_Phdr * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  struct Elf32_Phdr * _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  struct Elf32_Phdr * _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  struct Elf32_Phdr * _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  struct Elf32_Phdr * _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  struct Elf32_Phdr * _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  struct Elf32_Phdr * _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  struct Elf32_Phdr * _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  struct Elf32_Phdr * _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  struct Elf32_Phdr * _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  struct Elf32_Phdr * _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  struct Elf32_Phdr * _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  struct Elf32_Phdr * _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  struct Elf32_Phdr * _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  struct Elf32_Phdr * _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  struct Elf32_Phdr * _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  struct Elf32_Phdr * _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  long long unsigned int _66;
+  struct Elf32_Phdr * _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  struct Elf32_Phdr * _70;
+  long unsigned int _71;
+  long long unsigned int _72;
+  long long unsigned int _73;
+  long long unsigned int _74;
+  long long unsigned int _75;
+  struct Elf32_Phdr * _76;
+  long unsigned int _77;
+  long unsigned int _78;
+  struct Elf32_Phdr * _79;
+  long unsigned int _80;
+  long long unsigned int _81;
+  long long unsigned int _82;
+  long long unsigned int _83;
+  long long unsigned int _84;
+  struct Elf32_Phdr * _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  struct Elf32_Phdr * _88;
+  long unsigned int _89;
+  long long unsigned int _90;
+  long long unsigned int _91;
+  long long unsigned int _92;
+  long long unsigned int _93;
+  struct Elf32_Phdr * _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  struct Elf32_Phdr * _97;
+  long unsigned int _98;
+  long unsigned int _99;
+  long long unsigned int _100;
+  struct Elf32_Phdr * _101;
+  long unsigned int _102;
+  long unsigned int _103;
+  struct Elf32_Phdr * _104;
+  long unsigned int _105;
+  long long unsigned int _106;
+  long long unsigned int _107;
+  long long unsigned int _108;
+  long long unsigned int _109;
+  struct Elf32_Phdr * _110;
+  long unsigned int _111;
+  long unsigned int _112;
+  struct Elf32_Phdr * _113;
+  long unsigned int _114;
+  long long unsigned int _115;
+  long long unsigned int _116;
+  long long unsigned int _117;
+  long long unsigned int _118;
+  struct Elf32_Phdr * _119;
+  long unsigned int _120;
+  long unsigned int _121;
+  struct Elf32_Phdr * _122;
+  long unsigned int _123;
+  long long unsigned int _124;
+  long long unsigned int _125;
+  long long unsigned int _126;
+  long long unsigned int _127;
+  struct Elf32_Phdr * _128;
+  long unsigned int _129;
+  long unsigned int _130;
+  struct Elf32_Phdr * _131;
+  long unsigned int _132;
+  long unsigned int _133;
+  long long unsigned int _134;
+  struct Elf32_Phdr * _135;
+  long unsigned int _136;
+  long unsigned int _137;
+  struct Elf32_Phdr * _138;
+  long unsigned int _139;
+  long long unsigned int _140;
+  long long unsigned int _141;
+  long long unsigned int _142;
+  long long unsigned int _143;
+  struct Elf32_Phdr * _144;
+  long unsigned int _145;
+  long unsigned int _146;
+  struct Elf32_Phdr * _147;
+  long unsigned int _148;
+  long long unsigned int _149;
+  long long unsigned int _150;
+  long long unsigned int _151;
+  long long unsigned int _152;
+  struct Elf32_Phdr * _153;
+  long unsigned int _154;
+  long unsigned int _155;
+  struct Elf32_Phdr * _156;
+  long unsigned int _157;
+  long long unsigned int _158;
+  long long unsigned int _159;
+  long long unsigned int _160;
+  long long unsigned int _161;
+  long unsigned int _162;
+  long unsigned int _163;
+  long unsigned int _164;
+  long unsigned int _165;
+  long unsigned int _166;
+  short unsigned int _167;
+  long unsigned int _168;
+  bool_t _190;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bRetVal_176 = 0;
+  # DEBUG bRetVal => bRetVal_176
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_178(D)->arProgHead32;
+  _2 = pElfFile_178(D)->u32ProgScanIdx;
+  _3 = _2 * 32;
+  _4 = _1 + _3;
+  _5 = _4->p_type;
+  _6 = _5 >> 24;
+  _7 = pElfFile_178(D)->arProgHead32;
+  _8 = pElfFile_178(D)->u32ProgScanIdx;
+  _9 = _8 * 32;
+  _10 = _7 + _9;
+  _11 = _10->p_type;
+  _12 = _11 << 24;
+  _13 = _6 | _12;
+  _14 = pElfFile_178(D)->arProgHead32;
+  _15 = pElfFile_178(D)->u32ProgScanIdx;
+  _16 = _15 * 32;
+  _17 = _14 + _16;
+  _18 = _17->p_type;
+  _19 = _18 >> 8;
+  _20 = _19 & 65280;
+  _21 = _13 | _20;
+  _22 = pElfFile_178(D)->arProgHead32;
+  _23 = pElfFile_178(D)->u32ProgScanIdx;
+  _24 = _23 * 32;
+  _25 = _22 + _24;
+  _26 = _25->p_type;
+  _27 = _26 << 8;
+  _28 = _27 & 16711680;
+  _29 = _21 | _28;
+  if (_29 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 4> :
+  _30 = pElfFile_178(D)->arProgHead32;
+  _31 = pElfFile_178(D)->u32ProgScanIdx;
+  _32 = _31 * 32;
+  _33 = _30 + _32;
+  _34 = _33->p_memsz;
+  _35 = _34 >> 24;
+  _36 = pElfFile_178(D)->arProgHead32;
+  _37 = pElfFile_178(D)->u32ProgScanIdx;
+  _38 = _37 * 32;
+  _39 = _36 + _38;
+  _40 = _39->p_memsz;
+  _41 = _40 << 24;
+  _42 = _35 | _41;
+  _43 = pElfFile_178(D)->arProgHead32;
+  _44 = pElfFile_178(D)->u32ProgScanIdx;
+  _45 = _44 * 32;
+  _46 = _43 + _45;
+  _47 = _46->p_memsz;
+  _48 = _47 >> 8;
+  _49 = _48 & 65280;
+  _50 = _42 | _49;
+  _51 = pElfFile_178(D)->arProgHead32;
+  _52 = pElfFile_178(D)->u32ProgScanIdx;
+  _53 = _52 * 32;
+  _54 = _51 + _53;
+  _55 = _54->p_memsz;
+  _56 = _55 << 8;
+  _57 = _56 & 16711680;
+  _58 = _50 | _57;
+  if (_58 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (pu32ProgIdx_179(D) != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _59 = pElfFile_178(D)->u32ProgScanIdx;
+  *pu32ProgIdx_179(D) = _59;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (pu64LoadVAddr_181(D) != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _60 = pElfFile_178(D)->arProgHead32;
+  _61 = pElfFile_178(D)->u32ProgScanIdx;
+  _62 = _61 * 32;
+  _63 = _60 + _62;
+  _64 = _63->p_vaddr;
+  _65 = _64 >> 24;
+  _66 = (long long unsigned int) _65;
+  _67 = pElfFile_178(D)->arProgHead32;
+  _68 = pElfFile_178(D)->u32ProgScanIdx;
+  _69 = _68 * 32;
+  _70 = _67 + _69;
+  _71 = _70->p_vaddr;
+  _72 = (long long unsigned int) _71;
+  _73 = _72 << 24;
+  _74 = _73 & 4294967295;
+  _75 = _66 | _74;
+  _76 = pElfFile_178(D)->arProgHead32;
+  _77 = pElfFile_178(D)->u32ProgScanIdx;
+  _78 = _77 * 32;
+  _79 = _76 + _78;
+  _80 = _79->p_vaddr;
+  _81 = (long long unsigned int) _80;
+  _82 = _81 >> 8;
+  _83 = _82 & 65280;
+  _84 = _75 | _83;
+  _85 = pElfFile_178(D)->arProgHead32;
+  _86 = pElfFile_178(D)->u32ProgScanIdx;
+  _87 = _86 * 32;
+  _88 = _85 + _87;
+  _89 = _88->p_vaddr;
+  _90 = (long long unsigned int) _89;
+  _91 = _90 << 8;
+  _92 = _91 & 16711680;
+  _93 = _84 | _92;
+  *pu64LoadVAddr_181(D) = _93;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (pu64LoadPAddr_183(D) != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _94 = pElfFile_178(D)->arProgHead32;
+  _95 = pElfFile_178(D)->u32ProgScanIdx;
+  _96 = _95 * 32;
+  _97 = _94 + _96;
+  _98 = _97->p_paddr;
+  _99 = _98 >> 24;
+  _100 = (long long unsigned int) _99;
+  _101 = pElfFile_178(D)->arProgHead32;
+  _102 = pElfFile_178(D)->u32ProgScanIdx;
+  _103 = _102 * 32;
+  _104 = _101 + _103;
+  _105 = _104->p_paddr;
+  _106 = (long long unsigned int) _105;
+  _107 = _106 << 24;
+  _108 = _107 & 4294967295;
+  _109 = _100 | _108;
+  _110 = pElfFile_178(D)->arProgHead32;
+  _111 = pElfFile_178(D)->u32ProgScanIdx;
+  _112 = _111 * 32;
+  _113 = _110 + _112;
+  _114 = _113->p_paddr;
+  _115 = (long long unsigned int) _114;
+  _116 = _115 >> 8;
+  _117 = _116 & 65280;
+  _118 = _109 | _117;
+  _119 = pElfFile_178(D)->arProgHead32;
+  _120 = pElfFile_178(D)->u32ProgScanIdx;
+  _121 = _120 * 32;
+  _122 = _119 + _121;
+  _123 = _122->p_paddr;
+  _124 = (long long unsigned int) _123;
+  _125 = _124 << 8;
+  _126 = _125 & 16711680;
+  _127 = _118 | _126;
+  *pu64LoadPAddr_183(D) = _127;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (pu64Length_185(D) != 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _128 = pElfFile_178(D)->arProgHead32;
+  _129 = pElfFile_178(D)->u32ProgScanIdx;
+  _130 = _129 * 32;
+  _131 = _128 + _130;
+  _132 = _131->p_memsz;
+  _133 = _132 >> 24;
+  _134 = (long long unsigned int) _133;
+  _135 = pElfFile_178(D)->arProgHead32;
+  _136 = pElfFile_178(D)->u32ProgScanIdx;
+  _137 = _136 * 32;
+  _138 = _135 + _137;
+  _139 = _138->p_memsz;
+  _140 = (long long unsigned int) _139;
+  _141 = _140 << 24;
+  _142 = _141 & 4294967295;
+  _143 = _134 | _142;
+  _144 = pElfFile_178(D)->arProgHead32;
+  _145 = pElfFile_178(D)->u32ProgScanIdx;
+  _146 = _145 * 32;
+  _147 = _144 + _146;
+  _148 = _147->p_memsz;
+  _149 = (long long unsigned int) _148;
+  _150 = _149 >> 8;
+  _151 = _150 & 65280;
+  _152 = _143 | _151;
+  _153 = pElfFile_178(D)->arProgHead32;
+  _154 = pElfFile_178(D)->u32ProgScanIdx;
+  _155 = _154 * 32;
+  _156 = _153 + _155;
+  _157 = _156->p_memsz;
+  _158 = (long long unsigned int) _157;
+  _159 = _158 << 8;
+  _160 = _159 & 16711680;
+  _161 = _152 | _160;
+  *pu64Length_185(D) = _161;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  bRetVal_187 = 1;
+  # DEBUG bRetVal => bRetVal_187
+  # DEBUG BEGIN_STMT
+  _162 = pElfFile_178(D)->u32ProgScanIdx;
+  _163 = _162 + 1;
+  pElfFile_178(D)->u32ProgScanIdx = _163;
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _164 = pElfFile_178(D)->u32ProgScanIdx;
+  _165 = _164 + 1;
+  pElfFile_178(D)->u32ProgScanIdx = _165;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _166 = pElfFile_178(D)->u32ProgScanIdx;
+  _167 = pElfFile_178(D)->Header.r32.e_phnum;
+  _168 = (long unsigned int) _167;
+  if (_166 < _168)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  # bRetVal_169 = PHI <bRetVal_187(13), bRetVal_176(15)>
+  # DEBUG bRetVal => bRetVal_169
+  # DEBUG BEGIN_STMT
+  _190 = bRetVal_169;
+  return _190;
+
+}
+
+
+ELF32_Load (struct ELF_File_t * pElfFile, uint32_t * u32NamesSectionOffset, uint32_t * u32NamesSectionSize)
+{
+  bool_t bRetVal;
+  struct Elf32_Ehdr * _1;
+  short unsigned int _2;
+  unsigned char _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  short unsigned int _6;
+  struct Elf32_Shdr * _7;
+  short unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  struct Elf32_Shdr * _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  struct Elf32_Shdr * _14;
+  short unsigned int _15;
+  unsigned int _16;
+  unsigned int _17;
+  struct Elf32_Shdr * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  struct Elf32_Shdr * _22;
+  short unsigned int _23;
+  unsigned int _24;
+  unsigned int _25;
+  struct Elf32_Shdr * _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  struct Elf32_Shdr * _31;
+  short unsigned int _32;
+  unsigned int _33;
+  unsigned int _34;
+  struct Elf32_Shdr * _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  struct Elf32_Shdr * _40;
+  short unsigned int _41;
+  unsigned int _42;
+  unsigned int _43;
+  struct Elf32_Shdr * _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  struct Elf32_Shdr * _47;
+  short unsigned int _48;
+  unsigned int _49;
+  unsigned int _50;
+  struct Elf32_Shdr * _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  struct Elf32_Shdr * _55;
+  short unsigned int _56;
+  unsigned int _57;
+  unsigned int _58;
+  struct Elf32_Shdr * _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  struct Elf32_Shdr * _64;
+  short unsigned int _65;
+  unsigned int _66;
+  unsigned int _67;
+  struct Elf32_Shdr * _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  long unsigned int _72;
+  struct Elf32_Shdr * _73;
+  short unsigned int _74;
+  unsigned int _75;
+  unsigned int _76;
+  struct Elf32_Shdr * _77;
+  long unsigned int _78;
+  long unsigned int _79;
+  struct Elf32_Shdr * _80;
+  short unsigned int _81;
+  unsigned int _82;
+  unsigned int _83;
+  struct Elf32_Shdr * _84;
+  long unsigned int _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  struct Elf32_Shdr * _88;
+  short unsigned int _89;
+  unsigned int _90;
+  unsigned int _91;
+  struct Elf32_Shdr * _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  struct Elf32_Shdr * _97;
+  short unsigned int _98;
+  unsigned int _99;
+  unsigned int _100;
+  struct Elf32_Shdr * _101;
+  long unsigned int _102;
+  long unsigned int _103;
+  long unsigned int _104;
+  long unsigned int _105;
+  bool_t _124;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bRetVal_108 = 0;
+  # DEBUG bRetVal => bRetVal_108
+  # DEBUG BEGIN_STMT
+  _1 = &pElfFile_109(D)->Header.r32;
+  ELF32_HeaderSwitchEndianness (_1);
+  # DEBUG BEGIN_STMT
+  _2 = pElfFile_109(D)->Header.r32.e_type;
+  if (_2 != 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF_Open: Only executable ELFs are supported\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 428, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = ELF32_LoadTables (pElfFile_109(D));
+  if (_3 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF_Open: Failed to load tables\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 432, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _4 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  if (_4 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _5 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _6 = pElfFile_109(D)->Header.r32.e_shnum;
+  if (_5 >= _6)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  _7 = pElfFile_109(D)->arSectHead32;
+  _8 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _9 = (unsigned int) _8;
+  _10 = _9 * 40;
+  _11 = _7 + _10;
+  _12 = _11->sh_size;
+  _13 = _12 >> 24;
+  _14 = pElfFile_109(D)->arSectHead32;
+  _15 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _16 = (unsigned int) _15;
+  _17 = _16 * 40;
+  _18 = _14 + _17;
+  _19 = _18->sh_size;
+  _20 = _19 << 24;
+  _21 = _13 | _20;
+  _22 = pElfFile_109(D)->arSectHead32;
+  _23 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _24 = (unsigned int) _23;
+  _25 = _24 * 40;
+  _26 = _22 + _25;
+  _27 = _26->sh_size;
+  _28 = _27 >> 8;
+  _29 = _28 & 65280;
+  _30 = _21 | _29;
+  _31 = pElfFile_109(D)->arSectHead32;
+  _32 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _33 = (unsigned int) _32;
+  _34 = _33 * 40;
+  _35 = _31 + _34;
+  _36 = _35->sh_size;
+  _37 = _36 << 8;
+  _38 = _37 & 16711680;
+  _39 = _30 | _38;
+  if (_39 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF_Open: Section names not found\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 443, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _40 = pElfFile_109(D)->arSectHead32;
+  _41 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _42 = (unsigned int) _41;
+  _43 = _42 * 40;
+  _44 = _40 + _43;
+  _45 = _44->sh_offset;
+  _46 = _45 >> 24;
+  _47 = pElfFile_109(D)->arSectHead32;
+  _48 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _49 = (unsigned int) _48;
+  _50 = _49 * 40;
+  _51 = _47 + _50;
+  _52 = _51->sh_offset;
+  _53 = _52 << 24;
+  _54 = _46 | _53;
+  _55 = pElfFile_109(D)->arSectHead32;
+  _56 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _57 = (unsigned int) _56;
+  _58 = _57 * 40;
+  _59 = _55 + _58;
+  _60 = _59->sh_offset;
+  _61 = _60 >> 8;
+  _62 = _61 & 65280;
+  _63 = _54 | _62;
+  _64 = pElfFile_109(D)->arSectHead32;
+  _65 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _66 = (unsigned int) _65;
+  _67 = _66 * 40;
+  _68 = _64 + _67;
+  _69 = _68->sh_offset;
+  _70 = _69 << 8;
+  _71 = _70 & 16711680;
+  _72 = _63 | _71;
+  *u32NamesSectionOffset_113(D) = _72;
+  # DEBUG BEGIN_STMT
+  _73 = pElfFile_109(D)->arSectHead32;
+  _74 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _75 = (unsigned int) _74;
+  _76 = _75 * 40;
+  _77 = _73 + _76;
+  _78 = _77->sh_size;
+  _79 = _78 >> 24;
+  _80 = pElfFile_109(D)->arSectHead32;
+  _81 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _82 = (unsigned int) _81;
+  _83 = _82 * 40;
+  _84 = _80 + _83;
+  _85 = _84->sh_size;
+  _86 = _85 << 24;
+  _87 = _79 | _86;
+  _88 = pElfFile_109(D)->arSectHead32;
+  _89 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _90 = (unsigned int) _89;
+  _91 = _90 * 40;
+  _92 = _88 + _91;
+  _93 = _92->sh_size;
+  _94 = _93 >> 8;
+  _95 = _94 & 65280;
+  _96 = _87 | _95;
+  _97 = pElfFile_109(D)->arSectHead32;
+  _98 = pElfFile_109(D)->Header.r32.e_shstrndx;
+  _99 = (unsigned int) _98;
+  _100 = _99 * 40;
+  _101 = _97 + _100;
+  _102 = _101->sh_size;
+  _103 = _102 << 8;
+  _104 = _103 & 16711680;
+  _105 = _96 | _104;
+  *u32NamesSectionSize_115(D) = _105;
+  # DEBUG BEGIN_STMT
+  bRetVal_117 = 1;
+  # DEBUG bRetVal => bRetVal_117
+
+  <bb 11> :
+  # bRetVal_106 = PHI <bRetVal_108(3), bRetVal_108(5), bRetVal_108(9), bRetVal_117(10)>
+  # DEBUG bRetVal => bRetVal_106
+  # DEBUG BEGIN_STMT
+  _124 = bRetVal_106;
+  return _124;
+
+}
+
+
+ELF32_HeaderSwitchEndianness (struct Elf32_Ehdr * prElf32Header)
+{
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  short unsigned int _70;
+  short unsigned int _71;
+  short unsigned int _72;
+  short unsigned int _73;
+  short unsigned int _74;
+  short unsigned int _75;
+  short unsigned int _76;
+  short unsigned int _77;
+  short unsigned int _78;
+  short unsigned int _79;
+  short unsigned int _80;
+  short unsigned int _81;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = prElf32Header_83(D)->e_type;
+  _2 = _1 r>> 8;
+  prElf32Header_83(D)->e_type = _2;
+  # DEBUG BEGIN_STMT
+  _3 = prElf32Header_83(D)->e_machine;
+  _4 = _3 r>> 8;
+  prElf32Header_83(D)->e_machine = _4;
+  # DEBUG BEGIN_STMT
+  _5 = prElf32Header_83(D)->e_version;
+  _6 = _5 >> 24;
+  _7 = prElf32Header_83(D)->e_version;
+  _8 = _7 << 24;
+  _9 = _6 | _8;
+  _10 = prElf32Header_83(D)->e_version;
+  _11 = _10 >> 8;
+  _12 = _11 & 65280;
+  _13 = _9 | _12;
+  _14 = prElf32Header_83(D)->e_version;
+  _15 = _14 << 8;
+  _16 = _15 & 16711680;
+  _17 = _13 | _16;
+  prElf32Header_83(D)->e_version = _17;
+  # DEBUG BEGIN_STMT
+  _18 = prElf32Header_83(D)->e_entry;
+  _19 = _18 >> 24;
+  _20 = prElf32Header_83(D)->e_entry;
+  _21 = _20 << 24;
+  _22 = _19 | _21;
+  _23 = prElf32Header_83(D)->e_entry;
+  _24 = _23 >> 8;
+  _25 = _24 & 65280;
+  _26 = _22 | _25;
+  _27 = prElf32Header_83(D)->e_entry;
+  _28 = _27 << 8;
+  _29 = _28 & 16711680;
+  _30 = _26 | _29;
+  prElf32Header_83(D)->e_entry = _30;
+  # DEBUG BEGIN_STMT
+  _31 = prElf32Header_83(D)->e_phoff;
+  _32 = _31 >> 24;
+  _33 = prElf32Header_83(D)->e_phoff;
+  _34 = _33 << 24;
+  _35 = _32 | _34;
+  _36 = prElf32Header_83(D)->e_phoff;
+  _37 = _36 >> 8;
+  _38 = _37 & 65280;
+  _39 = _35 | _38;
+  _40 = prElf32Header_83(D)->e_phoff;
+  _41 = _40 << 8;
+  _42 = _41 & 16711680;
+  _43 = _39 | _42;
+  prElf32Header_83(D)->e_phoff = _43;
+  # DEBUG BEGIN_STMT
+  _44 = prElf32Header_83(D)->e_shoff;
+  _45 = _44 >> 24;
+  _46 = prElf32Header_83(D)->e_shoff;
+  _47 = _46 << 24;
+  _48 = _45 | _47;
+  _49 = prElf32Header_83(D)->e_shoff;
+  _50 = _49 >> 8;
+  _51 = _50 & 65280;
+  _52 = _48 | _51;
+  _53 = prElf32Header_83(D)->e_shoff;
+  _54 = _53 << 8;
+  _55 = _54 & 16711680;
+  _56 = _52 | _55;
+  prElf32Header_83(D)->e_shoff = _56;
+  # DEBUG BEGIN_STMT
+  _57 = prElf32Header_83(D)->e_flags;
+  _58 = _57 >> 24;
+  _59 = prElf32Header_83(D)->e_flags;
+  _60 = _59 << 24;
+  _61 = _58 | _60;
+  _62 = prElf32Header_83(D)->e_flags;
+  _63 = _62 >> 8;
+  _64 = _63 & 65280;
+  _65 = _61 | _64;
+  _66 = prElf32Header_83(D)->e_flags;
+  _67 = _66 << 8;
+  _68 = _67 & 16711680;
+  _69 = _65 | _68;
+  prElf32Header_83(D)->e_flags = _69;
+  # DEBUG BEGIN_STMT
+  _70 = prElf32Header_83(D)->e_ehsize;
+  _71 = _70 r>> 8;
+  prElf32Header_83(D)->e_ehsize = _71;
+  # DEBUG BEGIN_STMT
+  _72 = prElf32Header_83(D)->e_phentsize;
+  _73 = _72 r>> 8;
+  prElf32Header_83(D)->e_phentsize = _73;
+  # DEBUG BEGIN_STMT
+  _74 = prElf32Header_83(D)->e_phnum;
+  _75 = _74 r>> 8;
+  prElf32Header_83(D)->e_phnum = _75;
+  # DEBUG BEGIN_STMT
+  _76 = prElf32Header_83(D)->e_shentsize;
+  _77 = _76 r>> 8;
+  prElf32Header_83(D)->e_shentsize = _77;
+  # DEBUG BEGIN_STMT
+  _78 = prElf32Header_83(D)->e_shnum;
+  _79 = _78 r>> 8;
+  prElf32Header_83(D)->e_shnum = _79;
+  # DEBUG BEGIN_STMT
+  _80 = prElf32Header_83(D)->e_shstrndx;
+  _81 = _80 r>> 8;
+  prElf32Header_83(D)->e_shstrndx = _81;
+  return;
+
+}
+
+
+ELF32_LoadTables (struct ELF_File_t * pElfFile)
+{
+  bool_t bSectStatus;
+  bool_t bProgStatus;
+  short unsigned int _1;
+  const void * _2;
+  long unsigned int _3;
+  struct Elf32_Phdr * _4;
+  short unsigned int _5;
+  const void * _6;
+  long unsigned int _7;
+  struct Elf32_Shdr * _8;
+  bool_t _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bProgStatus_13 = 1;
+  # DEBUG bProgStatus => bProgStatus_13
+  # DEBUG BEGIN_STMT
+  bSectStatus_14 = 0;
+  # DEBUG bSectStatus => bSectStatus_14
+  # DEBUG BEGIN_STMT
+  bProgStatus_15 = 0;
+  # DEBUG bProgStatus => bProgStatus_15
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_17(D)->Header.r32.e_phentsize;
+  if (_1 != 32)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF32_LoadTables: Unexpected progam header entry size\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 356, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pElfFile_17(D)->pvData;
+  _3 = pElfFile_17(D)->Header.r32.e_phoff;
+  _4 = _2 + _3;
+  pElfFile_17(D)->arProgHead32 = _4;
+  # DEBUG BEGIN_STMT
+  bProgStatus_19 = 1;
+  # DEBUG bProgStatus => bProgStatus_19
+
+  <bb 5> :
+  # bProgStatus_9 = PHI <bProgStatus_15(3), bProgStatus_19(4)>
+  # DEBUG bProgStatus => bProgStatus_9
+  # DEBUG BEGIN_STMT
+  if (bProgStatus_9 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _5 = pElfFile_17(D)->Header.r32.e_shentsize;
+  if (_5 != 40)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] ELF32_LoadTables: Unexpected section header entry size\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 378, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _6 = pElfFile_17(D)->pvData;
+  _7 = pElfFile_17(D)->Header.r32.e_shoff;
+  _8 = _6 + _7;
+  pElfFile_17(D)->arSectHead32 = _8;
+  # DEBUG BEGIN_STMT
+  bSectStatus_23 = 1;
+  # DEBUG bSectStatus => bSectStatus_23
+
+  <bb 9> :
+  # bSectStatus_10 = PHI <bSectStatus_14(5), bSectStatus_14(7), bSectStatus_23(8)>
+  # DEBUG bSectStatus => bSectStatus_10
+  # DEBUG BEGIN_STMT
+  _26 = bSectStatus_10;
+  return _26;
+
+}
+
+
+CheckElfVersion (struct ELF_File_t * pElfFile)
+{
+  unsigned int _1;
+  unsigned int _2;
+  unsigned char _3;
+  _Bool _4;
+  int iftmp.2_5;
+  int iftmp.2_8;
+  int iftmp.2_9;
+  bool_t _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = BIT_FIELD_REF <*pElfFile_7(D), 32, 0>;
+  _2 = _1;
+  if (_2 != 1179403647)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _3 = pElfFile_7(D)->Header.e_ident[6];
+  if (_3 != 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.2_9 = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.2_8 = 0;
+
+  <bb 6> :
+  # iftmp.2_5 = PHI <iftmp.2_9(4), iftmp.2_8(5)>
+  _4 = iftmp.2_5 != 1;
+  _10 = (bool_t) _4;
+  return _10;
+
+}
+
+
+LoadFileData (const struct ELF_File_t * pElfFile, uint32_t u32Offset, uint32_t u32Size, void * pvDestMem)
+{
+  bool_t bSuccess;
+  const void * _1;
+  long unsigned int _2;
+  bool_t _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bSuccess_5 = 0;
+  # DEBUG bSuccess => bSuccess_5
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_7(D)->pvData;
+  _2 = buf_read (_1, u32Offset_8(D), pvDestMem_9(D), u32Size_10(D));
+  if (u32Size_10(D) != _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] LoadFileData: Reading program header failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/elf.c", 307, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  bSuccess_12 = 1;
+  # DEBUG bSuccess => bSuccess_12
+
+  <bb 5> :
+  # bSuccess_3 = PHI <bSuccess_5(3), bSuccess_12(4)>
+  # DEBUG bSuccess => bSuccess_3
+  # DEBUG BEGIN_STMT
+  _15 = bSuccess_3;
+  return _15;
+
+}
+
+
+ELF_Is64bit (const struct ELF_File_t * pElfFile)
+{
+  unsigned char _1;
+  _Bool _2;
+  bool_t _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pElfFile_4(D)->Header.e_ident[4];
+  _2 = _1 == 2;
+  _5 = (bool_t) _2;
+  return _5;
+
+}
+
+

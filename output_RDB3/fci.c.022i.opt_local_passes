@@ -1,0 +1,1315 @@
+fci_fini ()
+{
+  uint32_t session_id;
+  struct fci_t * fci_context;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  struct fci_core_t * _4;
+  unsigned char _5;
+  unsigned char _6;
+  long unsigned int session_id.7_7;
+  unsigned char _8;
+  unsigned char _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_18 = &context;
+  # DEBUG fci_context => fci_context_18
+  # DEBUG BEGIN_STMT
+  session_id = 0;
+  # DEBUG BEGIN_STMT
+  _1 = fci_context_18->fci_initialized;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = fci_context_18->rt_db_initialized;
+  if (_2 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (98);
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_all ();
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (98);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = fci_context_18->hm_cb_registered;
+  if (_3 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  fci_hm_cb_deregister ();
+  # DEBUG BEGIN_STMT
+  fci_context_18->hm_cb_registered = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_18->is_some_client = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _4 = fci_context_18->core;
+  if (_4 != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  fci_core_fini ();
+  # DEBUG BEGIN_STMT
+  fci_context_18->core = 0B;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  pfe_if_db_lock (&session_id);
+  # DEBUG BEGIN_STMT
+  _5 = fci_context_18->log_if_db_initialized;
+  if (_5 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  fci_context_18->log_if_db = 0B;
+  # DEBUG BEGIN_STMT
+  fci_context_18->log_if_db_initialized = 0;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _6 = fci_context_18->phy_if_db_initialized;
+  if (_6 == 1)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  fci_context_18->phy_if_db = 0B;
+  # DEBUG BEGIN_STMT
+  fci_context_18->phy_if_db_initialized = 0;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  session_id.7_7 = session_id;
+  pfe_if_db_unlock (session_id.7_7);
+  # DEBUG BEGIN_STMT
+  _8 = fci_context_18->rt_db_initialized;
+  if (_8 == 1)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (98);
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_all ();
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (98);
+  # DEBUG BEGIN_STMT
+  fci_context_18->rt_db_initialized = 0;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  fci_context_18->rtable = 0B;
+  # DEBUG BEGIN_STMT
+  fci_context_18->rtable_initialized = 0;
+  # DEBUG BEGIN_STMT
+  _9 = fci_context_18->fci_owner_initialized;
+  if (_9 == 1)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  fci_context_18->fci_owner_initialized = 0;
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (fci_context_18, 0, 6536);
+  # DEBUG BEGIN_STMT
+  fci_context_18->fci_initialized = 0;
+
+  <bb 18> :
+  session_id ={v} {CLOBBER};
+  return;
+
+}
+
+
+fci_init (struct fci_init_info_t * info, const char_t * const identifier)
+{
+  errno_t err;
+  struct fci_t * fci_context;
+  int _1;
+  errno_t _30;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_7 = &context;
+  # DEBUG fci_context => fci_context_7
+  # DEBUG BEGIN_STMT
+  err_8 = 0;
+  # DEBUG err => err_8
+  # DEBUG BEGIN_STMT
+  err_12 = fci_init_param_validate (fci_context_7, identifier_10(D));
+  # DEBUG err => err_12
+  # DEBUG BEGIN_STMT
+  if (err_12 != 22)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  err_14 = fci_core_init (identifier_10(D));
+  # DEBUG err => err_14
+  # DEBUG BEGIN_STMT
+  if (err_14 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not create FCI core\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci.c", 783, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fci_fini ();
+  goto <bb 13>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  err_17 = fci_owner_init (info_15(D));
+  # DEBUG err => err_17
+  # DEBUG BEGIN_STMT
+  if (err_17 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  fci_context_7->fci_owner_initialized = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (err_17 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  fci_fini ();
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  fci_init_context_info (fci_context_7, info_15(D));
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _1 = fci_hm_cb_register ();
+  if (_1 == 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  fci_context_7->hm_cb_registered = 1;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  fci_context_7->default_timeouts.timeout_tcp = 432000;
+  # DEBUG BEGIN_STMT
+  fci_context_7->default_timeouts.timeout_udp = 300;
+  # DEBUG BEGIN_STMT
+  fci_context_7->default_timeouts.timeout_other = 240;
+  # DEBUG BEGIN_STMT
+  fci_context_7->fci_initialized = 1;
+
+  <bb 13> :
+  # err_2 = PHI <err_12(2), err_14(4), err_17(12)>
+  # DEBUG err => err_2
+  # DEBUG BEGIN_STMT
+  _30 = err_2;
+  return _30;
+
+}
+
+
+fci_process_ipc_message (struct fci_msg_t * msg, struct fci_msg_t * rep_msg)
+{
+  struct fci_vars_t passed_vars;
+  uint16_t * reply_retval_ptr;
+  uint32_t * reply_buf_len_ptr;
+  uint32_t * reply_buf_ptr;
+  uint16_t fci_ret;
+  errno_t ret;
+  uint8_t * _1;
+  uint32_t * _2;
+  uint32_t * reply_buf_len_ptr.0_3;
+  <unnamed type> _4;
+  unsigned char _5;
+  <unnamed type> _6;
+  unsigned char _7;
+  uint32_t * reply_buf_len_ptr.1_8;
+  long unsigned int _9;
+  long unsigned int _10;
+  uint8_t[256] * _11;
+  uint16_t * reply_retval_ptr.2_12;
+  short unsigned int fci_ret.3_13;
+  errno_t _50;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_21 = 0;
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  reply_buf_ptr = 0B;
+  # DEBUG BEGIN_STMT
+  reply_buf_len_ptr = 0B;
+  # DEBUG BEGIN_STMT
+  reply_retval_ptr = 0B;
+  # DEBUG BEGIN_STMT
+  passed_vars.p_msg = msg_27(D);
+  passed_vars.p_rep_msg = rep_msg_29(D);
+  passed_vars.fci_floating_lock = 0;
+  passed_vars.bCheckRet = 0;
+  # DEBUG BEGIN_STMT
+  _1 = &rep_msg_29(D)->msg_cmd.payload[4];
+  reply_buf_ptr = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &rep_msg_29(D)->msg_cmd.length;
+  reply_buf_len_ptr = _2;
+  # DEBUG BEGIN_STMT
+  reply_buf_len_ptr.0_3 = reply_buf_len_ptr;
+  *reply_buf_len_ptr.0_3 = 252;
+  # DEBUG BEGIN_STMT
+  _4 = msg_27(D)->type;
+  if (_4 == 4099)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_37 = fci_check_credentials (&passed_vars, &fci_ret, &reply_buf_len_ptr, &reply_retval_ptr);
+  # DEBUG ret => ret_37
+
+  <bb 4> :
+  # ret_14 = PHI <ret_21(2), ret_37(3)>
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  _5 = passed_vars.bCheckRet;
+  if (_5 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _6 = msg_27(D)->type;
+  if (_6 == 4099)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  ret_39 = execute_fci_cmd (msg_27(D), &fci_ret, &reply_buf_ptr, &reply_buf_len_ptr);
+  # DEBUG ret => ret_39
+  # DEBUG BEGIN_STMT
+  _7 = passed_vars.fci_floating_lock;
+  if (_7 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ret_41 = fci_owner_clear_floating_lock ();
+  # DEBUG ret => ret_41
+  # DEBUG BEGIN_STMT
+  if (ret_41 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  fci_ret = 65535;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret_44 = fci_owner_mutex_unlock ();
+  # DEBUG ret => ret_44
+  # DEBUG BEGIN_STMT
+  if (ret_44 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  fci_ret = 65535;
+
+  <bb 11> :
+  # ret_15 = PHI <ret_39(6), ret_44(9), ret_44(10)>
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  reply_buf_len_ptr.1_8 = reply_buf_len_ptr;
+  _9 = *reply_buf_len_ptr.1_8;
+  _10 = _9 + 4;
+  rep_msg_29(D)->msg_cmd.length = _10;
+  # DEBUG BEGIN_STMT
+  _11 = &rep_msg_29(D)->msg_cmd.payload;
+  reply_retval_ptr = _11;
+  # DEBUG BEGIN_STMT
+  reply_retval_ptr.2_12 = reply_retval_ptr;
+  fci_ret.3_13 = fci_ret;
+  *reply_retval_ptr.2_12 = fci_ret.3_13;
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_49 = 22;
+  # DEBUG ret => ret_49
+  # DEBUG BEGIN_STMT
+
+  <bb 13> :
+  # ret_16 = PHI <ret_14(4), ret_15(11), ret_49(12)>
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  _50 = ret_16;
+  fci_ret ={v} {CLOBBER};
+  reply_buf_ptr ={v} {CLOBBER};
+  reply_buf_len_ptr ={v} {CLOBBER};
+  reply_retval_ptr ={v} {CLOBBER};
+  passed_vars ={v} {CLOBBER};
+  return _50;
+
+}
+
+
+fci_check_credentials (struct fci_vars_t * vars, uint16_t * fci_ret, uint32_t * * reply_buf_len_ptr, uint16_t * * reply_retval_ptr)
+{
+  errno_t ret;
+  bool_t fci_cmd_execute;
+  pfe_ct_phy_if_id_t sender_phy_if_id;
+  struct fci_msg_t * _1;
+  long unsigned int _2;
+  struct fci_msg_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  <unnamed type> sender_phy_if_id.4_6;
+  struct fci_msg_t * _7;
+  long unsigned int _8;
+  bool_t * _9;
+  <unnamed type> sender_phy_if_id.5_10;
+  unsigned char _11;
+  unsigned char fci_cmd_execute.6_12;
+  uint32_t * _13;
+  long unsigned int _14;
+  uint32_t * _15;
+  long unsigned int _16;
+  struct fci_msg_t * _17;
+  long unsigned int _18;
+  struct fci_msg_t * _19;
+  uint8_t[256] * _20;
+  uint16_t * _21;
+  short unsigned int _22;
+  unsigned char _23;
+  errno_t _54;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  sender_phy_if_id = 10;
+  # DEBUG BEGIN_STMT
+  fci_cmd_execute = 0;
+  # DEBUG BEGIN_STMT
+  ret_35 = fci_owner_mutex_lock ();
+  # DEBUG ret => ret_35
+  # DEBUG BEGIN_STMT
+  if (ret_35 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = vars_36(D)->p_msg;
+  _2 = _1->msg_cmd.sender;
+  ret_38 = fci_sender_get_phy_if_id (_2, &sender_phy_if_id);
+  # DEBUG ret => ret_38
+  # DEBUG BEGIN_STMT
+  if (ret_38 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = vars_36(D)->p_msg;
+  _4 = _3->msg_cmd.code;
+  _5 = _4 + 4294904576;
+  if (_5 <= 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  sender_phy_if_id.4_6 = sender_phy_if_id;
+  _7 = vars_36(D)->p_msg;
+  _8 = _7->msg_cmd.code;
+  ret_44 = fci_owner_session_cmd (sender_phy_if_id.4_6, _8, fci_ret_40(D));
+  # DEBUG ret => ret_44
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _9 = &vars_36(D)->fci_floating_lock;
+  sender_phy_if_id.5_10 = sender_phy_if_id;
+  ret_42 = fci_authorize_and_lock (reply_buf_len_ptr_39(D), _9, fci_ret_40(D), &fci_cmd_execute, sender_phy_if_id.5_10);
+  # DEBUG ret => ret_42
+
+  <bb 7> :
+  # ret_24 = PHI <ret_38(3), ret_44(5), ret_42(6)>
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  if (ret_24 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_40(D) = 65535;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _11 = vars_36(D)->fci_floating_lock;
+  if (_11 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ret_47 = fci_owner_mutex_unlock ();
+  # DEBUG ret => ret_47
+
+  <bb 11> :
+  # ret_25 = PHI <ret_35(2), ret_24(9), ret_47(10)>
+  # DEBUG ret => ret_25
+  # DEBUG BEGIN_STMT
+  if (ret_25 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_40(D) = 65535;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  fci_cmd_execute.6_12 = fci_cmd_execute;
+  if (fci_cmd_execute.6_12 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _13 = *reply_buf_len_ptr_39(D);
+  _14 = *_13;
+  # DEBUG BEGIN_STMT
+  _15 = *reply_buf_len_ptr_39(D);
+  _16 = *_15;
+  _17 = vars_36(D)->p_rep_msg;
+  _18 = _16 + 4;
+  _17->msg_cmd.length = _18;
+  # DEBUG BEGIN_STMT
+  _19 = vars_36(D)->p_rep_msg;
+  _20 = &_19->msg_cmd.payload;
+  *reply_retval_ptr_50(D) = _20;
+  # DEBUG BEGIN_STMT
+  _21 = *reply_retval_ptr_50(D);
+  _22 = *fci_ret_40(D);
+  *_21 = _22;
+  # DEBUG BEGIN_STMT
+  vars_36(D)->bCheckRet = 1;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _23 = vars_36(D)->bCheckRet;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _54 = ret_25;
+  sender_phy_if_id ={v} {CLOBBER};
+  fci_cmd_execute ={v} {CLOBBER};
+  return _54;
+
+}
+
+
+fci_authorize_and_lock (uint32_t * * reply_buf_len_ptr, bool_t * floating_lock, uint16_t * fci_ret, bool_t * fci_cmd_execute, pfe_ct_phy_if_id_t sender_phy_if_id)
+{
+  errno_t ret;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  uint32_t * _4;
+  errno_t _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_12 = fci_owner_authorize (sender_phy_if_id_9(D), fci_cmd_execute_10(D));
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  _1 = *fci_cmd_execute_10(D);
+  if (_1 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_16 = fci_owner_get_floating_lock (sender_phy_if_id_9(D), fci_ret_13(D), floating_lock_14(D));
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _2 = *floating_lock_14(D);
+  *fci_cmd_execute_10(D) = _2;
+
+  <bb 6> :
+  # ret_5 = PHI <ret_12(2), ret_12(3), ret_16(4), ret_16(5)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  if (ret_5 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  _3 = *fci_cmd_execute_10(D);
+  if (_3 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _4 = *reply_buf_len_ptr_18(D);
+  *_4 = 0;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _20 = ret_5;
+  return _20;
+
+}
+
+
+fci_init_context_info (struct fci_t * fci_context, struct fci_init_info_t * info)
+{
+  struct pfe_class_t * _1;
+  struct pfe_if_db_t * _2;
+  struct pfe_if_db_t * _3;
+  struct pfe_if_db_t * _4;
+  struct pfe_if_db_t * _5;
+  struct pfe_tmu_t * _6;
+  struct pfe_tmu_t * _7;
+  struct fci_rt_db_t * _8;
+  struct pfe_rtable_t * _9;
+  struct pfe_rtable_t * _10;
+  struct pfe_l2br_t * _11;
+  struct pfe_l2br_t * _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_fp_db_init ();
+  # DEBUG BEGIN_STMT
+  if (info_20(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = info_20(D)->class;
+  fci_context_21(D)->class = _1;
+  # DEBUG BEGIN_STMT
+  _2 = info_20(D)->phy_if_db;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = info_20(D)->phy_if_db;
+  fci_context_21(D)->phy_if_db = _3;
+  # DEBUG BEGIN_STMT
+  fci_context_21(D)->phy_if_db_initialized = 1;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = info_20(D)->log_if_db;
+  if (_4 != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _5 = info_20(D)->log_if_db;
+  fci_context_21(D)->log_if_db = _5;
+  # DEBUG BEGIN_STMT
+  fci_context_21(D)->log_if_db_initialized = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _6 = info_20(D)->tmu;
+  if (_6 != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _7 = info_20(D)->tmu;
+  fci_context_21(D)->tmu = _7;
+  # DEBUG BEGIN_STMT
+  fci_context_21(D)->tmu_initialized = 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _8 = &fci_context_21(D)->route_db;
+  fci_rt_db_init (_8);
+  # DEBUG BEGIN_STMT
+  fci_context_21(D)->rt_db_initialized = 1;
+  # DEBUG BEGIN_STMT
+  _9 = info_20(D)->rtable;
+  if (_9 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _10 = info_20(D)->rtable;
+  fci_context_21(D)->rtable = _10;
+  # DEBUG BEGIN_STMT
+  fci_context_21(D)->rtable_initialized = 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _11 = info_20(D)->l2_bridge;
+  if (_11 != 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _12 = info_20(D)->l2_bridge;
+  fci_context_21(D)->l2_bridge = _12;
+  # DEBUG BEGIN_STMT
+  fci_context_21(D)->l2_bridge_initialized = 1;
+
+  <bb 13> :
+  return;
+
+}
+
+
+execute_fci_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, uint32_t * * reply_buf_ptr, uint32_t * * reply_buf_len_ptr)
+{
+  struct fpp_buf_cmd_t * fci_buf;
+  struct pfe_ct_buffer_t buf;
+  struct fci_t * fci_context;
+  errno_t ret;
+  long unsigned int _1;
+  unsigned char _2;
+  unsigned char _3;
+  uint8_t[64] * _4;
+  unsigned char _5;
+  long unsigned int _6;
+  struct pfe_class_t * _7;
+  long unsigned int _8;
+  uint32_t * _9;
+  uint32_t * _10;
+  uint32_t * _11;
+  uint32_t * _12;
+  uint32_t * _13;
+  uint32_t * _14;
+  uint32_t * _15;
+  uint32_t * _16;
+  uint32_t * _17;
+  uint32_t * _18;
+  uint32_t * _19;
+  uint32_t * _20;
+  uint32_t * _21;
+  uint32_t * _22;
+  uint32_t * _23;
+  uint32_t * _24;
+  uint32_t * _25;
+  uint32_t * _26;
+  uint32_t * _27;
+  uint32_t * _28;
+  uint32_t * _29;
+  uint32_t * _30;
+  uint32_t * _31;
+  uint32_t * _32;
+  uint32_t * _33;
+  uint32_t * _34;
+  uint32_t * _35;
+  uint32_t * _36;
+  uint32_t * _37;
+  uint32_t * _38;
+  uint32_t * _39;
+  uint32_t * _40;
+  uint32_t * _41;
+  uint32_t * _42;
+  uint32_t * _43;
+  uint32_t * _44;
+  uint32_t * _45;
+  uint32_t * _46;
+  uint32_t * _47;
+  uint32_t * _48;
+  uint32_t * _49;
+  uint32_t * _50;
+  long unsigned int _51;
+  uint32_t * _52;
+  uint32_t * _53;
+  uint32_t * _54;
+  uint32_t * _55;
+  errno_t _145;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_60 = 0;
+  # DEBUG ret => ret_60
+  # DEBUG BEGIN_STMT
+  fci_context_61 = &context;
+  # DEBUG fci_context => fci_context_61
+  # DEBUG BEGIN_STMT
+  _1 = msg_63(D)->msg_cmd.code;
+  switch (_1) <default: <L39> [INV], case 21 ... 22: <L7> [INV], case 787: <L12> [INV], case 788: <L14> [INV], case 790: <L16> [INV], case 793: <L13> [INV], case 1044: <L15> [INV], case 1046: <L17> [INV], case 61696: <L10> [INV], case 61697: <L9> [INV], case 61728: <L11> [INV], case 61744: <L27> [INV], case 61952: <L18> [INV], case 61984: <L20> [INV], case 61985: <L21> [INV], case 62032: <L22> [INV], case 62048: <L23> [INV], case 62208: <L0> [INV], case 62272: <L19> [INV], case 62336: <L32> [INV], case 62352: <L32> [INV], case 62368: <L32> [INV], case 62464: <L24> [INV], case 62480: <L25> [INV], case 62496: <L26> [INV], case 62512: <L28> [INV], case 62528: <L29> [INV], case 62544: <L30> [INV], case 62560: <L31> [INV], case 62720 ... 62721: <L35> [INV], case 62752: <L37> [INV], case 62753: <L38> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  buf = {};
+  # DEBUG BEGIN_STMT
+  fci_buf_91 = &msg_63(D)->msg_cmd.payload;
+  # DEBUG fci_buf => fci_buf_91
+  # DEBUG BEGIN_STMT
+  _2 = fci_buf_91->len;
+  if (_2 > 64)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_98 = 22;
+  # DEBUG ret => ret_98
+  # DEBUG BEGIN_STMT
+  *fci_ret_66(D) = 65535;
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  buf.flags = 1;
+  # DEBUG BEGIN_STMT
+  _3 = fci_buf_91->len;
+  buf.len = _3;
+  # DEBUG BEGIN_STMT
+  _4 = &fci_buf_91->payload;
+  _5 = fci_buf_91->len;
+  _6 = (long unsigned int) _5;
+  autolibc_memcpy (&buf.payload, _4, _6);
+  # DEBUG BEGIN_STMT
+  _7 = fci_context_61->class;
+  ret_96 = pfe_class_put_data (_7, &buf);
+  # DEBUG ret => ret_96
+  # DEBUG BEGIN_STMT
+  if (ret_96 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_66(D) = 65535;
+
+  <bb 7> :
+  # ret_56 = PHI <ret_96(5), ret_98(4), ret_96(6)>
+  # DEBUG ret => ret_56
+  # DEBUG BEGIN_STMT
+  buf ={v} {CLOBBER};
+  goto <bb 37>; [INV]
+
+  <bb 8> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  _8 = msg_63(D)->msg_cmd.code;
+  ret_142 = fci_interfaces_session_cmd (_8, fci_ret_66(D));
+  # DEBUG ret => ret_142
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 9> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  _9 = *reply_buf_ptr_64(D);
+  _10 = *reply_buf_len_ptr_65(D);
+  ret_116 = fci_interfaces_log_cmd (msg_63(D), fci_ret_66(D), _9, _10);
+  # DEBUG ret => ret_116
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 10> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  _11 = *reply_buf_ptr_64(D);
+  _12 = *reply_buf_len_ptr_65(D);
+  ret_118 = fci_interfaces_phy_cmd (msg_63(D), fci_ret_66(D), _11, _12);
+  # DEBUG ret => ret_118
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 11> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  _13 = *reply_buf_ptr_64(D);
+  _14 = *reply_buf_len_ptr_65(D);
+  ret_114 = fci_interfaces_mac_cmd (msg_63(D), fci_ret_66(D), _13, _14);
+  # DEBUG ret => ret_114
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 12> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (97);
+  # DEBUG BEGIN_STMT
+  _15 = *reply_buf_ptr_64(D);
+  _16 = *reply_buf_len_ptr_65(D);
+  ret_139 = fci_routes_cmd (msg_63(D), fci_ret_66(D), _15, _16);
+  # DEBUG ret => ret_139
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (97);
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 13> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (97);
+  # DEBUG BEGIN_STMT
+  _17 = *reply_buf_ptr_64(D);
+  _18 = *reply_buf_len_ptr_65(D);
+  ret_128 = fci_connections_ipv4_timeout_cmd (msg_63(D), fci_ret_66(D), _17, _18);
+  # DEBUG ret => ret_128
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (97);
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 14> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (97);
+  # DEBUG BEGIN_STMT
+  _19 = *reply_buf_ptr_64(D);
+  _20 = *reply_buf_len_ptr_65(D);
+  ret_135 = fci_connections_ipv4_ct_cmd (msg_63(D), fci_ret_66(D), _19, _20);
+  # DEBUG ret => ret_135
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (97);
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 15> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (97);
+  # DEBUG BEGIN_STMT
+  _21 = *reply_buf_ptr_64(D);
+  _22 = *reply_buf_len_ptr_65(D);
+  ret_124 = fci_connections_ipv6_ct_cmd (msg_63(D), fci_ret_66(D), _21, _22);
+  # DEBUG ret => ret_124
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (97);
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 16> :
+<L16>:
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (97);
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_all_ipv4 ();
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (97);
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 17> :
+<L17>:
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (97);
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_all_ipv6 ();
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (97);
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 18> :
+<L18>:
+  # DEBUG BEGIN_STMT
+  _23 = *reply_buf_ptr_64(D);
+  _24 = *reply_buf_len_ptr_65(D);
+  ret_110 = fci_l2br_domain_cmd (msg_63(D), fci_ret_66(D), _23, _24);
+  # DEBUG ret => ret_110
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 19> :
+<L19>:
+  # DEBUG BEGIN_STMT
+  _25 = *reply_buf_ptr_64(D);
+  _26 = *reply_buf_len_ptr_65(D);
+  ret_89 = fci_l2br_static_entry_cmd (msg_63(D), fci_ret_66(D), _25, _26);
+  # DEBUG ret => ret_89
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 20> :
+<L20>:
+  # DEBUG BEGIN_STMT
+  _27 = *reply_buf_ptr_64(D);
+  _28 = *reply_buf_len_ptr_65(D);
+  ret_108 = fci_fp_table_cmd (msg_63(D), fci_ret_66(D), _27, _28);
+  # DEBUG ret => ret_108
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 21> :
+<L21>:
+  # DEBUG BEGIN_STMT
+  _29 = *reply_buf_ptr_64(D);
+  _30 = *reply_buf_len_ptr_65(D);
+  ret_106 = fci_fp_rule_cmd (msg_63(D), fci_ret_66(D), _29, _30);
+  # DEBUG ret => ret_106
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 22> :
+<L22>:
+  # DEBUG BEGIN_STMT
+  _31 = *reply_buf_ptr_64(D);
+  _32 = *reply_buf_len_ptr_65(D);
+  ret_104 = fci_fw_features_cmd (msg_63(D), fci_ret_66(D), _31, _32);
+  # DEBUG ret => ret_104
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 23> :
+<L23>:
+  # DEBUG BEGIN_STMT
+  _33 = *reply_buf_ptr_64(D);
+  _34 = *reply_buf_len_ptr_65(D);
+  ret_102 = fci_fw_features_element_cmd (msg_63(D), fci_ret_66(D), _33, _34);
+  # DEBUG ret => ret_102
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 24> :
+<L24>:
+  # DEBUG BEGIN_STMT
+  _35 = *reply_buf_ptr_64(D);
+  _36 = *reply_buf_len_ptr_65(D);
+  ret_85 = fci_qos_queue_cmd (msg_63(D), fci_ret_66(D), _35, _36);
+  # DEBUG ret => ret_85
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 25> :
+<L25>:
+  # DEBUG BEGIN_STMT
+  _37 = *reply_buf_ptr_64(D);
+  _38 = *reply_buf_len_ptr_65(D);
+  ret_83 = fci_qos_scheduler_cmd (msg_63(D), fci_ret_66(D), _37, _38);
+  # DEBUG ret => ret_83
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 26> :
+<L26>:
+  # DEBUG BEGIN_STMT
+  _39 = *reply_buf_ptr_64(D);
+  _40 = *reply_buf_len_ptr_65(D);
+  ret_81 = fci_qos_shaper_cmd (msg_63(D), fci_ret_66(D), _39, _40);
+  # DEBUG ret => ret_81
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 27> :
+<L27>:
+  # DEBUG BEGIN_STMT
+  _41 = *reply_buf_ptr_64(D);
+  _42 = *reply_buf_len_ptr_65(D);
+  ret_112 = fci_mirror_cmd (msg_63(D), fci_ret_66(D), _41, _42);
+  # DEBUG ret => ret_112
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 28> :
+<L28>:
+  # DEBUG BEGIN_STMT
+  _43 = *reply_buf_ptr_64(D);
+  _44 = *reply_buf_len_ptr_65(D);
+  ret_79 = fci_qos_policer_cmd (msg_63(D), fci_ret_66(D), _43, _44);
+  # DEBUG ret => ret_79
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 29> :
+<L29>:
+  # DEBUG BEGIN_STMT
+  _45 = *reply_buf_ptr_64(D);
+  _46 = *reply_buf_len_ptr_65(D);
+  ret_77 = fci_qos_policer_flow_cmd (msg_63(D), fci_ret_66(D), _45, _46);
+  # DEBUG ret => ret_77
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 30> :
+<L30>:
+  # DEBUG BEGIN_STMT
+  _47 = *reply_buf_ptr_64(D);
+  _48 = *reply_buf_len_ptr_65(D);
+  ret_75 = fci_qos_policer_wred_cmd (msg_63(D), fci_ret_66(D), _47, _48);
+  # DEBUG ret => ret_75
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 31> :
+<L31>:
+  # DEBUG BEGIN_STMT
+  _49 = *reply_buf_ptr_64(D);
+  _50 = *reply_buf_len_ptr_65(D);
+  ret_73 = fci_qos_policer_shp_cmd (msg_63(D), fci_ret_66(D), _49, _50);
+  # DEBUG ret => ret_73
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 32> :
+<L32>:
+  # DEBUG BEGIN_STMT
+  _51 = msg_63(D)->msg_cmd.code;
+  ret_87 = fci_l2br_flush_cmd (_51, fci_ret_66(D));
+  # DEBUG ret => ret_87
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 33> :
+<L35>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_66(D) = 62725;
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 34> :
+<L37>:
+  # DEBUG BEGIN_STMT
+  _52 = *reply_buf_ptr_64(D);
+  _53 = *reply_buf_len_ptr_65(D);
+  ret_70 = fci_timer_owner_lock_cmd (msg_63(D), fci_ret_66(D), _52, _53);
+  # DEBUG ret => ret_70
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 35> :
+<L38>:
+  # DEBUG BEGIN_STMT
+  _54 = *reply_buf_ptr_64(D);
+  _55 = *reply_buf_len_ptr_65(D);
+  ret_68 = fci_timer_owner_unlock_cmd (msg_63(D), fci_ret_66(D), _54, _55);
+  # DEBUG ret => ret_68
+  # DEBUG BEGIN_STMT
+  goto <bb 37>; [INV]
+
+  <bb 36> :
+<L39>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_143 = 22;
+  # DEBUG ret => ret_143
+  # DEBUG BEGIN_STMT
+  *fci_ret_66(D) = 1;
+  # DEBUG BEGIN_STMT
+
+  <bb 37> :
+  # ret_57 = PHI <ret_56(7), ret_142(8), ret_116(9), ret_118(10), ret_114(11), ret_139(12), ret_128(13), ret_135(14), ret_124(15), ret_60(16), ret_60(17), ret_110(18), ret_89(19), ret_108(20), ret_106(21), ret_104(22), ret_102(23), ret_85(24), ret_83(25), ret_81(26), ret_112(27), ret_79(28), ret_77(29), ret_75(30), ret_73(31), ret_87(32), ret_60(33), ret_70(34), ret_68(35), ret_143(36)>
+  # DEBUG ret => ret_57
+  # DEBUG BEGIN_STMT
+  _145 = ret_57;
+  return _145;
+
+}
+
+
+fci_init_param_validate (struct fci_t * fci_context, const char_t * const identifier)
+{
+  errno_t err;
+  unsigned char _1;
+  errno_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  err_4 = 0;
+  # DEBUG err => err_4
+  # DEBUG BEGIN_STMT
+  _1 = fci_context_6(D)->fci_initialized;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FCI has already been initialized!\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci.c", 116, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  err_18 = 22;
+  # DEBUG err => err_18
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (fci_context_6(D), 0, 6536);
+  # DEBUG BEGIN_STMT
+  fci_context_6(D)->log_if_db_initialized = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_6(D)->phy_if_db_initialized = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_6(D)->rt_db_initialized = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_6(D)->rtable_initialized = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_6(D)->tmu_initialized = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_6(D)->hm_cb_registered = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_6(D)->is_some_client = 0;
+  # DEBUG BEGIN_STMT
+  fci_context_6(D)->fci_owner_initialized = 0;
+
+  <bb 5> :
+  # err_2 = PHI <err_18(3), err_4(4)>
+  # DEBUG err => err_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = err_2;
+  return _19;
+
+}
+
+
+oal_mutex_unlock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

@@ -1,0 +1,343 @@
+SystemWfiConfig ()
+{
+  uint8 Major;
+  uint8 Minor;
+  uint32 U32MajorMinor;
+  uint32 u32EdbStatus;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u32EdbStatus = 0;
+  # DEBUG BEGIN_STMT
+  _1 = 1074380800B;
+  U32MajorMinor = _1->MIDR1;
+  # DEBUG BEGIN_STMT
+  _2 = (unsigned char) U32MajorMinor;
+  Minor = _2 & 15;
+  # DEBUG BEGIN_STMT
+  _3 = U32MajorMinor >> 4;
+  _4 = (unsigned char) _3;
+  Major = _4 & 15;
+  # DEBUG BEGIN_STMT
+  if (Major == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  if (Minor == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 = 1074252032B;
+  _6 = _5->EXT_DBGSTAT;
+  u32EdbStatus = _6 & 1;
+  # DEBUG BEGIN_STMT
+  if (u32EdbStatus == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _7 = 1372587520B;
+  _8 = _7->DAP_EN_CTRL;
+  _9 = 1372587520B;
+  _10 = _8 & 2147483647;
+  _9->DAP_EN_CTRL = _10;
+  # DEBUG BEGIN_STMT
+  _11 = 1372587520B;
+  _12 = _11->DAP_EN_CTRL;
+  _13 = 1372587520B;
+  _14 = _12 & 3221225471;
+  _13->DAP_EN_CTRL = _14;
+  # DEBUG BEGIN_STMT
+  _15 = 1372587520B;
+  _16 = _15->DAP_EN_CTRL;
+  _17 = 1372587520B;
+  _18 = _16 & 3758096383;
+  _17->DAP_EN_CTRL = _18;
+  # DEBUG BEGIN_STMT
+  _19 = 1372587520B;
+  _20 = _19->DAP_EN_CTRL;
+  _21 = 1372587520B;
+  _22 = _20 & 4026531839;
+  _21->DAP_EN_CTRL = _22;
+  # DEBUG BEGIN_STMT
+  _23 = 1372587520B;
+  _24 = _23->CONTROL;
+  _25 = 1372587520B;
+  _26 = _24 | 256;
+  _25->CONTROL = _26;
+  # DEBUG BEGIN_STMT
+  _27 = 1372587520B;
+  _28 = _27->CONTROL;
+  _29 = 1372587520B;
+  _30 = _28 | 512;
+  _29->CONTROL = _30;
+  # DEBUG BEGIN_STMT
+  _31 = 1372587520B;
+  _32 = _31->CONTROL;
+  _33 = 1372587520B;
+  _34 = _32 | 1024;
+  _33->CONTROL = _34;
+  # DEBUG BEGIN_STMT
+  _35 = 1372587520B;
+  _36 = _35->CORTEX_A53_A0_IP_DBG;
+  _37 = 1372587520B;
+  _38 = _36 | 32;
+  _37->CORTEX_A53_A0_IP_DBG = _38;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+__attribute__((always_inline))
+sys_m7_cache_init ()
+{
+  uint32 ways;
+  uint32 sets;
+  uint32 ccsidr;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ccsidr = 0;
+  # DEBUG BEGIN_STMT
+  sets = 0;
+  # DEBUG BEGIN_STMT
+  ways = 0;
+  # DEBUG BEGIN_STMT
+  _1 = 3758153728B;
+  _1->CSSELR = 0;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  _2 = 3758153728B;
+  ccsidr = _2->CCSIDR;
+  # DEBUG BEGIN_STMT
+  _3 = ccsidr >> 13;
+  sets = _3 & 32767;
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = ccsidr >> 3;
+  ways = _4 & 1023;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = sets << 5;
+  _6 = _5 & 16352;
+  _7 = ways << 30;
+  _8 = 3758153728B;
+  _9 = _6 | _7;
+  _8->DCISW = _9;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  ways.0_10 = ways;
+  ways = ways.0_10 + 4294967295;
+  if (ways.0_10 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  sets.1_11 = sets;
+  sets = sets.1_11 + 4294967295;
+  if (sets.1_11 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  _12 = 3758153728B;
+  _13 = _12->CCR;
+  _14 = 3758153728B;
+  _15 = _13 | 65536;
+  _14->CCR = _15;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  # DEBUG BEGIN_STMT
+  _16 = 3758153728B;
+  _16->ICIALLU = 0;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  # DEBUG BEGIN_STMT
+  _17 = 3758153728B;
+  _18 = _17->CCR;
+  _19 = 3758153728B;
+  _20 = _18 | 131072;
+  _19->CCR = _20;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  return;
+
+}
+
+
+SystemInit ()
+{
+  uint32 coreId;
+  uint32 coreMask;
+  uint32 i;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  coreId = (uint32) _1;
+  # DEBUG BEGIN_STMT
+  switch (coreId) <default: <L8> [INV], case 0 ... 3: <L0> [INV], case 4: <L4> [INV], case 5: <L5> [INV], case 6: <L6> [INV], case 7: <L7> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  coreMask = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  coreMask = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  coreMask = 4;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  coreMask = 8;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  coreMask = 16;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  coreMask = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _2 = 1075412992B;
+  _3 = _2->IRSPRC[i];
+  _4 = (short unsigned int) coreMask;
+  _5 = 1075412992B;
+  _6 = _3 | _4;
+  _5->IRSPRC[i] = _6;
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (i <= 239)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  NVIC_SetPriorityGrouping (0);
+  # DEBUG BEGIN_STMT
+  _7 = 3758153728B;
+  _8 = _7->CCR;
+  _9 = 3758153728B;
+  _10 = _8 | 1;
+  _9->CCR = _10;
+  # DEBUG BEGIN_STMT
+  _11 = 3758153728B;
+  _11->SHPR3 = 0;
+  # DEBUG BEGIN_STMT
+  _12 = 3758153728B;
+  _13 = _12->CPACR;
+  _14 = 3758153728B;
+  _15 = _13 | 15728640;
+  _14->CPACR = _15;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" DSB");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ISB");
+  # DEBUG BEGIN_STMT
+  sys_m7_cache_init ();
+  # DEBUG BEGIN_STMT
+  SystemWfiConfig ();
+  return;
+
+}
+
+
+Sys_GetCoreID ()
+{
+  uint8 D.7042;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1075412992B;
+  _2 = _1->CPXNUM;
+  D.7042 = (uint8) _2;
+  return D.7042;
+
+}
+
+
+default_interrupt_routine ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 2>; [INV]
+
+}
+
+
+startup_go_to_user_mode ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

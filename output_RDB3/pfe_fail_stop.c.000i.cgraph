@@ -1,0 +1,652 @@
+Trivially needed symbols: pfe_fail_stop_irq_unmask pfe_fail_stop_irq_mask pfe_fail_stop_isr pfe_fail_stop_destroy pfe_fail_stop_create
+
+
+Initial Symbol table:
+
+pfe_fail_stop_cfg_irq_unmask/18 (pfe_fail_stop_cfg_irq_unmask) @0700ae00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_unmask/13 
+  Calls: 
+pfe_fail_stop_cfg_isr/17 (pfe_fail_stop_cfg_isr) @0700ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_isr/11 
+  Calls: 
+pfe_fail_stop_cfg_irq_mask/16 (pfe_fail_stop_cfg_irq_mask) @0700a9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_mask/12 pfe_fail_stop_destroy/10 
+  Calls: 
+pfe_fail_stop_cfg_irq_unmask_all/15 (pfe_fail_stop_cfg_irq_unmask_all) @0700a7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 
+  Calls: 
+autolibc_memset/14 (autolibc_memset) @0700a700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 
+  Calls: 
+pfe_fail_stop_irq_unmask/13 (pfe_fail_stop_irq_unmask) @0700a2a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask/18 
+pfe_fail_stop_irq_mask/12 (pfe_fail_stop_irq_mask) @0700a000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0700a2a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 
+pfe_fail_stop_isr/11 (pfe_fail_stop_isr) @07006c40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0700a000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_isr/17 
+pfe_fail_stop_destroy/10 (pfe_fail_stop_destroy) @07006e00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07006c40
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 
+pfe_fail_stop_create/9 (pfe_fail_stop_create) @07006b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07006e00
+  References: fail_stop_instance/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask_all/15 autolibc_memset/14 
+fail_stop_instance/8 (fail_stop_instance) @07002b88
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @07006e00
+  References: 
+  Referring: pfe_fail_stop_create/9 (addr)
+  Availability: not-ready
+  Varpool flags:
+hal_ip_ready_get/7 (hal_ip_ready_get) @070009a0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+hal_ip_ready_set/6 (hal_ip_ready_set) @07000700
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+find_irq_idx_from_id/5 (find_irq_idx_from_id) @07096540
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_unlock/4 (oal_mutex_unlock) @06ff1c40
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_lock/3 (oal_mutex_lock) @06ff19a0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @06fe6ca8
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @06fe6bd0
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+oal_swap_endian_long/0 (oal_swap_endian_long) @06e3cd20
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: hal_ip_ready_get hal_ip_ready_set find_irq_idx_from_id oal_mutex_unlock oal_mutex_lock SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+pfe_fail_stop_cfg_irq_unmask/18 (pfe_fail_stop_cfg_irq_unmask) @0700ae00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_unmask/13 
+  Calls: 
+pfe_fail_stop_cfg_isr/17 (pfe_fail_stop_cfg_isr) @0700ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_isr/11 
+  Calls: 
+pfe_fail_stop_cfg_irq_mask/16 (pfe_fail_stop_cfg_irq_mask) @0700a9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_mask/12 pfe_fail_stop_destroy/10 
+  Calls: 
+pfe_fail_stop_cfg_irq_unmask_all/15 (pfe_fail_stop_cfg_irq_unmask_all) @0700a7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 
+  Calls: 
+autolibc_memset/14 (autolibc_memset) @0700a700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 
+  Calls: 
+pfe_fail_stop_irq_unmask/13 (pfe_fail_stop_irq_unmask) @0700a2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask/18 
+pfe_fail_stop_irq_mask/12 (pfe_fail_stop_irq_mask) @0700a000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 
+pfe_fail_stop_isr/11 (pfe_fail_stop_isr) @07006c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_isr/17 
+pfe_fail_stop_destroy/10 (pfe_fail_stop_destroy) @07006e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 
+pfe_fail_stop_create/9 (pfe_fail_stop_create) @07006b60
+  Type: function definition analyzed
+  Visibility: public
+  References: fail_stop_instance/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask_all/15 autolibc_memset/14 
+fail_stop_instance/8 (fail_stop_instance) @07002b88
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_fail_stop_create/9 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+
+Initial Symbol table:
+
+pfe_fail_stop_cfg_irq_unmask/18 (pfe_fail_stop_cfg_irq_unmask) @0700ae00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_unmask/13 
+  Calls: 
+pfe_fail_stop_cfg_isr/17 (pfe_fail_stop_cfg_isr) @0700ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_isr/11 
+  Calls: 
+pfe_fail_stop_cfg_irq_mask/16 (pfe_fail_stop_cfg_irq_mask) @0700a9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_mask/12 pfe_fail_stop_destroy/10 
+  Calls: 
+pfe_fail_stop_cfg_irq_unmask_all/15 (pfe_fail_stop_cfg_irq_unmask_all) @0700a7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 
+  Calls: 
+autolibc_memset/14 (autolibc_memset) @0700a700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 
+  Calls: 
+pfe_fail_stop_irq_unmask/13 (pfe_fail_stop_irq_unmask) @0700a2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask/18 
+pfe_fail_stop_irq_mask/12 (pfe_fail_stop_irq_mask) @0700a000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 
+pfe_fail_stop_isr/11 (pfe_fail_stop_isr) @07006c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_isr/17 
+pfe_fail_stop_destroy/10 (pfe_fail_stop_destroy) @07006e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 
+pfe_fail_stop_create/9 (pfe_fail_stop_create) @07006b60
+  Type: function definition analyzed
+  Visibility: public
+  References: fail_stop_instance/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask_all/15 autolibc_memset/14 
+fail_stop_instance/8 (fail_stop_instance) @07002b88
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_fail_stop_create/9 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+pfe_fail_stop_cfg_irq_unmask/18 (pfe_fail_stop_cfg_irq_unmask) @0700ae00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_unmask/13 
+  Calls: 
+pfe_fail_stop_cfg_isr/17 (pfe_fail_stop_cfg_isr) @0700ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_isr/11 
+  Calls: 
+pfe_fail_stop_cfg_irq_mask/16 (pfe_fail_stop_cfg_irq_mask) @0700a9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_mask/12 pfe_fail_stop_destroy/10 
+  Calls: 
+pfe_fail_stop_cfg_irq_unmask_all/15 (pfe_fail_stop_cfg_irq_unmask_all) @0700a7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 
+  Calls: 
+autolibc_memset/14 (autolibc_memset) @0700a700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 
+  Calls: 
+pfe_fail_stop_irq_unmask/13 (pfe_fail_stop_irq_unmask) @0700a2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask/18 
+pfe_fail_stop_irq_mask/12 (pfe_fail_stop_irq_mask) @0700a000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 
+pfe_fail_stop_isr/11 (pfe_fail_stop_isr) @07006c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_isr/17 
+pfe_fail_stop_destroy/10 (pfe_fail_stop_destroy) @07006e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 
+pfe_fail_stop_create/9 (pfe_fail_stop_create) @07006b60
+  Type: function definition analyzed
+  Visibility: public
+  References: fail_stop_instance/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask_all/15 autolibc_memset/14 
+fail_stop_instance/8 (fail_stop_instance) @07002b88
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_fail_stop_create/9 (addr)
+  Availability: not-ready
+  Varpool flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+pfe_fail_stop_cfg_irq_unmask/18 (pfe_fail_stop_cfg_irq_unmask) @0700ae00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_unmask/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_fail_stop_cfg_isr/17 (pfe_fail_stop_cfg_isr) @0700ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_isr/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_fail_stop_cfg_irq_mask/16 (pfe_fail_stop_cfg_irq_mask) @0700a9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_destroy/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_fail_stop_cfg_irq_unmask_all/15 (pfe_fail_stop_cfg_irq_unmask_all) @0700a7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+autolibc_memset/14 (autolibc_memset) @0700a700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_fail_stop_irq_unmask/13 (pfe_fail_stop_irq_unmask) @0700a2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask/18 (1073741824 (estimated locally),1.00 per call) 
+pfe_fail_stop_irq_mask/12 (pfe_fail_stop_irq_mask) @0700a000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_destroy/10 (1073741824 (estimated locally),1.00 per call) 
+pfe_fail_stop_isr/11 (pfe_fail_stop_isr) @07006c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_isr/17 (1073741824 (estimated locally),1.00 per call) 
+pfe_fail_stop_destroy/10 (pfe_fail_stop_destroy) @07006e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: pfe_fail_stop_irq_mask/12 (1073741824 (estimated locally),1.00 per call) 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 (1073741824 (estimated locally),1.00 per call) 
+pfe_fail_stop_create/9 (pfe_fail_stop_create) @07006b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: fail_stop_instance/8 (addr)fail_stop_instance/8 (write)fail_stop_instance/8 (write)fail_stop_instance/8 (write)fail_stop_instance/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask_all/15 (1073741824 (estimated locally),1.00 per call) autolibc_memset/14 (1073741824 (estimated locally),1.00 per call) 
+fail_stop_instance/8 (fail_stop_instance) @07002b88
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: pfe_fail_stop_create/9 (addr)pfe_fail_stop_create/9 (write)pfe_fail_stop_create/9 (write)pfe_fail_stop_create/9 (write)pfe_fail_stop_create/9 (addr)
+  Availability: available
+  Varpool flags: used-by-single-function
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:pfe_fail_stop_create:0
+Time profile order in expand_all_functions:pfe_fail_stop_destroy:0
+Time profile order in expand_all_functions:pfe_fail_stop_isr:0
+Time profile order in expand_all_functions:pfe_fail_stop_irq_mask:0
+Time profile order in expand_all_functions:pfe_fail_stop_irq_unmask:0
+Trivially needed variables: fail_stop_instance
+Removing variables:
+
+Final Symbol table:
+
+pfe_fail_stop_cfg_irq_unmask/18 (pfe_fail_stop_cfg_irq_unmask) @0700ae00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_fail_stop_cfg_isr/17 (pfe_fail_stop_cfg_isr) @0700ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_fail_stop_cfg_irq_mask/16 (pfe_fail_stop_cfg_irq_mask) @0700a9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_fail_stop_cfg_irq_unmask_all/15 (pfe_fail_stop_cfg_irq_unmask_all) @0700a7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+autolibc_memset/14 (autolibc_memset) @0700a700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_fail_stop_irq_unmask/13 (pfe_fail_stop_irq_unmask) @0700a2a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_fail_stop_irq_mask/12 (pfe_fail_stop_irq_mask) @0700a000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) icf_merged optimize_size
+  Called by: 
+  Calls: 
+pfe_fail_stop_isr/11 (pfe_fail_stop_isr) @07006c40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_fail_stop_destroy/10 (pfe_fail_stop_destroy) @07006e00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) icf_merged optimize_size
+  Called by: 
+  Calls: 
+pfe_fail_stop_create/9 (pfe_fail_stop_create) @07006b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+fail_stop_instance/8 (fail_stop_instance) @07002b88
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: used-by-single-function

@@ -1,0 +1,987 @@
+Trivially needed symbols: ipc_os_poll_channels ipc_os_get_remote_shm ipc_os_get_local_shm ipc_shm_hardirq_instance ipc_shm_hardirq ipc_os_free ipc_os_init
+
+
+Initial Symbol table:
+
+vTaskGenericNotifyGiveFromISR/20 (vTaskGenericNotifyGiveFromISR) @06e83b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ipc_hw_irq_clear/19 (ipc_hw_irq_clear) @06e83a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ipc_hw_irq_disable/18 (ipc_hw_irq_disable) @06e838c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 ipc_os_free_irq/6 
+  Calls: 
+vTaskDelete/17 (vTaskDelete) @06e83700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_os_free/7 
+  Calls: 
+ipc_hw_irq_enable/16 (ipc_hw_irq_enable) @06e83460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_softirq/8 
+  Calls: 
+ulTaskGenericNotifyTake/15 (ulTaskGenericNotifyTake) @06e832a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_softirq/8 ipc_shm_softirq/8 
+  Calls: 
+xTaskCreate/14 (xTaskCreate) @06e830e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_os_init/5 
+  Calls: 
+ipc_os_poll_channels/13 (ipc_os_poll_channels) @06e7eee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+ipc_os_get_remote_shm/12 (ipc_os_get_remote_shm) @06e7ec40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e7eee0
+  References: ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_os_get_local_shm/11 (ipc_os_get_local_shm) @06e7e9a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e7ec40
+  References: ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_hardirq_instance/10 (ipc_shm_hardirq_instance) @06e7e700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e7e9a0
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 vTaskGenericNotifyGiveFromISR/20 ipc_hw_irq_clear/19 ipc_hw_irq_disable/18 ulPortRaiseBASEPRI/2 
+ipc_shm_hardirq/9 (ipc_shm_hardirq) @06e7e1c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e7e700
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 vTaskGenericNotifyGiveFromISR/20 ipc_hw_irq_clear/19 ipc_hw_irq_disable/18 ulPortRaiseBASEPRI/2 
+ipc_shm_softirq/8 (ipc_shm_softirq) @06ebc540
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  Aux: @06eb3ea0
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: ipc_os_init/5 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ulTaskGenericNotifyTake/15 ipc_hw_irq_enable/16 ulTaskGenericNotifyTake/15 
+   Indirect call
+ipc_os_free/7 (ipc_os_free) @06ebcc40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06e7e1c0
+  References: ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vTaskDelete/17 ipc_os_free_irq/6 
+ipc_os_free_irq/6 (ipc_os_free_irq) @06ebc9a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06e7e1c0
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_os_free/7 
+  Calls: ipc_hw_irq_disable/18 
+ipc_os_init/5 (ipc_os_init) @06ebc700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06ebcc40
+  References: ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_shm_softirq/8 (addr)ipc_os_priv/4 (addr)ipc_os_priv/4 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTaskCreate/14 
+ipc_os_priv/4 (ipc_os_priv) @06eb3ea0
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @06ebcc40
+  References: 
+  Referring: ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (read)ipc_os_init/5 (read)ipc_os_init/5 (addr)ipc_os_init/5 (write)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (write)ipc_shm_softirq/8 (read)ipc_os_free/7 (write)ipc_os_free/7 (write)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (write)ipc_os_free_irq/6 (read)ipc_os_free_irq/6 (read)ipc_os_free_irq/6 (read)ipc_shm_hardirq/9 (read)ipc_shm_hardirq/9 (read)ipc_shm_hardirq/9 (write)ipc_shm_hardirq/9 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (write)ipc_shm_hardirq_instance/10 (read)ipc_os_get_local_shm/11 (read)ipc_os_get_remote_shm/12 (read)ipc_os_poll_channels/13 (read)ipc_os_poll_channels/13 (read)
+  Availability: not-ready
+  Varpool flags:
+vPortSetBASEPRI/3 (vPortSetBASEPRI) @06e1f540
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06e7e700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ulPortRaiseBASEPRI/2 (ulPortRaiseBASEPRI) @06e1f2a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06e1f540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+vPortRaiseBASEPRI/1 (vPortRaiseBASEPRI) @06e1bee0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+xPortIsInsideInterrupt/0 (xPortIsInsideInterrupt) @06e1bb60
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: vPortRaiseBASEPRI xPortIsInsideInterrupt
+
+Reclaimed Symbol table:
+
+vTaskGenericNotifyGiveFromISR/20 (vTaskGenericNotifyGiveFromISR) @06e83b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ipc_hw_irq_clear/19 (ipc_hw_irq_clear) @06e83a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ipc_hw_irq_disable/18 (ipc_hw_irq_disable) @06e838c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 ipc_os_free_irq/6 
+  Calls: 
+vTaskDelete/17 (vTaskDelete) @06e83700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_os_free/7 
+  Calls: 
+ipc_hw_irq_enable/16 (ipc_hw_irq_enable) @06e83460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_softirq/8 
+  Calls: 
+ulTaskGenericNotifyTake/15 (ulTaskGenericNotifyTake) @06e832a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_softirq/8 ipc_shm_softirq/8 
+  Calls: 
+xTaskCreate/14 (xTaskCreate) @06e830e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_os_init/5 
+  Calls: 
+ipc_os_poll_channels/13 (ipc_os_poll_channels) @06e7eee0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+ipc_os_get_remote_shm/12 (ipc_os_get_remote_shm) @06e7ec40
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_os_get_local_shm/11 (ipc_os_get_local_shm) @06e7e9a0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_hardirq_instance/10 (ipc_shm_hardirq_instance) @06e7e700
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 vTaskGenericNotifyGiveFromISR/20 ipc_hw_irq_clear/19 ipc_hw_irq_disable/18 ulPortRaiseBASEPRI/2 
+ipc_shm_hardirq/9 (ipc_shm_hardirq) @06e7e1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 vTaskGenericNotifyGiveFromISR/20 ipc_hw_irq_clear/19 ipc_hw_irq_disable/18 ulPortRaiseBASEPRI/2 
+ipc_shm_softirq/8 (ipc_shm_softirq) @06ebc540
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: ipc_os_init/5 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ulTaskGenericNotifyTake/15 ipc_hw_irq_enable/16 ulTaskGenericNotifyTake/15 
+   Indirect call
+ipc_os_free/7 (ipc_os_free) @06ebcc40
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vTaskDelete/17 ipc_os_free_irq/6 
+ipc_os_free_irq/6 (ipc_os_free_irq) @06ebc9a0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_os_free/7 
+  Calls: ipc_hw_irq_disable/18 
+ipc_os_init/5 (ipc_os_init) @06ebc700
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_shm_softirq/8 (addr)ipc_os_priv/4 (addr)ipc_os_priv/4 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTaskCreate/14 
+ipc_os_priv/4 (ipc_os_priv) @06eb3ea0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (read)ipc_os_init/5 (read)ipc_os_init/5 (addr)ipc_os_init/5 (write)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (write)ipc_shm_softirq/8 (read)ipc_os_free/7 (write)ipc_os_free/7 (write)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (write)ipc_os_free_irq/6 (read)ipc_os_free_irq/6 (read)ipc_os_free_irq/6 (read)ipc_shm_hardirq/9 (read)ipc_shm_hardirq/9 (read)ipc_shm_hardirq/9 (write)ipc_shm_hardirq/9 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (write)ipc_shm_hardirq_instance/10 (read)ipc_os_get_local_shm/11 (read)ipc_os_get_remote_shm/12 (read)ipc_os_poll_channels/13 (read)ipc_os_poll_channels/13 (read)
+  Availability: not-ready
+  Varpool flags:
+vPortSetBASEPRI/3 (vPortSetBASEPRI) @06e1f540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ulPortRaiseBASEPRI/2 (ulPortRaiseBASEPRI) @06e1f2a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+
+
+Initial Symbol table:
+
+vTaskGenericNotifyGiveFromISR/20 (vTaskGenericNotifyGiveFromISR) @06e83b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ipc_hw_irq_clear/19 (ipc_hw_irq_clear) @06e83a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ipc_hw_irq_disable/18 (ipc_hw_irq_disable) @06e838c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 ipc_os_free_irq/6 
+  Calls: 
+vTaskDelete/17 (vTaskDelete) @06e83700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_os_free/7 
+  Calls: 
+ipc_hw_irq_enable/16 (ipc_hw_irq_enable) @06e83460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_softirq/8 
+  Calls: 
+ulTaskGenericNotifyTake/15 (ulTaskGenericNotifyTake) @06e832a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_softirq/8 ipc_shm_softirq/8 
+  Calls: 
+xTaskCreate/14 (xTaskCreate) @06e830e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_os_init/5 
+  Calls: 
+ipc_os_poll_channels/13 (ipc_os_poll_channels) @06e7eee0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+ipc_os_get_remote_shm/12 (ipc_os_get_remote_shm) @06e7ec40
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_os_get_local_shm/11 (ipc_os_get_local_shm) @06e7e9a0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_hardirq_instance/10 (ipc_shm_hardirq_instance) @06e7e700
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 vTaskGenericNotifyGiveFromISR/20 ipc_hw_irq_clear/19 ipc_hw_irq_disable/18 ulPortRaiseBASEPRI/2 
+ipc_shm_hardirq/9 (ipc_shm_hardirq) @06e7e1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 vTaskGenericNotifyGiveFromISR/20 ipc_hw_irq_clear/19 ipc_hw_irq_disable/18 ulPortRaiseBASEPRI/2 
+ipc_shm_softirq/8 (ipc_shm_softirq) @06ebc540
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: ipc_os_init/5 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ulTaskGenericNotifyTake/15 ipc_hw_irq_enable/16 ulTaskGenericNotifyTake/15 
+   Indirect call
+ipc_os_free/7 (ipc_os_free) @06ebcc40
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vTaskDelete/17 ipc_os_free_irq/6 
+ipc_os_free_irq/6 (ipc_os_free_irq) @06ebc9a0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_os_free/7 
+  Calls: ipc_hw_irq_disable/18 
+ipc_os_init/5 (ipc_os_init) @06ebc700
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_shm_softirq/8 (addr)ipc_os_priv/4 (addr)ipc_os_priv/4 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTaskCreate/14 
+ipc_os_priv/4 (ipc_os_priv) @06eb3ea0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (read)ipc_os_init/5 (read)ipc_os_init/5 (addr)ipc_os_init/5 (write)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (write)ipc_shm_softirq/8 (read)ipc_os_free/7 (write)ipc_os_free/7 (write)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (write)ipc_os_free_irq/6 (read)ipc_os_free_irq/6 (read)ipc_os_free_irq/6 (read)ipc_shm_hardirq/9 (read)ipc_shm_hardirq/9 (read)ipc_shm_hardirq/9 (write)ipc_shm_hardirq/9 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (write)ipc_shm_hardirq_instance/10 (read)ipc_os_get_local_shm/11 (read)ipc_os_get_remote_shm/12 (read)ipc_os_poll_channels/13 (read)ipc_os_poll_channels/13 (read)
+  Availability: not-ready
+  Varpool flags:
+vPortSetBASEPRI/3 (vPortSetBASEPRI) @06e1f540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ulPortRaiseBASEPRI/2 (ulPortRaiseBASEPRI) @06e1f2a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+vTaskGenericNotifyGiveFromISR/20 (vTaskGenericNotifyGiveFromISR) @06e83b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ipc_hw_irq_clear/19 (ipc_hw_irq_clear) @06e83a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ipc_hw_irq_disable/18 (ipc_hw_irq_disable) @06e838c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 ipc_os_free_irq/6 
+  Calls: 
+vTaskDelete/17 (vTaskDelete) @06e83700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_os_free/7 
+  Calls: 
+ipc_hw_irq_enable/16 (ipc_hw_irq_enable) @06e83460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_softirq/8 
+  Calls: 
+ulTaskGenericNotifyTake/15 (ulTaskGenericNotifyTake) @06e832a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_shm_softirq/8 ipc_shm_softirq/8 
+  Calls: 
+xTaskCreate/14 (xTaskCreate) @06e830e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: ipc_os_init/5 
+  Calls: 
+ipc_os_poll_channels/13 (ipc_os_poll_channels) @06e7eee0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call
+ipc_os_get_remote_shm/12 (ipc_os_get_remote_shm) @06e7ec40
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_os_get_local_shm/11 (ipc_os_get_local_shm) @06e7e9a0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_hardirq_instance/10 (ipc_shm_hardirq_instance) @06e7e700
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 vTaskGenericNotifyGiveFromISR/20 ipc_hw_irq_clear/19 ipc_hw_irq_disable/18 ulPortRaiseBASEPRI/2 
+ipc_shm_hardirq/9 (ipc_shm_hardirq) @06e7e1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 vTaskGenericNotifyGiveFromISR/20 ipc_hw_irq_clear/19 ipc_hw_irq_disable/18 ulPortRaiseBASEPRI/2 
+ipc_shm_softirq/8 (ipc_shm_softirq) @06ebc540
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: ipc_os_init/5 (addr)
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ulTaskGenericNotifyTake/15 ipc_hw_irq_enable/16 ulTaskGenericNotifyTake/15 
+   Indirect call
+ipc_os_free/7 (ipc_os_free) @06ebcc40
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vTaskDelete/17 ipc_os_free_irq/6 
+ipc_os_free_irq/6 (ipc_os_free_irq) @06ebc9a0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_os_free/7 
+  Calls: ipc_hw_irq_disable/18 
+ipc_os_init/5 (ipc_os_init) @06ebc700
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_shm_softirq/8 (addr)ipc_os_priv/4 (addr)ipc_os_priv/4 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: xTaskCreate/14 
+ipc_os_priv/4 (ipc_os_priv) @06eb3ea0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_init/5 (read)ipc_os_init/5 (read)ipc_os_init/5 (addr)ipc_os_init/5 (write)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (write)ipc_shm_softirq/8 (read)ipc_os_free/7 (write)ipc_os_free/7 (write)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_free/7 (write)ipc_os_free_irq/6 (read)ipc_os_free_irq/6 (read)ipc_os_free_irq/6 (read)ipc_shm_hardirq/9 (read)ipc_shm_hardirq/9 (read)ipc_shm_hardirq/9 (write)ipc_shm_hardirq/9 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (write)ipc_shm_hardirq_instance/10 (read)ipc_os_get_local_shm/11 (read)ipc_os_get_remote_shm/12 (read)ipc_os_poll_channels/13 (read)ipc_os_poll_channels/13 (read)
+  Availability: not-ready
+  Varpool flags:
+vPortSetBASEPRI/3 (vPortSetBASEPRI) @06e1f540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+ulPortRaiseBASEPRI/2 (ulPortRaiseBASEPRI) @06e1f2a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_shm_hardirq_instance/10 ipc_shm_hardirq/9 
+  Calls: 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+vTaskGenericNotifyGiveFromISR/20 (vTaskGenericNotifyGiveFromISR) @06e83b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 (177167401 (estimated locally),0.17 per call) ipc_shm_hardirq/9 (118111601 (estimated locally),0.50 per call) 
+  Calls: 
+ipc_hw_irq_clear/19 (ipc_hw_irq_clear) @06e83a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 (177167401 (estimated locally),0.17 per call) ipc_shm_hardirq/9 (477815111 (estimated locally),2.02 per call) 
+  Calls: 
+ipc_hw_irq_disable/18 (ipc_hw_irq_disable) @06e838c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_hardirq_instance/10 (177167401 (estimated locally),0.17 per call) ipc_shm_hardirq/9 (477815111 (estimated locally),2.02 per call) ipc_os_free_irq/6 (12862353 (estimated locally),0.22 per call) 
+  Calls: 
+vTaskDelete/17 (vTaskDelete) @06e83700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_os_free/7 (6431177 (estimated locally),0.11 per call) 
+  Calls: 
+ipc_hw_irq_enable/16 (ipc_hw_irq_enable) @06e83460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_softirq/8 (55660688 (estimated locally),10151.50 per call) 
+  Calls: 
+ulTaskGenericNotifyTake/15 (ulTaskGenericNotifyTake) @06e832a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_shm_softirq/8 (54829931 (estimated locally),9999.99 per call) ipc_shm_softirq/8 (5483 (estimated locally),1.00 per call) 
+  Calls: 
+xTaskCreate/14 (xTaskCreate) @06e830e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: ipc_os_init/5 (231826379 (estimated locally),0.22 per call) 
+  Calls: 
+ipc_os_poll_channels/13 (ipc_os_poll_channels) @06e7eee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+   Indirect call(1032832261 (estimated locally),0.96 per call) 
+ipc_os_get_remote_shm/12 (ipc_os_get_remote_shm) @06e7ec40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_os_priv/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_os_get_local_shm/11 (ipc_os_get_local_shm) @06e7e9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_os_priv/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_hardirq_instance/10 (ipc_shm_hardirq_instance) @06e7e700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: vTaskGenericNotifyGiveFromISR/20 (177167401 (estimated locally),0.17 per call) ipc_hw_irq_clear/19 (177167401 (estimated locally),0.17 per call) ipc_hw_irq_disable/18 (177167401 (estimated locally),0.17 per call) 
+ipc_shm_hardirq/9 (ipc_shm_hardirq) @06e7e1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:236223200 (estimated locally) body optimize_size
+  Called by: 
+  Calls: vTaskGenericNotifyGiveFromISR/20 (118111601 (estimated locally),0.50 per call) ipc_hw_irq_clear/19 (477815111 (estimated locally),2.02 per call) ipc_hw_irq_disable/18 (477815111 (estimated locally),2.02 per call) 
+ipc_shm_softirq/8 (ipc_shm_softirq) @06ebc540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)ipc_os_priv/4 (read)
+  Referring: ipc_os_init/5 (addr)
+  Availability: available
+  Function flags: count:5483 (estimated locally) body executed_once optimize_size
+  Called by: 
+  Calls: ulTaskGenericNotifyTake/15 (54829931 (estimated locally),9999.99 per call) ipc_hw_irq_enable/16 (55660688 (estimated locally),10151.50 per call) ulTaskGenericNotifyTake/15 (5483 (estimated locally),1.00 per call) 
+   Indirect call(1073741824 (estimated locally),195831.08 per call) 
+ipc_os_free/7 (ipc_os_free) @06ebcc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_os_priv/4 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:59055799 (estimated locally) body optimize_size
+  Called by: 
+  Calls: vTaskDelete/17 (6431177 (estimated locally),0.11 per call) ipc_os_free_irq/6 (inlined) (59055799 (estimated locally),1.00 per call) 
+ipc_os_free_irq/6 (ipc_os_free_irq) @06ebc9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_os_priv/4 (read)ipc_os_priv/4 (read)
+  Referring: 
+  Function ipc_os_free_irq/6 is inline copy in ipc_os_free/7
+  Availability: local
+  Function flags: count:59055799 (estimated locally) body local optimize_size
+  Called by: ipc_os_free/7 (inlined) (59055799 (estimated locally),1.00 per call) 
+  Calls: ipc_hw_irq_disable/18 (12862353 (estimated locally),0.22 per call) 
+ipc_os_init/5 (ipc_os_init) @06ebc700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (write)ipc_os_priv/4 (read)ipc_os_priv/4 (read)ipc_shm_softirq/8 (addr)ipc_os_priv/4 (addr)ipc_os_priv/4 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: xTaskCreate/14 (231826379 (estimated locally),0.22 per call) 
+ipc_os_priv/4 (ipc_os_priv) @06eb3ea0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_free/7 (read)ipc_os_free/7 (read)ipc_os_init/5 (write)ipc_os_free/7 (read)ipc_shm_hardirq/9 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (write)ipc_shm_softirq/8 (read)ipc_os_free/7 (read)ipc_os_free/7 (write)ipc_shm_hardirq/9 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq/9 (write)ipc_os_get_local_shm/11 (read)ipc_os_init/5 (addr)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_shm_softirq/8 (read)ipc_os_free_irq/6 (read)ipc_os_free_irq/6 (read)ipc_shm_hardirq/9 (read)ipc_shm_hardirq_instance/10 (write)ipc_os_get_remote_shm/12 (read)ipc_os_init/5 (read)ipc_os_init/5 (read)ipc_os_init/5 (write)ipc_os_init/5 (write)ipc_os_free/7 (write)ipc_os_free/7 (write)ipc_os_free/7 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (read)ipc_shm_hardirq_instance/10 (read)ipc_os_poll_channels/13 (read)ipc_os_poll_channels/13 (read)
+  Availability: available
+  Varpool flags:
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:ipc_shm_softirq:0
+Time profile order in expand_all_functions:ipc_os_init:0
+Time profile order in expand_all_functions:ipc_os_free:0
+Time profile order in expand_all_functions:ipc_shm_hardirq:0
+Time profile order in expand_all_functions:ipc_shm_hardirq_instance:0
+Time profile order in expand_all_functions:ipc_os_get_local_shm:0
+Time profile order in expand_all_functions:ipc_os_get_remote_shm:0
+Time profile order in expand_all_functions:ipc_os_poll_channels:0
+Trivially needed variables: ipc_os_priv
+Removing variables:
+
+Final Symbol table:
+
+vTaskGenericNotifyGiveFromISR/20 (vTaskGenericNotifyGiveFromISR) @06e83b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_clear/19 (ipc_hw_irq_clear) @06e83a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_disable/18 (ipc_hw_irq_disable) @06e838c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+vTaskDelete/17 (vTaskDelete) @06e83700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_enable/16 (ipc_hw_irq_enable) @06e83460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ulTaskGenericNotifyTake/15 (ulTaskGenericNotifyTake) @06e832a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+xTaskCreate/14 (xTaskCreate) @06e830e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+ipc_os_poll_channels/13 (ipc_os_poll_channels) @06e7eee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_os_get_remote_shm/12 (ipc_os_get_remote_shm) @06e7ec40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_os_get_local_shm/11 (ipc_os_get_local_shm) @06e7e9a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_hardirq_instance/10 (ipc_shm_hardirq_instance) @06e7e700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_hardirq/9 (ipc_shm_hardirq) @06e7e1c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:236223200 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_shm_softirq/8 (ipc_shm_softirq) @06ebc540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:5483 (estimated locally) executed_once optimize_size
+  Called by: 
+  Calls: 
+ipc_os_free/7 (ipc_os_free) @06ebcc40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:59055799 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_os_init/5 (ipc_os_init) @06ebc700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ipc_os_priv/4 (ipc_os_priv) @06eb3ea0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:

@@ -1,0 +1,81 @@
+oal_time_mdelay (uint32_t msec)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  oal_time_msleep (msec);
+  return;
+
+}
+
+
+oal_time_udelay (uint32_t usec)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (usec);
+  return;
+
+}
+
+
+oal_time_msleep (uint32_t msec)
+{
+  uint32_t u32Ctr;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32Ctr = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (1000);
+  # DEBUG BEGIN_STMT
+  u32Ctr = u32Ctr + 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (u32Ctr < msec)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+oal_time_usleep (uint32_t usec)
+{
+  uint32_t usec_ctr;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  usec_ctr = usec;
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Tm_BusyWait1us32bit (250);
+  # DEBUG BEGIN_STMT
+  usec_ctr = usec_ctr + 4294967046;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (usec_ctr > 250)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) usec_ctr;
+  Tm_BusyWait1us32bit (_1);
+  return;
+
+}
+
+

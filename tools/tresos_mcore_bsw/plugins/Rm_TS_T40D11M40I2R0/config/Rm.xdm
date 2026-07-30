@@ -1,0 +1,2388 @@
+<?xml version='1.0'?>
+<datamodel version="3.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+<!--
+*   @file    Rm.xdm
+*   @version 4.0.2
+*
+*   @brief   AUTOSAR Rm - Tresos Studio plugin schema file
+*   @details This file contains the schema configuration for and Rm Tresos Studio plugin.
+-->
+<!--
+/*==================================================================================================
+*   Project              : RTD AUTOSAR 4.4
+*   Platform             : CORTEXM
+*   Peripheral           : 
+*   Dependencies         : none
+*
+*   Autosar Version      : 4.4.0
+*   Autosar Revision     : ASR_REL_4_4_REV_0000
+*   Autosar Conf.Variant :
+*   SW Version           : 4.0.2
+*   Build Version        : S32_RTD_4_0_2_D2306_ASR_REL_4_4_REV_0000_20230630
+*
+*   Copyright 2020-2023 NXP Semiconductors
+*
+*   NXP Confidential. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms. By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms. If you do not agree to be
+*   bound by the applicable license terms, then you may not retain, install,
+*   activate or otherwise use the software.
+==================================================================================================*/
+-->
+
+<d:ctr type="AUTOSAR" factory="autosar"
+    xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+    xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+    xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+    <d:lst type="TOP-LEVEL-PACKAGES">
+        <d:ctr name="TS_T40D11M40I2R0" type="AR-PACKAGE">
+            <a:a name="UUID" value="ECUC:b29f2c08-0514-4b78-8757-9cd197ea3150"/>
+            <d:lst type="ELEMENTS">
+                <!-- @implements Rm_Object -->
+                <d:chc name="Rm" type="AR-ELEMENT" value="MODULE-DEF">
+                    <v:ctr type="MODULE-DEF">
+                        <a:a name="RELEASE" value="asc:4.4"/>
+                        <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                            <ad:ADMIN-DATA>
+                                <ad:DOC-REVISIONS>
+                                    <ad:DOC-REVISION>
+                                        <ad:REVISION-LABEL>4.6.0</ad:REVISION-LABEL>
+                                        <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                                        <ad:DATE>2014-10-31</ad:DATE>
+                                    </ad:DOC-REVISION>
+                                </ad:DOC-REVISIONS>
+                            </ad:ADMIN-DATA>
+                        </a:a>
+                        <a:a name="DESC"
+                             value="EN: Vendor specific: Configuration of the Rm (Resource Manager) module."/>
+                        <a:a name="POSTBUILDVARIANTSUPPORT" value="true"/>
+                        <a:a name="UUID" value="ECUC:3543c3ac-3566-11ed-a261-0242ac120002"/>
+                        <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                            <a:a name="DESC"
+                                value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="LABEL" value="Post Build Variant Used"/>
+                            <a:a name="ORIGIN" value="EB"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                            <a:da name="DEFAULT" value="false"/>
+                            <a:da name="TOOLTIP"
+                                value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                        </v:var>
+                        <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                            <a:a name="LABEL" value="Config Variant"/>
+                            <a:a name="UUID" value="ECUC:3543cc44-3566-11ed-a261-0242ac120002"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                                <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="DESC">
+                                <a:v>
+                                    <![CDATA[EN:<html>
+                                        <p>VariantPostBuild: Mix of precompile and postbuild time configuration parameters.<br>
+                                        </p>
+                                    </html>]]>
+                                </a:v>
+                            </a:a>
+                            <a:da name="DEFAULT" value="VariantPreCompile"/>
+                            <a:da name="RANGE">
+                                <a:v>VariantPostBuild</a:v>
+                                <a:v>VariantPreCompile</a:v>
+                            </a:da>
+                        </v:var>
+
+                        <v:ctr name="RmGeneral" type="IDENTIFIABLE">
+                            <a:a name="DESC" value="EN: Vendor specific: Configuration of general Rm parameters."/>
+                            <a:a name="UUID" value="ECUC:3543baba-3566-11ed-a261-0242ac120002"/>
+                            <a:a name="LABEL" value="Rm General Configuration"/>
+                            <a:da name="INVALID" type="XPath">
+                                <a:tst expr="
+                                (./RmEnableXRDCSupport ='false') and
+                                (./RmEnableSema42Support ='false') and
+                                (./RmEnableMscmSupport ='false') and
+                                (./RmMpuM7Configurable ='false') and
+                                'true'" 
+                                true="At least one RM feature must be enabled!"/>
+                            </a:da>
+                            <v:var name="Rm_VersionInfoApi" type="BOOLEAN">
+                                <a:a name="DESC" value="EN: Vendor specific: Enables/Disables the get version info API function"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:42da3770-7248-47fd-b1a8-8986ca635060"/>
+                                <a:da name="DEFAULT" value="true"/>
+                            </v:var>
+
+                            <!-- @implements RmDevErrorDetect_Object -->
+                            <v:var name="RmDevErrorDetect" type="BOOLEAN">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN: <html> Vendor specific:
+                                        <p>Switches the Development Error Detection and Notification on or off.</p>
+                                            <ul>
+                                                <li>true: Enabled.</li>
+                                                <li>false: Disabled.</li>
+                                            </ul>
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="LABEL" value="Rm Development Error Detect"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:d8897d9d-1ae0-4020-85fc-70dfeb9f28fe"/>
+                                <a:da name="DEFAULT" value="true"/>
+                            </v:var>
+
+                            <!-- EnableUserModeSupport -->
+                            <!-- @implements RmEnableUserModeSupport_Object -->
+                            <v:var name="RmEnableUserModeSupport" type="BOOLEAN">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:<html>
+                                            When this parameter is enabled, the RM module will adapt to run from User Mode, with the following measures:<p/>
+                                            b) using 'call trusted function' stubs for all internal function calls that access registers requiring supervisor mode.<p/>
+                                            for more information, please see chapter 5.7 User Mode Support in IM <p/>
+                                            Note: Implementation Specific Parameter.
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="LABEL" value="Rm Enable User Mode Support"/>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:fdf29f83-dbae-4cd2-abf2-c0941851a05e"/>
+                                <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- RmEnableMultiCore -->
+                            <v:var name="RmEnableMultiCore" type="BOOLEAN">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:<html>
+                                            When this parameter is enabled, the RM module will adapt to run with Multicore:<p/>
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="LABEL" value="Rm Enable MultiCore Support"/>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:89eea1f4-7523-11e8-adc0-fa7ae54baebc"/>
+                                <a:da name="DEFAULT" value="false"/>
+                                <a:da name="INVALID" type="XPath">
+                                    <a:tst expr="((ecu:get('Rm.MulticoreSupport') = 'false') and (. = 'true'))"
+                                           true="Multicore feature is not supported in this derivative."/>
+                                    <a:tst expr="((. = 'true') and(./../RmMpuM7Configurable = 'false'))"
+                                           true="Multicore feature only support for MPU M7 please enable RM Enable MPU M7 Support"/>
+                                </a:da>
+                            </v:var>
+
+                            <!-- RmEnableXRDCSupport -->
+                            <!-- @implements RmEnableXRDCSupport_Object -->
+                            <v:var name="RmEnableXRDCSupport" type="BOOLEAN">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:<html>
+                                            When this parameter is enabled, the Xrdc APIs are enabled to the user<p/>
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="LABEL" value="RM Enable XRDC Support"/>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:89eea1f4-7523-11e8-adc0-fa7ae6c2debc"/>
+                                <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- RmEnableSema42Support -->
+                            <!-- @implements RmEnableSema42Support_Object -->
+                            <v:var name="RmEnableSema42Support" type="BOOLEAN">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:<html>
+                                            When this parameter is enabled, the Sema42 APIs are enabled to the user<p/>
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                    <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="LABEL" value="RM Enable Sema42 Support"/>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:89eea1f4-7523-11e8-ad22-fa7ae6c2debc"/>
+                                <a:da name="DEFAULT" value="false"/>
+                                <a:da name="INVALID" type="XPath">
+                                    <a:tst expr="(../../RmGeneral/RmEnableXRDCSupport ='true' and node:value(.) = 'true') or (node:value(.) = 'false')" false="To enable SEMA42 API, XRDC support must be enabled"/>
+                                </a:da>
+                            </v:var>
+                            <!-- RmMpuM7Configurable -->
+                            <!-- @implements RmMpuM7Configurable_Object -->
+                            <v:var name="RmMpuM7Configurable" type="BOOLEAN">
+                                <a:a name="LABEL" value="RM Enable MPU M7 Support"/>
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:
+                                        <html>
+                                            <p>RmMpuM7Configurable</p>
+                                            <p>Check this in order to be able to use the ARM Cortex M7 MPU.</p>
+                                            <p></p>Note: Implementation Specific Parameter. <p/>
+                                        </html>
+                                    ]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID" value="ECUC:72a8a638-4009-4639-124a-bb4daf844a8b"/>
+                                <a:da name="DEFAULT" value="true"/>
+                            </v:var>
+                            <!-- @implements RmEnableMscmSupport_Object -->
+                            <v:var name="RmEnableMscmSupport" type="BOOLEAN">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:<html>
+                                            When this parameter is enabled, the MSCM APIs are enabled to the user<p/>
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="LABEL" value="RM Enable MSCM Support"/>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:19a780c1-ebcc-4e82-9b47-a52c36503f3e"/>
+                                <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                        </v:ctr>
+
+                        <v:ctr name="RmConfigSet" type="IDENTIFIABLE">
+                            <a:a name="DESC">
+                                <a:v><![CDATA[EN: <html> Vendor specific: This container is the base for a multiple configuration set
+                                    </html>]]>
+                                </a:v>
+                            </a:a>
+                            <a:a name="UUID" value="ECUC:b825a11b-5f5e-48b6-9c71-0e63b429c3da"/>
+                            <!-- @implements Xrdc_Configuration_Object -->
+                            <v:ctr name="Xrdc_Configuration" type="IDENTIFIABLE">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:
+                                            <html><p>Configuration for the Xrdc.</p></html>
+                                        ]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="UUID" value="ECUC:3543c672-3566-11ed-a261-0242ac120002"/>
+                                <a:a name="EDITABLE" type="XPath">
+                                    <a:tst expr="../../RmGeneral/RmEnableXRDCSupport ='true'"/>
+                                </a:a>
+
+                                <v:var name="XrdcDevErrorDetect" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Xrdc Development Error Detection"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                                <html>
+                                                    <p>XrdcDevErrorDetect</p>
+                                                    <p>Switches the Development Error Detection and Notification ON or OFF.</p>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:7228a335-4003-3381-8e1a-bb3d9f733111"/>
+                                    <a:da name="DEFAULT" value="true"/>
+                                </v:var>
+                                
+                                <!--  XrdcRegisterLock -->
+                                <v:var name="XrdcRegistersLock" type="BOOLEAN">
+                                        <a:a name="LABEL" value="Xrdc Registers Lock"/>
+                                        <a:a name="DESC" value="Lock XRDC registers (except PIDm registers) in order to prevent them from being unintentionally modified during Runtime."/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="INVALID" type="XPath">
+                                             <a:tst expr="../../../RmGeneral/RmEnableXRDCSupport ='false' and (. ='true')" true=" Please turn on XRDC Support first"/>
+                                        </a:a>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                        <a:a name="UUID" value="ECUC:be68078a-ba7e-4321-b0a2-8097d0117120"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:da name="DEFAULT" value="false"/>
+                                </v:var>
+
+                                <v:var name="XrdcCRLockBit" type="BOOLEAN">
+                                    <a:a name="DESC" value="Variable for setting the CR bit lock! XrdcRegisterLock should be true"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="INVALID" type="XPath">
+                                        <a:tst expr="../XrdcRegistersLock ='false' and (. ='true')" true="XrdcRegistersLock must be enabled in order to allow locking of the CR registers"/>
+                                    </a:a>
+                                    <a:a name="LABEL" value="Xrdc CR Lock Bit"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="ECUC:05f32a7c-873f-4678-3212-d9812fc8811c"/>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:da name="DEFAULT" value="false"/>
+                                </v:var>
+
+                                <!--  XrdcPIDRegisterLock -->
+                                <v:var name="XrdcPIDRegisterLock" type="ENUMERATION">
+                                        <a:a name="DESC" value="Select lock mode for PIDm registers"/>
+                                        <a:a name="LABEL" value="Xrdc PID Registers Lock"/>
+                                    <a:a name="INVALID" type="XPath">
+                                        <a:tst expr="../XrdcRegistersLock ='false' and (. ='true')" true="XrdcRegistersLock must be enabled in order to allow locking of the PID registers"/>
+                                        </a:a>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:a9e581b0-9f73-459c-8c1d-690f73a7eb86"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:da name="DEFAULT" value="XRDC_PID_UNLOCKED"/>
+                                        <a:da name="RANGE">
+                                            <a:v>XRDC_PID_UNLOCKED</a:v>
+                                            <a:v>XRDC_PID_ALLOW_ACCESS_FROM_MASTER</a:v>
+                                            <a:v>XRDC_PID_FULLY_LOCKED</a:v>
+                                        </a:da>
+                                </v:var>
+                            </v:ctr>
+
+                            <v:lst name="Rm_XRDC_Domain_Assignment" type="MAP">
+                                <a:a name="LABEL" value="XRDC Domain Assignment"/>
+                                <a:a name="EDITABLE" type="XPath">
+                                    <a:tst expr="../../RmGeneral/RmEnableXRDCSupport ='true'"/>
+                                </a:a>
+                                <a:da name="INVALID" type="XPath">
+                                <a:tst expr="../../RmGeneral/RmEnableXRDCSupport ='true' and (num:i(count(*))= 0)"
+                                true ="At least one Domain Assignment must be configured when XRDC Support is checked!"/>
+                                </a:da>
+                                <v:ctr name = "Rm_XRDC_Domain_Assignment" type = "IDENTIFIABLE">
+                                    <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:<html>
+                                                    All data need to configure one Domain.
+                                                </html>]]>
+                                            </a:v>
+                                    </a:a>
+                                    <a:a name="REQUIRES-INDEX" value="true"/>
+                                    <a:a name="UUID" value="ECUC:b31e0234-6514-405b-8738-1b767c971884"/>
+                                    <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                        <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+
+                                    
+                                    <v:var name= "DomainID" type="ENUMERATION">
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:<html> Vendor specific:
+                                                    Id for the current Domain.
+                                                    Note: Implementation Specific Parameter.
+                                                </html>]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="UUID" value="ECUC:b40023f0-dc5c-4198-bc4d-ab27cb37c4b3"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:da name="DEFAULT" type="XPath" expr="(ecu:list('Rm.XRDC.DomainID.List'))[position()-1=node:fallback(node:current()/../@index,'0')]"/>
+                                        <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="text:uniq(../../*/DomainID, .)" false="Duplicate Domain ID!"/>
+                                        </a:da>
+                                        <a:da name="RANGE" type="XPath" expr="ecu:list('Rm.XRDC.DomainID.List')"/>
+                                    </v:var>
+
+                                    <v:lst name="Domain_Master_Assignment" type="MAP">
+                                        <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="../../../../RmGeneral/RmEnableXRDCSupport ='true' and (num:i(count(*))= 0)"
+                                                true ="At least one Domain Master Assignment must be configured when XRDC Support is checked!"/>
+                                        </a:da>
+                                        <v:ctr name="Domain_Master_Assignment" type="IDENTIFIABLE">
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:<html> Vendor specific:
+                                                    All data need to configure one Master.
+                                                </html>]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="REQUIRES-INDEX" value="true"/>
+                                        <a:a name="UUID" value="ECUC:06a24c3a-e58b-4721-b07c-b37e842ffc31"/>
+                                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                            <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                        </a:a>
+
+                                        <v:var name="XrdcMasterInstance" type="ENUMERATION">
+                                            <a:a name="DESC" value="Select the master of XRDC"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="LABEL" value="Xrdc Master Instance"/>
+                                            <a:a name="UUID" value="ECUC:d14a0579-15b2-43e7-b7b0-f625d5b04b6a"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:da name="INVALID" type="XPath">
+                                                <a:tst expr="count(./../../../../*/Domain_Master_Assignment/*[XrdcMasterInstance = node:current()]) &gt; ecu:get(concat('Rm.XRDC.Master.DFMTRegisterCount.', node:fallback(../XrdcMasterInstance, ecu:list('Rm.XRDC.Master.List')[position()=1])))"
+                                                true="The master appears too much. Reduce the master appearance"/>
+                                            </a:da>
+                                            <a:da name="WARNING" type="XPath">
+                                                <a:tst expr="num:i(count(../../*[XrdcMasterInstance = node:current()])) &gt; num:i(1)" true = "The master appears more than one in this domain"/>
+                                            </a:da>
+                                            <a:da name="RANGE" type ="XPath" expr= "ecu:list('Rm.XRDC.Master.List')"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="ecu:list('Rm.XRDC.Master.List')[position()-1=node:fallback(node:current()/../@index,'0')]">
+                                            </a:da>
+                                        </v:var>
+
+                                        <!-- @implements XrdcPIDEnable_Object -->
+                                        <v:var name="XrdcPIDEnable" type="ENUMERATION">
+                                            <a:a name="DESC" value="PID mode enable - only valid if the master instance is core type"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="LABEL" value="Xrdc PID Enable"/>
+                                            <a:a name="UUID" value="ECUC:a9e581b0-9f73-459c-8c1d-690f73a7eb75"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="contains(ecu:list('Rm.XRDC.CoreMaster.List'),../XrdcMasterInstance)"/>
+                                            </a:a>
+                                            <a:da name="DEFAULT" value="XRDC_MDA_PID_DISABLE"/>
+                                            <a:da name="RANGE">
+                                                <a:v>XRDC_MDA_PID_DISABLE</a:v>
+                                                <a:v>XRDC_MDA_PID_ENABLE_EXPRESSION0</a:v>
+                                                <a:v>XRDC_MDA_PID_ENABLE_EXPRESSION1</a:v>
+                                            </a:da>
+                                        </v:var>
+
+                                        <v:var name="XrdcMasterPID" type="INTEGER">
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="LABEL" value="Xrdc Master PID"/>
+                                            <a:a name="UUID" value="ECUC:bac8d865-f024-4b85-91fe-8ac2fc9c013b"/>
+                                            <a:a name="DESC" value="Process Identifier. This field only has meaning if the core is core master type and PID mode enable"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="contains(ecu:list('Rm.XRDC.CoreMaster.List'),../XrdcMasterInstance)"/>
+                                                <a:tst expr="node:fallback(../XrdcPIDEnable, 'XRDC_MDA_PID_DISABLE') != 'XRDC_MDA_PID_DISABLE'"/>
+                                            </a:a>
+                                            <a:da name="DEFAULT" value="0"/>
+                                            <a:da name="INVALID" type="Range">
+                                                <a:tst expr="&lt;=63"/>
+                                                <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                        </v:var>
+
+                                        <v:var name="XrdcMasterPIDMask" type="INTEGER">
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="LABEL" value="Xrdc Master PID Mask"/>
+                                            <a:a name="UUID" value="ECUC:e88bd573-7b89-4b20-a2ff-2fc64f403934"/>
+                                            <a:a name="DESC" value="Process Identifier Mask. This field only has meaning if the core is core master type and PID mode enable"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:da name="DEFAULT" value="0"/>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="contains(ecu:list('Rm.XRDC.CoreMaster.List'),../XrdcMasterInstance)"/>
+                                                <a:tst expr="node:fallback(../XrdcPIDEnable, 'XRDC_MDA_PID_DISABLE') != 'XRDC_MDA_PID_DISABLE'"/>
+                                            </a:a>
+                                            <a:da name="INVALID" type="Range">
+                                            <a:tst expr="&lt;=63"/>
+                                            <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                        </v:var>
+                                        <v:var name="XrdcDIDBDisable" type="BOOLEAN">
+                                            <a:a name="DESC" value="Disabled DID bypass. This field only has meaning if the core is non-core master type"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="contains(ecu:list('Rm.XRDC.CoreMaster.List'),node:value(../XrdcMasterInstance))!= 'true'"/>
+                                            </a:a>
+                                            <a:a name="LABEL" value="Xrdc Disable DID Bypass"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:05f32b7b-873c-4678-9559-c9919f90de4d"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:da name="DEFAULT" value="false"/>
+                                        </v:var>
+                                        
+                                        <v:var name="XrdcMDADFMTLockBit" type="BOOLEAN">
+                                            <a:a name="DESC" value="Variable for setting the MDA_DFMT bit lock! XrdcRegisterLock should be true."/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="INVALID" type="XPath">
+                                                <a:tst expr="../../../../../Xrdc_Configuration/XrdcRegistersLock ='false' and (. ='true')" true="XrdcRegistersLock must be enabled in order to allow locking of the MDAD registers"/>
+                                            </a:a> 
+                                            <a:a name="LABEL" value="Xrdc MDA_DFMT Lock Bit"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:05f32a7c-873f-4678-3212-ab12c88a178f"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:da name="DEFAULT" value="false"/>
+                                        </v:var>
+
+                                        <v:var name="XrdcMasterMode" type="ENUMERATION">
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                <a:a name="LABEL" value="Xrdc Master Secure Mode"/>
+                                                <a:a name="UUID" value="ECUC:c2e0a120-1957-4b8c-84b8-7db4ffddd3c1"/>
+                                                <a:a name="DESC" value="Specifies the secure attribute. This field only has meaning if the core is non-core master type"/>
+                                                <a:a name="ORIGIN" value="NXP"/>
+                                            <a:da name="DEFAULT" value="XRDC_SECURE"/>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="contains(ecu:list('Rm.XRDC.CoreMaster.List'),node:value(../XrdcMasterInstance))!= 'true'"/>
+                                            </a:a>
+                                            <a:da name="RANGE">
+                                                    <a:v>XRDC_SECURE</a:v>
+                                                    <a:v>XRDC_NON_SECURE</a:v>
+                                                    <a:v>XRDC_INPUT_FROM_BUS_MASTER</a:v>
+                                            </a:da>
+                                        </v:var>
+
+                                        <v:var name="XrdcMasterPriviledgeMode" type="ENUMERATION">
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="LABEL" value="Xrdc Master Privileged Mode"/>
+                                            <a:a name="UUID" value="ECUC:c2e0a221-195b-4b8c-84b8-7db4ffddd3c1"/>
+                                            <a:a name="DESC" value="Specifies the privileged (supervisor/user) attribute. This field only has meaning if the core is non-core master type"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:da name="DEFAULT" value="XRDC_INPUT_PRIVILEDGE_FROM_BUS_MASTER"/>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="contains(ecu:list('Rm.XRDC.CoreMaster.List'),node:value(../XrdcMasterInstance))!= 'true'"/>
+                                            </a:a>
+                                            <a:da name="RANGE">
+                                                <a:v>XRDC_USER_MODE</a:v>
+                                                <a:v>XRDC_PRIVILEDGE_MODE</a:v>
+                                                <a:v>XRDC_INPUT_PRIVILEDGE_FROM_BUS_MASTER</a:v>
+                                            </a:da>
+                                        </v:var>
+                                        </v:ctr>
+                                    </v:lst>
+
+                                    <v:lst name="Domain_Peripheral_Assignment" type="MAP">
+                                        <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="../../../../RmGeneral/RmEnableXRDCSupport ='true' and (num:i(count(*))= 0)"
+                                                    true ="At least one Domain Peripheral Assignment must be configured when XRDC Support is checked!"/>
+                                        </a:da>
+                                        <v:ctr name="Domain_Peripheral_Assignment" type="IDENTIFIABLE">
+                                            <a:a name="DESC">
+                                                    <a:v>
+                                                        <![CDATA[EN:<html> Vendor specific:
+                                                            All data need to configure Peripheral for one Domain.
+                                                        </html>]]>
+                                                    </a:v>
+                                            </a:a>
+                                            <a:a name="REQUIRES-INDEX" value="true"/>
+                                            <a:a name="UUID" value="ECUC:b4cee1d0-5729-4ce8-81da-1a0a1d009ee9"/>
+                                            <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                                <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+
+                                            <v:ref name="Domain_Peripheral_Assignment" type="REFERENCE">
+                                                <a:a name="DESC">
+                                                    <a:v>
+                                                        <![CDATA[EN:<html> Vendor specific:
+                                                            Reference to Peripheral config.
+                                                        </html>]]>
+                                                    </a:v>
+                                                </a:a>
+                                                <a:a name="UUID" value="ECUC:a8bc95ac-246d-4fb3-aaff-f702ed529ee5"/>
+                                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                </a:a>
+                                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:da name="REF"
+                                                    value="ASPathDataOfSchema:/TS_T40D11M40I2R0/Rm/RmConfigSet/Rm_XRDC_Peripheral_Config"/>
+                                                <a:da name="INVALID" type="XPath">
+                                                    <a:tst expr="node:refexists(concat('./../../../../../Rm_XRDC_Peripheral_Config/', substring-after(node:value(.), 'RmConfigSet/')))" false = "Rm XRDC Peripheral Config does not contain this node"/>
+                                                </a:da>
+                                                <a:da name="WARNING" type="XPath">
+                                                    <a:tst expr="text:uniq(./../../../../*/Domain_Peripheral_Assignment/*/Domain_Peripheral_Assignment,.)" false = "A peripheral might appear in multiple domains"/>
+                                                </a:da>
+                                            </v:ref>
+
+                                            <v:var name="Secure_Access_Policy" type="ENUMERATION">
+                                                <a:a name="DESC">
+                                                    <a:v>
+                                                        <![CDATA[EN:<html> Vendor specific:
+                                                            Mode access to policy of mode Secure.
+                                                            Access policy look up table:
+                                                            <table>
+                                                                <tr>
+                                                                    <th colspan="4"><b>Configuration Fields</b>
+                                                                    <th colspan="4"><b>Allowable accesses</b>
+                                                                <tr>
+                                                                    <td colspan="2"><b>Secure_Access_Policy</b>
+                                                                    <td colspan="2"><b>Non_Secure_Access_Policy</b>
+                                                                    <td colspan="1"><b>Secure Privileged</b>
+                                                                    <td colspan="1"><b>Secure User</b>
+                                                                    <td colspan="1"><b>NonSecure Privileged</b>
+                                                                    <td colspan="1"><b>NonSecure User</b>
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_SUPERVISOR_ACCESS_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_READ_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">R
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_SUPERVISOR_READ_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_NO_ACCESS
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_SUPERVISOR_ACCESS_ONLY
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_READ_ONLY
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_NO_ACCESS
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                            </table>
+                                                        </html>]]>
+                                                    </a:v>
+                                                </a:a>
+                                                <a:a name="UUID" value="ECUC:3baaaf5c-9ab4-42e9-89ab-99bc301693da"/>
+                                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                </a:a>
+                                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                <a:a name="ORIGIN" value="NXP"/>
+                                                <a:da name="DEFAULT" value="XRDC_FULL_ACCESS"/>
+                                                <a:da name="RANGE">
+                                                    <a:v>XRDC_FULL_ACCESS</a:v>
+                                                    <a:v>XRDC_READ_ONLY</a:v>
+                                                    <a:v>XRDC_SUPERVISOR_ACCESS_ONLY</a:v>
+                                                    <a:v>XRDC_NO_ACCESS</a:v>
+                                                </a:da>
+                                            </v:var>
+
+                                            <v:var name="Non_Secure_Access_Policy" type="ENUMERATION">
+                                                <a:a name="DESC">
+                                                    <a:v>
+                                                        <![CDATA[EN:<html> Vendor specific:
+                                                            Mode access to policy of mode Non_Secure.
+                                                            Access policy look up table:
+                                                            <table>
+                                                                <tr>
+                                                                    <th colspan="4"><b>Configuration Fields</b>
+                                                                    <th colspan="4"><b>Allowable accesses</b>
+                                                                <tr>
+                                                                    <td colspan="2"><b>Secure_Access_Policy</b>
+                                                                    <td colspan="2"><b>Non_Secure_Access_Policy</b>
+                                                                    <td colspan="1"><b>Secure Privileged</b>
+                                                                    <td colspan="1"><b>Secure User</b>
+                                                                    <td colspan="1"><b>NonSecure Privileged</b>
+                                                                    <td colspan="1"><b>NonSecure User</b>
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_SUPERVISOR_ACCESS_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_READ_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">R
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_SUPERVISOR_READ_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_NO_ACCESS
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_SUPERVISOR_ACCESS_ONLY
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_READ_ONLY
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_NO_ACCESS
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                            </table>
+                                                        </html>]]>
+                                                    </a:v>
+                                                </a:a>
+                                                <a:a name="UUID" value="ECUC:f32bb706-9dec-4302-bcf1-4a18377572ba"/>
+                                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                </a:a>
+                                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                <a:a name="ORIGIN" value="NXP"/>
+                                                <a:da name="DEFAULT" value="XRDC_FULL_ACCESS"/>
+                                                <a:da name="RANGE">
+                                                    <a:v>XRDC_FULL_ACCESS</a:v>
+                                                    <a:v>XRDC_SUPERVISOR_ACCESS_ONLY</a:v>
+                                                    <a:v>XRDC_READ_ONLY</a:v>
+                                                    <a:v>XRDC_SUPERVISOR_READ_ONLY</a:v>
+                                                    <a:v>XRDC_NO_ACCESS</a:v>
+                                                </a:da>
+                                                <a:a name="EDITABLE" type="XPath">
+                                                    <a:tst expr="./../Secure_Access_Policy = 'XRDC_FULL_ACCESS'"/>
+                                                </a:a>
+                                            </v:var>
+                                        </v:ctr>
+                                    </v:lst>
+
+                                    <v:lst name="Domain_Memory_Assignment" type="MAP">
+                                        <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="../../../../RmGeneral/RmEnableXRDCSupport ='true' and (num:i(count(*))= 0)"
+                                            true ="At least one Domain Memory Assignment must be configured when XRDC Support is checked!"/>
+                                        </a:da>
+                                        <a:a name="ENABLE" type="XPath">
+                                            <a:tst expr="../../../../RmGeneral/RmEnableXRDCSupport ='true'"/>
+                                        </a:a>
+                                        <v:ctr name="Domain_Memory_Assignment" type="IDENTIFIABLE">
+                                            <a:a name="DESC">
+                                                    <a:v>
+                                                        <![CDATA[EN:<html> Vendor specific:
+                                                            All data need to configure Memory for one Domain.
+                                                        </html>]]>
+                                                    </a:v>
+                                            </a:a>
+                                            <a:a name="REQUIRES-INDEX" value="true"/>
+                                            <a:a name="UUID" value="ECUC:1d503ab4-5e11-421f-bd7f-69ce890c1927"/>
+                                            <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                                <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+
+                                            <v:ref name="Domain_Memory_Assignment" type="REFERENCE">
+                                                <a:a name="UUID" value="ECUC:35a1e74e-ea11-4420-a21d-caf8f47beeea"/>
+                                                <a:a name="ORIGIN" value="NXP"/>
+                                                <a:a name="DESC" value="Choose Memory configuration"/>
+                                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                    <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                </a:a>
+                                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                <a:da name="REF" value="ASPathDataOfSchema:/TS_T40D11M40I2R0/Rm/RmConfigSet/Rm_XRDC_Memory_Config"/>
+                                                <a:da name="INVALID" type="XPath">
+                                                    <a:tst expr="node:refexists(concat('./../../../../../Rm_XRDC_Memory_Config/', substring-after(node:value(.), 'RmConfigSet/')))" false = "Rm XRDC Memory Config does not contain this node"/>
+                                                </a:da>
+                                            </v:ref>
+
+                                            <v:var name="Secure_Access_Policy" type="ENUMERATION">
+                                                <a:a name="DESC">
+                                                    <a:v>
+                                                        <![CDATA[EN:<html> Vendor specific:
+                                                            Mode access to policy of mode Secure.
+                                                            Access policy look up table:
+                                                            <table>
+                                                                <tr>
+                                                                    <th colspan="4"><b>Configuration Fields</b>
+                                                                    <th colspan="4"><b>Allowable accesses</b>
+                                                                <tr>
+                                                                    <td colspan="2"><b>Secure_Access_Policy</b>
+                                                                    <td colspan="2"><b>Non_Secure_Access_Policy</b>
+                                                                    <td colspan="1"><b>Secure Privileged</b>
+                                                                    <td colspan="1"><b>Secure User</b>
+                                                                    <td colspan="1"><b>NonSecure Privileged</b>
+                                                                    <td colspan="1"><b>NonSecure User</b>
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_SUPERVISOR_ACCESS_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_READ_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">R
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_SUPERVISOR_READ_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_NO_ACCESS
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_SUPERVISOR_ACCESS_ONLY
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_READ_ONLY
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_NO_ACCESS
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                            </table>
+                                                        </html>]]>
+                                                    </a:v>
+                                                </a:a>
+                                                <a:a name="UUID" value="ECUC:f985db55-aae7-453b-a3b4-577c20b25d59"/>
+                                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                </a:a>
+                                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                <a:a name="ORIGIN" value="NXP"/>
+                                                <a:da name="DEFAULT" value="XRDC_FULL_ACCESS"/>
+                                                <a:da name="RANGE">
+                                                    <a:v>XRDC_FULL_ACCESS</a:v>
+                                                    <a:v>XRDC_READ_ONLY</a:v>
+                                                    <a:v>XRDC_SUPERVISOR_ACCESS_ONLY</a:v>
+                                                    <a:v>XRDC_NO_ACCESS</a:v>
+                                                </a:da>
+                                            </v:var>
+                                            <v:var name="Non_Secure_Access_Policy" type="ENUMERATION">
+                                                <a:a name="DESC">
+                                                    <a:v>
+                                                        <![CDATA[EN:<html> Vendor specific:
+                                                            Mode access to policy of mode Non_Secure.
+                                                            Access policy look up table:
+                                                            <table>
+                                                                <tr>
+                                                                    <th colspan="4"><b>Configuration Fields</b>
+                                                                    <th colspan="4"><b>Allowable accesses</b>
+                                                                <tr>
+                                                                    <td colspan="2"><b>Secure_Access_Policy</b>
+                                                                    <td colspan="2"><b>Non_Secure_Access_Policy</b>
+                                                                    <td colspan="1"><b>Secure Privileged</b>
+                                                                    <td colspan="1"><b>Secure User</b>
+                                                                    <td colspan="1"><b>NonSecure Privileged</b>
+                                                                    <td colspan="1"><b>NonSecure User</b>
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_SUPERVISOR_ACCESS_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_READ_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">R
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_SUPERVISOR_READ_ONLY
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_FULL_ACCESS
+                                                                    <td colspan="2">XRDC_NO_ACCESS
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_SUPERVISOR_ACCESS_ONLY
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">R,W
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_READ_ONLY
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">R
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                <tr>
+                                                                    <td colspan="2">XRDC_NO_ACCESS
+                                                                    <td colspan="2">NA
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                                    <td colspan="1">None
+                                                            </table>
+                                                        </html>]]>
+                                                    </a:v>
+                                                </a:a>
+                                                <a:a name="UUID" value="ECUC:d421f556-3c8b-4540-ae49-e3dd64827ceb"/>
+                                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                </a:a>
+                                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                <a:a name="ORIGIN" value="NXP"/>
+                                                <a:da name="DEFAULT" value="XRDC_FULL_ACCESS"/>
+                                                <a:da name="RANGE">
+                                                    <a:v>XRDC_FULL_ACCESS</a:v>
+                                                    <a:v>XRDC_SUPERVISOR_ACCESS_ONLY</a:v>
+                                                    <a:v>XRDC_READ_ONLY</a:v>
+                                                    <a:v>XRDC_SUPERVISOR_READ_ONLY</a:v>
+                                                    <a:v>XRDC_NO_ACCESS</a:v>
+                                                </a:da>
+                                                <a:a name="EDITABLE" type="XPath">
+                                                    <a:tst expr="./../Secure_Access_Policy = 'XRDC_FULL_ACCESS'"/>
+                                                </a:a>
+                                            </v:var>
+                                        </v:ctr>
+                                    </v:lst>
+                                </v:ctr>
+                            </v:lst>
+
+                            <v:lst name="Rm_XRDC_Memory_Config" type="MAP">
+                                <a:a name="LABEL" value="XRDC Memory Config"/>
+                                <a:a name="ENABLE" type="XPath">
+                                      <a:tst expr="../../RmGeneral/RmEnableXRDCSupport ='true'"/>
+                                </a:a>
+                                <v:ctr name = "Rm_XRDC_Memory_Config" type = "IDENTIFIABLE">
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:<html> Vendor specific:
+                                                All data need to configure Memory use for Domain.
+                                            </html>]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="REQUIRES-INDEX" value="true"/>
+                                    <a:a name="UUID" value="ECUC:291f97d7-0114-47f4-b7c2-d16a2bdc0dca"/>
+                                    <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                        <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+
+                                    <!-- @implements XrdcMrcInstance_Object -->
+                                    <v:var name="XrdcMrcInstance" type="ENUMERATION">
+                                        <a:a name="LABEL" value="XRDC Memory Region Controller"/>
+                                        <a:a name="DESC" value="Select Memory region controller will be used to control the address range below"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:221fd9c7-8327-4be7-b449-6bdaca7139db"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:da name="DEFAULT" type="XPath" expr="(ecu:list('Rm.XRDC.Mrc.Names.List'))[position()-1=node:fallback(node:current()/../@index,'0')]"></a:da>
+                                        <a:a name="RANGE" type="XPath" expr = "ecu:list('Rm.XRDC.Mrc.Names.List')"/>
+
+
+                                        <a:da name="INVALID" type="XPath">
+                                             <a:tst expr="num:i(count(./../../*[ecu:get(text:replace('Rm.XRDC.Mrc.MrcName','MrcName',node:when(string-length(./XrdcMrcInstance)>0,./XrdcMrcInstance, node:current()))) = ecu:get(text:replace('Rm.XRDC.Mrc.MrcName','MrcName',node:current()))])) > num:i(ecu:get(text:concat('Rm.XRDC.Mrc.DescriptorCount.', .)))" true="Number of the configured MrcInstance exceed number of its descriptors."/>
+                                        </a:da>
+                                    </v:var>
+                                    <v:var name="XrdcStartAddress" type="INTEGER">
+                                        <a:a name="DESC" value="Start address of Memory region"/>
+                                        <a:a name="LABEL" value="Start Address"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:3b4086e0-eb52-4ba8-98c6-eaef1807d631"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="DEFAULT_RADIX" value="HEX" />
+                                        <a:da name="INVALID" type="XPath">
+                                                <a:tst expr="node:value(./../XrdcEndAddress) &lt; node:value(.)" true="End address must larger than Start address"/>
+                                                <a:tst expr="num:i(node:value(./../XrdcEndAddress) +1 - node:value(.)) &lt; 4096" true="minimum size of region should be larger than 4096 bytes"/>
+                                                <a:tst expr="(node:fallback(., 0) mod 4096) != 0" true="the address should be modulo by 4096 bytes"/>
+                                                <a:tst expr="node:value(.) &lt; num:hextoint(ecu:get(concat('Rm.XRDC.Mrc.StartAddress.', node:fallback(../XrdcMrcInstance, ecu:list('Rm.XRDC.Mrc.Names.List')[position()=1]))))" true="Address must be  greater then min value."/>
+                                                <a:tst expr="node:value(.) &gt; num:hextoint(ecu:get(concat('Rm.XRDC.Mrc.EndAddress.', node:fallback(../XrdcMrcInstance, ecu:list('Rm.XRDC.Mrc.Names.List')[position()=1]))))" true="Address must be  less then max value."/>
+                                        </a:da>
+                                        <a:da name="INVALID" type="Range">
+                                            <a:tst expr="&lt;=0x6000000000"/>
+                                            <a:tst expr="&gt;=0x0"/>
+                                        </a:da>
+                                        <a:da name="WARNING" type="XPath">
+                                            <a:tst expr="text:uniq(node:foreach(node:paths(./../../*), 'mem', '(node:ref($mem)/XrdcMrcInstance = node:value(./../XrdcMrcInstance)) and ((node:value(.) >= node:ref($mem)/XrdcStartAddress) and (node:ref($mem)/XrdcEndAddress >= node:value(.)) or ((node:ref($mem)/XrdcStartAddress >= node:value(.)) and (node:value(./../XrdcEndAddress) >= node:ref($mem)/XrdcEndAddress)))'), 'true')" false="Overlap memory maybe occur!"/>
+                                        </a:da>
+                                        <a:da name="DEFAULT" type="XPath" expr="num:hextoint(ecu:get(concat('Rm.XRDC.Mrc.StartAddress.', node:fallback(../XrdcMrcInstance, ecu:list('Rm.XRDC.Mrc.Names.List')[position()=1]))))"/>
+                                    </v:var>
+
+                                    <v:var name="XrdcEndAddress" type="INTEGER">
+                                        <a:a name="DESC" value="End address of Memory region"/>
+                                        <a:a name="LABEL" value="End Address"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:aab9723f-c3e7-4080-b430-f212f5eecc9b"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="DEFAULT_RADIX" value="HEX" />
+                                        <a:da name="INVALID" type="Range">
+                                            <a:tst expr="&lt;=0x6000000000"/>
+                                            <a:tst expr="&gt;=0x0"/>
+                                        </a:da>
+
+                                        <a:da name="INVALID" type="XPath">
+                                                <a:tst expr="((node:fallback(., 0)+1) mod 4096) != 0" true="End address + 1 must be modulo 4096"/>
+                                                <a:tst expr="node:value(.) &lt; num:hextoint(ecu:get(concat('Rm.XRDC.Mrc.StartAddress.', node:fallback(../XrdcMrcInstance, ecu:list('Rm.XRDC.Mrc.Names.List')[position()=1]))))" true="Address must be  greater then min value."/>
+                                                <a:tst expr="node:value(.) &gt; num:hextoint(ecu:get(concat('Rm.XRDC.Mrc.EndAddress.', node:fallback(../XrdcMrcInstance, ecu:list('Rm.XRDC.Mrc.Names.List')[position()=1]))))" true="Address must be  less then max value."/>
+                                        </a:da>
+                                        <a:da name="WARNING" type="XPath">
+                                            <a:tst expr="text:uniq(node:foreach(node:paths(./../../*), 'mem', '(node:ref($mem)/XrdcMrcInstance = node:value(./../XrdcMrcInstance)) and ((node:value(.) >= node:ref($mem)/XrdcStartAddress) and (node:ref($mem)/XrdcEndAddress >= node:value(.)) or ((node:ref($mem)/XrdcStartAddress >= node:value(./../XrdcStartAddress)) and (node:value(.) >= node:ref($mem)/XrdcEndAddress)))'), 'true')" false="Overlap memory maybe occur!"/>
+                                        </a:da>
+                                        <a:da name="DEFAULT" type="XPath" expr="num:hextoint(ecu:get(concat('Rm.XRDC.Mrc.EndAddress.', node:fallback(../XrdcMrcInstance, ecu:list('Rm.XRDC.Mrc.Names.List')[position()=1]))))"/>
+                                    </v:var>
+
+                                    <v:var name="XrdcSema4Enable" type="BOOLEAN">
+                                        <a:a name="LABEL" value="Semaphore Enable"/>
+                                        <a:a name="DESC" value="Enable Semaphore would require the domain must own the gate to have access right for this memory range "/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="INVALID" type="XPath">
+                                             <a:tst expr="./../../../../RmGeneral/RmEnableSema42Support ='false' and (. ='true')" true=" Please turn on Semaphore Support first"/>
+                                        </a:a>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:3543cd20-3566-11ed-a261-0242ac120002"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:da name="DEFAULT" value="false"/>
+                                    </v:var>
+
+                                    <v:ref name="XrdcSema42LogicChannel" type="REFERENCE">
+                                        <a:a name="UUID" value="ECUC:35a1e74e-ea11-4420-a21d-caf8f47be123"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="SCOPE" value="LOCAL"/>
+                                        <a:a name="DESC" value="EN: Select XrdcSema42LogicChannel to select specified Sema42 Logic Channel"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v class="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:da name="REF" value="ASPathDataOfSchema:/TS_T40D11M40I2R0/Rm/RmConfigSet/Sema42_ModuleConfig/Sema42LogicChannelConfiguration"/>
+                                        <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="((./../XrdcSema4Enable = 'false') or (node:refvalid(.) and contains(../XrdcMrcInstance,ecu:get(concat('Rm.XRDC.Master.Prefix.XRDC_',substring-after(node:ref(.)/Sema42HardwareInstance,'SEMA42_'))))))" false = "Reference is not valid or the sema4 channel does not correspond to the XRDC instance"/>
+                                        </a:da>
+                                        <a:a name="ENABLE" type="XPath">
+                                            <a:tst expr="../XrdcSema4Enable ='true'"/>
+                                        </a:a>
+                                    </v:ref>
+                                    <v:var name="XrdcMRGDLockBit" type="BOOLEAN">
+                                        <a:a name="DESC" value="Variable for setting the MRGD bit lock! XrdcRegisterLock should be true"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="INVALID" type="XPath">
+                                            <a:tst expr="../../../Xrdc_Configuration/XrdcRegistersLock ='false' and (. ='true')" true="XrdcRegistersLock must be enabled in order to allow locking of the MRGD registers"/>
+                                        </a:a>
+                                        <a:a name="LABEL" value="Xrdc MRGD Lock Bit"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:05f32a7c-873f-4678-3321-88c11d22a123"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:da name="DEFAULT" value="false"/>
+                                    </v:var>
+                                </v:ctr>
+                            </v:lst>
+
+                            <v:lst name="Rm_XRDC_Peripheral_Config" type="MAP">
+                                <a:a name="LABEL" value="XRDC Peripheral Config"/>
+                                <a:a name="EDITABLE" type="XPath">
+                                      <a:tst expr="../../RmGeneral/RmEnableXRDCSupport ='true'"/>
+                                </a:a>
+                                <a:da name="INVALID" type="XPath">
+                                <a:tst expr="../../RmGeneral/RmEnableXRDCSupport ='true' and (num:i(count(*))= 0)"
+                                true ="At least one Peripheral must be configured when XRDC Support is checked!"/>
+                                </a:da>
+                                <v:ctr name = "Rm_XRDC_Peripheral_Config" type = "IDENTIFIABLE">
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:<html> Vendor specific:
+                                                All data need to configure Peripheral for Domain.
+                                            </html>]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="REQUIRES-INDEX" value="true"/>
+                                    <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                        <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="UUID" value="ECUC:f57fbeeb-2921-4942-95fd-c2659efd6818"/>
+                                    <v:var name="XrdcPeripheralSlot" type="ENUMERATION">
+                                        <a:a name="DESC" value="Peripheral slot number of a block of peripherals. Checking Reference manual for chip specific"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:4eaea45a-8c32-4638-9398-afe821070476"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        
+                                        <a:da name="DEFAULT" type="XPath" expr="ecu:list('Rm.XRDC.Pdac.Names.List')[position()-1=node:fallback(node:current()/../@index,'0')]"/>
+                                        <a:a name="RANGE" type="XPath" expr = "ecu:list('Rm.XRDC.Pdac.Names.List')"/>
+
+                                        <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="text:uniq(../../*/XrdcPeripheralSlot, .)" false="Peripheral Slot must be unique"/>
+                                        </a:da>
+                                    </v:var>
+
+                                    <v:var name="XrdcSema4Enable" type="BOOLEAN">
+                                        <a:a name="DESC" value="Enable Semaphore would require the domain must own the gate to have access right for this peripheral"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="INVALID" type="XPath">
+                                             <a:tst expr="./../../../../RmGeneral/RmEnableSema42Support ='false' and (. ='true')" true=" Please turn on Semaphore Support first"/>
+                                        </a:a>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:a337d428-96c3-45af-8b4d-97fbacefbfbb"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:da name="DEFAULT" value="false"/>
+                                    </v:var>
+
+                                    <v:ref name="XrdcSema42LogicChannel" type="REFERENCE">
+                                        <a:a name="UUID" value="ECUC:35a1e74e-ea11-4420-a21d-caf8f47be456"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="DESC" value="EN: Select XrdcSema42LogicChannel to select specified Sema42 Logic Channel"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v class="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:da name="REF" value="ASPathDataOfSchema:/TS_T40D11M40I2R0/Rm/RmConfigSet/Sema42_ModuleConfig/Sema42LogicChannelConfiguration"/>
+                                        <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="((./../XrdcSema4Enable = 'false') or (node:refvalid(.) and contains(../XrdcPeripheralSlot,ecu:get(concat('Rm.XRDC.Master.Prefix.XRDC_',substring-after(node:ref(.)/Sema42HardwareInstance,'SEMA42_'))))))" false = "Reference is not valid or the sema4 channel does not correspond to the XRDC instance"/>
+                                        </a:da>
+                                        <a:a name="ENABLE" type="XPath">
+                                            <a:tst expr="../XrdcSema4Enable ='true'"/>
+                                        </a:a>
+                                    </v:ref>
+                                    <v:var name="XrdcPDACLockBit" type="BOOLEAN">
+                                        <a:a name="DESC" value="Variable for setting the PDAC bit lock! XrdcRegisterLock should be true."/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="INVALID" type="XPath">
+                                             <a:tst expr="../../../Xrdc_Configuration/XrdcRegistersLock ='false' and (. ='true')" true="XrdcRegistersLock must be enabled in order to allow locking of the PDAC registers"/>
+                                        </a:a>
+                                        <a:a name="LABEL" value="Xrdc PDAC Lock Bit"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:05f32a7c-873f-4678-1124-af32c11d4412"/>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:da name="DEFAULT" value="false"/>
+                                    </v:var>
+                                </v:ctr>
+                            </v:lst>
+                            <v:ctr name="MPU_M7_Configuration" type="IDENTIFIABLE">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:
+                                            <html><p>Configuration for the ARM Cortex M7 MPU.</p></html>
+                                        ]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="UUID" value="ECUC:be68078a-ba7e-4321-b0a2-8097d0117449"/>
+                                <a:a name="TAB" value="MPU M7"/>
+
+                                <!--  MpuDevErrorDetect -->
+                                <v:var name="MpuDevErrorDetect" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Mpu Development Error Detection"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                                <html>
+                                                    <p>MpuDevErrorDetect</p>
+                                                    <p>Switches the Development Error Detection and Notification ON or OFF.</p>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:7228a335-4003-3381-8e1a-bb3d9f7334a1"/>
+                                    <a:da name="DEFAULT" value="true"/>
+                                </v:var>
+
+                                <v:lst name="MPU_M7_ModuleConfig" type="MAP">
+                                    <a:a name="LABEL" value="Module Configurations"/>
+                                    <a:da name="MIN" value="0"/>
+                                    <!-- <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rm.Mpu_M7.DefaultRegionCount')"/> -->
+                                    <a:a name="TAB" value="MPU M7"/>
+                                    <a:da name="EDITABLE" type="XPath" expr="node:fallback( node:current()/../../../RmGeneral/RmMpuM7Configurable, num:i(0))" />
+                                    <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="../../../RmGeneral/RmMpuM7Configurable = 'true' and (num:i(count(*)) = 0)"
+                                            true ="At least one MPU M7 configuration must be configured when RM Enable MPU M7 Support is checked!"/>
+                                            <a:tst expr="../../../RmGeneral/RmEnableMultiCore = 'false' and (num:i(count(*)) > 1)"
+                                            true ="Only one configuration element is allowed when disable Multicore support!"/>
+                                    </a:da>
+                                    <v:ctr name="MPU_M7_ModuleConfig" type="IDENTIFIABLE">
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:
+                                                    <html><p>Configuration for the ARM Cortex M7 MPU.</p></html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="UUID" value="ECUC:be68078a-ba7e-4321-b0a2-8097d4321449"/>
+                                        <a:a name="TAB" value="MPU M7 Controller"/>
+                                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                                            <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                        </a:a>
+                                        <v:var name="DefaultMapEnable" type="BOOLEAN">
+                                            <a:a name="LABEL" value="Default Memory Map Enable"/>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN: <html> Vendor specific: Switch to indicate if the default memmory map is enabled
+                                                        </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:e1524282-63e7-4426-bfb8-590fd3d096d6"/>
+                                            <a:da name="DEFAULT" value="false"/>
+                                        </v:var>
+                                        <v:var name="RunInHFNMIEnable" type="BOOLEAN">
+                                            <a:a name="LABEL" value="Enable MPU in Exceptions"/>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN: <html> Vendor specific: Switch to indicate if the MPU is enabled in Hard Fault or NMI
+                                                        </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:e1524282-63e7-4426-bfb8-590fd3d09981"/>
+                                            <a:da name="DEFAULT" value="false"/>
+                                        </v:var>
+                                        <v:var name="MemManageInterruptEnable" type="BOOLEAN">
+                                            <a:a name="LABEL" value="Enable Memory Management interrupt"/>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN: <html> Vendor specific: Switch to indicate if the Memory Management Interrupt is enabled
+                                                        </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:e1524282-63e7-4426-bfb8-590fd3d09982"/>
+                                            <a:da name="DEFAULT" value="false"/>
+                                        </v:var>
+                                        <v:lst name="RegionConfig" type="MAP">
+                                            <a:a name="LABEL" value="Region Configuration"/>
+                                            <a:da name="MIN" type="XPath" expr="ecu:get('Rm.Mpu_M7.MinimumRegionCount')"/>
+                                            <a:da name="MAX" type="XPath" expr="ecu:get('Rm.Mpu_M7.MaximumRegionCount')"/>
+                                            <!-- <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rm.Mpu_M7.DefaultRegionCount')"/> -->
+                                            <a:a name="TAB" value="Region Config"/>
+                                            <v:ctr name="RegionConfig" type="IDENTIFIABLE">
+                                                <a:a name="DESC">
+                                                    <a:v><![CDATA[EN:
+                                                    <html> Vendor specific:
+                                                    Configuration for interrupt requests.
+                                                    Warning: This is a precompile configuration.If you uncheck a ISR, you will not be able to enable the
+                                                    respective channel or error functionality at post build time.
+                                                    </html>
+                                                        ]]>
+                                                    </a:v>
+                                                </a:a>
+                                                <a:a name="UUID" value="ECUC:04ac838a-72f5-480b-b9ec-cc43a5100e5b"/>
+                                                <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                    <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                                                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                                </a:a>
+
+                                                <v:var name="RegionNumber" type="INTEGER">
+                                                    <a:a name="LABEL" value="Region Number"/>
+                                                    <a:a name="DESC">
+                                                        <a:v>
+                                                            <![CDATA[EN:<html> Vendor specific:
+                                                        Region Number.
+                                                        </html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:00a8505c-39fd-499a-9b7f-acf75976173b"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="num:i( node:fallback( node:current()/../@index, num:i(0)))"/>
+                                                    <a:da name="INVALID" type="Range">
+                                                        <a:tst expr="&lt;num:i(ecu:get('Rm.Mpu_M7.MaximumRegionCount'))" false="Value must be lower than ecu:get('Rm.Mpu_M7.MaximumRegionCount')"/>
+                                                        <a:tst expr="&gt;=0" false="Value must be higher or equal than ecu:get('Rm.Mpu_M7.MinimumRegionCount')"/>
+                                                    </a:da>
+                                                </v:var>
+
+                                                <v:var name="StartAddress" type="INTEGER">
+                                                    <a:a name="LABEL" value="Start Address"/>
+                                                    <a:a name="DESC">
+                                                        <a:v>
+                                                            <![CDATA[EN:<html> Vendor specific:
+                                                                Start Address.
+                                                            </html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                                                    <a:a name="UUID" value="ECUC:00a8505c-39fd-499a-9b7f-acf759763331"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="num:i(ecu:list('Rm.Mpu_M7.RegionStartAddress')[num:i( node:fallback( node:current()/../@index, num:i(0))) + 1])"/>
+                                                    <a:da name="INVALID" type="Range">
+                                                        <a:tst expr="&lt;i(0xFFFFFFFF)"/>
+                                                        <a:tst expr="&gt;=i(0)"/>
+                                                    </a:da>
+                                                </v:var>
+
+                                                <v:var name="EndAddress" type="INTEGER">
+                                                    <a:a name="LABEL" value="End Address"/>
+                                                    <a:a name="DESC">
+                                                        <a:v>
+                                                            <![CDATA[EN:<html> Vendor specific:
+                                                        End Address.
+                                                        </html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:00a8505c-39fd-499a-9b7f-cc43a5100e44"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="num:i(ecu:list('Rm.Mpu_M7.RegionEndAddress')[num:i( node:fallback( node:current()/../@index, num:i(0))) + 1])"/>
+                                                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                                                    <a:da name="INVALID" type="Range">
+                                                        <a:tst expr="&lt;=i(0xFFFFFFFF)"/>
+                                                        <a:tst expr="&gt;=ecu:get('Rm.Mpu_M7.MinRegionSize')"/>
+                                                    </a:da>
+                                                </v:var>
+
+                                                <v:var name="RegionSize" type="INTEGER">
+                                                    <a:a name="LABEL" value="Region Size"/>
+                                                    <a:a name="DESC">
+                                                        <a:v>
+                                                            <![CDATA[EN:<html> Vendor specific:
+                                                        RegionSize.
+                                                        </html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:00a8505c-39fd-499a-9b7f-acf75976173c"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="num:i(num:i(node:fallback(node:current()/../EndAddress, num:i(0))) - num:i(node:fallback(node:current()/../StartAddress, num:i(0))) + num:i(1))" />
+                                                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                                                    <a:da name="INVALID" type="XPath">
+                                                        <a:tst expr="num:i(num:i(node:fallback(node:current()/../EndAddress, num:i(0))) - num:i(node:fallback(node:current()/../StartAddress, num:i(0))) + num:i(1)) = num:i(node:value(.))" false="Please recalculate value"/>
+                                                        <a:tst expr="(num:i(node:fallback(node:current()/../StartAddress, num:i(0))) mod num:i(node:value(.))) = 0" false="The StartAddress is aligned to the size of the region. For example, a 64KB region must be aligned on a multiple of 64KB, for example, at 0x00010000 or 0x00020000"/>
+                                                        <a:tst expr="(num:i(node:value(.))&gt;= 32 )" false="The RegionSize must than 32"/>
+                                                        <a:tst expr="(num:i(node:value(.)) mod 32) = 0" false=" RegionSize mod 32 == 0"/>
+                                                    </a:da>
+                                                </v:var>
+
+                                                <v:var name="MemoryType" type="ENUMERATION">
+                                                    <a:a name="LABEL" value="Memory type"/>
+                                                    <a:a name="DESC">
+                                                        <a:v>
+                                                            <![CDATA[EN:<html> Vendor specific:
+                                                                Memory type.
+                                                            </html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:00a8705c-34ad-499a-9b7f-acf759761359"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="(ecu:list('Rm.Mpu_M7.RegionMemoryType'))[num:i( node:fallback( node:current()/../@index, num:i(0))) + 1]">
+                                                    </a:da>
+                                                    <a:da name="RANGE" type="XPath" expr="ecu:list('Rm.Mpu_M7.MemoryType')"/>
+                                                </v:var>
+
+                                                <v:var name="AccessRights" type="ENUMERATION">
+                                                    <a:a name="LABEL" value="Access Rights"/>
+                                                    <a:a name="DESC">
+                                                        <a:v>
+                                                            <![CDATA[EN:<html> Vendor specific:
+                                                                Access Rights.
+                                                            </html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:00a8705c-34ad-499a-9b7f-acf75923232a"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="(ecu:list('Rm.Mpu_M7.RegionAccessRights'))[num:i( node:fallback( node:current()/../@index, num:i(0))) + 1]">
+                                                    </a:da>
+                                                    <a:da name="RANGE" type="XPath" expr="ecu:list('Rm.Mpu_M7.AccessRightsType')"/>
+                                                </v:var>
+
+                                                <v:var name="OuterCachePolicy" type="ENUMERATION">
+                                                    <a:a name="LABEL" value="Outer Cache Policy"/>
+                                                    <a:a name="DESC">
+                                                        <a:v>
+                                                            <![CDATA[EN:<html> Vendor specific:
+                                                                Outer Cache Policy.
+                                                            </html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:00a8705c-34ad-ccda-9b7f-acf759761257"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="(ecu:list('Rm.Mpu_M7.RegionOuterCachePolicy'))[num:i( node:fallback( node:current()/../@index, num:i(0))) + 1]">
+                                                    </a:da>
+                                                    <a:da name="RANGE" type="XPath" expr="ecu:list('Rm.Mpu_M7.CachePolicyType')"/>
+                                                </v:var>
+
+                                                <v:var name="InnerCachePolicy" type="ENUMERATION">
+                                                    <a:a name="LABEL" value="Inner Cache Policy"/>
+                                                    <a:a name="DESC">
+                                                        <a:v>
+                                                            <![CDATA[EN:<html> Vendor specific:
+                                                                Inner Cache Policy.
+                                                            </html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:00a8705c-34ad-22ad-9b7f-acf759761331"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="(ecu:list('Rm.Mpu_M7.RegionInnerCachePolicy'))[num:i( node:fallback( node:current()/../@index, num:i(0))) + 1]">
+                                                    </a:da>
+                                                    <a:da name="RANGE" type="XPath" expr="ecu:list('Rm.Mpu_M7.CachePolicyType')"/>
+                                                </v:var>
+
+                                                <v:var name="SubregionMask" type="INTEGER">
+                                                    <a:a name="LABEL" value="Subregion Mask"/>
+                                                    <a:a name="DESC">
+                                                        <a:v>
+                                                            <![CDATA[EN:<html> Vendor specific:
+                                                        Sub Region.
+                                                        </html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:00a8505c-39fd-499a-9b7f-acf759761112"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="ecu:list('Rm.Mpu_M7.RegionSubregionMask')[num:i(node:fallback( node:current()/../@index, num:i(0))) + 1]"/>
+                                                    <a:da name="INVALID" type="Range">
+                                                        <a:tst expr="&lt;i(256)"/>
+                                                        <a:tst expr="&gt;=i(0)"/>
+                                                    </a:da>
+                                                    <a:da name="EDITABLE" type="XPath" expr="num:i(node:fallback(node:current()/../RegionSize, num:i(0))) &gt;= num:i(ecu:get('Rm.Mpu_M7.MinRegionSizeWithSubregion'))"/>
+                                                </v:var>
+
+                                                <v:var name="Shareable" type="BOOLEAN">
+                                                    <a:a name="LABEL" value="Shareable"/>
+                                                    <a:a name="DESC">
+                                                        <a:v>
+                                                            <![CDATA[EN: <html> Vendor specific: Switch to indicate if the region is shareable
+                                                                </html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:e1524282-63e7-4426-bfb8-590fd3d096331"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="ecu:list('Rm.Mpu_M7.RegionShareable')[num:i( node:fallback( node:current()/../@index, num:i(0))) + 1]"/>
+                                                </v:var>
+                                            </v:ctr>
+                                        </v:lst>
+
+                                        <v:var name="PhysicalCoreID" type="ENUMERATION">
+                                            <a:a name="LABEL" value="Physical Core ID"/>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:
+                                                        <html>
+                                                            <p>Physical Core ID</p>
+                                                            <p> <p/>
+                                                        </html>
+                                                    ]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="UUID" value="ECUC:b41b23f0-dc5c-4198-bc4d-ab27cb37c4b3"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:da name="DEFAULT" value = "CORTEX_M7_CORE0">
+                                            </a:da>
+                                            <a:da name="RANGE" type="XPath" expr="(ecu:list('Rm.Mpu_M7.Core.List'))"/>
+                                        </v:var>
+                                    </v:ctr>
+                                </v:lst>
+                            </v:ctr>
+
+
+                            <v:ctr name="Sema42_ModuleConfig" type="IDENTIFIABLE">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:
+                                            <html><p>Configuration for the Semaphores2.</p></html>
+                                        ]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="UUID" value="ECUC:be68078a-ba7e-4321-b0a2-8097d0115121"/>
+                                <a:a name="TAB" value="Sema42"/>
+                                <!-- @implements Sema42DevErrorDetect_Object -->
+                                <v:var name="Sema42DevErrorDetect" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Sema42 Development Error Detection"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                                <html>
+                                                    <p>Sema42DevErrorDetect</p>
+                                                    <p>Switches the Development Error Detection and Notification ON or OFF.</p>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:7228a335-4003-8881-8e1a-bb3d9f731131"/>
+                                    <a:da name="DEFAULT" value="true"/>
+                                </v:var>
+                                
+                                <v:var name="Sema42ResetAllGates" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Sema42 Reset All Gates when Initialization"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                                <html>
+                                                    <p>Sema42ResetAllGates</p>
+                                                    <p>Enable or Disable calling Initialize Function</p>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:73e2f80e-a086-11ed-a8fc-0242ac120002"/>
+                                    <a:da name="DEFAULT" value="true"/>
+                                </v:var>
+                                
+                                <v:lst name="Sema42LogicChannelConfiguration" type="MAP">
+                                    <a:a name="LABEL" value="Sema42 Logic Channel"/>
+                                    <a:a name="TAB" value="Sema42"/>
+                                    <a:da name="EDITABLE" type="XPath" expr="node:fallback(node:current()/../../../RmGeneral/RmEnableSema42Support, num:i(0))"/>
+                                    <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="../../../RmGeneral/RmEnableSema42Support = 'true' and (num:i(count(*)) = 0)"
+                                            true ="At least one SEMA42 configuration must be configured when RM Enable Sema42 Support is checked!"/>
+                                    </a:da>
+
+                                    <v:ctr name="Sema42LogicChannelConfiguration" type="IDENTIFIABLE">
+                                        <a:a name="LABEL" value="Sema42 Logic Channel"/>
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:
+                                                    <html>Configuration for Sema42 Instance</html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="REQUIRES-INDEX" value="true"/>
+                                        <a:a name="UUID" value="ECUC:fb100d71-d46f-4f34-bccb-1c528f725ead"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        
+                                        <v:var name="Sema42LogicChannel_LogicName" type="STRING">
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html> Vendor specific:
+                                                        Logic Channel Name.
+                                                    </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="LABEL" value="Logic Channel Name"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:2df0549d-3953-49bd-b22e-0c4f9a28139b"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="concat( 'SEMA42_LOGIC_CH_' , node:fallback(node:current()/../@index,'0') )"/>
+                                            <a:da name="INVALID" type="XPath">
+                                                <a:tst expr="text:uniq(../../*/Sema42LogicChannel_LogicName, .)" false="Duplicate Logic Channel Name!"/>
+                                            </a:da>
+                                        </v:var>
+                                        
+                                        <v:var name="Sema42HardwareInstance" type="ENUMERATION">
+                                            <a:a name="LABEL" value="Hardware Instance"/>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html>
+                                                        Vendor specific: Select the physical Sema42 Instance.
+                                                    </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:3543be48-3566-11ed-a261-0242ac120002"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="ecu:list('Rm.Sema42.HardwareInstance.List')[position()-1=((node:fallback(node:current()/../@index,'0') - (node:fallback(node:current()/../@index,'0') mod 16)) div 16)]"/>
+                                            <a:da name="RANGE" type="XPath" expr="ecu:list('Rm.Sema42.HardwareInstance.List')"/>
+                                        </v:var>
+                                        
+                                        <v:var name="Sema42HardwareChannel" type="INTEGER">
+                                            <a:a name="LABEL" value="Hardware Channel"/>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html>
+                                                        Vendor specific: Select the physical Sema42 Channel.
+                                                    </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:a9b95a15-f535-4cf6-bc35-0766d1954a74"/>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="node:fallback(node:current()/../@index,'0')"/>
+                                            <a:da name="INVALID" type="Range">
+                                                <a:tst expr="&lt;=15"/>
+                                                <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                            <a:da name="INVALID" type="XPath">
+                                                <a:tst expr="count(../../*[(Sema42HardwareChannel = node:current()) and (Sema42HardwareInstance = node:current()/../Sema42HardwareInstance)]) = 1"
+                                                false="Duplicate hardware instance and hardware channel."/>
+                                            </a:da>
+                                        </v:var>
+                                    </v:ctr>
+                                </v:lst>
+                            </v:ctr>
+                            <v:ctr name="Mscm_Configuration" type="IDENTIFIABLE">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:
+                                            <html><p>Routing configuration for the interrupts.</p></html>
+                                        ]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="UUID" value="ECUC:701703b0-95a1-4c16-94fe-a2a29017ad1b"/>
+                                <a:a name="TAB" value="MSCM"/>
+                                <a:a name="EDITABLE" type="XPath">
+                                    <a:tst expr="../../RmGeneral/RmEnableMscmSupport = 'true'"/>
+                                </a:a>
+                                <v:var name="MscmDevErrorDetect" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Mscm Development Error Detection"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                                <html>
+                                                    <p>MscmDevErrorDetect</p>
+                                                    <p>Switches the Development Error Detection and Notification ON or OFF.</p>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:da name="EDITABLE" type="XPath" expr="../../../RmGeneral/RmEnableMscmSupport = 'true'"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:8e5b8334-1d36-4511-a868-f75902ad9447"/>
+                                    <a:da name="DEFAULT" value="true"/>
+                                </v:var>
+
+                                <v:lst name="MscmConfig" type="MAP">
+                                    <a:a name="LABEL" value="MSCM Configuration"/>
+                                    <a:a name="TAB" value="MSCM"/>
+                                    <a:da name="MIN" type="XPath" expr="num:i(number(node:fallback((../../../RmGeneral/RmEnableMscmSupport),'true') = 'true'))"/>
+                                    <a:da name="MAX" type="XPath" expr="num:i(count(ecu:list('Rm.MSCM.irqs.Name.List')))"/>
+                                    <a:da name="EDITABLE" type="XPath" expr="../../../RmGeneral/RmEnableMscmSupport = 'true'"/>
+                                    <v:ctr name="MscmConfig" type="IDENTIFIABLE">
+                                        <a:a name="REQUIRES-INDEX" value="true"/>
+                                        <a:a name="DESC">
+                                            <a:v><![CDATA[EN:
+                                            <html> Vendor specific:
+                                            Configuration for interrupt requests.
+                                            Warning: This is a precompile configuration.
+                                            </html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="UUID" value="ECUC:04ac238a-72f5-480b-b9ec-cc43a5100e5b"/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:da name="EDITABLE" type="XPath" expr="../../../RmGeneral/RmEnableMscmSupport = 'true'"/>
+                                        <v:var name="IsrName" type="ENUMERATION">
+                                            <a:a name="LABEL" value="Interrupt Name"/>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html> Vendor specific:
+                                                Interrupt Name.
+                                                </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:00a8515c-39fd-499a-9b7f-acf75976173b"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="ecu:list('Rm.MSCM.irqs.Name.List')[position()-1=node:fallback(node:current()/../@index,'0')]"/>
+                                            <a:da name="INVALID" type="XPath">
+                                                <a:tst expr="not(text:uniq(../../*/IsrName,.))" true="This field must be unique."/>
+                                            </a:da>
+                                            <a:a name="RANGE" type="XPath" expr="ecu:list('Rm.MSCM.irqs.Name.List')"/>
+                                        </v:var>
+
+                                        <v:var name="IsrTargetCore0" type="BOOLEAN">
+                                            <a:a name="LABEL" type="XPath" expr="ecu:list('Rm.MSCM.targetCores.List')[position()=1]"/>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="num:i(count(ecu:list('Rm.MSCM.targetCores.List'))) > 0"/>
+                                            </a:a>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html> Vendor specific:
+                                                Select the target core for the interrupt request. Parameter is readonly if this target core is not available.
+                                                </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:0aff548e-f32e-42b6-94be-372ca32a5726"/>
+                                            <a:da name="DEFAULT" value="true"/>
+                                        </v:var>
+                                                                <v:var name="IsrTargetCore1" type="BOOLEAN">
+                                            <a:a name="LABEL" type="XPath" expr="ecu:list('Rm.MSCM.targetCores.List')[position()=2]"/>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="num:i(count(ecu:list('Rm.MSCM.targetCores.List'))) > 1"/>
+                                            </a:a>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html> Vendor specific:
+                                                Select the target core for the interrupt request. Parameter is readonly if this target core is not available.
+                                                </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:0aff2148e-f32e-42b6-94be-372ca31a5726"/>
+                                            <a:da name="DEFAULT" value="true"/>
+                                        </v:var>
+                                        
+                                                                <v:var name="IsrTargetCore2" type="BOOLEAN">
+                                            <a:a name="LABEL" type="XPath" expr="ecu:list('Rm.MSCM.targetCores.List')[position()=3]"/>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="num:i(count(ecu:list('Rm.MSCM.targetCores.List'))) > 2"/>
+                                            </a:a>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html> Vendor specific:
+                                                Select the target core for the interrupt request. Parameter is readonly if this target core is not available.
+                                                </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:03ff248e-f32e-42c6-94be-372ca32a5726"/>
+                                            <a:da name="DEFAULT" value="true"/>
+                                        </v:var>
+                                        <v:var name="IsrTargetCore3" type="BOOLEAN">
+                                            <a:a name="LABEL" type="XPath" expr="ecu:list('Rm.MSCM.targetCores.List')[position()=4]"/>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="num:i(count(ecu:list('Rm.MSCM.targetCores.List'))) > 3"/>
+                                            </a:a>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html> Vendor specific:
+                                                Select the target core for the interrupt request. Parameter is readonly if this target core is not available.
+                                                </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:03ff248e-f32e-42c6-94be-372ca32a1111"/>
+                                            <a:da name="DEFAULT" value="true"/>
+                                        </v:var>
+                                        <v:var name="IsrTargetCore4" type="BOOLEAN">
+                                            <a:a name="LABEL" type="XPath" expr="ecu:list('Rm.MSCM.targetCores.List')[position()=5]"/>
+                                            <a:a name="EDITABLE" type="XPath">
+                                                <a:tst expr="num:i(count(ecu:list('Rm.MSCM.targetCores.List'))) > 4"/>
+                                            </a:a>
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html> Vendor specific:
+                                                Select the target core for the interrupt request. Parameter is readonly if this target core is not available.
+                                                </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:f9f0f846-77e9-40b9-94aa-ef311866adba"/>
+                                            <a:da name="DEFAULT" value="true"/>
+                                        </v:var>
+                                    </v:ctr>
+                                </v:lst>
+                            </v:ctr>
+                        </v:ctr>
+                        <!-- @implements CommonPublishedInformation_Object -->
+                        <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                            <a:a name="DESC">
+                                <a:v>
+                                    <![CDATA[EN: <html> Vendor specific:
+                                    Common container, aggregated by all modules. It contains published information about vendor and versions.
+                                    </html>]]>
+                                </a:v>
+                            </a:a>
+                            <a:a name="UUID" value="ECUC:44919a79-b892-492e-a9ca-564bb60af38c"/>
+
+                            <v:var name="ArReleaseMajorVersion" type="INTEGER_LABEL">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN: <html> Vendor specific:
+                                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:2a4dc367-722b-4ab8-8fa9-5abf36baef63"/>
+                                <a:da name="DEFAULT" value="4"/>
+                                <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&gt;=4"/>
+                                    <a:tst expr="&lt;=4"/>
+                                </a:da>
+                            </v:var>
+
+                            <v:var name="ArReleaseMinorVersion" type="INTEGER_LABEL">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN: <html> Vendor specific:
+                                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:247a09d1-9463-492b-9be9-f1a925db120a"/>
+                                <a:da name="DEFAULT" value="4"/>
+                                <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&gt;=4"/>
+                                    <a:tst expr="&lt;=4"/>
+                                </a:da>
+                            </v:var>
+
+                            <v:var name="ArReleaseRevisionVersion" type="INTEGER_LABEL">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:<html> Vendor specific:
+                                        Revision version number of AUTOSAR specification on which the appropriate implementation is based on.
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:626a79b2-3f52-46ad-b609-6a985d61698b"/>
+                                <a:da name="DEFAULT" value="0"/>
+                                <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&gt;=0"/>
+                                    <a:tst expr="&lt;=0"/>
+                                </a:da>
+                            </v:var>
+
+                            <v:var name="ModuleId" type="INTEGER_LABEL">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN: <html>Vendor specific:
+                                        Module ID of this module from Module List.
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:efb0dbc4-d1ca-4374-b5c2-c2bf4bf93a05"/>
+                                <a:da name="DEFAULT" value="255"/>
+                                <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&gt;=255"/>
+                                    <a:tst expr="&lt;=255"/>
+                                </a:da>
+                            </v:var>
+
+                            <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN: <html> Vendor specific:
+                                        Major version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:ccd5e5a9-6082-4267-ba3d-003be289c116"/>
+                                <a:da name="DEFAULT" value="4"/>
+                                <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&gt;=4"/>
+                                    <a:tst expr="&lt;=4"/>
+                                </a:da>
+                            </v:var>
+
+                            <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN: <html> Vendor specific:
+                                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:d018972e-992d-4e6d-8c7c-cd4126e14d5e"/>
+                                <a:da name="DEFAULT" value="0"/>
+                                <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&gt;=0"/>
+                                    <a:tst expr="&lt;=0"/>
+                                </a:da>
+                            </v:var>
+
+                            <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN: <html> Vendor specific:
+                                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                    <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:e3fb879e-f034-473e-9b52-837934896c40"/>
+                                <a:da name="DEFAULT" value="2"/>
+                                <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&gt;=2"/>
+                                    <a:tst expr="&lt;=2"/>
+                                </a:da>
+                            </v:var>
+
+                            <v:var name="VendorApiInfix" type="STRING_LABEL">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN: <html> Vendor specific:
+                                        In driver modules which can be instantiated several times on a single ECU, BSW00347 requires
+                                        that the name of APIs is extended by the VendorId and a vendor specific name.
+                                        This parameter is used to specify the vendor specific name. In total, the
+                                        implementation specific name is generated as follows: &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+                                        <p>E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write.
+                                        This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</p>
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                    <icc:v class="PublishedInformation">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:9f393227-196a-42b8-a12e-337c0279f451"/>
+                                <a:da name="DEFAULT" value=""/>
+                                <a:a name="OPTIONAL" value="true"/>
+                                <a:da name="READONLY" value="true"/>
+                            </v:var>
+
+                            <v:var name="VendorId" type="INTEGER_LABEL">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN: <html> Vendor specific:
+                                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list.
+                                        </html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:2e77dfe4-b371-4d6b-aaec-2e70169abc6d"/>
+                                <a:da name="DEFAULT" value="43"/>
+                                <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&gt;=43"/>
+                                    <a:tst expr="&lt;=43"/>
+                                </a:da>
+                            </v:var>
+                        </v:ctr>
+
+                    </v:ctr>
+                </d:chc>
+                <d:chc name="Rm_EcuParameterDefinition"
+                    type="AR-ELEMENT" value="ECU_PARAMETER_DEFINITION">
+                    <d:ctr type="AR-ELEMENT">
+                        <a:a name="UUID" value="ECUC:032b6h33-3415-4410-a59b-a903c0egfa2d"/>
+                        <a:a name="DEF" value="ASPath:/AR_PACKAGE_SCHEMA/ECU_PARAMETER_DEFINITION"/>
+                        <d:lst name="MODULE_REF">
+                            <d:ref type="MODULE_REF" value="ASPath:/TS_T40D11M40I2R0/Rm"/>
+                        </d:lst>
+                    </d:ctr>
+                </d:chc>
+                <d:chc name="Rm_ModuleDescription"
+                    type="AR-ELEMENT" value="BSW_MODULE_DESCRIPTION">
+                    <d:ctr type="AR-ELEMENT">
+                        <a:a name="DEF" value="ASPath:/AR_PACKAGE_SCHEMA/BSW_MODULE_DESCRIPTION"/>
+                        <d:var name="MODULE_ID" type="INTEGER" >
+                            <a:a name="READONLY" value="true"/>
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:ref type="RECOMMENDED_CONFIGURATION" >
+                            <a:a name="READONLY" value="true"/>
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:ref>
+                        <d:ref type="PRE_CONFIGURED_CONF" >
+                            <a:a name="READONLY" value="true"/>
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:ref>
+                        <d:ref type="VENDOR_SPECIFIC_MODULE_DEF"
+                        value="ASPath:/TS_T40D11M40I2R0/Rm"/>
+                    </d:ctr>
+                </d:chc>
+            </d:lst>
+        </d:ctr>
+    </d:lst>
+</d:ctr>
+
+</datamodel>
+
+

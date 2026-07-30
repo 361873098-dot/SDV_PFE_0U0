@@ -1,0 +1,87 @@
+#  Copyright 2021-2022 NXP
+#
+#  NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only
+#  be used strictly in accordance with the applicable license terms. By
+#  expressly accepting such terms or by downloading, installing, activating
+#  and/or otherwise using the software, you are agreeing that you have read,
+#  and that you agree to comply with and are bound by, such license terms. If
+#  you do not agree to be bound by the applicable license terms, then you may
+#  not retain, install, activate or otherwise use the software.
+
+
+SerDes Integration Example Manual for S32 gen1 Platform
+=======================================================
+
+1 Introduction to S32 gen1 platform
+===================================
+All s32 gen1 SoCs have two SerDeses. Each SerDes has two lanes and contains shared PHY 
+with specific protocol wrapper above for PCIe and SGMII(XPCS). Phy contains two
+PLLs that have diferent usage for SGMII. This allows to run biffurcation of protocols
+or SerDes speeds on different lanes.
+
+PHY PLLs usage for SGMII:
+-PLLA - Slow PLL that should be connected to lane as reference for 1G operation
+-PLLB - Fast PLL that should be connected to lane as reference for 2.5G operation
+
+Modes supported on S32 gen1 (lane0/lane1):
+0 - PCIe/PCIe(2x)
+1 - PCIe(1x)/SGMII(XPCS0) bifurcation
+2 - PCIe(1x)/SGMII(XPCS1) bifurcation
+3 - SGMII(XPCS0)/SGMII(XPCS1) bifurcation
+4 - SGMII(XPCS0)/SGMII(XPCS1) bifurcation
+
+1.2 S32 gen1 Etherent capabilities
+==================================
+SerDes capabilities:
+-SerDes supports 1G and 2.5G
+-SerDes supports speed select for 10M/100M/1G in 1G mode
+-Supports SGMII AN(standard Cisco implementation) in 1G and 2.5G mode
+-For SGMII only modes it is possible to use 100Mhz or 125Mhz reference
+-Runtime change of SerDes from 1G clocking to 2.5G clocking withou PHY reset
+
+SGMII AN support:
+-Speed select is provided by SGMII master 10M/100M/1G
+-Duplex is provided by SGMII master
+-Link status is provided by SGMII master
+
+1.3 Introduction to SerDes on S32G2
+===================================
+On S32G2 platform there are 4 MACs and all of them support SGMII.
+
+S32G2 mapping to XPCS:
++--------+-------+-------+
+| SerDes | XPCS0 | XPCS1 |
++--------+-------+-------+
+|      0 | GMAC  | PFE2  |
+|      1 | PFE0  | PFE1  |
++--------+-------+-------+
+
+Platform limitation:
+-All interfaces can run 1G over SGMII
+-Only PFE0 can run at 2.5G only when mapped to lane0
+
+2 Introduction to example S32G2 driver capability
+=================================================
+To enable the driver in integration app USE_SERDES_DRIVER has to be defined.
+
+Supported configuration:
+-1G mode with reference 100Mhz/125Mhz
+-2.5G mode with reference 100Mhz/125Mhz
+-Internal or exetrnal reference clock source
+-SGMII AN autonegotiation support (currently no action is taken after autonegotiation order set exchange)
+
+Driver functions:
+void SerDes_Init(const Eth_43_PFE_ConfigType * CfgPtr)
+-Configures SerDes mode and asserts/deasserts PRST reset.
+-Configures both SerDeses and each XPCS to default configuration or configuration defined in PFE configuration.
+
+Driver limitations:
+-Currently driver supports only SerDes mode 3(SGMII(XPCS0)/SGMII(XPCS1))
+-Driver takes only PFE configuration, GMAC is ignored
+-To select clock frequency you have to change S32G_SerDes_x_REF_CLK (x=0,1[SerDes]) macro manually. Valid options are : CLK_125MHZ/CLK_100MHZ (default is CLK_125MHZ).
+-To select clock source you have to change S32G_SerDes_x_ADD_FLAGS(x=0,1[SerDes]) macro manually. For internal clock add PHY_CLK_INT flag.
+-To enable autonegotiation for XPCS you have to change macro S32G_SerDes_x_PCSn_SGMII_AN (x=0,1[SerDes],n=0,1[xpcs]) manually to STD_ON.
+
+Platform/MCAL limitation:
+-With internal clock the SerDes_Init has to be called after Mcu_Init.
+-After SerDes is initialized, MUX for SerDes clocks provided to PFE has to be cahnged again (Eg. by calling Mcu_Init again).

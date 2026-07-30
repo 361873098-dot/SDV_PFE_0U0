@@ -1,0 +1,107 @@
+SampleAppGptInit ()
+{
+  Std_ReturnType _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Gpt_Init (0B);
+  # DEBUG BEGIN_STMT
+  Gpt_EnableNotification (0);
+  # DEBUG BEGIN_STMT
+  Gpt_StartTimer (0, 133333);
+  # DEBUG BEGIN_STMT
+  _5 = 0;
+  return _5;
+
+}
+
+
+EthSwt_Tst_PitNotification ()
+{
+  long unsigned int pitIsrCount.0_1;
+  long unsigned int _2;
+  long unsigned int g_sys_milliseconds.1_3;
+  long unsigned int _4;
+  short unsigned int gptNotificationCount.2_5;
+  short unsigned int gptNotificationCount.3_6;
+  short unsigned int _7;
+  short unsigned int gptNotificationCount.4_8;
+  short unsigned int _9;
+  short unsigned int gptNotificationCount.5_10;
+  short unsigned int _11;
+  short unsigned int gptNotificationCount.6_12;
+  short unsigned int _13;
+  short unsigned int gptNotificationCount.7_14;
+  short unsigned int _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pitIsrCount.0_1 ={v} pitIsrCount;
+  _2 = pitIsrCount.0_1 + 1;
+  pitIsrCount ={v} _2;
+  # DEBUG BEGIN_STMT
+  g_sys_milliseconds.1_3 = g_sys_milliseconds;
+  _4 = g_sys_milliseconds.1_3 + 1;
+  g_sys_milliseconds = _4;
+  # DEBUG BEGIN_STMT
+  gptNotificationCount.2_5 ={v} gptNotificationCount;
+  gptNotificationCount.3_6 = gptNotificationCount.2_5;
+  _7 = gptNotificationCount.3_6 + 1;
+  gptNotificationCount ={v} _7;
+  # DEBUG BEGIN_STMT
+  gptNotificationCount.4_8 ={v} gptNotificationCount;
+  _9 = gptNotificationCount.4_8 % 100;
+  if (_9 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pfeMainFunction ={v} 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  gptNotificationCount.5_10 ={v} gptNotificationCount;
+  _11 = gptNotificationCount.5_10 % 50;
+  if (_11 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  switchMainFunction ={v} 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  gptNotificationCount.6_12 ={v} gptNotificationCount;
+  _13 = gptNotificationCount.6_12 % 1000;
+  if (_13 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  sendFrames ={v} 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  gptNotificationCount.7_14 ={v} gptNotificationCount;
+  _15 = gptNotificationCount.7_14 % 500;
+  if (_15 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  getCounters ={v} 1;
+
+  <bb 10> :
+  return;
+
+}
+
+

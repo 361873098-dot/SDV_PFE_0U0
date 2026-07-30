@@ -1,0 +1,381 @@
+pfe_bmu_get_special_stats (const struct pfe_bmu_t * bmu, struct pfe_bmu_stats_special_t * special_stats)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_2 = 0;
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _1 = bmu_4(D)->bmu_base_va;
+  pfe_bmu_cfg_get_special_stats (_1, special_stats_5(D));
+  # DEBUG BEGIN_STMT
+  _7 = ret_2;
+  return _7;
+
+}
+
+
+pfe_bmu_get_stat_value (const struct pfe_bmu_t * bmu, uint32_t stat_id)
+{
+  uint32_t stat_value;
+  unsigned int _1;
+  uint32_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = bmu_3(D)->bmu_base_va;
+  stat_value_6 = pfe_bmu_cfg_get_stat_value (_1, stat_id_4(D));
+  # DEBUG stat_value => stat_value_6
+  # DEBUG BEGIN_STMT
+  _7 = stat_value_6;
+  return _7;
+
+}
+
+
+__attribute__((cold))
+pfe_bmu_destroy (struct pfe_bmu_t * bmu)
+{
+  unsigned int _1;
+  unsigned int _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (bmu_4(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = bmu_4(D)->bmu_base_va;
+  pfe_bmu_cfg_disable (_1);
+  # DEBUG BEGIN_STMT
+  _2 = bmu_4(D)->bmu_base_va;
+  pfe_bmu_cfg_fini (_2);
+
+  <bb 4> :
+  return;
+
+}
+
+
+__attribute__((hot))
+pfe_bmu_free_buf (const struct pfe_bmu_t * bmu, addr_t buffer)
+{
+  unsigned int _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = bmu_3(D)->bmu_base_va;
+  pfe_bmu_cfg_free_buf (_1, buffer_4(D));
+  return;
+
+}
+
+
+__attribute__((pure, cold))
+pfe_bmu_get_buf_size (const struct pfe_bmu_t * bmu)
+{
+  uint32_t len;
+  uint32_t _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  len_3 = bmu_2(D)->buf_size;
+  # DEBUG len => len_3
+  # DEBUG BEGIN_STMT
+  _4 = len_3;
+  return _4;
+
+}
+
+
+__attribute__((pure, hot))
+pfe_bmu_get_pa (const struct pfe_bmu_t * bmu, addr_t va)
+{
+  void * ret;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  void * _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = bmu_7(D)->pool_base_va;
+  _2 = bmu_7(D)->pool_size;
+  _3 = _1 + _2;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = bmu_7(D)->pool_va_offset;
+  _5 = va_8(D) - _4;
+  ret_9 = (void *) _5;
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  _10 = ret_9;
+  return _10;
+
+}
+
+
+__attribute__((pure, hot))
+pfe_bmu_get_va (const struct pfe_bmu_t * bmu, addr_t pa)
+{
+  void * ret;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  void * _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = bmu_7(D)->pool_base_pa;
+  _2 = bmu_7(D)->pool_size;
+  _3 = _1 + _2;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = bmu_7(D)->pool_va_offset;
+  _5 = pa_8(D) + _4;
+  ret_9 = (void *) _5;
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  _10 = ret_9;
+  return _10;
+
+}
+
+
+__attribute__((hot))
+pfe_bmu_alloc_buf (const struct pfe_bmu_t * bmu)
+{
+  void * ret;
+  unsigned int _1;
+  void * _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = bmu_3(D)->bmu_base_va;
+  ret_5 = pfe_bmu_cfg_alloc_buf (_1);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  _6 = ret_5;
+  return _6;
+
+}
+
+
+__attribute__((cold))
+pfe_bmu_disable (struct pfe_bmu_t * bmu)
+{
+  unsigned int _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = bmu_3(D)->bmu_base_va;
+  pfe_bmu_cfg_disable (_1);
+  return;
+
+}
+
+
+__attribute__((cold))
+pfe_bmu_enable (struct pfe_bmu_t * bmu)
+{
+  unsigned int _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = bmu_3(D)->bmu_base_va;
+  pfe_bmu_cfg_enable (_1);
+  return;
+
+}
+
+
+__attribute__((cold))
+pfe_bmu_reset (struct pfe_bmu_t * bmu)
+{
+  errno_t ret;
+  unsigned int _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = bmu_3(D)->bmu_base_va;
+  ret_5 = pfe_bmu_cfg_reset (_1);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+__attribute__((cold))
+pfe_bmu_create (addr_t cbus_base_va, addr_t bmu_base, const struct pfe_bmu_cfg_t * cfg, uint32_t bmu_index)
+{
+  struct pfe_bmu_t * bmu;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  long unsigned int _11;
+  __complex__ long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  unsigned int _20;
+  unsigned int _21;
+  struct pfe_bmu_t * _45;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = bmu_index_24(D) > 1;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] BMU index out of range\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_bmu.c", 143, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  bmu_44 = 0B;
+  # DEBUG bmu => bmu_44
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  bmu_25 = &bmu_instance[bmu_index_24(D)];
+  # DEBUG bmu => bmu_25
+  # DEBUG BEGIN_STMT
+  autolibc_memset (bmu_25, 0, 32);
+  # DEBUG BEGIN_STMT
+  bmu_25->cbus_base_va = cbus_base_va_28(D);
+  # DEBUG BEGIN_STMT
+  bmu_25->bmu_base_offset = bmu_base_30(D);
+  # DEBUG BEGIN_STMT
+  _4 = bmu_25->cbus_base_va;
+  _5 = bmu_25->bmu_base_offset;
+  _6 = _4 + _5;
+  bmu_25->bmu_base_va = _6;
+  # DEBUG BEGIN_STMT
+  _7 = cfg_33(D)->pool_pa;
+  bmu_25->pool_base_pa = _7;
+  # DEBUG BEGIN_STMT
+  _8 = cfg_33(D)->pool_va;
+  bmu_25->pool_base_va = _8;
+  # DEBUG BEGIN_STMT
+  _9 = bmu_25->pool_base_va;
+  _10 = bmu_25->pool_base_pa;
+  _11 = _9 - _10;
+  bmu_25->pool_va_offset = _11;
+  # DEBUG BEGIN_STMT
+  _13 = cfg_33(D)->buf_size;
+  _14 = cfg_33(D)->max_buf_cnt;
+  _12 = .MUL_OVERFLOW (_13, _14);
+  _15 = IMAGPART_EXPR <_12>;
+  # DEBUG BEGIN_STMT
+  _16 = cfg_33(D)->buf_size;
+  _17 = cfg_33(D)->max_buf_cnt;
+  _18 = _16 * _17;
+  bmu_25->pool_size = _18;
+  # DEBUG BEGIN_STMT
+  _19 = cfg_33(D)->buf_size;
+  bmu_25->buf_size = _19;
+  # DEBUG BEGIN_STMT
+  pfe_bmu_reset (bmu_25);
+  # DEBUG BEGIN_STMT
+  _20 = bmu_25->bmu_base_va;
+  pfe_bmu_cfg_disable (_20);
+  # DEBUG BEGIN_STMT
+  _21 = bmu_25->bmu_base_va;
+  pfe_bmu_cfg_init (_21, cfg_33(D));
+
+  <bb 5> :
+  # bmu_22 = PHI <bmu_44(3), bmu_25(4)>
+  # DEBUG bmu => bmu_22
+  # DEBUG BEGIN_STMT
+  _45 = bmu_22;
+  return _45;
+
+}
+
+
+pfe_bmu_irq_unmask (struct pfe_bmu_t * bmu)
+{
+  unsigned int _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = bmu_3(D)->bmu_base_va;
+  pfe_bmu_cfg_irq_unmask (_1);
+  return;
+
+}
+
+
+pfe_bmu_irq_mask (struct pfe_bmu_t * bmu)
+{
+  unsigned int _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = bmu_3(D)->bmu_base_va;
+  pfe_bmu_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+__attribute__((cold))
+pfe_bmu_isr (struct pfe_bmu_t * bmu)
+{
+  errno_t ret;
+  unsigned int _1;
+  unsigned int _2;
+  errno_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = bmu_4(D)->bmu_base_va;
+  _2 = bmu_4(D)->cbus_base_va;
+  ret_6 = pfe_bmu_cfg_isr (_1, _2);
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  _7 = ret_6;
+  return _7;
+
+}
+
+

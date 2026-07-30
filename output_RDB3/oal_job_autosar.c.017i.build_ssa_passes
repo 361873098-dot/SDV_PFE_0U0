@@ -1,0 +1,147 @@
+oal_job_create (void (*oal_job_func) (void *) func, void * arg, const char_t * name, oal_prio_t prio, struct oal_job_t * new_job)
+{
+  struct oal_job_t * job;
+  struct oal_job_t * D.7278;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  job = new_job;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  job->func = func;
+  # DEBUG BEGIN_STMT
+  job->arg = arg;
+  # DEBUG BEGIN_STMT
+  job->name = name;
+  # DEBUG BEGIN_STMT
+  D.7278 = job;
+  return D.7278;
+
+}
+
+
+oal_job_drain (const struct oal_job_t * job)
+{
+  errno_t ret_val;
+  errno_t D.7276;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_val = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7276 = ret_val;
+  return D.7276;
+
+}
+
+
+oal_job_run (struct oal_job_t * job)
+{
+  errno_t ret_val;
+  errno_t D.7268;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = job->name;
+  _2 = autolibc_strcmp ("HIF TX JOB", _1);
+  if (_2 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (94);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = job->func;
+  if (_3 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Job pointer was NULL\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/oal_job_autosar.c", 70, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_val = 22;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _4 = job->func;
+  _5 = job->arg;
+  _4 (_5);
+  # DEBUG BEGIN_STMT
+  ret_val = 0;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _6 = job->name;
+  _7 = autolibc_strcmp ("HIF TX JOB", _6);
+  if (_7 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (94);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  D.7268 = ret_val;
+  return D.7268;
+
+}
+
+
+oal_mutex_unlock (const oal_mutex_t mutex)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock (const oal_mutex_t mutex)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

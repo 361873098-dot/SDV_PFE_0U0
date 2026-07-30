@@ -1,0 +1,777 @@
+Trivially needed symbols: Serdes_GetStatus Serdes_GetJobResult Serdes_MainFunction Serdes_Init Serdes_InitMultiChannels
+
+
+Initial Symbol table:
+
+Serdes_Ipw_GetStatus/12 (Serdes_Ipw_GetStatus) @06fe1540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_GetStatus/7 
+  Calls: 
+Serdes_Ipw_GetJobResult/11 (Serdes_Ipw_GetJobResult) @06fe1380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_GetJobResult/6 
+  Calls: 
+Serdes_Ipw_MainFunction/10 (Serdes_Ipw_MainFunction) @06fe11c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_MainFunction/5 
+  Calls: 
+Serdes_PBCfgVariantPredefined/9 (Serdes_PBCfgVariantPredefined) @06f5b510
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Serdes_Init/4 (addr)Serdes_Init/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Serdes_Ipw_InitChannel/8 (Serdes_Ipw_InitChannel) @06f539a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_InitMultiChannels/3 
+  Calls: 
+Serdes_GetStatus/7 (Serdes_GetStatus) @06f53e00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_GetStatus/12 
+Serdes_GetJobResult/6 (Serdes_GetJobResult) @06f53b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f53e00
+  References: Serdes_Config/1 (read)Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_GetJobResult/11 
+Serdes_MainFunction/5 (Serdes_MainFunction) @06f538c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f53b60
+  References: Serdes_DriverStatus/0 (read)Serdes_Config/1 (read)Serdes_Config/1 (read)Serdes_DriverStatus/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_MainFunction/10 
+Serdes_Init/4 (Serdes_Init) @06f53620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f538c0
+  References: Serdes_PBCfgVariantPredefined/9 (addr)Serdes_PBCfgVariantPredefined/9 (addr)Serdes_Config/1 (write)Serdes_DriverStatus/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_InitMultiChannels/3 Serdes_CheckCurrentCoreId/2 
+Serdes_InitMultiChannels/3 (Serdes_InitMultiChannels) @06f53380
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f53620
+  References: Serdes_Config/1 (read)Serdes_Config/1 (read)Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Serdes_Init/4 
+  Calls: Serdes_Ipw_InitChannel/8 
+Serdes_CheckCurrentCoreId/2 (Serdes_CheckCurrentCoreId) @06f530e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f538c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Serdes_Init/4 
+  Calls: 
+Serdes_Config/1 (Serdes_Config) @06f505e8
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @06f53620
+  References: 
+  Referring: Serdes_InitMultiChannels/3 (read)Serdes_InitMultiChannels/3 (read)Serdes_InitMultiChannels/3 (read)Serdes_Init/4 (write)Serdes_MainFunction/5 (read)Serdes_MainFunction/5 (read)Serdes_GetJobResult/6 (read)Serdes_GetJobResult/6 (read)Serdes_GetStatus/7 (read)
+  Availability: not-ready
+  Varpool flags:
+Serdes_DriverStatus/0 (Serdes_DriverStatus) @06f50510
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @06f530e0
+  References: 
+  Referring: Serdes_Init/4 (write)Serdes_MainFunction/5 (read)Serdes_MainFunction/5 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+Serdes_Ipw_GetStatus/12 (Serdes_Ipw_GetStatus) @06fe1540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_GetStatus/7 
+  Calls: 
+Serdes_Ipw_GetJobResult/11 (Serdes_Ipw_GetJobResult) @06fe1380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_GetJobResult/6 
+  Calls: 
+Serdes_Ipw_MainFunction/10 (Serdes_Ipw_MainFunction) @06fe11c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_MainFunction/5 
+  Calls: 
+Serdes_PBCfgVariantPredefined/9 (Serdes_PBCfgVariantPredefined) @06f5b510
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Serdes_Init/4 (addr)Serdes_Init/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Serdes_Ipw_InitChannel/8 (Serdes_Ipw_InitChannel) @06f539a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_InitMultiChannels/3 
+  Calls: 
+Serdes_GetStatus/7 (Serdes_GetStatus) @06f53e00
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_GetStatus/12 
+Serdes_GetJobResult/6 (Serdes_GetJobResult) @06f53b60
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_Config/1 (read)Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_GetJobResult/11 
+Serdes_MainFunction/5 (Serdes_MainFunction) @06f538c0
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_DriverStatus/0 (read)Serdes_Config/1 (read)Serdes_Config/1 (read)Serdes_DriverStatus/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_MainFunction/10 
+Serdes_Init/4 (Serdes_Init) @06f53620
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_PBCfgVariantPredefined/9 (addr)Serdes_PBCfgVariantPredefined/9 (addr)Serdes_Config/1 (write)Serdes_DriverStatus/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_InitMultiChannels/3 Serdes_CheckCurrentCoreId/2 
+Serdes_InitMultiChannels/3 (Serdes_InitMultiChannels) @06f53380
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_Config/1 (read)Serdes_Config/1 (read)Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Serdes_Init/4 
+  Calls: Serdes_Ipw_InitChannel/8 
+Serdes_CheckCurrentCoreId/2 (Serdes_CheckCurrentCoreId) @06f530e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Serdes_Init/4 
+  Calls: 
+Serdes_Config/1 (Serdes_Config) @06f505e8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: Serdes_InitMultiChannels/3 (read)Serdes_InitMultiChannels/3 (read)Serdes_InitMultiChannels/3 (read)Serdes_Init/4 (write)Serdes_MainFunction/5 (read)Serdes_MainFunction/5 (read)Serdes_GetJobResult/6 (read)Serdes_GetJobResult/6 (read)Serdes_GetStatus/7 (read)
+  Availability: not-ready
+  Varpool flags:
+Serdes_DriverStatus/0 (Serdes_DriverStatus) @06f50510
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: Serdes_Init/4 (write)Serdes_MainFunction/5 (read)Serdes_MainFunction/5 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+
+
+Initial Symbol table:
+
+Serdes_Ipw_GetStatus/12 (Serdes_Ipw_GetStatus) @06fe1540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_GetStatus/7 
+  Calls: 
+Serdes_Ipw_GetJobResult/11 (Serdes_Ipw_GetJobResult) @06fe1380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_GetJobResult/6 
+  Calls: 
+Serdes_Ipw_MainFunction/10 (Serdes_Ipw_MainFunction) @06fe11c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_MainFunction/5 
+  Calls: 
+Serdes_PBCfgVariantPredefined/9 (Serdes_PBCfgVariantPredefined) @06f5b510
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Serdes_Init/4 (addr)Serdes_Init/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Serdes_Ipw_InitChannel/8 (Serdes_Ipw_InitChannel) @06f539a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_InitMultiChannels/3 
+  Calls: 
+Serdes_GetStatus/7 (Serdes_GetStatus) @06f53e00
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_GetStatus/12 
+Serdes_GetJobResult/6 (Serdes_GetJobResult) @06f53b60
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_Config/1 (read)Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_GetJobResult/11 
+Serdes_MainFunction/5 (Serdes_MainFunction) @06f538c0
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_DriverStatus/0 (read)Serdes_Config/1 (read)Serdes_Config/1 (read)Serdes_DriverStatus/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_MainFunction/10 
+Serdes_Init/4 (Serdes_Init) @06f53620
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_PBCfgVariantPredefined/9 (addr)Serdes_PBCfgVariantPredefined/9 (addr)Serdes_Config/1 (write)Serdes_DriverStatus/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_InitMultiChannels/3 Serdes_CheckCurrentCoreId/2 
+Serdes_InitMultiChannels/3 (Serdes_InitMultiChannels) @06f53380
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_Config/1 (read)Serdes_Config/1 (read)Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Serdes_Init/4 
+  Calls: Serdes_Ipw_InitChannel/8 
+Serdes_CheckCurrentCoreId/2 (Serdes_CheckCurrentCoreId) @06f530e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Serdes_Init/4 
+  Calls: 
+Serdes_Config/1 (Serdes_Config) @06f505e8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: Serdes_InitMultiChannels/3 (read)Serdes_InitMultiChannels/3 (read)Serdes_InitMultiChannels/3 (read)Serdes_Init/4 (write)Serdes_MainFunction/5 (read)Serdes_MainFunction/5 (read)Serdes_GetJobResult/6 (read)Serdes_GetJobResult/6 (read)Serdes_GetStatus/7 (read)
+  Availability: not-ready
+  Varpool flags:
+Serdes_DriverStatus/0 (Serdes_DriverStatus) @06f50510
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: Serdes_Init/4 (write)Serdes_MainFunction/5 (read)Serdes_MainFunction/5 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+Serdes_Ipw_GetStatus/12 (Serdes_Ipw_GetStatus) @06fe1540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_GetStatus/7 
+  Calls: 
+Serdes_Ipw_GetJobResult/11 (Serdes_Ipw_GetJobResult) @06fe1380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_GetJobResult/6 
+  Calls: 
+Serdes_Ipw_MainFunction/10 (Serdes_Ipw_MainFunction) @06fe11c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_MainFunction/5 
+  Calls: 
+Serdes_PBCfgVariantPredefined/9 (Serdes_PBCfgVariantPredefined) @06f5b510
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: Serdes_Init/4 (addr)Serdes_Init/4 (addr)
+  Availability: not-ready
+  Varpool flags: read-only
+Serdes_Ipw_InitChannel/8 (Serdes_Ipw_InitChannel) @06f539a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: Serdes_InitMultiChannels/3 
+  Calls: 
+Serdes_GetStatus/7 (Serdes_GetStatus) @06f53e00
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_GetStatus/12 
+Serdes_GetJobResult/6 (Serdes_GetJobResult) @06f53b60
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_Config/1 (read)Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_GetJobResult/11 
+Serdes_MainFunction/5 (Serdes_MainFunction) @06f538c0
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_DriverStatus/0 (read)Serdes_Config/1 (read)Serdes_Config/1 (read)Serdes_DriverStatus/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_MainFunction/10 
+Serdes_Init/4 (Serdes_Init) @06f53620
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_PBCfgVariantPredefined/9 (addr)Serdes_PBCfgVariantPredefined/9 (addr)Serdes_Config/1 (write)Serdes_DriverStatus/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Serdes_InitMultiChannels/3 Serdes_CheckCurrentCoreId/2 
+Serdes_InitMultiChannels/3 (Serdes_InitMultiChannels) @06f53380
+  Type: function definition analyzed
+  Visibility: public
+  References: Serdes_Config/1 (read)Serdes_Config/1 (read)Serdes_Config/1 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Serdes_Init/4 
+  Calls: Serdes_Ipw_InitChannel/8 
+Serdes_CheckCurrentCoreId/2 (Serdes_CheckCurrentCoreId) @06f530e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: Serdes_Init/4 
+  Calls: 
+Serdes_Config/1 (Serdes_Config) @06f505e8
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: Serdes_InitMultiChannels/3 (read)Serdes_InitMultiChannels/3 (read)Serdes_InitMultiChannels/3 (read)Serdes_Init/4 (write)Serdes_MainFunction/5 (read)Serdes_MainFunction/5 (read)Serdes_GetJobResult/6 (read)Serdes_GetJobResult/6 (read)Serdes_GetStatus/7 (read)
+  Availability: not-ready
+  Varpool flags:
+Serdes_DriverStatus/0 (Serdes_DriverStatus) @06f50510
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: Serdes_Init/4 (write)Serdes_MainFunction/5 (read)Serdes_MainFunction/5 (write)
+  Availability: not-ready
+  Varpool flags: initialized
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+Serdes_CheckCurrentCoreId.constprop.0/13 (Serdes_CheckCurrentCoreId.constprop) @06feb9a0
+  Type: function definition analyzed
+  Visibility:
+  References: Serdes_PBCfgVariantPredefined/9 (addr)
+  Referring: 
+  Function Serdes_CheckCurrentCoreId.constprop/13 is inline copy in Serdes_Init/4
+  Clone of Serdes_CheckCurrentCoreId/2
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local nonfreeing_fn optimize_size
+  Called by: Serdes_Init/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Serdes_Ipw_GetStatus/12 (Serdes_Ipw_GetStatus) @06fe1540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Serdes_GetStatus/7 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Serdes_Ipw_GetJobResult/11 (Serdes_Ipw_GetJobResult) @06fe1380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Serdes_GetJobResult/6 (679839637 (estimated locally),11.51 per call) 
+  Calls: 
+Serdes_Ipw_MainFunction/10 (Serdes_Ipw_MainFunction) @06fe11c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Serdes_MainFunction/5 (679839637 (estimated locally),3.91 per call) 
+  Calls: 
+Serdes_PBCfgVariantPredefined/9 (Serdes_PBCfgVariantPredefined) @06f5b510
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Serdes_Init/4 (addr)Serdes_Init/4 (addr)Serdes_CheckCurrentCoreId.constprop.0/13 (addr)
+  Availability: not_available
+  Varpool flags: read-only
+Serdes_Ipw_InitChannel/8 (Serdes_Ipw_InitChannel) @06f539a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Serdes_InitMultiChannels/3 (679839636 (estimated locally),7.05 per call) 
+  Calls: 
+Serdes_GetStatus/7 (Serdes_GetStatus) @06f53e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Serdes_Config/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_GetStatus/12 (1073741824 (estimated locally),1.00 per call) 
+Serdes_GetJobResult/6 (Serdes_GetJobResult) @06f53b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Serdes_Config/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:59055800 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_GetJobResult/11 (679839637 (estimated locally),11.51 per call) 
+Serdes_MainFunction/5 (Serdes_MainFunction) @06f538c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Serdes_DriverStatus/0 (read)Serdes_Config/1 (read)Serdes_DriverStatus/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:173693529 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Serdes_Ipw_MainFunction/10 (679839637 (estimated locally),3.91 per call) 
+Serdes_Init/4 (Serdes_Init) @06f53620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Serdes_PBCfgVariantPredefined/9 (addr)Serdes_Config/1 (write)Serdes_PBCfgVariantPredefined/9 (addr)Serdes_DriverStatus/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Serdes_InitMultiChannels/3 (354334802 (estimated locally),0.33 per call) Serdes_CheckCurrentCoreId.constprop/13 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Serdes_InitMultiChannels/3 (Serdes_InitMultiChannels) @06f53380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: Serdes_Config/1 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:96446979 (estimated locally) body optimize_size
+  Called by: Serdes_Init/4 (354334802 (estimated locally),0.33 per call) 
+  Calls: Serdes_Ipw_InitChannel/8 (679839636 (estimated locally),7.05 per call) 
+Serdes_CheckCurrentCoreId/2 (Serdes_CheckCurrentCoreId) @06f530e0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Serdes_Config/1 (Serdes_Config) @06f505e8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: Serdes_InitMultiChannels/3 (read)Serdes_Init/4 (write)Serdes_MainFunction/5 (read)Serdes_GetJobResult/6 (read)Serdes_GetStatus/7 (read)
+  Availability: available
+  Varpool flags:
+Serdes_DriverStatus/0 (Serdes_DriverStatus) @06f50510
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: Serdes_Init/4 (write)Serdes_MainFunction/5 (read)Serdes_MainFunction/5 (write)
+  Availability: available
+  Varpool flags: initialized
+Materializing clones
+cloning Serdes_CheckCurrentCoreId to Serdes_CheckCurrentCoreId.constprop
+   replace map:  -> &MEM[(void *)&Serdes_PBCfgVariantPredefined](replace); -> 0(replace);
+   args_to_skip: 0, 1
+   combined_args_to_skip:0, 1
+Serdes_CheckCurrentCoreId (const struct Serdes_ConfigType * CfgPtr, uint32 CoreId)
+{
+  Std_ReturnType ValidCoreId;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ValidCoreId => 1
+  # DEBUG BEGIN_STMT
+  if (CfgPtr_4(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _1 = CfgPtr_4(D)->CoreId;
+  if (_1 == CoreId_6(D))
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 4> [local count: 255550554]:
+  _2 = CfgPtr_4(D)->Serdes_HwConfig;
+  if (_2 != 0B)
+    goto <bb 5>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 5> [local count: 178885388]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ValidCoreId => 0
+
+  <bb 6> [local count: 1073741824]:
+  # ValidCoreId_3 = PHI <1(2), 1(3), 1(4), 0(5)>
+  # DEBUG ValidCoreId => ValidCoreId_3
+  # DEBUG BEGIN_STMT
+  return ValidCoreId_3;
+
+}
+
+
+Serdes_CheckCurrentCoreId.constprop ()
+{
+  Std_ReturnType ValidCoreId;
+  const struct Serdes_ConfigType * CfgPtr;
+  uint32 CoreId;
+
+  <bb 7> [local count: 1073741824]:
+  # DEBUG CoreId => 0
+  # DEBUG CfgPtr => &Serdes_PBCfgVariantPredefined
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ValidCoreId => 1
+  # DEBUG BEGIN_STMT
+  if (1 != 0)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(const struct Serdes_ConfigType *)&Serdes_PBCfgVariantPredefined].CoreId;
+  if (_1 == 0)
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 4> [local count: 255550554]:
+  _2 = MEM[(const struct Serdes_ConfigType *)&Serdes_PBCfgVariantPredefined].Serdes_HwConfig;
+  if (_2 != 0B)
+    goto <bb 5>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 5> [local count: 178885388]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ValidCoreId => 0
+
+  <bb 6> [local count: 1073741824]:
+  # ValidCoreId_3 = PHI <1(2), 1(3), 1(4), 0(5)>
+  # DEBUG ValidCoreId => ValidCoreId_3
+  # DEBUG BEGIN_STMT
+  return ValidCoreId_3;
+
+}
+
+
+Materialization Call site updates done.
+
+Reclaiming functions: Serdes_CheckCurrentCoreId/2
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:Serdes_InitMultiChannels:0
+Time profile order in expand_all_functions:Serdes_Init:0
+updating call of Serdes_Init/4 -> Serdes_CheckCurrentCoreId.constprop/13: ValidCoreId_4 = Serdes_CheckCurrentCoreId (&MEM[(void *)&Serdes_PBCfgVariantPredefined], 0);
+ combined args to skip: 0, 1
+  updated to:ValidCoreId_4 = Serdes_CheckCurrentCoreId.constprop ();
+Time profile order in expand_all_functions:Serdes_MainFunction:0
+Time profile order in expand_all_functions:Serdes_GetJobResult:0
+Time profile order in expand_all_functions:Serdes_GetStatus:0
+Trivially needed variables: Serdes_Config Serdes_DriverStatus
+Removing variables:
+
+Final Symbol table:
+
+Serdes_Ipw_GetStatus/12 (Serdes_Ipw_GetStatus) @06fe1540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Serdes_Ipw_GetJobResult/11 (Serdes_Ipw_GetJobResult) @06fe1380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Serdes_Ipw_MainFunction/10 (Serdes_Ipw_MainFunction) @06fe11c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Serdes_PBCfgVariantPredefined/9 (Serdes_PBCfgVariantPredefined) @06f5b510
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags: read-only
+Serdes_Ipw_InitChannel/8 (Serdes_Ipw_InitChannel) @06f539a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Serdes_GetStatus/7 (Serdes_GetStatus) @06f53e00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+Serdes_GetJobResult/6 (Serdes_GetJobResult) @06f53b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:59055800 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+Serdes_MainFunction/5 (Serdes_MainFunction) @06f538c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:173693529 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+Serdes_Init/4 (Serdes_Init) @06f53620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+Serdes_InitMultiChannels/3 (Serdes_InitMultiChannels) @06f53380
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:96446979 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+Serdes_Config/1 (Serdes_Config) @06f505e8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+Serdes_DriverStatus/0 (Serdes_DriverStatus) @06f50510
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @06f505e8
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized

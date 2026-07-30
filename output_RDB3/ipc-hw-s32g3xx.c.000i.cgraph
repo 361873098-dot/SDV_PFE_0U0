@@ -1,0 +1,892 @@
+Trivially needed symbols: ipc_hw_flush_cache_remote ipc_hw_flush_cache_local ipc_hw_irq_clear ipc_hw_irq_notify ipc_hw_irq_disable ipc_hw_irq_enable ipc_hw_free ipc_hw_init
+
+
+Initial Symbol table:
+
+ipc_hw_flush_cache_remote/16 (ipc_hw_flush_cache_remote) @074ae700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_flush_cache_local/15 (ipc_hw_flush_cache_local) @074ae460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @074ae700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_clear/14 (ipc_hw_irq_clear) @074ae1c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @074ae460
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_free/10 ipc_hw_init/9 
+  Calls: 
+ipc_hw_irq_notify/13 (ipc_hw_irq_notify) @074a1ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @074ae1c0
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_disable/12 (ipc_hw_irq_disable) @074a19a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @074a1ee0
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: 
+ipc_hw_irq_enable/11 (ipc_hw_irq_enable) @074a1e00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @074a19a0
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_free/10 (ipc_hw_free) @074a1b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @074a1e00
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 
+ipc_hw_init/9 (ipc_hw_init) @074a18c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @074a1b60
+  References: ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 ipc_hw_irq_disable/12 ipc_hw_set_irq_idx/8 ipc_hw_set_core/5 
+ipc_hw_set_irq_idx/8 (ipc_hw_set_irq_idx) @074a1620
+  Type: function definition analyzed
+  Visibility:
+  Aux: @074a1b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: ipc_hw_set_rx_irq_idx/7 ipc_hw_set_tx_irq_idx/6 
+ipc_hw_set_rx_irq_idx/7 (ipc_hw_set_rx_irq_idx) @074a1380
+  Type: function definition analyzed
+  Visibility:
+  Aux: @074a1b60
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_irq_idx/8 
+  Calls: 
+ipc_hw_set_tx_irq_idx/6 (ipc_hw_set_tx_irq_idx) @074a10e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @074a1380
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_irq_idx/8 
+  Calls: 
+ipc_hw_set_core/5 (ipc_hw_set_core) @0748de00
+  Type: function definition analyzed
+  Visibility:
+  Aux: @074a1620
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+ipc_hw_set_local_core/4 (ipc_hw_set_local_core) @0748db60
+  Type: function definition analyzed
+  Visibility:
+  Aux: @074a1620
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_core/5 
+  Calls: ipc_hw_get_core_index_m7/1 ipc_hw_get_core_index_a53/2 
+ipc_hw_set_remote_core/3 (ipc_hw_set_remote_core) @0748d8c0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0748db60
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_core/5 
+  Calls: ipc_hw_get_core_index_m7/1 ipc_hw_get_core_index_a53/2 
+ipc_hw_get_core_index_a53/2 (ipc_hw_get_core_index_a53) @0748d620
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0748d380
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+  Calls: 
+ipc_hw_get_core_index_m7/1 (ipc_hw_get_core_index_m7) @0748d380
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0748db60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+  Calls: 
+ipc_hw_priv/0 (ipc_hw_priv) @074896c0
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @0748de00
+  References: 
+  Referring: ipc_hw_init/9 (write)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_remote_core/3 (write)ipc_hw_set_remote_core/3 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+ipc_hw_flush_cache_remote/16 (ipc_hw_flush_cache_remote) @074ae700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_flush_cache_local/15 (ipc_hw_flush_cache_local) @074ae460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_clear/14 (ipc_hw_irq_clear) @074ae1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_free/10 ipc_hw_init/9 
+  Calls: 
+ipc_hw_irq_notify/13 (ipc_hw_irq_notify) @074a1ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_disable/12 (ipc_hw_irq_disable) @074a19a0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: 
+ipc_hw_irq_enable/11 (ipc_hw_irq_enable) @074a1e00
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_free/10 (ipc_hw_free) @074a1b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 
+ipc_hw_init/9 (ipc_hw_init) @074a18c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 ipc_hw_irq_disable/12 ipc_hw_set_irq_idx/8 ipc_hw_set_core/5 
+ipc_hw_set_irq_idx/8 (ipc_hw_set_irq_idx) @074a1620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: ipc_hw_set_rx_irq_idx/7 ipc_hw_set_tx_irq_idx/6 
+ipc_hw_set_rx_irq_idx/7 (ipc_hw_set_rx_irq_idx) @074a1380
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_irq_idx/8 
+  Calls: 
+ipc_hw_set_tx_irq_idx/6 (ipc_hw_set_tx_irq_idx) @074a10e0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_irq_idx/8 
+  Calls: 
+ipc_hw_set_core/5 (ipc_hw_set_core) @0748de00
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+ipc_hw_set_local_core/4 (ipc_hw_set_local_core) @0748db60
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_core/5 
+  Calls: ipc_hw_get_core_index_m7/1 ipc_hw_get_core_index_a53/2 
+ipc_hw_set_remote_core/3 (ipc_hw_set_remote_core) @0748d8c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_core/5 
+  Calls: ipc_hw_get_core_index_m7/1 ipc_hw_get_core_index_a53/2 
+ipc_hw_get_core_index_a53/2 (ipc_hw_get_core_index_a53) @0748d620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+  Calls: 
+ipc_hw_get_core_index_m7/1 (ipc_hw_get_core_index_m7) @0748d380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+  Calls: 
+ipc_hw_priv/0 (ipc_hw_priv) @074896c0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: ipc_hw_init/9 (write)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_remote_core/3 (write)ipc_hw_set_remote_core/3 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)
+  Availability: not-ready
+  Varpool flags:
+
+
+Initial Symbol table:
+
+ipc_hw_flush_cache_remote/16 (ipc_hw_flush_cache_remote) @074ae700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_flush_cache_local/15 (ipc_hw_flush_cache_local) @074ae460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_clear/14 (ipc_hw_irq_clear) @074ae1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_free/10 ipc_hw_init/9 
+  Calls: 
+ipc_hw_irq_notify/13 (ipc_hw_irq_notify) @074a1ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_disable/12 (ipc_hw_irq_disable) @074a19a0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: 
+ipc_hw_irq_enable/11 (ipc_hw_irq_enable) @074a1e00
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_free/10 (ipc_hw_free) @074a1b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 
+ipc_hw_init/9 (ipc_hw_init) @074a18c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 ipc_hw_irq_disable/12 ipc_hw_set_irq_idx/8 ipc_hw_set_core/5 
+ipc_hw_set_irq_idx/8 (ipc_hw_set_irq_idx) @074a1620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: ipc_hw_set_rx_irq_idx/7 ipc_hw_set_tx_irq_idx/6 
+ipc_hw_set_rx_irq_idx/7 (ipc_hw_set_rx_irq_idx) @074a1380
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_irq_idx/8 
+  Calls: 
+ipc_hw_set_tx_irq_idx/6 (ipc_hw_set_tx_irq_idx) @074a10e0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_irq_idx/8 
+  Calls: 
+ipc_hw_set_core/5 (ipc_hw_set_core) @0748de00
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+ipc_hw_set_local_core/4 (ipc_hw_set_local_core) @0748db60
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_core/5 
+  Calls: ipc_hw_get_core_index_m7/1 ipc_hw_get_core_index_a53/2 
+ipc_hw_set_remote_core/3 (ipc_hw_set_remote_core) @0748d8c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_core/5 
+  Calls: ipc_hw_get_core_index_m7/1 ipc_hw_get_core_index_a53/2 
+ipc_hw_get_core_index_a53/2 (ipc_hw_get_core_index_a53) @0748d620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+  Calls: 
+ipc_hw_get_core_index_m7/1 (ipc_hw_get_core_index_m7) @0748d380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+  Calls: 
+ipc_hw_priv/0 (ipc_hw_priv) @074896c0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: ipc_hw_init/9 (write)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_remote_core/3 (write)ipc_hw_set_remote_core/3 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+ipc_hw_flush_cache_remote/16 (ipc_hw_flush_cache_remote) @074ae700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_flush_cache_local/15 (ipc_hw_flush_cache_local) @074ae460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_clear/14 (ipc_hw_irq_clear) @074ae1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_free/10 ipc_hw_init/9 
+  Calls: 
+ipc_hw_irq_notify/13 (ipc_hw_irq_notify) @074a1ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_disable/12 (ipc_hw_irq_disable) @074a19a0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: 
+ipc_hw_irq_enable/11 (ipc_hw_irq_enable) @074a1e00
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_free/10 (ipc_hw_free) @074a1b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 
+ipc_hw_init/9 (ipc_hw_init) @074a18c0
+  Type: function definition analyzed
+  Visibility: public
+  References: ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 ipc_hw_irq_disable/12 ipc_hw_set_irq_idx/8 ipc_hw_set_core/5 
+ipc_hw_set_irq_idx/8 (ipc_hw_set_irq_idx) @074a1620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: ipc_hw_set_rx_irq_idx/7 ipc_hw_set_tx_irq_idx/6 
+ipc_hw_set_rx_irq_idx/7 (ipc_hw_set_rx_irq_idx) @074a1380
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_irq_idx/8 
+  Calls: 
+ipc_hw_set_tx_irq_idx/6 (ipc_hw_set_tx_irq_idx) @074a10e0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_irq_idx/8 
+  Calls: 
+ipc_hw_set_core/5 (ipc_hw_set_core) @0748de00
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+ipc_hw_set_local_core/4 (ipc_hw_set_local_core) @0748db60
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_core/5 
+  Calls: ipc_hw_get_core_index_m7/1 ipc_hw_get_core_index_a53/2 
+ipc_hw_set_remote_core/3 (ipc_hw_set_remote_core) @0748d8c0
+  Type: function definition analyzed
+  Visibility:
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_core/5 
+  Calls: ipc_hw_get_core_index_m7/1 ipc_hw_get_core_index_a53/2 
+ipc_hw_get_core_index_a53/2 (ipc_hw_get_core_index_a53) @0748d620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+  Calls: 
+ipc_hw_get_core_index_m7/1 (ipc_hw_get_core_index_m7) @0748d380
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+  Calls: 
+ipc_hw_priv/0 (ipc_hw_priv) @074896c0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: ipc_hw_init/9 (write)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_remote_core/3 (write)ipc_hw_set_remote_core/3 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)
+  Availability: not-ready
+  Varpool flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+ipc_hw_get_core_index_m7/21 (ipc_hw_get_core_index_m7) @074a1380
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 1
+  References: CSWTCH.5/17 (read)
+  Referring: 
+  Function ipc_hw_get_core_index_m7/21 is inline copy in ipc_hw_init/9
+  Clone of ipc_hw_get_core_index_m7/1
+  Availability: local
+  Function flags: count:668035907 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_hw_set_remote_core/3 (inlined) (668035907 (estimated locally),0.62 per call) 
+  Calls: 
+ipc_hw_flush_cache_local/20 (ipc_hw_flush_cache_local) @074a10e0
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 15
+  References: 
+  Referring: 
+  Function ipc_hw_flush_cache_local/20 is inline copy in ipc_hw_flush_cache_remote/16
+  Clone of ipc_hw_flush_cache_local/15
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged nonfreeing_fn optimize_size
+  Called by: ipc_hw_flush_cache_remote/16 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ipc_hw_set_rx_irq_idx.isra.0/19 (ipc_hw_set_rx_irq_idx.isra.0) @075ff540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function ipc_hw_set_rx_irq_idx.isra.0/19 is inline copy in ipc_hw_init/9
+  Availability: local
+  Function flags: count:114653062 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_hw_set_irq_idx/8 (inlined) (114653062 (estimated locally),0.11 per call) 
+  Calls: 
+ipc_hw_set_tx_irq_idx.isra.0/18 (ipc_hw_set_tx_irq_idx.isra.0) @0750fe00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function ipc_hw_set_tx_irq_idx.isra.0/18 is inline copy in ipc_hw_init/9
+  Availability: local
+  Function flags: count:347433523 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_hw_set_irq_idx/8 (inlined) (347433523 (estimated locally),0.32 per call) 
+  Calls: 
+CSWTCH.5/17 (CSWTCH.5) @074fa750
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: ipc_hw_get_core_index_m7/1 (read)ipc_hw_get_core_index_m7/21 (read)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+ipc_hw_flush_cache_remote/16 (ipc_hw_flush_cache_remote) @074ae700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged nonfreeing_fn optimize_size
+  Called by: 
+  Calls: ipc_hw_flush_cache_local/20 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ipc_hw_flush_cache_local/15 (ipc_hw_flush_cache_local) @074ae460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 20
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_clear/14 (ipc_hw_irq_clear) @074ae1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: ipc_hw_free/10 (1073741824 (estimated locally),1.00 per call) ipc_hw_init/9 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+ipc_hw_irq_notify/13 (ipc_hw_irq_notify) @074a1ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_disable/12 (ipc_hw_irq_disable) @074a19a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: ipc_hw_init/9 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+ipc_hw_irq_enable/11 (ipc_hw_irq_enable) @074a1e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_free/10 (ipc_hw_free) @074a1b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 (1073741824 (estimated locally),1.00 per call) 
+ipc_hw_init/9 (ipc_hw_init) @074a18c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_hw_priv/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 (354334802 (estimated locally),0.33 per call) ipc_hw_irq_disable/12 (354334802 (estimated locally),0.33 per call) ipc_hw_set_irq_idx/8 (inlined) (354334802 (estimated locally),0.33 per call) ipc_hw_set_core/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ipc_hw_set_irq_idx/8 (ipc_hw_set_irq_idx) @074a1620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function ipc_hw_set_irq_idx/8 is inline copy in ipc_hw_init/9
+  Availability: local
+  Function flags: count:354334802 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_hw_init/9 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: ipc_hw_set_rx_irq_idx.isra.0/19 (inlined) (114653062 (estimated locally),0.11 per call) ipc_hw_set_tx_irq_idx.isra.0/18 (inlined) (347433523 (estimated locally),0.32 per call) 
+ipc_hw_set_core/5 (ipc_hw_set_core) @0748de00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Function ipc_hw_set_core/5 is inline copy in ipc_hw_init/9
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_hw_init/9 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ipc_hw_set_local_core/4 (inlined) (354334802 (estimated locally),0.33 per call) ipc_hw_set_remote_core/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+ipc_hw_set_local_core/4 (ipc_hw_set_local_core) @0748db60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function ipc_hw_set_local_core/4 is inline copy in ipc_hw_init/9
+  Availability: local
+  Function flags: count:354334802 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_hw_set_core/5 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: ipc_hw_get_core_index_m7/1 (inlined) (220451849 (estimated locally),0.21 per call) ipc_hw_get_core_index_a53/2 (118064356 (estimated locally),0.11 per call) 
+ipc_hw_set_remote_core/3 (ipc_hw_set_remote_core) @0748d8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Function ipc_hw_set_remote_core/3 is inline copy in ipc_hw_init/9
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_hw_set_core/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: ipc_hw_get_core_index_m7/21 (inlined) (668035907 (estimated locally),0.62 per call) ipc_hw_get_core_index_a53/2 (357770776 (estimated locally),0.33 per call) 
+ipc_hw_get_core_index_a53/2 (ipc_hw_get_core_index_a53) @0748d620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_hw_set_local_core/4 (118064356 (estimated locally),0.11 per call) ipc_hw_set_remote_core/3 (357770776 (estimated locally),0.33 per call) 
+  Calls: 
+ipc_hw_get_core_index_m7/1 (ipc_hw_get_core_index_m7) @0748d380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 21
+  References: CSWTCH.5/17 (read)
+  Referring: 
+  Function ipc_hw_get_core_index_m7/1 is inline copy in ipc_hw_init/9
+  Availability: local
+  Function flags: count:220451849 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: ipc_hw_set_local_core/4 (inlined) (220451849 (estimated locally),0.21 per call) 
+  Calls: 
+ipc_hw_priv/0 (ipc_hw_priv) @074896c0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: ipc_hw_irq_notify/13 (read)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_set_remote_core/3 (write)ipc_hw_set_remote_core/3 (write)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_clear/14 (read)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_irq_notify/13 (read)ipc_hw_set_local_core/4 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_tx_irq_idx.isra.0/18 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_init/9 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)ipc_hw_set_rx_irq_idx.isra.0/19 (write)
+  Availability: available
+  Varpool flags:
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:ipc_hw_get_core_index_a53:0
+Time profile order in expand_all_functions:ipc_hw_irq_enable:0
+Time profile order in expand_all_functions:ipc_hw_irq_disable:0
+Time profile order in expand_all_functions:ipc_hw_irq_notify:0
+Time profile order in expand_all_functions:ipc_hw_irq_clear:0
+Time profile order in expand_all_functions:ipc_hw_init:0
+Time profile order in expand_all_functions:ipc_hw_free:0
+Time profile order in expand_all_functions:ipc_hw_flush_cache_local:0
+Time profile order in expand_all_functions:ipc_hw_flush_cache_remote:0
+updating call of ipc_hw_flush_cache_remote/16 -> ipc_hw_flush_cache_local/20: ipc_hw_flush_cache_local (instance_1(D)); [tail call]
+  updated to:ipc_hw_flush_cache_local (instance_1(D)); [tail call]
+Trivially needed variables: CSWTCH.5 ipc_hw_priv
+Removing variables:
+
+Final Symbol table:
+
+CSWTCH.5/17 (CSWTCH.5) @074fa750
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written artificial
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+ipc_hw_flush_cache_remote/16 (ipc_hw_flush_cache_remote) @074ae700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) icf_merged nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_flush_cache_local/15 (ipc_hw_flush_cache_local) @074ae460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) icf_merged nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_clear/14 (ipc_hw_irq_clear) @074ae1c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_notify/13 (ipc_hw_irq_notify) @074a1ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_disable/12 (ipc_hw_irq_disable) @074a19a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_enable/11 (ipc_hw_irq_enable) @074a1e00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_free/10 (ipc_hw_free) @074a1b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_init/9 (ipc_hw_init) @074a18c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_get_core_index_a53/2 (ipc_hw_get_core_index_a53) @0748d620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_priv/0 (ipc_hw_priv) @074896c0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @074fa750
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:

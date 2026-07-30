@@ -1,0 +1,247 @@
+
+Analyzing function: Power_Ip_CM7_EnableDeepSleep/4
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: Power_Ip_CM7_EnableDeepSleep
+
+IPA function summary for Power_Ip_CM7_EnableDeepSleep/4 inlinable
+  global time:     5.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: Power_Ip_CM7_DisableDeepSleep/3
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: Power_Ip_CM7_DisableDeepSleep
+
+IPA function summary for Power_Ip_CM7_DisableDeepSleep/3 inlinable
+  global time:     5.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: Power_Ip_CortexM_WarmReset/2
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: Power_Ip_CortexM_WarmReset
+
+IPA function summary for Power_Ip_CortexM_WarmReset/2 inlinable
+  global time:     7.000000
+  self size:       8
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:5.000000, time:5.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: Power_Ip_CM7_EnableSleepOnExit/1
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: Power_Ip_CM7_EnableSleepOnExit
+
+IPA function summary for Power_Ip_CM7_EnableSleepOnExit/1 inlinable
+  global time:     5.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+
+Analyzing function: Power_Ip_CM7_DisableSleepOnExit/0
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: Power_Ip_CM7_DisableSleepOnExit
+
+IPA function summary for Power_Ip_CM7_DisableSleepOnExit/0 inlinable
+  global time:     5.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+Symbol table:
+
+Power_Ip_CM7_EnableDeepSleep/4 (Power_Ip_CM7_EnableDeepSleep) @074f6ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM7_DisableDeepSleep/3 (Power_Ip_CM7_DisableDeepSleep) @074f6c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CortexM_WarmReset/2 (Power_Ip_CortexM_WarmReset) @074f69a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM7_EnableSleepOnExit/1 (Power_Ip_CM7_EnableSleepOnExit) @074f6620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM7_DisableSleepOnExit/0 (Power_Ip_CM7_DisableSleepOnExit) @074f6380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Power_Ip_CM7_EnableDeepSleep ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct S32_SCB_Type *)3758153728B].SCR;
+  _2 = _1 | 4;
+  MEM[(struct S32_SCB_Type *)3758153728B].SCR ={v} _2;
+  return;
+
+}
+
+
+Power_Ip_CM7_DisableDeepSleep ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct S32_SCB_Type *)3758153728B].SCR;
+  _2 = _1 & 4294967291;
+  MEM[(struct S32_SCB_Type *)3758153728B].SCR ={v} _2;
+  return;
+
+}
+
+
+Power_Ip_CortexM_WarmReset ()
+{
+  uint32 RegValue;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  RegValue_2 ={v} MEM[(volatile uint32 *)3758157068B];
+  # DEBUG RegValue => RegValue_2
+  # DEBUG BEGIN_STMT
+  RegValue_3 = RegValue_2 & 65531;
+  # DEBUG RegValue => RegValue_3
+  # DEBUG BEGIN_STMT
+  RegValue_4 = RegValue_3 | 100270084;
+  # DEBUG RegValue => RegValue_4
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32 *)3758157068B] ={v} RegValue_4;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("  wfi");
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Power_Ip_CM7_EnableSleepOnExit ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct S32_SCB_Type *)3758153728B].SCR;
+  _2 = _1 | 2;
+  MEM[(struct S32_SCB_Type *)3758153728B].SCR ={v} _2;
+  return;
+
+}
+
+
+Power_Ip_CM7_DisableSleepOnExit ()
+{
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 ={v} MEM[(struct S32_SCB_Type *)3758153728B].SCR;
+  _2 = _1 & 4294967293;
+  MEM[(struct S32_SCB_Type *)3758153728B].SCR ={v} _2;
+  return;
+
+}
+
+

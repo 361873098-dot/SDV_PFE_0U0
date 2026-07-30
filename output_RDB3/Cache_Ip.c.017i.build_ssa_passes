@@ -1,0 +1,276 @@
+Cache_Ip_CleanByAddr (const Cache_Ip_Type CacheType, const boolean EnInvalidate, const uint32 Addr, const uint32 Length)
+{
+  Std_ReturnType Status;
+  Std_ReturnType D.6016;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Status = 0;
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_18 ();
+  # DEBUG BEGIN_STMT
+  switch (CacheType) <default: <L6> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheCleanByAddr (EnInvalidate, Addr, Length);
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheCleanByAddr (EnInvalidate, Addr, Length);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheCleanByAddr (EnInvalidate, Addr, Length);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheCleanByAddr (EnInvalidate, Addr, Length);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_18 ();
+  # DEBUG BEGIN_STMT
+  D.6016 = Status;
+  return D.6016;
+
+}
+
+
+Cache_Ip_InvalidateByAddr (const Cache_Ip_Type CacheType, const uint32 Addr, const uint32 Length)
+{
+  Std_ReturnType Status;
+  Std_ReturnType D.6013;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Status = 0;
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_17 ();
+  # DEBUG BEGIN_STMT
+  switch (CacheType) <default: <L6> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheInvalidateByAddr (Addr, Length);
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheInvalidateByAddr (Addr, Length);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheInvalidateByAddr (Addr, Length);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheInvalidateByAddr (Addr, Length);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_17 ();
+  # DEBUG BEGIN_STMT
+  D.6013 = Status;
+  return D.6013;
+
+}
+
+
+Cache_Ip_Clean (const Cache_Ip_Type CacheType, const boolean EnInvalidate)
+{
+  Std_ReturnType Status;
+  Std_ReturnType D.6010;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Status = 0;
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_16 ();
+  # DEBUG BEGIN_STMT
+  switch (CacheType) <default: <L6> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheClean (EnInvalidate);
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheClean (EnInvalidate);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheClean (EnInvalidate);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheClean (EnInvalidate);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_16 ();
+  # DEBUG BEGIN_STMT
+  D.6010 = Status;
+  return D.6010;
+
+}
+
+
+Cache_Ip_Invalidate (const Cache_Ip_Type CacheType)
+{
+  Std_ReturnType Status;
+  Std_ReturnType D.6007;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Status = 0;
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_15 ();
+  # DEBUG BEGIN_STMT
+  switch (CacheType) <default: <L6> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheInvalidate ();
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheInvalidate ();
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheInvalidate ();
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheInvalidate ();
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_15 ();
+  # DEBUG BEGIN_STMT
+  D.6007 = Status;
+  return D.6007;
+
+}
+
+
+Cache_Ip_Disable (const Cache_Ip_Type CacheType)
+{
+  Std_ReturnType Status;
+  Std_ReturnType D.6004;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Status = 0;
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_14 ();
+  # DEBUG BEGIN_STMT
+  switch (CacheType) <default: <L6> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheDisable ();
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheDisable ();
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheDisable ();
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheDisable ();
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_14 ();
+  # DEBUG BEGIN_STMT
+  D.6004 = Status;
+  return D.6004;
+
+}
+
+
+Cache_Ip_Enable (const Cache_Ip_Type CacheType)
+{
+  Std_ReturnType Status;
+  Std_ReturnType D.6001;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Status = 0;
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Mcl_MCL_EXCLUSIVE_AREA_13 ();
+  # DEBUG BEGIN_STMT
+  switch (CacheType) <default: <L6> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheEnable ();
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheEnable ();
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_InstructionCacheEnable ();
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  hwAcc_ArmCoreMx_DataCacheEnable ();
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Mcl_MCL_EXCLUSIVE_AREA_13 ();
+  # DEBUG BEGIN_STMT
+  D.6001 = Status;
+  return D.6001;
+
+}
+
+

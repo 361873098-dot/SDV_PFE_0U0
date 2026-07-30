@@ -1,0 +1,818 @@
+
+Marking local functions: slipif_rxbyte_input slipif_rxbyte slipif_output
+
+
+Marking externally visible functions: slipif_poll slipif_init
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+pbuf_cat/16 (pbuf_cat) @070e9000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: slipif_rxbyte/3 
+  Calls: 
+pbuf_alloc/15 (pbuf_alloc) @06ffcee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: slipif_rxbyte/3 
+  Calls: 
+lwip_stats/14 (lwip_stats) @070e6120
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: slipif_rxbyte/3 (read)slipif_rxbyte/3 (write)slipif_rxbyte/3 (read)slipif_rxbyte/3 (write)
+  Availability: not_available
+  Varpool flags:
+pbuf_realloc/13 (pbuf_realloc) @06ffce00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: slipif_rxbyte/3 
+  Calls: 
+pbuf_free/12 (pbuf_free) @06ffca80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: slipif_rxbyte_input/4 
+  Calls: 
+sio_tryread/11 (sio_tryread) @06ffc8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: slipif_poll/6 
+  Calls: 
+sio_send/10 (sio_send) @06ffc700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: slipif_output/1 slipif_output/1 slipif_output/1 slipif_output/1 slipif_output/1 slipif_output/1 slipif_output/1 
+  Calls: 
+mem_free/9 (mem_free) @06ffc460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: slipif_init/5 
+  Calls: 
+sio_open/8 (sio_open) @06ffc380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: slipif_init/5 
+  Calls: 
+mem_malloc/7 (mem_malloc) @06ffc2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: slipif_init/5 
+  Calls: 
+slipif_poll/6 (slipif_poll) @06fe7a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: sio_tryread/11 slipif_rxbyte_input/4 
+slipif_init/5 (slipif_init) @06fe7d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: slipif_output_v4/2 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: mem_free/9 sio_open/8 mem_malloc/7 
+slipif_rxbyte_input/4 (slipif_rxbyte_input) @06fe79a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: slipif_poll/6 
+  Calls: pbuf_free/12 slipif_rxbyte/3 
+   Indirect call
+slipif_rxbyte/3 (slipif_rxbyte) @06fe7700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: lwip_stats/14 (read)lwip_stats/14 (write)lwip_stats/14 (read)lwip_stats/14 (write)
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: slipif_rxbyte_input/4 
+  Calls: pbuf_cat/16 pbuf_alloc/15 pbuf_realloc/13 
+slipif_output_v4/2 (slipif_output_v4) @06fe7460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: slipif_init/5 (addr)
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: slipif_output/1 
+slipif_output/1 (slipif_output) @06fe71c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: slipif_output_v4/2 
+  Calls: sio_send/10 sio_send/10 sio_send/10 sio_send/10 sio_send/10 sio_send/10 sio_send/10 
+slipif_poll (struct netif * netif)
+{
+  struct slipif_priv * priv;
+  u8_t c;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (netif == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+  goto <bb 3>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = netif->state;
+  if (_1 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  priv = netif->state;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  c.1_2 = c;
+  slipif_rxbyte_input (netif, c.1_2);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = priv->sd;
+  _4 = sio_tryread (_3, &c, 1);
+  if (_4 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  c = {CLOBBER};
+  return;
+
+}
+
+
+slipif_init (struct netif * netif)
+{
+  u8_t sio_num;
+  struct slipif_priv * priv;
+  err_t D.7044;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = netif->input;
+  if (_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+  goto <bb 3>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = netif->state;
+  _3 = (int) _2;
+  sio_num = (u8_t) _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  priv = mem_malloc (20);
+  # DEBUG BEGIN_STMT
+  if (priv == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.7044 = -1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  netif->name[0] = 115;
+  # DEBUG BEGIN_STMT
+  netif->name[1] = 108;
+  # DEBUG BEGIN_STMT
+  netif->output = slipif_output_v4;
+  # DEBUG BEGIN_STMT
+  netif->mtu = 1500;
+  # DEBUG BEGIN_STMT
+  _4 = sio_open (sio_num);
+  priv->sd = _4;
+  # DEBUG BEGIN_STMT
+  _5 = priv->sd;
+  if (_5 == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  mem_free (priv);
+  # DEBUG BEGIN_STMT
+  D.7044 = -12;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  priv->p = 0B;
+  # DEBUG BEGIN_STMT
+  priv->q = 0B;
+  # DEBUG BEGIN_STMT
+  priv->state = 0;
+  # DEBUG BEGIN_STMT
+  priv->i = 0;
+  # DEBUG BEGIN_STMT
+  priv->recved = 0;
+  # DEBUG BEGIN_STMT
+  netif->state = priv;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  netif->link_type = 28;
+  # DEBUG BEGIN_STMT
+  netif->link_speed = 0;
+  # DEBUG BEGIN_STMT
+  netif->ts = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifinoctets = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifinucastpkts = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifinnucastpkts = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifindiscards = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifinerrors = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifinunknownprotos = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifoutoctets = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifoutucastpkts = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifoutnucastpkts = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifoutdiscards = 0;
+  # DEBUG BEGIN_STMT
+  netif->mib2_counters.ifouterrors = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7044 = 0;
+
+  <bb 9> :
+  return D.7044;
+
+}
+
+
+slipif_rxbyte_input (struct netif * netif, u8_t c)
+{
+  struct pbuf * p;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  p = slipif_rxbyte (netif, c);
+  # DEBUG BEGIN_STMT
+  if (p != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = netif->input;
+  _2 = _1 (p, netif);
+  if (_2 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  pbuf_free (p);
+
+  <bb 5> :
+  return;
+
+}
+
+
+slipif_rxbyte (struct netif * netif, u8_t c)
+{
+  struct pbuf * t;
+  struct slipif_priv * priv;
+  struct pbuf * D.7072;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (netif == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+  goto <bb 3>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = netif->state;
+  if (_1 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  priv = netif->state;
+  # DEBUG BEGIN_STMT
+  _2 = priv->state;
+  _3 = (int) _2;
+  switch (_3) <default: <L39> [INV], case 0: <L6> [INV], case 1: <L13> [INV]>
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  _4 = (int) c;
+  switch (_4) <default: <L39> [INV], case 192: <L7> [INV], case 219: <L10> [INV]>
+
+  <bb 8> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  _5 = priv->recved;
+  if (_5 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _6 = priv->q;
+  _7 = priv->recved;
+  pbuf_realloc (_6, _7);
+  # DEBUG BEGIN_STMT
+  _8 = lwip_stats.link.recv;
+  _9 = _8 + 1;
+  lwip_stats.link.recv = _9;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  t = priv->q;
+  # DEBUG BEGIN_STMT
+  priv->q = 0B;
+  _10 = priv->q;
+  priv->p = _10;
+  # DEBUG BEGIN_STMT
+  priv->recved = 0;
+  _11 = priv->recved;
+  priv->i = _11;
+  # DEBUG BEGIN_STMT
+  D.7072 = t;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 30>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.7072 = 0B;
+  goto <bb 30>; [INV]
+
+  <bb 11> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  priv->state = 1;
+  # DEBUG BEGIN_STMT
+  D.7072 = 0B;
+  goto <bb 30>; [INV]
+
+  <bb 12> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _12 = (int) c;
+  switch (_12) <default: <L40> [INV], case 220: <L14> [INV], case 221: <L15> [INV]>
+
+  <bb 13> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  c = 192;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  c = 219;
+  # DEBUG BEGIN_STMT
+
+  <bb 15> :
+<L40>:
+  # DEBUG BEGIN_STMT
+  priv->state = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 16> :
+<L39>:
+  # DEBUG BEGIN_STMT
+  _13 = priv->p;
+  if (_13 == 0B)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = pbuf_alloc (14, 1502, 386);
+  priv->p = _14;
+  # DEBUG BEGIN_STMT
+  _15 = priv->p;
+  if (_15 == 0B)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  _16 = lwip_stats.link.drop;
+  _17 = _16 + 1;
+  lwip_stats.link.drop = _17;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7072 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 30>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  _18 = priv->q;
+  if (_18 != 0B)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  _19 = priv->q;
+  _20 = priv->p;
+  pbuf_cat (_19, _20);
+  goto <bb 22>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  _21 = priv->p;
+  priv->q = _21;
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  _22 = priv->p;
+  if (_22 != 0B)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 23> :
+  _23 = priv->recved;
+  if (_23 <= 1500)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  _24 = priv->p;
+  _25 = _24->payload;
+  _26 = priv->i;
+  _27 = (sizetype) _26;
+  _28 = _25 + _27;
+  *_28 = c;
+  # DEBUG BEGIN_STMT
+  _29 = priv->recved;
+  _30 = _29;
+  _31 = _30 + 1;
+  priv->recved = _31;
+  # DEBUG BEGIN_STMT
+  _32 = priv->i;
+  _33 = _32;
+  _34 = _33 + 1;
+  priv->i = _34;
+  # DEBUG BEGIN_STMT
+  _35 = priv->i;
+  _36 = priv->p;
+  _37 = _36->len;
+  if (_35 >= _37)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  priv->i = 0;
+  # DEBUG BEGIN_STMT
+  _38 = priv->p;
+  _39 = _38->next;
+  if (_39 != 0B)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 26> :
+  _40 = priv->p;
+  _41 = _40->next;
+  _42 = _41->len;
+  if (_42 != 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 27> :
+  # DEBUG BEGIN_STMT
+  _43 = priv->p;
+  _44 = _43->next;
+  priv->p = _44;
+  goto <bb 29>; [INV]
+
+  <bb 28> :
+  # DEBUG BEGIN_STMT
+  priv->p = 0B;
+
+  <bb 29> :
+  # DEBUG BEGIN_STMT
+  D.7072 = 0B;
+
+  <bb 30> :
+  return D.7072;
+
+}
+
+
+slipif_output_v4 (struct netif * netif, struct pbuf * p, const struct ip4_addr_t * ipaddr)
+{
+  err_t D.7048;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7048 = slipif_output (netif, p);
+  return D.7048;
+
+}
+
+
+slipif_output (struct netif * netif, struct pbuf * p)
+{
+  u8_t c;
+  u16_t i;
+  struct pbuf * q;
+  struct slipif_priv * priv;
+  err_t D.7056;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (netif == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+  goto <bb 3>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = netif->state;
+  if (_1 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (p == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  priv = netif->state;
+  # DEBUG BEGIN_STMT
+  _2 = priv->sd;
+  sio_send (192, _2);
+  # DEBUG BEGIN_STMT
+  q = p;
+  goto <bb 17>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 15>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _3 = q->payload;
+  _4 = (sizetype) i;
+  _5 = _3 + _4;
+  c = *_5;
+  # DEBUG BEGIN_STMT
+  _6 = (int) c;
+  switch (_6) <default: <L13> [INV], case 192: <L11> [INV], case 219: <L12> [INV]>
+
+  <bb 11> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  _7 = priv->sd;
+  sio_send (219, _7);
+  # DEBUG BEGIN_STMT
+  _8 = priv->sd;
+  sio_send (220, _8);
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 12> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  _9 = priv->sd;
+  sio_send (219, _9);
+  # DEBUG BEGIN_STMT
+  _10 = priv->sd;
+  sio_send (221, _10);
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  _11 = priv->sd;
+  sio_send (c, _11);
+  # DEBUG BEGIN_STMT
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  i.0_12 = i;
+  i = i.0_12 + 1;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _13 = q->len;
+  if (i < _13)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  q = q->next;
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  if (q != 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  _14 = priv->sd;
+  sio_send (192, _14);
+  # DEBUG BEGIN_STMT
+  D.7056 = 0;
+  return D.7056;
+
+}
+
+

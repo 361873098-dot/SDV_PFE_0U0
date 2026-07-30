@@ -1,0 +1,94 @@
+fci_l2br_flush_cmd (uint32_t code, uint16_t * fci_ret)
+{
+  errno_t ret;
+  const struct fci_t * fci_context;
+  errno_t D.12343;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context = &context;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  switch (code) <default: <L9> [INV], case 62336: <L3> [INV], case 62352: <L6> [INV], case 62368: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _1 = fci_context->l2_bridge;
+  ret = pfe_l2br_flush_all (_1);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t flush MAC table entries: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br.c", 88, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 10>; [INV]
+
+  <bb 5> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  _2 = fci_context->l2_bridge;
+  ret = pfe_l2br_flush_learned (_2);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t flush learned MAC table entries: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br.c", 100, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 10>; [INV]
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  _3 = fci_context->l2_bridge;
+  ret = pfe_l2br_flush_static (_3);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t flush static MAC table entries: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br.c", 112, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.12343 = ret;
+  return D.12343;
+
+}
+
+

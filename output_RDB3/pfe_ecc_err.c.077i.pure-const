@@ -1,0 +1,439 @@
+
+
+ local analysis of pfe_ecc_err_irq_unmask
+   scanning: _1 = ecc_err_3(D)->ecc_err_base_va;
+    Indirect ref read is not const
+  scanning: pfe_ecc_err_cfg_irq_unmask (_1);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of pfe_ecc_err_irq_mask
+   scanning: _1 = ecc_err_3(D)->ecc_err_base_va;
+    Indirect ref read is not const
+  scanning: pfe_ecc_err_cfg_irq_mask (_1);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of pfe_ecc_err_isr
+   scanning: _1 = ecc_err_3(D)->ecc_err_base_va;
+    Indirect ref read is not const
+  scanning: ret_5 = pfe_ecc_err_cfg_isr (_1);
+  scanning: return ret_5;
+Function is locally pure.
+
+
+ local analysis of pfe_ecc_err_destroy
+   scanning: _1 = ecc_err_3(D)->ecc_err_base_va;
+    Indirect ref read is not const
+  scanning: pfe_ecc_err_cfg_irq_mask (_1);
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of pfe_ecc_err_create
+   scanning: autolibc_memset (&ecc_err_instance, 0, 12);
+  scanning: ecc_err_instance.cbus_base_va = cbus_base_va_4(D);
+  scanning: ecc_err_instance.ecc_err_base_offset = ecc_err_base_6(D);
+  scanning: _1 = cbus_base_va_4(D) + ecc_err_base_6(D);
+  scanning: ecc_err_instance.ecc_err_base_va = _1;
+  scanning: pfe_ecc_err_cfg_irq_unmask_all (_1);
+  scanning: return &ecc_err_instance;
+Function is locally const.
+callgraph:
+
+pfe_ecc_err_cfg_irq_unmask/18 (pfe_ecc_err_cfg_irq_unmask) @07068e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_irq_unmask/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_ecc_err_cfg_isr/17 (pfe_ecc_err_cfg_isr) @07068b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_isr/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_ecc_err_cfg_irq_mask/16 (pfe_ecc_err_cfg_irq_mask) @070689a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_destroy/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_ecc_err_cfg_irq_unmask_all/15 (pfe_ecc_err_cfg_irq_unmask_all) @070687e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_create/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+autolibc_memset/14 (autolibc_memset) @07068700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_create/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_ecc_err_irq_unmask/13 (pfe_ecc_err_irq_unmask) @070682a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d50
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_irq_unmask/18 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_irq_mask/12 (pfe_ecc_err_irq_mask) @07068000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d10
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_destroy/10 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_isr/11 (pfe_ecc_err_isr) @07064c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d30
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_isr/17 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_destroy/10 (pfe_ecc_err_destroy) @07064e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757e50
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: pfe_ecc_err_irq_mask/12 (1073741824 (estimated locally),1.00 per call) 
+  Calls: pfe_ecc_err_cfg_irq_mask/16 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_create/9 (pfe_ecc_err_create) @07064b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757e70
+  References: ecc_err_instance/8 (addr)ecc_err_instance/8 (write)ecc_err_instance/8 (write)ecc_err_instance/8 (write)ecc_err_instance/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_irq_unmask_all/15 (1073741824 (estimated locally),1.00 per call) autolibc_memset/14 (1073741824 (estimated locally),1.00 per call) 
+
+
+ ordered call graph: reduced for nothrow
+pfe_ecc_err_irq_unmask/13 (pfe_ecc_err_irq_unmask) @070682a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d50
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_irq_unmask/18 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_irq_mask/12 (pfe_ecc_err_irq_mask) @07068000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d10
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_destroy/10 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_isr/11 (pfe_ecc_err_isr) @07064c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d30
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_isr/17 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_destroy/10 (pfe_ecc_err_destroy) @07064e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757e50
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: pfe_ecc_err_irq_mask/12 (1073741824 (estimated locally),1.00 per call) 
+  Calls: pfe_ecc_err_cfg_irq_mask/16 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_create/9 (pfe_ecc_err_create) @07064b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757e70
+  References: ecc_err_instance/8 (addr)ecc_err_instance/8 (write)ecc_err_instance/8 (write)ecc_err_instance/8 (write)ecc_err_instance/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_irq_unmask_all/15 (1073741824 (estimated locally),1.00 per call) autolibc_memset/14 (1073741824 (estimated locally),1.00 per call) 
+
+
+
+MALLOC LATTICE Initial:
+pfe_ecc_err_irq_unmask: malloc_bottom
+pfe_ecc_err_irq_mask: malloc_bottom
+pfe_ecc_err_isr: malloc_bottom
+pfe_ecc_err_destroy: malloc_bottom
+pfe_ecc_err_create: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+pfe_ecc_err_irq_unmask: malloc_bottom
+pfe_ecc_err_irq_mask: malloc_bottom
+pfe_ecc_err_isr: malloc_bottom
+pfe_ecc_err_destroy: malloc_bottom
+pfe_ecc_err_create: malloc_bottom
+callgraph:
+
+pfe_ecc_err_cfg_irq_unmask/18 (pfe_ecc_err_cfg_irq_unmask) @07068e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_irq_unmask/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_ecc_err_cfg_isr/17 (pfe_ecc_err_cfg_isr) @07068b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_isr/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_ecc_err_cfg_irq_mask/16 (pfe_ecc_err_cfg_irq_mask) @070689a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_destroy/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_ecc_err_cfg_irq_unmask_all/15 (pfe_ecc_err_cfg_irq_unmask_all) @070687e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_create/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+autolibc_memset/14 (autolibc_memset) @07068700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_ecc_err_create/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_ecc_err_irq_unmask/13 (pfe_ecc_err_irq_unmask) @070682a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757db0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_irq_unmask/18 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_irq_mask/12 (pfe_ecc_err_irq_mask) @07068000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d50
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_destroy/10 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_isr/11 (pfe_ecc_err_isr) @07064c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d10
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_isr/17 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_destroy/10 (pfe_ecc_err_destroy) @07064e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d30
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: pfe_ecc_err_irq_mask/12 (1073741824 (estimated locally),1.00 per call) 
+  Calls: pfe_ecc_err_cfg_irq_mask/16 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_create/9 (pfe_ecc_err_create) @07064b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757e50
+  References: ecc_err_instance/8 (addr)ecc_err_instance/8 (write)ecc_err_instance/8 (write)ecc_err_instance/8 (write)ecc_err_instance/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_irq_unmask_all/15 (1073741824 (estimated locally),1.00 per call) autolibc_memset/14 (1073741824 (estimated locally),1.00 per call) 
+
+
+ ordered call graph: reduced
+pfe_ecc_err_irq_unmask/13 (pfe_ecc_err_irq_unmask) @070682a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757db0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_irq_unmask/18 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_irq_mask/12 (pfe_ecc_err_irq_mask) @07068000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d50
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_destroy/10 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_isr/11 (pfe_ecc_err_isr) @07064c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d10
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_isr/17 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_destroy/10 (pfe_ecc_err_destroy) @07064e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757d30
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: pfe_ecc_err_irq_mask/12 (1073741824 (estimated locally),1.00 per call) 
+  Calls: pfe_ecc_err_cfg_irq_mask/16 (1073741824 (estimated locally),1.00 per call) 
+pfe_ecc_err_create/9 (pfe_ecc_err_create) @07064b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06757e50
+  References: ecc_err_instance/8 (addr)ecc_err_instance/8 (write)ecc_err_instance/8 (write)ecc_err_instance/8 (write)ecc_err_instance/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_ecc_err_cfg_irq_unmask_all/15 (1073741824 (estimated locally),1.00 per call) autolibc_memset/14 (1073741824 (estimated locally),1.00 per call) 
+
+pfe_ecc_err_irq_unmask (const struct pfe_ecc_err_t * ecc_err)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = ecc_err_3(D)->ecc_err_base_va;
+  pfe_ecc_err_cfg_irq_unmask (_1);
+  return;
+
+}
+
+
+pfe_ecc_err_irq_mask (const struct pfe_ecc_err_t * ecc_err)
+{
+  <bb 2> [local count: 1073741824]:
+  pfe_ecc_err_destroy (ecc_err_2(D)); [tail call]
+  return;
+
+}
+
+
+pfe_ecc_err_isr (const struct pfe_ecc_err_t * ecc_err)
+{
+  errno_t ret;
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _1 = ecc_err_3(D)->ecc_err_base_va;
+  ret_5 = pfe_ecc_err_cfg_isr (_1);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_ecc_err_destroy (struct pfe_ecc_err_t * ecc_err)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = ecc_err_3(D)->ecc_err_base_va;
+  pfe_ecc_err_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_ecc_err_create (addr_t cbus_base_va, addr_t ecc_err_base)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ecc_err => &ecc_err_instance
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&ecc_err_instance, 0, 12);
+  # DEBUG BEGIN_STMT
+  ecc_err_instance.cbus_base_va = cbus_base_va_4(D);
+  # DEBUG BEGIN_STMT
+  ecc_err_instance.ecc_err_base_offset = ecc_err_base_6(D);
+  # DEBUG BEGIN_STMT
+  _1 = cbus_base_va_4(D) + ecc_err_base_6(D);
+  ecc_err_instance.ecc_err_base_va = _1;
+  # DEBUG BEGIN_STMT
+  pfe_ecc_err_cfg_irq_unmask_all (_1);
+  # DEBUG BEGIN_STMT
+  return &ecc_err_instance;
+
+}
+
+

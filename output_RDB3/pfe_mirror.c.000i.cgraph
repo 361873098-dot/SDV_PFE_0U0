@@ -1,0 +1,1922 @@
+Trivially needed symbols: pfe_mirror_get_actions pfe_mirror_set_actions pfe_mirror_get_filter pfe_mirror_set_filter pfe_mirror_get_egress_port pfe_mirror_set_egress_port pfe_mirror_get_name pfe_mirror_get_address pfe_mirror_put_by_address pfe_mirror_put pfe_mirror_destroy pfe_mirror_create pfe_mirror_get_next pfe_mirror_get_first pfe_mirror_deinit pfe_mirror_init
+
+
+Initial Symbol table:
+
+autolibc_memcpy/43 (autolibc_memcpy) @073e8380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_get_actions/27 pfe_mirror_set_actions/26 
+  Calls: 
+pfe_class_write_dmem/42 (pfe_class_write_dmem) @073ceee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_set_actions/26 pfe_mirror_set_filter/24 pfe_mirror_set_egress_port/22 
+  Calls: 
+__builtin_expect/41 (__builtin_expect) @073cea80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_put/18 
+  Calls: 
+pfe_class_dmem_heap_free/40 (pfe_class_dmem_heap_free) @073ce8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_destroy/17 
+  Calls: 
+autolibc_strncpy/39 (autolibc_strncpy) @073ce700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 
+  Calls: 
+isa_release/38 (isa_release) @073ce620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_destroy/17 pfe_mirror_allocate_mem/15 
+  Calls: 
+pfe_class_dmem_heap_alloc/37 (pfe_class_dmem_heap_alloc) @073ce540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 
+  Calls: 
+isa_reserve/36 (isa_reserve) @073ce380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: 
+autolibc_strnlen/35 (autolibc_strnlen) @073ce2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: 
+autolibc_strcmp/34 (autolibc_strcmp) @073c12a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_db_get_by_crit/12 
+  Calls: 
+isa_item/33 (isa_item) @073c1000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_db_get_by_crit/12 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/32 (oal_util_raise_dem_for_drv_runtime_err) @073c1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_create/16 pfe_mirror_db_get_by_crit/12 pfe_mirror_deinit/11 
+  Calls: 
+pfe_hm_report/31 (pfe_hm_report) @073c1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_create/16 pfe_mirror_db_get_by_crit/12 pfe_mirror_deinit/11 
+  Calls: 
+isa_isempty/30 (isa_isempty) @073c1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_deinit/11 
+  Calls: 
+isa_init/29 (isa_init) @073c19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_init/10 
+  Calls: 
+autolibc_memset/28 (autolibc_memset) @073c18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_deinit/11 pfe_mirror_init/10 
+  Calls: 
+pfe_mirror_get_actions/27 (pfe_mirror_get_actions) @073c1460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memcpy/43 
+pfe_mirror_set_actions/26 (pfe_mirror_set_actions) @073c11c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @073c1460
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 autolibc_memcpy/43 
+pfe_mirror_get_filter/25 (pfe_mirror_get_filter) @07327ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @073c11c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_filter/24 (pfe_mirror_set_filter) @073279a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07327ee0
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 
+pfe_mirror_get_egress_port/23 (pfe_mirror_get_egress_port) @07327460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @073279a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_egress_port/22 (pfe_mirror_set_egress_port) @07327e00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07327460
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 
+pfe_mirror_get_name/21 (pfe_mirror_get_name) @07327b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07327e00
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_address/20 (pfe_mirror_get_address) @073278c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07327b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_put_by_address/19 (pfe_mirror_put_by_address) @07327620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @073278c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_put/18 pfe_mirror_put/18 pfe_mirror_get_first/13 
+pfe_mirror_put/18 (pfe_mirror_put) @07327380
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07327620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_put_by_address/19 pfe_mirror_put_by_address/19 
+  Calls: __builtin_expect/41 
+pfe_mirror_destroy/17 (pfe_mirror_destroy) @07327000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07327380
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_release/38 pfe_class_dmem_heap_free/40 
+pfe_mirror_create/16 (pfe_mirror_create) @073bea80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07327000
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_allocate_mem/15 isa_reserve/36 pfe_mirror_get_first/13 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 autolibc_strnlen/35 
+pfe_mirror_allocate_mem/15 (pfe_mirror_allocate_mem) @073be0e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @07327000
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: autolibc_strncpy/39 isa_release/38 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 pfe_class_dmem_heap_alloc/37 autolibc_memset/28 
+pfe_mirror_get_next/14 (pfe_mirror_get_next) @073bec40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @073bea80
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_db_get_by_crit/12 
+pfe_mirror_get_first/13 (pfe_mirror_get_first) @073be9a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @073bec40
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_put_by_address/19 pfe_mirror_create/16 
+  Calls: pfe_mirror_db_get_by_crit/12 
+pfe_mirror_db_get_by_crit/12 (pfe_mirror_db_get_by_crit) @073be700
+  Type: function definition analyzed
+  Visibility:
+  Aux: @073bec40
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)pfe_mirror_db/8 (read)pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_get_next/14 pfe_mirror_get_first/13 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 autolibc_strcmp/34 isa_item/33 
+pfe_mirror_deinit/11 (pfe_mirror_deinit) @073be380
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @073be9a0
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memset/28 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 isa_isempty/30 
+pfe_mirror_init/10 (pfe_mirror_init) @073be000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @073be380
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (write)pfe_mirror_db/8 (addr)pfe_mirror_db_isa_def/9 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_init/29 autolibc_memset/28 
+pfe_mirror_db_isa_def/9 (pfe_mirror_db_isa_def) @073b3cf0
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @073b3c18
+  References: pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: pfe_mirror_init/10 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+pfe_mirror_db/8 (pfe_mirror_db) @073b3c18
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @073be380
+  References: 
+  Referring: pfe_mirror_init/10 (read)pfe_mirror_init/10 (addr)pfe_mirror_init/10 (write)pfe_mirror_init/10 (addr)pfe_mirror_db_isa_def/9 (addr)pfe_mirror_db_isa_def/9 (addr)pfe_mirror_deinit/11 (read)pfe_mirror_deinit/11 (addr)pfe_mirror_deinit/11 (addr)pfe_mirror_get_first/13 (read)pfe_mirror_get_first/13 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (addr)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_get_next/14 (read)pfe_mirror_create/16 (read)pfe_mirror_create/16 (addr)pfe_mirror_allocate_mem/15 (read)pfe_mirror_allocate_mem/15 (addr)pfe_mirror_destroy/17 (read)pfe_mirror_destroy/17 (addr)pfe_mirror_set_egress_port/22 (read)pfe_mirror_set_filter/24 (read)pfe_mirror_set_actions/26 (read)
+  Availability: not-ready
+  Varpool flags:
+hal_ip_ready_get/7 (hal_ip_ready_get) @071e7b60
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+hal_ip_ready_set/6 (hal_ip_ready_set) @071e78c0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+find_irq_idx_from_id/5 (find_irq_idx_from_id) @07198700
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_unlock/4 (oal_mutex_unlock) @0717ae00
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_lock/3 (oal_mutex_lock) @0717ab60
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @07170318
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @07170240
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+oal_swap_endian_long/0 (oal_swap_endian_long) @06f45ee0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: hal_ip_ready_get hal_ip_ready_set find_irq_idx_from_id oal_mutex_unlock oal_mutex_lock SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+autolibc_memcpy/43 (autolibc_memcpy) @073e8380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_get_actions/27 pfe_mirror_set_actions/26 
+  Calls: 
+pfe_class_write_dmem/42 (pfe_class_write_dmem) @073ceee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_set_actions/26 pfe_mirror_set_filter/24 pfe_mirror_set_egress_port/22 
+  Calls: 
+__builtin_expect/41 (__builtin_expect) @073cea80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_put/18 
+  Calls: 
+pfe_class_dmem_heap_free/40 (pfe_class_dmem_heap_free) @073ce8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_destroy/17 
+  Calls: 
+autolibc_strncpy/39 (autolibc_strncpy) @073ce700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 
+  Calls: 
+isa_release/38 (isa_release) @073ce620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_destroy/17 pfe_mirror_allocate_mem/15 
+  Calls: 
+pfe_class_dmem_heap_alloc/37 (pfe_class_dmem_heap_alloc) @073ce540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 
+  Calls: 
+isa_reserve/36 (isa_reserve) @073ce380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: 
+autolibc_strnlen/35 (autolibc_strnlen) @073ce2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: 
+autolibc_strcmp/34 (autolibc_strcmp) @073c12a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_db_get_by_crit/12 
+  Calls: 
+isa_item/33 (isa_item) @073c1000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_db_get_by_crit/12 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/32 (oal_util_raise_dem_for_drv_runtime_err) @073c1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_create/16 pfe_mirror_db_get_by_crit/12 pfe_mirror_deinit/11 
+  Calls: 
+pfe_hm_report/31 (pfe_hm_report) @073c1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_create/16 pfe_mirror_db_get_by_crit/12 pfe_mirror_deinit/11 
+  Calls: 
+isa_isempty/30 (isa_isempty) @073c1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_deinit/11 
+  Calls: 
+isa_init/29 (isa_init) @073c19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_init/10 
+  Calls: 
+autolibc_memset/28 (autolibc_memset) @073c18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_deinit/11 pfe_mirror_init/10 
+  Calls: 
+pfe_mirror_get_actions/27 (pfe_mirror_get_actions) @073c1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memcpy/43 
+pfe_mirror_set_actions/26 (pfe_mirror_set_actions) @073c11c0
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 autolibc_memcpy/43 
+pfe_mirror_get_filter/25 (pfe_mirror_get_filter) @07327ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_filter/24 (pfe_mirror_set_filter) @073279a0
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 
+pfe_mirror_get_egress_port/23 (pfe_mirror_get_egress_port) @07327460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_egress_port/22 (pfe_mirror_set_egress_port) @07327e00
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 
+pfe_mirror_get_name/21 (pfe_mirror_get_name) @07327b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_address/20 (pfe_mirror_get_address) @073278c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_put_by_address/19 (pfe_mirror_put_by_address) @07327620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_put/18 pfe_mirror_put/18 pfe_mirror_get_first/13 
+pfe_mirror_put/18 (pfe_mirror_put) @07327380
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_put_by_address/19 pfe_mirror_put_by_address/19 
+  Calls: __builtin_expect/41 
+pfe_mirror_destroy/17 (pfe_mirror_destroy) @07327000
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_release/38 pfe_class_dmem_heap_free/40 
+pfe_mirror_create/16 (pfe_mirror_create) @073bea80
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_allocate_mem/15 isa_reserve/36 pfe_mirror_get_first/13 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 autolibc_strnlen/35 
+pfe_mirror_allocate_mem/15 (pfe_mirror_allocate_mem) @073be0e0
+  Type: function definition analyzed
+  Visibility:
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: autolibc_strncpy/39 isa_release/38 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 pfe_class_dmem_heap_alloc/37 autolibc_memset/28 
+pfe_mirror_get_next/14 (pfe_mirror_get_next) @073bec40
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_db_get_by_crit/12 
+pfe_mirror_get_first/13 (pfe_mirror_get_first) @073be9a0
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_put_by_address/19 pfe_mirror_create/16 
+  Calls: pfe_mirror_db_get_by_crit/12 
+pfe_mirror_db_get_by_crit/12 (pfe_mirror_db_get_by_crit) @073be700
+  Type: function definition analyzed
+  Visibility:
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)pfe_mirror_db/8 (read)pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_get_next/14 pfe_mirror_get_first/13 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 autolibc_strcmp/34 isa_item/33 
+pfe_mirror_deinit/11 (pfe_mirror_deinit) @073be380
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memset/28 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 isa_isempty/30 
+pfe_mirror_init/10 (pfe_mirror_init) @073be000
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (write)pfe_mirror_db/8 (addr)pfe_mirror_db_isa_def/9 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_init/29 autolibc_memset/28 
+pfe_mirror_db_isa_def/9 (pfe_mirror_db_isa_def) @073b3cf0
+  Type: variable definition analyzed
+  Visibility:
+  References: pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: pfe_mirror_init/10 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+pfe_mirror_db/8 (pfe_mirror_db) @073b3c18
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_mirror_init/10 (read)pfe_mirror_init/10 (addr)pfe_mirror_init/10 (write)pfe_mirror_init/10 (addr)pfe_mirror_db_isa_def/9 (addr)pfe_mirror_db_isa_def/9 (addr)pfe_mirror_deinit/11 (read)pfe_mirror_deinit/11 (addr)pfe_mirror_deinit/11 (addr)pfe_mirror_get_first/13 (read)pfe_mirror_get_first/13 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (addr)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_get_next/14 (read)pfe_mirror_create/16 (read)pfe_mirror_create/16 (addr)pfe_mirror_allocate_mem/15 (read)pfe_mirror_allocate_mem/15 (addr)pfe_mirror_destroy/17 (read)pfe_mirror_destroy/17 (addr)pfe_mirror_set_egress_port/22 (read)pfe_mirror_set_filter/24 (read)pfe_mirror_set_actions/26 (read)
+  Availability: not-ready
+  Varpool flags:
+
+
+Initial Symbol table:
+
+autolibc_memcpy/43 (autolibc_memcpy) @073e8380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_get_actions/27 pfe_mirror_set_actions/26 
+  Calls: 
+pfe_class_write_dmem/42 (pfe_class_write_dmem) @073ceee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_set_actions/26 pfe_mirror_set_filter/24 pfe_mirror_set_egress_port/22 
+  Calls: 
+__builtin_expect/41 (__builtin_expect) @073cea80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_put/18 
+  Calls: 
+pfe_class_dmem_heap_free/40 (pfe_class_dmem_heap_free) @073ce8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_destroy/17 
+  Calls: 
+autolibc_strncpy/39 (autolibc_strncpy) @073ce700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 
+  Calls: 
+isa_release/38 (isa_release) @073ce620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_destroy/17 pfe_mirror_allocate_mem/15 
+  Calls: 
+pfe_class_dmem_heap_alloc/37 (pfe_class_dmem_heap_alloc) @073ce540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 
+  Calls: 
+isa_reserve/36 (isa_reserve) @073ce380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: 
+autolibc_strnlen/35 (autolibc_strnlen) @073ce2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: 
+autolibc_strcmp/34 (autolibc_strcmp) @073c12a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_db_get_by_crit/12 
+  Calls: 
+isa_item/33 (isa_item) @073c1000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_db_get_by_crit/12 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/32 (oal_util_raise_dem_for_drv_runtime_err) @073c1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_create/16 pfe_mirror_db_get_by_crit/12 pfe_mirror_deinit/11 
+  Calls: 
+pfe_hm_report/31 (pfe_hm_report) @073c1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_create/16 pfe_mirror_db_get_by_crit/12 pfe_mirror_deinit/11 
+  Calls: 
+isa_isempty/30 (isa_isempty) @073c1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_deinit/11 
+  Calls: 
+isa_init/29 (isa_init) @073c19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_init/10 
+  Calls: 
+autolibc_memset/28 (autolibc_memset) @073c18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_deinit/11 pfe_mirror_init/10 
+  Calls: 
+pfe_mirror_get_actions/27 (pfe_mirror_get_actions) @073c1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memcpy/43 
+pfe_mirror_set_actions/26 (pfe_mirror_set_actions) @073c11c0
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 autolibc_memcpy/43 
+pfe_mirror_get_filter/25 (pfe_mirror_get_filter) @07327ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_filter/24 (pfe_mirror_set_filter) @073279a0
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 
+pfe_mirror_get_egress_port/23 (pfe_mirror_get_egress_port) @07327460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_egress_port/22 (pfe_mirror_set_egress_port) @07327e00
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 
+pfe_mirror_get_name/21 (pfe_mirror_get_name) @07327b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_address/20 (pfe_mirror_get_address) @073278c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_put_by_address/19 (pfe_mirror_put_by_address) @07327620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_put/18 pfe_mirror_put/18 pfe_mirror_get_first/13 
+pfe_mirror_put/18 (pfe_mirror_put) @07327380
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_put_by_address/19 pfe_mirror_put_by_address/19 
+  Calls: __builtin_expect/41 
+pfe_mirror_destroy/17 (pfe_mirror_destroy) @07327000
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_release/38 pfe_class_dmem_heap_free/40 
+pfe_mirror_create/16 (pfe_mirror_create) @073bea80
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_allocate_mem/15 isa_reserve/36 pfe_mirror_get_first/13 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 autolibc_strnlen/35 
+pfe_mirror_allocate_mem/15 (pfe_mirror_allocate_mem) @073be0e0
+  Type: function definition analyzed
+  Visibility:
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: autolibc_strncpy/39 isa_release/38 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 pfe_class_dmem_heap_alloc/37 autolibc_memset/28 
+pfe_mirror_get_next/14 (pfe_mirror_get_next) @073bec40
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_db_get_by_crit/12 
+pfe_mirror_get_first/13 (pfe_mirror_get_first) @073be9a0
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_put_by_address/19 pfe_mirror_create/16 
+  Calls: pfe_mirror_db_get_by_crit/12 
+pfe_mirror_db_get_by_crit/12 (pfe_mirror_db_get_by_crit) @073be700
+  Type: function definition analyzed
+  Visibility:
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)pfe_mirror_db/8 (read)pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_get_next/14 pfe_mirror_get_first/13 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 autolibc_strcmp/34 isa_item/33 
+pfe_mirror_deinit/11 (pfe_mirror_deinit) @073be380
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memset/28 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 isa_isempty/30 
+pfe_mirror_init/10 (pfe_mirror_init) @073be000
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (write)pfe_mirror_db/8 (addr)pfe_mirror_db_isa_def/9 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_init/29 autolibc_memset/28 
+pfe_mirror_db_isa_def/9 (pfe_mirror_db_isa_def) @073b3cf0
+  Type: variable definition analyzed
+  Visibility:
+  References: pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: pfe_mirror_init/10 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+pfe_mirror_db/8 (pfe_mirror_db) @073b3c18
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_mirror_init/10 (read)pfe_mirror_init/10 (addr)pfe_mirror_init/10 (write)pfe_mirror_init/10 (addr)pfe_mirror_db_isa_def/9 (addr)pfe_mirror_db_isa_def/9 (addr)pfe_mirror_deinit/11 (read)pfe_mirror_deinit/11 (addr)pfe_mirror_deinit/11 (addr)pfe_mirror_get_first/13 (read)pfe_mirror_get_first/13 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (addr)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_get_next/14 (read)pfe_mirror_create/16 (read)pfe_mirror_create/16 (addr)pfe_mirror_allocate_mem/15 (read)pfe_mirror_allocate_mem/15 (addr)pfe_mirror_destroy/17 (read)pfe_mirror_destroy/17 (addr)pfe_mirror_set_egress_port/22 (read)pfe_mirror_set_filter/24 (read)pfe_mirror_set_actions/26 (read)
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+autolibc_memcpy/43 (autolibc_memcpy) @073e8380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_get_actions/27 pfe_mirror_set_actions/26 
+  Calls: 
+pfe_class_write_dmem/42 (pfe_class_write_dmem) @073ceee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_set_actions/26 pfe_mirror_set_filter/24 pfe_mirror_set_egress_port/22 
+  Calls: 
+__builtin_expect/41 (__builtin_expect) @073cea80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_put/18 
+  Calls: 
+pfe_class_dmem_heap_free/40 (pfe_class_dmem_heap_free) @073ce8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_destroy/17 
+  Calls: 
+autolibc_strncpy/39 (autolibc_strncpy) @073ce700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 
+  Calls: 
+isa_release/38 (isa_release) @073ce620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_destroy/17 pfe_mirror_allocate_mem/15 
+  Calls: 
+pfe_class_dmem_heap_alloc/37 (pfe_class_dmem_heap_alloc) @073ce540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 
+  Calls: 
+isa_reserve/36 (isa_reserve) @073ce380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: 
+autolibc_strnlen/35 (autolibc_strnlen) @073ce2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: 
+autolibc_strcmp/34 (autolibc_strcmp) @073c12a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_db_get_by_crit/12 
+  Calls: 
+isa_item/33 (isa_item) @073c1000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_db_get_by_crit/12 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/32 (oal_util_raise_dem_for_drv_runtime_err) @073c1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_create/16 pfe_mirror_db_get_by_crit/12 pfe_mirror_deinit/11 
+  Calls: 
+pfe_hm_report/31 (pfe_hm_report) @073c1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_create/16 pfe_mirror_db_get_by_crit/12 pfe_mirror_deinit/11 
+  Calls: 
+isa_isempty/30 (isa_isempty) @073c1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_deinit/11 
+  Calls: 
+isa_init/29 (isa_init) @073c19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_init/10 
+  Calls: 
+autolibc_memset/28 (autolibc_memset) @073c18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 pfe_mirror_deinit/11 pfe_mirror_init/10 
+  Calls: 
+pfe_mirror_get_actions/27 (pfe_mirror_get_actions) @073c1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memcpy/43 
+pfe_mirror_set_actions/26 (pfe_mirror_set_actions) @073c11c0
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 autolibc_memcpy/43 
+pfe_mirror_get_filter/25 (pfe_mirror_get_filter) @07327ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_filter/24 (pfe_mirror_set_filter) @073279a0
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 
+pfe_mirror_get_egress_port/23 (pfe_mirror_get_egress_port) @07327460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_egress_port/22 (pfe_mirror_set_egress_port) @07327e00
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 
+pfe_mirror_get_name/21 (pfe_mirror_get_name) @07327b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_address/20 (pfe_mirror_get_address) @073278c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_put_by_address/19 (pfe_mirror_put_by_address) @07327620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_put/18 pfe_mirror_put/18 pfe_mirror_get_first/13 
+pfe_mirror_put/18 (pfe_mirror_put) @07327380
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_put_by_address/19 pfe_mirror_put_by_address/19 
+  Calls: __builtin_expect/41 
+pfe_mirror_destroy/17 (pfe_mirror_destroy) @07327000
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_release/38 pfe_class_dmem_heap_free/40 
+pfe_mirror_create/16 (pfe_mirror_create) @073bea80
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_allocate_mem/15 isa_reserve/36 pfe_mirror_get_first/13 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 autolibc_strnlen/35 
+pfe_mirror_allocate_mem/15 (pfe_mirror_allocate_mem) @073be0e0
+  Type: function definition analyzed
+  Visibility:
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_create/16 
+  Calls: autolibc_strncpy/39 isa_release/38 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 pfe_class_dmem_heap_alloc/37 autolibc_memset/28 
+pfe_mirror_get_next/14 (pfe_mirror_get_next) @073bec40
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_mirror_db_get_by_crit/12 
+pfe_mirror_get_first/13 (pfe_mirror_get_first) @073be9a0
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_put_by_address/19 pfe_mirror_create/16 
+  Calls: pfe_mirror_db_get_by_crit/12 
+pfe_mirror_db_get_by_crit/12 (pfe_mirror_db_get_by_crit) @073be700
+  Type: function definition analyzed
+  Visibility:
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)pfe_mirror_db/8 (read)pfe_mirror_db/8 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_mirror_get_next/14 pfe_mirror_get_first/13 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 autolibc_strcmp/34 isa_item/33 
+pfe_mirror_deinit/11 (pfe_mirror_deinit) @073be380
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memset/28 oal_util_raise_dem_for_drv_runtime_err/32 pfe_hm_report/31 isa_isempty/30 
+pfe_mirror_init/10 (pfe_mirror_init) @073be000
+  Type: function definition analyzed
+  Visibility: public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (write)pfe_mirror_db/8 (addr)pfe_mirror_db_isa_def/9 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_init/29 autolibc_memset/28 
+pfe_mirror_db_isa_def/9 (pfe_mirror_db_isa_def) @073b3cf0
+  Type: variable definition analyzed
+  Visibility:
+  References: pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: pfe_mirror_init/10 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+pfe_mirror_db/8 (pfe_mirror_db) @073b3c18
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_mirror_init/10 (read)pfe_mirror_init/10 (addr)pfe_mirror_init/10 (write)pfe_mirror_init/10 (addr)pfe_mirror_db_isa_def/9 (addr)pfe_mirror_db_isa_def/9 (addr)pfe_mirror_deinit/11 (read)pfe_mirror_deinit/11 (addr)pfe_mirror_deinit/11 (addr)pfe_mirror_get_first/13 (read)pfe_mirror_get_first/13 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (addr)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (write)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_get_next/14 (read)pfe_mirror_create/16 (read)pfe_mirror_create/16 (addr)pfe_mirror_allocate_mem/15 (read)pfe_mirror_allocate_mem/15 (addr)pfe_mirror_destroy/17 (read)pfe_mirror_destroy/17 (addr)pfe_mirror_set_egress_port/22 (read)pfe_mirror_set_filter/24 (read)pfe_mirror_set_actions/26 (read)
+  Availability: not-ready
+  Varpool flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+autolibc_memcpy/43 (autolibc_memcpy) @073e8380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_get_actions/27 (354334802 (estimated locally),0.33 per call) pfe_mirror_set_actions/26 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+pfe_class_write_dmem/42 (pfe_class_write_dmem) @073ceee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_set_actions/26 (1073741824 (estimated locally),1.00 per call) pfe_mirror_set_filter/24 (1073741824 (estimated locally),1.00 per call) pfe_mirror_set_egress_port/22 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+__builtin_expect/41 (__builtin_expect) @073cea80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_put/18 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_class_dmem_heap_free/40 (pfe_class_dmem_heap_free) @073ce8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_destroy/17 (292079251 (estimated locally),0.27 per call) 
+  Calls: 
+autolibc_strncpy/39 (autolibc_strncpy) @073ce700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 (85302828 (estimated locally),0.08 per call) 
+  Calls: 
+isa_release/38 (isa_release) @073ce620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_destroy/17 (292079251 (estimated locally),0.27 per call) pfe_mirror_allocate_mem/15 (34842000 (estimated locally),0.03 per call) 
+  Calls: 
+pfe_class_dmem_heap_alloc/37 (pfe_class_dmem_heap_alloc) @073ce540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_allocate_mem/15 (120144828 (estimated locally),0.11 per call) 
+  Calls: 
+isa_reserve/36 (isa_reserve) @073ce380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 (224695770 (estimated locally),0.21 per call) 
+  Calls: 
+autolibc_strnlen/35 (autolibc_strnlen) @073ce2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+autolibc_strcmp/34 (autolibc_strcmp) @073c12a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_db_get_by_crit/12 (240026838 (estimated locally),2.11 per call) 
+  Calls: 
+isa_item/33 (isa_item) @073c1000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_db_get_by_crit/12 (996582265 (estimated locally),8.77 per call) 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/32 (oal_util_raise_dem_for_drv_runtime_err) @073c1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 (179851756 (estimated locally),0.17 per call) pfe_mirror_deinit/11 (189462818 (estimated locally),0.18 per call) pfe_mirror_allocate_mem/15 (34842000 (estimated locally),0.03 per call) pfe_mirror_db_get_by_crit/12 (240026838 (estimated locally),2.11 per call) 
+  Calls: 
+pfe_hm_report/31 (pfe_hm_report) @073c1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_create/16 (179851756 (estimated locally),0.17 per call) pfe_mirror_deinit/11 (189462818 (estimated locally),0.18 per call) pfe_mirror_allocate_mem/15 (34842000 (estimated locally),0.03 per call) pfe_mirror_db_get_by_crit/12 (240026838 (estimated locally),2.11 per call) 
+  Calls: 
+isa_isempty/30 (isa_isempty) @073c1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_deinit/11 (574129754 (estimated locally),0.53 per call) 
+  Calls: 
+isa_init/29 (isa_init) @073c19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_init/10 (302365698 (estimated locally),0.28 per call) 
+  Calls: 
+autolibc_memset/28 (autolibc_memset) @073c18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_mirror_deinit/11 (574129754 (estimated locally),0.53 per call) pfe_mirror_init/10 (302365698 (estimated locally),0.28 per call) pfe_mirror_allocate_mem/15 (120144828 (estimated locally),0.11 per call) 
+  Calls: 
+pfe_mirror_get_actions/27 (pfe_mirror_get_actions) @073c1460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: autolibc_memcpy/43 (354334802 (estimated locally),0.33 per call) 
+pfe_mirror_set_actions/26 (pfe_mirror_set_actions) @073c11c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 (1073741824 (estimated locally),1.00 per call) autolibc_memcpy/43 (354334802 (estimated locally),0.33 per call) 
+pfe_mirror_get_filter/25 (pfe_mirror_get_filter) @07327ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_filter/24 (pfe_mirror_set_filter) @073279a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 (1073741824 (estimated locally),1.00 per call) 
+pfe_mirror_get_egress_port/23 (pfe_mirror_get_egress_port) @07327460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_egress_port/22 (pfe_mirror_set_egress_port) @07327e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_class_write_dmem/42 (1073741824 (estimated locally),1.00 per call) 
+pfe_mirror_get_name/21 (pfe_mirror_get_name) @07327b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_address/20 (pfe_mirror_get_address) @073278c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_put_by_address/19 (pfe_mirror_put_by_address) @07327620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_mirror_put/18 (1073741824 (estimated locally),1.00 per call) pfe_mirror_put/18 (1073741824 (estimated locally),1.00 per call) pfe_mirror_get_first/13 (1073741824 (estimated locally),1.00 per call) 
+pfe_mirror_put/18 (pfe_mirror_put) @07327380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: pfe_mirror_put_by_address/19 (1073741824 (estimated locally),1.00 per call) pfe_mirror_put_by_address/19 (1073741824 (estimated locally),1.00 per call) 
+  Calls: __builtin_expect/41 (1073741824 (estimated locally),1.00 per call) 
+pfe_mirror_destroy/17 (pfe_mirror_destroy) @07327000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: isa_release/38 (292079251 (estimated locally),0.27 per call) pfe_class_dmem_heap_free/40 (292079251 (estimated locally),0.27 per call) 
+pfe_mirror_create/16 (pfe_mirror_create) @073bea80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_mirror_allocate_mem/15 (inlined) (120144828 (estimated locally),0.11 per call) isa_reserve/36 (224695770 (estimated locally),0.21 per call) pfe_mirror_get_first/13 (659512093 (estimated locally),0.61 per call) oal_util_raise_dem_for_drv_runtime_err/32 (179851756 (estimated locally),0.17 per call) pfe_hm_report/31 (179851756 (estimated locally),0.17 per call) autolibc_strnlen/35 (1073741824 (estimated locally),1.00 per call) 
+pfe_mirror_allocate_mem/15 (pfe_mirror_allocate_mem) @073be0e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)
+  Referring: 
+  Function pfe_mirror_allocate_mem/15 is inline copy in pfe_mirror_create/16
+  Availability: local
+  Function flags: count:120144828 (estimated locally) body local optimize_size
+  Called by: pfe_mirror_create/16 (inlined) (120144828 (estimated locally),0.11 per call) 
+  Calls: autolibc_strncpy/39 (85302828 (estimated locally),0.08 per call) isa_release/38 (34842000 (estimated locally),0.03 per call) oal_util_raise_dem_for_drv_runtime_err/32 (34842000 (estimated locally),0.03 per call) pfe_hm_report/31 (34842000 (estimated locally),0.03 per call) pfe_class_dmem_heap_alloc/37 (120144828 (estimated locally),0.11 per call) autolibc_memset/28 (120144828 (estimated locally),0.11 per call) 
+pfe_mirror_get_next/14 (pfe_mirror_get_next) @073bec40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pfe_mirror_db/8 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_mirror_db_get_by_crit/12 (792206719 (estimated locally),0.74 per call) 
+pfe_mirror_get_first/13 (pfe_mirror_get_first) @073be9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: pfe_mirror_put_by_address/19 (1073741824 (estimated locally),1.00 per call) pfe_mirror_create/16 (659512093 (estimated locally),0.61 per call) 
+  Calls: pfe_mirror_db_get_by_crit/12 (792206719 (estimated locally),0.74 per call) 
+pfe_mirror_db_get_by_crit/12 (pfe_mirror_db_get_by_crit) @073be700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: pfe_mirror_db/8 (addr)pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)pfe_mirror_db/8 (read)pfe_mirror_db/8 (write)pfe_mirror_db/8 (read)pfe_mirror_db/8 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:113634470 (estimated locally) body local optimize_size
+  Called by: pfe_mirror_get_next/14 (792206719 (estimated locally),0.74 per call) pfe_mirror_get_first/13 (792206719 (estimated locally),0.74 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/32 (240026838 (estimated locally),2.11 per call) pfe_hm_report/31 (240026838 (estimated locally),2.11 per call) autolibc_strcmp/34 (240026838 (estimated locally),2.11 per call) isa_item/33 (996582265 (estimated locally),8.77 per call) 
+pfe_mirror_deinit/11 (pfe_mirror_deinit) @073be380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: autolibc_memset/28 (574129754 (estimated locally),0.53 per call) oal_util_raise_dem_for_drv_runtime_err/32 (189462818 (estimated locally),0.18 per call) pfe_hm_report/31 (189462818 (estimated locally),0.18 per call) isa_isempty/30 (574129754 (estimated locally),0.53 per call) 
+pfe_mirror_init/10 (pfe_mirror_init) @073be000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: pfe_mirror_db/8 (read)pfe_mirror_db/8 (addr)pfe_mirror_db/8 (write)pfe_mirror_db/8 (addr)pfe_mirror_db_isa_def/9 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: isa_init/29 (302365698 (estimated locally),0.28 per call) autolibc_memset/28 (302365698 (estimated locally),0.28 per call) 
+pfe_mirror_db_isa_def/9 (pfe_mirror_db_isa_def) @073b3cf0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: pfe_mirror_init/10 (addr)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+pfe_mirror_db/8 (pfe_mirror_db) @073b3c18
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_init/10 (addr)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_isa_def/9 (addr)pfe_mirror_db_isa_def/9 (addr)pfe_mirror_db_get_by_crit/12 (write)pfe_mirror_allocate_mem/15 (read)pfe_mirror_allocate_mem/15 (addr)pfe_mirror_init/10 (write)pfe_mirror_init/10 (addr)pfe_mirror_get_first/13 (write)pfe_mirror_create/16 (read)pfe_mirror_set_filter/24 (read)pfe_mirror_get_first/13 (read)pfe_mirror_get_next/14 (read)pfe_mirror_create/16 (addr)pfe_mirror_destroy/17 (addr)pfe_mirror_set_egress_port/22 (read)pfe_mirror_deinit/11 (addr)pfe_mirror_deinit/11 (addr)pfe_mirror_db_get_by_crit/12 (addr)pfe_mirror_db_get_by_crit/12 (read)pfe_mirror_db_get_by_crit/12 (write)pfe_mirror_init/10 (read)pfe_mirror_deinit/11 (read)pfe_mirror_destroy/17 (read)pfe_mirror_set_actions/26 (read)
+  Availability: available
+  Varpool flags:
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:pfe_mirror_db_get_by_crit:0
+Time profile order in expand_all_functions:pfe_mirror_init:0
+Time profile order in expand_all_functions:pfe_mirror_deinit:0
+Time profile order in expand_all_functions:pfe_mirror_get_first:0
+Time profile order in expand_all_functions:pfe_mirror_get_next:0
+Time profile order in expand_all_functions:pfe_mirror_create:0
+Time profile order in expand_all_functions:pfe_mirror_destroy:0
+Time profile order in expand_all_functions:pfe_mirror_put:0
+Time profile order in expand_all_functions:pfe_mirror_put_by_address:0
+Time profile order in expand_all_functions:pfe_mirror_get_address:0
+Time profile order in expand_all_functions:pfe_mirror_get_name:0
+Time profile order in expand_all_functions:pfe_mirror_set_egress_port:0
+Time profile order in expand_all_functions:pfe_mirror_get_egress_port:0
+Time profile order in expand_all_functions:pfe_mirror_set_filter:0
+Time profile order in expand_all_functions:pfe_mirror_get_filter:0
+Time profile order in expand_all_functions:pfe_mirror_set_actions:0
+Time profile order in expand_all_functions:pfe_mirror_get_actions:0
+Trivially needed variables: pfe_mirror_db_isa_def pfe_mirror_db
+Removing variables:
+
+Final Symbol table:
+
+__builtin_bswap32/44 (__builtin_bswap32) @073be0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcpy/43 (autolibc_memcpy) @073e8380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_class_write_dmem/42 (pfe_class_write_dmem) @073ceee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+__builtin_expect/41 (__builtin_expect) @073cea80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_class_dmem_heap_free/40 (pfe_class_dmem_heap_free) @073ce8c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+autolibc_strncpy/39 (autolibc_strncpy) @073ce700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+isa_release/38 (isa_release) @073ce620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_class_dmem_heap_alloc/37 (pfe_class_dmem_heap_alloc) @073ce540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+isa_reserve/36 (isa_reserve) @073ce380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+autolibc_strnlen/35 (autolibc_strnlen) @073ce2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+autolibc_strcmp/34 (autolibc_strcmp) @073c12a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+isa_item/33 (isa_item) @073c1000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/32 (oal_util_raise_dem_for_drv_runtime_err) @073c1d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_hm_report/31 (pfe_hm_report) @073c1c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+isa_isempty/30 (isa_isempty) @073c1b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+isa_init/29 (isa_init) @073c19a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+autolibc_memset/28 (autolibc_memset) @073c18c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_actions/27 (pfe_mirror_get_actions) @073c1460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_actions/26 (pfe_mirror_set_actions) @073c11c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_filter/25 (pfe_mirror_get_filter) @07327ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_filter/24 (pfe_mirror_set_filter) @073279a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_egress_port/23 (pfe_mirror_get_egress_port) @07327460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_set_egress_port/22 (pfe_mirror_set_egress_port) @07327e00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_name/21 (pfe_mirror_get_name) @07327b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_address/20 (pfe_mirror_get_address) @073278c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_put_by_address/19 (pfe_mirror_put_by_address) @07327620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_put/18 (pfe_mirror_put) @07327380
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_destroy/17 (pfe_mirror_destroy) @07327000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_create/16 (pfe_mirror_create) @073bea80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_next/14 (pfe_mirror_get_next) @073bec40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_get_first/13 (pfe_mirror_get_first) @073be9a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_db_get_by_crit/12 (pfe_mirror_db_get_by_crit) @073be700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:113634470 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_deinit/11 (pfe_mirror_deinit) @073be380
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_init/10 (pfe_mirror_init) @073be000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_mirror_db_isa_def/9 (pfe_mirror_db_isa_def) @073b3cf0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: pfe_mirror_db/8 (addr)pfe_mirror_db/8 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+pfe_mirror_db/8 (pfe_mirror_db) @073b3c18
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @073b3cf0
+  References: 
+  Referring: pfe_mirror_db_isa_def/9 (addr)pfe_mirror_db_isa_def/9 (addr)
+  Availability: available
+  Varpool flags:

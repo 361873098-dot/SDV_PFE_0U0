@@ -1,0 +1,629 @@
+
+
+ local analysis of Eth_43_PFE_BmuIrqHdlr
+   scanning: bDetectSpuriousIsrBmu1 = 0;
+  scanning: bDetectSpuriousIsrBmu2 = 0;
+  scanning: Eth_PFE_LLD_bIrqInitStatus.0_14 ={v} Eth_PFE_LLD_bIrqInitStatus;
+    Volatile stmt is not const/pure
+    Volatile operand is not const/pure
+  scanning: if (Eth_PFE_LLD_bIrqInitStatus.0_14 != 0)
+  scanning: oal_irq_detect_handle_bmu_spurious_interrupt (&bDetectSpuriousIsrBmu1, &bDetectSpuriousIsrBmu2);
+  scanning: bDetectSpuriousIsrBmu1.3_1 = bDetectSpuriousIsrBmu1;
+  scanning: if (bDetectSpuriousIsrBmu1.3_1 == 0)
+  scanning: bDetectSpuriousIsrBmu2.4_2 = bDetectSpuriousIsrBmu2;
+  scanning: if (bDetectSpuriousIsrBmu2.4_2 == 0)
+  scanning: oal_irq_common_handler (5);
+  scanning: bDetectBmuInit.5_3 ={v} bDetectBmuInit;
+    Volatile stmt is not const/pure
+    Volatile operand is not const/pure
+  scanning: if (bDetectBmuInit.5_3 == 1)
+  scanning: oal_irq_clear_bmu_interrupt_status_flag ();
+  scanning: oal_irq_common_handler (5);
+  scanning: return;
+
+
+ local analysis of Eth_43_PFE_HifIrqHdlr_0
+   scanning: Eth_PFE_LLD_bIrqInitStatus.0_6 ={v} Eth_PFE_LLD_bIrqInitStatus;
+    Volatile stmt is not const/pure
+    Volatile operand is not const/pure
+  scanning: if (Eth_PFE_LLD_bIrqInitStatus.0_6 != 0)
+  scanning: _1 = oal_irq_detect_hif_spurious_interrupt (0);
+  scanning: if (_1 == 0)
+  scanning: oal_irq_common_handler (0);
+  scanning: interrupt_src_7 ={v} MEM[(volatile uint32_t *)1175028064B];
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: MEM[(volatile uint32_t *)1175028064B] ={v} interrupt_src_7;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: interrupt_src_8 ={v} MEM[(volatile uint32_t *)1175028064B];
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: MEM[(volatile uint32_t *)1175028064B] ={v} interrupt_src_8;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: return;
+
+
+ local analysis of oal_irq_clear_bmu_interrupt_status_flag
+   scanning: interrupt_src_2 ={v} MEM[(volatile uint32_t *)1174962208B];
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: MEM[(volatile uint32_t *)1174962208B] ={v} interrupt_src_2;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: interrupt_src_4 ={v} MEM[(volatile uint32_t *)1174978592B];
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: MEM[(volatile uint32_t *)1174978592B] ={v} interrupt_src_4;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: return;
+
+
+ local analysis of oal_irq_detect_handle_bmu_spurious_interrupt
+   scanning: int_en_6 ={v} MEM[(volatile uint32_t *)1174962212B];
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: int_src_7 ={v} MEM[(volatile uint32_t *)1174962208B];
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: _1 = int_en_6 & int_src_7;
+  scanning: if (_1 == 0)
+  scanning: MEM[(volatile uint32_t *)1174962208B] ={v} int_src_7;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: *bDetectSpuriousIsrBmu1_9(D) = 1;
+    Indirect ref write is not const/pure
+  scanning: int_en_11 ={v} MEM[(volatile uint32_t *)1174978596B];
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: int_src_12 ={v} MEM[(volatile uint32_t *)1174978592B];
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: _2 = int_en_11 & int_src_12;
+  scanning: if (_2 == 0)
+  scanning: MEM[(volatile uint32_t *)1174978592B] ={v} int_src_12;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: *bDetectSpuriousIsrBmu2_14(D) = 1;
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of oal_irq_detect_hif_spurious_interrupt
+   scanning: _1 = cbus_hif_int_en_var_addr[idx_8(D)];
+  scanning: _2 = (volatile uint32_t *) _1;
+  scanning: int_en_9 ={v} *_2;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: _3 = cbus_hif_int_src_var_addr[idx_8(D)];
+  scanning: _4 = (volatile uint32_t *) _3;
+  scanning: int_src_10 ={v} *_4;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: _5 = int_en_9 & int_src_10;
+  scanning: if (_5 == 0)
+  scanning: return bRet_6;
+callgraph:
+
+oal_irq_detect_hif_spurious_interrupt.constprop.0/41 (oal_irq_detect_hif_spurious_interrupt.constprop) @079a0ee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f575d0
+  References: cbus_hif_int_en_var_addr/27 (read)cbus_hif_int_src_var_addr/28 (read)
+  Referring: 
+  Function oal_irq_detect_hif_spurious_interrupt.constprop/41 is inline copy in Eth_43_PFE_HifIrqHdlr_0/34
+  Clone of oal_irq_detect_hif_spurious_interrupt/30
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Eth_43_PFE_HifIrqHdlr_0/34 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+oal_irq_common_handler/36 (oal_irq_common_handler) @0790c2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Eth_43_PFE_BmuIrqHdlr/35 (474808634 (estimated locally),0.44 per call) Eth_43_PFE_BmuIrqHdlr/35 (235632643 (estimated locally),0.22 per call) Eth_43_PFE_HifIrqHdlr_0/34 (116930485 (estimated locally),0.11 per call) 
+  Calls: 
+Eth_43_PFE_BmuIrqHdlr/35 (Eth_43_PFE_BmuIrqHdlr) @079a59a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f57790
+  References: Eth_PFE_LLD_bIrqInitStatus/37 (read)bDetectBmuInit/38 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_irq_common_handler/36 (474808634 (estimated locally),0.44 per call) oal_irq_clear_bmu_interrupt_status_flag/33 (inlined) (244598387 (estimated locally),0.23 per call) oal_irq_common_handler/36 (235632643 (estimated locally),0.22 per call) oal_irq_detect_handle_bmu_spurious_interrupt/32 (inlined) (354334802 (estimated locally),0.33 per call) 
+Eth_43_PFE_HifIrqHdlr_0/34 (Eth_43_PFE_HifIrqHdlr_0) @079a50e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f577b0
+  References: Eth_PFE_LLD_bIrqInitStatus/37 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_irq_common_handler/36 (116930485 (estimated locally),0.11 per call) oal_irq_detect_hif_spurious_interrupt.constprop/41 (inlined) (354334802 (estimated locally),0.33 per call) 
+oal_irq_clear_bmu_interrupt_status_flag/33 (oal_irq_clear_bmu_interrupt_status_flag) @079a5d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06f574d0
+  References: 
+  Referring: 
+  Function oal_irq_clear_bmu_interrupt_status_flag/33 is inline copy in Eth_43_PFE_BmuIrqHdlr/35
+  Availability: local
+  Function flags: count:244598387 (estimated locally) body local optimize_size
+  Called by: Eth_43_PFE_BmuIrqHdlr/35 (inlined) (244598387 (estimated locally),0.23 per call) 
+  Calls: 
+oal_irq_detect_handle_bmu_spurious_interrupt/32 (oal_irq_detect_handle_bmu_spurious_interrupt) @079a58c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06f57810
+  References: 
+  Referring: 
+  Function oal_irq_detect_handle_bmu_spurious_interrupt/32 is inline copy in Eth_43_PFE_BmuIrqHdlr/35
+  Availability: local
+  Function flags: count:354334802 (estimated locally) body local optimize_size
+  Called by: Eth_43_PFE_BmuIrqHdlr/35 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+oal_irq_detect_hif_spurious_interrupt/30 (oal_irq_detect_hif_spurious_interrupt) @079a5000
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+oal_irq_detect_hif_spurious_interrupt.constprop.0/41 (oal_irq_detect_hif_spurious_interrupt.constprop) @079a0ee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f575d0
+  References: cbus_hif_int_en_var_addr/27 (read)cbus_hif_int_src_var_addr/28 (read)
+  Referring: 
+  Function oal_irq_detect_hif_spurious_interrupt.constprop/41 is inline copy in Eth_43_PFE_HifIrqHdlr_0/34
+  Clone of oal_irq_detect_hif_spurious_interrupt/30
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Eth_43_PFE_HifIrqHdlr_0/34 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+Eth_43_PFE_BmuIrqHdlr/35 (Eth_43_PFE_BmuIrqHdlr) @079a59a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f57790
+  References: Eth_PFE_LLD_bIrqInitStatus/37 (read)bDetectBmuInit/38 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_irq_common_handler/36 (474808634 (estimated locally),0.44 per call) oal_irq_clear_bmu_interrupt_status_flag/33 (inlined) (244598387 (estimated locally),0.23 per call) oal_irq_common_handler/36 (235632643 (estimated locally),0.22 per call) oal_irq_detect_handle_bmu_spurious_interrupt/32 (inlined) (354334802 (estimated locally),0.33 per call) 
+Eth_43_PFE_HifIrqHdlr_0/34 (Eth_43_PFE_HifIrqHdlr_0) @079a50e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f577b0
+  References: Eth_PFE_LLD_bIrqInitStatus/37 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_irq_common_handler/36 (116930485 (estimated locally),0.11 per call) oal_irq_detect_hif_spurious_interrupt.constprop/41 (inlined) (354334802 (estimated locally),0.33 per call) 
+oal_irq_clear_bmu_interrupt_status_flag/33 (oal_irq_clear_bmu_interrupt_status_flag) @079a5d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06f574d0
+  References: 
+  Referring: 
+  Function oal_irq_clear_bmu_interrupt_status_flag/33 is inline copy in Eth_43_PFE_BmuIrqHdlr/35
+  Availability: local
+  Function flags: count:244598387 (estimated locally) body local optimize_size
+  Called by: Eth_43_PFE_BmuIrqHdlr/35 (inlined) (244598387 (estimated locally),0.23 per call) 
+  Calls: 
+oal_irq_detect_handle_bmu_spurious_interrupt/32 (oal_irq_detect_handle_bmu_spurious_interrupt) @079a58c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06f57810
+  References: 
+  Referring: 
+  Function oal_irq_detect_handle_bmu_spurious_interrupt/32 is inline copy in Eth_43_PFE_BmuIrqHdlr/35
+  Availability: local
+  Function flags: count:354334802 (estimated locally) body local optimize_size
+  Called by: Eth_43_PFE_BmuIrqHdlr/35 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+oal_irq_detect_hif_spurious_interrupt.constprop: malloc_bottom
+Eth_43_PFE_BmuIrqHdlr: malloc_bottom
+Eth_43_PFE_HifIrqHdlr_0: malloc_bottom
+oal_irq_clear_bmu_interrupt_status_flag: malloc_bottom
+oal_irq_detect_handle_bmu_spurious_interrupt: malloc_bottom
+oal_irq_detect_hif_spurious_interrupt: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+oal_irq_detect_hif_spurious_interrupt.constprop: malloc_bottom
+Eth_43_PFE_BmuIrqHdlr: malloc_bottom
+Eth_43_PFE_HifIrqHdlr_0: malloc_bottom
+oal_irq_clear_bmu_interrupt_status_flag: malloc_bottom
+oal_irq_detect_handle_bmu_spurious_interrupt: malloc_bottom
+oal_irq_detect_hif_spurious_interrupt: malloc_bottom
+callgraph:
+
+oal_irq_detect_hif_spurious_interrupt.constprop.0/41 (oal_irq_detect_hif_spurious_interrupt.constprop) @079a0ee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f577d0
+  References: cbus_hif_int_en_var_addr/27 (read)cbus_hif_int_src_var_addr/28 (read)
+  Referring: 
+  Function oal_irq_detect_hif_spurious_interrupt.constprop/41 is inline copy in Eth_43_PFE_HifIrqHdlr_0/34
+  Clone of oal_irq_detect_hif_spurious_interrupt/30
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Eth_43_PFE_HifIrqHdlr_0/34 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+oal_irq_common_handler/36 (oal_irq_common_handler) @0790c2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Eth_43_PFE_BmuIrqHdlr/35 (474808634 (estimated locally),0.44 per call) Eth_43_PFE_BmuIrqHdlr/35 (235632643 (estimated locally),0.22 per call) Eth_43_PFE_HifIrqHdlr_0/34 (116930485 (estimated locally),0.11 per call) 
+  Calls: 
+Eth_43_PFE_BmuIrqHdlr/35 (Eth_43_PFE_BmuIrqHdlr) @079a59a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f57510
+  References: Eth_PFE_LLD_bIrqInitStatus/37 (read)bDetectBmuInit/38 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_irq_common_handler/36 (474808634 (estimated locally),0.44 per call) oal_irq_clear_bmu_interrupt_status_flag/33 (inlined) (244598387 (estimated locally),0.23 per call) oal_irq_common_handler/36 (235632643 (estimated locally),0.22 per call) oal_irq_detect_handle_bmu_spurious_interrupt/32 (inlined) (354334802 (estimated locally),0.33 per call) 
+Eth_43_PFE_HifIrqHdlr_0/34 (Eth_43_PFE_HifIrqHdlr_0) @079a50e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f57650
+  References: Eth_PFE_LLD_bIrqInitStatus/37 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_irq_common_handler/36 (116930485 (estimated locally),0.11 per call) oal_irq_detect_hif_spurious_interrupt.constprop/41 (inlined) (354334802 (estimated locally),0.33 per call) 
+oal_irq_clear_bmu_interrupt_status_flag/33 (oal_irq_clear_bmu_interrupt_status_flag) @079a5d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06f576f0
+  References: 
+  Referring: 
+  Function oal_irq_clear_bmu_interrupt_status_flag/33 is inline copy in Eth_43_PFE_BmuIrqHdlr/35
+  Availability: local
+  Function flags: count:244598387 (estimated locally) body local optimize_size
+  Called by: Eth_43_PFE_BmuIrqHdlr/35 (inlined) (244598387 (estimated locally),0.23 per call) 
+  Calls: 
+oal_irq_detect_handle_bmu_spurious_interrupt/32 (oal_irq_detect_handle_bmu_spurious_interrupt) @079a58c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06f57790
+  References: 
+  Referring: 
+  Function oal_irq_detect_handle_bmu_spurious_interrupt/32 is inline copy in Eth_43_PFE_BmuIrqHdlr/35
+  Availability: local
+  Function flags: count:354334802 (estimated locally) body local optimize_size
+  Called by: Eth_43_PFE_BmuIrqHdlr/35 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+oal_irq_detect_hif_spurious_interrupt/30 (oal_irq_detect_hif_spurious_interrupt) @079a5000
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+Eth_43_PFE_BmuIrqHdlr/35 (Eth_43_PFE_BmuIrqHdlr) @079a59a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f57510
+  References: Eth_PFE_LLD_bIrqInitStatus/37 (read)bDetectBmuInit/38 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_irq_common_handler/36 (474808634 (estimated locally),0.44 per call) oal_irq_clear_bmu_interrupt_status_flag/33 (inlined) (244598387 (estimated locally),0.23 per call) oal_irq_common_handler/36 (235632643 (estimated locally),0.22 per call) oal_irq_detect_handle_bmu_spurious_interrupt/32 (inlined) (354334802 (estimated locally),0.33 per call) 
+Eth_43_PFE_HifIrqHdlr_0/34 (Eth_43_PFE_HifIrqHdlr_0) @079a50e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f57650
+  References: Eth_PFE_LLD_bIrqInitStatus/37 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_irq_common_handler/36 (116930485 (estimated locally),0.11 per call) oal_irq_detect_hif_spurious_interrupt.constprop/41 (inlined) (354334802 (estimated locally),0.33 per call) 
+oal_irq_detect_hif_spurious_interrupt.constprop.0/41 (oal_irq_detect_hif_spurious_interrupt.constprop) @079a0ee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f577d0
+  References: cbus_hif_int_en_var_addr/27 (read)cbus_hif_int_src_var_addr/28 (read)
+  Referring: 
+  Function oal_irq_detect_hif_spurious_interrupt.constprop/41 is inline copy in Eth_43_PFE_HifIrqHdlr_0/34
+  Clone of oal_irq_detect_hif_spurious_interrupt/30
+  Availability: local
+  Function flags: count:354334802 (estimated locally) local optimize_size
+  Called by: Eth_43_PFE_HifIrqHdlr_0/34 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+oal_irq_clear_bmu_interrupt_status_flag/33 (oal_irq_clear_bmu_interrupt_status_flag) @079a5d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06f576f0
+  References: 
+  Referring: 
+  Function oal_irq_clear_bmu_interrupt_status_flag/33 is inline copy in Eth_43_PFE_BmuIrqHdlr/35
+  Availability: local
+  Function flags: count:244598387 (estimated locally) body local optimize_size
+  Called by: Eth_43_PFE_BmuIrqHdlr/35 (inlined) (244598387 (estimated locally),0.23 per call) 
+  Calls: 
+oal_irq_detect_handle_bmu_spurious_interrupt/32 (oal_irq_detect_handle_bmu_spurious_interrupt) @079a58c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06f57790
+  References: 
+  Referring: 
+  Function oal_irq_detect_handle_bmu_spurious_interrupt/32 is inline copy in Eth_43_PFE_BmuIrqHdlr/35
+  Availability: local
+  Function flags: count:354334802 (estimated locally) body local optimize_size
+  Called by: Eth_43_PFE_BmuIrqHdlr/35 (inlined) (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+
+Function found not to call free: oal_irq_detect_handle_bmu_spurious_interrupt
+Function found not to call free: oal_irq_clear_bmu_interrupt_status_flag
+Function found not to call free: oal_irq_detect_hif_spurious_interrupt.constprop
+Eth_43_PFE_BmuIrqHdlr ()
+{
+  bool_t bDetectSpuriousIsrBmu2;
+  bool_t bDetectSpuriousIsrBmu1;
+  unsigned char bDetectSpuriousIsrBmu1.3_1;
+  unsigned char bDetectSpuriousIsrBmu2.4_2;
+  unsigned char bDetectBmuInit.5_3;
+  _Bool Eth_PFE_LLD_bIrqInitStatus.0_14;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  bDetectSpuriousIsrBmu1 = 0;
+  # DEBUG BEGIN_STMT
+  bDetectSpuriousIsrBmu2 = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY oal_irq_check_driver_init_status
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_bIrqInitStatus.0_14 ={v} Eth_PFE_LLD_bIrqInitStatus;
+  # DEBUG D#2 => (const bool_t) Eth_PFE_LLD_bIrqInitStatus.0_14
+  # DEBUG init_status => D#2
+  # DEBUG BEGIN_STMT
+  # DEBUG init_status => NULL
+  # DEBUG bDriverInitStatus => D#2
+  # DEBUG BEGIN_STMT
+  if (Eth_PFE_LLD_bIrqInitStatus.0_14 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  oal_irq_detect_handle_bmu_spurious_interrupt (&bDetectSpuriousIsrBmu1, &bDetectSpuriousIsrBmu2);
+  # DEBUG BEGIN_STMT
+  bDetectSpuriousIsrBmu1.3_1 = bDetectSpuriousIsrBmu1;
+  if (bDetectSpuriousIsrBmu1.3_1 == 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 4> [local count: 237404317]:
+  bDetectSpuriousIsrBmu2.4_2 = bDetectSpuriousIsrBmu2;
+  if (bDetectSpuriousIsrBmu2.4_2 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 5> [local count: 235632643]:
+  # DEBUG BEGIN_STMT
+  oal_irq_common_handler (5);
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  bDetectBmuInit.5_3 ={v} bDetectBmuInit;
+  if (bDetectBmuInit.5_3 == 1)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 7> [local count: 244598387]:
+  # DEBUG BEGIN_STMT
+  oal_irq_clear_bmu_interrupt_status_flag ();
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 474808634]:
+  # DEBUG BEGIN_STMT
+  oal_irq_common_handler (5);
+
+  <bb 9> [local count: 1073741824]:
+  bDetectSpuriousIsrBmu1 ={v} {CLOBBER};
+  bDetectSpuriousIsrBmu2 ={v} {CLOBBER};
+  return;
+
+}
+
+
+Eth_43_PFE_HifIrqHdlr_0 ()
+{
+  uint32 interrupt_src;
+  uint32 interrupt_src;
+  unsigned char _1;
+  _Bool Eth_PFE_LLD_bIrqInitStatus.0_6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY oal_irq_check_driver_init_status
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_bIrqInitStatus.0_6 ={v} Eth_PFE_LLD_bIrqInitStatus;
+  # DEBUG D#1 => (const bool_t) Eth_PFE_LLD_bIrqInitStatus.0_6
+  # DEBUG init_status => D#1
+  # DEBUG BEGIN_STMT
+  # DEBUG init_status => NULL
+  # DEBUG bDriverInitStatus => D#1
+  # DEBUG BEGIN_STMT
+  if (Eth_PFE_LLD_bIrqInitStatus.0_6 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _1 = oal_irq_detect_hif_spurious_interrupt (0);
+  if (_1 == 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 4> [local count: 116930485]:
+  # DEBUG BEGIN_STMT
+  oal_irq_common_handler (0);
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 237404317]:
+  # DEBUG BEGIN_STMT
+  # DEBUG int_src_var_addr => 1175028064
+  # DEBUG INLINE_ENTRY oal_irq_clear_hif_interrupt_status_flag
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  interrupt_src_7 ={v} MEM[(volatile uint32_t *)1175028064B];
+  # DEBUG interrupt_src => interrupt_src_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32_t *)1175028064B] ={v} interrupt_src_7;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  # DEBUG int_src_var_addr => 1175028064
+  # DEBUG INLINE_ENTRY oal_irq_clear_hif_interrupt_status_flag
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  interrupt_src_8 ={v} MEM[(volatile uint32_t *)1175028064B];
+  # DEBUG interrupt_src => interrupt_src_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32_t *)1175028064B] ={v} interrupt_src_8;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1073741824]:
+  # DEBUG int_src_var_addr => NULL
+  # DEBUG interrupt_src => NULL
+  # DEBUG int_src_var_addr => NULL
+  # DEBUG interrupt_src => NULL
+  return;
+
+}
+
+
+oal_irq_clear_bmu_interrupt_status_flag ()
+{
+  uint32 interrupt_src;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  interrupt_src_2 ={v} MEM[(volatile uint32_t *)1174962208B];
+  # DEBUG interrupt_src => interrupt_src_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32_t *)1174962208B] ={v} interrupt_src_2;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  interrupt_src_4 ={v} MEM[(volatile uint32_t *)1174978592B];
+  # DEBUG interrupt_src => interrupt_src_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32_t *)1174978592B] ={v} interrupt_src_4;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_irq_detect_handle_bmu_spurious_interrupt (bool_t * bDetectSpuriousIsrBmu1, bool_t * bDetectSpuriousIsrBmu2)
+{
+  uint32 int_src;
+  uint32 int_en;
+  long unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  int_en_6 ={v} MEM[(volatile uint32_t *)1174962212B];
+  # DEBUG int_en => int_en_6
+  # DEBUG BEGIN_STMT
+  int_src_7 ={v} MEM[(volatile uint32_t *)1174962208B];
+  # DEBUG int_src => int_src_7
+  # DEBUG BEGIN_STMT
+  _1 = int_en_6 & int_src_7;
+  if (_1 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32_t *)1174962208B] ={v} int_src_7;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *bDetectSpuriousIsrBmu1_9(D) = 1;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  int_en_11 ={v} MEM[(volatile uint32_t *)1174978596B];
+  # DEBUG int_en => int_en_11
+  # DEBUG BEGIN_STMT
+  int_src_12 ={v} MEM[(volatile uint32_t *)1174978592B];
+  # DEBUG int_src => int_src_12
+  # DEBUG BEGIN_STMT
+  _2 = int_en_11 & int_src_12;
+  if (_2 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32_t *)1174978592B] ={v} int_src_12;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *bDetectSpuriousIsrBmu2_14(D) = 1;
+
+  <bb 6> [local count: 1073741824]:
+  return;
+
+}
+
+

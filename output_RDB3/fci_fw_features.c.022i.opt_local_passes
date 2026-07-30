@@ -1,0 +1,808 @@
+fci_internal_read_fw_feature_table_element (struct fpp_fw_features_element_cmd_t * fp_cmd, uint16_t * fci_ret, const char * table_el_name, struct fpp_fw_features_element_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  errno_t ret;
+  char[33] * _1;
+  unsigned char _2;
+  uint8_t * _3;
+  char[33] * _4;
+  unsigned char _5;
+  uint8_t * _6;
+  char[33] * _7;
+  unsigned char _8;
+  uint8_t[128] * _9;
+  char[33] * _10;
+  char[33] * _11;
+  char[33] * _12;
+  errno_t _37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_18 = 0;
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _1 = &fp_cmd_19(D)->fw_feature_name;
+  _2 = fp_cmd_19(D)->group;
+  _3 = &reply_buf_21(D)->unit_size;
+  ret_24 = pfe_feature_mgr_table_get_size (_1, _2, table_el_name_22(D), _3);
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  if (ret_24 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = &fp_cmd_19(D)->fw_feature_name;
+  _5 = fp_cmd_19(D)->group;
+  _6 = &reply_buf_21(D)->count;
+  ret_26 = pfe_feature_mgr_table_get_multiplicity (_4, _5, table_el_name_22(D), _6);
+  # DEBUG ret => ret_26
+
+  <bb 4> :
+  # ret_13 = PHI <ret_24(2), ret_26(3)>
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (ret_13 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _7 = &fp_cmd_19(D)->fw_feature_name;
+  _8 = fp_cmd_19(D)->group;
+  _9 = &reply_buf_21(D)->payload;
+  ret_28 = pfe_feature_mgr_table_get_payload (_7, _8, table_el_name_22(D), _9);
+  # DEBUG ret => ret_28
+
+  <bb 6> :
+  # ret_14 = PHI <ret_13(4), ret_28(5)>
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _10 = &reply_buf_21(D)->element_name;
+  autolibc_strncpy (_10, table_el_name_22(D), 32);
+  # DEBUG BEGIN_STMT
+  _11 = &reply_buf_21(D)->fw_feature_name;
+  _12 = &fp_cmd_19(D)->fw_feature_name;
+  autolibc_strncpy (_11, _12, 32);
+  # DEBUG BEGIN_STMT
+  reply_buf_21(D)->element_name[31] = 0;
+  # DEBUG BEGIN_STMT
+  reply_buf_21(D)->fw_feature_name[31] = 0;
+  # DEBUG BEGIN_STMT
+  *reply_len_33(D) = 200;
+  # DEBUG BEGIN_STMT
+  *fci_ret_35(D) = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _37 = ret_14;
+  return _37;
+
+}
+
+
+fci_internal_mng_fw_feat_elmnt_act_query_cont (struct fpp_fw_features_element_cmd_t * fp_cmd, uint16_t * fci_ret, const char * feature_name, struct fpp_fw_features_element_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  errno_t ret;
+  const char * table_el_name;
+  unsigned char _1;
+  char[33] * _2;
+  unsigned char _3;
+  const char * table_el_name.7_4;
+  errno_t _25;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_7 = 0;
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  _1 = pfe_feature_mgr_is_available (feature_name_9(D));
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = &fp_cmd_14(D)->fw_feature_name;
+  _3 = fp_cmd_14(D)->group;
+  ret_16 = pfe_feature_mgr_table_next (_2, _3, &table_el_name);
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_11(D) = 62049;
+  # DEBUG BEGIN_STMT
+  ret_24 = 0;
+  # DEBUG ret => ret_24
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  table_el_name.7_4 = table_el_name;
+  ret_20 = fci_internal_read_fw_feature_table_element (fp_cmd_14(D), fci_ret_11(D), table_el_name.7_4, reply_buf_17(D), reply_len_18(D));
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  if (ret_20 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *reply_len_18(D) = 200;
+  # DEBUG BEGIN_STMT
+  *fci_ret_11(D) = 65535;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_11(D) = 62034;
+  # DEBUG BEGIN_STMT
+  ret_13 = 0;
+  # DEBUG ret => ret_13
+
+  <bb 8> :
+  # ret_5 = PHI <ret_20(5), ret_13(7), ret_24(4), ret_20(6)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  _25 = ret_5;
+  table_el_name ={v} {CLOBBER};
+  return _25;
+
+}
+
+
+fci_internal_mng_fw_feat_elmnt_act_query (struct fpp_fw_features_element_cmd_t * fp_cmd, uint16_t * fci_ret, const char * feature_name, struct fpp_fw_features_element_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  errno_t ret;
+  const char * table_el_name;
+  unsigned char _1;
+  char _2;
+  char[33] * _3;
+  unsigned char _4;
+  const char * table_el_name.6_5;
+  char[33] * _6;
+  errno_t _32;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_9 = 0;
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  _1 = pfe_feature_mgr_is_available (feature_name_11(D));
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = fp_cmd_16(D)->element_name[0];
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = &fp_cmd_16(D)->fw_feature_name;
+  _4 = fp_cmd_16(D)->group;
+  ret_25 = pfe_feature_mgr_table_first (_3, _4, &table_el_name);
+  # DEBUG ret => ret_25
+  # DEBUG BEGIN_STMT
+  if (ret_25 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 62049;
+  # DEBUG BEGIN_STMT
+  ret_31 = 0;
+  # DEBUG ret => ret_31
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  table_el_name.6_5 = table_el_name;
+  ret_27 = fci_internal_read_fw_feature_table_element (fp_cmd_16(D), fci_ret_13(D), table_el_name.6_5, reply_buf_17(D), reply_len_18(D));
+  # DEBUG ret => ret_27
+  # DEBUG BEGIN_STMT
+  if (ret_27 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *reply_len_18(D) = 200;
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 65535;
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _6 = &fp_cmd_16(D)->element_name;
+  ret_20 = fci_internal_read_fw_feature_table_element (fp_cmd_16(D), fci_ret_13(D), _6, reply_buf_17(D), reply_len_18(D));
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  if (ret_20 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  *reply_len_18(D) = 200;
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 62049;
+  # DEBUG BEGIN_STMT
+  ret_23 = 0;
+  # DEBUG ret => ret_23
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_13(D) = 62034;
+  # DEBUG BEGIN_STMT
+  ret_15 = 0;
+  # DEBUG ret => ret_15
+
+  <bb 11> :
+  # ret_7 = PHI <ret_20(8), ret_15(10), ret_27(6), ret_27(7), ret_31(5), ret_23(9)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  _32 = ret_7;
+  table_el_name ={v} {CLOBBER};
+  return _32;
+
+}
+
+
+fci_internal_mng_fw_feat_elmnt_act_update (struct fpp_fw_features_element_cmd_t * fp_cmd, uint16_t * fci_ret, const char * feature_name)
+{
+  errno_t ret;
+  unsigned char _1;
+  char[33] * _2;
+  unsigned char _3;
+  char[33] * _4;
+  unsigned char _5;
+  uint8_t[128] * _6;
+  errno_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_8 = 0;
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _1 = pfe_feature_mgr_is_available (feature_name_10(D));
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = &fp_cmd_14(D)->fw_feature_name;
+  _3 = fp_cmd_14(D)->group;
+  _4 = &fp_cmd_14(D)->element_name;
+  _5 = fp_cmd_14(D)->index;
+  _6 = &fp_cmd_14(D)->payload;
+  ret_16 = pfe_feature_mgr_table_set_val (_2, _3, _4, _5, _6);
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 62049;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 62034;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_18 = 0;
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _19 = ret_18;
+  return _19;
+
+}
+
+
+fci_internal_read_fw_feature_element_init (errno_t * element_cmd_ret, struct fpp_fw_features_element_cmd_t * fp_cmd, uint16_t * fci_ret, char * * feature_name, uint32_t * reply_len)
+{
+  errno_t ret;
+  unsigned char _1;
+  _Bool _2;
+  long int _3;
+  long int _4;
+  long unsigned int _5;
+  char _6;
+  char * _7;
+  char _8;
+  char * _9;
+  char * _10;
+  char _11;
+  char * _12;
+  char * _13;
+  errno_t _35;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_16 = 0;
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  _1 = context.fci_initialized;
+  _2 = _1 == 0;
+  _3 = (long int) _2;
+  _4 = __builtin_expect (_3, 0);
+  if (_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Context not initialized\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_fw_features.c", 324, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *element_cmd_ret_25(D) = 115;
+  # DEBUG BEGIN_STMT
+  ret_34 = 115;
+  # DEBUG ret => ret_34
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_18(D) = 0;
+  # DEBUG BEGIN_STMT
+  _5 = *reply_len_20(D);
+  if (_5 <= 199)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_18(D) = 65535;
+  # DEBUG BEGIN_STMT
+  *element_cmd_ret_25(D) = 22;
+  # DEBUG BEGIN_STMT
+  ret_30 = 22;
+  # DEBUG ret => ret_30
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _6 = fp_cmd_21(D)->fw_feature_name[0];
+  if (_6 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_18(D) = 62033;
+  # DEBUG BEGIN_STMT
+  *element_cmd_ret_25(D) = 0;
+  # DEBUG BEGIN_STMT
+  ret_27 = 116;
+  # DEBUG ret => ret_27
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _7 = *feature_name_22(D);
+  _8 = *_7;
+  if (_8 == 117)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  _9 = *feature_name_22(D);
+  _10 = _9 + 1;
+  _11 = *_10;
+  if (_11 == 95)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _12 = *feature_name_22(D);
+  _13 = _12 + 2;
+  *feature_name_22(D) = _13;
+
+  <bb 11> :
+  # ret_14 = PHI <ret_34(3), ret_30(5), ret_27(7), ret_16(8), ret_16(9), ret_16(10)>
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  _35 = ret_14;
+  return _35;
+
+}
+
+
+fci_internal_read_fw_feature (const char * feature_name, uint16_t * fci_ret, struct fpp_fw_features_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  const char * str;
+  errno_t ret;
+  uint8_t * _1;
+  uint8_t * _2;
+  fpp_fw_feature_flags_t * _3;
+  char[33] * _4;
+  char[129] * _5;
+  const char * str.2_6;
+  errno_t _36;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_14 = 0;
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &reply_buf_15(D)->val;
+  ret_19 = pfe_feature_mgr_get_val (feature_name_17(D), _1);
+  # DEBUG ret => ret_19
+  # DEBUG BEGIN_STMT
+  if (ret_19 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = &reply_buf_15(D)->def_val;
+  ret_21 = pfe_feature_mgr_get_def_val (feature_name_17(D), _2);
+  # DEBUG ret => ret_21
+
+  <bb 4> :
+  # ret_7 = PHI <ret_19(2), ret_21(3)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = &reply_buf_15(D)->flags;
+  ret_23 = pfe_feature_mgr_get_variant (feature_name_17(D), _3);
+  # DEBUG ret => ret_23
+
+  <bb 6> :
+  # ret_8 = PHI <ret_7(4), ret_23(5)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  if (ret_8 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _4 = &reply_buf_15(D)->name;
+  autolibc_strncpy (_4, feature_name_17(D), 32);
+  # DEBUG BEGIN_STMT
+  reply_buf_15(D)->name[31] = 0;
+  # DEBUG BEGIN_STMT
+  ret_27 = pfe_feature_mgr_get_desc (feature_name_17(D), &str);
+  # DEBUG ret => ret_27
+
+  <bb 8> :
+  # ret_9 = PHI <ret_8(6), ret_27(7)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _5 = &reply_buf_15(D)->desc;
+  str.2_6 = str;
+  autolibc_strncpy (_5, str.2_6, 128);
+  # DEBUG BEGIN_STMT
+  reply_buf_15(D)->desc[31] = 0;
+  # DEBUG BEGIN_STMT
+  *reply_len_28(D) = 168;
+  # DEBUG BEGIN_STMT
+  *fci_ret_30(D) = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  *reply_len_28(D) = 168;
+  # DEBUG BEGIN_STMT
+  *fci_ret_30(D) = 65535;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _36 = ret_9;
+  str ={v} {CLOBBER};
+  return _36;
+
+}
+
+
+fci_fw_features_element_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_fw_features_element_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  errno_t ret;
+  char * feature_name;
+  struct fpp_fw_features_element_cmd_t * fp_cmd;
+  char[33] * _1;
+  int _2;
+  short unsigned int _3;
+  int _4;
+  char * feature_name.3_5;
+  int _6;
+  char * feature_name.4_7;
+  int _8;
+  char * feature_name.5_9;
+  int _10;
+  errno_t _31;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  fp_cmd_15 = &msg_14(D)->msg_cmd.payload;
+  # DEBUG fp_cmd => fp_cmd_15
+  # DEBUG BEGIN_STMT
+  _1 = &fp_cmd_15->fw_feature_name;
+  feature_name = _1;
+  # DEBUG BEGIN_STMT
+  _2 = fci_internal_read_fw_feature_element_init (&ret, fp_cmd_15, fci_ret_17(D), &feature_name, reply_len_18(D));
+  if (_2 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  *reply_len_18(D) = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf_21(D), 0, 200);
+  # DEBUG BEGIN_STMT
+  _3 = fp_cmd_15->action;
+  _4 = (int) _3;
+  switch (_4) <default: <L4> [INV], case 4: <L1> [INV], case 6: <L2> [INV], case 7: <L3> [INV]>
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  feature_name.3_5 = feature_name;
+  _6 = fci_internal_mng_fw_feat_elmnt_act_update (fp_cmd_15, fci_ret_17(D), feature_name.3_5);
+  ret = _6;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  feature_name.4_7 = feature_name;
+  _8 = fci_internal_mng_fw_feat_elmnt_act_query (fp_cmd_15, fci_ret_17(D), feature_name.4_7, reply_buf_21(D), reply_len_18(D));
+  ret = _8;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  feature_name.5_9 = feature_name;
+  _10 = fci_internal_mng_fw_feat_elmnt_act_query_cont (fp_cmd_15, fci_ret_17(D), feature_name.5_9, reply_buf_21(D), reply_len_18(D));
+  ret = _10;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_17(D) = 4;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _31 = ret;
+  feature_name ={v} {CLOBBER};
+  ret ={v} {CLOBBER};
+  return _31;
+
+}
+
+
+fci_fw_features_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_fw_features_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  errno_t ret;
+  const char * feature_name;
+  struct fpp_fw_features_cmd_t * fp_cmd;
+  long unsigned int _1;
+  short unsigned int _2;
+  int _3;
+  char[33] * _4;
+  unsigned char _5;
+  const char * feature_name.0_6;
+  const char * feature_name.1_7;
+  errno_t _41;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 0;
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len_14(D);
+  if (_1 <= 167)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 65535;
+  # DEBUG BEGIN_STMT
+  ret_40 = 22;
+  # DEBUG ret => ret_40
+  goto <bb 17>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *reply_len_14(D) = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf_16(D), 0, 168);
+  # DEBUG BEGIN_STMT
+  fp_cmd_19 = &msg_18(D)->msg_cmd.payload;
+  # DEBUG fp_cmd => fp_cmd_19
+  # DEBUG BEGIN_STMT
+  _2 = fp_cmd_19->action;
+  _3 = (int) _2;
+  switch (_3) <default: <L16> [INV], case 4: <L2> [INV], case 6: <L8> [INV], case 7: <L12> [INV]>
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _4 = &fp_cmd_19->name;
+  _5 = fp_cmd_19->val;
+  ret_33 = pfe_feature_mgr_set_val (_4, _5);
+  # DEBUG ret => ret_33
+  # DEBUG BEGIN_STMT
+  if (ret_33 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (ret_33 == 117)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 62034;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 62033;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret_36 = 0;
+  # DEBUG ret => ret_36
+  goto <bb 17>; [INV]
+
+  <bb 10> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  ret_27 = pfe_feature_mgr_get_first (&feature_name);
+  # DEBUG ret => ret_27
+  # DEBUG BEGIN_STMT
+  if (ret_27 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 62033;
+  # DEBUG BEGIN_STMT
+  ret_31 = 0;
+  # DEBUG ret => ret_31
+  goto <bb 17>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  feature_name.0_6 = feature_name;
+  ret_29 = fci_internal_read_fw_feature (feature_name.0_6, fci_ret_12(D), reply_buf_16(D), reply_len_14(D));
+  # DEBUG ret => ret_29
+  goto <bb 17>; [INV]
+
+  <bb 13> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  ret_21 = pfe_feature_mgr_get_next (&feature_name);
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  if (ret_21 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 62033;
+  # DEBUG BEGIN_STMT
+  ret_25 = 0;
+  # DEBUG ret => ret_25
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  feature_name.1_7 = feature_name;
+  ret_23 = fci_internal_read_fw_feature (feature_name.1_7, fci_ret_12(D), reply_buf_16(D), reply_len_14(D));
+  # DEBUG ret => ret_23
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L16>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 4;
+  # DEBUG BEGIN_STMT
+  ret_38 = 0;
+  # DEBUG ret => ret_38
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+  # ret_8 = PHI <ret_40(3), ret_36(9), ret_29(12), ret_23(15), ret_38(16), ret_33(5), ret_31(11), ret_25(14)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _41 = ret_8;
+  feature_name ={v} {CLOBBER};
+  return _41;
+
+}
+
+

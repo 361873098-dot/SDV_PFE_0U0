@@ -1,0 +1,4032 @@
+
+IPA constant propagation start:
+Determining dynamic type for call: ret_6 = pfe_util_write_dmem.part.0 (util_p_7(D), dst_addr_11(D), src_ptr_12(D), len_13(D));
+  Starting walk at: ret_6 = pfe_util_write_dmem.part.0 (util_p_7(D), dst_addr_11(D), src_ptr_12(D), len_13(D));
+  instance pointer: util_p_7(D)  Outer instance pointer: util_p_7(D) offset: 0 (bits) vtbl reference: 
+Determining dynamic type for call: ret_6 = pfe_util_write_dmem.part.0 (util_p_7(D), dst_addr_11(D), src_ptr_12(D), len_13(D));
+  Starting walk at: ret_6 = pfe_util_write_dmem.part.0 (util_p_7(D), dst_addr_11(D), src_ptr_12(D), len_13(D));
+  instance pointer: src_ptr_12(D)  Outer instance pointer: src_ptr_12(D) offset: 0 (bits) vtbl reference: 
+Determining dynamic type for call: pfe_util_destroy.part.0 (util_1(D));
+  Starting walk at: pfe_util_destroy.part.0 (util_1(D));
+  instance pointer: util_1(D)  Outer instance pointer: util_1(D) offset: 0 (bits) vtbl reference: 
+Determining dynamic type for call: ret_14 = pfe_util_load_fw_features (util_5(D));
+  Starting walk at: ret_14 = pfe_util_load_fw_features (util_5(D));
+  instance pointer: util_5(D)  Outer instance pointer: util_5(D) offset: 0 (bits) vtbl reference: 
+  Function call may change dynamic type:ret_9 = pfe_pe_load_firmware (_1, _2, elf_7(D));
+  Function call may change dynamic type:oal_util_raise_dem_for_drv_runtime_err ();
+  Function call may change dynamic type:pfe_hm_report (1, 2, 1, "[%s:%d] UTIL firmware loading failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_util.c", 402, ret_9, "");
+Determining dynamic type for call: ret_9 = pfe_util_create_pe (pe_num_7(D), cbus_base_va_5(D), &util_instance);
+  Starting walk at: ret_9 = pfe_util_create_pe (pe_num_7(D), cbus_base_va_5(D), &util_instance);
+  instance pointer: &util_instance  Outer instance pointer: util_instance offset: 0 (bits) vtbl reference: 
+  Function call may change dynamic type:autolibc_memset (&util_instance, 0, 328);
+Determining dynamic type for call: pfe_util_reset (&util_instance);
+  Starting walk at: pfe_util_reset (&util_instance);
+  instance pointer: &util_instance  Outer instance pointer: util_instance offset: 0 (bits) vtbl reference: 
+  Function call may change dynamic type:ret_9 = pfe_util_create_pe (pe_num_7(D), cbus_base_va_5(D), &util_instance);
+  Function call may change dynamic type:autolibc_memset (&util_instance, 0, 328);
+Determining dynamic type for call: pfe_util_disable (&util_instance);
+  Starting walk at: pfe_util_disable (&util_instance);
+  instance pointer: &util_instance  Outer instance pointer: util_instance offset: 0 (bits) vtbl reference: 
+  Function call may change dynamic type:pfe_util_reset (&util_instance);
+  Function call may change dynamic type:ret_9 = pfe_util_create_pe (pe_num_7(D), cbus_base_va_5(D), &util_instance);
+  Function call may change dynamic type:autolibc_memset (&util_instance, 0, 328);
+Determining dynamic type for call: pfe_util_set_config.isra.0 (_15, cfg_12(D));
+  Starting walk at: pfe_util_set_config.isra.0 (_15, cfg_12(D));
+  instance pointer: cfg_12(D)  Outer instance pointer: cfg_12(D) offset: 0 (bits) vtbl reference: 
+  Function call may change dynamic type:pfe_util_disable (&util_instance);
+  Function call may change dynamic type:pfe_util_reset (&util_instance);
+  Function call may change dynamic type:ret_9 = pfe_util_create_pe (pe_num_7(D), cbus_base_va_5(D), &util_instance);
+  Function call may change dynamic type:autolibc_memset (&util_instance, 0, 328);
+Determining dynamic type for call: pfe_util_destroy (&util_instance);
+  Starting walk at: pfe_util_destroy (&util_instance);
+  instance pointer: &util_instance  Outer instance pointer: util_instance offset: 0 (bits) vtbl reference: 
+  Function call may change dynamic type:ret_9 = pfe_util_create_pe (pe_num_7(D), cbus_base_va_5(D), &util_instance);
+  Function call may change dynamic type:autolibc_memset (&util_instance, 0, 328);
+Determining dynamic type for call: val_break_27 = pfe_util_check_new_fw_features (util_20(D), &ret, fw_features_idx_15);
+  Starting walk at: val_break_27 = pfe_util_check_new_fw_features (util_20(D), &ret, fw_features_idx_15);
+  instance pointer: util_20(D)  Outer instance pointer: util_20(D) offset: 0 (bits) vtbl reference: 
+  Function call may change dynamic type:pfe_fw_feature_create (_13);
+  Function call may change dynamic type:_2 = pfe_pe_get_mmap (_1, &mmap);
+  Function call may change dynamic type:val_break_27 = pfe_util_check_new_fw_features (util_20(D), &ret, fw_features_idx_15);
+  Function call may change dynamic type:pfe_fw_feature_create (_13);
+Determining dynamic type for call: val_break_27 = pfe_util_check_new_fw_features (util_20(D), &ret, fw_features_idx_15);
+  Starting walk at: val_break_27 = pfe_util_check_new_fw_features (util_20(D), &ret, fw_features_idx_15);
+  instance pointer: &ret  Outer instance pointer: ret offset: 0 (bits) vtbl reference: 
+  Function call may change dynamic type:pfe_fw_feature_create (_13);
+  Function call may change dynamic type:_2 = pfe_pe_get_mmap (_1, &mmap);
+  Function call may change dynamic type:val_break_27 = pfe_util_check_new_fw_features (util_20(D), &ret, fw_features_idx_15);
+  Function call may change dynamic type:pfe_fw_feature_create (_13);
+
+IPA structures before propagation:
+
+Jump functions:
+  Jump functions of caller  pfe_util_destroy.part.0/275:
+  Jump functions of caller  pfe_util_write_dmem.part.0/274:
+  Jump functions of caller  pfe_util_set_config.isra.0/273:
+  Jump functions of caller  autolibc_memcpy/272:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_104/271:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_103/270:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_102/269:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_101/268:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_100/267:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_99/266:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_98/265:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_97/264:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_96/263:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_95/262:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_94/261:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_93/260:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_92/259:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_91/258:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_90/257:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_89/256:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_88/255:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_87/254:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_86/253:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_85/252:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_84/251:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_83/250:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_82/249:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_81/248:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_80/247:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_79/246:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_78/245:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_77/244:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_76/243:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_75/242:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_74/241:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_73/240:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_72/239:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_71/238:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_70/237:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_69/236:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_68/235:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_67/234:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_66/233:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_65/232:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_64/231:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_63/230:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_62/229:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_61/228:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_60/227:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_59/226:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_58/225:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_57/224:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_56/223:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_55/222:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_54/221:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_53/220:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_52/219:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_51/218:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_50/217:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_49/216:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_48/215:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_47/214:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_46/213:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_45/212:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_44/211:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_43/210:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_42/209:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_41/208:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_40/207:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_39/206:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_38/205:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_37/204:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_36/203:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_35/202:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_34/201:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_33/200:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_32/199:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_31/198:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_30/197:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_29/196:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_28/195:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_27/194:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_26/193:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_25/192:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_24/191:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_23/190:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_22/189:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_21/188:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_20/187:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_19/186:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_18/185:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_17/184:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_16/183:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_15/182:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_14/181:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_13/180:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_12/179:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_11/178:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_10/177:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_09/176:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_08/175:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_07/174:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_06/173:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_05/172:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_04/171:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_03/170:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_02/169:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_01/168:
+  Jump functions of caller  SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_00/167:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_104/166:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_103/165:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_102/164:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_101/163:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_100/162:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_99/161:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_98/160:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_97/159:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_96/158:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_95/157:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_94/156:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_93/155:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_92/154:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_91/153:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_90/152:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_89/151:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_88/150:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_87/149:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_86/148:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_85/147:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_84/146:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_83/145:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_82/144:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_81/143:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_80/142:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_79/141:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_78/140:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_77/139:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_76/138:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_75/137:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_74/136:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_73/135:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_72/134:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_71/133:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_70/132:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_69/131:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_68/130:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_67/129:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_66/128:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_65/127:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_64/126:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_63/125:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_62/124:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_61/123:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_60/122:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_59/121:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_58/120:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_57/119:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_56/118:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_55/117:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_54/116:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_53/115:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_52/114:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_51/113:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_50/112:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_49/111:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_48/110:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_47/109:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_46/108:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_45/107:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_44/106:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_43/105:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_42/104:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_41/103:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_40/102:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_39/101:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_38/100:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_37/99:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_36/98:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_35/97:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_34/96:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_33/95:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_32/94:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_31/93:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_30/92:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_29/91:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_28/90:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_27/89:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_26/88:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_25/87:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_24/86:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_23/85:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_22/84:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_21/83:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_20/82:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_19/81:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_18/80:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_17/79:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_16/78:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_15/77:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_14/76:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_13/75:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_12/74:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_11/73:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_10/72:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_09/71:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_08/70:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_07/69:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_06/68:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_05/67:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_04/66:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_03/65:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_02/64:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_01/63:
+  Jump functions of caller  SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_00/62:
+  Jump functions of caller  pfe_util_cfg_isr/61:
+  Jump functions of caller  pfe_pe_unlock_family/60:
+  Jump functions of caller  pfe_pe_check_stalled_nolock/59:
+  Jump functions of caller  pfe_pe_get_fw_messages_nolock/58:
+  Jump functions of caller  pfe_pe_lock_family/57:
+  Jump functions of caller  autolibc_strcmp/56:
+  Jump functions of caller  pfe_fw_feature_get_name/55:
+  Jump functions of caller  pfe_pe_destroy/54:
+  Jump functions of caller  pfe_pe_memcpy_from_dmem_to_host_32/53:
+  Jump functions of caller  pfe_pe_memcpy_from_host_to_dmem_32/52:
+  Jump functions of caller  pfe_fw_feature_set_dmem_funcs/51:
+  Jump functions of caller  pfe_fw_feature_set_string_base/50:
+  Jump functions of caller  pfe_pe_get_fw_feature_str_base/49:
+  Jump functions of caller  pfe_fw_feature_set_ll_data/48:
+  Jump functions of caller  pfe_fw_feature_destroy/47:
+  Jump functions of caller  pfe_pe_get_fw_feature_entry/46:
+  Jump functions of caller  pfe_fw_feature_create/45:
+  Jump functions of caller  pfe_pe_get_mmap/44:
+  Jump functions of caller  oal_util_raise_dem_for_drv_runtime_err/43:
+  Jump functions of caller  pfe_hm_report/42:
+  Jump functions of caller  pfe_pe_load_firmware/41:
+  Jump functions of caller  pfe_pe_mem_default_init/40:
+  Jump functions of caller  pfe_pe_set_imem/38:
+  Jump functions of caller  pfe_pe_set_dmem/37:
+  Jump functions of caller  pfe_pe_set_iaccess/36:
+  Jump functions of caller  pfe_pe_create/35:
+  Jump functions of caller  autolibc_memset/34:
+  Jump functions of caller  pfe_util_get_fw_version/33:
+  Jump functions of caller  pfe_util_irq_unmask/32:
+  Jump functions of caller  pfe_util_irq_mask/31:
+  Jump functions of caller  pfe_util_isr/30:
+    callsite  pfe_util_isr/30 -> oal_mutex_unlock/4 : 
+       param 0: CONST: 35
+         value: 0x23, mask: 0x0
+         Unknown VR
+    callsite  pfe_util_isr/30 -> oal_mutex_lock/3 : 
+       param 0: CONST: 35
+         value: 0x23, mask: 0x0
+         Unknown VR
+  Jump functions of caller  pfe_util_read_dmem/29:
+  Jump functions of caller  pfe_util_write_dmem/28:
+    callsite  pfe_util_write_dmem/28 -> pfe_util_write_dmem.part.0/274 : 
+       param 0: PASS THROUGH: 0, op nop_expr, agg_preserved
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 1: PASS THROUGH: 2, op nop_expr
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 2: PASS THROUGH: 3, op nop_expr, agg_preserved
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 3: PASS THROUGH: 4, op nop_expr
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+  Jump functions of caller  pfe_util_get_feature_next/27:
+  Jump functions of caller  pfe_util_get_feature_first/26:
+  Jump functions of caller  pfe_util_get_feature/25:
+  Jump functions of caller  pfe_util_destroy/24:
+    callsite  pfe_util_destroy/24 -> pfe_util_destroy.part.0/275 : 
+       param 0: PASS THROUGH: 0, op nop_expr, agg_preserved
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+  Jump functions of caller  pfe_util_load_firmware/23:
+    callsite  pfe_util_load_firmware/23 -> pfe_util_load_fw_features/15 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         Aggregate passed by reference:
+           offset: 0, cst: 1
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+  Jump functions of caller  pfe_util_default_init/22:
+  Jump functions of caller  pfe_util_disable/21:
+  Jump functions of caller  pfe_util_enable/20:
+  Jump functions of caller  pfe_util_reset/19:
+  Jump functions of caller  pfe_util_create/18:
+    callsite  pfe_util_create/18 -> pfe_util_set_config.isra.0/273 : 
+       param 0: UNKNOWN
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 1: PASS THROUGH: 2, op nop_expr
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+    callsite  pfe_util_create/18 -> pfe_util_disable/21 : 
+       param 0: CONST: &util_instance
+         value: 0x0, mask: 0xfffffffc
+         VR  ~[0, 0]
+    callsite  pfe_util_create/18 -> pfe_util_reset/19 : 
+       param 0: CONST: &util_instance
+         value: 0x0, mask: 0xfffffffc
+         VR  ~[0, 0]
+    callsite  pfe_util_create/18 -> pfe_util_destroy/24 : 
+       param 0: CONST: &util_instance
+         value: 0x0, mask: 0xfffffffc
+         VR  ~[0, 0]
+    callsite  pfe_util_create/18 -> pfe_util_create_pe/17 : 
+       param 0: PASS THROUGH: 1, op nop_expr
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 1: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 2: CONST: &util_instance
+         value: 0x0, mask: 0xfffffffc
+         VR  ~[0, 0]
+  Jump functions of caller  pfe_util_create_pe/17:
+  Jump functions of caller  pfe_util_load_fw_features/15:
+    callsite  pfe_util_load_fw_features/15 -> pfe_util_check_new_fw_features/14 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 1: UNKNOWN
+         value: 0x0, mask: 0xfffffffc
+         VR  ~[0, 0]
+       param 2: UNKNOWN
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+  Jump functions of caller  pfe_util_check_new_fw_features/14:
+  Jump functions of caller  oal_mutex_unlock/4:
+    indirect simple callsite, calling param -1, offset 0, for stmt _1 ();
+  Jump functions of caller  oal_mutex_lock/3:
+    indirect simple callsite, calling param -1, offset 0, for stmt _1 ();
+
+ Propagating constants:
+
+Not considering pfe_util_get_fw_version for cloning; -fipa-cp-clone disabled.
+Function pfe_util_irq_unmask/32 is not versionable, reason: not a tree_versionable_function.
+Not considering pfe_util_irq_mask for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_isr for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_read_dmem for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_write_dmem for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_get_feature_next for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_get_feature_first for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_get_feature for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_destroy for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_load_firmware for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_default_init for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_disable for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_enable for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_reset for cloning; -fipa-cp-clone disabled.
+Not considering pfe_util_create for cloning; -fipa-cp-clone disabled.
+
+overall_size: 421, max_new_size: 11001
+ - context independent values, size: 2, time_benefit: 1.000000
+ - context independent values, size: 30, time_benefit: 1.000000
+     Decided to specialize for all known contexts, code not going to grow.
+ - context independent values, size: 6, time_benefit: 3.000000
+     Decided to specialize for all known contexts, code not going to grow.
+ - context independent values, size: 6, time_benefit: 3.000000
+     Decided to specialize for all known contexts, code not going to grow.
+
+IPA lattices after all propagation:
+
+Lattices:
+  Node: pfe_util_destroy.part.0/275:
+    param [0]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+  Node: pfe_util_write_dmem.part.0/274:
+    param [0]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+    param [1]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+    param [2]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+    param [3]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+  Node: pfe_util_set_config.isra.0/273:
+    param [0]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+    param [1]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+  Node: pfe_util_get_fw_version/33:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_irq_unmask/32:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_irq_mask/31:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_isr/30:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_read_dmem/29:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [2]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [3]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [4]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_write_dmem/28:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [2]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [3]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [4]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_get_feature_next/27:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_get_feature_first/26:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_get_feature/25:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [2]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_destroy/24:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_load_firmware/23:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_default_init/22:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_disable/21:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_enable/20:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_reset/19:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_create/18:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [2]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_util_create_pe/17:
+    param [0]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+    param [1]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+    param [2]: &util_instance [loc_time: 0, loc_size: 0, prop_time: 0, prop_size: 0]
+         ctxs: VARIABLE
+         Bits: value = 0x0, mask = 0xfffffffc
+         struct pfe_util_t * ~[0B, 0B]
+        AGGS VARIABLE
+  Node: pfe_util_load_fw_features/15:
+    param [0]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+  Node: pfe_util_check_new_fw_features/14:
+    param [0]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+    param [1]: VARIABLE
+         ctxs: VARIABLE
+         Bits: value = 0x0, mask = 0xfffffffc
+         errno_t * ~[0B, 0B]
+        AGGS VARIABLE
+    param [2]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+  Node: oal_mutex_unlock/4:
+    param [0]: 35 [loc_time: 0, loc_size: 0, prop_time: 0, prop_size: 0]
+         ctxs: VARIABLE
+         Bits: value = 0x23, mask = 0x0
+         const oal_mutex_t [35, 35]
+        AGGS VARIABLE
+  Node: oal_mutex_lock/3:
+    param [0]: 35 [loc_time: 0, loc_size: 0, prop_time: 0, prop_size: 0]
+         ctxs: VARIABLE
+         Bits: value = 0x23, mask = 0x0
+         const oal_mutex_t [35, 35]
+        AGGS VARIABLE
+
+IPA decision stage:
+
+ - Creating a specialized node of pfe_util_create_pe/17 for all known contexts.
+    replacing param #2 util with const &util_instance
+ - Creating a specialized node of oal_mutex_unlock/4 for all known contexts.
+    replacing param #0 mutex with const 35
+ - Creating a specialized node of oal_mutex_lock/3 for all known contexts.
+    replacing param #0 mutex with const 35
+Propagated bits info for function oal_mutex_lock.constprop/278:
+ param 0: value = 0x23, mask = 0x0
+Propagated bits info for function oal_mutex_unlock.constprop/277:
+ param 0: value = 0x23, mask = 0x0
+Propagated bits info for function pfe_util_create_pe.constprop/276:
+ param 2: value = 0x0, mask = 0xfffffffc
+Propagated bits info for function pfe_util_create_pe/17:
+ param 2: value = 0x0, mask = 0xfffffffc
+Propagated bits info for function pfe_util_check_new_fw_features/14:
+ param 1: value = 0x0, mask = 0xfffffffc
+Propagated bits info for function oal_mutex_unlock/4:
+ param 0: value = 0x23, mask = 0x0
+Propagated bits info for function oal_mutex_lock/3:
+ param 0: value = 0x23, mask = 0x0
+
+IPA constant propagation end
+
+Reclaiming functions: pfe_util_create_pe/17 oal_mutex_unlock/4 oal_mutex_lock/3
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+oal_mutex_lock.constprop.0/278 (oal_mutex_lock.constprop) @06fd39a0
+  Type: function definition analyzed
+  Visibility:
+  References: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (read)
+  Referring: 
+  Clone of oal_mutex_lock/3
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: pfe_util_isr/30 (118111600 (estimated locally),1.00 per call) 
+  Calls: 
+   Indirect call(536870913 (estimated locally),0.50 per call) 
+oal_mutex_unlock.constprop.0/277 (oal_mutex_unlock.constprop) @076128c0
+  Type: function definition analyzed
+  Visibility:
+  References: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (read)
+  Referring: 
+  Clone of oal_mutex_unlock/4
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: pfe_util_isr/30 (118111601 (estimated locally),1.00 per call) 
+  Calls: 
+   Indirect call(536870913 (estimated locally),0.50 per call) 
+pfe_util_create_pe.constprop.0/276 (pfe_util_create_pe.constprop) @0759c9a0
+  Type: function definition analyzed
+  Visibility:
+  References: util_instance/13 (addr)
+  Referring: 
+  Clone of pfe_util_create_pe/17
+  Availability: local
+  Function flags: count:114863532 (estimated locally) local optimize_size
+  Called by: pfe_util_create/18 (587014656 (estimated locally),0.55 per call) 
+  Calls: pfe_pe_create/35 (1014686025 (estimated locally),8.83 per call) pfe_pe_set_iaccess/36 (958878293 (estimated locally),8.35 per call) pfe_pe_set_dmem/37 (958878293 (estimated locally),8.35 per call) pfe_pe_set_imem/38 (958878293 (estimated locally),8.35 per call) 
+pfe_util_destroy.part.0/275 (pfe_util_destroy.part.0) @06fd3700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:118111600 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: pfe_util_destroy/24 (118111600 (estimated locally),0.53 per call) 
+  Calls: pfe_pe_destroy/54 (118111600 (estimated locally),1.00 per call) pfe_fw_feature_destroy/47 (955630223 (estimated locally),8.09 per call) 
+pfe_util_write_dmem.part.0/274 (pfe_util_write_dmem.part.0) @0707f540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:118111600 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: pfe_util_write_dmem/28 (118111599 (estimated locally),0.38 per call) 
+  Calls: pfe_pe_memcpy_from_host_to_dmem_32/52 (955630223 (estimated locally),8.09 per call) 
+pfe_util_set_config.isra.0/273 (pfe_util_set_config.isra.0) @06e28d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: pfe_util_create/18 (416780405 (estimated locally),0.39 per call) 
+  Calls: 
+autolibc_memcpy/272 (autolibc_memcpy) @07651700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_get_fw_version/33 (333402205 (estimated locally),0.31 per call) 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_104/271 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_104) @07651380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_103/270 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_103) @076512a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_102/269 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_102) @076511c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_101/268 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_101) @076510e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_100/267 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_100) @07651000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_99/266 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_99) @0764fee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_98/265 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_98) @0764fe00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_97/264 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_97) @0764fd20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_96/263 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_96) @0764fc40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_95/262 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_95) @0764fb60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_94/261 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_94) @0764fa80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_93/260 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_93) @0764f9a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_92/259 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_92) @0764f8c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_91/258 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_91) @0764f7e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_90/257 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_90) @0764f700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_89/256 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_89) @0764f620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_88/255 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_88) @0764f540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_87/254 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_87) @0764f460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_86/253 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_86) @0764f380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_85/252 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_85) @0764f2a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_84/251 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_84) @0764f1c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_83/250 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_83) @0764f0e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_82/249 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_82) @0764f000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_81/248 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_81) @0764eee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_80/247 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_80) @0764ee00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_79/246 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_79) @0764ed20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_78/245 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_78) @0764ec40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_77/244 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_77) @0764eb60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_76/243 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_76) @0764ea80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_75/242 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_75) @0764e9a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_74/241 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_74) @0764e8c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_73/240 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_73) @0764e7e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_72/239 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_72) @0764e700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_71/238 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_71) @0764e620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_70/237 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_70) @0764e540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_69/236 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_69) @0764e460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_68/235 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_68) @0764e380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_67/234 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_67) @0764e2a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_66/233 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_66) @0764e1c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_65/232 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_65) @0764e0e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_64/231 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_64) @0764e000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_63/230 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_63) @0764dee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_62/229 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_62) @0764de00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_61/228 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_61) @0764dd20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_60/227 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_60) @0764dc40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_59/226 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_59) @0764db60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_58/225 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_58) @0764da80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_57/224 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_57) @0764d9a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_56/223 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_56) @0764d8c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_55/222 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_55) @0764d7e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_54/221 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_54) @0764d700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_53/220 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_53) @0764d620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_52/219 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_52) @0764d540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_51/218 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_51) @0764d460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_50/217 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_50) @0764d380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_49/216 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_49) @0764d2a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_48/215 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_48) @0764d1c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_47/214 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_47) @0764d0e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_46/213 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_46) @0764d000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_45/212 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_45) @0764cee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_44/211 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_44) @0764ce00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_43/210 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_43) @0764cd20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_42/209 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_42) @0764cc40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_41/208 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_41) @0764cb60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_40/207 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_40) @0764ca80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_39/206 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_39) @0764c9a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_38/205 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_38) @0764c8c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_37/204 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_37) @0764c7e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_36/203 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_36) @0764c700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_35/202 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_35) @0764c620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_34/201 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_34) @0764c540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_33/200 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_33) @0764c460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_32/199 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_32) @0764c380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_31/198 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_31) @0764c2a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_30/197 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_30) @0764c1c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_29/196 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_29) @0764c0e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_28/195 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_28) @0764c000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_27/194 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_27) @07647c40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_26/193 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_26) @0764bee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_25/192 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_25) @0764be00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_24/191 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_24) @0764bd20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_23/190 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_23) @0764bc40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_22/189 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_22) @0764bb60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_21/188 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_21) @0764ba80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_20/187 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_20) @0764b9a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_19/186 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_19) @0764b8c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_18/185 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_18) @0764b7e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_17/184 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_17) @0764b700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_16/183 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_16) @0764b620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_15/182 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_15) @0764b540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_14/181 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_14) @0764b460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_13/180 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_13) @0764b380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_12/179 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_12) @0764b2a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_11/178 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_11) @0764b1c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_10/177 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_10) @0764b0e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_09/176 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_09) @0764b000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_08/175 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_08) @07647ee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_07/174 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_07) @07647e00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_06/173 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_06) @07647d20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_05/172 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_05) @07647b60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_04/171 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_04) @07647a80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_03/170 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_03) @076479a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_02/169 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_02) @076478c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_01/168 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_01) @076477e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_00/167 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_00) @07647700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_104/166 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_104) @07647540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_103/165 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_103) @07647460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_102/164 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_102) @07647380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_101/163 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_101) @076472a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_100/162 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_100) @076471c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_99/161 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_99) @076470e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_98/160 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_98) @07647000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_97/159 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_97) @07645ee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_96/158 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_96) @07645e00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_95/157 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_95) @07645d20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_94/156 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_94) @07645c40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_93/155 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_93) @07645b60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_92/154 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_92) @07645a80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_91/153 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_91) @076459a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_90/152 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_90) @076458c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_89/151 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_89) @076457e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_88/150 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_88) @07645700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_87/149 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_87) @07645620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_86/148 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_86) @07645540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_85/147 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_85) @07645460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_84/146 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_84) @07645380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_83/145 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_83) @076452a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_82/144 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_82) @076451c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_81/143 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_81) @076450e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_80/142 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_80) @07645000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_79/141 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_79) @07644ee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_78/140 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_78) @07644e00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_77/139 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_77) @07644d20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_76/138 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_76) @07644c40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_75/137 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_75) @07644b60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_74/136 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_74) @07644a80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_73/135 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_73) @076449a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_72/134 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_72) @076448c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_71/133 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_71) @076447e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_70/132 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_70) @07644700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_69/131 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_69) @07644620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_68/130 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_68) @07644540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_67/129 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_67) @07644460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_66/128 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_66) @07644380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_65/127 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_65) @076442a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_64/126 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_64) @076441c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_63/125 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_63) @076440e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_62/124 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_62) @07644000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_61/123 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_61) @07643ee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_60/122 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_60) @07643e00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_59/121 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_59) @07643d20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_58/120 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_58) @07643c40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_57/119 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_57) @07643b60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_56/118 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_56) @07643a80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_55/117 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_55) @076439a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_54/116 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_54) @076438c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_53/115 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_53) @076437e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_52/114 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_52) @07643700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_51/113 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_51) @07643620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_50/112 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_50) @07643540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_49/111 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_49) @07643460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_48/110 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_48) @07643380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_47/109 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_47) @076432a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_46/108 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_46) @076431c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_45/107 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_45) @076430e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_44/106 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_44) @07643000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_43/105 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_43) @07642ee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_42/104 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_42) @07642e00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_41/103 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_41) @07642d20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_40/102 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_40) @07642c40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_39/101 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_39) @07642b60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_38/100 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_38) @07642a80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_37/99 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_37) @076429a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_36/98 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_36) @076428c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_35/97 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_35) @076427e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_34/96 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_34) @07642700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_33/95 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_33) @07642620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_32/94 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_32) @07642540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_31/93 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_31) @07642460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_30/92 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_30) @07642380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_29/91 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_29) @076422a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_28/90 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_28) @076421c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_27/89 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_27) @076420e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_26/88 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_26) @07642000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_25/87 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_25) @0763ce00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_24/86 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_24) @07641ee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_23/85 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_23) @07641e00
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_22/84 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_22) @07641d20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_21/83 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_21) @07641c40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_20/82 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_20) @07641b60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_19/81 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_19) @07641a80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_18/80 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_18) @076419a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_17/79 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_17) @076418c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_16/78 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_16) @076417e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_15/77 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_15) @07641700
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_14/76 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_14) @07641620
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_13/75 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_13) @07641540
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_12/74 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_12) @07641460
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_11/73 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_11) @07641380
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_10/72 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_10) @076412a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_09/71 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_09) @076411c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_08/70 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_08) @076410e0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_07/69 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_07) @07641000
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_06/68 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_06) @0763cee0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_05/67 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_05) @0763cd20
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_04/66 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_04) @0763cc40
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_03/65 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_03) @0763cb60
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_02/64 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_02) @0763ca80
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_01/63 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_01) @0763c9a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_00/62 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_00) @0763c8c0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_util_cfg_isr/61 (pfe_util_cfg_isr) @0763c700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_isr/30 (118111601 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_pe_unlock_family/60 (pfe_pe_unlock_family) @0763c620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_isr/30 (118111601 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_pe_check_stalled_nolock/59 (pfe_pe_check_stalled_nolock) @0763c540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_isr/30 (955630223 (estimated locally),8.09 per call) 
+  Calls: 
+pfe_pe_get_fw_messages_nolock/58 (pfe_pe_get_fw_messages_nolock) @0763c460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_isr/30 (955630223 (estimated locally),8.09 per call) 
+  Calls: 
+pfe_pe_lock_family/57 (pfe_pe_lock_family) @0763c380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_isr/30 (118111600 (estimated locally),1.00 per call) 
+  Calls: 
+autolibc_strcmp/56 (autolibc_strcmp) @0763c000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_get_feature/25 (334846388 (estimated locally),4.32 per call) 
+  Calls: 
+pfe_fw_feature_get_name/55 (pfe_fw_feature_get_name) @0762cee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_get_feature/25 (1014686024 (estimated locally),13.10 per call) 
+  Calls: 
+pfe_pe_destroy/54 (pfe_pe_destroy) @0762cd20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_destroy.part.0/275 (118111600 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_pe_memcpy_from_dmem_to_host_32/53 (pfe_pe_memcpy_from_dmem_to_host_32) @0762cb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_read_dmem/29 (512926469 (estimated locally),0.48 per call) 
+  Calls: 
+pfe_pe_memcpy_from_host_to_dmem_32/52 (pfe_pe_memcpy_from_host_to_dmem_32) @0762c9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_write_dmem/28 (83719569 (estimated locally),0.27 per call) pfe_util_write_dmem.part.0/274 (955630223 (estimated locally),8.09 per call) 
+  Calls: 
+pfe_fw_feature_set_dmem_funcs/51 (pfe_fw_feature_set_dmem_funcs) @0762c7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_check_new_fw_features/14 (59055800 (estimated locally),0.25 per call) 
+  Calls: 
+pfe_fw_feature_set_string_base/50 (pfe_fw_feature_set_string_base) @0762c700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_check_new_fw_features/14 (118111600 (estimated locally),0.50 per call) 
+  Calls: 
+pfe_pe_get_fw_feature_str_base/49 (pfe_pe_get_fw_feature_str_base) @0762c620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_check_new_fw_features/14 (118111600 (estimated locally),0.50 per call) 
+  Calls: 
+pfe_fw_feature_set_ll_data/48 (pfe_fw_feature_set_ll_data) @0762c540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_check_new_fw_features/14 (118111600 (estimated locally),0.50 per call) 
+  Calls: 
+pfe_fw_feature_destroy/47 (pfe_fw_feature_destroy) @0762c460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_destroy.part.0/275 (955630223 (estimated locally),8.09 per call) pfe_util_check_new_fw_features/14 (477815111 (estimated locally),2.02 per call) pfe_util_check_new_fw_features/14 (955630223 (estimated locally),4.05 per call) 
+  Calls: 
+pfe_pe_get_fw_feature_entry/46 (pfe_pe_get_fw_feature_entry) @0762c380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_check_new_fw_features/14 (236223200 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_fw_feature_create/45 (pfe_fw_feature_create) @0762c1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_load_fw_features/15 (1014686024 (estimated locally),1.48 per call) 
+  Calls: 
+pfe_pe_get_mmap/44 (pfe_pe_get_mmap) @0762c0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_get_fw_version/33 (1073741824 (estimated locally),1.00 per call) pfe_util_load_fw_features/15 (685752431 (estimated locally),1.00 per call) 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/43 (oal_util_raise_dem_for_drv_runtime_err) @07612ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_load_firmware/23 (354334802 (estimated locally),0.33 per call) pfe_util_load_firmware/23 (354334802 (estimated locally),0.33 per call) pfe_util_load_fw_features/15 (56574576 (estimated locally),0.08 per call) pfe_util_check_new_fw_features/14 (59055800 (estimated locally),0.25 per call) pfe_util_check_new_fw_features/14 (118111600 (estimated locally),0.50 per call) 
+  Calls: 
+pfe_hm_report/42 (pfe_hm_report) @07612e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_load_firmware/23 (354334802 (estimated locally),0.33 per call) pfe_util_load_firmware/23 (354334802 (estimated locally),0.33 per call) pfe_util_load_fw_features/15 (56574576 (estimated locally),0.08 per call) pfe_util_check_new_fw_features/14 (59055800 (estimated locally),0.25 per call) pfe_util_check_new_fw_features/14 (118111600 (estimated locally),0.50 per call) 
+  Calls: 
+pfe_pe_load_firmware/41 (pfe_pe_load_firmware) @07612d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_load_firmware/23 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_pe_mem_default_init/40 (pfe_pe_mem_default_init) @07612b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_default_init/22 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_pe_set_imem/38 (pfe_pe_set_imem) @07612540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_create_pe.constprop/276 (958878293 (estimated locally),8.35 per call) 
+  Calls: 
+pfe_pe_set_dmem/37 (pfe_pe_set_dmem) @07612460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_create_pe.constprop/276 (958878293 (estimated locally),8.35 per call) 
+  Calls: 
+pfe_pe_set_iaccess/36 (pfe_pe_set_iaccess) @07612380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_create_pe.constprop/276 (958878293 (estimated locally),8.35 per call) 
+  Calls: 
+pfe_pe_create/35 (pfe_pe_create) @076122a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_create_pe.constprop/276 (1014686025 (estimated locally),8.83 per call) 
+  Calls: 
+autolibc_memset/34 (autolibc_memset) @076120e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_util_create/18 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_util_get_fw_version/33 (pfe_util_get_fw_version) @075c2620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: autolibc_memcpy/272 (333402205 (estimated locally),0.31 per call) pfe_pe_get_mmap/44 (1073741824 (estimated locally),1.00 per call) 
+pfe_util_irq_unmask/32 (pfe_util_irq_unmask) @075c20e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: pfe_util_irq_mask/31 (1073741824 (estimated locally),1.00 per call) 
+pfe_util_irq_mask/31 (pfe_util_irq_mask) @075c2d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: pfe_util_irq_unmask/32 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_util_isr/30 (pfe_util_isr) @075c2a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_util_cfg_isr/61 (118111601 (estimated locally),1.00 per call) oal_mutex_unlock.constprop/277 (118111601 (estimated locally),1.00 per call) pfe_pe_unlock_family/60 (118111601 (estimated locally),1.00 per call) pfe_pe_check_stalled_nolock/59 (955630223 (estimated locally),8.09 per call) pfe_pe_get_fw_messages_nolock/58 (955630223 (estimated locally),8.09 per call) pfe_pe_lock_family/57 (118111600 (estimated locally),1.00 per call) oal_mutex_lock.constprop/278 (118111600 (estimated locally),1.00 per call) 
+pfe_util_read_dmem/29 (pfe_util_read_dmem) @075c27e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: pfe_util_check_new_fw_features/14 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_pe_memcpy_from_dmem_to_host_32/53 (512926469 (estimated locally),0.48 per call) 
+pfe_util_write_dmem/28 (pfe_util_write_dmem) @075c2540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: 
+  Referring: pfe_util_check_new_fw_features/14 (addr)
+  Availability: available
+  Function flags: count:310509491 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_pe_memcpy_from_host_to_dmem_32/52 (83719569 (estimated locally),0.27 per call) pfe_util_write_dmem.part.0/274 (118111599 (estimated locally),0.38 per call) 
+pfe_util_get_feature_next/27 (pfe_util_get_feature_next) @075c22a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_util_get_feature_first/26 (pfe_util_get_feature_first) @075c2000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_util_get_feature/25 (pfe_util_get_feature) @075b88c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:77472354 (estimated locally) body optimize_size
+  Called by: 
+  Calls: autolibc_strcmp/56 (334846388 (estimated locally),4.32 per call) pfe_fw_feature_get_name/55 (1014686024 (estimated locally),13.10 per call) 
+pfe_util_destroy/24 (pfe_util_destroy) @075b82a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:220893212 (estimated locally) body optimize_size
+  Called by: pfe_util_create/18 (170234250 (estimated locally),0.16 per call) 
+  Calls: pfe_util_destroy.part.0/275 (118111600 (estimated locally),0.53 per call) 
+pfe_util_load_firmware/23 (pfe_util_load_firmware) @075b8ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/43 (354334802 (estimated locally),0.33 per call) pfe_hm_report/42 (354334802 (estimated locally),0.33 per call) pfe_util_load_fw_features/15 (1073741824 (estimated locally),1.00 per call) oal_util_raise_dem_for_drv_runtime_err/43 (354334802 (estimated locally),0.33 per call) pfe_hm_report/42 (354334802 (estimated locally),0.33 per call) pfe_pe_load_firmware/41 (1073741824 (estimated locally),1.00 per call) 
+pfe_util_default_init/22 (pfe_util_default_init) @075b8a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_pe_mem_default_init/40 (1073741824 (estimated locally),1.00 per call) 
+pfe_util_disable/21 (pfe_util_disable) @075b87e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: pfe_util_create/18 (416780405 (estimated locally),0.39 per call) 
+  Calls: 
+pfe_util_enable/20 (pfe_util_enable) @075b8540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_util_reset/19 (pfe_util_reset) @075b81c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: pfe_util_create/18 (416780405 (estimated locally),0.39 per call) 
+  Calls: 
+pfe_util_create/18 (pfe_util_create) @0759ce00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: util_instance/13 (addr)util_instance/13 (write)util_instance/13 (addr)util_instance/13 (addr)util_instance/13 (addr)util_instance/13 (addr)util_instance/13 (read)util_instance/13 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_util_set_config.isra.0/273 (416780405 (estimated locally),0.39 per call) pfe_util_disable/21 (416780405 (estimated locally),0.39 per call) pfe_util_reset/19 (416780405 (estimated locally),0.39 per call) pfe_util_destroy/24 (170234250 (estimated locally),0.16 per call) pfe_util_create_pe.constprop/276 (587014656 (estimated locally),0.55 per call) autolibc_memset/34 (1073741824 (estimated locally),1.00 per call) 
+pfe_util_create_pe/17 (pfe_util_create_pe) @0759cd20
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:114863532 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_util_load_fw_features/15 (pfe_util_load_fw_features) @0759c620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:685752431 (estimated locally) body local optimize_size
+  Called by: pfe_util_load_firmware/23 (1073741824 (estimated locally),1.00 per call) 
+  Calls: pfe_util_check_new_fw_features/14 (1014686024 (estimated locally),1.48 per call) pfe_fw_feature_create/45 (1014686024 (estimated locally),1.48 per call) oal_util_raise_dem_for_drv_runtime_err/43 (56574576 (estimated locally),0.08 per call) pfe_hm_report/42 (56574576 (estimated locally),0.08 per call) pfe_pe_get_mmap/44 (685752431 (estimated locally),1.00 per call) 
+pfe_util_check_new_fw_features/14 (pfe_util_check_new_fw_features) @0759c2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: pfe_util_read_dmem/29 (addr)pfe_util_write_dmem/28 (addr)
+  Referring: 
+  Availability: local
+  Function flags: count:236223200 (estimated locally) body local optimize_size
+  Called by: pfe_util_load_fw_features/15 (1014686024 (estimated locally),1.48 per call) 
+  Calls: pfe_fw_feature_set_dmem_funcs/51 (59055800 (estimated locally),0.25 per call) pfe_fw_feature_destroy/47 (477815111 (estimated locally),2.02 per call) oal_util_raise_dem_for_drv_runtime_err/43 (59055800 (estimated locally),0.25 per call) pfe_hm_report/42 (59055800 (estimated locally),0.25 per call) pfe_fw_feature_set_string_base/50 (118111600 (estimated locally),0.50 per call) pfe_pe_get_fw_feature_str_base/49 (118111600 (estimated locally),0.50 per call) pfe_fw_feature_set_ll_data/48 (118111600 (estimated locally),0.50 per call) pfe_fw_feature_destroy/47 (955630223 (estimated locally),4.05 per call) oal_util_raise_dem_for_drv_runtime_err/43 (118111600 (estimated locally),0.50 per call) pfe_hm_report/42 (118111600 (estimated locally),0.50 per call) pfe_pe_get_fw_feature_entry/46 (236223200 (estimated locally),1.00 per call) 
+util_instance/13 (util_instance) @07596798
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: pfe_util_create/18 (addr)pfe_util_create/18 (write)pfe_util_create/18 (addr)pfe_util_create/18 (addr)pfe_util_create/18 (addr)pfe_util_create/18 (addr)pfe_util_create/18 (read)pfe_util_create/18 (addr)pfe_util_create_pe.constprop.0/276 (addr)
+  Availability: available
+  Varpool flags:
+oal_mutex_unlock/4 (oal_mutex_unlock) @07061c40
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_lock/3 (oal_mutex_lock) @070619a0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @06fc9ca8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_00/167 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_01/168 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_02/169 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_03/170 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_04/171 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_05/172 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_06/173 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_07/174 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_08/175 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_09/176 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_10/177 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_11/178 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_12/179 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_13/180 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_14/181 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_15/182 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_16/183 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_17/184 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_18/185 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_19/186 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_20/187 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_21/188 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_22/189 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_23/190 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_24/191 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_25/192 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_26/193 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_27/194 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_28/195 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_29/196 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_30/197 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_31/198 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_32/199 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_33/200 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_34/201 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_35/202 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_36/203 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_37/204 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_38/205 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_39/206 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_40/207 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_41/208 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_42/209 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_43/210 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_44/211 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_45/212 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_46/213 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_47/214 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_48/215 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_49/216 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_50/217 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_51/218 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_52/219 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_53/220 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_54/221 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_55/222 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_56/223 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_57/224 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_58/225 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_59/226 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_60/227 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_61/228 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_62/229 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_63/230 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_64/231 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_65/232 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_66/233 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_67/234 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_68/235 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_69/236 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_70/237 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_71/238 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_72/239 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_73/240 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_74/241 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_75/242 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_76/243 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_77/244 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_78/245 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_79/246 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_80/247 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_81/248 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_82/249 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_83/250 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_84/251 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_85/252 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_86/253 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_87/254 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_88/255 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_89/256 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_90/257 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_91/258 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_92/259 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_93/260 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_94/261 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_95/262 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_96/263 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_97/264 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_98/265 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_99/266 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_100/267 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_101/268 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_102/269 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_103/270 (addr)SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_104/271 (addr)
+  Referring: oal_mutex_unlock.constprop.0/277 (read)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @06fc9bd0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_00/62 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_01/63 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_02/64 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_03/65 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_04/66 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_05/67 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_06/68 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_07/69 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_08/70 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_09/71 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_10/72 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_11/73 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_12/74 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_13/75 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_14/76 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_15/77 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_16/78 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_17/79 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_18/80 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_19/81 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_20/82 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_21/83 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_22/84 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_23/85 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_24/86 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_25/87 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_26/88 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_27/89 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_28/90 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_29/91 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_30/92 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_31/93 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_32/94 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_33/95 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_34/96 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_35/97 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_36/98 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_37/99 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_38/100 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_39/101 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_40/102 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_41/103 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_42/104 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_43/105 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_44/106 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_45/107 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_46/108 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_47/109 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_48/110 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_49/111 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_50/112 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_51/113 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_52/114 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_53/115 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_54/116 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_55/117 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_56/118 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_57/119 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_58/120 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_59/121 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_60/122 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_61/123 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_62/124 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_63/125 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_64/126 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_65/127 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_66/128 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_67/129 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_68/130 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_69/131 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_70/132 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_71/133 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_72/134 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_73/135 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_74/136 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_75/137 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_76/138 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_77/139 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_78/140 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_79/141 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_80/142 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_81/143 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_82/144 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_83/145 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_84/146 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_85/147 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_86/148 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_87/149 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_88/150 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_89/151 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_90/152 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_91/153 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_92/154 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_93/155 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_94/156 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_95/157 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_96/158 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_97/159 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_98/160 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_99/161 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_100/162 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_101/163 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_102/164 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_103/165 (addr)SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_104/166 (addr)
+  Referring: oal_mutex_lock.constprop.0/278 (read)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+
+;; Function pfe_util_read_dmem (pfe_util_read_dmem, funcdef_no=26, decl_uid=9651, cgraph_uid=27, symbol_order=29)
+
+Modification phase of node pfe_util_read_dmem/29
+pfe_util_read_dmem (void * util_p, int32_t pe_idx, void * dst_ptr, addr_t src_addr, uint32_t len)
+{
+  errno_t ret;
+  long long int _1;
+  long unsigned int _2;
+  long long int _3;
+  struct pfe_pe_t * _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG util => util_p_7(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long long int) pe_idx_8(D);
+  _2 = MEM[(struct pfe_util_t *)util_p_7(D)].pe_num;
+  _3 = (long long int) _2;
+  if (_1 >= _3)
+    goto <bb 4>; [52.23%]
+  else
+    goto <bb 3>; [47.77%]
+
+  <bb 3> [local count: 512926469]:
+  # DEBUG BEGIN_STMT
+  _4 = &MEM[(struct pfe_util_t *)util_p_7(D)].pe[pe_idx_8(D)];
+  pfe_pe_memcpy_from_dmem_to_host_32 (_4, dst_ptr_10(D), src_addr_11(D), len_12(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_5 = PHI <22(2), 0(3)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+
+;; Function pfe_util_write_dmem (pfe_util_write_dmem, funcdef_no=25, decl_uid=9657, cgraph_uid=26, symbol_order=28)
+
+Modification phase of node pfe_util_write_dmem/28
+pfe_util_write_dmem (void * util_p, int32_t pe_idx, addr_t dst_addr, const void * src_ptr, uint32_t len)
+{
+  errno_t ret;
+  long long int _1;
+  long unsigned int _2;
+  long long int _3;
+  struct pfe_pe_t * _4;
+
+  <bb 2> [local count: 310509491]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG util => util_p_7(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long long int) pe_idx_9(D);
+  _2 = MEM[(struct pfe_util_t *)util_p_7(D)].pe_num;
+  _3 = (long long int) _2;
+  if (_1 >= _3)
+    goto <bb 6>; [35.00%]
+  else
+    goto <bb 3>; [65.00%]
+
+  <bb 3> [local count: 201831169]:
+  # DEBUG BEGIN_STMT
+  if (pe_idx_9(D) >= 0)
+    goto <bb 5>; [41.48%]
+  else
+    goto <bb 4>; [58.52%]
+
+  <bb 4> [local count: 118111599]:
+  # DEBUG D#2 => pe_idx_9(D)
+  ret_6 = pfe_util_write_dmem.part.0 (util_p_7(D), dst_addr_11(D), src_ptr_12(D), len_13(D));
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 83719569]:
+  # DEBUG BEGIN_STMT
+  _4 = &MEM[(struct pfe_util_t *)util_p_7(D)].pe[pe_idx_9(D)];
+  pfe_pe_memcpy_from_host_to_dmem_32 (_4, dst_addr_11(D), src_ptr_12(D), len_13(D));
+
+  <bb 6> [local count: 310509492]:
+  # ret_5 = PHI <22(2), ret_6(4), 0(5)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+
+;; Function pfe_util_destroy.part.0 (pfe_util_destroy.part.0, funcdef_no=33, decl_uid=9950, cgraph_uid=273, symbol_order=275)
+
+Modification phase of node pfe_util_destroy.part.0/275
+pfe_util_destroy.part.0 (struct pfe_util_t * util)
+{
+  uint32_t count;
+  struct pfe_pe_t[1] * _2;
+  long unsigned int _3;
+  struct pfe_fw_feature_t * _5;
+  long unsigned int _7;
+
+  <bb 7> [local count: 118111600]:
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  _2 = &util_1(D)->pe;
+  _3 = util_1(D)->pe_num;
+  pfe_pe_destroy (_2, _3);
+  # DEBUG BEGIN_STMT
+  # DEBUG count => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _5 = &util_1(D)->fw_features[count_4];
+  pfe_fw_feature_destroy (_5);
+  # DEBUG BEGIN_STMT
+  count_6 = count_4 + 1;
+  # DEBUG count => count_6
+
+  <bb 4> [local count: 1073741824]:
+  # count_4 = PHI <0(2), count_6(3)>
+  # DEBUG count => count_4
+  # DEBUG BEGIN_STMT
+  _7 = util_1(D)->fw_features_count;
+  if (count_4 < _7)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  util_1(D)->fw_features_count = 0;
+  # DEBUG BEGIN_STMT
+  util_1(D)->pe_num = 0;
+
+  <bb 6> [local count: 118111601]:
+  return;
+
+}
+
+
+
+;; Function pfe_util_reset (pfe_util_reset, funcdef_no=16, decl_uid=9606, cgraph_uid=17, symbol_order=19)
+
+Modification phase of node pfe_util_reset/19
+pfe_util_reset (struct pfe_util_t * util)
+{
+  unsigned int _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = util_5(D)->cbus_base_va;
+  _2 = _1 + 835588;
+  _3 = (volatile uint32_t *) _2;
+  *_3 ={v} 2;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_util_enable (pfe_util_enable, funcdef_no=17, decl_uid=9604, cgraph_uid=18, symbol_order=20)
+
+Modification phase of node pfe_util_enable/20
+pfe_util_enable (struct pfe_util_t * util)
+{
+  unsigned int _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = util_5(D)->cbus_base_va;
+  _2 = _1 + 835588;
+  _3 = (volatile uint32_t *) _2;
+  *_3 ={v} 1;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_util_disable (pfe_util_disable, funcdef_no=18, decl_uid=9608, cgraph_uid=19, symbol_order=21)
+
+Modification phase of node pfe_util_disable/21
+pfe_util_disable (struct pfe_util_t * util)
+{
+  unsigned int _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = util_5(D)->cbus_base_va;
+  _2 = _1 + 835588;
+  _3 = (volatile uint32_t *) _2;
+  *_3 ={v} 0;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_util_create (pfe_util_create, funcdef_no=15, decl_uid=9602, cgraph_uid=16, symbol_order=18)
+
+Modification phase of node pfe_util_create/18
+pfe_util_create (addr_t cbus_base_va, uint32_t pe_num, const struct pfe_util_cfg_t * cfg)
+{
+  errno_t ret;
+  struct pfe_util_t * util;
+  unsigned int _15;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG util => &util_instance
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&util_instance, 0, 328);
+  # DEBUG BEGIN_STMT
+  util_instance.cbus_base_va = cbus_base_va_5(D);
+  # DEBUG BEGIN_STMT
+  if (pe_num_7(D) != 0)
+    goto <bb 3>; [54.67%]
+  else
+    goto <bb 6>; [45.33%]
+
+  <bb 3> [local count: 587014656]:
+  # DEBUG BEGIN_STMT
+  ret_9 = pfe_util_create_pe (pe_num_7(D), cbus_base_va_5(D), &util_instance);
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 != 0)
+    goto <bb 4>; [29.00%]
+  else
+    goto <bb 5>; [71.00%]
+
+  <bb 4> [local count: 170234250]:
+  # DEBUG BEGIN_STMT
+  pfe_util_destroy (&util_instance);
+  # DEBUG BEGIN_STMT
+  # DEBUG util => 0B
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 416780405]:
+  # DEBUG BEGIN_STMT
+  pfe_util_reset (&util_instance);
+  # DEBUG BEGIN_STMT
+  pfe_util_disable (&util_instance);
+  # DEBUG BEGIN_STMT
+  _15 = MEM[(unsigned int *)&util_instance + 4B];
+  # DEBUG D#1 => &util_instance
+  pfe_util_set_config.isra.0 (_15, cfg_12(D));
+
+  <bb 6> [local count: 1073741824]:
+  # util_1 = PHI <&util_instance(5), 0B(2), 0B(4)>
+  # DEBUG util => util_1
+  # DEBUG BEGIN_STMT
+  return util_1;
+
+}
+
+
+
+;; Function pfe_util_default_init (pfe_util_default_init, funcdef_no=19, decl_uid=9610, cgraph_uid=20, symbol_order=22)
+
+Modification phase of node pfe_util_default_init/22
+pfe_util_default_init (struct pfe_util_t * util)
+{
+  errno_t ret;
+  struct pfe_pe_t[1] * _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &util_3(D)->pe;
+  _2 = util_3(D)->pe_num;
+  ret_6 = pfe_pe_mem_default_init (_1, _2);
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  return ret_6;
+
+}
+
+
+
+;; Function pfe_util_load_firmware (pfe_util_load_firmware, funcdef_no=20, decl_uid=9613, cgraph_uid=21, symbol_order=23)
+
+Modification phase of node pfe_util_load_firmware/23
+pfe_util_load_firmware (struct pfe_util_t * util, const void * elf)
+{
+  errno_t ret;
+  struct pfe_pe_t[1] * _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &util_5(D)->pe;
+  _2 = util_5(D)->pe_num;
+  ret_9 = pfe_pe_load_firmware (_1, _2, elf_7(D));
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] UTIL firmware loading failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_util.c", 402, ret_9, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  util_5(D)->is_fw_loaded = 1;
+  # DEBUG BEGIN_STMT
+  ret_14 = pfe_util_load_fw_features (util_5(D));
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed to initialize FW features\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_util.c", 409, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_14;
+
+}
+
+
+
+;; Function pfe_util_destroy (pfe_util_destroy, funcdef_no=21, decl_uid=9615, cgraph_uid=22, symbol_order=24)
+
+Modification phase of node pfe_util_destroy/24
+pfe_util_destroy (struct pfe_util_t * util)
+{
+  <bb 2> [local count: 220893212]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (util_1(D) != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 118111600]:
+  pfe_util_destroy.part.0 (util_1(D));
+
+  <bb 4> [local count: 220893212]:
+  return;
+
+}
+
+
+
+;; Function pfe_util_get_feature (pfe_util_get_feature, funcdef_no=22, decl_uid=9628, cgraph_uid=23, symbol_order=25)
+
+Modification phase of node pfe_util_get_feature/25
+pfe_util_get_feature (struct pfe_util_t * util, struct pfe_fw_feature_t * * feature, const char * name)
+{
+  errno_t ret;
+  const char * fname;
+  uint32_t count;
+  struct pfe_fw_feature_t * _1;
+  const char * fname.2_2;
+  long int _3;
+  struct pfe_fw_feature_t * _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 77472354]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  # DEBUG count => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  _1 = &util_14(D)->fw_features[count_6];
+  ret_16 = pfe_fw_feature_get_name (_1, &fname);
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 == 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 4> [local count: 334846388]:
+  # DEBUG BEGIN_STMT
+  fname.2_2 = fname;
+  _3 = autolibc_strcmp (fname.2_2, name_17(D));
+  if (_3 == 0)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 6>; [94.50%]
+
+  <bb 5> [local count: 18416551]:
+  # _4 = PHI <_1(4)>
+  # DEBUG BEGIN_STMT
+  *feature_19(D) = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 996269474]:
+  # ret_7 = PHI <ret_16(3), 2(4)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  count_21 = count_6 + 1;
+  # DEBUG count => count_21
+
+  <bb 7> [local count: 1073741824]:
+  # count_6 = PHI <0(2), count_21(6)>
+  # ret_8 = PHI <2(2), ret_7(6)>
+  # DEBUG ret => ret_8
+  # DEBUG count => count_6
+  # DEBUG BEGIN_STMT
+  _5 = util_14(D)->fw_features_count;
+  if (_5 > count_6)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 8>; [5.50%]
+
+  <bb 8> [local count: 77472352]:
+  # ret_9 = PHI <0(5), ret_8(7)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  fname ={v} {CLOBBER};
+  return ret_9;
+
+}
+
+
+
+;; Function pfe_util_get_feature_first (pfe_util_get_feature_first, funcdef_no=23, decl_uid=9631, cgraph_uid=24, symbol_order=26)
+
+Modification phase of node pfe_util_get_feature_first/26
+pfe_util_get_feature_first (struct pfe_util_t * util, struct pfe_fw_feature_t * * feature)
+{
+  errno_t ret;
+  long unsigned int _1;
+  struct pfe_fw_feature_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = util_6(D)->fw_features_count;
+  if (_1 != 0)
+    goto <bb 3>; [65.00%]
+  else
+    goto <bb 4>; [35.00%]
+
+  <bb 3> [local count: 697932186]:
+  # DEBUG BEGIN_STMT
+  util_6(D)->current_feature = 0;
+  # DEBUG BEGIN_STMT
+  _2 = &util_6(D)->fw_features[0];
+  *feature_8(D) = _2;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_3 = PHI <0(3), 2(2)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+
+
+;; Function pfe_util_get_feature_next (pfe_util_get_feature_next, funcdef_no=24, decl_uid=9634, cgraph_uid=25, symbol_order=27)
+
+Modification phase of node pfe_util_get_feature_next/27
+pfe_util_get_feature_next (struct pfe_util_t * util, struct pfe_fw_feature_t * * feature)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  struct pfe_fw_feature_t * _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = util_8(D)->fw_features_count;
+  if (_1 != 0)
+    goto <bb 3>; [65.00%]
+  else
+    goto <bb 5>; [35.00%]
+
+  <bb 3> [local count: 697932186]:
+  # DEBUG BEGIN_STMT
+  _2 = util_8(D)->current_feature;
+  _3 = _2 + 1;
+  if (_1 > _3)
+    goto <bb 4>; [65.00%]
+  else
+    goto <bb 5>; [35.00%]
+
+  <bb 4> [local count: 453655921]:
+  # DEBUG BEGIN_STMT
+  util_8(D)->current_feature = _3;
+  # DEBUG BEGIN_STMT
+  _4 = &util_8(D)->fw_features[_3];
+  *feature_10(D) = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_5 = PHI <2(3), 2(2), 0(4)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+
+;; Function pfe_util_isr (pfe_util_isr, funcdef_no=27, decl_uid=9617, cgraph_uid=28, symbol_order=30)
+
+Modification phase of node pfe_util_isr/30
+pfe_util_isr (struct pfe_util_t * util)
+{
+  uint32_t count;
+  struct pfe_pe_t[1] * _1;
+  struct pfe_pe_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (35);
+  # DEBUG BEGIN_STMT
+  _1 = &util_9(D)->pe;
+  pfe_pe_lock_family (_1);
+  # DEBUG BEGIN_STMT
+  # DEBUG count => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _2 = &util_9(D)->pe[count_5];
+  pfe_pe_get_fw_messages_nolock (_2);
+  # DEBUG BEGIN_STMT
+  pfe_pe_check_stalled_nolock (_2);
+  # DEBUG BEGIN_STMT
+  count_16 = count_5 + 1;
+  # DEBUG count => count_16
+
+  <bb 4> [local count: 1073741824]:
+  # count_5 = PHI <0(2), count_16(3)>
+  # DEBUG count => count_5
+  # DEBUG BEGIN_STMT
+  _3 = util_9(D)->pe_num;
+  if (_3 > count_5)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  pfe_pe_unlock_family (_1);
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (35);
+  # DEBUG BEGIN_STMT
+  _4 = util_9(D)->cbus_base_va;
+  pfe_util_cfg_isr (_4);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+
+;; Function pfe_util_irq_mask (pfe_util_irq_mask, funcdef_no=28, decl_uid=9619, cgraph_uid=29, symbol_order=31)
+
+Modification phase of node pfe_util_irq_mask/31
+pfe_util_irq_mask (const struct pfe_util_t * util)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_util_irq_unmask (pfe_util_irq_unmask, funcdef_no=35, decl_uid=9621, cgraph_uid=30, symbol_order=32)
+
+Modification phase of node pfe_util_irq_unmask/32
+pfe_util_irq_unmask (const struct pfe_util_t * util)
+{
+  <bb 2> [local count: 1073741824]:
+  pfe_util_irq_mask (util_1(D)); [tail call]
+  return;
+
+}
+
+
+
+;; Function pfe_util_get_fw_version (pfe_util_get_fw_version, funcdef_no=30, decl_uid=9624, cgraph_uid=31, symbol_order=33)
+
+Modification phase of node pfe_util_get_fw_version/33
+pfe_util_get_fw_version (const struct pfe_util_t * util, struct pfe_ct_version_t * ver)
+{
+  errno_t ret;
+  union pfe_ct_pe_mmap_t pfe_pe_mmap;
+  const struct pfe_pe_t * _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &util_5(D)->pe[0];
+  ret_8 = pfe_pe_get_mmap (_1, &pfe_pe_mmap);
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _2 = util_5(D)->pe_num;
+  if (_2 == 0)
+    goto <bb 5>; [35.00%]
+  else
+    goto <bb 3>; [65.00%]
+
+  <bb 3> [local count: 697932186]:
+  if (ret_8 != 0)
+    goto <bb 5>; [52.23%]
+  else
+    goto <bb 4>; [47.77%]
+
+  <bb 4> [local count: 333402205]:
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (ver_9(D), &pfe_pe_mmap.util_pe.common.version, 108);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_3 = PHI <22(3), 0(4), 22(2)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  pfe_pe_mmap ={v} {CLOBBER};
+  return ret_3;
+
+}
+
+

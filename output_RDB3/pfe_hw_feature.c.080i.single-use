@@ -1,0 +1,283 @@
+pfe_hw_feature_create.part.0 ()
+{
+  const char * name;
+  const char * descr;
+  pfe_ct_feature_flags_t flags;
+  uint8_t def_val;
+  struct pfe_hw_feature_t * feature;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#10 s=> name
+  # DEBUG name => D#10
+  # DEBUG D#9 s=> descr
+  # DEBUG descr => D#9
+  # DEBUG D#8 s=> flags
+  # DEBUG flags => D#8
+  # DEBUG D#7 s=> def_val
+  # DEBUG def_val => D#7
+  # DEBUG D#6 s=> feature
+  # DEBUG feature => D#6
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Cannot allocate %u bytes of memory for feature\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hw_feature.c", 60, 12, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 3> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_hw_feature_set_val (struct pfe_hw_feature_t * feature, uint8_t val)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  feature_2(D)->val = val_3(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+pfe_hw_feature_enabled (const struct pfe_hw_feature_t * feature)
+{
+  bool_t is_enable;
+  unsigned char _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG feature => feature_3(D)
+  # DEBUG val => &val
+  # DEBUG INLINE_ENTRY pfe_hw_feature_get_val
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = feature_3(D)->val;
+  # DEBUG val => _4
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG feature => NULL
+  # DEBUG val => NULL
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (_4 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG is_enable => 0
+
+  <bb 4> [local count: 1073741824]:
+  # is_enable_1 = PHI <0(3), 1(2)>
+  # DEBUG is_enable => is_enable_1
+  # DEBUG BEGIN_STMT
+  # DEBUG D#11 => {CLOBBER}
+  # DEBUG val => D#11
+  return is_enable_1;
+
+}
+
+
+pfe_hw_feature_get_val (const struct pfe_hw_feature_t * feature, uint8_t * val)
+{
+  unsigned char _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = feature_3(D)->val;
+  *val_4(D) = _1;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+pfe_hw_feature_get_def_val (const struct pfe_hw_feature_t * feature, uint8_t * def_val)
+{
+  unsigned char _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = feature_3(D)->def_val;
+  *def_val_4(D) = _1;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+pfe_hw_feature_get_flags (const struct pfe_hw_feature_t * feature, pfe_ct_feature_flags_t * flags)
+{
+  unsigned char _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = feature_3(D)->flags;
+  *flags_4(D) = _1;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+pfe_hw_feature_get_desc (const struct pfe_hw_feature_t * feature, const char * * desc)
+{
+  const char * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = feature_3(D)->description;
+  *desc_4(D) = _1;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+pfe_hw_feature_get_name (const struct pfe_hw_feature_t * feature, const char * * name)
+{
+  const char * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = feature_3(D)->name;
+  *name_4(D) = _1;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+pfe_hw_feature_init_all (const uint32_t * cbus_base, struct pfe_hw_feature_t * hw_features, uint32_t * hw_features_count)
+{
+  uint8_t on_g3;
+  struct pfe_hw_feature_t * feature;
+  uint32_t val;
+  errno_t ret;
+  unsigned int cbus_base.0_1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+  struct pfe_hw_feature_t * _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG on_g3 => 0
+  # DEBUG BEGIN_STMT
+  feature_12 = pfe_hw_feature_create ("drv_run_on_g3", "Active if running on S32G3", 1, 0, hw_features_10(D));
+  # DEBUG feature => feature_12
+  # DEBUG BEGIN_STMT
+  if (feature_12 != 0B)
+    goto <bb 3>; [81.25%]
+  else
+    goto <bb 9>; [18.75%]
+
+  <bb 3> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  cbus_base.0_1 = (unsigned int) cbus_base_13(D);
+  _2 = cbus_base.0_1 + 606208;
+  _3 = (volatile uint32_t *) _2;
+  val_14 ={v} *_3;
+  # DEBUG val => val_14
+  # DEBUG BEGIN_STMT
+  if (val_14 == 328448)
+    goto <bb 6>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 4> [local count: 575794054]:
+  # DEBUG BEGIN_STMT
+  if (val_14 == 257)
+    goto <bb 6>; [51.12%]
+  else
+    goto <bb 5>; [48.88%]
+
+  <bb 5> [local count: 281448133]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Silicon HW version is unknown: 0x%x\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hw_feature.c", 97, val_14, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 6> [local count: 872415233]:
+  # on_g3_6 = PHI <0(3), 1(4), 0(5)>
+  # DEBUG on_g3 => on_g3_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG feature => feature_12
+  # DEBUG val => on_g3_6
+  # DEBUG INLINE_ENTRY pfe_hw_feature_set_val
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  feature_12->val = on_g3_6;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG feature => NULL
+  # DEBUG val => NULL
+  # DEBUG BEGIN_STMT
+  *hw_features_count_17(D) = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = hw_features_10(D) + 12;
+  feature_20 = pfe_hw_feature_create ("jumbo_frames", "Active if we handle jumbo frames", 0, 0, _4);
+  # DEBUG feature => feature_20
+  # DEBUG BEGIN_STMT
+  if (feature_20 != 0B)
+    goto <bb 8>; [81.25%]
+  else
+    goto <bb 9>; [18.75%]
+
+  <bb 8> [local count: 708837377]:
+  # DEBUG BEGIN_STMT
+  *hw_features_count_17(D) = 2;
+
+  <bb 9> [local count: 1073741824]:
+  # ret_5 = PHI <11(2), 0(8), 11(6)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_hw_feature_destroy (const struct pfe_hw_feature_t * feature)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

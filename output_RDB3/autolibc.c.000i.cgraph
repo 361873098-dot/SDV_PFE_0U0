@@ -1,0 +1,1154 @@
+Trivially needed symbols: autolibc_strnlen autolibc_strlen autolibc_strcmp autolibc_strcpy autolibc_strncpy autolibc_memcmp autolibc_memmove autolibc_memset autolibc_memcpy
+
+
+Initial Symbol table:
+
+autolibc_strnlen/27 (autolibc_strnlen) @06f21000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strlen/26 (autolibc_strlen) @06f0fb60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f21000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strcmp/25 (autolibc_strcmp) @06f0f620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f0fb60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: strcmp8_aux/14 strcmp16_aux/18 strcmp32_aux/16 
+autolibc_strcpy/24 (autolibc_strcpy) @06f0f0e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f0f620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strncpy/23 (autolibc_strncpy) @06f0fd20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f0f0e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcmp/22 (autolibc_memcmp) @06f0fa80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f0fd20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memcmp8_aux/7 memcmp16_aux/9 memcmp32_aux/8 memcmp8_aux/7 
+autolibc_memmove/21 (autolibc_memmove) @06f0f7e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f0fa80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memcpy8_backwards_aux/11 memcpy16_backwards_aux/13 memcpy32_backwards_aux/12 memcpy8_backwards_aux/11 autolibc_memcpy/19 
+autolibc_memset/20 (autolibc_memset) @06f0f540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f0f7e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcpy/19 (autolibc_memcpy) @06f0f2a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @06f0f540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: memcpy8_aux/10 memcpy8_aux/10 
+strcmp16_aux/18 (strcmp16_aux) @06f0f000
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f03d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: strcmp16_aligned_aux/17 
+strcmp16_aligned_aux/17 (strcmp16_aligned_aux) @06f03b60
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f03d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp16_aux/18 
+  Calls: 
+strcmp32_aux/16 (strcmp32_aux) @06f03620
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f0f000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: strcmp32_aligned_aux/15 
+strcmp32_aligned_aux/15 (strcmp32_aligned_aux) @06f030e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f0f000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp32_aux/16 
+  Calls: test_u32_for_null/6 
+strcmp8_aux/14 (strcmp8_aux) @06f03d20
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f0fb60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: 
+memcpy16_backwards_aux/13 (memcpy16_backwards_aux) @06f03a80
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f03540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: 
+memcpy32_backwards_aux/12 (memcpy32_backwards_aux) @06f037e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f03a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: 
+memcpy8_backwards_aux/11 (memcpy8_backwards_aux) @06f03540
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f0fa80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 autolibc_memmove/21 
+  Calls: 
+memcpy8_aux/10 (memcpy8_aux) @06f032a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f0f540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcpy/19 autolibc_memcpy/19 
+  Calls: 
+memcmp16_aux/9 (memcmp16_aux) @06f03000
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06ef7e00
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcmp/22 
+  Calls: memcmp8_aux/7 
+memcmp32_aux/8 (memcmp32_aux) @06ef7c40
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f03000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcmp/22 
+  Calls: memcmp8_aux/7 memcmp8_aux/7 
+memcmp8_aux/7 (memcmp8_aux) @06ef7e00
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f0fd20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: memcmp16_aux/9 memcmp32_aux/8 memcmp32_aux/8 autolibc_memcmp/22 autolibc_memcmp/22 
+  Calls: 
+test_u32_for_null/6 (test_u32_for_null) @06ef7b60
+  Type: function definition analyzed
+  Visibility:
+  Aux: @06f0f000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp32_aligned_aux/15 
+  Calls: 
+find_irq_idx_from_id/5 (find_irq_idx_from_id) @06fa2540
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_unlock/4 (oal_mutex_unlock) @06f84c40
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_lock/3 (oal_mutex_lock) @06f849a0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @06eecca8
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @06eecbd0
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+oal_swap_endian_long/0 (oal_swap_endian_long) @06d4bd20
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: find_irq_idx_from_id oal_mutex_unlock oal_mutex_lock SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+autolibc_strnlen/27 (autolibc_strnlen) @06f21000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strlen/26 (autolibc_strlen) @06f0fb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strcmp/25 (autolibc_strcmp) @06f0f620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: strcmp8_aux/14 strcmp16_aux/18 strcmp32_aux/16 
+autolibc_strcpy/24 (autolibc_strcpy) @06f0f0e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strncpy/23 (autolibc_strncpy) @06f0fd20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcmp/22 (autolibc_memcmp) @06f0fa80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memcmp8_aux/7 memcmp16_aux/9 memcmp32_aux/8 memcmp8_aux/7 
+autolibc_memmove/21 (autolibc_memmove) @06f0f7e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memcpy8_backwards_aux/11 memcpy16_backwards_aux/13 memcpy32_backwards_aux/12 memcpy8_backwards_aux/11 autolibc_memcpy/19 
+autolibc_memset/20 (autolibc_memset) @06f0f540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcpy/19 (autolibc_memcpy) @06f0f2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: memcpy8_aux/10 memcpy8_aux/10 
+strcmp16_aux/18 (strcmp16_aux) @06f0f000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: strcmp16_aligned_aux/17 
+strcmp16_aligned_aux/17 (strcmp16_aligned_aux) @06f03b60
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp16_aux/18 
+  Calls: 
+strcmp32_aux/16 (strcmp32_aux) @06f03620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: strcmp32_aligned_aux/15 
+strcmp32_aligned_aux/15 (strcmp32_aligned_aux) @06f030e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp32_aux/16 
+  Calls: test_u32_for_null/6 
+strcmp8_aux/14 (strcmp8_aux) @06f03d20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: 
+memcpy16_backwards_aux/13 (memcpy16_backwards_aux) @06f03a80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: 
+memcpy32_backwards_aux/12 (memcpy32_backwards_aux) @06f037e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: 
+memcpy8_backwards_aux/11 (memcpy8_backwards_aux) @06f03540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 autolibc_memmove/21 
+  Calls: 
+memcpy8_aux/10 (memcpy8_aux) @06f032a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcpy/19 autolibc_memcpy/19 
+  Calls: 
+memcmp16_aux/9 (memcmp16_aux) @06f03000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcmp/22 
+  Calls: memcmp8_aux/7 
+memcmp32_aux/8 (memcmp32_aux) @06ef7c40
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcmp/22 
+  Calls: memcmp8_aux/7 memcmp8_aux/7 
+memcmp8_aux/7 (memcmp8_aux) @06ef7e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: memcmp16_aux/9 memcmp32_aux/8 memcmp32_aux/8 autolibc_memcmp/22 autolibc_memcmp/22 
+  Calls: 
+test_u32_for_null/6 (test_u32_for_null) @06ef7b60
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp32_aligned_aux/15 
+  Calls: 
+
+
+Initial Symbol table:
+
+autolibc_strnlen/27 (autolibc_strnlen) @06f21000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strlen/26 (autolibc_strlen) @06f0fb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strcmp/25 (autolibc_strcmp) @06f0f620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: strcmp8_aux/14 strcmp16_aux/18 strcmp32_aux/16 
+autolibc_strcpy/24 (autolibc_strcpy) @06f0f0e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strncpy/23 (autolibc_strncpy) @06f0fd20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcmp/22 (autolibc_memcmp) @06f0fa80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memcmp8_aux/7 memcmp16_aux/9 memcmp32_aux/8 memcmp8_aux/7 
+autolibc_memmove/21 (autolibc_memmove) @06f0f7e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memcpy8_backwards_aux/11 memcpy16_backwards_aux/13 memcpy32_backwards_aux/12 memcpy8_backwards_aux/11 autolibc_memcpy/19 
+autolibc_memset/20 (autolibc_memset) @06f0f540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcpy/19 (autolibc_memcpy) @06f0f2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: memcpy8_aux/10 memcpy8_aux/10 
+strcmp16_aux/18 (strcmp16_aux) @06f0f000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: strcmp16_aligned_aux/17 
+strcmp16_aligned_aux/17 (strcmp16_aligned_aux) @06f03b60
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp16_aux/18 
+  Calls: 
+strcmp32_aux/16 (strcmp32_aux) @06f03620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: strcmp32_aligned_aux/15 
+strcmp32_aligned_aux/15 (strcmp32_aligned_aux) @06f030e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp32_aux/16 
+  Calls: test_u32_for_null/6 
+strcmp8_aux/14 (strcmp8_aux) @06f03d20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: 
+memcpy16_backwards_aux/13 (memcpy16_backwards_aux) @06f03a80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: 
+memcpy32_backwards_aux/12 (memcpy32_backwards_aux) @06f037e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: 
+memcpy8_backwards_aux/11 (memcpy8_backwards_aux) @06f03540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 autolibc_memmove/21 
+  Calls: 
+memcpy8_aux/10 (memcpy8_aux) @06f032a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcpy/19 autolibc_memcpy/19 
+  Calls: 
+memcmp16_aux/9 (memcmp16_aux) @06f03000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcmp/22 
+  Calls: memcmp8_aux/7 
+memcmp32_aux/8 (memcmp32_aux) @06ef7c40
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcmp/22 
+  Calls: memcmp8_aux/7 memcmp8_aux/7 
+memcmp8_aux/7 (memcmp8_aux) @06ef7e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: memcmp16_aux/9 memcmp32_aux/8 memcmp32_aux/8 autolibc_memcmp/22 autolibc_memcmp/22 
+  Calls: 
+test_u32_for_null/6 (test_u32_for_null) @06ef7b60
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp32_aligned_aux/15 
+  Calls: 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+autolibc_strnlen/27 (autolibc_strnlen) @06f21000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strlen/26 (autolibc_strlen) @06f0fb60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strcmp/25 (autolibc_strcmp) @06f0f620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: strcmp8_aux/14 strcmp16_aux/18 strcmp32_aux/16 
+autolibc_strcpy/24 (autolibc_strcpy) @06f0f0e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_strncpy/23 (autolibc_strncpy) @06f0fd20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcmp/22 (autolibc_memcmp) @06f0fa80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memcmp8_aux/7 memcmp16_aux/9 memcmp32_aux/8 memcmp8_aux/7 
+autolibc_memmove/21 (autolibc_memmove) @06f0f7e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: memcpy8_backwards_aux/11 memcpy16_backwards_aux/13 memcpy32_backwards_aux/12 memcpy8_backwards_aux/11 autolibc_memcpy/19 
+autolibc_memset/20 (autolibc_memset) @06f0f540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcpy/19 (autolibc_memcpy) @06f0f2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: memcpy8_aux/10 memcpy8_aux/10 
+strcmp16_aux/18 (strcmp16_aux) @06f0f000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: strcmp16_aligned_aux/17 
+strcmp16_aligned_aux/17 (strcmp16_aligned_aux) @06f03b60
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp16_aux/18 
+  Calls: 
+strcmp32_aux/16 (strcmp32_aux) @06f03620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: strcmp32_aligned_aux/15 
+strcmp32_aligned_aux/15 (strcmp32_aligned_aux) @06f030e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp32_aux/16 
+  Calls: test_u32_for_null/6 
+strcmp8_aux/14 (strcmp8_aux) @06f03d20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_strcmp/25 
+  Calls: 
+memcpy16_backwards_aux/13 (memcpy16_backwards_aux) @06f03a80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: 
+memcpy32_backwards_aux/12 (memcpy32_backwards_aux) @06f037e0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 
+  Calls: 
+memcpy8_backwards_aux/11 (memcpy8_backwards_aux) @06f03540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memmove/21 autolibc_memmove/21 
+  Calls: 
+memcpy8_aux/10 (memcpy8_aux) @06f032a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcpy/19 autolibc_memcpy/19 
+  Calls: 
+memcmp16_aux/9 (memcmp16_aux) @06f03000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcmp/22 
+  Calls: memcmp8_aux/7 
+memcmp32_aux/8 (memcmp32_aux) @06ef7c40
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: autolibc_memcmp/22 
+  Calls: memcmp8_aux/7 memcmp8_aux/7 
+memcmp8_aux/7 (memcmp8_aux) @06ef7e00
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: memcmp16_aux/9 memcmp32_aux/8 memcmp32_aux/8 autolibc_memcmp/22 autolibc_memcmp/22 
+  Calls: 
+test_u32_for_null/6 (test_u32_for_null) @06ef7b60
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: strcmp32_aligned_aux/15 
+  Calls: 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+memcpy8_backwards_aux/30 (memcpy8_backwards_aux) @06f84c40
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 11
+  References: 
+  Referring: 
+  Function memcpy8_backwards_aux/30 is inline copy in autolibc_memmove/21
+  Clone of memcpy8_backwards_aux/11
+  Availability: local
+  Function flags: count:166183022 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_memmove/21 (inlined) (166183022 (estimated locally),0.15 per call) 
+  Calls: 
+memcpy8_aux/29 (memcpy8_aux) @06f849a0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 10
+  References: 
+  Referring: 
+  Function memcpy8_aux/29 is inline copy in autolibc_memcpy/19
+  Clone of memcpy8_aux/10
+  Availability: local
+  Function flags: count:116348740 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_memcpy/19 (inlined) (116348740 (estimated locally),0.33 per call) 
+  Calls: 
+autolibc_memcpy.part.0/28 (autolibc_memcpy.part.0) @06d4bd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function autolibc_memcpy.part.0/28 is inline copy in autolibc_memcpy/19
+  Availability: local
+  Function flags: count:236223199 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: autolibc_memcpy/19 (inlined) (236223199 (estimated locally),0.67 per call) 
+  Calls: memcpy8_aux/10 (inlined) (38976828 (estimated locally),0.11 per call) 
+autolibc_strnlen/27 (autolibc_strnlen) @06f21000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:164090760 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_strlen/26 (autolibc_strlen) @06f0fb60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_strcmp/25 (autolibc_strcmp) @06f0f620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: strcmp8_aux/14 (inlined) (268435456 (estimated locally),0.25 per call) strcmp16_aux/18 (inlined) (268435456 (estimated locally),0.25 per call) strcmp32_aux/16 (inlined) (536870913 (estimated locally),0.50 per call) 
+autolibc_strcpy/24 (autolibc_strcpy) @06f0f0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_strncpy/23 (autolibc_strncpy) @06f0fd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:114863532 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcmp/22 (autolibc_memcmp) @06f0fa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: memcmp8_aux/7 (241001352 (estimated locally),0.22 per call) memcmp16_aux/9 (inlined) (118702159 (estimated locally),0.11 per call) memcmp32_aux/8 (inlined) (177167401 (estimated locally),0.17 per call) memcmp8_aux/7 (536870913 (estimated locally),0.50 per call) 
+autolibc_memmove/21 (autolibc_memmove) @06f0f7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: memcpy8_backwards_aux/11 (inlined) (113029634 (estimated locally),0.11 per call) memcpy16_backwards_aux/13 (inlined) (113029634 (estimated locally),0.11 per call) memcpy32_backwards_aux/12 (inlined) (111342625 (estimated locally),0.10 per call) memcpy8_backwards_aux/30 (inlined) (166183022 (estimated locally),0.15 per call) autolibc_memcpy/19 (248034361 (estimated locally),0.23 per call) 
+autolibc_memset/20 (autolibc_memset) @06f0f540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:236223199 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcpy/19 (autolibc_memcpy) @06f0f2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:352571938 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: autolibc_memmove/21 (248034361 (estimated locally),0.23 per call) 
+  Calls: autolibc_memcpy.part.0/28 (inlined) (236223199 (estimated locally),0.67 per call) memcpy8_aux/29 (inlined) (116348740 (estimated locally),0.33 per call) 
+strcmp16_aux/18 (strcmp16_aux) @06f0f000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function strcmp16_aux/18 is inline copy in autolibc_strcmp/25
+  Availability: local
+  Function flags: count:268435456 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_strcmp/25 (inlined) (268435456 (estimated locally),0.25 per call) 
+  Calls: strcmp16_aligned_aux/17 (inlined) (134217728 (estimated locally),0.12 per call) 
+strcmp16_aligned_aux/17 (strcmp16_aligned_aux) @06f03b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function strcmp16_aligned_aux/17 is inline copy in autolibc_strcmp/25
+  Availability: local
+  Function flags: count:134217728 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: strcmp16_aux/18 (inlined) (134217728 (estimated locally),0.12 per call) 
+  Calls: 
+strcmp32_aux/16 (strcmp32_aux) @06f03620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function strcmp32_aux/16 is inline copy in autolibc_strcmp/25
+  Availability: local
+  Function flags: count:536870913 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_strcmp/25 (inlined) (536870913 (estimated locally),0.50 per call) 
+  Calls: strcmp32_aligned_aux/15 (inlined) (268435461 (estimated locally),0.25 per call) 
+strcmp32_aligned_aux/15 (strcmp32_aligned_aux) @06f030e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function strcmp32_aligned_aux/15 is inline copy in autolibc_strcmp/25
+  Availability: local
+  Function flags: count:268435461 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: strcmp32_aux/16 (inlined) (268435461 (estimated locally),0.25 per call) 
+  Calls: test_u32_for_null/6 (inlined) (1832818366 (estimated locally),1.71 per call) 
+strcmp8_aux/14 (strcmp8_aux) @06f03d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function strcmp8_aux/14 is inline copy in autolibc_strcmp/25
+  Availability: local
+  Function flags: count:268435456 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_strcmp/25 (inlined) (268435456 (estimated locally),0.25 per call) 
+  Calls: 
+memcpy16_backwards_aux/13 (memcpy16_backwards_aux) @06f03a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function memcpy16_backwards_aux/13 is inline copy in autolibc_memmove/21
+  Availability: local
+  Function flags: count:113029634 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_memmove/21 (inlined) (113029634 (estimated locally),0.11 per call) 
+  Calls: 
+memcpy32_backwards_aux/12 (memcpy32_backwards_aux) @06f037e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function memcpy32_backwards_aux/12 is inline copy in autolibc_memmove/21
+  Availability: local
+  Function flags: count:111342625 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_memmove/21 (inlined) (111342625 (estimated locally),0.10 per call) 
+  Calls: 
+memcpy8_backwards_aux/11 (memcpy8_backwards_aux) @06f03540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 30
+  References: 
+  Referring: 
+  Function memcpy8_backwards_aux/11 is inline copy in autolibc_memmove/21
+  Availability: local
+  Function flags: count:113029634 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_memmove/21 (inlined) (113029634 (estimated locally),0.11 per call) 
+  Calls: 
+memcpy8_aux/10 (memcpy8_aux) @06f032a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 29
+  References: 
+  Referring: 
+  Function memcpy8_aux/10 is inline copy in autolibc_memcpy/19
+  Availability: local
+  Function flags: count:38976828 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_memcpy.part.0/28 (inlined) (38976828 (estimated locally),0.11 per call) 
+  Calls: 
+memcmp16_aux/9 (memcmp16_aux) @06f03000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function memcmp16_aux/9 is inline copy in autolibc_memcmp/22
+  Availability: local
+  Function flags: count:118702159 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_memcmp/22 (inlined) (118702159 (estimated locally),0.11 per call) 
+  Calls: memcmp8_aux/7 (43254578 (estimated locally),0.04 per call) 
+memcmp32_aux/8 (memcmp32_aux) @06ef7c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function memcmp32_aux/8 is inline copy in autolibc_memcmp/22
+  Availability: local
+  Function flags: count:177167401 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_memcmp/22 (inlined) (177167401 (estimated locally),0.17 per call) 
+  Calls: memcmp8_aux/7 (44291850 (estimated locally),0.04 per call) memcmp8_aux/7 (43039382 (estimated locally),0.04 per call) 
+memcmp8_aux/7 (memcmp8_aux) @06ef7e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:114863532 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: autolibc_memcmp/22 (241001352 (estimated locally),0.22 per call) autolibc_memcmp/22 (536870913 (estimated locally),0.50 per call) memcmp16_aux/9 (43254578 (estimated locally),0.04 per call) memcmp32_aux/8 (44291850 (estimated locally),0.04 per call) memcmp32_aux/8 (43039382 (estimated locally),0.04 per call) 
+  Calls: 
+test_u32_for_null/6 (test_u32_for_null) @06ef7b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function test_u32_for_null/6 is inline copy in autolibc_strcmp/25
+  Availability: local
+  Function flags: count:1832818366 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: strcmp32_aligned_aux/15 (inlined) (1832818366 (estimated locally),1.71 per call) 
+  Calls: 
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:memcmp8_aux:0
+Time profile order in expand_all_functions:autolibc_memcpy:0
+Time profile order in expand_all_functions:autolibc_memset:0
+Time profile order in expand_all_functions:autolibc_memmove:0
+Time profile order in expand_all_functions:autolibc_memcmp:0
+Time profile order in expand_all_functions:autolibc_strncpy:0
+Time profile order in expand_all_functions:autolibc_strcpy:0
+Time profile order in expand_all_functions:autolibc_strcmp:0
+Time profile order in expand_all_functions:autolibc_strlen:0
+Time profile order in expand_all_functions:autolibc_strnlen:0
+Trivially needed variables:
+Removing variables:
+
+Final Symbol table:
+
+autolibc_strnlen/27 (autolibc_strnlen) @06f21000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:164090760 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_strlen/26 (autolibc_strlen) @06f0fb60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_strcmp/25 (autolibc_strcmp) @06f0f620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_strcpy/24 (autolibc_strcpy) @06f0f0e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_strncpy/23 (autolibc_strncpy) @06f0fd20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:114863532 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcmp/22 (autolibc_memcmp) @06f0fa80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_memmove/21 (autolibc_memmove) @06f0f7e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_memset/20 (autolibc_memset) @06f0f540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:236223199 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcpy/19 (autolibc_memcpy) @06f0f2a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:352571938 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+memcmp8_aux/7 (memcmp8_aux) @06ef7e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:114863532 (estimated locally) local nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 

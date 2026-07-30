@@ -1,0 +1,453 @@
+fci_core_client_get_msg (struct fci_msg_t * msg)
+{
+  errno_t ret;
+  struct fci_core_t * core;
+  unsigned char _1;
+  struct fci_msg_mng_t * _2;
+  errno_t _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  core_6 = context.core;
+  # DEBUG core => core_6
+  # DEBUG BEGIN_STMT
+  ret_7 = 2;
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  _1 = core_6->client.initialized;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = core_6->client.msg_fifo;
+  ret_10 = fci_core_msg_fifo_get (_2, msg_8(D));
+  # DEBUG ret => ret_10
+
+  <bb 4> :
+  # ret_3 = PHI <ret_7(2), ret_10(3)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = ret_3;
+  return _11;
+
+}
+
+
+fci_core_client_send_broadcast (struct fci_msg_t * msg, struct fci_msg_t * rep)
+{
+  errno_t err;
+  struct fci_core_t * core;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  unsigned char _4;
+  struct fci_msg_mng_t * _5;
+  _Bool _6;
+  long int _7;
+  long int _8;
+  errno_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  core_12 = context.core;
+  # DEBUG core => core_12
+  # DEBUG BEGIN_STMT
+  err_13 = 116;
+  # DEBUG err => err_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = core_12 == 0B;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  err_18 = 22;
+  # DEBUG err => err_18
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  msg_14(D)->type = 4100;
+  # DEBUG BEGIN_STMT
+  _4 = core_12->client.initialized;
+  if (_4 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _5 = core_12->client.msg_fifo;
+  err_17 = fci_core_msg_fifo_put (_5, msg_14(D));
+  # DEBUG err => err_17
+  # DEBUG BEGIN_STMT
+  _6 = err_17 != 0;
+  _7 = (long int) _6;
+  _8 = __builtin_expect (_7, 0);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # err_9 = PHI <err_18(3), err_13(4), err_17(5)>
+  # DEBUG err => err_9
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = err_9;
+  return _19;
+
+}
+
+
+fci_core_client_send (struct fci_core_client_t * client, struct fci_msg_t * msg, struct fci_msg_t * rep)
+{
+  errno_t err;
+  errno_t _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  err_1 = 0;
+  # DEBUG err => err_1
+  # DEBUG BEGIN_STMT
+  _2 = err_1;
+  return _2;
+
+}
+
+
+fci_core_send (struct fci_msg_t * msg, struct fci_msg_t * rep)
+{
+  errno_t ret;
+  struct fci_core_t * core;
+  errno_t _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  core_2 = context.core;
+  # DEBUG core => core_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] fci_core_send should not be used within MCAL implementation\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_core_autosar.c", 276, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_5 = 22;
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  _6 = ret_5;
+  return _6;
+
+}
+
+
+fci_core_fini ()
+{
+  errno_t ret;
+  struct fci_msg_t msg;
+  struct fci_core_t * core;
+  struct fci_msg_mng_t * _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  core_4 = context.core;
+  # DEBUG core => core_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&msg, 0, 276);
+  # DEBUG BEGIN_STMT
+  msg.type = 4099;
+  # DEBUG BEGIN_STMT
+  msg.msg_cmd.code = 62211;
+  # DEBUG BEGIN_STMT
+  if (core_4 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_9 = fci_core_client_send_broadcast (&msg, 0B);
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = fci_core.client.msg_fifo;
+  autolibc_memset (_1, 0, 2212);
+  # DEBUG BEGIN_STMT
+  fci_core.client.initialized = 0;
+  # DEBUG BEGIN_STMT
+  core_12 = 0B;
+  # DEBUG core => core_12
+
+  <bb 4> :
+  msg ={v} {CLOBBER};
+  return;
+
+}
+
+
+fci_core_init (const char_t * const id)
+{
+  errno_t ret;
+  struct fci_core_t * _1;
+  struct fci_msg_mng_t * _2;
+  errno_t _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = context.core;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FCI_CORE has already been initialized\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_core_autosar.c", 203, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_14 = 22;
+  # DEBUG ret => ret_14
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&fci_core, 0, 8);
+  # DEBUG BEGIN_STMT
+  fci_core.client.msg_fifo = &fci_msg_fifo;
+  # DEBUG BEGIN_STMT
+  _2 = fci_core.client.msg_fifo;
+  autolibc_memset (_2, 0, 2212);
+  # DEBUG BEGIN_STMT
+  fci_core.client.initialized = 1;
+  # DEBUG BEGIN_STMT
+  context.core = &fci_core;
+  # DEBUG BEGIN_STMT
+  ret_11 = 0;
+  # DEBUG ret => ret_11
+
+  <bb 5> :
+  # ret_3 = PHI <ret_14(3), ret_11(4)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  _15 = ret_3;
+  return _15;
+
+}
+
+
+fci_core_msg_fifo_get (struct fci_msg_mng_t * msg_fifo, struct fci_msg_t * msg)
+{
+  errno_t ret;
+  unsigned char _1;
+  unsigned char _2;
+  int _3;
+  struct fci_msg_t * _4;
+  unsigned char _5;
+  unsigned char _6;
+  unsigned char _7;
+  unsigned char _8;
+  unsigned char _9;
+  unsigned char _10;
+  unsigned char _11;
+  errno_t _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_15 = 2;
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (96);
+  # DEBUG BEGIN_STMT
+  _1 = msg_fifo_18(D)->len;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = msg_fifo_18(D)->read;
+  _3 = (int) _2;
+  _4 = &msg_fifo_18(D)->items[_3];
+  autolibc_memcpy (msg_19(D), _4, 276);
+  # DEBUG BEGIN_STMT
+  _5 = msg_fifo_18(D)->len;
+  _6 = _5;
+  _7 = _6 + 255;
+  msg_fifo_18(D)->len = _7;
+  # DEBUG BEGIN_STMT
+  _8 = msg_fifo_18(D)->read;
+  _9 = _8;
+  _10 = _9 + 1;
+  msg_fifo_18(D)->read = _10;
+  # DEBUG BEGIN_STMT
+  _11 = msg_fifo_18(D)->read;
+  if (_11 > 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  msg_fifo_18(D)->read = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_24 = 0;
+  # DEBUG ret => ret_24
+
+  <bb 6> :
+  # ret_12 = PHI <ret_15(2), ret_24(5)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (96);
+  # DEBUG BEGIN_STMT
+  _26 = ret_12;
+  return _26;
+
+}
+
+
+fci_core_msg_fifo_put (struct fci_msg_mng_t * msg_fifo, struct fci_msg_t * msg)
+{
+  errno_t ret;
+  unsigned char _1;
+  unsigned char _2;
+  int _3;
+  struct fci_msg_t * _4;
+  unsigned char _5;
+  unsigned char _6;
+  unsigned char _7;
+  unsigned char _8;
+  unsigned char _9;
+  unsigned char _10;
+  unsigned char _11;
+  errno_t _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_15 = 75;
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (95);
+  # DEBUG BEGIN_STMT
+  _1 = msg_fifo_18(D)->len;
+  if (_1 <= 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = msg_fifo_18(D)->write;
+  _3 = (int) _2;
+  _4 = &msg_fifo_18(D)->items[_3];
+  autolibc_memcpy (_4, msg_19(D), 276);
+  # DEBUG BEGIN_STMT
+  _5 = msg_fifo_18(D)->len;
+  _6 = _5;
+  _7 = _6 + 1;
+  msg_fifo_18(D)->len = _7;
+  # DEBUG BEGIN_STMT
+  _8 = msg_fifo_18(D)->write;
+  _9 = _8;
+  _10 = _9 + 1;
+  msg_fifo_18(D)->write = _10;
+  # DEBUG BEGIN_STMT
+  _11 = msg_fifo_18(D)->write;
+  if (_11 > 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  msg_fifo_18(D)->write = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_24 = 0;
+  # DEBUG ret => ret_24
+
+  <bb 6> :
+  # ret_12 = PHI <ret_15(2), ret_24(5)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (95);
+  # DEBUG BEGIN_STMT
+  _26 = ret_12;
+  return _26;
+
+}
+
+
+oal_mutex_unlock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

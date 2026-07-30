@@ -1,0 +1,1205 @@
+
+IPA constant propagation start:
+
+IPA structures before propagation:
+
+Jump functions:
+  Jump functions of caller  oal_time_usleep/32:
+  Jump functions of caller  oal_util_raise_dem_for_drv_runtime_err/31:
+  Jump functions of caller  __builtin_expect/30:
+  Jump functions of caller  Dem_SetEventStatus/29:
+  Jump functions of caller  pfe_hm_report/28:
+  Jump functions of caller  pfe_bmu_cfg_get_err_poll/27:
+  Jump functions of caller  pfe_bmu_cfg_get_special_stats/26:
+  Jump functions of caller  pfe_bmu_cfg_get_stat_value/25:
+  Jump functions of caller  pfe_bmu_cfg_free_buf/24:
+  Jump functions of caller  pfe_bmu_cfg_alloc_buf/23:
+  Jump functions of caller  pfe_bmu_cfg_disable/22:
+  Jump functions of caller  pfe_bmu_cfg_enable/21:
+  Jump functions of caller  pfe_bmu_cfg_reset/20:
+  Jump functions of caller  pfe_bmu_cfg_fini/19:
+  Jump functions of caller  pfe_bmu_cfg_init/18:
+    callsite  pfe_bmu_cfg_init/18 -> pfe_bmu_cfg_clear_buf_cnt_memory/13 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 1: UNKNOWN
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+    callsite  pfe_bmu_cfg_init/18 -> pfe_bmu_cfg_clear_internal_memory/14 : 
+       param 0: PASS THROUGH: 0, op nop_expr
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+       param 1: UNKNOWN
+         value: 0x0, mask: 0xffffffff
+         Unknown VR
+  Jump functions of caller  pfe_bmu_cfg_irq_unmask/17:
+  Jump functions of caller  pfe_bmu_cfg_irq_mask/16:
+  Jump functions of caller  pfe_bmu_cfg_isr/15:
+  Jump functions of caller  pfe_bmu_cfg_clear_internal_memory/14:
+  Jump functions of caller  pfe_bmu_cfg_clear_buf_cnt_memory/13:
+
+ Propagating constants:
+
+Not considering pfe_bmu_cfg_get_err_poll for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_get_special_stats for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_get_stat_value for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_free_buf for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_alloc_buf for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_disable for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_enable for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_reset for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_fini for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_init for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_irq_unmask for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_irq_mask for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bmu_cfg_isr for cloning; -fipa-cp-clone disabled.
+
+overall_size: 264, max_new_size: 11001
+
+IPA lattices after all propagation:
+
+Lattices:
+  Node: pfe_bmu_cfg_get_err_poll/27:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_get_special_stats/26:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_get_stat_value/25:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_free_buf/24:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_alloc_buf/23:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_disable/22:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_enable/21:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_reset/20:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_fini/19:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_init/18:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_irq_unmask/17:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_irq_mask/16:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_isr/15:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+    param [1]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bmu_cfg_clear_internal_memory/14:
+    param [0]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+    param [1]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+  Node: pfe_bmu_cfg_clear_buf_cnt_memory/13:
+    param [0]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+    param [1]: VARIABLE
+         ctxs: VARIABLE
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS VARIABLE
+
+IPA decision stage:
+
+
+IPA constant propagation end
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+oal_time_usleep/32 (oal_time_usleep) @07695000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_bmu_cfg_reset/20 (1004539164 (estimated locally),14.52 per call) 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/31 (oal_util_raise_dem_for_drv_runtime_err) @07685c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_bmu_cfg_init/18 (9977865 (estimated locally),0.10 per call) 
+  Calls: 
+__builtin_expect/30 (__builtin_expect) @07685b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_bmu_cfg_init/18 (99778653 (estimated locally),1.00 per call) 
+  Calls: 
+Dem_SetEventStatus/29 (Dem_SetEventStatus) @076857e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_bmu_cfg_isr/15 (354334802 (estimated locally),0.33 per call) pfe_bmu_cfg_isr/15 (354334802 (estimated locally),0.33 per call) pfe_bmu_cfg_isr/15 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+pfe_hm_report/28 (pfe_hm_report) @07685700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_bmu_cfg_init/18 (9977865 (estimated locally),0.10 per call) pfe_bmu_cfg_isr/15 (354334802 (estimated locally),0.33 per call) pfe_bmu_cfg_isr/15 (354334802 (estimated locally),0.33 per call) pfe_bmu_cfg_isr/15 (354334802 (estimated locally),0.33 per call) 
+  Calls: 
+pfe_bmu_cfg_get_err_poll/27 (pfe_bmu_cfg_get_err_poll) @076852a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bmu_cfg_get_special_stats/26 (pfe_bmu_cfg_get_special_stats) @0767fee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bmu_cfg_get_stat_value/25 (pfe_bmu_cfg_get_stat_value) @0767f8c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bmu_cfg_free_buf/24 (pfe_bmu_cfg_free_buf) @0767f2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bmu_cfg_alloc_buf/23 (pfe_bmu_cfg_alloc_buf) @0767fe00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bmu_cfg_disable/22 (pfe_bmu_cfg_disable) @0767fa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bmu_cfg_enable/21 (pfe_bmu_cfg_enable) @0767f7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bmu_cfg_reset/20 (pfe_bmu_cfg_reset) @0767f540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:69202660 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/32 (1004539164 (estimated locally),14.52 per call) 
+pfe_bmu_cfg_fini/19 (pfe_bmu_cfg_fini) @0767f1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bmu_cfg_init/18 (pfe_bmu_cfg_init) @0761fee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:99778653 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_bmu_cfg_clear_buf_cnt_memory/13 (89800787 (estimated locally),0.90 per call) pfe_bmu_cfg_clear_internal_memory/14 (89800787 (estimated locally),0.90 per call) oal_util_raise_dem_for_drv_runtime_err/31 (9977865 (estimated locally),0.10 per call) pfe_hm_report/28 (9977865 (estimated locally),0.10 per call) __builtin_expect/30 (99778653 (estimated locally),1.00 per call) 
+pfe_bmu_cfg_irq_unmask/17 (pfe_bmu_cfg_irq_unmask) @0761fe00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bmu_cfg_irq_mask/16 (pfe_bmu_cfg_irq_mask) @0761fa80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bmu_cfg_isr/15 (pfe_bmu_cfg_isr) @0761f700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Dem_SetEventStatus/29 (354334802 (estimated locally),0.33 per call) pfe_hm_report/28 (354334802 (estimated locally),0.33 per call) Dem_SetEventStatus/29 (354334802 (estimated locally),0.33 per call) pfe_hm_report/28 (354334802 (estimated locally),0.33 per call) Dem_SetEventStatus/29 (354334802 (estimated locally),0.33 per call) pfe_hm_report/28 (354334802 (estimated locally),0.33 per call) 
+pfe_bmu_cfg_clear_internal_memory/14 (pfe_bmu_cfg_clear_internal_memory) @07619b60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:118111600 (estimated locally) body local optimize_size
+  Called by: pfe_bmu_cfg_init/18 (89800787 (estimated locally),0.90 per call) 
+  Calls: 
+pfe_bmu_cfg_clear_buf_cnt_memory/13 (pfe_bmu_cfg_clear_buf_cnt_memory) @07619d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:118111600 (estimated locally) body local optimize_size
+  Called by: pfe_bmu_cfg_init/18 (89800787 (estimated locally),0.90 per call) 
+  Calls: 
+
+;; Function pfe_bmu_cfg_isr (pfe_bmu_cfg_isr, funcdef_no=13, decl_uid=9504, cgraph_uid=14, symbol_order=15)
+
+Modification phase of node pfe_bmu_cfg_isr/15
+pfe_bmu_cfg_isr (addr_t base_va, addr_t cbus_base_va)
+{
+  addr_t bmu_offset;
+  errno_t ret;
+  uint32_t reg_reen;
+  uint32_t reg;
+  uint32_t reg_en;
+  uint32_t reg_src;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  void * bmu_offset.0_11;
+  long unsigned int _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  long unsigned int _15;
+  void * bmu_offset.1_16;
+  unsigned int _17;
+  volatile uint32_t * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  void * bmu_offset.2_21;
+  long unsigned int _22;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG reg_reen => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  bmu_offset_37 = base_va_35(D) - cbus_base_va_36(D);
+  # DEBUG bmu_offset => bmu_offset_37
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_35(D) + 36;
+  _2 = (volatile uint32_t *) _1;
+  reg_en_39 ={v} *_2;
+  # DEBUG reg_en => reg_en_39
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_35(D) + 32;
+  _4 = (volatile uint32_t *) _3;
+  reg_src_41 ={v} *_4;
+  # DEBUG reg_src => reg_src_41
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_4 ={v} reg_src_41;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = ~reg_src_41;
+  _6 = _5 & reg_en_39;
+  _7 = _6 | 16;
+  *_2 ={v} _7;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = reg_en_39 & reg_src_41;
+  _9 = _8 & 2;
+  if (_9 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG reg_reen => 12
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # reg_reen_23 = PHI <0(2), 12(3)>
+  # ret_26 = PHI <2(2), 0(3)>
+  # DEBUG ret => ret_26
+  # DEBUG reg_reen => reg_reen_23
+  # DEBUG BEGIN_STMT
+  _10 = _8 & 4;
+  if (_10 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  bmu_offset.0_11 = (void *) bmu_offset_37;
+  pfe_hm_report (16, 2, 170, "[%s:%d] (BMU @ p0x%p)", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_bmu_csr.c", 140, bmu_offset.0_11, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (52, 3);
+  # DEBUG BEGIN_STMT
+  reg_reen_46 = reg_reen_23 | 2;
+  # DEBUG reg_reen => reg_reen_46
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 6> [local count: 1073741824]:
+  # reg_reen_24 = PHI <reg_reen_23(4), reg_reen_46(5)>
+  # ret_27 = PHI <ret_26(4), 0(5)>
+  # DEBUG ret => ret_27
+  # DEBUG reg_reen => reg_reen_24
+  # DEBUG BEGIN_STMT
+  _12 = _8 & 8;
+  if (_12 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _13 = base_va_35(D) + 24;
+  _14 = (volatile uint32_t *) _13;
+  reg_47 ={v} *_14;
+  # DEBUG reg => reg_47
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  reg_reen_48 = reg_reen_24 | 2;
+  # DEBUG reg_reen => reg_reen_48
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 8> [local count: 1073741824]:
+  # reg_reen_25 = PHI <reg_reen_24(6), reg_reen_48(7)>
+  # ret_28 = PHI <ret_27(6), 0(7)>
+  # DEBUG ret => ret_28
+  # DEBUG reg_reen => reg_reen_25
+  # DEBUG BEGIN_STMT
+  _15 = _8 & 16;
+  if (_15 != 0)
+    goto <bb 9>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 9> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  bmu_offset.1_16 = (void *) bmu_offset_37;
+  _17 = base_va_35(D) + 56;
+  _18 = (volatile uint32_t *) _17;
+  _19 ={v} *_18;
+  pfe_hm_report (16, 2, 171, "[%s:%d] (BMU @ p0x%p) address 0x%x", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_bmu_csr.c", 165, bmu_offset.1_16, _19, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (53, 3);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 10> [local count: 1073741824]:
+  # ret_29 = PHI <ret_28(8), 0(9)>
+  # DEBUG ret => ret_29
+  # DEBUG BEGIN_STMT
+  _20 = _8 & 480;
+  if (_20 != 0)
+    goto <bb 11>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 11> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  bmu_offset.2_21 = (void *) bmu_offset_37;
+  pfe_hm_report (16, 2, 172, "[%s:%d] (BMU @ p0x%p)", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_bmu_csr.c", 175, bmu_offset.2_21, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (53, 3);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 12> [local count: 1073741824]:
+  # ret_30 = PHI <ret_29(10), 0(11)>
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  if (reg_reen_25 != 0)
+    goto <bb 13>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 13> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  reg_53 ={v} *_2;
+  # DEBUG reg => reg_53
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _22 = reg_reen_25 | reg_53;
+  *_2 ={v} _22;
+
+  <bb 14> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_30;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_irq_mask (pfe_bmu_cfg_irq_mask, funcdef_no=14, decl_uid=9506, cgraph_uid=15, symbol_order=16)
+
+Modification phase of node pfe_bmu_cfg_irq_mask/16
+pfe_bmu_cfg_irq_mask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 36;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 & 4294967294;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_irq_unmask (pfe_bmu_cfg_irq_unmask, funcdef_no=15, decl_uid=9508, cgraph_uid=16, symbol_order=17)
+
+Modification phase of node pfe_bmu_cfg_irq_unmask/17
+pfe_bmu_cfg_irq_unmask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 36;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 | 1;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_init (pfe_bmu_cfg_init, funcdef_no=16, decl_uid=9511, cgraph_uid=17, symbol_order=18)
+
+Modification phase of node pfe_bmu_cfg_init/18
+pfe_bmu_cfg_init (addr_t base_va, const struct pfe_bmu_cfg_t * cfg)
+{
+  uint32_t bmu_buf_size_exp;
+  long unsigned int _1;
+  int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long int _6;
+  long int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  unsigned int _14;
+  volatile uint32_t * _15;
+  unsigned int _16;
+  long unsigned int _17;
+  unsigned int _18;
+  volatile uint32_t * _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  unsigned int _23;
+  volatile uint32_t * _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  unsigned int _28;
+  volatile uint32_t * _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  unsigned int _33;
+  volatile uint32_t * _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  unsigned int _38;
+  volatile uint32_t * _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  int iftmp.3_44;
+
+  <bb 2> [local count: 99778653]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = cfg_48(D)->buf_size;
+  if (_1 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 49889327]:
+  _4 = _1 + 4294967295;
+  _5 = _1 & _4;
+  if (_5 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 74833990]:
+
+  <bb 5> [local count: 99778653]:
+  # iftmp.3_44 = PHI <1(3), 0(4)>
+  _3 = iftmp.3_44 ^ 1;
+  _6 = _3;
+  _7 = __builtin_expect (_6, 0);
+  if (_7 != 0)
+    goto <bb 6>; [10.00%]
+  else
+    goto <bb 7>; [90.00%]
+
+  <bb 6> [local count: 9977865]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] BMU buffer size is not power of 2\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_bmu_csr.c", 231, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [100.00%]
+
+  <bb 7> [local count: 89800788]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = base_va_49(D) + 4;
+  _9 = (volatile uint32_t *) _8;
+  *_9 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = base_va_49(D) + 36;
+  _11 = (volatile uint32_t *) _10;
+  *_11 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = base_va_49(D) + 32;
+  _13 = (volatile uint32_t *) _12;
+  *_13 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = base_va_49(D) + 12;
+  _15 = (volatile uint32_t *) _14;
+  _16 = cfg_48(D)->pool_pa;
+  *_15 ={v} _16;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = cfg_48(D)->max_buf_cnt;
+  _18 = base_va_49(D) + 8;
+  _19 = (volatile uint32_t *) _18;
+  _20 = _17 & 65535;
+  *_19 ={v} _20;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG bmu_buf_size_exp => 0
+  goto <bb 11>; [100.00%]
+
+  <bb 8> [local count: 1041207447]:
+  # DEBUG BEGIN_STMT
+  _21 = cfg_48(D)->buf_size;
+  _22 = 1 << bmu_buf_size_exp_43;
+  if (_21 == _22)
+    goto <bb 9>; [5.50%]
+  else
+    goto <bb 10>; [94.50%]
+
+  <bb 9> [local count: 57266410]:
+  # bmu_buf_size_exp_2 = PHI <bmu_buf_size_exp_43(8)>
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _23 = base_va_49(D) + 16;
+  _24 = (volatile uint32_t *) _23;
+  _25 = bmu_buf_size_exp_2;
+  *_24 ={v} _25;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 10> [local count: 983941036]:
+  # DEBUG BEGIN_STMT
+  bmu_buf_size_exp_55 = bmu_buf_size_exp_43 + 1;
+  # DEBUG bmu_buf_size_exp => bmu_buf_size_exp_55
+
+  <bb 11> [local count: 1073741824]:
+  # bmu_buf_size_exp_43 = PHI <0(7), bmu_buf_size_exp_55(10)>
+  # DEBUG bmu_buf_size_exp => bmu_buf_size_exp_43
+  # DEBUG BEGIN_STMT
+  if (bmu_buf_size_exp_43 != 32)
+    goto <bb 8>; [96.97%]
+  else
+    goto <bb 12>; [3.03%]
+
+  <bb 12> [local count: 89800787]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _26 = cfg_48(D)->max_buf_cnt;
+  _27 = _26 * 75;
+  _28 = base_va_49(D) + 24;
+  _29 = (volatile uint32_t *) _28;
+  _30 = _27 / 100;
+  *_29 ={v} _30;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _31 = cfg_48(D)->max_buf_cnt;
+  _32 = _31 * 5;
+  _33 = base_va_49(D) + 80;
+  _34 = (volatile uint32_t *) _33;
+  _35 = _32 / 100;
+  *_34 ={v} _35;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _36 = cfg_48(D)->max_buf_cnt;
+  _37 = _36 * 10;
+  _38 = base_va_49(D) + 84;
+  _39 = (volatile uint32_t *) _38;
+  _40 = _37 / 100;
+  *_39 ={v} _40;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _41 = cfg_48(D)->int_mem_loc_cnt;
+  pfe_bmu_cfg_clear_internal_memory (base_va_49(D), _41);
+  # DEBUG BEGIN_STMT
+  _42 = cfg_48(D)->buf_mem_loc_cnt;
+  pfe_bmu_cfg_clear_buf_cnt_memory (base_va_49(D), _42);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_11 ={v} 4294967294;
+
+  <bb 13> [local count: 99778652]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_fini (pfe_bmu_cfg_fini, funcdef_no=17, decl_uid=9513, cgraph_uid=18, symbol_order=19)
+
+Modification phase of node pfe_bmu_cfg_fini/19
+pfe_bmu_cfg_fini (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  unsigned int _5;
+  volatile uint32_t * _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_7(D) + 4;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_7(D) + 36;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = base_va_7(D) + 32;
+  _6 = (volatile uint32_t *) _5;
+  *_6 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_reset (pfe_bmu_cfg_reset, funcdef_no=18, decl_uid=9515, cgraph_uid=19, symbol_order=20)
+
+Modification phase of node pfe_bmu_cfg_reset/20
+pfe_bmu_cfg_reset (addr_t base_va)
+{
+  errno_t ret;
+  uint32_t ii;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 69202660]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_8(D) + 4;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 2;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  ii_11 = ii_5 + 1;
+  # DEBUG ii => ii_11
+  if (ii_11 == 1001)
+    goto <bb 6>; [1.00%]
+  else
+    goto <bb 4>; [99.00%]
+
+  <bb 4> [local count: 1004539164]:
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+
+  <bb 5> [local count: 1073741824]:
+  # ii_5 = PHI <0(2), ii_11(4)>
+  # DEBUG ii => ii_5
+  # DEBUG BEGIN_STMT
+  _3 ={v} *_2;
+  _4 = _3 & 2;
+  if (_4 != 0)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 6> [local count: 69202661]:
+  # ret_6 = PHI <110(3), 0(5)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  return ret_6;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_enable (pfe_bmu_cfg_enable, funcdef_no=19, decl_uid=9517, cgraph_uid=20, symbol_order=21)
+
+Modification phase of node pfe_bmu_cfg_enable/21
+pfe_bmu_cfg_enable (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 4;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 1;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_disable (pfe_bmu_cfg_disable, funcdef_no=20, decl_uid=9519, cgraph_uid=21, symbol_order=22)
+
+Modification phase of node pfe_bmu_cfg_disable/22
+pfe_bmu_cfg_disable (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 4;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_alloc_buf (pfe_bmu_cfg_alloc_buf, funcdef_no=21, decl_uid=9521, cgraph_uid=22, symbol_order=23)
+
+Modification phase of node pfe_bmu_cfg_alloc_buf/23
+pfe_bmu_cfg_alloc_buf (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  void * _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 48;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  _6 = (void *) _3;
+  return _6;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_free_buf (pfe_bmu_cfg_free_buf, funcdef_no=22, decl_uid=9524, cgraph_uid=23, symbol_order=24)
+
+Modification phase of node pfe_bmu_cfg_free_buf/24
+pfe_bmu_cfg_free_buf (addr_t base_va, addr_t buffer)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 52;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} buffer_5(D);
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_get_stat_value (pfe_bmu_cfg_get_stat_value, funcdef_no=23, decl_uid=9527, cgraph_uid=24, symbol_order=25)
+
+Modification phase of node pfe_bmu_cfg_get_stat_value/25
+pfe_bmu_cfg_get_stat_value (addr_t base_va, uint32_t stat_id)
+{
+  uint32_t stat_value;
+  long unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + stat_id_4(D);
+  _2 = (volatile uint32_t *) _1;
+  stat_value_6 ={v} *_2;
+  # DEBUG stat_value => stat_value_6
+  # DEBUG BEGIN_STMT
+  return stat_value_6;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_get_special_stats (pfe_bmu_cfg_get_special_stats, funcdef_no=24, decl_uid=9530, cgraph_uid=25, symbol_order=26)
+
+Modification phase of node pfe_bmu_cfg_get_special_stats/26
+pfe_bmu_cfg_get_special_stats (addr_t base_va, struct pfe_bmu_stats_special_t * special_stats)
+{
+  uint32_t stat_value;
+  uint32_t stat_value;
+  uint32_t stat_value;
+  uint32_t stat_value;
+  uint32_t stat_value;
+  uint32_t stat_value;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _18;
+  volatile uint32_t * _19;
+  long unsigned int _21;
+  volatile uint32_t * _22;
+  volatile uint32_t * _26;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 0
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _26 = (volatile uint32_t *) base_va_9(D);
+  stat_value_27 ={v} *_26;
+  # DEBUG stat_value => stat_value_27
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _1 = stat_value_27 >> 24;
+  special_stats_10(D)->revision = _1;
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 0
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  stat_value_25 ={v} *_26;
+  # DEBUG stat_value => stat_value_25
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _2 = stat_value_25 >> 16;
+  _3 = _2 & 255;
+  special_stats_10(D)->version = _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 0
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  stat_value_24 ={v} *_26;
+  # DEBUG stat_value => stat_value_24
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _4 = stat_value_24 & 255;
+  special_stats_10(D)->id = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 20
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _21 = base_va_9(D) + 20;
+  _22 = (volatile uint32_t *) _21;
+  stat_value_23 ={v} *_22;
+  # DEBUG stat_value => stat_value_23
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _5 = stat_value_23 >> 16;
+  special_stats_10(D)->free_error_cnt = _5;
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 16
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = base_va_9(D) + 16;
+  _19 = (volatile uint32_t *) _18;
+  stat_value_20 ={v} *_19;
+  # DEBUG stat_value => stat_value_20
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _6 = 1 << stat_value_20;
+  special_stats_10(D)->buff_size = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => base_va_9(D)
+  # DEBUG stat_id => 20
+  # DEBUG INLINE_ENTRY pfe_bmu_cfg_get_stat_value
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  stat_value_17 ={v} *_22;
+  # DEBUG stat_value => stat_value_17
+  # DEBUG BEGIN_STMT
+  # DEBUG base_va => NULL
+  # DEBUG stat_id => NULL
+  # DEBUG stat_value => NULL
+  _7 = stat_value_17 & 65535;
+  special_stats_10(D)->active_buff = _7;
+  return;
+
+}
+
+
+
+;; Function pfe_bmu_cfg_get_err_poll (pfe_bmu_cfg_get_err_poll, funcdef_no=25, decl_uid=9532, cgraph_uid=26, symbol_order=27)
+
+Modification phase of node pfe_bmu_cfg_get_err_poll/27
+pfe_bmu_cfg_get_err_poll (addr_t base_va)
+{
+  uint32_t int_src;
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 32;
+  _2 = (volatile uint32_t *) _1;
+  int_src_6 ={v} *_2;
+  # DEBUG int_src => int_src_6
+  # DEBUG BEGIN_STMT
+  if (int_src_6 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} int_src_6;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return int_src_6;
+
+}
+
+

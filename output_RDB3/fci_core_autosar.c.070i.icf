@@ -1,0 +1,451 @@
+Parsed function:oal_mutex_unlock.part.0
+Parsed function:oal_mutex_lock.part.0
+Parsed function:fci_core_client_get_msg
+Parsed function:fci_core_client_send_broadcast
+Parsed function:fci_core_client_send
+Parsed function:fci_core_send
+Parsed function:fci_core_fini
+Parsed function:fci_core_init
+Parsed function:fci_core_msg_fifo_get
+Parsed function:fci_core_msg_fifo_put
+Dump after hash based groups
+Congruence classes: 11 (unique hash values: 11), with total: 12 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 10 classes
+[2]: 1 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 11 (unique hash values: 11), with total: 12 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 10 classes
+[2]: 1 classes
+
+
+Worklist has been filled with: 6
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 12 (unique hash values: 11), with total: 12 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 12 classes
+
+
+Init called for 0 items (0.00%).
+Dump after full equality comparison of groups
+Congruence classes: 12 (unique hash values: 11), with total: 12 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 12 classes
+
+
+Worklist has been filled with: 7
+Address reference subdivision created: 0 new classes.
+Congruence classes: 12 (unique hash values: 11), with total: 12 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 12 classes
+
+
+
+Item count: 12
+Congruent classes before: 12, after: 12
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+oal_mutex_unlock.part.0 (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _2;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_1(D)];
+  _2 ();
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock.part.0 (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _2;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_1(D)];
+  _2 ();
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+fci_core_client_get_msg (struct fci_msg_t * msg)
+{
+  errno_t ret;
+  struct fci_core_t * core;
+  unsigned char _1;
+  struct fci_msg_mng_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  core_6 = context.core;
+  # DEBUG core => core_6
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _1 = core_6->client.initialized;
+  if (_1 == 1)
+    goto <bb 3>; [32.03%]
+  else
+    goto <bb 4>; [67.97%]
+
+  <bb 3> [local count: 343919506]:
+  # DEBUG BEGIN_STMT
+  _2 = core_6->client.msg_fifo;
+  ret_9 = fci_core_msg_fifo_get (_2, msg_7(D));
+  # DEBUG ret => ret_9
+
+  <bb 4> [local count: 1073741824]:
+  # ret_3 = PHI <2(2), ret_9(3)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+
+fci_core_client_send_broadcast (struct fci_msg_t * msg, struct fci_msg_t * rep)
+{
+  errno_t err;
+  struct fci_core_t * core;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  unsigned char _4;
+  struct fci_msg_mng_t * _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  core_9 = context.core;
+  # DEBUG core => core_9
+  # DEBUG BEGIN_STMT
+  # DEBUG err => 116
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = core_9 == 0B;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 5>; [10.00%]
+  else
+    goto <bb 3>; [90.00%]
+
+  <bb 3> [local count: 966367642]:
+  # DEBUG BEGIN_STMT
+  msg_10(D)->type = 4100;
+  # DEBUG BEGIN_STMT
+  _4 = core_9->client.initialized;
+  if (_4 == 1)
+    goto <bb 4>; [32.03%]
+  else
+    goto <bb 5>; [67.97%]
+
+  <bb 4> [local count: 309527555]:
+  # DEBUG BEGIN_STMT
+  _5 = core_9->client.msg_fifo;
+  err_13 = fci_core_msg_fifo_put (_5, msg_10(D));
+  # DEBUG err => err_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 1073741823]:
+  # err_6 = PHI <22(2), 116(3), err_13(4)>
+  # DEBUG err => err_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return err_6;
+
+}
+
+
+fci_core_client_send (struct fci_core_client_t * client, struct fci_msg_t * msg, struct fci_msg_t * rep)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG err => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+fci_core_send (struct fci_msg_t * msg, struct fci_msg_t * rep)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => context.core
+  # DEBUG core => D#1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] fci_core_send should not be used within MCAL implementation\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_core_autosar.c", 276, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  return 22;
+
+}
+
+
+fci_core_fini ()
+{
+  struct fci_msg_t msg;
+  struct fci_core_t * core;
+  struct fci_msg_mng_t * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  core_4 = context.core;
+  # DEBUG core => core_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&msg, 0, 276);
+  # DEBUG BEGIN_STMT
+  msg.type = 4099;
+  # DEBUG BEGIN_STMT
+  msg.msg_cmd.code = 62211;
+  # DEBUG BEGIN_STMT
+  if (core_4 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  fci_core_client_send_broadcast (&msg, 0B);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = fci_core.client.msg_fifo;
+  autolibc_memset (_1, 0, 2212);
+  # DEBUG BEGIN_STMT
+  fci_core.client.initialized = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG core => 0B
+
+  <bb 4> [local count: 1073741824]:
+  msg ={v} {CLOBBER};
+  return;
+
+}
+
+
+fci_core_init (const char_t * const id)
+{
+  errno_t ret;
+  struct fci_core_t * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = context.core;
+  if (_1 != 0B)
+    goto <bb 3>; [55.68%]
+  else
+    goto <bb 4>; [44.32%]
+
+  <bb 3> [local count: 597859448]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FCI_CORE has already been initialized\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_core_autosar.c", 203, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 475882377]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&fci_core, 0, 8);
+  # DEBUG BEGIN_STMT
+  fci_core.client.msg_fifo = &fci_msg_fifo;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&fci_msg_fifo, 0, 2212);
+  # DEBUG BEGIN_STMT
+  fci_core.client.initialized = 1;
+  # DEBUG BEGIN_STMT
+  context.core = &fci_core;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_2 = PHI <22(3), 0(4)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  return ret_2;
+
+}
+
+
+fci_core_msg_fifo_get (struct fci_msg_mng_t * msg_fifo, struct fci_msg_t * msg)
+{
+  errno_t ret;
+  unsigned char _1;
+  unsigned char _2;
+  int _3;
+  struct fci_msg_t * _4;
+  unsigned char _5;
+  unsigned char _6;
+  unsigned char _7;
+  unsigned char _8;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 96
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (96);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _1 = msg_fifo_12(D)->len;
+  if (_1 != 0)
+    goto <bb 3>; [47.77%]
+  else
+    goto <bb 6>; [52.23%]
+
+  <bb 3> [local count: 512926468]:
+  # DEBUG BEGIN_STMT
+  _2 = msg_fifo_12(D)->read;
+  _3 = (int) _2;
+  _4 = &msg_fifo_12(D)->items[_3];
+  autolibc_memcpy (msg_13(D), _4, 276);
+  # DEBUG BEGIN_STMT
+  _5 = msg_fifo_12(D)->len;
+  _6 = _5 + 255;
+  msg_fifo_12(D)->len = _6;
+  # DEBUG BEGIN_STMT
+  _7 = msg_fifo_12(D)->read;
+  _8 = _7 + 1;
+  msg_fifo_12(D)->read = _8;
+  # DEBUG BEGIN_STMT
+  if (_8 > 7)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 4> [local count: 256463234]:
+  # DEBUG BEGIN_STMT
+  msg_fifo_12(D)->read = 0;
+
+  <bb 6> [local count: 1073741824]:
+  # ret_9 = PHI <2(2), 0(4), 0(3)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 96
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (96);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  return ret_9;
+
+}
+
+
+fci_core_msg_fifo_put (struct fci_msg_mng_t * msg_fifo, struct fci_msg_t * msg)
+{
+  errno_t ret;
+  unsigned char _1;
+  unsigned char _2;
+  int _3;
+  struct fci_msg_t * _4;
+  unsigned char _5;
+  unsigned char _6;
+  unsigned char _7;
+  unsigned char _8;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 75
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 95
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (95);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _1 = msg_fifo_12(D)->len;
+  if (_1 <= 7)
+    goto <bb 3>; [47.77%]
+  else
+    goto <bb 6>; [52.23%]
+
+  <bb 3> [local count: 512926468]:
+  # DEBUG BEGIN_STMT
+  _2 = msg_fifo_12(D)->write;
+  _3 = (int) _2;
+  _4 = &msg_fifo_12(D)->items[_3];
+  autolibc_memcpy (_4, msg_13(D), 276);
+  # DEBUG BEGIN_STMT
+  _5 = msg_fifo_12(D)->len;
+  _6 = _5 + 1;
+  msg_fifo_12(D)->len = _6;
+  # DEBUG BEGIN_STMT
+  _7 = msg_fifo_12(D)->write;
+  _8 = _7 + 1;
+  msg_fifo_12(D)->write = _8;
+  # DEBUG BEGIN_STMT
+  if (_8 > 7)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 4> [local count: 256463234]:
+  # DEBUG BEGIN_STMT
+  msg_fifo_12(D)->write = 0;
+
+  <bb 6> [local count: 1073741824]:
+  # ret_9 = PHI <75(2), 0(4), 0(3)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 95
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (95);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  return ret_9;
+
+}
+
+

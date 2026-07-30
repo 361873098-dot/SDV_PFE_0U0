@@ -1,0 +1,1507 @@
+Parsed function:pfe_if_db_get_first.part.0
+Parsed function:pfe_if_db_match_criterion.isra.0
+Parsed function:oal_mutex_unlock.part.0
+Parsed function:oal_mutex_lock.part.0
+Parsed function:pfe_if_db_unlock
+Parsed function:pfe_if_db_lock_owned
+Parsed function:pfe_if_db_lock
+Parsed function:pfe_log_if_db_drop_all
+Parsed function:pfe_if_db_get_next
+Parsed function:pfe_if_db_get_single
+Parsed function:pfe_if_db_get_first
+Parsed function:pfe_if_db_remove
+Parsed function:pfe_if_db_add
+Parsed function:pfe_if_db_entry_get_log_if
+Parsed function:pfe_if_db_entry_get_phy_if
+Parsed function:pfe_if_db_destroy
+Parsed function:pfe_if_db_create
+Parsed function:pfe_if_db_get_single_entry
+Parsed function:pfe_if_db_check_precondition
+Dump after hash based groups
+Congruence classes: 20 (unique hash values: 20), with total: 22 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 18 classes
+[2]: 2 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 21 (unique hash values: 20), with total: 22 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 20 classes
+[2]: 1 classes
+
+
+Worklist has been filled with: 9
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 22 (unique hash values: 20), with total: 22 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 22 classes
+
+
+Init called for 0 items (0.00%).
+Dump after full equality comparison of groups
+Congruence classes: 22 (unique hash values: 20), with total: 22 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 22 classes
+
+
+Worklist has been filled with: 10
+Address reference subdivision created: 0 new classes.
+Congruence classes: 22 (unique hash values: 20), with total: 22 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 22 classes
+
+
+
+Item count: 22
+Congruent classes before: 22, after: 22
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+pfe_if_db_get_first.part.0 (struct pfe_if_db_t * db, pfe_if_db_get_criterion_t crit, void * arg, struct pfe_if_db_entry_t * * db_entry)
+{
+  errno_t ret;
+  const addr_t owner;
+  errno_t D.10603;
+  errno_t D.10602;
+  uint32_t session_id;
+  int arg.7_4;
+  unsigned char _5;
+  unsigned int arg.8_6;
+  <unnamed type> _7;
+  uint32_t * _8;
+  struct pfe_if_db_entry_t * _9;
+
+  <bb 14> [local count: 1073527120]:
+  # DEBUG D#7 s=> session_id
+  # DEBUG session_id => D#7
+
+  <bb 2> [local count: 1073527120]:
+  # DEBUG BEGIN_STMT
+  db_2(D)->cur_crit = crit_1(D);
+  # DEBUG BEGIN_STMT
+  switch (crit_1(D)) <default: <L4> [16.67%], case 0: <L5> [16.67%], case 1: <L0> [16.67%], case 2: <L1> [16.67%], case 3: <L2> [16.67%], case 4: <L3> [16.67%]>
+
+  <bb 3> [local count: 178956971]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  arg.7_4 = (int) arg_3(D);
+  _5 = (unsigned char) arg.7_4;
+  db_2(D)->cur_crit_arg.if_id = _5;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 4> [local count: 178956971]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#4 => &db_2(D)->cur_crit_arg
+  # DEBUG D#1 => D#4
+  # DEBUG D#2 => db_entry_10(D)
+  # DEBUG arg => arg_3(D)
+  # DEBUG crit => crit_1(D)
+  # DEBUG INLINE_ENTRY pfe_if_db_assign_arg
+  # DEBUG argument => D#1
+  # DEBUG db_entry => D#2
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (crit_1(D) == 2)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 60845370]:
+  # DEBUG BEGIN_STMT
+  MEM[(void * *)db_2(D) + 12B] = arg_3(D);
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  MEM[(void * *)db_2(D) + 12B] = arg_3(D);
+  goto <bb 12>; [100.00%]
+
+  <bb 7> [local count: 178956971]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#5 => &db_2(D)->cur_crit_arg
+  # DEBUG D#1 => D#5
+  # DEBUG D#2 => db_entry_10(D)
+  # DEBUG arg => arg_3(D)
+  # DEBUG crit => crit_1(D)
+  # DEBUG INLINE_ENTRY pfe_if_db_assign_arg
+  # DEBUG argument => D#1
+  # DEBUG db_entry => D#2
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (crit_1(D) == 2)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 9>; [66.00%]
+
+  <bb 8> [local count: 60845370]:
+  # DEBUG BEGIN_STMT
+  MEM[(void * *)db_2(D) + 12B] = arg_3(D);
+  goto <bb 12>; [100.00%]
+
+  <bb 9> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  MEM[(void * *)db_2(D) + 12B] = arg_3(D);
+  goto <bb 12>; [100.00%]
+
+  <bb 10> [local count: 178956971]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  arg.8_6 = (unsigned int) arg_3(D);
+  # DEBUG owner => arg.8_6 & 255
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = (<unnamed type>) arg.8_6;
+  db_2(D)->cur_crit_arg.owner = _7;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 178956971]:
+<L4>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_if_db.c", 724, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 115
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 115
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [100.00%]
+
+  <bb 12> [local count: 894784854]:
+<L5>:
+  # DEBUG arg => NULL
+  # DEBUG crit => NULL
+  # DEBUG arg => NULL
+  # DEBUG crit => NULL
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  db_2(D)->next_item = 0;
+  # DEBUG BEGIN_STMT
+  _8 = &db_2(D)->next_item;
+  _9 = pfe_if_db_get_single_entry (db_2(D), crit_1(D), db_2(D)->cur_crit_arg, _8);
+  *db_entry_10(D) = _9;
+
+  <bb 13> [local count: 1073741824]:
+  # ret_11 = PHI <115(11), 0(12)>
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  return ret_11;
+
+}
+
+
+pfe_if_db_match_criterion.isra.0 (const pfe_if_db_type_t * ISRA.18, pfe_if_db_get_criterion_t crit, const union crit_arg_t * arg, const struct pfe_if_db_entry_t * entry)
+{
+  bool_t match;
+  <unnamed type> _3;
+  unsigned char _5;
+  struct pfe_phy_if_t * _7;
+  <unnamed type> _8;
+  _Bool _9;
+  unsigned char _11;
+  struct pfe_log_if_t * _12;
+  unsigned char _13;
+  _Bool _14;
+  void * _16;
+  void * _17;
+  _Bool _18;
+  <unnamed type> _20;
+  char_t * _21;
+  struct pfe_phy_if_t * _22;
+  const char_t * _23;
+  long int _24;
+  _Bool _25;
+  char_t * _27;
+  struct pfe_log_if_t * _28;
+  const char_t * _29;
+  long int _30;
+  _Bool _31;
+  <unnamed type> _33;
+  <unnamed type> _34;
+  _Bool _35;
+
+  <bb 13> [local count: 1073527120]:
+  # DEBUG db s=> db
+
+  <bb 2> [local count: 1073527120]:
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 0
+  # DEBUG BEGIN_STMT
+  switch (crit_1(D)) <default: <L4> [16.67%], case 0: <L5> [16.67%], case 1: <L0> [16.67%], case 2: <L1> [16.67%], case 3: <L2> [16.67%], case 4: <L3> [16.67%]>
+
+  <bb 3> [local count: 178956971]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  _3 = *ISRA.18_44(D);
+  if (_3 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 89478485]:
+  # DEBUG BEGIN_STMT
+  _5 = arg_4(D)->if_id;
+  _7 = entry_6(D)->info.phy_if;
+  _8 = pfe_phy_if_get_id (_7);
+  _9 = _5 == _8;
+  match_10 = (bool_t) _9;
+  # DEBUG match => match_10
+  goto <bb 12>; [100.00%]
+
+  <bb 5> [local count: 89478485]:
+  # DEBUG BEGIN_STMT
+  _11 = arg_4(D)->if_id;
+  _12 = entry_6(D)->info.log_if;
+  _13 = pfe_log_if_get_id (_12);
+  _14 = _11 == _13;
+  match_15 = (bool_t) _14;
+  # DEBUG match => match_15
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 178956971]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  _16 = arg_4(D)->iface;
+  _17 = entry_6(D)->info.iface;
+  _18 = _16 == _17;
+  match_19 = (bool_t) _18;
+  # DEBUG match => match_19
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 7> [local count: 178956971]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  _20 = *ISRA.18_44(D);
+  if (_20 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 89478485]:
+  # DEBUG BEGIN_STMT
+  _21 = arg_4(D)->name;
+  _22 = entry_6(D)->info.phy_if;
+  _23 = pfe_phy_if_get_name (_22);
+  _24 = autolibc_strcmp (_21, _23);
+  _25 = _24 == 0;
+  match_26 = (bool_t) _25;
+  # DEBUG match => match_26
+  goto <bb 12>; [100.00%]
+
+  <bb 9> [local count: 89478485]:
+  # DEBUG BEGIN_STMT
+  _27 = arg_4(D)->name;
+  _28 = entry_6(D)->info.log_if;
+  _29 = pfe_log_if_get_name (_28);
+  _30 = autolibc_strcmp (_27, _29);
+  _31 = _30 == 0;
+  match_32 = (bool_t) _31;
+  # DEBUG match => match_32
+  goto <bb 12>; [100.00%]
+
+  <bb 10> [local count: 178956971]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  _33 = arg_4(D)->owner;
+  _34 = entry_6(D)->owner;
+  _35 = _33 == _34;
+  match_36 = (bool_t) _35;
+  # DEBUG match => match_36
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 178956971]:
+<L4>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_if_db.c", 283, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 1073741824]:
+  # match_37 = PHI <1(2), match_10(4), match_15(5), match_19(6), match_26(8), match_32(9), match_36(10), 0(11)>
+<L5>:
+  # DEBUG match => match_37
+  # DEBUG BEGIN_STMT
+  return match_37;
+
+}
+
+
+oal_mutex_unlock.part.0 (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _2;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_1(D)];
+  _2 ();
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock.part.0 (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _2;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_1(D)];
+  _2 ();
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_if_db_unlock (uint32_t session_id)
+{
+  errno_t ret;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 120
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 90
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (90);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _1 = if_db_context.is_locked;
+  if (_1 == 1)
+    goto <bb 3>; [48.89%]
+  else
+    goto <bb 5>; [51.11%]
+
+  <bb 3> [local count: 524952378]:
+  _2 = if_db_context.session_id;
+  if (_2 == session_id_8(D))
+    goto <bb 4>; [48.89%]
+  else
+    goto <bb 5>; [51.11%]
+
+  <bb 4> [local count: 256649217]:
+  # DEBUG BEGIN_STMT
+  _3 = ~_2;
+  _4 = _3 << 4;
+  if_db_context.session_id = _4;
+  # DEBUG BEGIN_STMT
+  if_db_context.is_locked = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_5 = PHI <120(2), 120(3), 0(4)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 90
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (90);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_if_db_lock_owned (uint32_t owner_id)
+{
+  errno_t ret;
+  unsigned char _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 120
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 89
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (89);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _1 = if_db_context.is_locked;
+  if (_1 == 0)
+    goto <bb 3>; [65.00%]
+  else
+    goto <bb 5>; [35.00%]
+
+  <bb 3> [local count: 697932186]:
+  if (owner_id_5(D) <= 15)
+    goto <bb 4>; [65.00%]
+  else
+    goto <bb 5>; [35.00%]
+
+  <bb 4> [local count: 453655921]:
+  # DEBUG BEGIN_STMT
+  if_db_context.session_id = owner_id_5(D);
+  # DEBUG BEGIN_STMT
+  if_db_context.is_locked = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_2 = PHI <120(2), 120(3), 0(4)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 89
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (89);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  return ret_2;
+
+}
+
+
+pfe_if_db_lock (uint32_t * session_id)
+{
+  errno_t ret;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 88
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (88);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _1 = if_db_context.is_locked;
+  if (_1 == 0)
+    goto <bb 3>; [65.00%]
+  else
+    goto <bb 4>; [35.00%]
+
+  <bb 3> [local count: 697932186]:
+  # DEBUG BEGIN_STMT
+  _2 = if_db_context.seed;
+  _3 = _2 + 1;
+  if_db_context.seed = _3;
+  # DEBUG BEGIN_STMT
+  _4 = _3 << 4;
+  if_db_context.session_id = _4;
+  # DEBUG BEGIN_STMT
+  *session_id_10(D) = _4;
+  # DEBUG BEGIN_STMT
+  if_db_context.is_locked = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_5 = PHI <0(3), 120(2)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 88
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (88);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_log_if_db_drop_all (const struct pfe_if_db_t * db, uint32_t session_id)
+{
+  int32_t ii;
+  errno_t ret;
+  int _1;
+  <unnamed type> _2;
+  long unsigned int _3;
+  signed int _4;
+  long unsigned int ii.11_5;
+
+  <bb 2> [local count: 224117410]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_if_db_check_precondition (&if_db_context, session_id_13(D));
+  if (_1 != 0)
+    goto <bb 11>; [35.00%]
+  else
+    goto <bb 3>; [65.00%]
+
+  <bb 3> [local count: 145676316]:
+  # DEBUG BEGIN_STMT
+  _2 = db_15(D)->type;
+  if (_2 == 0)
+    goto <bb 12>; [67.00%]
+  else
+    goto <bb 6>; [33.00%]
+
+  <bb 12> [local count: 97603132]:
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 976138694]:
+  # DEBUG BEGIN_STMT
+  pfe_if_db_phy_ifs[ii_7].info.iface = 0B;
+  # DEBUG BEGIN_STMT
+  ii_20 = ii_7 + -1;
+  # DEBUG ii => ii_20
+
+  <bb 5> [local count: 1073741824]:
+  # ii_7 = PHI <ii_20(4), 9(12)>
+  # DEBUG ii => ii_7
+  # DEBUG BEGIN_STMT
+  if (ii_7 != -1)
+    goto <bb 4>; [90.91%]
+  else
+    goto <bb 11>; [9.09%]
+
+  <bb 6> [local count: 48073184]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 87
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (87);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _3 = pfe_if_db_log_ifs.occupied_items_count;
+  _4 = (signed int) _3;
+  # DEBUG BEGIN_STMT
+  ii_16 = _4 + -1;
+  # DEBUG ii => ii_16
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 388955767]:
+  # DEBUG BEGIN_STMT
+  ii.11_5 = (long unsigned int) ii_8;
+  isa_release_subscript (&pfe_if_db_log_ifs, ii.11_5);
+  # DEBUG BEGIN_STMT
+  ii_18 = ii_8 + -1;
+  # DEBUG ii => ii_18
+
+  <bb 8> [local count: 437028952]:
+  # ii_8 = PHI <ii_16(6), ii_18(7)>
+  # DEBUG ii => ii_8
+  # DEBUG BEGIN_STMT
+  if (ii_8 >= 0)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 48073185]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 87
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (87);
+  # DEBUG BEGIN_STMT
+
+  <bb 11> [local count: 224117411]:
+  # ret_6 = PHI <115(2), 0(9), 0(5)>
+  # DEBUG mutex => NULL
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  return ret_6;
+
+}
+
+
+pfe_if_db_get_next (struct pfe_if_db_t * db, uint32_t session_id, struct pfe_if_db_entry_t * * db_entry)
+{
+  errno_t ret;
+  int _1;
+  <unnamed type> _2;
+  uint32_t * _3;
+  struct pfe_if_db_entry_t * _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_if_db_check_precondition (&if_db_context, session_id_8(D));
+  if (_1 != 0)
+    goto <bb 4>; [52.23%]
+  else
+    goto <bb 3>; [47.77%]
+
+  <bb 3> [local count: 512926469]:
+  # DEBUG BEGIN_STMT
+  _2 = db_9(D)->cur_crit;
+  _3 = &db_9(D)->next_item;
+  _4 = pfe_if_db_get_single_entry (db_9(D), _2, db_9(D)->cur_crit_arg, _3);
+  *db_entry_11(D) = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_5 = PHI <115(2), 0(3)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_if_db_get_single (const struct pfe_if_db_t * db, uint32_t session_id, pfe_if_db_get_criterion_t crit, void * arg, struct pfe_if_db_entry_t * * db_entry)
+{
+  uint32_t iter;
+  errno_t ret;
+  union crit_arg_t argument;
+  int arg.9_1;
+  unsigned char _2;
+  unsigned int arg.10_3;
+  <unnamed type> _4;
+  int _5;
+  struct pfe_if_db_entry_t * _6;
+
+  <bb 2> [local count: 1073527120]:
+  # DEBUG BEGIN_STMT
+  argument = {};
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (crit_11(D)) <default: <L5> [16.67%], case 0: <L21> [16.67%], case 1: <L1> [16.67%], case 2: <L18> [16.67%], case 3: <L19> [16.67%], case 4: <L4> [16.67%]>
+
+  <bb 3> [local count: 178956971]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  arg.9_1 = (int) arg_12(D);
+  _2 = (unsigned char) arg.9_1;
+  argument.if_id = _2;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 4> [local count: 178956971]:
+<L18>:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => &argument
+  # DEBUG D#2 => db_entry_14(D)
+  # DEBUG arg => arg_12(D)
+  # DEBUG crit => crit_11(D)
+  # DEBUG INLINE_ENTRY pfe_if_db_assign_arg
+  # DEBUG argument => D#1
+  # DEBUG db_entry => D#2
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (crit_11(D) == 2)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 60845370]:
+  # DEBUG BEGIN_STMT
+  MEM[(void * *)&argument] = arg_12(D);
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  MEM[(void * *)&argument] = arg_12(D);
+  goto <bb 12>; [100.00%]
+
+  <bb 7> [local count: 178956971]:
+<L19>:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => &argument
+  # DEBUG D#2 => db_entry_14(D)
+  # DEBUG arg => arg_12(D)
+  # DEBUG crit => crit_11(D)
+  # DEBUG INLINE_ENTRY pfe_if_db_assign_arg
+  # DEBUG argument => D#1
+  # DEBUG db_entry => D#2
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (crit_11(D) == 2)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 9>; [66.00%]
+
+  <bb 8> [local count: 60845370]:
+  # DEBUG BEGIN_STMT
+  MEM[(void * *)&argument] = arg_12(D);
+  goto <bb 12>; [100.00%]
+
+  <bb 9> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  MEM[(void * *)&argument] = arg_12(D);
+  goto <bb 12>; [100.00%]
+
+  <bb 10> [local count: 178956971]:
+<L4>:
+  # DEBUG BEGIN_STMT
+  arg.10_3 = (unsigned int) arg_12(D);
+  # DEBUG owner => arg.10_3 & 255
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = (<unnamed type>) arg.10_3;
+  argument.owner = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 178956971]:
+<L5>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_if_db.c", 808, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 115
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 115
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 12> [local count: 894784854]:
+<L21>:
+  # DEBUG arg => NULL
+  # DEBUG crit => NULL
+  # DEBUG arg => NULL
+  # DEBUG crit => NULL
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  _5 = pfe_if_db_check_precondition (&if_db_context, session_id_18(D));
+  if (_5 != 0)
+    goto <bb 14>; [52.23%]
+  else
+    goto <bb 13>; [47.77%]
+
+  <bb 13> [local count: 427438725]:
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  iter = 0;
+  # DEBUG BEGIN_STMT
+  _6 = pfe_if_db_get_single_entry (db_20(D), crit_11(D), argument, &iter);
+  *db_entry_14(D) = _6;
+
+  <bb 14> [local count: 1073741824]:
+  # ret_7 = PHI <115(11), 115(12), 0(13)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  argument ={v} {CLOBBER};
+  iter ={v} {CLOBBER};
+  return ret_7;
+
+}
+
+
+pfe_if_db_get_first (struct pfe_if_db_t * db, uint32_t session_id, pfe_if_db_get_criterion_t crit, void * arg, struct pfe_if_db_entry_t * * db_entry)
+{
+  errno_t ret;
+  int _1;
+
+  <bb 2> [local count: 1073602255]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = pfe_if_db_check_precondition (&if_db_context, session_id_6(D));
+  if (_1 != 0)
+    goto <bb 4>; [35.00%]
+  else
+    goto <bb 3>; [65.00%]
+
+  <bb 3> [local count: 697841464]:
+  # DEBUG D#6 => session_id_6(D)
+  ret_10 = pfe_if_db_get_first.part.0 (db_7(D), crit_8(D), arg_9(D), db_entry_11(D));
+
+  <bb 4> [local count: 1073741824]:
+  # ret_4 = PHI <115(2), ret_10(3)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  return ret_4;
+
+}
+
+
+pfe_if_db_remove (struct pfe_if_db_t * db, uint32_t session_id, struct pfe_if_db_entry_t * entry)
+{
+  int32_t item_index;
+  errno_t ret;
+  int _1;
+  <unnamed type> _2;
+  long unsigned int _3;
+  long unsigned int item_index.6_4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  _1 = pfe_if_db_check_precondition (&if_db_context, session_id_11(D));
+  if (_1 != 0)
+    goto <bb 12>; [35.00%]
+  else
+    goto <bb 3>; [65.00%]
+
+  <bb 3> [local count: 697932186]:
+  # DEBUG BEGIN_STMT
+  _2 = db_13(D)->type;
+  if (_2 == 0)
+    goto <bb 4>; [67.00%]
+  else
+    goto <bb 7>; [33.00%]
+
+  <bb 4> [local count: 467614564]:
+  # DEBUG BEGIN_STMT
+  if (entry_14(D) >= &pfe_if_db_phy_ifs[0])
+    goto <bb 5>; [65.00%]
+  else
+    goto <bb 12>; [35.00%]
+
+  <bb 5> [local count: 303949467]:
+  if (entry_14(D) < &pfe_if_db_phy_ifs[10])
+    goto <bb 6>; [65.00%]
+  else
+    goto <bb 12>; [35.00%]
+
+  <bb 6> [local count: 197567153]:
+  # DEBUG BEGIN_STMT
+  entry_14(D)->info.iface = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 12>; [100.00%]
+
+  <bb 7> [local count: 230317621]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 86
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (86);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  item_index_16 = isa_release (&pfe_if_db_log_ifs, entry_14(D));
+  # DEBUG item_index => item_index_16
+  # DEBUG BEGIN_STMT
+  if (item_index_16 != -1)
+    goto <bb 8>; [66.00%]
+  else
+    goto <bb 11>; [34.00%]
+
+  <bb 8> [local count: 152009630]:
+  # DEBUG BEGIN_STMT
+  _3 = db_13(D)->next_item;
+  item_index.6_4 = (long unsigned int) item_index_16;
+  if (_3 > item_index.6_4)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 9> [local count: 76004815]:
+  # DEBUG BEGIN_STMT
+  _5 = _3 + 4294967295;
+  db_13(D)->next_item = _5;
+
+  <bb 11> [local count: 230317621]:
+  # ret_6 = PHI <0(9), 2(7), 0(8)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 86
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (86);
+
+  <bb 12> [local count: 1073741824]:
+  # ret_7 = PHI <115(2), 2(5), ret_6(11), 0(6), 2(4)>
+  # DEBUG mutex => NULL
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  return ret_7;
+
+}
+
+
+pfe_if_db_add (struct pfe_if_db_t * db, uint32_t session_id, void * iface, pfe_ct_phy_if_id_t owner)
+{
+  pfe_ct_phy_if_id_t id;
+  errno_t ret;
+  struct pfe_if_db_entry_t * new_entry;
+  <unnamed type> _1;
+  int _2;
+  void * _3;
+  struct pfe_if_db_entry_t * _4;
+  int _5;
+  struct pfe_if_db_entry_t * new_entry.0_6;
+  void * _7;
+  struct pfe_if_db_entry_t * new_entry.3_8;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  new_entry = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = db_16(D)->type;
+  if (_1 == 0)
+    goto <bb 3>; [67.00%]
+  else
+    goto <bb 5>; [33.00%]
+
+  <bb 3> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  id_25 = pfe_phy_if_get_id (iface_18(D));
+  # DEBUG id => id_25
+  # DEBUG BEGIN_STMT
+  _2 = (int) id_25;
+  _3 = pfe_if_db_phy_ifs[_2].info.iface;
+  if (_3 == 0B)
+    goto <bb 4>; [44.32%]
+  else
+    goto <bb 11>; [55.68%]
+
+  <bb 4> [local count: 318841192]:
+  # DEBUG BEGIN_STMT
+  _4 = &pfe_if_db_phy_ifs[_2];
+  new_entry = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 11>; [100.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  ret_20 = pfe_if_db_get_first (db_16(D), session_id_17(D), 2, iface_18(D), &new_entry);
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  _5 = pfe_if_db_check_precondition (&if_db_context, session_id_17(D));
+  if (_5 != 0)
+    goto <bb 11>; [35.00%]
+  else
+    goto <bb 6>; [65.00%]
+
+  <bb 6> [local count: 230317621]:
+  # DEBUG BEGIN_STMT
+  new_entry.0_6 = new_entry;
+  if (new_entry.0_6 == 0B)
+    goto <bb 7>; [44.32%]
+  else
+    goto <bb 11>; [55.68%]
+
+  <bb 7> [local count: 102076769]:
+  if (ret_20 == 0)
+    goto <bb 8>; [47.77%]
+  else
+    goto <bb 11>; [52.23%]
+
+  <bb 8> [local count: 48762073]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 85
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (85);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _7 = isa_reserve (&pfe_if_db_log_ifs);
+  new_entry = _7;
+  # DEBUG BEGIN_STMT
+  if (_7 == 0B)
+    goto <bb 10>; [46.53%]
+  else
+    goto <bb 9>; [53.47%]
+
+  <bb 9> [local count: 26073080]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (_7, 0, 8);
+
+  <bb 10> [local count: 48762073]:
+  # ret_9 = PHI <11(8), 0(9)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 85
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (85);
+
+  <bb 11> [local count: 1073741824]:
+  # ret_10 = PHI <115(3), 115(5), ret_9(10), 115(7), 0(4), 115(6)>
+  # DEBUG mutex => NULL
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  new_entry.3_8 = new_entry;
+  if (new_entry.3_8 != 0B)
+    goto <bb 12>; [70.00%]
+  else
+    goto <bb 13>; [30.00%]
+
+  <bb 12> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  new_entry.3_8->info.iface = iface_18(D);
+  # DEBUG BEGIN_STMT
+  new_entry.3_8->owner = owner_28(D);
+
+  <bb 13> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  new_entry ={v} {CLOBBER};
+  return ret_10;
+
+}
+
+
+__attribute__((pure))
+pfe_if_db_entry_get_log_if (const struct pfe_if_db_entry_t * entry)
+{
+  struct pfe_log_if_t * log_if_entry;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (entry_2(D) != 0B)
+    goto <bb 3>; [85.10%]
+  else
+    goto <bb 4>; [14.90%]
+
+  <bb 3> [local count: 913754293]:
+  # DEBUG BEGIN_STMT
+  log_if_entry_4 = entry_2(D)->info.log_if;
+  # DEBUG log_if_entry => log_if_entry_4
+
+  <bb 4> [local count: 1073741824]:
+  # log_if_entry_1 = PHI <log_if_entry_4(3), 0B(2)>
+  # DEBUG log_if_entry => log_if_entry_1
+  # DEBUG BEGIN_STMT
+  return log_if_entry_1;
+
+}
+
+
+__attribute__((pure))
+pfe_if_db_entry_get_phy_if (const struct pfe_if_db_entry_t * entry)
+{
+  struct pfe_phy_if_t * phy_if_entry;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (entry_2(D) != 0B)
+    goto <bb 3>; [85.10%]
+  else
+    goto <bb 4>; [14.90%]
+
+  <bb 3> [local count: 913754293]:
+  # DEBUG BEGIN_STMT
+  phy_if_entry_4 = entry_2(D)->info.phy_if;
+  # DEBUG phy_if_entry => phy_if_entry_4
+
+  <bb 4> [local count: 1073741824]:
+  # phy_if_entry_1 = PHI <phy_if_entry_4(3), 0B(2)>
+  # DEBUG phy_if_entry => phy_if_entry_1
+  # DEBUG BEGIN_STMT
+  return phy_if_entry_1;
+
+}
+
+
+pfe_if_db_destroy (const struct pfe_if_db_t * db)
+{
+  <unnamed type> _1;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 84
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (84);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _1 = db_9(D)->type;
+  if (_1 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_if_db_phy_ifs, 0, 80);
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  isa_init (&pfe_if_db_log_ifs, &pfe_if_db_log_ifs_isa_def);
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = if_db_context.ref_cnt;
+  if (_2 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _3 = _2 + 255;
+  if_db_context.ref_cnt = _3;
+
+  <bb 7> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 84
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (84);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _4 = if_db_context.ref_cnt;
+  if (_4 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  if_db_context.is_locked = 1;
+
+  <bb 9> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_if_db_create (pfe_if_db_type_t type)
+{
+  struct pfe_if_db_t * db;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  unsigned char _4;
+  unsigned char _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = type_10(D) > 1;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [10.00%]
+  else
+    goto <bb 4>; [90.00%]
+
+  <bb 3> [local count: 107374182]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unrecognized DB type\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_if_db.c", 370, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG db => 0B
+  goto <bb 10>; [100.00%]
+
+  <bb 4> [local count: 966367642]:
+  # DEBUG BEGIN_STMT
+  db_11 = &xxx_if_db_instance[type_10(D)];
+  # DEBUG db => db_11
+  # DEBUG BEGIN_STMT
+  autolibc_memset (db_11, 0, 16);
+  # DEBUG BEGIN_STMT
+  MEM[(struct pfe_if_db_t *)&xxx_if_db_instance][type_10(D)].next_item = 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct pfe_if_db_t *)&xxx_if_db_instance][type_10(D)].type = type_10(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 83
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (83);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  if (type_10(D) == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 483183821]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_if_db_phy_ifs, 0, 80);
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 483183821]:
+  # DEBUG BEGIN_STMT
+  isa_init (&pfe_if_db_log_ifs, &pfe_if_db_log_ifs_isa_def);
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_if_db_log_ifs_pool, 0, 2048);
+
+  <bb 7> [local count: 966367642]:
+  # DEBUG BEGIN_STMT
+  _4 = if_db_context.ref_cnt;
+  if (_4 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 483183821]:
+  # DEBUG BEGIN_STMT
+  if_db_context.is_locked = 0;
+  # DEBUG BEGIN_STMT
+  if_db_context.session_id = 0;
+  # DEBUG BEGIN_STMT
+  if_db_context.seed = 123;
+
+  <bb 9> [local count: 966367642]:
+  # DEBUG BEGIN_STMT
+  _5 = _4 + 1;
+  if_db_context.ref_cnt = _5;
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 83
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (83);
+
+  <bb 10> [local count: 1073741824]:
+  # db_6 = PHI <0B(3), db_11(9)>
+  # DEBUG mutex => NULL
+  # DEBUG db => db_6
+  # DEBUG BEGIN_STMT
+  return db_6;
+
+}
+
+
+pfe_if_db_get_single_entry (const struct pfe_if_db_t * db, pfe_if_db_get_criterion_t crit, union crit_arg_t argument, uint32_t * next_iter)
+{
+  uint32_t ii;
+  struct pfe_if_db_entry_t * entry;
+  bool_t match;
+  <unnamed type> _1;
+  void * _2;
+  unsigned char _3;
+  unsigned char _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 177792392]:
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_22 = *next_iter_21(D);
+  # DEBUG ii => ii_22
+  # DEBUG BEGIN_STMT
+  _1 = db_23(D)->type;
+  if (_1 == 0)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 17>; [50.00%]
+
+  <bb 17> [local count: 88896196]:
+  goto <bb 12>; [100.00%]
+
+  <bb 16> [local count: 88896196]:
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  entry_32 = &pfe_if_db_phy_ifs[ii_11];
+  # DEBUG entry => entry_32
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct pfe_if_db_entry_t *)&pfe_if_db_phy_ifs][ii_11].info.iface;
+  if (_2 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 6>; [46.53%]
+
+  <bb 4> [local count: 542552617]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#3 => db_23(D)
+  _3 = pfe_if_db_match_criterion.isra.0 (db_23(D), crit_27(D), &argument, entry_32);
+  if (_3 == 1)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 6>; [94.50%]
+
+  <bb 5> [local count: 29840394]:
+  # ii_19 = PHI <ii_11(4)>
+  # entry_38 = PHI <entry_32(4)>
+  # DEBUG BEGIN_STMT
+  ii_34 = ii_19 + 1;
+  # DEBUG ii => ii_34
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 1
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [100.00%]
+
+  <bb 6> [local count: 984845630]:
+  # DEBUG BEGIN_STMT
+  ii_36 = ii_11 + 1;
+  # DEBUG ii => ii_36
+
+  <bb 7> [local count: 1073741824]:
+  # entry_7 = PHI <entry_32(6), entry_24(D)(16)>
+  # ii_11 = PHI <ii_36(6), ii_22(16)>
+  # DEBUG ii => ii_11
+  # DEBUG entry => entry_7
+  # DEBUG BEGIN_STMT
+  if (ii_11 <= 9)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 13>; [5.50%]
+
+  <bb 8> [local count: 1014686024]:
+  # DEBUG BEGIN_STMT
+  entry_26 = isa_item (&pfe_if_db_log_ifs, ii_12);
+  # DEBUG entry => entry_26
+  # DEBUG BEGIN_STMT
+  if (entry_26 != 0B)
+    goto <bb 9>; [53.47%]
+  else
+    goto <bb 11>; [46.53%]
+
+  <bb 9> [local count: 542552617]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#3 => db_23(D)
+  _4 = pfe_if_db_match_criterion.isra.0 (db_23(D), crit_27(D), &argument, entry_26);
+  if (_4 == 1)
+    goto <bb 10>; [5.50%]
+  else
+    goto <bb 11>; [94.50%]
+
+  <bb 10> [local count: 29840394]:
+  # ii_30 = PHI <ii_12(9)>
+  # entry_35 = PHI <entry_26(9)>
+  # DEBUG BEGIN_STMT
+  ii_29 = ii_30 + 1;
+  # DEBUG ii => ii_29
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 1
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [100.00%]
+
+  <bb 11> [local count: 984845630]:
+  # DEBUG BEGIN_STMT
+  ii_31 = ii_12 + 1;
+  # DEBUG ii => ii_31
+
+  <bb 12> [local count: 1073741824]:
+  # entry_8 = PHI <entry_26(11), entry_24(D)(17)>
+  # ii_12 = PHI <ii_31(11), ii_22(17)>
+  # DEBUG ii => ii_12
+  # DEBUG entry => entry_8
+  # DEBUG BEGIN_STMT
+  _5 = pfe_if_db_log_ifs.occupied_items_count;
+  if (_5 > ii_12)
+    goto <bb 8>; [94.50%]
+  else
+    goto <bb 13>; [5.50%]
+
+  <bb 13> [local count: 177792389]:
+  # match_6 = PHI <0(7), 1(10), 0(12), 1(5)>
+  # entry_9 = PHI <entry_7(7), entry_35(10), entry_8(12), entry_38(5)>
+  # ii_13 = PHI <ii_11(7), ii_29(10), ii_12(12), ii_34(5)>
+  # DEBUG ii => ii_13
+  # DEBUG entry => entry_9
+  # DEBUG match => match_6
+  # DEBUG BEGIN_STMT
+  *next_iter_21(D) = ii_13;
+  # DEBUG BEGIN_STMT
+  if (match_6 == 0)
+    goto <bb 14>; [29.00%]
+  else
+    goto <bb 15>; [71.00%]
+
+  <bb 14> [local count: 51559793]:
+  # DEBUG BEGIN_STMT
+  # DEBUG entry => 0B
+
+  <bb 15> [local count: 177792389]:
+  # entry_10 = PHI <entry_9(13), 0B(14)>
+  # DEBUG entry => entry_10
+  # DEBUG BEGIN_STMT
+  return entry_10;
+
+}
+
+
+pfe_if_db_check_precondition (const struct if_db_context_t * pr_if_db_context, uint32_t session_id)
+{
+  errno_t ret;
+  unsigned char _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pr_if_db_context_5(D)->is_locked;
+  if (_1 == 0)
+    goto <bb 5>; [35.00%]
+  else
+    goto <bb 3>; [65.00%]
+
+  <bb 3> [local count: 697932186]:
+  # DEBUG BEGIN_STMT
+  _2 = pr_if_db_context_5(D)->session_id;
+  if (_2 != session_id_6(D))
+    goto <bb 5>; [51.11%]
+  else
+    goto <bb 4>; [48.89%]
+
+  <bb 4> [local count: 341219046]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_3 = PHI <115(2), 115(3), 0(4)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+

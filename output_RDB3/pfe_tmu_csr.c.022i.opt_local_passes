@@ -1,0 +1,4678 @@
+pfe_tmu_cfg_get_queue_stats (addr_t base_va, uint32_t phy_id, uint32_t queue_id, struct pfe_tmu_queue_stats * queue_stats)
+{
+  errno_t ret;
+  uint8_t prob;
+  uint8_t zone;
+  uint32_t reg;
+  <unnamed type> _1;
+  unsigned char _2;
+  int _3;
+  <unnamed type> _4;
+  unsigned char _5;
+  int _6;
+  <unnamed type> _7;
+  unsigned char _8;
+  int _9;
+  <unnamed type> _10;
+  unsigned char _11;
+  unsigned char _12;
+  unsigned char _13;
+  int _14;
+  long unsigned int reg.38_15;
+  long unsigned int _16;
+  long unsigned int reg.39_17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int reg.40_20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int reg.41_23;
+  long unsigned int _24;
+  long unsigned int _25;
+  <unnamed type> _26;
+  unsigned char _27;
+  int _28;
+  int _29;
+  int _30;
+  unsigned char prob.42_31;
+  unsigned char zone.43_32;
+  long unsigned int iftmp.35_35;
+  long unsigned int iftmp.36_36;
+  long unsigned int iftmp.37_37;
+  long unsigned int iftmp.35_50;
+  long unsigned int iftmp.35_51;
+  long unsigned int iftmp.36_55;
+  long unsigned int iftmp.36_56;
+  long unsigned int iftmp.37_59;
+  long unsigned int iftmp.37_60;
+  errno_t _81;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_42 = 1;
+  # DEBUG ret => ret_42
+  # DEBUG BEGIN_STMT
+  reg = 0;
+  # DEBUG BEGIN_STMT
+  queue_id_46 = queue_id_45(D) & 7;
+  # DEBUG queue_id => queue_id_46
+  # DEBUG BEGIN_STMT
+  _1 = phy_if_id_temp[phy_id_47(D)];
+  _2 = (unsigned char) queue_id_46;
+  _3 = pfe_tmu_q_cfg_get_fill_level (base_va_48(D), _1, _2, &reg);
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.35_51 = reg;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.35_50 = 4294967295;
+
+  <bb 5> :
+  # iftmp.35_35 = PHI <iftmp.35_51(3), iftmp.35_50(4)>
+  queue_stats_52(D)->level = iftmp.35_35;
+  # DEBUG BEGIN_STMT
+  _4 = phy_if_id_temp[phy_id_47(D)];
+  _5 = (unsigned char) queue_id_46;
+  _6 = pfe_tmu_q_cfg_get_drop_count (base_va_48(D), _4, _5, &reg);
+  if (_6 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.36_56 = reg;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.36_55 = 4294967295;
+
+  <bb 8> :
+  # iftmp.36_36 = PHI <iftmp.36_56(6), iftmp.36_55(7)>
+  queue_stats_52(D)->drops = iftmp.36_36;
+  # DEBUG BEGIN_STMT
+  _7 = phy_if_id_temp[phy_id_47(D)];
+  _8 = (unsigned char) queue_id_46;
+  _9 = pfe_tmu_q_cfg_get_tx_count (base_va_48(D), _7, _8, &reg);
+  if (_9 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.37_60 = reg;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.37_59 = 4294967295;
+
+  <bb 11> :
+  # iftmp.37_37 = PHI <iftmp.37_60(9), iftmp.37_59(10)>
+  queue_stats_52(D)->tx = iftmp.37_37;
+  # DEBUG BEGIN_STMT
+  _10 = phy_if_id_temp[phy_id_47(D)];
+  _11 = (unsigned char) queue_id_46;
+  _12 = _11 * 8;
+  _13 = _12 + 4;
+  _14 = pfe_tmu_cntx_mem_read (base_va_48(D), _10, _13, &reg);
+  if (_14 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  reg.38_15 = reg;
+  _16 = reg.38_15 & 3;
+  switch (_16) <default: <L19> [INV], case 0: <L10> [INV], case 1: <L11> [INV], case 2: <L12> [INV]>
+
+  <bb 13> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  queue_stats_52(D)->mode = 2;
+  # DEBUG BEGIN_STMT
+  queue_stats_52(D)->max = 0;
+  # DEBUG BEGIN_STMT
+  queue_stats_52(D)->min = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 22>; [INV]
+
+  <bb 14> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  queue_stats_52(D)->mode = 0;
+  # DEBUG BEGIN_STMT
+  reg.39_17 = reg;
+  _18 = reg.39_17 >> 11;
+  _19 = _18 & 511;
+  queue_stats_52(D)->max = _19;
+  # DEBUG BEGIN_STMT
+  queue_stats_52(D)->min = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 22>; [INV]
+
+  <bb 15> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  queue_stats_52(D)->mode = 1;
+  # DEBUG BEGIN_STMT
+  reg.40_20 = reg;
+  _21 = reg.40_20 >> 11;
+  _22 = _21 & 511;
+  queue_stats_52(D)->max = _22;
+  # DEBUG BEGIN_STMT
+  reg.41_23 = reg;
+  _24 = reg.41_23 >> 2;
+  _25 = _24 & 511;
+  queue_stats_52(D)->min = _25;
+  # DEBUG BEGIN_STMT
+  zone_66 = 0;
+  # DEBUG zone => zone_66
+  goto <bb 20>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _26 = phy_if_id_temp[phy_id_47(D)];
+  _27 = (unsigned char) queue_id_46;
+  _28 = pfe_tmu_q_get_wred_probability (base_va_48(D), _26, _27, zone_33, &prob);
+  if (_28 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  _29 = (int) zone_33;
+  queue_stats_52(D)->zprob[_29] = 255;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  _30 = (int) zone_33;
+  prob.42_31 = prob;
+  queue_stats_52(D)->zprob[_30] = prob.42_31;
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  zone.43_32 = zone_33;
+  zone_70 = zone.43_32 + 1;
+  # DEBUG zone => zone_70
+
+  <bb 20> :
+  # zone_33 = PHI <zone_66(15), zone_70(19)>
+  # DEBUG zone => zone_33
+  # DEBUG BEGIN_STMT
+  if (zone_33 <= 31)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+<L19>:
+  # DEBUG BEGIN_STMT
+  queue_stats_52(D)->mode = 3;
+  # DEBUG BEGIN_STMT
+  queue_stats_52(D)->max = 0;
+  # DEBUG BEGIN_STMT
+  queue_stats_52(D)->min = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  ret_80 = 0;
+  # DEBUG ret => ret_80
+
+  <bb 23> :
+  # ret_34 = PHI <ret_42(11), ret_80(22)>
+  # DEBUG ret => ret_34
+  # DEBUG BEGIN_STMT
+  _81 = ret_34;
+  reg ={v} {CLOBBER};
+  prob ={v} {CLOBBER};
+  return _81;
+
+}
+
+
+pfe_tmu_cfg_get_special_stats (addr_t base_va, struct pfe_tmu_stats_special_t * special_stats)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pfe_tmu_cfg_get_stat_value (base_va_10(D), 524288);
+  _2 = _1 >> 24;
+  _3 = _2 & 255;
+  special_stats_12(D)->revision = _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = pfe_tmu_cfg_get_stat_value (base_va_10(D), 524288);
+  _5 = _4 >> 16;
+  _6 = _5 & 255;
+  special_stats_12(D)->version = _6;
+  # DEBUG BEGIN_STMT
+  _7 = pfe_tmu_cfg_get_stat_value (base_va_10(D), 524288);
+  _8 = _7 & 255;
+  special_stats_12(D)->id = _8;
+  return;
+
+}
+
+
+pfe_tmu_cfg_get_stat_value (addr_t base_va, uint32_t stat_id)
+{
+  uint32_t stat_value;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  uint32_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + stat_id_4(D);
+  _2 = (volatile uint32_t *) _1;
+  stat_value_6 ={v} *_2;
+  # DEBUG stat_value => stat_value_6
+  # DEBUG BEGIN_STMT
+  _7 = stat_value_6;
+  return _7;
+
+}
+
+
+pfe_tmu_sch_cfg_get_bound_sched_output (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t sch, uint8_t input)
+{
+  uint8_t sched_id;
+  uint32_t reg;
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  uint8_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_9(D);
+  _2 = _1 * 4096;
+  _3 = cbus_base_va_10(D) + _2;
+  sch_base_va_11 = _3 + 528384;
+  # DEBUG sch_base_va => sch_base_va_11
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (sch_12(D) != 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  sched_id_13 = 255;
+  # DEBUG sched_id => sched_id_13
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = sch_base_va_11 + 84;
+  _5 = (volatile uint32_t *) _4;
+  _6 ={v} *_5;
+  reg_15 = _6 & 255;
+  # DEBUG reg => reg_15
+  # DEBUG BEGIN_STMT
+  _7 = (long unsigned int) input_16(D);
+  if (reg_15 == _7)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  sched_id_18 = 0;
+  # DEBUG sched_id => sched_id_18
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  sched_id_17 = 255;
+  # DEBUG sched_id => sched_id_17
+
+  <bb 7> :
+  # sched_id_8 = PHI <sched_id_18(5), sched_id_17(6)>
+  # DEBUG sched_id => sched_id_8
+  # DEBUG BEGIN_STMT
+  _19 = sched_id_8;
+  return _19;
+
+}
+
+
+pfe_tmu_sch_cfg_bind_sched_output (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t src_sch, uint8_t dst_sch, uint8_t input)
+{
+  errno_t ret;
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  int _7;
+  long unsigned int _8;
+  unsigned int _9;
+  volatile uint32_t * _10;
+  long unsigned int _11;
+  errno_t _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_14(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) src_sch_15(D);
+  _5 = _3 + _4;
+  _6 = _5 * 256;
+  sch_base_va_17 = cbus_base_va_16(D) + _6;
+  # DEBUG sch_base_va => sch_base_va_17
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (src_sch_15(D) != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (dst_sch_18(D) != 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Scheduler 0 output can only be connected to Scheduler 1 input\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 1859, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_27 = 22;
+  # DEBUG ret => ret_27
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _7 = pfe_tmu_sch_cfg_bind_queue (cbus_base_va_16(D), phy_14(D), dst_sch_18(D), input_20(D), 255);
+  if (_7 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_24 = 22;
+  # DEBUG ret => ret_24
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = (long unsigned int) input_20(D);
+  _9 = sch_base_va_17 + 84;
+  _10 = (volatile uint32_t *) _9;
+  _11 = _8 & 15;
+  *_10 ={v} _11;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_23 = 0;
+  # DEBUG ret => ret_23
+
+  <bb 8> :
+  # ret_12 = PHI <ret_27(4), ret_24(6), ret_23(7)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  _28 = ret_12;
+  return _28;
+
+}
+
+
+pfe_tmu_sch_cfg_get_bound_queue (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t sch, uint8_t input)
+{
+  uint8_t queue;
+  uint32_t reg;
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  int _7;
+  unsigned char _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned int _16;
+  long unsigned int _17;
+  uint8_t _32;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_20(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) sch_21(D);
+  _5 = _3 + _4;
+  _6 = _5 * 256;
+  sch_base_va_23 = cbus_base_va_22(D) + _6;
+  # DEBUG sch_base_va => sch_base_va_23
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (input_24(D) > 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = (int) input_24(D);
+  pfe_hm_report (1, 2, 1, "[%s:%d] Scheduler input (%d) out of range\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 1823, _7, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  queue_31 = 255;
+  # DEBUG queue => queue_31
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _8 = input_24(D) / 4;
+  _9 = (long unsigned int) _8;
+  _10 = _9 * 4;
+  _11 = sch_base_va_23 + _10;
+  _12 = _11 + 64;
+  _13 = (volatile uint32_t *) _12;
+  reg_26 ={v} *_13;
+  # DEBUG reg => reg_26
+  # DEBUG BEGIN_STMT
+  _14 = (unsigned int) input_24(D);
+  _15 = _14 & 3;
+  _16 = _15 * 8;
+  _17 = reg_26 >> _16;
+  queue_27 = (uint8_t) _17;
+  # DEBUG queue => queue_27
+  # DEBUG BEGIN_STMT
+  if (queue_27 > 7)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  queue_28 = 255;
+  # DEBUG queue => queue_28
+
+  <bb 6> :
+  # queue_18 = PHI <queue_31(3), queue_27(4), queue_28(5)>
+  # DEBUG queue => queue_18
+  # DEBUG BEGIN_STMT
+  _32 = queue_18;
+  return _32;
+
+}
+
+
+pfe_tmu_sch_cfg_bind_queue (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t sch, uint8_t input, uint8_t queue)
+{
+  errno_t ret;
+  uint32_t reg;
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned char _7;
+  int _8;
+  unsigned char _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  unsigned int _15;
+  unsigned int _16;
+  unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  unsigned int _22;
+  unsigned int _23;
+  unsigned int _24;
+  long unsigned int _25;
+  unsigned char _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  unsigned int _29;
+  unsigned int _30;
+  volatile uint32_t * _31;
+  errno_t _52;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_34(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) sch_35(D);
+  _5 = _3 + _4;
+  _6 = _5 * 256;
+  sch_base_va_37 = cbus_base_va_36(D) + _6;
+  # DEBUG sch_base_va => sch_base_va_37
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = queue_38(D) + 248;
+  if (_7 <= 246)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid queue\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 1784, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_51 = 22;
+  # DEBUG ret => ret_51
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (input_39(D) > 7)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = (int) input_39(D);
+  pfe_hm_report (1, 2, 1, "[%s:%d] Scheduler input (%d) out of range\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 1789, _8, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_48 = 22;
+  # DEBUG ret => ret_48
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _9 = input_39(D) / 4;
+  _10 = (long unsigned int) _9;
+  _11 = _10 * 4;
+  _12 = sch_base_va_37 + _11;
+  _13 = _12 + 64;
+  _14 = (volatile uint32_t *) _13;
+  reg_41 ={v} *_14;
+  # DEBUG reg => reg_41
+  # DEBUG BEGIN_STMT
+  _15 = (unsigned int) input_39(D);
+  _16 = _15 & 3;
+  _17 = _16 * 8;
+  _18 = 255 << _17;
+  _19 = ~_18;
+  reg_42 = reg_41 & _19;
+  # DEBUG reg => reg_42
+  # DEBUG BEGIN_STMT
+  _20 = (long unsigned int) queue_38(D);
+  _21 = _20 & 31;
+  _22 = (unsigned int) input_39(D);
+  _23 = _22 & 3;
+  _24 = _23 * 8;
+  _25 = _21 << _24;
+  reg_43 = reg_42 | _25;
+  # DEBUG reg => reg_43
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _26 = input_39(D) / 4;
+  _27 = (long unsigned int) _26;
+  _28 = _27 * 4;
+  _29 = sch_base_va_37 + _28;
+  _30 = _29 + 64;
+  _31 = (volatile uint32_t *) _30;
+  *_31 ={v} reg_43;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_45 = 0;
+  # DEBUG ret => ret_45
+
+  <bb 7> :
+  # ret_32 = PHI <ret_51(3), ret_48(5), ret_45(6)>
+  # DEBUG ret => ret_32
+  # DEBUG BEGIN_STMT
+  _52 = ret_32;
+  return _52;
+
+}
+
+
+pfe_tmu_sch_cfg_get_input_weight (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t sch, uint8_t input)
+{
+  uint32_t input_weight;
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  uint32_t _25;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_15(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) sch_16(D);
+  _5 = _3 + _4;
+  _6 = _5 * 256;
+  sch_base_va_18 = cbus_base_va_17(D) + _6;
+  # DEBUG sch_base_va => sch_base_va_18
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (input_19(D) > 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = (int) input_19(D);
+  pfe_hm_report (1, 2, 1, "[%s:%d] Scheduler input (%d) out of range\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 1752, _7, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  input_weight_24 = 0;
+  # DEBUG input_weight => input_weight_24
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _8 = (long unsigned int) input_19(D);
+  _9 = _8 * 4;
+  _10 = sch_base_va_18 + _9;
+  _11 = _10 + 32;
+  _12 = (volatile uint32_t *) _11;
+  input_weight_21 ={v} *_12;
+  # DEBUG input_weight => input_weight_21
+
+  <bb 5> :
+  # input_weight_13 = PHI <input_weight_24(3), input_weight_21(4)>
+  # DEBUG input_weight => input_weight_13
+  # DEBUG BEGIN_STMT
+  _25 = input_weight_13;
+  return _25;
+
+}
+
+
+pfe_tmu_sch_cfg_set_input_weight (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t sch, uint8_t input, uint32_t weight)
+{
+  errno_t ret;
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  errno_t _27;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_15(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) sch_16(D);
+  _5 = _3 + _4;
+  _6 = _5 * 256;
+  sch_base_va_18 = cbus_base_va_17(D) + _6;
+  # DEBUG sch_base_va => sch_base_va_18
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (input_19(D) > 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = (int) input_19(D);
+  pfe_hm_report (1, 2, 1, "[%s:%d] Scheduler input (%d) out of range\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 1723, _7, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_26 = 22;
+  # DEBUG ret => ret_26
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = (long unsigned int) input_19(D);
+  _9 = _8 * 4;
+  _10 = sch_base_va_18 + _9;
+  _11 = _10 + 32;
+  _12 = (volatile uint32_t *) _11;
+  *_12 ={v} weight_21(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_23 = 0;
+  # DEBUG ret => ret_23
+
+  <bb 5> :
+  # ret_13 = PHI <ret_26(3), ret_23(4)>
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  _27 = ret_13;
+  return _27;
+
+}
+
+
+pfe_tmu_sch_cfg_get_algo (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t sch)
+{
+  pfe_tmu_sched_algo_t algo;
+  uint32_t reg;
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  volatile uint32_t * sch_base_va.34_7;
+  long unsigned int _8;
+  pfe_tmu_sched_algo_t _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_10(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) sch_11(D);
+  _5 = _3 + _4;
+  _6 = _5 * 256;
+  sch_base_va_13 = cbus_base_va_12(D) + _6;
+  # DEBUG sch_base_va => sch_base_va_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  algo_14 = 4;
+  # DEBUG algo => algo_14
+  # DEBUG BEGIN_STMT
+  sch_base_va.34_7 = (volatile uint32_t *) sch_base_va_13;
+  reg_16 ={v} *sch_base_va.34_7;
+  # DEBUG reg => reg_16
+  # DEBUG BEGIN_STMT
+  _8 = reg_16 & 15;
+  switch (_8) <default: <L4> [INV], case 0: <L0> [INV], case 2: <L1> [INV], case 3: <L2> [INV], case 4: <L3> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  algo_20 = 0;
+  # DEBUG algo => algo_20
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  algo_19 = 1;
+  # DEBUG algo => algo_19
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  algo_18 = 2;
+  # DEBUG algo => algo_18
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  algo_17 = 3;
+  # DEBUG algo => algo_17
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  algo_21 = 4;
+  # DEBUG algo => algo_21
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # algo_9 = PHI <algo_20(3), algo_19(4), algo_18(5), algo_17(6), algo_21(7)>
+  # DEBUG algo => algo_9
+  # DEBUG BEGIN_STMT
+  _22 = algo_9;
+  return _22;
+
+}
+
+
+pfe_tmu_sch_cfg_set_algo (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t sch, pfe_tmu_sched_algo_t algo)
+{
+  errno_t ret;
+  uint32_t reg;
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  <unnamed type> _7;
+  volatile uint32_t * sch_base_va.33_8;
+  errno_t _31;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_13(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) sch_14(D);
+  _5 = _3 + _4;
+  _6 = _5 * 256;
+  sch_base_va_16 = cbus_base_va_15(D) + _6;
+  # DEBUG sch_base_va => sch_base_va_16
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_17 = 0;
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  if (algo_18(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  reg_29 = 0;
+  # DEBUG reg => reg_29
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (algo_18(D) == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  reg_28 = 2;
+  # DEBUG reg => reg_28
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (algo_18(D) == 2)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  reg_27 = 3;
+  # DEBUG reg => reg_27
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (algo_18(D) == 3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _7 = pfe_tmu_sch_cfg_get_rate_mode (cbus_base_va_15(D), phy_13(D), sch_14(D));
+  if (_7 != 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] WRR only supported in Packet Rate scheduler mode\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 1628, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_26 = 22;
+  # DEBUG ret => ret_26
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  reg_23 = 4;
+  # DEBUG reg => reg_23
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  ret_19 = 22;
+  # DEBUG ret => ret_19
+
+  <bb 13> :
+  # reg_9 = PHI <reg_29(3), reg_28(5), reg_27(7), reg_23(11), reg_20(D)(12), reg_20(D)(10)>
+  # ret_10 = PHI <ret_17(3), ret_17(5), ret_17(7), ret_17(11), ret_19(12), ret_26(10)>
+  # DEBUG ret => ret_10
+  # DEBUG reg => reg_9
+  # DEBUG BEGIN_STMT
+  if (ret_10 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  sch_base_va.33_8 = (volatile uint32_t *) sch_base_va_16;
+  *sch_base_va.33_8 ={v} reg_9;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _31 = ret_10;
+  return _31;
+
+}
+
+
+pfe_tmu_sch_cfg_get_rate_mode (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t sch)
+{
+  uint32_t reg;
+  pfe_tmu_rate_mode_t rmode;
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  pfe_tmu_rate_mode_t _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_10(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) sch_11(D);
+  _5 = _3 + _4;
+  _6 = _5 * 256;
+  sch_base_va_13 = cbus_base_va_12(D) + _6;
+  # DEBUG sch_base_va => sch_base_va_13
+  # DEBUG BEGIN_STMT
+  rmode_14 = 2;
+  # DEBUG rmode => rmode_14
+  # DEBUG BEGIN_STMT
+  _7 = sch_base_va_13 + 72;
+  _8 = (volatile uint32_t *) _7;
+  reg_16 ={v} *_8;
+  # DEBUG reg => reg_16
+  # DEBUG BEGIN_STMT
+  if (reg_16 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  rmode_19 = 0;
+  # DEBUG rmode => rmode_19
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (reg_16 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  rmode_18 = 1;
+  # DEBUG rmode => rmode_18
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  rmode_17 = 2;
+  # DEBUG rmode => rmode_17
+
+  <bb 7> :
+  # rmode_9 = PHI <rmode_19(3), rmode_18(5), rmode_17(6)>
+  # DEBUG rmode => rmode_9
+  # DEBUG BEGIN_STMT
+  _20 = rmode_9;
+  return _20;
+
+}
+
+
+pfe_tmu_sch_cfg_set_rate_mode (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t sch, pfe_tmu_rate_mode_t mode)
+{
+  errno_t ret;
+  uint32_t reg;
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  errno_t _24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_12(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) sch_13(D);
+  _5 = _3 + _4;
+  _6 = _5 * 256;
+  sch_base_va_15 = cbus_base_va_14(D) + _6;
+  # DEBUG sch_base_va => sch_base_va_15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_16 = 0;
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (mode_17(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  reg_21 = 0;
+  # DEBUG reg => reg_21
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (mode_17(D) == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  reg_20 = 1;
+  # DEBUG reg => reg_20
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_18 = 22;
+  # DEBUG ret => ret_18
+
+  <bb 7> :
+  # reg_9 = PHI <reg_21(3), reg_20(5), reg_19(D)(6)>
+  # ret_10 = PHI <ret_16(3), ret_16(5), ret_18(6)>
+  # DEBUG ret => ret_10
+  # DEBUG reg => reg_9
+  # DEBUG BEGIN_STMT
+  if (ret_10 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = sch_base_va_15 + 72;
+  _8 = (volatile uint32_t *) _7;
+  *_8 ={v} reg_9;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = ret_10;
+  return _24;
+
+}
+
+
+pfe_tmu_sch_cfg_init (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t sch)
+{
+  addr_t sch_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  unsigned int _9;
+  volatile uint32_t * _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_14(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) sch_15(D);
+  _5 = _3 + _4;
+  _6 = _5 * 256;
+  sch_base_va_17 = cbus_base_va_16(D) + _6;
+  # DEBUG sch_base_va => sch_base_va_17
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = sch_base_va_17 + 64;
+  _8 = (volatile uint32_t *) _7;
+  *_8 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = sch_base_va_17 + 68;
+  _10 = (volatile uint32_t *) _9;
+  *_10 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (sch_15(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = sch_base_va_17 + 84;
+  _12 = (volatile uint32_t *) _11;
+  *_12 ={v} 15;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_tmu_shp_cfg_init (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp)
+{
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_14(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_15(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_17 = cbus_base_va_16(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_17
+  # DEBUG BEGIN_STMT
+  pfe_tmu_shp_cfg_disable (cbus_base_va_16(D), phy_14(D), shp_15(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = shp_base_va_17 + 12;
+  _9 = (volatile uint32_t *) _8;
+  *_9 ={v} 62;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = shp_base_va_17 + 8;
+  _11 = (volatile uint32_t *) _10;
+  *_11 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = shp_base_va_17 + 16;
+  _13 = (volatile uint32_t *) _12;
+  *_13 ={v} 0;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_tmu_shp_cfg_disable (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp)
+{
+  uint32_t reg;
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  volatile uint32_t * shp_base_va.31_8;
+  long unsigned int _9;
+  volatile uint32_t * shp_base_va.32_10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_11(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_12(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_14 = cbus_base_va_13(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_14
+  # DEBUG BEGIN_STMT
+  shp_base_va.31_8 = (volatile uint32_t *) shp_base_va_14;
+  _9 ={v} *shp_base_va.31_8;
+  reg_16 = _9 & 4294967294;
+  # DEBUG reg => reg_16
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  shp_base_va.32_10 = (volatile uint32_t *) shp_base_va_14;
+  *shp_base_va.32_10 ={v} reg_16;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_tmu_shp_cfg_get_idle_slope (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp)
+{
+  uint64_t isl;
+  uint32_t reg;
+  uint32_t wgt;
+  uint64_t sys_clk_hz;
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  long long unsigned int _10;
+  long long unsigned int _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  long unsigned int _14;
+  <unnamed type> _15;
+  int _16;
+  long long unsigned int _17;
+  long long unsigned int _18;
+  long long unsigned int _19;
+  long long unsigned int _20;
+  long long unsigned int _21;
+  uint32_t _35;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_23(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_24(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_26 = cbus_base_va_25(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_26
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = cbus_base_va_25(D) + 606272;
+  _9 = (volatile uint32_t *) _8;
+  reg_28 ={v} *_9;
+  # DEBUG reg => reg_28
+  # DEBUG BEGIN_STMT
+  _10 = (long long unsigned int) reg_28;
+  _11 = _10 & 65535;
+  sys_clk_hz_29 = _11 * 1000000;
+  # DEBUG sys_clk_hz => sys_clk_hz_29
+  # DEBUG BEGIN_STMT
+  _12 = shp_base_va_26 + 4;
+  _13 = (volatile uint32_t *) _12;
+  _14 ={v} *_13;
+  wgt_30 = _14 & 1048575;
+  # DEBUG wgt => wgt_30
+  # DEBUG BEGIN_STMT
+  _15 = pfe_tmu_shp_cfg_get_rate_mode (cbus_base_va_25(D), phy_23(D), shp_24(D));
+  _16 = (int) _15;
+  switch (_16) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _17 = (long long unsigned int) wgt_30;
+  _18 = sys_clk_hz_29 * _17;
+  _19 = _18 * 8;
+  isl_33 = _19 / 1048576;
+  # DEBUG isl => isl_33
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _20 = (long long unsigned int) wgt_30;
+  _21 = sys_clk_hz_29 * _20;
+  isl_32 = _21 / 1048576;
+  # DEBUG isl => isl_32
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  isl_34 = 0;
+  # DEBUG isl => isl_34
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # isl_22 = PHI <isl_33(3), isl_32(4), isl_34(5)>
+  # DEBUG isl => isl_22
+  # DEBUG BEGIN_STMT
+  _35 = (uint32_t) isl_22;
+  return _35;
+
+}
+
+
+pfe_tmu_shp_cfg_set_idle_slope (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp, uint32_t isl)
+{
+  uint64_t sys_clk_hz;
+  uint64_t wgt;
+  errno_t ret;
+  uint32_t reg;
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  long long unsigned int _10;
+  long long unsigned int _11;
+  <unnamed type> _12;
+  int _13;
+  long long unsigned int _14;
+  long long unsigned int _15;
+  long long unsigned int _16;
+  long long unsigned int _17;
+  long long unsigned int _18;
+  long long unsigned int _19;
+  long long unsigned int _20;
+  long unsigned int _21;
+  unsigned int _22;
+  volatile uint32_t * _23;
+  long unsigned int _24;
+  volatile uint32_t * shp_base_va.29_25;
+  volatile uint32_t * shp_base_va.30_26;
+  long unsigned int _27;
+  errno_t _49;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_31(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_32(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_34 = cbus_base_va_33(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_34
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_35 = 0;
+  # DEBUG ret => ret_35
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = cbus_base_va_33(D) + 606272;
+  _9 = (volatile uint32_t *) _8;
+  reg_37 ={v} *_9;
+  # DEBUG reg => reg_37
+  # DEBUG BEGIN_STMT
+  _10 = (long long unsigned int) reg_37;
+  _11 = _10 & 65535;
+  sys_clk_hz_38 = _11 * 1000000;
+  # DEBUG sys_clk_hz => sys_clk_hz_38
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = pfe_tmu_shp_cfg_get_rate_mode (cbus_base_va_33(D), phy_31(D), shp_32(D));
+  _13 = (int) _12;
+  switch (_13) <default: <L2> [INV], case 0: <L0> [INV], case 1: <L1> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _14 = (long long unsigned int) isl_40(D);
+  _15 = _14 + 1;
+  _16 = _15 * 1048576;
+  _17 = sys_clk_hz_38 * 8;
+  wgt_42 = _16 / _17;
+  # DEBUG wgt => wgt_42
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _18 = (long long unsigned int) isl_40(D);
+  _19 = _18 + 1;
+  _20 = _19 * 1048576;
+  wgt_41 = _20 / sys_clk_hz_38;
+  # DEBUG wgt => wgt_41
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  ret_43 = 22;
+  # DEBUG ret => ret_43
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # ret_28 = PHI <ret_35(3), ret_35(4), ret_43(5)>
+  # wgt_29 = PHI <wgt_42(3), wgt_41(4), wgt_44(D)(5)>
+  # DEBUG wgt => wgt_29
+  # DEBUG ret => ret_28
+  # DEBUG BEGIN_STMT
+  if (ret_28 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _21 = (long unsigned int) wgt_29;
+  _22 = shp_base_va_34 + 4;
+  _23 = (volatile uint32_t *) _22;
+  _24 = _21 & 1048575;
+  *_23 ={v} _24;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  shp_base_va.29_25 = (volatile uint32_t *) shp_base_va_34;
+  reg_46 ={v} *shp_base_va.29_25;
+  # DEBUG reg => reg_46
+  # DEBUG BEGIN_STMT
+  reg_47 = reg_46 & 1;
+  # DEBUG reg => reg_47
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  shp_base_va.30_26 = (volatile uint32_t *) shp_base_va_34;
+  _27 = reg_47 | 14;
+  *shp_base_va.30_26 ={v} _27;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _49 = ret_28;
+  return _49;
+
+}
+
+
+pfe_tmu_shp_cfg_get_rate_mode (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp)
+{
+  uint32_t reg;
+  pfe_tmu_rate_mode_t rate_mode;
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  volatile uint32_t * shp_base_va.28_8;
+  long unsigned int _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  long unsigned int _12;
+  pfe_tmu_rate_mode_t _24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_14(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_15(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_17 = cbus_base_va_16(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_17
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  shp_base_va.28_8 = (volatile uint32_t *) shp_base_va_17;
+  reg_19 ={v} *shp_base_va.28_8;
+  # DEBUG reg => reg_19
+  # DEBUG BEGIN_STMT
+  _9 = reg_19 & 1;
+  if (_9 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  rate_mode_23 = 2;
+  # DEBUG rate_mode => rate_mode_23
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _10 = shp_base_va_17 + 12;
+  _11 = (volatile uint32_t *) _10;
+  reg_20 ={v} *_11;
+  # DEBUG reg => reg_20
+  # DEBUG BEGIN_STMT
+  _12 = reg_20 & 1;
+  if (_12 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  rate_mode_22 = 1;
+  # DEBUG rate_mode => rate_mode_22
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  rate_mode_21 = 0;
+  # DEBUG rate_mode => rate_mode_21
+
+  <bb 7> :
+  # rate_mode_13 = PHI <rate_mode_23(3), rate_mode_22(5), rate_mode_21(6)>
+  # DEBUG rate_mode => rate_mode_13
+  # DEBUG BEGIN_STMT
+  _24 = rate_mode_13;
+  return _24;
+
+}
+
+
+pfe_tmu_shp_cfg_set_rate_mode (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp, pfe_tmu_rate_mode_t mode)
+{
+  uint32_t reg;
+  errno_t ret;
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  errno_t _27;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_15(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_16(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_18 = cbus_base_va_17(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_18
+  # DEBUG BEGIN_STMT
+  ret_19 = 0;
+  # DEBUG ret => ret_19
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = shp_base_va_18 + 12;
+  _9 = (volatile uint32_t *) _8;
+  reg_21 ={v} *_9;
+  # DEBUG reg => reg_21
+  # DEBUG BEGIN_STMT
+  if (mode_22(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  reg_25 = reg_21 & 4294967294;
+  # DEBUG reg => reg_25
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (mode_22(D) == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  reg_24 = reg_21 | 1;
+  # DEBUG reg => reg_24
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_23 = 22;
+  # DEBUG ret => ret_23
+
+  <bb 7> :
+  # ret_12 = PHI <ret_19(3), ret_19(5), ret_23(6)>
+  # reg_13 = PHI <reg_25(3), reg_24(5), reg_21(6)>
+  # DEBUG reg => reg_13
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = shp_base_va_18 + 12;
+  _11 = (volatile uint32_t *) _10;
+  *_11 ={v} reg_13;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _27 = ret_12;
+  return _27;
+
+}
+
+
+pfe_tmu_shp_cfg_enable (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp)
+{
+  uint32_t reg;
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  volatile uint32_t * shp_base_va.26_8;
+  long unsigned int _9;
+  volatile uint32_t * shp_base_va.27_10;
+  errno_t _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_11(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_12(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_14 = cbus_base_va_13(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  shp_base_va.26_8 = (volatile uint32_t *) shp_base_va_14;
+  _9 ={v} *shp_base_va.26_8;
+  reg_16 = _9 | 1;
+  # DEBUG reg => reg_16
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  shp_base_va.27_10 = (volatile uint32_t *) shp_base_va_14;
+  *shp_base_va.27_10 ={v} reg_16;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = 0;
+  return _18;
+
+}
+
+
+pfe_tmu_shp_cfg_get_position (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp)
+{
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  unsigned char _12;
+  uint8_t _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_13(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_14(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_16 = cbus_base_va_15(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_16
+  # DEBUG BEGIN_STMT
+  _8 = shp_base_va_16 + 12;
+  _9 = (volatile uint32_t *) _8;
+  _10 ={v} *_9;
+  _11 = _10 >> 1;
+  _12 = (unsigned char) _11;
+  _18 = _12 & 31;
+  return _18;
+
+}
+
+
+pfe_tmu_shp_cfg_set_position (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp, uint8_t pos)
+{
+  errno_t ret;
+  uint32_t reg;
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned char _8;
+  int _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  unsigned int _15;
+  volatile uint32_t * _16;
+  errno_t _33;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_19(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_20(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_22 = cbus_base_va_21(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_22
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = pos_23(D) + 239;
+  if (_8 <= 237)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = (int) pos_23(D);
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid shaper position: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 1220, _9, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_32 = 22;
+  # DEBUG ret => ret_32
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _10 = shp_base_va_22 + 12;
+  _11 = (volatile uint32_t *) _10;
+  reg_25 ={v} *_11;
+  # DEBUG reg => reg_25
+  # DEBUG BEGIN_STMT
+  reg_26 = reg_25 & 4294967233;
+  # DEBUG reg => reg_26
+  # DEBUG BEGIN_STMT
+  _12 = (long unsigned int) pos_23(D);
+  _13 = _12 << 1;
+  _14 = _13 & 62;
+  reg_27 = reg_26 | _14;
+  # DEBUG reg => reg_27
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _15 = shp_base_va_22 + 12;
+  _16 = (volatile uint32_t *) _15;
+  *_16 ={v} reg_27;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_29 = 0;
+  # DEBUG ret => ret_29
+
+  <bb 5> :
+  # ret_17 = PHI <ret_32(3), ret_29(4)>
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  _33 = ret_17;
+  return _33;
+
+}
+
+
+pfe_tmu_shp_cfg_get_limits (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp, int32_t * max_credit, int32_t * min_credit)
+{
+  const uint32_t min_credit_hw;
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long int _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  long int min_credit_hw.25_15;
+  long int _16;
+  errno_t _27;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_17(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_18(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_20 = cbus_base_va_19(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_20
+  # DEBUG BEGIN_STMT
+  _8 = shp_base_va_20 + 8;
+  _9 = (volatile uint32_t *) _8;
+  _10 ={v} *_9;
+  _11 = _10 >> 10;
+  _12 = (long int) _11;
+  *max_credit_22(D) = _12;
+  # DEBUG BEGIN_STMT
+  _13 = shp_base_va_20 + 16;
+  _14 = (volatile uint32_t *) _13;
+  min_credit_hw_24 ={v} *_14;
+  # DEBUG min_credit_hw => min_credit_hw_24
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  min_credit_hw.25_15 = (long int) min_credit_hw_24;
+  _16 = -min_credit_hw.25_15;
+  *min_credit_25(D) = _16;
+  # DEBUG BEGIN_STMT
+  _27 = 0;
+  return _27;
+
+}
+
+
+pfe_tmu_shp_cfg_set_limits (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t shp, int32_t max_credit, int32_t min_credit)
+{
+  errno_t ret;
+  addr_t shp_base_va;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int max_credit.22_8;
+  unsigned int min_credit.23_9;
+  unsigned int _10;
+  long unsigned int max_credit.24_11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  long unsigned int _14;
+  long int _15;
+  unsigned int _16;
+  volatile uint32_t * _17;
+  long unsigned int _18;
+  errno_t _37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) phy_21(D);
+  _2 = _1 + 129;
+  _3 = _2 * 16;
+  _4 = (long unsigned int) shp_22(D);
+  _5 = _3 + _4;
+  _6 = _5 + 2;
+  _7 = _6 * 256;
+  shp_base_va_24 = cbus_base_va_23(D) + _7;
+  # DEBUG shp_base_va => shp_base_va_24
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  max_credit.22_8 = (unsigned int) max_credit_25(D);
+  if (max_credit.22_8 > 4194303)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Max credit value exceeded\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 1159, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_36 = 22;
+  # DEBUG ret => ret_36
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  min_credit.23_9 = (unsigned int) min_credit_26(D);
+  _10 = min_credit.23_9 + 4194303;
+  if (_10 > 4194303)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Min credit value exceeded\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 1164, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_33 = 22;
+  # DEBUG ret => ret_33
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  max_credit.24_11 = (long unsigned int) max_credit_25(D);
+  _12 = shp_base_va_24 + 8;
+  _13 = (volatile uint32_t *) _12;
+  _14 = max_credit.24_11 << 10;
+  *_13 ={v} _14;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _15 = -min_credit_26(D);
+  _16 = shp_base_va_24 + 16;
+  _17 = (volatile uint32_t *) _16;
+  _18 = (long unsigned int) _15;
+  *_17 ={v} _18;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_30 = 0;
+  # DEBUG ret => ret_30
+
+  <bb 7> :
+  # ret_19 = PHI <ret_36(3), ret_33(5), ret_30(6)>
+  # DEBUG ret => ret_19
+  # DEBUG BEGIN_STMT
+  _37 = ret_19;
+  return _37;
+
+}
+
+
+pfe_tmu_q_get_wred_zones (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue)
+{
+  uint8_t _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 8;
+  return _1;
+
+}
+
+
+pfe_tmu_q_get_wred_probability (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue, uint8_t zone, uint8_t * prob)
+{
+  uint8_t queue_temp;
+  uint8_t pos;
+  uint32_t reg;
+  errno_t ret;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+  long unsigned int reg.20_5;
+  unsigned char _6;
+  unsigned int _7;
+  unsigned int _8;
+  long unsigned int _9;
+  long unsigned int reg.21_10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  unsigned char _14;
+  errno_t _37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_20 = 0;
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  queue_temp_22 = queue_21(D);
+  # DEBUG queue_temp => queue_temp_22
+  # DEBUG BEGIN_STMT
+  if (zone_23(D) > 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_36 = 22;
+  # DEBUG ret => ret_36
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = phy_24(D) + 250;
+  if (_1 <= 3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  queue_temp_28 = pfe_tmu_hif_q_to_tmu_q (cbus_base_va_26(D), phy_24(D), queue_21(D));
+  # DEBUG queue_temp => queue_temp_28
+  # DEBUG BEGIN_STMT
+  if (queue_temp_28 == 255)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_29 = 22;
+  # DEBUG ret => ret_29
+
+  <bb 7> :
+  # ret_15 = PHI <ret_20(4), ret_20(5), ret_29(6)>
+  # queue_temp_17 = PHI <queue_temp_22(4), queue_temp_28(5), queue_temp_28(6)>
+  # DEBUG queue_temp => queue_temp_17
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  if (ret_15 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = zone_23(D) / 6;
+  pos_30 = _2 + 5;
+  # DEBUG pos => pos_30
+  # DEBUG BEGIN_STMT
+  _3 = queue_temp_17 * 8;
+  _4 = pos_30 + _3;
+  ret_32 = pfe_tmu_cntx_mem_read (cbus_base_va_26(D), phy_24(D), _4, &reg);
+  # DEBUG ret => ret_32
+  # DEBUG BEGIN_STMT
+  if (ret_32 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  reg.20_5 = reg;
+  _6 = zone_23(D) % 6;
+  _7 = (unsigned int) _6;
+  _8 = _7 * 5;
+  _9 = reg.20_5 >> _8;
+  reg = _9;
+  # DEBUG BEGIN_STMT
+  reg.21_10 = reg;
+  _11 = reg.21_10 & 31;
+  _12 = _11 * 100;
+  _13 = _12 / 31;
+  _14 = (unsigned char) _13;
+  *prob_34(D) = _14;
+
+  <bb 10> :
+  # ret_16 = PHI <ret_36(3), ret_15(7), ret_32(8), ret_32(9)>
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  _37 = ret_16;
+  reg ={v} {CLOBBER};
+  return _37;
+
+}
+
+
+pfe_tmu_q_set_wred_probability (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue, uint8_t zone, uint8_t prob)
+{
+  uint8_t queue_temp;
+  uint8_t pos;
+  uint32_t reg;
+  errno_t ret;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+  unsigned char _5;
+  unsigned int _6;
+  unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int reg.17_10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  unsigned char _16;
+  unsigned int _17;
+  unsigned int _18;
+  long unsigned int _19;
+  long unsigned int reg.18_20;
+  long unsigned int _21;
+  unsigned char _22;
+  unsigned char _23;
+  long unsigned int reg.19_24;
+  errno_t _49;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_30 = 0;
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  queue_temp_32 = queue_31(D);
+  # DEBUG queue_temp => queue_temp_32
+  # DEBUG BEGIN_STMT
+  if (prob_33(D) > 100)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (zone_34(D) > 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_48 = 22;
+  # DEBUG ret => ret_48
+  goto <bb 11>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = phy_35(D) + 250;
+  if (_1 <= 3)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  queue_temp_39 = pfe_tmu_hif_q_to_tmu_q (cbus_base_va_37(D), phy_35(D), queue_31(D));
+  # DEBUG queue_temp => queue_temp_39
+  # DEBUG BEGIN_STMT
+  if (queue_temp_39 == 255)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ret_40 = 22;
+  # DEBUG ret => ret_40
+
+  <bb 8> :
+  # ret_25 = PHI <ret_30(5), ret_30(6), ret_40(7)>
+  # queue_temp_27 = PHI <queue_temp_32(5), queue_temp_39(6), queue_temp_39(7)>
+  # DEBUG queue_temp => queue_temp_27
+  # DEBUG ret => ret_25
+  # DEBUG BEGIN_STMT
+  if (ret_25 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = zone_34(D) / 6;
+  pos_41 = _2 + 5;
+  # DEBUG pos => pos_41
+  # DEBUG BEGIN_STMT
+  _3 = queue_temp_27 * 8;
+  _4 = pos_41 + _3;
+  ret_43 = pfe_tmu_cntx_mem_read (cbus_base_va_37(D), phy_35(D), _4, &reg);
+  # DEBUG ret => ret_43
+  # DEBUG BEGIN_STMT
+  if (ret_43 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _5 = zone_34(D) % 6;
+  _6 = (unsigned int) _5;
+  _7 = _6 * 5;
+  _8 = 31 << _7;
+  _9 = ~_8;
+  reg.17_10 = reg;
+  _11 = _9 & reg.17_10;
+  reg = _11;
+  # DEBUG BEGIN_STMT
+  _12 = (long unsigned int) prob_33(D);
+  _13 = _12 * 31;
+  _14 = _13 / 100;
+  _15 = _14 & 31;
+  _16 = zone_34(D) % 6;
+  _17 = (unsigned int) _16;
+  _18 = _17 * 5;
+  _19 = _15 << _18;
+  reg.18_20 = reg;
+  _21 = _19 | reg.18_20;
+  reg = _21;
+  # DEBUG BEGIN_STMT
+  _22 = queue_temp_27 * 8;
+  _23 = pos_41 + _22;
+  reg.19_24 = reg;
+  ret_47 = pfe_tmu_cntx_mem_write (cbus_base_va_37(D), phy_35(D), _23, reg.19_24);
+  # DEBUG ret => ret_47
+
+  <bb 11> :
+  # ret_26 = PHI <ret_48(4), ret_25(8), ret_43(9), ret_47(10)>
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  _49 = ret_26;
+  reg ={v} {CLOBBER};
+  return _49;
+
+}
+
+
+pfe_tmu_q_mode_set_wred (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue, uint16_t min, uint16_t max)
+{
+  uint8_t queue_temp;
+  errno_t ret;
+  unsigned char _1;
+  errno_t _23;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = 0;
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  queue_temp_9 = queue_8(D);
+  # DEBUG queue_temp => queue_temp_9
+  # DEBUG BEGIN_STMT
+  if (max_10(D) > 511)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (min_11(D) > 511)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Queue WRED \'min and/or \'max\' argument out of range\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 981, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_22 = 22;
+  # DEBUG ret => ret_22
+  goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = phy_12(D) + 250;
+  if (_1 <= 3)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  queue_temp_16 = pfe_tmu_hif_q_to_tmu_q (cbus_base_va_14(D), phy_12(D), queue_8(D));
+  # DEBUG queue_temp => queue_temp_16
+  # DEBUG BEGIN_STMT
+  if (queue_temp_16 == 255)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ret_17 = 22;
+  # DEBUG ret => ret_17
+
+  <bb 8> :
+  # ret_2 = PHI <ret_7(5), ret_7(6), ret_17(7)>
+  # queue_temp_4 = PHI <queue_temp_9(5), queue_temp_16(6), queue_temp_16(7)>
+  # DEBUG queue_temp => queue_temp_4
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  if (ret_2 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret_19 = pfe_tmu_context_memory (cbus_base_va_14(D), phy_12(D), queue_temp_4, min_11(D), max_10(D));
+  # DEBUG ret => ret_19
+
+  <bb 10> :
+  # ret_3 = PHI <ret_22(4), ret_2(8), ret_19(9)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  _23 = ret_3;
+  return _23;
+
+}
+
+
+pfe_tmu_q_mode_set_tail_drop (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue, uint16_t max)
+{
+  errno_t ret;
+  uint8_t queue_temp;
+  uint32_t reg;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned char _4;
+  unsigned char _5;
+  errno_t _25;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  queue_temp_12 = queue_11(D);
+  # DEBUG queue_temp => queue_temp_12
+  # DEBUG BEGIN_STMT
+  ret_13 = 0;
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (max_14(D) > 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_24 = 22;
+  # DEBUG ret => ret_24
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = phy_15(D) + 250;
+  if (_1 <= 3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  queue_temp_19 = pfe_tmu_hif_q_to_tmu_q (cbus_base_va_17(D), phy_15(D), queue_11(D));
+  # DEBUG queue_temp => queue_temp_19
+  # DEBUG BEGIN_STMT
+  if (queue_temp_19 == 255)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_20 = 22;
+  # DEBUG ret => ret_20
+
+  <bb 7> :
+  # queue_temp_6 = PHI <queue_temp_12(4), queue_temp_19(5), queue_temp_19(6)>
+  # ret_7 = PHI <ret_13(4), ret_13(5), ret_20(6)>
+  # DEBUG ret => ret_7
+  # DEBUG queue_temp => queue_temp_6
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) max_14(D);
+  _3 = _2 << 11;
+  reg_21 = _3 | 1;
+  # DEBUG reg => reg_21
+  # DEBUG BEGIN_STMT
+  _4 = queue_temp_6 * 8;
+  _5 = _4 + 4;
+  ret_23 = pfe_tmu_cntx_mem_write (cbus_base_va_17(D), phy_15(D), _5, reg_21);
+  # DEBUG ret => ret_23
+
+  <bb 9> :
+  # ret_8 = PHI <ret_24(3), ret_7(7), ret_23(8)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _25 = ret_8;
+  return _25;
+
+}
+
+
+pfe_tmu_q_mode_set_default (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue)
+{
+  errno_t ret;
+  uint8_t temp;
+  unsigned char _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+  unsigned char _4;
+  unsigned char _5;
+  errno_t _23;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  temp_12 = queue_11(D);
+  # DEBUG temp => temp_12
+  # DEBUG BEGIN_STMT
+  ret_13 = 0;
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  _1 = phy_14(D) + 250;
+  if (_1 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  temp_18 = pfe_tmu_hif_q_to_tmu_q (cbus_base_va_16(D), phy_14(D), queue_11(D));
+  # DEBUG temp => temp_18
+  # DEBUG BEGIN_STMT
+  if (temp_18 == 255)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_19 = 22;
+  # DEBUG ret => ret_19
+
+  <bb 5> :
+  # temp_6 = PHI <temp_12(2), temp_18(3), temp_18(4)>
+  # ret_7 = PHI <ret_13(2), ret_13(3), ret_19(4)>
+  # DEBUG ret => ret_7
+  # DEBUG temp => temp_6
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = cbus_base_va_16(D) + 524364;
+  _3 = (volatile uint32_t *) _2;
+  *_3 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = temp_6 * 8;
+  _5 = _4 + 4;
+  ret_22 = pfe_tmu_cntx_mem_write (cbus_base_va_16(D), phy_14(D), _5, 0);
+  # DEBUG ret => ret_22
+
+  <bb 7> :
+  # ret_8 = PHI <ret_7(5), ret_22(6)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _23 = ret_8;
+  return _23;
+
+}
+
+
+pfe_tmu_q_get_mode (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue, uint32_t * min, uint32_t * max)
+{
+  uint8_t temp;
+  pfe_tmu_queue_mode_t mode;
+  errno_t ret;
+  uint32_t reg;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  long unsigned int reg.13_4;
+  long unsigned int _5;
+  long unsigned int reg.14_6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int reg.15_9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int reg.16_12;
+  long unsigned int _13;
+  long unsigned int _14;
+  pfe_tmu_queue_mode_t _43;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  mode_20 = 2;
+  # DEBUG mode => mode_20
+  # DEBUG BEGIN_STMT
+  temp_22 = queue_21(D);
+  # DEBUG temp => temp_22
+  # DEBUG BEGIN_STMT
+  _1 = phy_23(D) + 250;
+  if (_1 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  temp_27 = pfe_tmu_hif_q_to_tmu_q (cbus_base_va_25(D), phy_23(D), queue_21(D));
+  # DEBUG temp => temp_27
+  # DEBUG BEGIN_STMT
+  if (temp_27 == 255)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  mode_28 = 3;
+  # DEBUG mode => mode_28
+
+  <bb 5> :
+  # mode_15 = PHI <mode_20(2), mode_20(3), mode_28(4)>
+  # temp_17 = PHI <temp_22(2), temp_27(3), temp_27(4)>
+  # DEBUG temp => temp_17
+  # DEBUG mode => mode_15
+  # DEBUG BEGIN_STMT
+  if (mode_15 == 2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = temp_17 * 8;
+  _3 = _2 + 4;
+  ret_30 = pfe_tmu_cntx_mem_read (cbus_base_va_25(D), phy_23(D), _3, &reg);
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  if (ret_30 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  mode_42 = 3;
+  # DEBUG mode => mode_42
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  reg.13_4 = reg;
+  _5 = reg.13_4 & 3;
+  switch (_5) <default: <L9> [INV], case 1: <L7> [INV], case 2: <L8> [INV]>
+
+  <bb 9> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  mode_36 = 0;
+  # DEBUG mode => mode_36
+  # DEBUG BEGIN_STMT
+  reg.14_6 = reg;
+  _7 = reg.14_6 >> 11;
+  _8 = _7 & 511;
+  *max_32(D) = _8;
+  # DEBUG BEGIN_STMT
+  *min_34(D) = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  mode_31 = 1;
+  # DEBUG mode => mode_31
+  # DEBUG BEGIN_STMT
+  reg.15_9 = reg;
+  _10 = reg.15_9 >> 11;
+  _11 = _10 & 511;
+  *max_32(D) = _11;
+  # DEBUG BEGIN_STMT
+  reg.16_12 = reg;
+  _13 = reg.16_12 >> 2;
+  _14 = _13 & 511;
+  *min_34(D) = _14;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  mode_39 = 2;
+  # DEBUG mode => mode_39
+  # DEBUG BEGIN_STMT
+  *max_32(D) = 0;
+  # DEBUG BEGIN_STMT
+  *min_34(D) = 0;
+  # DEBUG BEGIN_STMT
+
+  <bb 12> :
+  # mode_16 = PHI <mode_15(5), mode_42(7), mode_36(9), mode_31(10), mode_39(11)>
+  # DEBUG mode => mode_16
+  # DEBUG BEGIN_STMT
+  _43 = mode_16;
+  reg ={v} {CLOBBER};
+  return _43;
+
+}
+
+
+pfe_tmu_q_cfg_get_tx_count (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue, uint32_t * cnt)
+{
+  errno_t ret;
+  uint8_t temp;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  errno_t _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  temp_10 = queue_9(D);
+  # DEBUG temp => temp_10
+  # DEBUG BEGIN_STMT
+  ret_11 = 0;
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  _1 = phy_12(D) + 250;
+  if (_1 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  temp_16 = pfe_tmu_hif_q_to_tmu_q (cbus_base_va_14(D), phy_12(D), queue_9(D));
+  # DEBUG temp => temp_16
+  # DEBUG BEGIN_STMT
+  if (temp_16 == 255)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_17 = 22;
+  # DEBUG ret => ret_17
+
+  <bb 5> :
+  # temp_4 = PHI <temp_10(2), temp_16(3), temp_16(4)>
+  # ret_5 = PHI <ret_11(2), ret_11(3), ret_17(4)>
+  # DEBUG ret => ret_5
+  # DEBUG temp => temp_4
+  # DEBUG BEGIN_STMT
+  if (ret_5 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = temp_4 * 8;
+  _3 = _2 + 3;
+  ret_20 = pfe_tmu_cntx_mem_read (cbus_base_va_14(D), phy_12(D), _3, cnt_18(D));
+  # DEBUG ret => ret_20
+
+  <bb 7> :
+  # ret_6 = PHI <ret_5(5), ret_20(6)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  _21 = ret_6;
+  return _21;
+
+}
+
+
+pfe_tmu_q_cfg_get_drop_count (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue, uint32_t * cnt)
+{
+  uint8_t temp;
+  errno_t ret;
+  uint32_t drops;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  long unsigned int drops.12_4;
+  long unsigned int _5;
+  errno_t _25;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_11 = 0;
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  temp_13 = queue_12(D);
+  # DEBUG temp => temp_13
+  # DEBUG BEGIN_STMT
+  _1 = phy_14(D) + 250;
+  if (_1 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  temp_18 = pfe_tmu_hif_q_to_tmu_q (cbus_base_va_16(D), phy_14(D), queue_12(D));
+  # DEBUG temp => temp_18
+  # DEBUG BEGIN_STMT
+  if (temp_18 == 255)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_19 = 22;
+  # DEBUG ret => ret_19
+
+  <bb 5> :
+  # ret_6 = PHI <ret_11(2), ret_11(3), ret_19(4)>
+  # temp_8 = PHI <temp_13(2), temp_18(3), temp_18(4)>
+  # DEBUG temp => temp_8
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  if (ret_6 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = temp_8 * 8;
+  _3 = _2 + 2;
+  ret_21 = pfe_tmu_cntx_mem_read (cbus_base_va_16(D), phy_14(D), _3, &drops);
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  if (ret_21 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  drops.12_4 = drops;
+  _5 = pfe_tmu_reclaim_mem_wrkarnd (drops.12_4, queue_12(D), phy_14(D));
+  *cnt_23(D) = _5;
+
+  <bb 8> :
+  # ret_7 = PHI <ret_6(5), ret_21(6), ret_21(7)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  _25 = ret_7;
+  drops ={v} {CLOBBER};
+  return _25;
+
+}
+
+
+pfe_tmu_reclaim_mem_wrkarnd (uint32_t drops, uint8_t queue, pfe_ct_phy_if_id_t phy)
+{
+  uint32_t cnt;
+  bool_t ReVal;
+  uint32_t _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  cnt_2 = 0;
+  # DEBUG cnt => cnt_2
+  # DEBUG BEGIN_STMT
+  ReVal_5 = pfe_feature_mgr_is_available ("drv_run_on_g3");
+  # DEBUG ReVal => ReVal_5
+  # DEBUG BEGIN_STMT
+  if (phy_6(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  if (queue_7(D) == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  if (ReVal_5 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  if (drops_8(D) > 255)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  cnt_9 = drops_8(D) + 4294967040;
+  # DEBUG cnt => cnt_9
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  cnt_10 = drops_8(D);
+  # DEBUG cnt => cnt_10
+
+  <bb 8> :
+  # cnt_1 = PHI <cnt_9(6), cnt_10(7)>
+  # DEBUG cnt => cnt_1
+  # DEBUG BEGIN_STMT
+  _11 = cnt_1;
+  return _11;
+
+}
+
+
+pfe_tmu_q_cfg_get_fill_level (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue, uint32_t * level)
+{
+  errno_t ret;
+  uint8_t queue_temp;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  errno_t _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  queue_temp_10 = queue_9(D);
+  # DEBUG queue_temp => queue_temp_10
+  # DEBUG BEGIN_STMT
+  ret_11 = 0;
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  _1 = phy_12(D) + 250;
+  if (_1 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  queue_temp_16 = pfe_tmu_hif_q_to_tmu_q (cbus_base_va_14(D), phy_12(D), queue_9(D));
+  # DEBUG queue_temp => queue_temp_16
+  # DEBUG BEGIN_STMT
+  if (queue_temp_16 == 255)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_17 = 22;
+  # DEBUG ret => ret_17
+
+  <bb 5> :
+  # queue_temp_4 = PHI <queue_temp_10(2), queue_temp_16(3), queue_temp_16(4)>
+  # ret_5 = PHI <ret_11(2), ret_11(3), ret_17(4)>
+  # DEBUG ret => ret_5
+  # DEBUG queue_temp => queue_temp_4
+  # DEBUG BEGIN_STMT
+  if (ret_5 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = queue_temp_4 * 8;
+  _3 = _2 + 1;
+  ret_20 = pfe_tmu_cntx_mem_read (cbus_base_va_14(D), phy_12(D), _3, level_18(D));
+  # DEBUG ret => ret_20
+
+  <bb 7> :
+  # ret_6 = PHI <ret_5(5), ret_20(6)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  _21 = ret_6;
+  return _21;
+
+}
+
+
+pfe_tmu_context_memory (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue_temp, uint16_t min, uint16_t max)
+{
+  errno_t ret;
+  uint32_t reg;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  unsigned char _10;
+  unsigned char _11;
+  errno_t _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  reg_14 = 0;
+  # DEBUG reg => reg_14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = queue_temp_15(D) * 8;
+  _2 = _1 + 5;
+  ret_20 = pfe_tmu_cntx_mem_write (cbus_base_va_17(D), phy_18(D), _2, reg_14);
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  if (ret_20 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = queue_temp_15(D) * 8;
+  _4 = _3 + 6;
+  ret_22 = pfe_tmu_cntx_mem_write (cbus_base_va_17(D), phy_18(D), _4, reg_14);
+  # DEBUG ret => ret_22
+  # DEBUG BEGIN_STMT
+  if (ret_22 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 = (long unsigned int) max_23(D);
+  _6 = _5 << 11;
+  _7 = (long unsigned int) min_24(D);
+  _8 = _7 << 2;
+  _9 = _6 | _8;
+  reg_25 = _9 | 2;
+  # DEBUG reg => reg_25
+  # DEBUG BEGIN_STMT
+  _10 = queue_temp_15(D) * 8;
+  _11 = _10 + 4;
+  ret_27 = pfe_tmu_cntx_mem_write (cbus_base_va_17(D), phy_18(D), _11, reg_25);
+  # DEBUG ret => ret_27
+
+  <bb 5> :
+  # ret_12 = PHI <ret_20(2), ret_22(3), ret_27(4)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  _28 = ret_12;
+  return _28;
+
+}
+
+
+pfe_tmu_hif_q_to_tmu_q (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t queue)
+{
+  uint8_t tmu_queue;
+  int8_t hif_queue;
+  uint32_t ii;
+  uint32_t reg;
+  unsigned char _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  signed char hif_queue.9_9;
+  unsigned char hif_queue.10_10;
+  unsigned char _11;
+  unsigned char hif_queue.11_12;
+  uint8_t _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  hif_queue_17 = -1;
+  # DEBUG hif_queue => hif_queue_17
+  # DEBUG BEGIN_STMT
+  tmu_queue_18 = 255;
+  # DEBUG tmu_queue => tmu_queue_18
+  # DEBUG BEGIN_STMT
+  _1 = phy_19(D) + 250;
+  if (_1 <= 3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = cbus_base_va_20(D) + 622796;
+  _3 = (volatile uint32_t *) _2;
+  reg_22 ={v} *_3;
+  # DEBUG reg => reg_22
+  # DEBUG BEGIN_STMT
+  ii_23 = 0;
+  # DEBUG ii => ii_23
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) phy_19(D);
+  _5 = _4 + 4294967290;
+  _6 = ii_13 * 4;
+  _7 = reg_22 >> _6;
+  _8 = _7 & 15;
+  if (_5 == _8)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  hif_queue.9_9 = hif_queue_15;
+  hif_queue.10_10 = (unsigned char) hif_queue.9_9;
+  _11 = hif_queue.10_10 + 1;
+  hif_queue_24 = (int8_t) _11;
+  # DEBUG hif_queue => hif_queue_24
+  # DEBUG BEGIN_STMT
+  hif_queue.11_12 = (unsigned char) hif_queue_24;
+  if (queue_25(D) == hif_queue.11_12)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  tmu_queue_26 = (uint8_t) ii_13;
+  # DEBUG tmu_queue => tmu_queue_26
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # hif_queue_14 = PHI <hif_queue_15(4), hif_queue_24(5)>
+  # DEBUG hif_queue => hif_queue_14
+  # DEBUG BEGIN_STMT
+  ii_27 = ii_13 + 1;
+  # DEBUG ii => ii_27
+
+  <bb 8> :
+  # ii_13 = PHI <ii_23(3), ii_27(7)>
+  # hif_queue_15 = PHI <hif_queue_17(3), hif_queue_14(7)>
+  # DEBUG hif_queue => hif_queue_15
+  # DEBUG ii => ii_13
+  # DEBUG BEGIN_STMT
+  if (ii_13 <= 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # tmu_queue_16 = PHI <tmu_queue_18(2), tmu_queue_26(6), tmu_queue_18(8)>
+  # DEBUG tmu_queue => tmu_queue_16
+  # DEBUG BEGIN_STMT
+  _28 = tmu_queue_16;
+  return _28;
+
+}
+
+
+pfe_tmu_cntx_mem_read (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t loc, uint32_t * data)
+{
+  errno_t ret;
+  pfe_ct_phy_if_id_t phy_temp;
+  uint32_t timeout;
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  long unsigned int _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  long unsigned int _15;
+  unsigned int _16;
+  volatile uint32_t * _17;
+  long unsigned int _18;
+  errno_t _43;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  timeout_25 = 20;
+  # DEBUG timeout => timeout_25
+  # DEBUG BEGIN_STMT
+  phy_temp_27 = phy_26(D);
+  # DEBUG phy_temp => phy_temp_27
+  # DEBUG BEGIN_STMT
+  ret_28 = 0;
+  # DEBUG ret => ret_28
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = cbus_base_va_29(D) + 524596;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = (int) phy_26(D);
+  switch (_3) <default: <L10> [INV], case 0 ... 2: <L21> [INV], case 3: <L5> [INV], case 4 ... 5: <L21> [INV], case 6 ... 9: <L5> [INV]>
+
+  <bb 3> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  phy_temp_32 = 3;
+  # DEBUG phy_temp => phy_temp_32
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  ret_33 = 22;
+  # DEBUG ret => ret_33
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+  # phy_temp_20 = PHI <phy_temp_27(2), phy_temp_32(3), phy_temp_27(4)>
+  # ret_21 = PHI <ret_28(2), ret_28(3), ret_33(4)>
+<L21>:
+  # DEBUG ret => ret_21
+  # DEBUG phy_temp => phy_temp_20
+  # DEBUG BEGIN_STMT
+  if (ret_21 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) phy_temp_20;
+  _5 = _4 << 16;
+  _6 = _5 & 2031616;
+  _7 = (long unsigned int) loc_34(D);
+  _8 = cbus_base_va_29(D) + 524600;
+  _9 = (volatile uint32_t *) _8;
+  _10 = _6 | _7;
+  *_9 ={v} _10;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = cbus_base_va_29(D) + 524608;
+  _12 = (volatile uint32_t *) _11;
+  *_12 ={v} 2;
+
+  <bb 7> :
+  # timeout_19 = PHI <timeout_25(6), timeout_38(8)>
+  # DEBUG timeout => timeout_19
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+  # DEBUG BEGIN_STMT
+  timeout_38 = timeout_19 + 4294967295;
+  # DEBUG timeout => timeout_38
+  # DEBUG BEGIN_STMT
+  _13 = cbus_base_va_29(D) + 524608;
+  _14 = (volatile uint32_t *) _13;
+  reg_39 ={v} *_14;
+  # DEBUG reg => reg_39
+  # DEBUG BEGIN_STMT
+  _15 = reg_39 & 4;
+  if (_15 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  if (timeout_38 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (timeout_38 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ret_42 = 110;
+  # DEBUG ret => ret_42
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _16 = cbus_base_va_29(D) + 524604;
+  _17 = (volatile uint32_t *) _16;
+  _18 ={v} *_17;
+  *data_40(D) = _18;
+
+  <bb 12> :
+  # ret_22 = PHI <ret_21(5), ret_42(10), ret_21(11)>
+  # DEBUG ret => ret_22
+  # DEBUG BEGIN_STMT
+  _43 = ret_22;
+  return _43;
+
+}
+
+
+pfe_tmu_cntx_mem_write (addr_t cbus_base_va, pfe_ct_phy_if_id_t phy, uint8_t loc, uint32_t data)
+{
+  errno_t ret;
+  pfe_ct_phy_if_id_t phy_temp;
+  uint32_t timeout;
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  long unsigned int _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  unsigned int _15;
+  volatile uint32_t * _16;
+  long unsigned int _17;
+  errno_t _42;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  timeout_24 = 200;
+  # DEBUG timeout => timeout_24
+  # DEBUG BEGIN_STMT
+  phy_temp_26 = phy_25(D);
+  # DEBUG phy_temp => phy_temp_26
+  # DEBUG BEGIN_STMT
+  ret_27 = 0;
+  # DEBUG ret => ret_27
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = cbus_base_va_28(D) + 524596;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = (int) phy_25(D);
+  switch (_3) <default: <L10> [INV], case 0 ... 2: <L20> [INV], case 3: <L5> [INV], case 4 ... 5: <L20> [INV], case 6 ... 9: <L5> [INV]>
+
+  <bb 3> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  phy_temp_31 = 3;
+  # DEBUG phy_temp => phy_temp_31
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  ret_32 = 22;
+  # DEBUG ret => ret_32
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+  # phy_temp_19 = PHI <phy_temp_26(2), phy_temp_31(3), phy_temp_26(4)>
+  # ret_20 = PHI <ret_27(2), ret_27(3), ret_32(4)>
+<L20>:
+  # DEBUG ret => ret_20
+  # DEBUG phy_temp => phy_temp_19
+  # DEBUG BEGIN_STMT
+  if (ret_20 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) phy_temp_19;
+  _5 = _4 << 16;
+  _6 = _5 & 2031616;
+  _7 = (long unsigned int) loc_33(D);
+  _8 = cbus_base_va_28(D) + 524600;
+  _9 = (volatile uint32_t *) _8;
+  _10 = _6 | _7;
+  *_9 ={v} _10;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = cbus_base_va_28(D) + 524604;
+  _12 = (volatile uint32_t *) _11;
+  *_12 ={v} data_35(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = cbus_base_va_28(D) + 524608;
+  _14 = (volatile uint32_t *) _13;
+  *_14 ={v} 3;
+
+  <bb 7> :
+  # timeout_18 = PHI <timeout_24(6), timeout_39(8)>
+  # DEBUG timeout => timeout_18
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (1);
+  # DEBUG BEGIN_STMT
+  timeout_39 = timeout_18 + 4294967295;
+  # DEBUG timeout => timeout_39
+  # DEBUG BEGIN_STMT
+  _15 = cbus_base_va_28(D) + 524608;
+  _16 = (volatile uint32_t *) _15;
+  reg_40 ={v} *_16;
+  # DEBUG reg => reg_40
+  # DEBUG BEGIN_STMT
+  _17 = reg_40 & 4;
+  if (_17 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  if (timeout_39 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (timeout_39 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ret_41 = 110;
+  # DEBUG ret => ret_41
+
+  <bb 11> :
+  # ret_21 = PHI <ret_20(5), ret_20(9), ret_41(10)>
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  _42 = ret_21;
+  return _42;
+
+}
+
+
+pfe_tmu_cfg_disable (addr_t cbus_base_va)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_tmu_cfg_enable (addr_t cbus_base_va)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_tmu_cfg_reset (addr_t cbus_base_va)
+{
+  uint32_t reg;
+  uint32_t timeout;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  timeout_9 = 200;
+  # DEBUG timeout => timeout_9
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = cbus_base_va_10(D) + 524344;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 1;
+
+  <bb 3> :
+  # timeout_6 = PHI <timeout_9(2), timeout_14(4)>
+  # DEBUG timeout => timeout_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+  # DEBUG BEGIN_STMT
+  timeout_14 = timeout_6 + 4294967295;
+  # DEBUG timeout => timeout_14
+  # DEBUG BEGIN_STMT
+  _3 = cbus_base_va_10(D) + 524344;
+  _4 = (volatile uint32_t *) _3;
+  reg_15 ={v} *_4;
+  # DEBUG reg => reg_15
+  # DEBUG BEGIN_STMT
+  _5 = reg_15 & 1;
+  if (_5 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  if (timeout_14 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (timeout_14 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FATAL: TMU reset timed-out\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 456, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_tmu_cfg_init (addr_t cbus_base_va, const struct pfe_tmu_cfg_t * cfg)
+{
+  bool_t has_tlite_phy5;
+  uint32_t regval;
+  errno_t ret;
+  uint32_t ii;
+  unsigned char _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  unsigned int _6;
+  volatile uint32_t * _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  unsigned int _14;
+  volatile uint32_t * _15;
+  unsigned int _16;
+  volatile uint32_t * _17;
+  unsigned int _18;
+  volatile uint32_t * _19;
+  unsigned int _20;
+  volatile uint32_t * _21;
+  unsigned int _22;
+  volatile uint32_t * _23;
+  unsigned int _24;
+  volatile uint32_t * _25;
+  unsigned int _26;
+  volatile uint32_t * _27;
+  unsigned char _28;
+  <unnamed type> _29;
+  unsigned int _30;
+  volatile uint32_t * _31;
+  unsigned int _32;
+  volatile uint32_t * _33;
+  unsigned int _34;
+  volatile uint32_t * _35;
+  unsigned int _36;
+  volatile uint32_t * _37;
+  unsigned int _38;
+  volatile uint32_t * _39;
+  unsigned int _40;
+  volatile uint32_t * _41;
+  unsigned int _42;
+  volatile uint32_t * _43;
+  unsigned int _44;
+  volatile uint32_t * _45;
+  unsigned int _46;
+  volatile uint32_t * _47;
+  unsigned int _48;
+  volatile uint32_t * _49;
+  int iftmp.6_55;
+  int iftmp.6_82;
+  int iftmp.6_83;
+  errno_t _100;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_62 = 0;
+  # DEBUG ret => ret_62
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = cfg_64(D)->on_g3;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = cbus_base_va_65(D) + 524364;
+  _3 = (volatile uint32_t *) _2;
+  regval_66 ={v} *_3;
+  # DEBUG regval => regval_66
+  # DEBUG BEGIN_STMT
+  regval_67 = regval_66 | 4;
+  # DEBUG regval => regval_67
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = cbus_base_va_65(D) + 524364;
+  _5 = (volatile uint32_t *) _4;
+  *_5 ={v} regval_67;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = cbus_base_va_65(D) + 524528;
+  _7 = (volatile uint32_t *) _6;
+  *_7 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = cbus_base_va_65(D) + 524532;
+  _9 = (volatile uint32_t *) _8;
+  *_9 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = cbus_base_va_65(D) + 524536;
+  _11 = (volatile uint32_t *) _10;
+  *_11 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = cbus_base_va_65(D) + 524540;
+  _13 = (volatile uint32_t *) _12;
+  *_13 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = cbus_base_va_65(D) + 524548;
+  _15 = (volatile uint32_t *) _14;
+  *_15 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_tmu_cfg_reset (cbus_base_va_65(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = cbus_base_va_65(D) + 524388;
+  _17 = (volatile uint32_t *) _16;
+  *_17 ={v} 3221930032;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = cbus_base_va_65(D) + 524392;
+  _19 = (volatile uint32_t *) _18;
+  *_19 ={v} 3221946416;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = cbus_base_va_65(D) + 524396;
+  _21 = (volatile uint32_t *) _20;
+  *_21 ={v} 3221962800;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _22 = cbus_base_va_65(D) + 524452;
+  _23 = (volatile uint32_t *) _22;
+  *_23 ={v} 3221864496;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = cbus_base_va_65(D) + 524400;
+  _25 = (volatile uint32_t *) _24;
+  *_25 ={v} 3221864496;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _26 = cbus_base_va_65(D) + 524408;
+  _27 = (volatile uint32_t *) _26;
+  *_27 ={v} 3222061072;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_81 = 0;
+  # DEBUG ii => ii_81
+  goto <bb 15>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _28 = cfg_64(D)->on_g3;
+  if (_28 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _29 = phy_if_id_temp[ii_50];
+  if (_29 != 5)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.6_83 = 1;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.6_82 = 0;
+
+  <bb 9> :
+  # iftmp.6_55 = PHI <iftmp.6_83(7), iftmp.6_82(8)>
+  has_tlite_phy5_84 = (bool_t) iftmp.6_55;
+  # DEBUG has_tlite_phy5 => has_tlite_phy5_84
+  # DEBUG BEGIN_STMT
+  if (has_tlite_phy5_84 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ret_86 = pfe_tmu_tdq_shp_on_phy5_g2 (cbus_base_va_65(D), ii_50);
+  # DEBUG ret => ret_86
+
+  <bb 11> :
+  # ret_51 = PHI <ret_53(9), ret_86(10)>
+  # DEBUG ret => ret_51
+  # DEBUG BEGIN_STMT
+  if (ret_51 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  ret_88 = pfe_tmu_set_default_queue_mode (cbus_base_va_65(D), ii_50, has_tlite_phy5_84);
+  # DEBUG ret => ret_88
+
+  <bb 13> :
+  # ret_52 = PHI <ret_51(11), ret_88(12)>
+  # DEBUG ret => ret_52
+  # DEBUG BEGIN_STMT
+  if (ret_52 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  ii_89 = ii_50 + 1;
+  # DEBUG ii => ii_89
+
+  <bb 15> :
+  # ii_50 = PHI <ii_81(4), ii_89(14)>
+  # ret_53 = PHI <ret_62(4), ret_52(14)>
+  # DEBUG ret => ret_53
+  # DEBUG ii => ii_50
+  # DEBUG BEGIN_STMT
+  if (ii_50 <= 5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  # ret_54 = PHI <ret_52(13), ret_53(15)>
+  # DEBUG ret => ret_54
+  # DEBUG BEGIN_STMT
+  if (ret_54 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _30 = cbus_base_va_65(D) + 524348;
+  _31 = (volatile uint32_t *) _30;
+  *_31 ={v} 3221782580;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _32 = cbus_base_va_65(D) + 524368;
+  _33 = (volatile uint32_t *) _32;
+  *_33 ={v} 3221798964;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _34 = cbus_base_va_65(D) + 524352;
+  _35 = (volatile uint32_t *) _34;
+  *_35 ={v} 256;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _36 = cbus_base_va_65(D) + 524292;
+  _37 = (volatile uint32_t *) _36;
+  *_37 ={v} 252;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _38 = cbus_base_va_65(D) + 524528;
+  _39 = (volatile uint32_t *) _38;
+  *_39 ={v} 15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _40 = cbus_base_va_65(D) + 524532;
+  _41 = (volatile uint32_t *) _40;
+  *_41 ={v} 15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _42 = cbus_base_va_65(D) + 524536;
+  _43 = (volatile uint32_t *) _42;
+  *_43 ={v} 15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _44 = cbus_base_va_65(D) + 524592;
+  _45 = (volatile uint32_t *) _44;
+  *_45 ={v} 15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _46 = cbus_base_va_65(D) + 524540;
+  _47 = (volatile uint32_t *) _46;
+  *_47 ={v} 15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _48 = cbus_base_va_65(D) + 524548;
+  _49 = (volatile uint32_t *) _48;
+  *_49 ={v} 15;
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _100 = ret_54;
+  return _100;
+
+}
+
+
+pfe_tmu_tdq_shp_on_phy5_g2 (addr_t cbus_base_va, uint32_t ii)
+{
+  errno_t ret;
+  uint8_t queue;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  <unnamed type> _3;
+  <unnamed type> _4;
+  <unnamed type> _5;
+  <unnamed type> _6;
+  <unnamed type> _7;
+  unsigned char queue.7_8;
+  errno_t _29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_14 = 0;
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  _1 = phy_if_id_temp[ii_16(D)];
+  pfe_tmu_sch_cfg_init (cbus_base_va_17(D), _1, 0);
+  # DEBUG BEGIN_STMT
+  _2 = phy_if_id_temp[ii_16(D)];
+  pfe_tmu_sch_cfg_init (cbus_base_va_17(D), _2, 1);
+  # DEBUG BEGIN_STMT
+  _3 = phy_if_id_temp[ii_16(D)];
+  pfe_tmu_shp_cfg_init (cbus_base_va_17(D), _3, 0);
+  # DEBUG BEGIN_STMT
+  _4 = phy_if_id_temp[ii_16(D)];
+  pfe_tmu_shp_cfg_init (cbus_base_va_17(D), _4, 1);
+  # DEBUG BEGIN_STMT
+  _5 = phy_if_id_temp[ii_16(D)];
+  pfe_tmu_shp_cfg_init (cbus_base_va_17(D), _5, 2);
+  # DEBUG BEGIN_STMT
+  _6 = phy_if_id_temp[ii_16(D)];
+  pfe_tmu_shp_cfg_init (cbus_base_va_17(D), _6, 3);
+  # DEBUG BEGIN_STMT
+  queue_24 = 0;
+  # DEBUG queue => queue_24
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _7 = phy_if_id_temp[ii_16(D)];
+  ret_26 = pfe_tmu_sch_cfg_bind_queue (cbus_base_va_17(D), _7, 1, queue_9, queue_9);
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  if (ret_26 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_28 = 114;
+  # DEBUG ret => ret_28
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  queue.7_8 = queue_9;
+  queue_27 = queue.7_8 + 1;
+  # DEBUG queue => queue_27
+
+  <bb 6> :
+  # queue_9 = PHI <queue_24(2), queue_27(5)>
+  # ret_10 = PHI <ret_14(2), ret_26(5)>
+  # DEBUG ret => ret_10
+  # DEBUG queue => queue_9
+  # DEBUG BEGIN_STMT
+  if (queue_9 <= 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # ret_11 = PHI <ret_28(4), ret_10(6)>
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  _29 = ret_11;
+  return _29;
+
+}
+
+
+pfe_tmu_set_default_queue_mode (addr_t cbus_base_va, uint32_t ii, bool_t has_tlite_phy5)
+{
+  uint8_t queue;
+  errno_t ret;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  <unnamed type> _3;
+  <unnamed type> _4;
+  unsigned char queue.8_5;
+  errno_t _32;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_15 = 0;
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (has_tlite_phy5_16(D) == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = phy_if_id_temp[ii_18(D)];
+  ret_21 = pfe_tmu_sch_cfg_set_rate_mode (cbus_base_va_19(D), _1, 1, 0);
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  if (ret_21 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_25 = 114;
+  # DEBUG ret => ret_25
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _2 = phy_if_id_temp[ii_18(D)];
+  ret_23 = pfe_tmu_sch_cfg_set_algo (cbus_base_va_19(D), _2, 1, 2);
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  if (ret_23 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_24 = 114;
+  # DEBUG ret => ret_24
+
+  <bb 7> :
+  # ret_6 = PHI <ret_15(2), ret_25(4), ret_23(5), ret_24(6)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  if (ret_6 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  queue_26 = 0;
+  # DEBUG queue => queue_26
+  goto <bb 14>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (ii_18(D) == 3)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _3 = phy_if_id_temp[ii_18(D)];
+  ret_30 = pfe_tmu_q_mode_set_tail_drop (cbus_base_va_19(D), _3, queue_10, 16);
+  # DEBUG ret => ret_30
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _4 = phy_if_id_temp[ii_18(D)];
+  ret_28 = pfe_tmu_q_mode_set_tail_drop (cbus_base_va_19(D), _4, queue_10, 31);
+  # DEBUG ret => ret_28
+
+  <bb 12> :
+  # ret_7 = PHI <ret_30(10), ret_28(11)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  queue.8_5 = queue_10;
+  queue_31 = queue.8_5 + 1;
+  # DEBUG queue => queue_31
+
+  <bb 14> :
+  # ret_8 = PHI <ret_6(8), ret_7(13)>
+  # queue_10 = PHI <queue_26(8), queue_31(13)>
+  # DEBUG queue => queue_10
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  if (queue_10 <= 7)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  # ret_9 = PHI <ret_6(7), ret_7(12), ret_8(14)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  _32 = ret_9;
+  return _32;
+
+}
+
+
+pfe_tmu_q_reset_tail_drop_policy (addr_t cbus_base_va)
+{
+  uint16_t max;
+  uint8_t queue;
+  errno_t ret;
+  uint32_t ii;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.4_1;
+  const struct Eth_43_PFE_EmacCfg * _2;
+  <unnamed type> _3;
+  unsigned int _4;
+  unsigned int _5;
+  const struct Eth_43_PFE_EmacCfg * _6;
+  int _7;
+  unsigned char _8;
+  <unnamed type> _9;
+  int _10;
+  <unnamed type> _11;
+  int _12;
+  unsigned char queue.5_13;
+  errno_t _39;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_25 = 0;
+  # DEBUG ii => ii_25
+  goto <bb 14>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  queue_28 = 0;
+  # DEBUG queue => queue_28
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  switch (ii_14) <default: <L6> [INV], case 0 ... 2: <L2> [INV], case 3: <L5> [INV]>
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.4_1 = Eth_43_PFE_InternalCfgPtr;
+  _2 = Eth_43_PFE_InternalCfgPtr.4_1->emac;
+  _3 = (<unnamed type>) ii_14;
+  _4 = (unsigned int) _3;
+  _5 = _4 * 20;
+  _6 = _2 + _5;
+  _7 = (int) queue_19;
+  _8 = _6->EthTmuQueueSizes[_7];
+  max_30 = (uint16_t) _8;
+  # DEBUG max => max_30
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  max_29 = 16;
+  # DEBUG max => max_29
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  max_31 = 31;
+  # DEBUG max => max_31
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # max_20 = PHI <max_30(5), max_29(6), max_31(7)>
+  # DEBUG max => max_20
+  # DEBUG BEGIN_STMT
+  _9 = (<unnamed type>) ii_14;
+  _10 = (int) _9;
+  _11 = phy_if_id_temp[_10];
+  ret_34 = pfe_tmu_q_mode_set_tail_drop (cbus_base_va_32(D), _11, queue_19, max_20);
+  # DEBUG ret => ret_34
+  # DEBUG BEGIN_STMT
+  if (ret_34 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = (int) queue_19;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t set the default queue size for PHY#%u queue %hhu: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 243, ii_14, _12, ret_34, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  queue.5_13 = queue_19;
+  queue_35 = queue.5_13 + 1;
+  # DEBUG queue => queue_35
+
+  <bb 11> :
+  # ret_15 = PHI <ret_17(3), ret_34(10)>
+  # queue_19 = PHI <queue_28(3), queue_35(10)>
+  # DEBUG queue => queue_19
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  if (queue_19 <= 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # ret_16 = PHI <ret_34(9), ret_15(11)>
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  ii_38 = ii_14 + 1;
+  # DEBUG ii => ii_38
+
+  <bb 14> :
+  # ii_14 = PHI <ii_25(2), ii_38(13)>
+  # ret_17 = PHI <ret_26(D)(2), ret_16(13)>
+  # DEBUG ret => ret_17
+  # DEBUG ii => ii_14
+  # DEBUG BEGIN_STMT
+  if (ii_14 <= 5)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  # ret_18 = PHI <ret_16(12), ret_17(14)>
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _39 = ret_18;
+  return _39;
+
+}
+
+
+pfe_tmu_reclaim_init (addr_t cbus_base_va)
+{
+  uint32_t retries;
+  uint32_t dropped_packets;
+  uint32_t ii;
+  uint8_t queue;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  long unsigned int _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  unsigned int _14;
+  volatile uint32_t * _15;
+  unsigned int _16;
+  volatile uint32_t * _17;
+  unsigned int _18;
+  volatile uint32_t * _19;
+  unsigned int _20;
+  volatile uint32_t * _21;
+  unsigned int _22;
+  volatile uint32_t * _23;
+  unsigned int _24;
+  volatile uint32_t * _25;
+  unsigned char queue.0_26;
+  unsigned char _27;
+  int _28;
+  unsigned int _29;
+  volatile uint32_t * _30;
+  long unsigned int dropped_packets.1_31;
+  long unsigned int dropped_packets.2_32;
+  long unsigned int dropped_packets.3_33;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  dropped_packets = 0;
+  # DEBUG BEGIN_STMT
+  retries_46 = 0;
+  # DEBUG retries => retries_46
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = cbus_base_va_47(D) + 524596;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_49 = 0;
+  # DEBUG ii => ii_49
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  queue_62 = 0;
+  # DEBUG queue => queue_62
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = ii_35 << 8;
+  _4 = _3 & 7936;
+  _5 = (long unsigned int) queue_34;
+  _6 = _5 & 7;
+  _7 = cbus_base_va_47(D) + 524308;
+  _8 = (volatile uint32_t *) _7;
+  _9 = _4 | _6;
+  *_8 ={v} _9;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("nop" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = cbus_base_va_47(D) + 524312;
+  _11 = (volatile uint32_t *) _10;
+  *_11 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = cbus_base_va_47(D) + 524316;
+  _13 = (volatile uint32_t *) _12;
+  *_13 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = cbus_base_va_47(D) + 524320;
+  _15 = (volatile uint32_t *) _14;
+  *_15 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = cbus_base_va_47(D) + 524324;
+  _17 = (volatile uint32_t *) _16;
+  *_17 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = cbus_base_va_47(D) + 524328;
+  _19 = (volatile uint32_t *) _18;
+  *_19 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = cbus_base_va_47(D) + 524332;
+  _21 = (volatile uint32_t *) _20;
+  *_21 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _22 = cbus_base_va_47(D) + 524336;
+  _23 = (volatile uint32_t *) _22;
+  *_23 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = cbus_base_va_47(D) + 524340;
+  _25 = (volatile uint32_t *) _24;
+  *_25 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  queue.0_26 = queue_34;
+  queue_74 = queue.0_26 + 1;
+  # DEBUG queue => queue_74
+
+  <bb 5> :
+  # queue_34 = PHI <queue_62(3), queue_74(4)>
+  # DEBUG queue => queue_34
+  # DEBUG BEGIN_STMT
+  if (queue_34 <= 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ii_63 = ii_35 + 1;
+  # DEBUG ii => ii_63
+
+  <bb 7> :
+  # ii_35 = PHI <ii_49(2), ii_63(6)>
+  # DEBUG ii => ii_35
+  # DEBUG BEGIN_STMT
+  if (ii_35 <= 5)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _27 = pfe_feature_mgr_is_available ("drv_run_on_g3");
+  if (_27 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _28 = pfe_tmu_context_memory (cbus_base_va_47(D), 0, 0, 0, 0);
+  if (_28 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ii_52 = 0;
+  # DEBUG ii => ii_52
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _29 = cbus_base_va_47(D) + 524300;
+  _30 = (volatile uint32_t *) _29;
+  *_30 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_60 = ii_36 + 1;
+  # DEBUG ii => ii_60
+
+  <bb 12> :
+  # ii_36 = PHI <ii_52(10), ii_60(11)>
+  # DEBUG ii => ii_36
+  # DEBUG BEGIN_STMT
+  if (ii_36 <= 255)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # retries_37 = PHI <retries_46(12), retries_55(14)>
+  # DEBUG retries => retries_37
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+  # DEBUG BEGIN_STMT
+  pfe_tmu_cntx_mem_read (cbus_base_va_47(D), 0, 2, &dropped_packets);
+  # DEBUG BEGIN_STMT
+  retries_55 = retries_37 + 1;
+  # DEBUG retries => retries_55
+  # DEBUG BEGIN_STMT
+  dropped_packets.1_31 = dropped_packets;
+  if (dropped_packets.1_31 != 256)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  if (retries_55 <= 9)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  dropped_packets.2_32 = dropped_packets;
+  if (dropped_packets.2_32 != 256)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  dropped_packets.3_33 = dropped_packets;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed to initialize TMU reclaim memory %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_tmu_csr.c", 196, dropped_packets.3_33, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_tmu_q_mode_set_default (cbus_base_va_47(D), 0, 0);
+
+  <bb 18> :
+  dropped_packets ={v} {CLOBBER};
+  return;
+
+}
+
+
+pfe_tmu_cfg_get_phy_config (pfe_ct_phy_if_id_t phy)
+{
+  const struct pfe_tmu_phy_cfg_t * phy_config;
+  uint32_t ii;
+  <unnamed type> _1;
+  <unnamed type> _2;
+  const struct pfe_tmu_phy_cfg_t * _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  phy_config_5 = 0B;
+  # DEBUG phy_config => phy_config_5
+  # DEBUG BEGIN_STMT
+  ii_6 = 0;
+  # DEBUG ii => ii_6
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = tmu_phys[ii_3].id;
+  if (phy_8(D) == _1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  phy_config_10 = &tmu_phys[ii_3];
+  # DEBUG phy_config => phy_config_10
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ii_9 = ii_3 + 1;
+  # DEBUG ii => ii_9
+
+  <bb 6> :
+  # ii_3 = PHI <ii_6(2), ii_9(5)>
+  # DEBUG ii => ii_3
+  # DEBUG BEGIN_STMT
+  _2 = tmu_phys[ii_3].id;
+  if (_2 != 10)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # phy_config_4 = PHI <phy_config_10(4), phy_config_5(6)>
+  # DEBUG phy_config => phy_config_4
+  # DEBUG BEGIN_STMT
+  _11 = phy_config_4;
+  return _11;
+
+}
+
+

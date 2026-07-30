@@ -1,0 +1,119 @@
+
+
+ local analysis of Platform_Ipw_Init
+   scanning: _1 = pConfig_4(D)->pIntCtrlConfig;
+    Indirect ref read is not const
+  scanning: if (_1 != 0B)
+  scanning: IntCtrl_Ip_Init (_1);
+  scanning: return;
+Function is locally pure.
+callgraph:
+
+IntCtrl_Ip_Init/7 (IntCtrl_Ip_Init) @07531000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Platform_Ipw_Init/6 (574129754 (estimated locally),0.53 per call) 
+  Calls: 
+Platform_Ipw_Init/6 (Platform_Ipw_Init) @07529b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06657ab8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_Init/7 (574129754 (estimated locally),0.53 per call) 
+
+
+ ordered call graph: reduced for nothrow
+Platform_Ipw_Init/6 (Platform_Ipw_Init) @07529b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06657ab8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_Init/7 (574129754 (estimated locally),0.53 per call) 
+
+
+
+MALLOC LATTICE Initial:
+Platform_Ipw_Init: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+Platform_Ipw_Init: malloc_bottom
+callgraph:
+
+IntCtrl_Ip_Init/7 (IntCtrl_Ip_Init) @07531000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Platform_Ipw_Init/6 (574129754 (estimated locally),0.53 per call) 
+  Calls: 
+Platform_Ipw_Init/6 (Platform_Ipw_Init) @07529b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @066578b8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_Init/7 (574129754 (estimated locally),0.53 per call) 
+
+
+ ordered call graph: reduced
+Platform_Ipw_Init/6 (Platform_Ipw_Init) @07529b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @066578b8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: IntCtrl_Ip_Init/7 (574129754 (estimated locally),0.53 per call) 
+
+Platform_Ipw_Init (const struct Platform_Ipw_ConfigType * pConfig)
+{
+  const struct IntCtrl_Ip_CtrlConfigType * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = pConfig_4(D)->pIntCtrlConfig;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pIntCtrlCtrlConfig => _1
+  # DEBUG INLINE_ENTRY Platform_Ipw_InitIntCtrl
+  # DEBUG BEGIN_STMT
+  IntCtrl_Ip_Init (_1);
+  # DEBUG BEGIN_STMT
+  # DEBUG pIntCtrlCtrlConfig => NULL
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

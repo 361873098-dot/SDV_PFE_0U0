@@ -1,0 +1,457 @@
+fci_timer_owner_unlock_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_timer_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  pfe_drv_id_t cur_owner;
+  bool_t has_owner;
+  errno_t ret;
+  struct pfe_phy_if_t * phy_if;
+  struct fpp_timer_cmd_t * timer_cmd;
+  long unsigned int _1;
+  short unsigned int _2;
+  int _3;
+  char[16] * _4;
+  <unnamed type> _5;
+  struct pfe_emac_t * _6;
+  long unsigned int _7;
+  <unnamed type> _8;
+  struct pfe_emac_t * _9;
+  unsigned char has_owner.6_10;
+  long unsigned int _11;
+  <unnamed type> cur_owner.7_12;
+  long unsigned int _13;
+  errno_t _47;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  phy_if_16 = 0B;
+  # DEBUG phy_if => phy_if_16
+  # DEBUG BEGIN_STMT
+  ret_17 = 0;
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  has_owner = 0;
+  # DEBUG BEGIN_STMT
+  cur_owner = 10;
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len_21(D);
+  if (_1 <= 23)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_46 = 22;
+  # DEBUG ret => ret_46
+  goto <bb 18>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *reply_len_21(D) = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf_23(D), 0, 24);
+  # DEBUG BEGIN_STMT
+  timer_cmd_26 = &msg_25(D)->msg_cmd.payload;
+  # DEBUG timer_cmd => timer_cmd_26
+  # DEBUG BEGIN_STMT
+  _2 = timer_cmd_26->action;
+  _3 = (int) _2;
+  if (_3 == 4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 0;
+  # DEBUG BEGIN_STMT
+  _4 = &timer_cmd_26->if_name;
+  phy_if_30 = fci_get_phy_if_by_name (_4);
+  # DEBUG phy_if => phy_if_30
+  # DEBUG BEGIN_STMT
+  if (phy_if_30 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 61700;
+  # DEBUG BEGIN_STMT
+  ret_44 = 2;
+  # DEBUG ret => ret_44
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _5 = pfe_phy_if_get_type (phy_if_30);
+  if (_5 != 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 61719;
+  # DEBUG BEGIN_STMT
+  ret_42 = 0;
+  # DEBUG ret => ret_42
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = pfe_phy_if_get_emac (phy_if_30);
+  _7 = msg_25(D)->msg_cmd.sender;
+  _8 = (<unnamed type>) _7;
+  ret_33 = pfe_emac_clear_timer_ownership (_6, _8);
+  # DEBUG ret => ret_33
+  # DEBUG BEGIN_STMT
+  if (ret_33 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 0;
+  goto <bb 18>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _9 = pfe_phy_if_get_emac (phy_if_30);
+  ret_36 = pfe_emac_check_timer_ownership (_9, &has_owner, &cur_owner);
+  # DEBUG ret => ret_36
+  # DEBUG BEGIN_STMT
+  if (ret_36 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 12> :
+  has_owner.6_10 = has_owner;
+  if (has_owner.6_10 == 1)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _11 = msg_25(D)->msg_cmd.sender;
+  cur_owner.7_12 = cur_owner;
+  _13 = (long unsigned int) cur_owner.7_12;
+  if (_11 != _13)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 62756;
+  goto <bb 18>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+<L17>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 18> :
+  # ret_14 = PHI <ret_46(3), ret_44(6), ret_42(8), ret_36(15), ret_17(17), ret_33(10), ret_36(14), ret_36(16)>
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  _47 = ret_14;
+  has_owner ={v} {CLOBBER};
+  cur_owner ={v} {CLOBBER};
+  return _47;
+
+}
+
+
+fci_timer_owner_lock_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_timer_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  pfe_drv_id_t cur_owner;
+  bool_t has_owner;
+  errno_t ret;
+  struct pfe_phy_if_t * phy_if;
+  struct fpp_timer_cmd_t * timer_cmd;
+  long unsigned int _1;
+  short unsigned int _2;
+  int _3;
+  char[16] * _4;
+  <unnamed type> _5;
+  struct pfe_emac_t * _6;
+  long unsigned int _7;
+  <unnamed type> _8;
+  struct pfe_emac_t * _9;
+  unsigned char has_owner.0_10;
+  long unsigned int _11;
+  <unnamed type> cur_owner.1_12;
+  long unsigned int _13;
+  errno_t _47;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  phy_if_16 = 0B;
+  # DEBUG phy_if => phy_if_16
+  # DEBUG BEGIN_STMT
+  ret_17 = 0;
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  has_owner = 0;
+  # DEBUG BEGIN_STMT
+  cur_owner = 10;
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len_21(D);
+  if (_1 <= 23)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_46 = 22;
+  # DEBUG ret => ret_46
+  goto <bb 18>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *reply_len_21(D) = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf_23(D), 0, 24);
+  # DEBUG BEGIN_STMT
+  timer_cmd_26 = &msg_25(D)->msg_cmd.payload;
+  # DEBUG timer_cmd => timer_cmd_26
+  # DEBUG BEGIN_STMT
+  _2 = timer_cmd_26->action;
+  _3 = (int) _2;
+  if (_3 == 4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 0;
+  # DEBUG BEGIN_STMT
+  _4 = &timer_cmd_26->if_name;
+  phy_if_30 = fci_get_phy_if_by_name (_4);
+  # DEBUG phy_if => phy_if_30
+  # DEBUG BEGIN_STMT
+  if (phy_if_30 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 61700;
+  # DEBUG BEGIN_STMT
+  ret_44 = 2;
+  # DEBUG ret => ret_44
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _5 = pfe_phy_if_get_type (phy_if_30);
+  if (_5 != 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 61719;
+  # DEBUG BEGIN_STMT
+  ret_42 = 0;
+  # DEBUG ret => ret_42
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = pfe_phy_if_get_emac (phy_if_30);
+  _7 = msg_25(D)->msg_cmd.sender;
+  _8 = (<unnamed type>) _7;
+  ret_33 = pfe_emac_set_timer_ownership (_6, _8);
+  # DEBUG ret => ret_33
+  # DEBUG BEGIN_STMT
+  if (ret_33 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 0;
+  goto <bb 18>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _9 = pfe_phy_if_get_emac (phy_if_30);
+  ret_36 = pfe_emac_check_timer_ownership (_9, &has_owner, &cur_owner);
+  # DEBUG ret => ret_36
+  # DEBUG BEGIN_STMT
+  if (ret_36 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 12> :
+  has_owner.0_10 = has_owner;
+  if (has_owner.0_10 == 1)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _11 = msg_25(D)->msg_cmd.sender;
+  cur_owner.1_12 = cur_owner;
+  _13 = (long unsigned int) cur_owner.1_12;
+  if (_11 == _13)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 0;
+  goto <bb 18>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 62755;
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+<L17>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_27(D) = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 18> :
+  # ret_14 = PHI <ret_46(3), ret_44(6), ret_42(8), ret_36(15), ret_17(17), ret_33(10), ret_36(14), ret_36(16)>
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  _47 = ret_14;
+  has_owner ={v} {CLOBBER};
+  cur_owner ={v} {CLOBBER};
+  return _47;
+
+}
+
+
+fci_get_phy_if_by_name (char_t * name)
+{
+  uint32_t sid;
+  errno_t ret;
+  struct pfe_phy_if_t * phy_if;
+  struct pfe_if_db_entry_t * entry;
+  struct fci_t * fci_context;
+  struct pfe_if_db_t * _1;
+  long unsigned int sid.2_2;
+  struct pfe_if_db_entry_t * entry.3_3;
+  struct pfe_if_db_entry_t * entry.4_4;
+  long unsigned int sid.5_5;
+  struct pfe_phy_if_t * _23;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_9 = &context;
+  # DEBUG fci_context => fci_context_9
+  # DEBUG BEGIN_STMT
+  entry = 0B;
+  # DEBUG BEGIN_STMT
+  phy_if_12 = 0B;
+  # DEBUG phy_if => phy_if_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_14 = pfe_if_db_lock (&sid);
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = fci_context_9->phy_if_db;
+  sid.2_2 = sid;
+  ret_17 = pfe_if_db_get_first (_1, sid.2_2, 3, name_15(D), &entry);
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry.3_3 = entry;
+  if (entry.3_3 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  entry.4_4 = entry;
+  phy_if_18 = pfe_if_db_entry_get_phy_if (entry.4_4);
+  # DEBUG phy_if => phy_if_18
+
+  <bb 5> :
+  # phy_if_6 = PHI <phy_if_12(2), phy_if_12(3), phy_if_18(4)>
+  # DEBUG phy_if => phy_if_6
+  # DEBUG BEGIN_STMT
+  sid.5_5 = sid;
+  ret_20 = pfe_if_db_unlock (sid.5_5);
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  if (ret_20 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Interface DB unlock failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_timer_owner.c", 109, ret_20, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _23 = phy_if_6;
+  entry ={v} {CLOBBER};
+  sid ={v} {CLOBBER};
+  return _23;
+
+}
+
+

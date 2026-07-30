@@ -1,0 +1,554 @@
+
+Marking local functions: fci_get_phy_if_by_name
+
+
+Marking externally visible functions: fci_timer_owner_unlock_cmd fci_timer_owner_lock_cmd
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+pfe_emac_clear_timer_ownership/31 (pfe_emac_clear_timer_ownership) @07868b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_timer_owner_unlock_cmd/18 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/30 (oal_util_raise_dem_for_drv_runtime_err) @078688c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_get_phy_if_by_name/16 
+  Calls: 
+pfe_hm_report/29 (pfe_hm_report) @078687e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_get_phy_if_by_name/16 
+  Calls: 
+pfe_if_db_unlock/28 (pfe_if_db_unlock) @07868700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_get_phy_if_by_name/16 
+  Calls: 
+pfe_if_db_entry_get_phy_if/27 (pfe_if_db_entry_get_phy_if) @07868620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_get_phy_if_by_name/16 
+  Calls: 
+pfe_if_db_get_first/26 (pfe_if_db_get_first) @07868540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_get_phy_if_by_name/16 
+  Calls: 
+pfe_if_db_lock/25 (pfe_if_db_lock) @07868460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_get_phy_if_by_name/16 
+  Calls: 
+context/24 (context) @078667e0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: fci_get_phy_if_by_name/16 (addr)
+  Availability: not_available
+  Varpool flags:
+pfe_emac_check_timer_ownership/23 (pfe_emac_check_timer_ownership) @078682a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_timer_owner_unlock_cmd/18 fci_timer_owner_lock_cmd/17 
+  Calls: 
+pfe_emac_set_timer_ownership/22 (pfe_emac_set_timer_ownership) @078681c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_timer_owner_lock_cmd/17 
+  Calls: 
+pfe_phy_if_get_emac/21 (pfe_phy_if_get_emac) @078680e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_timer_owner_unlock_cmd/18 fci_timer_owner_unlock_cmd/18 fci_timer_owner_lock_cmd/17 fci_timer_owner_lock_cmd/17 
+  Calls: 
+pfe_phy_if_get_type/20 (pfe_phy_if_get_type) @07868000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_timer_owner_unlock_cmd/18 fci_timer_owner_lock_cmd/17 
+  Calls: 
+autolibc_memset/19 (autolibc_memset) @077ffa80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_timer_owner_unlock_cmd/18 fci_timer_owner_lock_cmd/17 
+  Calls: 
+fci_timer_owner_unlock_cmd/18 (fci_timer_owner_unlock_cmd) @077ffc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_emac_check_timer_ownership/23 pfe_phy_if_get_emac/21 pfe_emac_clear_timer_ownership/31 pfe_phy_if_get_emac/21 pfe_phy_if_get_type/20 fci_get_phy_if_by_name/16 autolibc_memset/19 
+fci_timer_owner_lock_cmd/17 (fci_timer_owner_lock_cmd) @077ff9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_emac_check_timer_ownership/23 pfe_phy_if_get_emac/21 pfe_emac_set_timer_ownership/22 pfe_phy_if_get_emac/21 pfe_phy_if_get_type/20 fci_get_phy_if_by_name/16 autolibc_memset/19 
+fci_get_phy_if_by_name/16 (fci_get_phy_if_by_name) @077ff700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: context/24 (addr)
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: fci_timer_owner_unlock_cmd/18 fci_timer_owner_lock_cmd/17 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/30 pfe_hm_report/29 pfe_if_db_unlock/28 pfe_if_db_entry_get_phy_if/27 pfe_if_db_get_first/26 pfe_if_db_lock/25 
+fci_timer_owner_unlock_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_timer_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  pfe_drv_id_t cur_owner;
+  bool_t has_owner;
+  errno_t ret;
+  struct pfe_phy_if_t * phy_if;
+  struct fpp_timer_cmd_t * timer_cmd;
+  errno_t D.12728;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  has_owner = 0;
+  # DEBUG BEGIN_STMT
+  cur_owner = 10;
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len;
+  if (_1 <= 23)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 18>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *reply_len = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf, 0, 24);
+  # DEBUG BEGIN_STMT
+  timer_cmd = &msg->msg_cmd.payload;
+  # DEBUG BEGIN_STMT
+  _2 = timer_cmd->action;
+  _3 = (int) _2;
+  if (_3 == 4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  _4 = &timer_cmd->if_name;
+  phy_if = fci_get_phy_if_by_name (_4);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 61700;
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _5 = pfe_phy_if_get_type (phy_if);
+  if (_5 != 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 61719;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = pfe_phy_if_get_emac (phy_if);
+  _7 = msg->msg_cmd.sender;
+  _8 = (<unnamed type>) _7;
+  ret = pfe_emac_clear_timer_ownership (_6, _8);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  goto <bb 18>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _9 = pfe_phy_if_get_emac (phy_if);
+  ret = pfe_emac_check_timer_ownership (_9, &has_owner, &cur_owner);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 12> :
+  has_owner.6_10 = has_owner;
+  if (has_owner.6_10 == 1)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _11 = msg->msg_cmd.sender;
+  cur_owner.7_12 = cur_owner;
+  _13 = (long unsigned int) cur_owner.7_12;
+  if (_11 != _13)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 62756;
+  goto <bb 18>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+<L17>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  D.12728 = ret;
+  has_owner = {CLOBBER};
+  cur_owner = {CLOBBER};
+  return D.12728;
+
+}
+
+
+fci_timer_owner_lock_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_timer_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  pfe_drv_id_t cur_owner;
+  bool_t has_owner;
+  errno_t ret;
+  struct pfe_phy_if_t * phy_if;
+  struct fpp_timer_cmd_t * timer_cmd;
+  errno_t D.12696;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  has_owner = 0;
+  # DEBUG BEGIN_STMT
+  cur_owner = 10;
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len;
+  if (_1 <= 23)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 18>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *reply_len = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf, 0, 24);
+  # DEBUG BEGIN_STMT
+  timer_cmd = &msg->msg_cmd.payload;
+  # DEBUG BEGIN_STMT
+  _2 = timer_cmd->action;
+  _3 = (int) _2;
+  if (_3 == 4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  # DEBUG BEGIN_STMT
+  _4 = &timer_cmd->if_name;
+  phy_if = fci_get_phy_if_by_name (_4);
+  # DEBUG BEGIN_STMT
+  if (phy_if == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 61700;
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _5 = pfe_phy_if_get_type (phy_if);
+  if (_5 != 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 61719;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = pfe_phy_if_get_emac (phy_if);
+  _7 = msg->msg_cmd.sender;
+  _8 = (<unnamed type>) _7;
+  ret = pfe_emac_set_timer_ownership (_6, _8);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  goto <bb 18>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _9 = pfe_phy_if_get_emac (phy_if);
+  ret = pfe_emac_check_timer_ownership (_9, &has_owner, &cur_owner);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 12> :
+  has_owner.0_10 = has_owner;
+  if (has_owner.0_10 == 1)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _11 = msg->msg_cmd.sender;
+  cur_owner.1_12 = cur_owner;
+  _13 = (long unsigned int) cur_owner.1_12;
+  if (_11 == _13)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 0;
+  goto <bb 18>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 62755;
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  *fci_ret = 65535;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+<L17>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  D.12696 = ret;
+  has_owner = {CLOBBER};
+  cur_owner = {CLOBBER};
+  return D.12696;
+
+}
+
+
+fci_get_phy_if_by_name (char_t * name)
+{
+  uint32_t sid;
+  errno_t ret;
+  struct pfe_phy_if_t * phy_if;
+  struct pfe_if_db_entry_t * entry;
+  struct fci_t * fci_context;
+  struct pfe_phy_if_t * D.12708;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context = &context;
+  # DEBUG BEGIN_STMT
+  entry = 0B;
+  # DEBUG BEGIN_STMT
+  phy_if = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = pfe_if_db_lock (&sid);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = fci_context->phy_if_db;
+  sid.2_2 = sid;
+  ret = pfe_if_db_get_first (_1, sid.2_2, 3, name, &entry);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry.3_3 = entry;
+  if (entry.3_3 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  entry.4_4 = entry;
+  phy_if = pfe_if_db_entry_get_phy_if (entry.4_4);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  sid.5_5 = sid;
+  ret = pfe_if_db_unlock (sid.5_5);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Interface DB unlock failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_timer_owner.c", 109, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.12708 = phy_if;
+  entry = {CLOBBER};
+  sid = {CLOBBER};
+  return D.12708;
+
+}
+
+

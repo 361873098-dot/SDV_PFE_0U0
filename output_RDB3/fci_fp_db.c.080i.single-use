@@ -1,0 +1,1990 @@
+Variable fci_fp_rule_db_rules_isa_def/18 is used by single function
+Variable fci_fp_table_db_tables_isa_def/17 is used by single function
+write_rules_to_table.isra.0 (struct fci_fp_table_t * fp_table, struct pfe_class_t * class)
+{
+  struct fci_fp_rule_t * rule;
+  struct pfe_ct_fp_rule_t rule_buf;
+  struct fci_fp_rule_t * next_rule;
+  uint16_t i;
+  uint8_t pos;
+  errno_t ret;
+  short unsigned int _2;
+  int _3;
+  struct fci_fp_rule_t * _4;
+  long unsigned int _6;
+  long unsigned int _7;
+  short unsigned int _8;
+  unsigned char _9;
+  char _10;
+  char_t[16] * _11;
+  long unsigned int _13;
+  int _15;
+  long unsigned int _16;
+  unsigned char pos.0_17;
+  long unsigned int _18;
+  short unsigned int _20;
+  int _21;
+  struct fci_fp_rule_t * _22;
+  short unsigned int _24;
+
+  <bb 13> [local count: 63829674]:
+  # DEBUG table_name s=> table_name
+
+  <bb 2> [local count: 63829674]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(short unsigned int *)fp_table_1(D) + 28B];
+  # DEBUG D#1 => fp_table_1(D)
+  # DEBUG INLINE_ENTRY fci_fp_table_1st_rule
+  # DEBUG fp_table => D#1
+  # DEBUG BEGIN_STMT
+  _3 = (int) _2;
+  _4 = &fci_fp_rule_db.rules_pool[_3];
+  # DEBUG rule => _4
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 11>; [100.00%]
+
+  <bb 3> [local count: 1034442874]:
+  # DEBUG BEGIN_STMT
+  _6 = rule_5->data;
+  rule_buf.data = _6;
+  # DEBUG BEGIN_STMT
+  _7 = rule_5->mask;
+  rule_buf.mask = _7;
+  # DEBUG BEGIN_STMT
+  _8 = rule_5->offset;
+  rule_buf.offset = _8;
+  # DEBUG BEGIN_STMT
+  _9 = rule_5->flags;
+  rule_buf.flags = _9;
+  # DEBUG BEGIN_STMT
+  _10 = rule_5->next_rule[0];
+  if (_10 != 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 4> [local count: 341366148]:
+  # DEBUG BEGIN_STMT
+  _11 = &rule_5->next_rule;
+  next_rule_12 = fci_fp_rule_get_first_table (fp_table_1(D), 1, _11);
+  # DEBUG next_rule => next_rule_12
+  # DEBUG BEGIN_STMT
+  if (next_rule_12 == 0B)
+    goto <bb 5>; [3.66%]
+  else
+    goto <bb 6>; [96.34%]
+
+  <bb 5> [local count: 12494001]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = fp_table_1(D)->dmem_addr;
+  pfe_fp_destroy_table (class_14(D), _13);
+  # DEBUG BEGIN_STMT
+  fp_table_1(D)->dmem_addr = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 328872147]:
+  # DEBUG BEGIN_STMT
+  _15 = fci_fp_get_rule_pos_in_table (fp_table_1(D), next_rule_12, &pos);
+  if (_15 != 0)
+    goto <bb 7>; [3.66%]
+  else
+    goto <bb 8>; [96.34%]
+
+  <bb 7> [local count: 12036721]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = fp_table_1(D)->dmem_addr;
+  pfe_fp_destroy_table (class_14(D), _16);
+  # DEBUG BEGIN_STMT
+  fp_table_1(D)->dmem_addr = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 8> [local count: 316835426]:
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pos.0_17 = pos;
+  rule_buf.next_idx = pos.0_17;
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 693076726]:
+  # DEBUG BEGIN_STMT
+  rule_buf.next_idx = 255;
+
+  <bb 10> [local count: 1009912152]:
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _18 = fp_table_1(D)->dmem_addr;
+  pfe_fp_table_write_rule (class_14(D), _18, &rule_buf, i_19);
+  # DEBUG BEGIN_STMT
+  _20 = MEM[(short unsigned int *)rule_5 + 18B];
+  # DEBUG D#3 => rule_5
+  # DEBUG INLINE_ENTRY fci_fp_rule_next_sibling
+  # DEBUG fp_rule => D#3
+  # DEBUG BEGIN_STMT
+  _21 = (int) _20;
+  _22 = &fci_fp_rule_db.rules_pool[_21];
+  # DEBUG rule => _22
+  # DEBUG BEGIN_STMT
+  i_23 = i_19 + 1;
+  # DEBUG i => i_23
+
+  <bb 11> [local count: 1073741824]:
+  # rule_5 = PHI <_4(2), _22(10)>
+  # i_19 = PHI <0(2), i_23(10)>
+  # DEBUG ret => 0
+  # DEBUG i => i_19
+  # DEBUG rule => rule_5
+  # DEBUG BEGIN_STMT
+  _24 = fp_table_1(D)->rule_count;
+  if (i_19 < _24)
+    goto <bb 3>; [96.34%]
+  else
+    goto <bb 12>; [3.66%]
+
+  <bb 12> [local count: 63829672]:
+  # ret_25 = PHI <2(5), 2(7), 0(11)>
+  # DEBUG ret => ret_25
+  # DEBUG BEGIN_STMT
+  rule_buf ={v} {CLOBBER};
+  pos ={v} {CLOBBER};
+  return ret_25;
+
+}
+
+
+fci_fp_table_get_first.part.0 ()
+{
+  struct fci_fp_table_t * fp_table;
+  bool_t cur_crit_remember_success;
+  struct fci_fp_table_db_t * db;
+  fci_fp_table_criterion_t crit;
+  void * arg;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#27 s=> db
+  # DEBUG db => D#27
+  # DEBUG D#26 s=> crit
+  # DEBUG crit => D#26
+  # DEBUG D#25 s=> arg
+  # DEBUG arg => D#25
+
+  <bb 2> [local count: 1073741824]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_fp_db.c", 681, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG cur_crit_remember_success => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG cur_crit_remember_success => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 1073741824]:
+  # fp_table_1 = PHI <0B(2)>
+  # DEBUG cur_crit_remember_success => NULL
+  # DEBUG fp_table => fp_table_1
+  # DEBUG BEGIN_STMT
+  return fp_table_1;
+
+}
+
+
+fci_fp_rule_get_first_table.part.0 ()
+{
+  struct fci_fp_rule_t * rule;
+  bool_t cur_crit_remember_success;
+  struct fci_fp_table_t * fp_table;
+  fci_fp_rule_criterion_t crit;
+  void * arg;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#21 s=> fp_table
+  # DEBUG fp_table => D#21
+  # DEBUG D#20 s=> crit
+  # DEBUG crit => D#20
+  # DEBUG D#19 s=> arg
+  # DEBUG arg => D#19
+
+  <bb 2> [local count: 1073741824]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_fp_db.c", 458, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG cur_crit_remember_success => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG cur_crit_remember_success => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 1073741824]:
+  # rule_1 = PHI <0B(2)>
+  # DEBUG cur_crit_remember_success => NULL
+  # DEBUG rule => rule_1
+  # DEBUG BEGIN_STMT
+  return rule_1;
+
+}
+
+
+fci_fp_rule_get_first_common.part.0 ()
+{
+  struct fci_fp_rule_t * rule;
+  bool_t cur_crit_remember_success;
+  struct fci_fp_rule_db_t * db;
+  fci_fp_rule_criterion_t crit;
+  void * arg;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#15 s=> db
+  # DEBUG db => D#15
+  # DEBUG D#14 s=> crit
+  # DEBUG crit => D#14
+  # DEBUG D#13 s=> arg
+  # DEBUG arg => D#13
+
+  <bb 2> [local count: 1073741824]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_fp_db.c", 398, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG cur_crit_remember_success => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG cur_crit_remember_success => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 1073741824]:
+  # rule_1 = PHI <0B(2)>
+  # DEBUG cur_crit_remember_success => NULL
+  # DEBUG rule => rule_1
+  # DEBUG BEGIN_STMT
+  return rule_1;
+
+}
+
+
+fci_fp_match_rule_by_criterion.part.0 ()
+{
+  bool_t match;
+  fci_fp_rule_criterion_t crit;
+  const union fci_fp_rule_criterion_arg_t * arg;
+  const struct fci_fp_rule_t * rule;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#9 s=> crit
+  # DEBUG crit => D#9
+  # DEBUG D#8 s=> arg
+  # DEBUG arg => D#8
+  # DEBUG D#7 s=> rule
+  # DEBUG rule => D#7
+
+  <bb 2> [local count: 1073741824]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_fp_db.c", 344, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 1073741824]:
+  # match_1 = PHI <0(2)>
+<L1>:
+  # DEBUG match => match_1
+  # DEBUG BEGIN_STMT
+  return match_1;
+
+}
+
+
+fci_fp_db_get_table_next_rule (char_t * table_name, struct fci_fp_rule_info_t * rule_info, char_t * * next_rule)
+{
+  errno_t ret;
+  struct fci_fp_rule_t * rule;
+  struct fci_fp_table_t * fp_table;
+  char_t[16] * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  short unsigned int _4;
+  unsigned char _5;
+  char_t[16] * _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fp_table_12 = fci_fp_table_get_first (&fci_fp_table_db, 1, table_name_10(D));
+  # DEBUG fp_table => fp_table_12
+  # DEBUG BEGIN_STMT
+  if (fp_table_12 == 0B)
+    goto <bb 5>; [31.91%]
+  else
+    goto <bb 3>; [68.09%]
+
+  <bb 3> [local count: 731110809]:
+  # DEBUG BEGIN_STMT
+  rule_14 = fci_fp_rule_get_next_table (fp_table_12);
+  # DEBUG rule => rule_14
+  # DEBUG BEGIN_STMT
+  if (rule_14 == 0B)
+    goto <bb 5>; [18.75%]
+  else
+    goto <bb 4>; [81.25%]
+
+  <bb 4> [local count: 594027532]:
+  # DEBUG BEGIN_STMT
+  _1 = &rule_14->name;
+  rule_info_15(D)->rule_name = _1;
+  # DEBUG BEGIN_STMT
+  _2 = rule_14->data;
+  rule_info_15(D)->data = _2;
+  # DEBUG BEGIN_STMT
+  _3 = rule_14->mask;
+  rule_info_15(D)->mask = _3;
+  # DEBUG BEGIN_STMT
+  _4 = rule_14->offset;
+  rule_info_15(D)->offset = _4;
+  # DEBUG BEGIN_STMT
+  _5 = rule_14->flags;
+  rule_info_15(D)->flags = _5;
+  # DEBUG BEGIN_STMT
+  _6 = &rule_14->next_rule;
+  *next_rule_21(D) = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_7 = PHI <2(2), 2(3), 0(4)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  return ret_7;
+
+}
+
+
+fci_fp_db_get_table_first_rule (char_t * table_name, struct fci_fp_rule_info_t * rule_info, char_t * * next_rule)
+{
+  errno_t ret;
+  struct fci_fp_rule_t * rule;
+  struct fci_fp_table_t * fp_table;
+  char_t[16] * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  short unsigned int _4;
+  unsigned char _5;
+  char_t[16] * _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fp_table_12 = fci_fp_table_get_first (&fci_fp_table_db, 1, table_name_10(D));
+  # DEBUG fp_table => fp_table_12
+  # DEBUG BEGIN_STMT
+  if (fp_table_12 == 0B)
+    goto <bb 5>; [31.91%]
+  else
+    goto <bb 3>; [68.09%]
+
+  <bb 3> [local count: 731110809]:
+  # DEBUG BEGIN_STMT
+  rule_14 = fci_fp_rule_get_first_table (fp_table_12, 0, 0B);
+  # DEBUG rule => rule_14
+  # DEBUG BEGIN_STMT
+  if (rule_14 == 0B)
+    goto <bb 5>; [18.75%]
+  else
+    goto <bb 4>; [81.25%]
+
+  <bb 4> [local count: 594027532]:
+  # DEBUG BEGIN_STMT
+  _1 = &rule_14->name;
+  rule_info_15(D)->rule_name = _1;
+  # DEBUG BEGIN_STMT
+  _2 = rule_14->data;
+  rule_info_15(D)->data = _2;
+  # DEBUG BEGIN_STMT
+  _3 = rule_14->mask;
+  rule_info_15(D)->mask = _3;
+  # DEBUG BEGIN_STMT
+  _4 = rule_14->offset;
+  rule_info_15(D)->offset = _4;
+  # DEBUG BEGIN_STMT
+  _5 = rule_14->flags;
+  rule_info_15(D)->flags = _5;
+  # DEBUG BEGIN_STMT
+  _6 = &rule_14->next_rule;
+  *next_rule_21(D) = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_7 = PHI <2(2), 2(3), 0(4)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  return ret_7;
+
+}
+
+
+fci_fp_db_get_next_rule (struct fci_fp_rule_info_t * rule_info, char_t * * next_rule)
+{
+  errno_t ret;
+  struct fci_fp_rule_t * rule;
+  char_t[16] * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  short unsigned int _4;
+  unsigned char _5;
+  char_t[16] * _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rule_11 = fci_fp_rule_get_next_common (&fci_fp_rule_db);
+  # DEBUG rule => rule_11
+  # DEBUG BEGIN_STMT
+  if (rule_11 == 0B)
+    goto <bb 4>; [18.75%]
+  else
+    goto <bb 3>; [81.25%]
+
+  <bb 3> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  _1 = &rule_11->name;
+  rule_info_12(D)->rule_name = _1;
+  # DEBUG BEGIN_STMT
+  _2 = rule_11->data;
+  rule_info_12(D)->data = _2;
+  # DEBUG BEGIN_STMT
+  _3 = rule_11->mask;
+  rule_info_12(D)->mask = _3;
+  # DEBUG BEGIN_STMT
+  _4 = rule_11->offset;
+  rule_info_12(D)->offset = _4;
+  # DEBUG BEGIN_STMT
+  _5 = rule_11->flags;
+  rule_info_12(D)->flags = _5;
+  # DEBUG BEGIN_STMT
+  _6 = &rule_11->next_rule;
+  *next_rule_18(D) = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_7 = PHI <2(2), 0(3)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  return ret_7;
+
+}
+
+
+fci_fp_db_get_first_rule (struct fci_fp_rule_info_t * rule_info, char_t * * next_rule)
+{
+  errno_t ret;
+  struct fci_fp_rule_t * rule;
+  char_t[16] * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  short unsigned int _4;
+  unsigned char _5;
+  char_t[16] * _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rule_11 = fci_fp_rule_get_first_common (&fci_fp_rule_db, 0, 0B);
+  # DEBUG rule => rule_11
+  # DEBUG BEGIN_STMT
+  if (rule_11 == 0B)
+    goto <bb 4>; [18.75%]
+  else
+    goto <bb 3>; [81.25%]
+
+  <bb 3> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  _1 = &rule_11->name;
+  rule_info_12(D)->rule_name = _1;
+  # DEBUG BEGIN_STMT
+  _2 = rule_11->data;
+  rule_info_12(D)->data = _2;
+  # DEBUG BEGIN_STMT
+  _3 = rule_11->mask;
+  rule_info_12(D)->mask = _3;
+  # DEBUG BEGIN_STMT
+  _4 = rule_11->offset;
+  rule_info_12(D)->offset = _4;
+  # DEBUG BEGIN_STMT
+  _5 = rule_11->flags;
+  rule_info_12(D)->flags = _5;
+  # DEBUG BEGIN_STMT
+  _6 = &rule_11->next_rule;
+  *next_rule_18(D) = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_7 = PHI <2(2), 0(3)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  return ret_7;
+
+}
+
+
+fci_fp_db_get_first (fci_fp_table_criterion_t crit, void * arg)
+{
+  struct fci_fp_table_t * _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _5 = fci_fp_table_get_first (&fci_fp_table_db, crit_2(D), arg_3(D));
+  return _5;
+
+}
+
+
+fci_fp_db_get_table_from_addr (uint32_t addr, char_t * * table_name)
+{
+  errno_t ret;
+  const struct fci_fp_table_t * fp_table;
+  long unsigned int addr.3_1;
+  const char_t[16] * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  addr.3_1 = addr;
+  if (addr.3_1 == 0)
+    goto <bb 5>; [52.23%]
+  else
+    goto <bb 3>; [47.77%]
+
+  <bb 3> [local count: 512926469]:
+  # DEBUG BEGIN_STMT
+  fp_table_7 = fci_fp_table_get_first (&fci_fp_table_db, 2, &addr);
+  # DEBUG fp_table => fp_table_7
+  # DEBUG BEGIN_STMT
+  if (fp_table_7 == 0B)
+    goto <bb 5>; [18.75%]
+  else
+    goto <bb 4>; [81.25%]
+
+  <bb 4> [local count: 416752756]:
+  # DEBUG BEGIN_STMT
+  _2 = &fp_table_7->name;
+  *table_name_8(D) = _2;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_3 = PHI <22(2), 2(3), 0(4)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+
+fci_fp_db_pop_table_from_hw (char_t * table_name)
+{
+  errno_t ret;
+  struct fci_fp_table_t * fp_table;
+  struct pfe_class_t * _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fp_table_8 = fci_fp_table_get_first (&fci_fp_table_db, 1, table_name_6(D));
+  # DEBUG fp_table => fp_table_8
+  # DEBUG BEGIN_STMT
+  if (fp_table_8 == 0B)
+    goto <bb 4>; [31.91%]
+  else
+    goto <bb 3>; [68.09%]
+
+  <bb 3> [local count: 731110809]:
+  # DEBUG BEGIN_STMT
+  _1 = fp_table_8->class;
+  _2 = fp_table_8->dmem_addr;
+  pfe_fp_destroy_table (_1, _2);
+  # DEBUG BEGIN_STMT
+  fp_table_8->dmem_addr = 0;
+  # DEBUG BEGIN_STMT
+  fp_table_8->class = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_3 = PHI <2(2), 0(3)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+
+fci_fp_db_push_table_to_hw (struct pfe_class_t * class, char_t * table_name)
+{
+  errno_t ret;
+  struct fci_fp_table_t * fp_table;
+  short unsigned int _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  fp_table_8 = fci_fp_table_get_first (&fci_fp_table_db, 1, table_name_6(D));
+  # DEBUG fp_table => fp_table_8
+  # DEBUG BEGIN_STMT
+  if (fp_table_8 == 0B)
+    goto <bb 6>; [31.91%]
+  else
+    goto <bb 3>; [68.09%]
+
+  <bb 3> [local count: 731110809]:
+  # DEBUG BEGIN_STMT
+  _1 = fp_table_8->rule_count;
+  _2 = pfe_fp_create_table (class_9(D), _1);
+  fp_table_8->dmem_addr = _2;
+  # DEBUG BEGIN_STMT
+  fp_table_8->class = class_9(D);
+  # DEBUG BEGIN_STMT
+  if (_2 == 0)
+    goto <bb 4>; [35.00%]
+  else
+    goto <bb 5>; [65.00%]
+
+  <bb 4> [local count: 255888783]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Cannot write the table", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_fp_db.c", 1395, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 117
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 475222025]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#28 => table_name_6(D)
+  ret_14 = write_rules_to_table.isra.0 (fp_table_8, class_9(D));
+  # DEBUG ret => ret_14
+
+  <bb 6> [local count: 1073741824]:
+  # ret_3 = PHI <2(2), 117(4), ret_14(5)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+
+fci_fp_db_get_table_dmem_addr (char_t * table_name)
+{
+  uint32_t retval;
+  const struct fci_fp_table_t * fp_table;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fp_table_5 = fci_fp_table_get_first (&fci_fp_table_db, 1, table_name_3(D));
+  # DEBUG fp_table => fp_table_5
+  # DEBUG BEGIN_STMT
+  if (fp_table_5 == 0B)
+    goto <bb 4>; [30.00%]
+  else
+    goto <bb 3>; [70.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  retval_6 = fp_table_5->dmem_addr;
+  # DEBUG retval => retval_6
+
+  <bb 4> [local count: 1073741824]:
+  # retval_1 = PHI <0(2), retval_6(3)>
+  # DEBUG retval => retval_1
+  # DEBUG BEGIN_STMT
+  return retval_1;
+
+}
+
+
+fci_fp_db_remove_rule_from_table (char_t * rule_name)
+{
+  errno_t ret;
+  struct fci_fp_rule_t * rule;
+  struct fci_fp_table_t * _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rule_7 = fci_fp_rule_get_first_common (&fci_fp_rule_db, 1, rule_name_5(D));
+  # DEBUG rule => rule_7
+  # DEBUG BEGIN_STMT
+  if (rule_7 == 0B)
+    goto <bb 6>; [18.75%]
+  else
+    goto <bb 3>; [81.25%]
+
+  <bb 3> [local count: 872415231]:
+  # DEBUG BEGIN_STMT
+  _1 = rule_7->table;
+  if (_1 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 6>; [46.53%]
+
+  <bb 4> [local count: 466480424]:
+  # DEBUG BEGIN_STMT
+  fci_fp_unlink_rule_from_chain (rule_7);
+
+  <bb 6> [local count: 1073741824]:
+  # ret_2 = PHI <2(2), 0(4), 0(3)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  return ret_2;
+
+}
+
+
+fci_fp_db_add_rule_to_table (char_t * table_name, char_t * rule_name, uint16_t position)
+{
+  errno_t ret;
+  struct fci_fp_rule_t * rule;
+  struct fci_fp_table_t * fp_table;
+  struct fci_fp_table_t * _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  int _17;
+  int _21;
+  short unsigned int _22;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  rule_11 = fci_fp_rule_get_first_common (&fci_fp_rule_db, 1, rule_name_9(D));
+  # DEBUG rule => rule_11
+  # DEBUG BEGIN_STMT
+  if (rule_11 == 0B)
+    goto <bb 9>; [18.75%]
+  else
+    goto <bb 3>; [81.25%]
+
+  <bb 3> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  _1 = rule_11->table;
+  if (_1 != 0B)
+    goto <bb 9>; [71.84%]
+  else
+    goto <bb 4>; [28.16%]
+
+  <bb 4> [local count: 245672129]:
+  # DEBUG BEGIN_STMT
+  fp_table_14 = fci_fp_table_get_first (&fci_fp_table_db, 1, table_name_12(D));
+  # DEBUG fp_table => fp_table_14
+  # DEBUG BEGIN_STMT
+  if (fp_table_14 == 0B)
+    goto <bb 9>; [18.75%]
+  else
+    goto <bb 5>; [81.25%]
+
+  <bb 5> [local count: 199608605]:
+  # DEBUG BEGIN_STMT
+  _2 = fp_table_14->rule_count;
+  if (_2 == 0)
+    goto <bb 6>; [67.00%]
+  else
+    goto <bb 7>; [33.00%]
+
+  <bb 6> [local count: 133737765]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => rule_11
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _17 = rule_11 - &fci_fp_rule_db.rules_pool;
+  _21 = _17 /[ex] 56;
+  _22 = (short unsigned int) _21;
+  # DEBUG fp_rule => NULL
+  fp_table_14->rules_chain_1st_idx = _22;
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 65870840]:
+  # DEBUG BEGIN_STMT
+  add_rule_to_position (rule_11, fp_table_14, position_15(D));
+
+  <bb 8> [local count: 199608605]:
+  # DEBUG BEGIN_STMT
+  rule_11->table = fp_table_14;
+  # DEBUG BEGIN_STMT
+  _3 = fp_table_14->rule_count;
+  _4 = _3 + 1;
+  fp_table_14->rule_count = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 9> [local count: 1073741824]:
+  # ret_5 = PHI <2(2), 13(3), 2(4), 0(8)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+fci_fp_db_destroy_table (char_t * name, bool_t force)
+{
+  errno_t ret;
+  struct fci_fp_table_t * fp_table;
+  long unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _15;
+  int _16;
+  struct fci_fp_rule_t * _17;
+
+  <bb 2> [local count: 176203786]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  fp_table_9 = fci_fp_table_get_first (&fci_fp_table_db, 1, name_7(D));
+  # DEBUG fp_table => fp_table_9
+  # DEBUG BEGIN_STMT
+  if (fp_table_9 == 0B)
+    goto <bb 12>; [18.75%]
+  else
+    goto <bb 3>; [81.25%]
+
+  <bb 3> [local count: 143165576]:
+  # DEBUG BEGIN_STMT
+  _1 = fp_table_9->dmem_addr;
+  if (_1 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 5> [local count: 71582788]:
+  # DEBUG BEGIN_STMT
+  if (force_10(D) == 0)
+    goto <bb 12>; [35.00%]
+  else
+    goto <bb 6>; [65.00%]
+
+  <bb 6> [local count: 46528812]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fp_table_9->dmem_addr = 0;
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 10> [local count: 118111600]:
+  goto <bb 13>; [100.00%]
+
+  <bb 8> [local count: 955630224]:
+  # DEBUG BEGIN_STMT
+  _15 = MEM[(short unsigned int *)fp_table_9 + 28B];
+  # DEBUG D#1 => fp_table_9
+  # DEBUG INLINE_ENTRY fci_fp_table_1st_rule
+  # DEBUG fp_table => D#1
+  # DEBUG BEGIN_STMT
+  _16 = (int) _15;
+  _17 = &fci_fp_rule_db.rules_pool[_16];
+  # DEBUG rule => _17
+  # DEBUG BEGIN_STMT
+  fci_fp_unlink_rule_from_chain (_17);
+
+  <bb 13> [local count: 1073741824]:
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  _2 = fp_table_9->rule_count;
+  if (_2 != 0)
+    goto <bb 8>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 11> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  isa_release (&fci_fp_table_db.tables, fp_table_9);
+
+  <bb 12> [local count: 176203786]:
+  # ret_3 = PHI <2(2), 13(5), 0(11)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+
+fci_fp_db_create_table (char_t * name)
+{
+  uint32_t length;
+  errno_t ret;
+  struct fci_fp_table_t * fp_table;
+  long unsigned int _1;
+  struct fci_fp_table_t * _2;
+  char_t[16] * _3;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  length_9 = autolibc_strnlen (name_7(D), 16);
+  # DEBUG length => length_9
+  # DEBUG BEGIN_STMT
+  _1 = length_9 + 4294967295;
+  if (_1 > 14)
+    goto <bb 7>; [52.23%]
+  else
+    goto <bb 3>; [47.77%]
+
+  <bb 3> [local count: 512926468]:
+  # DEBUG BEGIN_STMT
+  _2 = fci_fp_table_get_first (&fci_fp_table_db, 1, name_7(D));
+  if (_2 != 0B)
+    goto <bb 7>; [71.84%]
+  else
+    goto <bb 4>; [28.16%]
+
+  <bb 4> [local count: 144440094]:
+  # DEBUG BEGIN_STMT
+  fp_table_12 = isa_reserve (&fci_fp_table_db.tables);
+  # DEBUG fp_table => fp_table_12
+  # DEBUG BEGIN_STMT
+  if (fp_table_12 == 0B)
+    goto <bb 5>; [18.75%]
+  else
+    goto <bb 6>; [81.25%]
+
+  <bb 5> [local count: 27082518]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] No ISA item for the table\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_fp_db.c", 1127, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 11
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 117357576]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (fp_table_12, 0, 56);
+  # DEBUG BEGIN_STMT
+  _3 = &fp_table_12->name;
+  autolibc_strncpy (_3, name_7(D), 16);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 7> [local count: 1073741824]:
+  # ret_4 = PHI <22(2), 116(3), 11(5), 0(6)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  return ret_4;
+
+}
+
+
+fci_fp_db_destroy_rule (char_t * name)
+{
+  errno_t ret;
+  struct fci_fp_rule_t * rule;
+  struct fci_fp_table_t * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG rule => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rule_7 = fci_fp_rule_get_first_common (&fci_fp_rule_db, 1, name_5(D));
+  # DEBUG rule => rule_7
+  # DEBUG BEGIN_STMT
+  if (rule_7 == 0B)
+    goto <bb 5>; [18.75%]
+  else
+    goto <bb 3>; [81.25%]
+
+  <bb 3> [local count: 872415233]:
+  # DEBUG BEGIN_STMT
+  _1 = rule_7->table;
+  if (_1 != 0B)
+    goto <bb 5>; [71.84%]
+  else
+    goto <bb 4>; [28.16%]
+
+  <bb 4> [local count: 245672129]:
+  # DEBUG BEGIN_STMT
+  isa_release (&fci_fp_rule_db.rules, rule_7);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 5> [local count: 1073741824]:
+  # ret_2 = PHI <2(2), 13(3), 0(4)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  return ret_2;
+
+}
+
+
+fci_fp_db_create_rule (char_t * name, uint32_t data, uint32_t mask, uint16_t offset, pfe_ct_fp_flags_t flags, char_t * next_rule)
+{
+  struct fpp_fp_rule_props_t rule_props;
+  uint32_t length;
+  errno_t ret;
+  long unsigned int _1;
+  unsigned char _12;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rule_props = {};
+  # DEBUG BEGIN_STMT
+  length_8 = autolibc_strnlen (name_6(D), 16);
+  # DEBUG length => length_8
+  # DEBUG BEGIN_STMT
+  _1 = length_8 + 4294967295;
+  if (_1 > 14)
+    goto <bb 9>; [52.23%]
+  else
+    goto <bb 3>; [47.77%]
+
+  <bb 3> [local count: 512926469]:
+  # DEBUG BEGIN_STMT
+  length_11 = autolibc_strnlen (next_rule_9(D), 16);
+  # DEBUG length => length_11
+  # DEBUG BEGIN_STMT
+  if (next_rule_9(D) != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 4> [local count: 359048528]:
+  if (length_11 > 15)
+    goto <bb 9>; [35.00%]
+  else
+    goto <bb 5>; [65.00%]
+
+  <bb 5> [local count: 387259484]:
+  # DEBUG BEGIN_STMT
+  _12 = flags_13(D) & 6;
+  if (_12 == 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 193629742]:
+  if (next_rule_9(D) == 0B)
+    goto <bb 9>; [18.75%]
+  else
+    goto <bb 7>; [81.25%]
+
+  <bb 7> [local count: 350953907]:
+  # DEBUG BEGIN_STMT
+  if (_12 == 6)
+    goto <bb 9>; [36.03%]
+  else
+    goto <bb 8>; [63.97%]
+
+  <bb 8> [local count: 224505214]:
+  # DEBUG BEGIN_STMT
+  rule_props.data = data_14(D);
+  # DEBUG BEGIN_STMT
+  rule_props.mask = mask_16(D);
+  # DEBUG BEGIN_STMT
+  rule_props.offset = offset_18(D);
+  # DEBUG BEGIN_STMT
+  ret_21 = allocate_table_storage (name_6(D), &rule_props, flags_13(D), next_rule_9(D));
+  # DEBUG ret => ret_21
+
+  <bb 9> [local count: 1073741824]:
+  # ret_2 = PHI <22(2), 22(4), 22(6), 22(7), ret_21(8)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  rule_props ={v} {CLOBBER};
+  return ret_2;
+
+}
+
+
+fci_fp_db_init ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&fci_fp_rule_db, 0, 1192);
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&fci_fp_table_db, 0, 92);
+  # DEBUG BEGIN_STMT
+  isa_init (&fci_fp_rule_db.rules, &fci_fp_rule_db_rules_isa_def);
+  # DEBUG BEGIN_STMT
+  isa_init (&fci_fp_table_db.tables, &fci_fp_table_db_tables_isa_def);
+  return;
+
+}
+
+
+add_rule_to_position (struct fci_fp_rule_t * rule, struct fci_fp_table_t * fp_table, uint16_t position)
+{
+  uint32_t i;
+  struct fci_fp_rule_t * head_rule;
+  long unsigned int _1;
+  short unsigned int _2;
+  long unsigned int _3;
+  struct fci_fp_rule_t * _13;
+  int _15;
+  int _18;
+  int _20;
+  short unsigned int _24;
+  short unsigned int _27;
+  short unsigned int _28;
+  short unsigned int _29;
+  int _30;
+  struct fci_fp_rule_t * _31;
+  int _32;
+  int _33;
+  short unsigned int _34;
+  int _35;
+  struct fci_fp_rule_t * _36;
+  int _37;
+  int _38;
+  short unsigned int _39;
+  int _40;
+  int _41;
+  short unsigned int _42;
+
+  <bb 2> [local count: 229727064]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  _27 = MEM[(short unsigned int *)fp_table_10(D) + 28B];
+  # DEBUG D#1 => fp_table_10(D)
+  # DEBUG INLINE_ENTRY fci_fp_table_1st_rule
+  # DEBUG fp_table => D#1
+  # DEBUG BEGIN_STMT
+  _20 = (int) _27;
+  _13 = &fci_fp_rule_db.rules_pool[_20];
+  # DEBUG head_rule => _13
+  # DEBUG BEGIN_STMT
+  if (position_12(D) == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 12> [local count: 114863532]:
+  goto <bb 9>; [100.00%]
+
+  <bb 3> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  rule_16(D)->chained_next_rule_idx = _27;
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => rule_16(D)
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _18 = rule_16(D) - &fci_fp_rule_db.rules_pool;
+  _15 = _18 /[ex] 56;
+  _24 = (short unsigned int) _15;
+  # DEBUG fp_rule => NULL
+  fp_table_10(D)->rules_chain_1st_idx = _24;
+  # DEBUG BEGIN_STMT
+  MEM[(struct fci_fp_rule_t *)&fci_fp_rule_db].rules_pool[_20].chained_prev_rule_idx = _24;
+  goto <bb 11>; [100.00%]
+
+  <bb 4> [local count: 1014686025]:
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) position_12(D);
+  if (_1 == i_5)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 5> [local count: 55807731]:
+  # head_rule_43 = PHI <head_rule_4(4)>
+  # DEBUG BEGIN_STMT
+  _28 = MEM[(short unsigned int *)head_rule_43 + 18B];
+  # DEBUG D#3 => head_rule_43
+  # DEBUG INLINE_ENTRY fci_fp_rule_next_sibling
+  # DEBUG fp_rule => D#3
+  # DEBUG BEGIN_STMT
+  _30 = (int) _28;
+  _31 = &fci_fp_rule_db.rules_pool[_30];
+  # DEBUG head_rule_next => _31
+  # DEBUG BEGIN_STMT
+  if (_31 != head_rule_43)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 10>; [30.00%]
+
+  <bb 6> [local count: 39065412]:
+  # DEBUG BEGIN_STMT
+  rule_16(D)->chained_next_rule_idx = _28;
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => rule_16(D)
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _32 = rule_16(D) - &fci_fp_rule_db.rules_pool;
+  _33 = _32 /[ex] 56;
+  _34 = (short unsigned int) _33;
+  # DEBUG fp_rule => NULL
+  MEM[(struct fci_fp_rule_t *)&fci_fp_rule_db].rules_pool[_30].chained_prev_rule_idx = _34;
+  goto <bb 10>; [100.00%]
+
+  <bb 8> [local count: 958878293]:
+  # DEBUG BEGIN_STMT
+  _29 = MEM[(short unsigned int *)head_rule_4 + 18B];
+  # DEBUG D#3 => head_rule_4
+  # DEBUG INLINE_ENTRY fci_fp_rule_next_sibling
+  # DEBUG fp_rule => D#3
+  # DEBUG BEGIN_STMT
+  _35 = (int) _29;
+  _36 = &fci_fp_rule_db.rules_pool[_35];
+  # DEBUG head_rule => _36
+  # DEBUG BEGIN_STMT
+  i_14 = i_5 + 1;
+  # DEBUG i => i_14
+
+  <bb 9> [local count: 1073741824]:
+  # head_rule_4 = PHI <_36(8), _13(12)>
+  # i_5 = PHI <i_14(8), 1(12)>
+  # DEBUG added => NULL
+  # DEBUG i => i_5
+  # DEBUG head_rule => head_rule_4
+  # DEBUG BEGIN_STMT
+  _2 = fp_table_10(D)->rule_count;
+  _3 = (long unsigned int) _2;
+  if (_3 > i_5)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 10>; [5.50%]
+
+  <bb 10> [local count: 114863532]:
+  # head_rule_11 = PHI <head_rule_4(9), head_rule_43(6), head_rule_43(5)>
+  # DEBUG added => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => head_rule_11
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _40 = head_rule_11 - &fci_fp_rule_db.rules_pool;
+  _41 = _40 /[ex] 56;
+  _42 = (short unsigned int) _41;
+  # DEBUG fp_rule => NULL
+  rule_16(D)->chained_prev_rule_idx = _42;
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => rule_16(D)
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _37 = rule_16(D) - &fci_fp_rule_db.rules_pool;
+  _38 = _37 /[ex] 56;
+  _39 = (short unsigned int) _38;
+  # DEBUG fp_rule => NULL
+  head_rule_11->chained_next_rule_idx = _39;
+
+  <bb 11> [local count: 229727064]:
+  return;
+
+}
+
+
+allocate_table_storage (char_t * name, struct fpp_fp_rule_props_t * rule_props, pfe_ct_fp_flags_t flags, char_t * next_rule)
+{
+  struct fci_fp_rule_t * rule;
+  bool_t ignore_next_rule;
+  errno_t ret;
+  struct fci_fp_rule_t * _1;
+  char_t[16] * _2;
+  char_t[16] * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  short unsigned int _6;
+  unsigned char _11;
+  int _23;
+  int _33;
+  short unsigned int _34;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  # DEBUG ignore_next_rule => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG rule => 0B
+  # DEBUG BEGIN_STMT
+  _11 = flags_12(D) & 6;
+  if (_11 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 3> [local count: 536870911]:
+  if (next_rule_13(D) != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 4> [local count: 375809638]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ignore_next_rule => 1
+
+  <bb 5> [local count: 1073741824]:
+  # ignore_next_rule_8 = PHI <0(2), 0(3), 1(4)>
+  # DEBUG ignore_next_rule => ignore_next_rule_8
+  # DEBUG BEGIN_STMT
+  _1 = fci_fp_rule_get_first_common (&fci_fp_rule_db, 1, name_15(D));
+  if (_1 != 0B)
+    goto <bb 13>; [71.84%]
+  else
+    goto <bb 6>; [28.16%]
+
+  <bb 6> [local count: 302365698]:
+  # DEBUG BEGIN_STMT
+  rule_18 = isa_reserve (&fci_fp_rule_db.rules);
+  # DEBUG rule => rule_18
+  # DEBUG BEGIN_STMT
+  if (rule_18 == 0B)
+    goto <bb 7>; [18.75%]
+  else
+    goto <bb 8>; [81.25%]
+
+  <bb 7> [local count: 56693568]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] No ISA item for the rule\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_fp_db.c", 871, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 11
+  goto <bb 13>; [100.00%]
+
+  <bb 8> [local count: 245672129]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (rule_18, 0, 56);
+  # DEBUG BEGIN_STMT
+  _2 = &rule_18->name;
+  autolibc_strncpy (_2, name_15(D), 16);
+  # DEBUG BEGIN_STMT
+  if (next_rule_13(D) != 0B)
+    goto <bb 9>; [70.00%]
+  else
+    goto <bb 11>; [30.00%]
+
+  <bb 9> [local count: 171970491]:
+  if (ignore_next_rule_8 == 0)
+    goto <bb 10>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 10> [local count: 56750262]:
+  # DEBUG BEGIN_STMT
+  _3 = &rule_18->next_rule;
+  autolibc_strncpy (_3, next_rule_13(D), 16);
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 188921868]:
+  # DEBUG BEGIN_STMT
+  rule_18->next_rule[0] = 0;
+
+  <bb 12> [local count: 245672129]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => rule_18
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _23 = rule_18 - &fci_fp_rule_db.rules_pool;
+  _33 = _23 /[ex] 56;
+  _34 = (short unsigned int) _33;
+  # DEBUG fp_rule => NULL
+  rule_18->chained_next_rule_idx = _34;
+  # DEBUG BEGIN_STMT
+  rule_18->chained_prev_rule_idx = _34;
+  # DEBUG BEGIN_STMT
+  _4 = rule_props_26(D)->data;
+  rule_18->data = _4;
+  # DEBUG BEGIN_STMT
+  _5 = rule_props_26(D)->mask;
+  rule_18->mask = _5;
+  # DEBUG BEGIN_STMT
+  _6 = rule_props_26(D)->offset;
+  rule_18->offset = _6;
+  # DEBUG BEGIN_STMT
+  rule_18->flags = flags_12(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 13> [local count: 1073741824]:
+  # ret_7 = PHI <116(5), 11(7), 0(12)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  return ret_7;
+
+}
+
+
+fci_fp_get_rule_pos_in_table (const struct fci_fp_table_t * fp_table, struct fci_fp_rule_t * rule, uint8_t * pos)
+{
+  errno_t ret;
+  const struct fci_fp_rule_t * rule_item;
+  uint16_t i;
+  unsigned char _1;
+  short unsigned int _2;
+  int _10;
+  short unsigned int _15;
+  short unsigned int _16;
+  struct fci_fp_rule_t * _17;
+  int _18;
+  struct fci_fp_rule_t * _19;
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _15 = MEM[(short unsigned int *)fp_table_9(D) + 28B];
+  # DEBUG D#1 => fp_table_9(D)
+  # DEBUG INLINE_ENTRY fci_fp_table_1st_rule
+  # DEBUG fp_table => D#1
+  # DEBUG BEGIN_STMT
+  _10 = (int) _15;
+  _17 = &fci_fp_rule_db.rules_pool[_10];
+  # DEBUG rule_item => _17
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 1014686025]:
+  # DEBUG BEGIN_STMT
+  if (rule_item_4 == rule_11(D))
+    goto <bb 4>; [5.50%]
+  else
+    goto <bb 5>; [94.50%]
+
+  <bb 4> [local count: 55807731]:
+  # i_20 = PHI <i_3(3)>
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) i_20;
+  *pos_13(D) = _1;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 958878293]:
+  # DEBUG BEGIN_STMT
+  _16 = MEM[(short unsigned int *)rule_item_4 + 18B];
+  # DEBUG D#3 => rule_item_4
+  # DEBUG INLINE_ENTRY fci_fp_rule_next_sibling
+  # DEBUG fp_rule => D#3
+  # DEBUG BEGIN_STMT
+  _18 = (int) _16;
+  _19 = &fci_fp_rule_db.rules_pool[_18];
+  # DEBUG rule_item => _19
+  # DEBUG BEGIN_STMT
+  i_12 = i_3 + 1;
+  # DEBUG i => i_12
+
+  <bb 6> [local count: 1073741824]:
+  # i_3 = PHI <0(2), i_12(5)>
+  # rule_item_4 = PHI <_17(2), _19(5)>
+  # DEBUG rule_item => rule_item_4
+  # DEBUG i => i_3
+  # DEBUG BEGIN_STMT
+  _2 = fp_table_9(D)->rule_count;
+  if (_2 > i_3)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 7>; [5.50%]
+
+  <bb 7> [local count: 114863532]:
+  # ret_5 = PHI <0(4), 2(6)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+fci_fp_match_table_by_criterion (fci_fp_table_criterion_t crit, const union fci_fp_table_criterion_arg_t * arg, const struct fci_fp_table_t * fp_table)
+{
+  bool_t match;
+  const char_t[16] * _1;
+  const char_t[16] * _2;
+  long int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (crit_8(D)) <default: <L9> [25.00%], case 0: <L12> [25.00%], case 1: <L1> [25.00%], case 2: <L5> [25.00%]>
+
+  <bb 3> [local count: 268435456]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  _1 = &arg_10(D)->name;
+  _2 = &fp_table_11(D)->name;
+  _3 = autolibc_strcmp (_1, _2);
+  if (_3 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 134217728]:
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 0
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 268435456]:
+<L5>:
+  # DEBUG BEGIN_STMT
+  _4 = arg_10(D)->address;
+  _5 = fp_table_11(D)->dmem_addr;
+  if (_4 == _5)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 6> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 0
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 268435456]:
+<L9>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unknown criterion\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_fp_db.c", 616, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  # match_6 = PHI <1(2), 0(4), 0(6), 0(7), 1(3), 1(5)>
+<L12>:
+  # DEBUG match => match_6
+  # DEBUG BEGIN_STMT
+  return match_6;
+
+}
+
+
+fci_fp_rule_get_next_table (struct fci_fp_table_t * fp_table)
+{
+  bool_t match;
+  struct fci_fp_rule_t * rule;
+  short unsigned int _1;
+  int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  <unnamed type> _5;
+  union fci_fp_rule_criterion_arg_t * _6;
+  short unsigned int _7;
+  short unsigned int _8;
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  # DEBUG rule => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 1014686025]:
+  # DEBUG BEGIN_STMT
+  _1 = fp_table_17(D)->iter_next_rule_idx;
+  _2 = (int) _1;
+  rule_18 = &fci_fp_rule_db.rules_pool[_2];
+  # DEBUG rule => rule_18
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct fci_fp_rule_t *)&fci_fp_rule_db].rules_pool[_2].chained_next_rule_idx;
+  fp_table_17(D)->iter_next_rule_idx = _3;
+  # DEBUG BEGIN_STMT
+  _4 = _7 + 1;
+  fp_table_17(D)->iter_count = _4;
+  # DEBUG BEGIN_STMT
+  _5 = fp_table_17(D)->cur_crit;
+  _6 = &fp_table_17(D)->cur_crit_arg;
+  match_22 = fci_fp_match_rule_by_criterion (_5, _6, rule_18);
+  # DEBUG match => match_22
+  # DEBUG BEGIN_STMT
+  if (match_22 == 1)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 8> [local count: 958878293]:
+
+  <bb 4> [local count: 1073741824]:
+  # rule_9 = PHI <0B(2), rule_18(8)>
+  # match_12 = PHI <0(2), match_22(8)>
+  # DEBUG match => match_12
+  # DEBUG rule => rule_9
+  # DEBUG BEGIN_STMT
+  _7 = fp_table_17(D)->iter_count;
+  _8 = fp_table_17(D)->rule_count;
+  if (_7 < _8)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 5>; [5.50%]
+
+  <bb 5> [local count: 114863532]:
+  # rule_10 = PHI <rule_18(3), rule_9(4)>
+  # match_13 = PHI <match_22(3), match_12(4)>
+  # DEBUG match => match_13
+  # DEBUG rule => rule_10
+  # DEBUG BEGIN_STMT
+  if (match_13 == 0)
+    goto <bb 6>; [29.00%]
+  else
+    goto <bb 7>; [71.00%]
+
+  <bb 6> [local count: 33310424]:
+  # DEBUG BEGIN_STMT
+  # DEBUG rule => 0B
+
+  <bb 7> [local count: 114863532]:
+  # rule_11 = PHI <rule_10(5), 0B(6)>
+  # DEBUG rule => rule_11
+  # DEBUG BEGIN_STMT
+  return rule_11;
+
+}
+
+
+fci_fp_rule_get_first_table (struct fci_fp_table_t * fp_table, fci_fp_rule_criterion_t crit, void * arg)
+{
+  struct fci_fp_rule_t * rule;
+  char_t[16] * _1;
+  char _2;
+  short unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG rule => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG cur_crit_remember_success => 1
+  # DEBUG BEGIN_STMT
+  fp_table_7(D)->cur_crit = crit_8(D);
+  # DEBUG BEGIN_STMT
+  switch (crit_8(D)) <default: <L4> [33.33%], case 0: <L11> [33.33%], case 1: <L1> [33.33%]>
+
+  <bb 3> [local count: 357878150]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  _1 = &fp_table_7(D)->cur_crit_arg.name;
+  autolibc_strncpy (_1, arg_10(D), 16);
+  # DEBUG BEGIN_STMT
+  _2 = fp_table_7(D)->cur_crit_arg.name[15];
+  if (_2 != 0)
+    goto <bb 6>; [29.00%]
+  else
+    goto <bb 5>; [71.00%]
+
+  <bb 4> [local count: 357913944]:
+<L4>:
+  # DEBUG D#16 => fp_table_7(D)
+  # DEBUG D#17 => crit_8(D)
+  # DEBUG D#18 => arg_10(D)
+  rule_5 = fci_fp_rule_get_first_table.part.0 ();
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 611971638]:
+<L11>:
+  # DEBUG cur_crit_remember_success => NULL
+  # DEBUG BEGIN_STMT
+  fp_table_7(D)->iter_count = 0;
+  # DEBUG BEGIN_STMT
+  _3 = fp_table_7(D)->rules_chain_1st_idx;
+  fp_table_7(D)->iter_next_rule_idx = _3;
+  # DEBUG BEGIN_STMT
+  rule_16 = fci_fp_rule_get_next_table (fp_table_7(D));
+  # DEBUG rule => rule_16
+
+  <bb 6> [local count: 1073634451]:
+  # rule_4 = PHI <0B(3), rule_16(5), rule_5(4)>
+  # DEBUG cur_crit_remember_success => NULL
+  # DEBUG rule => rule_4
+  # DEBUG BEGIN_STMT
+  return rule_4;
+
+}
+
+
+fci_fp_match_rule_by_criterion (fci_fp_rule_criterion_t crit, const union fci_fp_rule_criterion_arg_t * arg, const struct fci_fp_rule_t * rule)
+{
+  bool_t match;
+  const char_t[16] * _1;
+  const char_t[16] * _2;
+  long int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  switch (crit_5(D)) <default: <L5> [33.33%], case 0: <L8> [33.33%], case 1: <L1> [33.33%]>
+
+  <bb 3> [local count: 357878150]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  _1 = &arg_6(D)->name;
+  _2 = &rule_7(D)->name;
+  _3 = autolibc_strcmp (_1, _2);
+  if (_3 == 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 178939075]:
+  # DEBUG BEGIN_STMT
+  # DEBUG match => 0
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 357913944]:
+<L5>:
+  # DEBUG D#4 => crit_5(D)
+  # DEBUG D#5 => arg_6(D)
+  # DEBUG D#6 => rule_7(D)
+  match_12 = fci_fp_match_rule_by_criterion.part.0 ();
+
+  <bb 6> [local count: 1073634451]:
+  # match_4 = PHI <1(2), 0(4), match_12(5), 1(3)>
+<L8>:
+  # DEBUG match => match_4
+  # DEBUG BEGIN_STMT
+  return match_4;
+
+}
+
+
+fci_fp_unlink_rule_from_chain (struct fci_fp_rule_t * fp_rule)
+{
+  struct fci_fp_table_t * _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  short unsigned int _9;
+  int _10;
+  int _11;
+  struct fci_fp_rule_t * _12;
+  int _16;
+  struct fci_fp_rule_t * _18;
+  int _20;
+  short unsigned int _26;
+  short unsigned int _27;
+  int _28;
+  int _29;
+  short unsigned int _30;
+  int _31;
+  int _32;
+  short unsigned int _33;
+  int _34;
+  int _35;
+  short unsigned int _36;
+  int _37;
+  int _38;
+  short unsigned int _39;
+  int _40;
+  int _41;
+  short unsigned int _42;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => fp_rule_8(D)
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _11 = fp_rule_8(D) - &fci_fp_rule_db.rules_pool;
+  _10 = _11 /[ex] 56;
+  _9 = (short unsigned int) _10;
+  # DEBUG fp_rule => NULL
+  # DEBUG index => _9
+  # DEBUG BEGIN_STMT
+  _27 = MEM[(short unsigned int *)fp_rule_8(D) + 18B];
+  # DEBUG D#3 => fp_rule_8(D)
+  # DEBUG INLINE_ENTRY fci_fp_rule_next_sibling
+  # DEBUG fp_rule => D#3
+  # DEBUG BEGIN_STMT
+  _20 = (int) _27;
+  _18 = &fci_fp_rule_db.rules_pool[_20];
+  # DEBUG fp_rule_next => _18
+  # DEBUG BEGIN_STMT
+  _26 = MEM[(short unsigned int *)fp_rule_8(D) + 16B];
+  # DEBUG D#2 => fp_rule_8(D)
+  # DEBUG INLINE_ENTRY fci_fp_rule_prev_sibling
+  # DEBUG fp_rule => D#2
+  # DEBUG BEGIN_STMT
+  _16 = (int) _26;
+  _12 = &fci_fp_rule_db.rules_pool[_16];
+  # DEBUG fp_rule_prev => _12
+  # DEBUG BEGIN_STMT
+  _1 = fp_rule_8(D)->table;
+  _2 = _1->rules_chain_1st_idx;
+  if (_2 == _9)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => _18
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _28 = _18 - &fci_fp_rule_db.rules_pool;
+  _29 = _28 /[ex] 56;
+  _30 = (short unsigned int) _29;
+  # DEBUG fp_rule => NULL
+  _1->rules_chain_1st_idx = _30;
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => _18
+  # DEBUG INLINE_ENTRY NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => NULL
+  MEM[(struct fci_fp_rule_t *)&fci_fp_rule_db].rules_pool[_20].chained_prev_rule_idx = _30;
+  goto <bb 12>; [100.00%]
+
+  <bb 4> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  if (fp_rule_8(D) != _12)
+    goto <bb 5>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 5> [local count: 496068723]:
+  # DEBUG BEGIN_STMT
+  if (fp_rule_8(D) != _18)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 6> [local count: 347248106]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => _18
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _31 = _18 - &fci_fp_rule_db.rules_pool;
+  _32 = _31 /[ex] 56;
+  _33 = (short unsigned int) _32;
+  # DEBUG fp_rule => NULL
+  MEM[(struct fci_fp_rule_t *)&fci_fp_rule_db].rules_pool[_16].chained_next_rule_idx = _33;
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 148820617]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => _12
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _34 = _12 - &fci_fp_rule_db.rules_pool;
+  _35 = _34 /[ex] 56;
+  _36 = (short unsigned int) _35;
+  # DEBUG fp_rule => NULL
+  MEM[(struct fci_fp_rule_t *)&fci_fp_rule_db].rules_pool[_16].chained_next_rule_idx = _36;
+
+  <bb 8> [local count: 708669605]:
+  # DEBUG BEGIN_STMT
+  if (fp_rule_8(D) != _18)
+    goto <bb 9>; [70.00%]
+  else
+    goto <bb 12>; [30.00%]
+
+  <bb 9> [local count: 496068723]:
+  # DEBUG BEGIN_STMT
+  if (fp_rule_8(D) != _12)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 11>; [30.00%]
+
+  <bb 10> [local count: 347248106]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => _12
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _37 = _12 - &fci_fp_rule_db.rules_pool;
+  _38 = _37 /[ex] 56;
+  _39 = (short unsigned int) _38;
+  # DEBUG fp_rule => NULL
+  MEM[(struct fci_fp_rule_t *)&fci_fp_rule_db].rules_pool[_20].chained_prev_rule_idx = _39;
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 148820617]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fp_rule => _18
+  # DEBUG INLINE_ENTRY fci_fp_get_rule_index
+  # DEBUG BEGIN_STMT
+  _40 = _18 - &fci_fp_rule_db.rules_pool;
+  _41 = _40 /[ex] 56;
+  _42 = (short unsigned int) _41;
+  # DEBUG fp_rule => NULL
+  MEM[(struct fci_fp_rule_t *)&fci_fp_rule_db].rules_pool[_20].chained_prev_rule_idx = _42;
+
+  <bb 12> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  fp_rule_8(D)->chained_next_rule_idx = _9;
+  # DEBUG BEGIN_STMT
+  fp_rule_8(D)->chained_prev_rule_idx = _9;
+  # DEBUG BEGIN_STMT
+  _3 = _1->rule_count;
+  _4 = _3 + 65535;
+  _1->rule_count = _4;
+  # DEBUG BEGIN_STMT
+  fp_rule_8(D)->table = 0B;
+  return;
+
+}
+
+

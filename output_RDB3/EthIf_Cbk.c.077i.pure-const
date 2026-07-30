@@ -1,0 +1,565 @@
+
+
+ local analysis of EthIf_GetRxMgmtObject
+   scanning: return 1;
+Function is locally const.
+
+
+ local analysis of EthIf_GetTxMgmtObject
+   scanning: return 1;
+Function is locally const.
+
+
+ local analysis of EthIf_SwitchPortModeIndication
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of EthIf_TrcvModeIndication
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of EthIf_CtrlModeIndication
+   scanning: return;
+Function is locally const.
+
+
+ local analysis of EthIf_TxConfirmation
+   scanning: pfeTxConfCtr.1_1 = pfeTxConfCtr;
+  scanning: _2 = (unsigned int) CtrlIdx_8(D);
+  scanning: _3 = _2 * 4;
+  scanning: _4 = pfeTxConfCtr.1_1 + _3;
+  scanning: _5 ={v} *_4;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: _6 = _5 + 1;
+  scanning: *_4 ={v} _6;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: return;
+
+
+ local analysis of EthIf_RxIndication
+   scanning: pfeRxCtr.0_1 = pfeRxCtr;
+  scanning: _2 = (unsigned int) CtrlIdx_8(D);
+  scanning: _3 = _2 * 4;
+  scanning: _4 = pfeRxCtr.0_1 + _3;
+  scanning: _5 ={v} *_4;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: _6 = _5 + 1;
+  scanning: *_4 ={v} _6;
+    Volatile stmt is not const/pure
+    Volatile indirect ref is not const/pure
+  scanning: Lwip_EthIf_RxIndication (CtrlIdx_8(D), FrameType_10(D), IsBroadcast_11(D), PhysAddrPtr_12(D), DataPtr_13(D), LenByte_14(D));
+  scanning: return;
+callgraph:
+
+EthIf_CtrlModeIndication/30 (EthIf_CtrlModeIndication) @06e34a80
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 22
+  Aux: @07614110
+  References: 
+  Referring: 
+  Function EthIf_CtrlModeIndication/30 is inline copy in EthIf_TrcvModeIndication/23
+  Clone of EthIf_CtrlModeIndication/22
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EthIf_TrcvModeIndication/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Lwip_EthIf_RxIndication/28 (Lwip_EthIf_RxIndication) @0aaaa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: EthIf_RxIndication/20 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthIf_GetRxMgmtObject/26 (EthIf_GetRxMgmtObject) @0aaaa540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614070
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_GetTxMgmtObject/25 (EthIf_GetTxMgmtObject) @0aaaa2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614090
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_SwitchPortModeIndication/24 (EthIf_SwitchPortModeIndication) @0aaaa000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @076143d0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_TrcvModeIndication/23 (EthIf_TrcvModeIndication) @0aa0ac40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614210
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthIf_CtrlModeIndication/30 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthIf_CtrlModeIndication/22 (EthIf_CtrlModeIndication) @0aa0a2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 30
+  Aux: @076140d0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthIf_TxConfirmation/21 (EthIf_TxConfirmation) @0aa0ae00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @076142d0
+  References: pfeTxConfCtr/29 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_RxIndication/20 (EthIf_RxIndication) @0aa0ab60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614150
+  References: pfeRxCtr/27 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Lwip_EthIf_RxIndication/28 (1073741824 (estimated locally),1.00 per call) 
+
+
+ ordered call graph: reduced for nothrow
+EthIf_CtrlModeIndication/30 (EthIf_CtrlModeIndication) @06e34a80
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 22
+  Aux: @07614110
+  References: 
+  Referring: 
+  Function EthIf_CtrlModeIndication/30 is inline copy in EthIf_TrcvModeIndication/23
+  Clone of EthIf_CtrlModeIndication/22
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EthIf_TrcvModeIndication/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthIf_GetRxMgmtObject/26 (EthIf_GetRxMgmtObject) @0aaaa540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614070
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_GetTxMgmtObject/25 (EthIf_GetTxMgmtObject) @0aaaa2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614090
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_SwitchPortModeIndication/24 (EthIf_SwitchPortModeIndication) @0aaaa000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @076143d0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_TrcvModeIndication/23 (EthIf_TrcvModeIndication) @0aa0ac40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614210
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthIf_CtrlModeIndication/30 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthIf_CtrlModeIndication/22 (EthIf_CtrlModeIndication) @0aa0a2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 30
+  Aux: @076140d0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthIf_TxConfirmation/21 (EthIf_TxConfirmation) @0aa0ae00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @076142d0
+  References: pfeTxConfCtr/29 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_RxIndication/20 (EthIf_RxIndication) @0aa0ab60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614150
+  References: pfeRxCtr/27 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Lwip_EthIf_RxIndication/28 (1073741824 (estimated locally),1.00 per call) 
+
+
+
+MALLOC LATTICE Initial:
+EthIf_CtrlModeIndication: malloc_bottom
+EthIf_GetRxMgmtObject: malloc_bottom
+EthIf_GetTxMgmtObject: malloc_bottom
+EthIf_SwitchPortModeIndication: malloc_bottom
+EthIf_TrcvModeIndication: malloc_bottom
+EthIf_CtrlModeIndication: malloc_bottom
+EthIf_TxConfirmation: malloc_bottom
+EthIf_RxIndication: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+EthIf_CtrlModeIndication: malloc_bottom
+EthIf_GetRxMgmtObject: malloc_bottom
+EthIf_GetTxMgmtObject: malloc_bottom
+EthIf_SwitchPortModeIndication: malloc_bottom
+EthIf_TrcvModeIndication: malloc_bottom
+EthIf_CtrlModeIndication: malloc_bottom
+EthIf_TxConfirmation: malloc_bottom
+EthIf_RxIndication: malloc_bottom
+callgraph:
+
+EthIf_CtrlModeIndication/30 (EthIf_CtrlModeIndication) @06e34a80
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 22
+  Aux: @07614070
+  References: 
+  Referring: 
+  Function EthIf_CtrlModeIndication/30 is inline copy in EthIf_TrcvModeIndication/23
+  Clone of EthIf_CtrlModeIndication/22
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EthIf_TrcvModeIndication/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+Lwip_EthIf_RxIndication/28 (Lwip_EthIf_RxIndication) @0aaaa9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: EthIf_RxIndication/20 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthIf_GetRxMgmtObject/26 (EthIf_GetRxMgmtObject) @0aaaa540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614090
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_GetTxMgmtObject/25 (EthIf_GetTxMgmtObject) @0aaaa2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614350
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_SwitchPortModeIndication/24 (EthIf_SwitchPortModeIndication) @0aaaa000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614290
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_TrcvModeIndication/23 (EthIf_TrcvModeIndication) @0aa0ac40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614210
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthIf_CtrlModeIndication/30 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthIf_CtrlModeIndication/22 (EthIf_CtrlModeIndication) @0aa0a2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 30
+  Aux: @07614250
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthIf_TxConfirmation/21 (EthIf_TxConfirmation) @0aa0ae00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @076140d0
+  References: pfeTxConfCtr/29 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_RxIndication/20 (EthIf_RxIndication) @0aa0ab60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @076142d0
+  References: pfeRxCtr/27 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Lwip_EthIf_RxIndication/28 (1073741824 (estimated locally),1.00 per call) 
+
+
+ ordered call graph: reduced
+EthIf_GetRxMgmtObject/26 (EthIf_GetRxMgmtObject) @0aaaa540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614090
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_GetTxMgmtObject/25 (EthIf_GetTxMgmtObject) @0aaaa2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614350
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_SwitchPortModeIndication/24 (EthIf_SwitchPortModeIndication) @0aaaa000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614290
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_TrcvModeIndication/23 (EthIf_TrcvModeIndication) @0aa0ac40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07614210
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: EthIf_CtrlModeIndication/30 (inlined) (1073741824 (estimated locally),1.00 per call) 
+EthIf_CtrlModeIndication/30 (EthIf_CtrlModeIndication) @06e34a80
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 22
+  Aux: @07614070
+  References: 
+  Referring: 
+  Function EthIf_CtrlModeIndication/30 is inline copy in EthIf_TrcvModeIndication/23
+  Clone of EthIf_CtrlModeIndication/22
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged optimize_size
+  Called by: EthIf_TrcvModeIndication/23 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+EthIf_CtrlModeIndication/22 (EthIf_CtrlModeIndication) @0aa0a2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 30
+  Aux: @07614250
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged optimize_size
+  Called by: 
+  Calls: 
+EthIf_TxConfirmation/21 (EthIf_TxConfirmation) @0aa0ae00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @076140d0
+  References: pfeTxConfCtr/29 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+EthIf_RxIndication/20 (EthIf_RxIndication) @0aa0ab60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @076142d0
+  References: pfeRxCtr/27 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Lwip_EthIf_RxIndication/28 (1073741824 (estimated locally),1.00 per call) 
+
+Function found not to call free: EthIf_TxConfirmation
+Function found not to call free: EthIf_CtrlModeIndication
+Function found not to call free: EthIf_CtrlModeIndication
+Function found not to call free: EthIf_TrcvModeIndication
+Function found not to call free: EthIf_SwitchPortModeIndication
+Function found not to call free: EthIf_GetTxMgmtObject
+Function found not to call free: EthIf_GetRxMgmtObject
+EthIf_GetRxMgmtObject (uint8 CtrlIdx, Eth_DataType * DataPtr, struct EthSwt_MgmtObjectType * * MgmtObjectPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Result => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 1;
+
+}
+
+
+EthIf_GetTxMgmtObject (uint8 CtrlIdx, Eth_BufIdxType BufIdx, struct EthSwt_MgmtObjectType * * MgmtObjectPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Result => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 1;
+
+}
+
+
+EthIf_SwitchPortModeIndication (uint8 SwitchIdx, uint8 SwitchPortIdx, EthTrcv_ModeType PortMode)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthIf_TrcvModeIndication (uint8 TrcvIdx, EthTrcv_ModeType TrcvMode)
+{
+  <bb 2> [local count: 1073741824]:
+  EthIf_CtrlModeIndication (TrcvIdx_1(D), TrcvMode_2(D)); [tail call]
+  return;
+
+}
+
+
+EthIf_CtrlModeIndication (uint8 CtrlIdx, Eth_ModeType CtrlMode)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthIf_TxConfirmation (uint8 CtrlIdx, Eth_BufIdxType BufIdx, Std_ReturnType Result)
+{
+  volatile uint32_t * pfeTxConfCtr.1_1;
+  unsigned int _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pfeTxConfCtr.1_1 = pfeTxConfCtr;
+  _2 = (unsigned int) CtrlIdx_8(D);
+  _3 = _2 * 4;
+  _4 = pfeTxConfCtr.1_1 + _3;
+  _5 ={v} *_4;
+  _6 = _5 + 1;
+  *_4 ={v} _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthIf_RxIndication (uint8 CtrlIdx, Eth_FrameType FrameType, boolean IsBroadcast, uint8 * PhysAddrPtr, Eth_DataType * DataPtr, uint16 LenByte)
+{
+  volatile uint32_t * pfeRxCtr.0_1;
+  unsigned int _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pfeRxCtr.0_1 = pfeRxCtr;
+  _2 = (unsigned int) CtrlIdx_8(D);
+  _3 = _2 * 4;
+  _4 = pfeRxCtr.0_1 + _3;
+  _5 ={v} *_4;
+  _6 = _5 + 1;
+  *_4 ={v} _6;
+  # DEBUG BEGIN_STMT
+  Lwip_EthIf_RxIndication (CtrlIdx_8(D), FrameType_10(D), IsBroadcast_11(D), PhysAddrPtr_12(D), DataPtr_13(D), LenByte_14(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

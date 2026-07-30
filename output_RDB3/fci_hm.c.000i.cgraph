@@ -1,0 +1,611 @@
+Trivially needed symbols: fci_hm_cb_deregister fci_hm_cb_register fci_hm_send_events
+
+
+Initial Symbol table:
+
+pfe_hm_register_event_cb/23 (pfe_hm_register_event_cb) @07677460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb_register/17 
+  Calls: 
+fci_core_client_send_broadcast/22 (fci_core_client_send_broadcast) @076772a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+autolibc_memcpy/21 (autolibc_memcpy) @076771c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+pfe_hm_get/20 (pfe_hm_get) @076770e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+context/19 (context) @075bd3f0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: fci_hm_cb/15 (addr)
+  Availability: not-ready
+  Varpool flags:
+fci_hm_cb_deregister/18 (fci_hm_cb_deregister) @075b4e00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+fci_hm_cb_register/17 (fci_hm_cb_register) @075b4b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075b4e00
+  References: fci_hm_cb/15 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_hm_register_event_cb/23 
+fci_hm_send_events/16 (fci_hm_send_events) @075b48c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075b4b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: fci_hm_cb/15 
+fci_hm_cb/15 (fci_hm_cb) @075b4620
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  Aux: @075b4b60
+  References: context/19 (addr)
+  Referring: fci_hm_cb_register/17 (addr)
+  Function flags: body optimize_size
+  Called by: fci_hm_send_events/16 
+  Calls: fci_core_client_send_broadcast/22 autolibc_memcpy/21 pfe_hm_get/20 
+fifo_get/14 (fifo_get) @06a2e380
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fifo_put/13 (fifo_put) @06a2e0e0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_fci_owner_hif_from_phy_id/12 (pfe_fci_owner_hif_from_phy_id) @073e5540
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_fci_owner_hif_ids/11 (pfe_fci_owner_hif_ids) @073dcaf8
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+hal_ip_ready_get/10 (hal_ip_ready_get) @07268380
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+hal_ip_ready_set/9 (hal_ip_ready_set) @072680e0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_is_multi/8 (pfe_emac_is_multi) @071f3d20
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_is_broad/7 (pfe_emac_is_broad) @071f3a80
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_is_zero/6 (pfe_emac_is_zero) @071f37e0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+find_irq_idx_from_id/5 (find_irq_idx_from_id) @0716be00
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_unlock/4 (oal_mutex_unlock) @0716b380
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_lock/3 (oal_mutex_lock) @0716b0e0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @0706ed80
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @0706eca8
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+oal_swap_endian_long/0 (oal_swap_endian_long) @06e95540
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: fifo_get fifo_put pfe_fci_owner_hif_from_phy_id pfe_fci_owner_hif_ids hal_ip_ready_get hal_ip_ready_set pfe_emac_is_multi pfe_emac_is_broad pfe_emac_is_zero find_irq_idx_from_id oal_mutex_unlock oal_mutex_lock SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+pfe_hm_register_event_cb/23 (pfe_hm_register_event_cb) @07677460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb_register/17 
+  Calls: 
+fci_core_client_send_broadcast/22 (fci_core_client_send_broadcast) @076772a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+autolibc_memcpy/21 (autolibc_memcpy) @076771c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+pfe_hm_get/20 (pfe_hm_get) @076770e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+context/19 (context) @075bd3f0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: fci_hm_cb/15 (addr)
+  Availability: not-ready
+  Varpool flags:
+fci_hm_cb_deregister/18 (fci_hm_cb_deregister) @075b4e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+fci_hm_cb_register/17 (fci_hm_cb_register) @075b4b60
+  Type: function definition analyzed
+  Visibility: public
+  References: fci_hm_cb/15 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_hm_register_event_cb/23 
+fci_hm_send_events/16 (fci_hm_send_events) @075b48c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: fci_hm_cb/15 
+fci_hm_cb/15 (fci_hm_cb) @075b4620
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: context/19 (addr)
+  Referring: fci_hm_cb_register/17 (addr)
+  Function flags: body optimize_size
+  Called by: fci_hm_send_events/16 
+  Calls: fci_core_client_send_broadcast/22 autolibc_memcpy/21 pfe_hm_get/20 
+
+
+Initial Symbol table:
+
+pfe_hm_register_event_cb/23 (pfe_hm_register_event_cb) @07677460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb_register/17 
+  Calls: 
+fci_core_client_send_broadcast/22 (fci_core_client_send_broadcast) @076772a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+autolibc_memcpy/21 (autolibc_memcpy) @076771c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+pfe_hm_get/20 (pfe_hm_get) @076770e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+context/19 (context) @075bd3f0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: fci_hm_cb/15 (addr)
+  Availability: not-ready
+  Varpool flags:
+fci_hm_cb_deregister/18 (fci_hm_cb_deregister) @075b4e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+fci_hm_cb_register/17 (fci_hm_cb_register) @075b4b60
+  Type: function definition analyzed
+  Visibility: public
+  References: fci_hm_cb/15 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_hm_register_event_cb/23 
+fci_hm_send_events/16 (fci_hm_send_events) @075b48c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: fci_hm_cb/15 
+fci_hm_cb/15 (fci_hm_cb) @075b4620
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: context/19 (addr)
+  Referring: fci_hm_cb_register/17 (addr)
+  Function flags: body optimize_size
+  Called by: fci_hm_send_events/16 
+  Calls: fci_core_client_send_broadcast/22 autolibc_memcpy/21 pfe_hm_get/20 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+pfe_hm_register_event_cb/23 (pfe_hm_register_event_cb) @07677460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb_register/17 
+  Calls: 
+fci_core_client_send_broadcast/22 (fci_core_client_send_broadcast) @076772a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+autolibc_memcpy/21 (autolibc_memcpy) @076771c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+pfe_hm_get/20 (pfe_hm_get) @076770e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 
+  Calls: 
+context/19 (context) @075bd3f0
+  Type: variable
+  Visibility: external public
+  References: 
+  Referring: fci_hm_cb/15 (addr)
+  Availability: not-ready
+  Varpool flags:
+fci_hm_cb_deregister/18 (fci_hm_cb_deregister) @075b4e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+fci_hm_cb_register/17 (fci_hm_cb_register) @075b4b60
+  Type: function definition analyzed
+  Visibility: public
+  References: fci_hm_cb/15 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_hm_register_event_cb/23 
+fci_hm_send_events/16 (fci_hm_send_events) @075b48c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: fci_hm_cb/15 
+fci_hm_cb/15 (fci_hm_cb) @075b4620
+  Type: function definition analyzed
+  Visibility:
+  Address is taken.
+  References: context/19 (addr)
+  Referring: fci_hm_cb_register/17 (addr)
+  Function flags: body optimize_size
+  Called by: fci_hm_send_events/16 
+  Calls: fci_core_client_send_broadcast/22 autolibc_memcpy/21 pfe_hm_get/20 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+pfe_hm_register_event_cb/23 (pfe_hm_register_event_cb) @07677460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_hm_cb_register/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+fci_core_client_send_broadcast/22 (fci_core_client_send_broadcast) @076772a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 (341366148 (estimated locally),3.00 per call) 
+  Calls: 
+autolibc_memcpy/21 (autolibc_memcpy) @076771c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 (341366148 (estimated locally),3.00 per call) 
+  Calls: 
+pfe_hm_get/20 (pfe_hm_get) @076770e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_hm_cb/15 (1034442874 (estimated locally),9.10 per call) 
+  Calls: 
+context/19 (context) @075bd3f0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: fci_hm_cb/15 (read)
+  Availability: not_available
+  Varpool flags:
+fci_hm_cb_deregister/18 (fci_hm_cb_deregister) @075b4e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+fci_hm_cb_register/17 (fci_hm_cb_register) @075b4b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: fci_hm_cb/15 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_hm_register_event_cb/23 (1073741824 (estimated locally),1.00 per call) 
+fci_hm_send_events/16 (fci_hm_send_events) @075b48c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: fci_hm_cb/15 (1073741824 (estimated locally),1.00 per call) 
+fci_hm_cb/15 (fci_hm_cb) @075b4620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: context/19 (read)
+  Referring: fci_hm_cb_register/17 (addr)
+  Availability: available
+  Function flags: count:113634470 (estimated locally) body optimize_size
+  Called by: fci_hm_send_events/16 (1073741824 (estimated locally),1.00 per call) 
+  Calls: fci_core_client_send_broadcast/22 (341366148 (estimated locally),3.00 per call) autolibc_memcpy/21 (341366148 (estimated locally),3.00 per call) pfe_hm_get/20 (1034442874 (estimated locally),9.10 per call) 
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:fci_hm_cb:0
+Time profile order in expand_all_functions:fci_hm_send_events:0
+Time profile order in expand_all_functions:fci_hm_cb_register:0
+Time profile order in expand_all_functions:fci_hm_cb_deregister:0
+Trivially needed variables:
+Removing variables:
+
+Final Symbol table:
+
+pfe_hm_register_event_cb/23 (pfe_hm_register_event_cb) @07677460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_core_client_send_broadcast/22 (fci_core_client_send_broadcast) @076772a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+autolibc_memcpy/21 (autolibc_memcpy) @076771c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_hm_get/20 (pfe_hm_get) @076770e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+context/19 (context) @075bd3f0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Varpool flags:
+fci_hm_cb_deregister/18 (fci_hm_cb_deregister) @075b4e00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+fci_hm_cb_register/17 (fci_hm_cb_register) @075b4b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+fci_hm_send_events/16 (fci_hm_send_events) @075b48c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+fci_hm_cb/15 (fci_hm_cb) @075b4620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Address is taken.
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:113634470 (estimated locally) optimize_size
+  Called by: 
+  Calls: 

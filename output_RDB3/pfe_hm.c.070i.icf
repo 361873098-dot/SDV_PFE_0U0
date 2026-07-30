@@ -1,0 +1,354 @@
+Parsed function:oal_mutex_unlock.part.0
+Parsed function:oal_mutex_lock.part.0
+Parsed function:pfe_hm_register_event_cb
+Parsed function:pfe_hm_get
+Parsed function:pfe_hm_report
+Parsed function:pfe_hm_destroy
+Parsed function:pfe_hm_init
+Parsed function:pfe_hm_put
+Dump after hash based groups
+Congruence classes: 9 (unique hash values: 9), with total: 10 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 8 classes
+[2]: 1 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 9 (unique hash values: 9), with total: 10 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 8 classes
+[2]: 1 classes
+
+
+Worklist has been filled with: 4
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 10 (unique hash values: 9), with total: 10 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 10 classes
+
+
+Init called for 0 items (0.00%).
+Dump after full equality comparison of groups
+Congruence classes: 10 (unique hash values: 9), with total: 10 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 10 classes
+
+
+Worklist has been filled with: 5
+Address reference subdivision created: 0 new classes.
+Congruence classes: 10 (unique hash values: 9), with total: 10 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 10 classes
+
+
+
+Item count: 10
+Congruent classes before: 10, after: 10
+Average class size before: 1.00, after: 1.00
+Average non-singular class size: 0.00, count: 0
+Equal symbols: 0
+Fraction of visited symbols: 0.00%
+
+oal_mutex_unlock.part.0 (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _2;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_1(D)];
+  _2 ();
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock.part.0 (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _2;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_1(D)];
+  _2 ();
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_hm_register_event_cb (void (*pfe_hm_cb_t) (struct pfe_hm_item_t *) cb)
+{
+  bool_t ret;
+  void (*<T4ca>) (struct pfe_hm_item_t *) _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = pfe_hm.event_cb;
+  if (_1 == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 3> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  pfe_hm.event_cb = cb_5(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 1
+
+  <bb 4> [local count: 1073741824]:
+  # ret_2 = PHI <0(2), 1(3)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  return ret_2;
+
+}
+
+
+pfe_hm_get (struct pfe_hm_item_t * item)
+{
+  errno_t ret;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  struct pfe_hm_item_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _1 = pfe_hm.initialized;
+  if (_1 == 1)
+    goto <bb 3>; [32.03%]
+  else
+    goto <bb 8>; [67.97%]
+
+  <bb 3> [local count: 343919506]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 101
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (101);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _2 = pfe_hm.len;
+  if (_2 != 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 4> [local count: 113493437]:
+  # DEBUG BEGIN_STMT
+  _3 = pfe_hm.start;
+  _4 = &pfe_hm.items[_3];
+  autolibc_memcpy (item_14(D), _4, 12);
+  # DEBUG BEGIN_STMT
+  _5 = pfe_hm.len;
+  _6 = _5 + 4294967295;
+  pfe_hm.len = _6;
+  # DEBUG BEGIN_STMT
+  _7 = pfe_hm.start;
+  _8 = _7 + 1;
+  pfe_hm.start = _8;
+  # DEBUG BEGIN_STMT
+  if (_8 > 7)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 5> [local count: 56746719]:
+  # DEBUG BEGIN_STMT
+  pfe_hm.start = 0;
+
+  <bb 7> [local count: 343919506]:
+  # ret_9 = PHI <2(3), 0(5), 0(4)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 101
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (101);
+
+  <bb 8> [local count: 1073741824]:
+  # ret_10 = PHI <2(2), ret_9(7)>
+  # DEBUG mutex => NULL
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  return ret_10;
+
+}
+
+
+pfe_hm_report (pfe_hm_src_t src, pfe_hm_type_t type, pfe_hm_evt_t id, const char * format)
+{
+  struct pfe_hm_item_t item;
+  unsigned char _1;
+  void (*<T4ca>) (struct pfe_hm_item_t *) _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 75
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  item.type = type_6(D);
+  # DEBUG BEGIN_STMT
+  item.src = src_8(D);
+  # DEBUG BEGIN_STMT
+  item.id = id_10(D);
+  # DEBUG BEGIN_STMT
+  _1 = pfe_hm.initialized;
+  if (_1 == 1)
+    goto <bb 3>; [20.24%]
+  else
+    goto <bb 4>; [79.76%]
+
+  <bb 3> [local count: 217325345]:
+  # DEBUG BEGIN_STMT
+  pfe_hm_put (&item);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = pfe_hm.event_cb;
+  if (_2 != 0B)
+    goto <bb 5>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 5> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _2 (&item);
+
+  <bb 6> [local count: 1073741824]:
+  item ={v} {CLOBBER};
+  return;
+
+}
+
+
+pfe_hm_destroy ()
+{
+  unsigned char _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = pfe_hm.initialized;
+  if (_1 == 1)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  # DEBUG BEGIN_STMT
+  pfe_hm.initialized = 0;
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+pfe_hm_init ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pfe_hm.start = 0;
+  # DEBUG BEGIN_STMT
+  pfe_hm.end = 0;
+  # DEBUG BEGIN_STMT
+  pfe_hm.len = 0;
+  # DEBUG BEGIN_STMT
+  pfe_hm.initialized = 1;
+  # DEBUG BEGIN_STMT
+  pfe_hm.event_cb = 0B;
+  return;
+
+}
+
+
+pfe_hm_put (const struct pfe_hm_item_t * item)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  struct pfe_hm_item_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 75
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 100
+  # DEBUG INLINE_ENTRY oal_mutex_lock
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock.part.0 (100);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  _1 = pfe_hm.len;
+  if (_1 <= 7)
+    goto <bb 3>; [47.77%]
+  else
+    goto <bb 6>; [52.23%]
+
+  <bb 3> [local count: 512926468]:
+  # DEBUG BEGIN_STMT
+  _2 = pfe_hm.end;
+  _3 = &pfe_hm.items[_2];
+  autolibc_memcpy (_3, item_11(D), 12);
+  # DEBUG BEGIN_STMT
+  _4 = pfe_hm.len;
+  _5 = _4 + 1;
+  pfe_hm.len = _5;
+  # DEBUG BEGIN_STMT
+  _6 = pfe_hm.end;
+  _7 = _6 + 1;
+  pfe_hm.end = _7;
+  # DEBUG BEGIN_STMT
+  if (_7 > 7)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 4> [local count: 256463234]:
+  # DEBUG BEGIN_STMT
+  pfe_hm.end = 0;
+
+  <bb 6> [local count: 1073741824]:
+  # ret_8 = PHI <75(2), 0(4), 0(3)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => 100
+  # DEBUG INLINE_ENTRY oal_mutex_unlock
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock.part.0 (100);
+  # DEBUG BEGIN_STMT
+  # DEBUG mutex => NULL
+  # DEBUG BEGIN_STMT
+  return ret_8;
+
+}
+
+

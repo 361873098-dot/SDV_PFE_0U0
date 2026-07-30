@@ -1,0 +1,1990 @@
+Port_Ipw_SetAsUsedPin (Port_PinType PinIndex, const struct Port_ConfigType * pConfigPtr)
+{
+  uint8 CoreId;
+  uint8 u8MscrSiulInstance;
+  uint32 u32LocalMSCR;
+  uint8 u8LocalPDO;
+  uint16 u16MscrIdx;
+  const struct Port_Siul2_PinConfigType * _1;
+  long unsigned int _2;
+  const struct Port_Siul2_PinConfigType * _3;
+  const struct Port_Siul2_PinConfigType * _4;
+  long unsigned int _5;
+  const struct Port_Siul2_PinConfigType * _6;
+  const struct Port_Siul2_PinConfigType * _7;
+  long unsigned int _8;
+  const struct Port_Siul2_PinConfigType * _9;
+  const struct Port_Siul2_PinConfigType * _10;
+  long unsigned int _11;
+  const struct Port_Siul2_PinConfigType * _12;
+  short unsigned int _13;
+  long unsigned int _14;
+  const uint32 * _15;
+  long unsigned int _16;
+  const uint32 * _17;
+  long unsigned int _18;
+  int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  int _22;
+  long unsigned int _23;
+  const struct Port_Siul2_PinConfigType * _24;
+  long unsigned int _25;
+  const struct Port_Siul2_PinConfigType * _26;
+  _Bool _27;
+  _Bool _28;
+  const struct Port_Siul2_PinConfigType * _29;
+  long unsigned int _30;
+  const struct Port_Siul2_PinConfigType * _31;
+  _Bool _32;
+  int _33;
+  long unsigned int _34;
+  short unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  volatile uint8 * _39;
+  int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  volatile uint32 * _46;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pConfigPtr_50(D)->pUsedPadConfig;
+  _2 = PinIndex_51(D) * 24;
+  _3 = _1 + _2;
+  u16MscrIdx_52 = _3->u16MscrIdx;
+  # DEBUG u16MscrIdx => u16MscrIdx_52
+  # DEBUG BEGIN_STMT
+  _4 = pConfigPtr_50(D)->pUsedPadConfig;
+  _5 = PinIndex_51(D) * 24;
+  _6 = _4 + _5;
+  u8LocalPDO_53 = _6->u8PDO;
+  # DEBUG u8LocalPDO => u8LocalPDO_53
+  # DEBUG BEGIN_STMT
+  _7 = pConfigPtr_50(D)->pUsedPadConfig;
+  _8 = PinIndex_51(D) * 24;
+  _9 = _7 + _8;
+  u32LocalMSCR_54 = _9->u32MSCR;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_54
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = pConfigPtr_50(D)->pUsedPadConfig;
+  _11 = PinIndex_51(D) * 24;
+  _12 = _10 + _11;
+  u8MscrSiulInstance_55 = _12->u8MscrSiulInstance;
+  # DEBUG u8MscrSiulInstance => u8MscrSiulInstance_55
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CoreId_56 = 0;
+  # DEBUG CoreId => CoreId_56
+  # DEBUG BEGIN_STMT
+  _13 = pConfigPtr_50(D)->u16NumPins;
+  _14 = (long unsigned int) _13;
+  if (PinIndex_51(D) >= _14)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 6, 10);
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _15 = pConfigPtr_50(D)->pau32Port_PinToPartitionMap;
+  _16 = PinIndex_51(D) * 4;
+  _17 = _15 + _16;
+  _18 = *_17;
+  _19 = (int) CoreId_56;
+  _20 = 1 << _19;
+  _21 = _18 & _20;
+  _22 = (int) CoreId_56;
+  _23 = _21 >> _22;
+  if (_23 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 6, 240);
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _24 = pConfigPtr_50(D)->pUsedPadConfig;
+  _25 = PinIndex_51(D) * 24;
+  _26 = _24 + _25;
+  _27 = _26->bMC;
+  _28 = ~_27;
+  if (_28 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 6, 14);
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _29 = pConfigPtr_50(D)->pUsedPadConfig;
+  _30 = PinIndex_51(D) * 24;
+  _31 = _29 + _30;
+  _32 = _31->bGPIO;
+  if (_32 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (u8LocalPDO_53 != 2)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _33 = (int) u8MscrSiulInstance_55;
+  _34 = Port_au32Siul2BaseAddr[_33];
+  _35 = u16MscrIdx_52 ^ 3;
+  _36 = (long unsigned int) _35;
+  _37 = _34 + _36;
+  _38 = _37 + 4864;
+  _39 = (volatile uint8 *) _38;
+  *_39 ={v} u8LocalPDO_53;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _40 = (int) u8MscrSiulInstance_55;
+  _41 = Port_au32Siul2BaseAddr[_40];
+  _42 = (long unsigned int) u16MscrIdx_52;
+  _43 = _42 << 2;
+  _44 = _41 + _43;
+  _45 = _44 + 576;
+  _46 = (volatile uint32 *) _45;
+  *_46 ={v} u32LocalMSCR_54;
+
+  <bb 12> :
+  return;
+
+}
+
+
+Port_Ipw_SetAsUnusedPin (Port_PinType PinIndex, const struct Port_ConfigType * pConfigPtr)
+{
+  uint8 CoreId;
+  uint8 u8MscrSiulInstance;
+  uint32 u32LocalMSCR;
+  uint8 u8LocalPDO;
+  uint16 u16MscrIdx;
+  const struct Port_Siul2_PinConfigType * _1;
+  long unsigned int _2;
+  const struct Port_Siul2_PinConfigType * _3;
+  const struct Port_Siul2_UnUsedPinConfigType * _4;
+  const struct Port_Siul2_UnUsedPinConfigType * _5;
+  const struct Port_Siul2_PinConfigType * _6;
+  long unsigned int _7;
+  const struct Port_Siul2_PinConfigType * _8;
+  short unsigned int _9;
+  long unsigned int _10;
+  const uint32 * _11;
+  long unsigned int _12;
+  const uint32 * _13;
+  long unsigned int _14;
+  int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  int _18;
+  long unsigned int _19;
+  const struct Port_Siul2_PinConfigType * _20;
+  long unsigned int _21;
+  const struct Port_Siul2_PinConfigType * _22;
+  _Bool _23;
+  _Bool _24;
+  int _25;
+  long unsigned int _26;
+  short unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  volatile uint8 * _31;
+  int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  volatile uint32 * _38;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pConfigPtr_42(D)->pUsedPadConfig;
+  _2 = PinIndex_43(D) * 24;
+  _3 = _1 + _2;
+  u16MscrIdx_44 = _3->u16MscrIdx;
+  # DEBUG u16MscrIdx => u16MscrIdx_44
+  # DEBUG BEGIN_STMT
+  _4 = pConfigPtr_42(D)->pUnusedPadConfig;
+  u8LocalPDO_45 = _4->u8PDO;
+  # DEBUG u8LocalPDO => u8LocalPDO_45
+  # DEBUG BEGIN_STMT
+  _5 = pConfigPtr_42(D)->pUnusedPadConfig;
+  u32LocalMSCR_46 = _5->u32MSCR;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_46
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = pConfigPtr_42(D)->pUsedPadConfig;
+  _7 = PinIndex_43(D) * 24;
+  _8 = _6 + _7;
+  u8MscrSiulInstance_47 = _8->u8MscrSiulInstance;
+  # DEBUG u8MscrSiulInstance => u8MscrSiulInstance_47
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CoreId_48 = 0;
+  # DEBUG CoreId => CoreId_48
+  # DEBUG BEGIN_STMT
+  _9 = pConfigPtr_42(D)->u16NumPins;
+  _10 = (long unsigned int) _9;
+  if (PinIndex_43(D) >= _10)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 5, 10);
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _11 = pConfigPtr_42(D)->pau32Port_PinToPartitionMap;
+  _12 = PinIndex_43(D) * 4;
+  _13 = _11 + _12;
+  _14 = *_13;
+  _15 = (int) CoreId_48;
+  _16 = 1 << _15;
+  _17 = _14 & _16;
+  _18 = (int) CoreId_48;
+  _19 = _17 >> _18;
+  if (_19 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 5, 240);
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _20 = pConfigPtr_42(D)->pUsedPadConfig;
+  _21 = PinIndex_43(D) * 24;
+  _22 = _20 + _21;
+  _23 = _22->bMC;
+  _24 = ~_23;
+  if (_24 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 5, 14);
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (u8LocalPDO_45 != 2)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _25 = (int) u8MscrSiulInstance_47;
+  _26 = Port_au32Siul2BaseAddr[_25];
+  _27 = u16MscrIdx_44 ^ 3;
+  _28 = (long unsigned int) _27;
+  _29 = _26 + _28;
+  _30 = _29 + 4864;
+  _31 = (volatile uint8 *) _30;
+  *_31 ={v} u8LocalPDO_45;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _32 = (int) u8MscrSiulInstance_47;
+  _33 = Port_au32Siul2BaseAddr[_32];
+  _34 = (long unsigned int) u16MscrIdx_44;
+  _35 = _34 << 2;
+  _36 = _33 + _35;
+  _37 = _36 + 576;
+  _38 = (volatile uint32 *) _37;
+  *_38 ={v} u32LocalMSCR_46;
+
+  <bb 11> :
+  return;
+
+}
+
+
+Port_Ipw_RefreshPortDirection (const struct Port_ConfigType * pConfigPtr)
+{
+  uint32 u32LocalMSCR;
+  uint8 u8MscrSiulInstance;
+  uint16 u16MscrIdx;
+  uint16 u16PinIndex;
+  uint16 u16NumPins;
+  const struct Port_Siul2_PinConfigType * _1;
+  unsigned int _2;
+  unsigned int _3;
+  const struct Port_Siul2_PinConfigType * _4;
+  _Bool _5;
+  _Bool _6;
+  const struct Port_Siul2_PinConfigType * _7;
+  unsigned int _8;
+  unsigned int _9;
+  const struct Port_Siul2_PinConfigType * _10;
+  const struct Port_Siul2_PinConfigType * _11;
+  unsigned int _12;
+  unsigned int _13;
+  const struct Port_Siul2_PinConfigType * _14;
+  int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  volatile uint32 * _21;
+  const struct Port_Siul2_PinConfigType * _22;
+  unsigned int _23;
+  unsigned int _24;
+  const struct Port_Siul2_PinConfigType * _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  const struct Port_Siul2_PinConfigType * _28;
+  unsigned int _29;
+  unsigned int _30;
+  const struct Port_Siul2_PinConfigType * _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  volatile uint32 * _40;
+  short unsigned int u16PinIndex.6_41;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u16NumPins_49 = pConfigPtr_48(D)->u16NumPins;
+  # DEBUG u16NumPins => u16NumPins_49
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u16PinIndex_50 = 0;
+  # DEBUG u16PinIndex => u16PinIndex_50
+  goto <bb 12>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = pConfigPtr_48(D)->pUsedPadConfig;
+  _2 = (unsigned int) u16PinIndex_42;
+  _3 = _2 * 24;
+  _4 = _1 + _3;
+  _5 = _4->bDC;
+  _6 = ~_5;
+  if (_6 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _7 = pConfigPtr_48(D)->pUsedPadConfig;
+  _8 = (unsigned int) u16PinIndex_42;
+  _9 = _8 * 24;
+  _10 = _7 + _9;
+  u16MscrIdx_51 = _10->u16MscrIdx;
+  # DEBUG u16MscrIdx => u16MscrIdx_51
+  # DEBUG BEGIN_STMT
+  _11 = pConfigPtr_48(D)->pUsedPadConfig;
+  _12 = (unsigned int) u16PinIndex_42;
+  _13 = _12 * 24;
+  _14 = _11 + _13;
+  u8MscrSiulInstance_52 = _14->u8MscrSiulInstance;
+  # DEBUG u8MscrSiulInstance => u8MscrSiulInstance_52
+  # DEBUG BEGIN_STMT
+  _15 = (int) u8MscrSiulInstance_52;
+  _16 = Port_au32Siul2BaseAddr[_15];
+  _17 = (long unsigned int) u16MscrIdx_51;
+  _18 = _17 << 2;
+  _19 = _16 + _18;
+  _20 = _19 + 576;
+  _21 = (volatile uint32 *) _20;
+  u32LocalMSCR_53 ={v} *_21;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_53
+  # DEBUG BEGIN_STMT
+  _22 = pConfigPtr_48(D)->pUsedPadConfig;
+  _23 = (unsigned int) u16PinIndex_42;
+  _24 = _23 * 24;
+  _25 = _22 + _24;
+  _26 = _25->u32MSCR;
+  _27 = _26 & 2097152;
+  if (_27 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_55 = u32LocalMSCR_53 | 2097152;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_55
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_54 = u32LocalMSCR_53 & 4292870143;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_54
+
+  <bb 7> :
+  # u32LocalMSCR_43 = PHI <u32LocalMSCR_55(5), u32LocalMSCR_54(6)>
+  # DEBUG u32LocalMSCR => u32LocalMSCR_43
+  # DEBUG BEGIN_STMT
+  _28 = pConfigPtr_48(D)->pUsedPadConfig;
+  _29 = (unsigned int) u16PinIndex_42;
+  _30 = _29 * 24;
+  _31 = _28 + _30;
+  _32 = _31->u32MSCR;
+  _33 = _32 & 524288;
+  if (_33 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_57 = u32LocalMSCR_43 | 524288;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_57
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_56 = u32LocalMSCR_43 & 4294443007;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_56
+
+  <bb 10> :
+  # u32LocalMSCR_44 = PHI <u32LocalMSCR_57(8), u32LocalMSCR_56(9)>
+  # DEBUG u32LocalMSCR => u32LocalMSCR_44
+  # DEBUG BEGIN_STMT
+  _34 = (int) u8MscrSiulInstance_52;
+  _35 = Port_au32Siul2BaseAddr[_34];
+  _36 = (long unsigned int) u16MscrIdx_51;
+  _37 = _36 << 2;
+  _38 = _35 + _37;
+  _39 = _38 + 576;
+  _40 = (volatile uint32 *) _39;
+  *_40 ={v} u32LocalMSCR_44;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  u16PinIndex.6_41 = u16PinIndex_42;
+  u16PinIndex_59 = u16PinIndex.6_41 + 1;
+  # DEBUG u16PinIndex => u16PinIndex_59
+
+  <bb 12> :
+  # u16PinIndex_42 = PHI <u16PinIndex_50(2), u16PinIndex_59(11)>
+  # DEBUG u16PinIndex => u16PinIndex_42
+  # DEBUG BEGIN_STMT
+  if (u16PinIndex_42 < u16NumPins_49)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  return;
+
+}
+
+
+Port_Ipw_SetGpioPadOutput (Port_PinType PinIndex, const struct Port_ConfigType * pConfigPtr)
+{
+  uint8 u8LocalPDO;
+  uint8 u8MscrSiulInstance;
+  uint16 u16MscrIdx;
+  const struct Port_Siul2_PinConfigType * _1;
+  long unsigned int _2;
+  const struct Port_Siul2_PinConfigType * _3;
+  const struct Port_Siul2_PinConfigType * _4;
+  long unsigned int _5;
+  const struct Port_Siul2_PinConfigType * _6;
+  const struct Port_Siul2_PinConfigType * _7;
+  long unsigned int _8;
+  const struct Port_Siul2_PinConfigType * _9;
+  int _10;
+  long unsigned int _11;
+  short unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  volatile uint8 * _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pConfigPtr_19(D)->pUsedPadConfig;
+  _2 = PinIndex_20(D) * 24;
+  _3 = _1 + _2;
+  u16MscrIdx_21 = _3->u16MscrIdx;
+  # DEBUG u16MscrIdx => u16MscrIdx_21
+  # DEBUG BEGIN_STMT
+  _4 = pConfigPtr_19(D)->pUsedPadConfig;
+  _5 = PinIndex_20(D) * 24;
+  _6 = _4 + _5;
+  u8MscrSiulInstance_22 = _6->u8MscrSiulInstance;
+  # DEBUG u8MscrSiulInstance => u8MscrSiulInstance_22
+  # DEBUG BEGIN_STMT
+  _7 = pConfigPtr_19(D)->pUsedPadConfig;
+  _8 = PinIndex_20(D) * 24;
+  _9 = _7 + _8;
+  u8LocalPDO_23 = _9->u8PDO;
+  # DEBUG u8LocalPDO => u8LocalPDO_23
+  # DEBUG BEGIN_STMT
+  if (u8LocalPDO_23 != 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _10 = (int) u8MscrSiulInstance_22;
+  _11 = Port_au32Siul2BaseAddr[_10];
+  _12 = u16MscrIdx_21 ^ 3;
+  _13 = (long unsigned int) _12;
+  _14 = _11 + _13;
+  _15 = _14 + 4864;
+  _16 = (volatile uint8 *) _15;
+  *_16 ={v} u8LocalPDO_23;
+
+  <bb 4> :
+  return;
+
+}
+
+
+Port_Ipw_SetGpioDirChangeability (uint8 u8ImcrSiulInstance, uint16 u16MscrIdx, boolean bStatus)
+{
+  uint8 u8PinBitOffset;
+  uint16 u16PinDirFlagWord;
+  unsigned char _1;
+  int _2;
+  unsigned char _3;
+  unsigned char _4;
+  int _5;
+  int _6;
+  long unsigned int _7;
+  short unsigned int _8;
+  int _9;
+  long unsigned int _10;
+  short unsigned int _11;
+  short unsigned int _12;
+  int _13;
+  unsigned char _14;
+  unsigned char _15;
+  int _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  SchM_Enter_Port_PORT_EXCLUSIVE_AREA_00 ();
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) u16MscrIdx_20(D);
+  u8PinBitOffset_21 = _1 & 15;
+  # DEBUG u8PinBitOffset => u8PinBitOffset_21
+  # DEBUG BEGIN_STMT
+  _2 = (int) u8ImcrSiulInstance_22(D);
+  _3 = (unsigned char) u16MscrIdx_20(D);
+  _4 = _3 >> 4;
+  _5 = (int) _4;
+  u16PinDirFlagWord_23 = Port_Ipw_au16GPIODirChangeability[_2][_5];
+  # DEBUG u16PinDirFlagWord => u16PinDirFlagWord_23
+  # DEBUG BEGIN_STMT
+  if (bStatus_24(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _6 = (int) u8PinBitOffset_21;
+  _7 = 1 << _6;
+  _8 = (short unsigned int) _7;
+  u16PinDirFlagWord_26 = u16PinDirFlagWord_23 | _8;
+  # DEBUG u16PinDirFlagWord => u16PinDirFlagWord_26
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _9 = (int) u8PinBitOffset_21;
+  _10 = 1 << _9;
+  _11 = (short unsigned int) _10;
+  _12 = ~_11;
+  u16PinDirFlagWord_25 = u16PinDirFlagWord_23 & _12;
+  # DEBUG u16PinDirFlagWord => u16PinDirFlagWord_25
+
+  <bb 5> :
+  # u16PinDirFlagWord_17 = PHI <u16PinDirFlagWord_26(3), u16PinDirFlagWord_25(4)>
+  # DEBUG u16PinDirFlagWord => u16PinDirFlagWord_17
+  # DEBUG BEGIN_STMT
+  _13 = (int) u8ImcrSiulInstance_22(D);
+  _14 = (unsigned char) u16MscrIdx_20(D);
+  _15 = _14 >> 4;
+  _16 = (int) _15;
+  Port_Ipw_au16GPIODirChangeability[_13][_16] = u16PinDirFlagWord_17;
+  # DEBUG BEGIN_STMT
+  SchM_Exit_Port_PORT_EXCLUSIVE_AREA_00 ();
+  return;
+
+}
+
+
+Port_Ipw_SetPinMode (Port_PinType PinIndex, Port_PinModeType PinMode, const struct Port_ConfigType * pConfigPtr)
+{
+  uint8 CoreId;
+  uint8 u8PinDescBitOffset;
+  uint16 u16PinDescWord;
+  uint8 u8MscrSiulInstance;
+  uint16 u16MscrIdx;
+  Std_ReturnType PinModeError;
+  const struct Port_Siul2_PinConfigType * _1;
+  long unsigned int _2;
+  const struct Port_Siul2_PinConfigType * _3;
+  const struct Port_Siul2_PinConfigType * _4;
+  long unsigned int _5;
+  const struct Port_Siul2_PinConfigType * _6;
+  short unsigned int _7;
+  long unsigned int _8;
+  const uint32 * _9;
+  long unsigned int _10;
+  const uint32 * _11;
+  long unsigned int _12;
+  int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  int _16;
+  long unsigned int _17;
+  const struct Port_Siul2_PinConfigType * _18;
+  long unsigned int _19;
+  const struct Port_Siul2_PinConfigType * _20;
+  _Bool _21;
+  _Bool _22;
+  unsigned char _23;
+  int _24;
+  const uint16[21][12] * _25;
+  int _26;
+  short unsigned int _27;
+  int _28;
+  int _29;
+  long unsigned int _30;
+  short unsigned int _31;
+  short unsigned int _32;
+  Std_ReturnType _51;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  PinModeError_35 = 0;
+  # DEBUG PinModeError => PinModeError_35
+  # DEBUG BEGIN_STMT
+  _1 = pConfigPtr_37(D)->pUsedPadConfig;
+  _2 = PinIndex_38(D) * 24;
+  _3 = _1 + _2;
+  u16MscrIdx_39 = _3->u16MscrIdx;
+  # DEBUG u16MscrIdx => u16MscrIdx_39
+  # DEBUG BEGIN_STMT
+  _4 = pConfigPtr_37(D)->pUsedPadConfig;
+  _5 = PinIndex_38(D) * 24;
+  _6 = _4 + _5;
+  u8MscrSiulInstance_40 = _6->u8MscrSiulInstance;
+  # DEBUG u8MscrSiulInstance => u8MscrSiulInstance_40
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CoreId_41 = 0;
+  # DEBUG CoreId => CoreId_41
+  # DEBUG BEGIN_STMT
+  _7 = pConfigPtr_37(D)->u16NumPins;
+  _8 = (long unsigned int) _7;
+  if (PinIndex_38(D) >= _8)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 4, 10);
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _9 = pConfigPtr_37(D)->pau32Port_PinToPartitionMap;
+  _10 = PinIndex_38(D) * 4;
+  _11 = _9 + _10;
+  _12 = *_11;
+  _13 = (int) CoreId_41;
+  _14 = 1 << _13;
+  _15 = _12 & _14;
+  _16 = (int) CoreId_41;
+  _17 = _15 >> _16;
+  if (_17 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 4, 240);
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _18 = pConfigPtr_37(D)->pUsedPadConfig;
+  _19 = PinIndex_38(D) * 24;
+  _20 = _18 + _19;
+  _21 = _20->bMC;
+  _22 = ~_21;
+  if (_22 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 4, 14);
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (PinMode_42(D) > 20)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  PinModeError_47 = 13;
+  # DEBUG PinModeError => PinModeError_47
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _23 = (unsigned char) u16MscrIdx_39;
+  u8PinDescBitOffset_43 = _23 & 15;
+  # DEBUG u8PinDescBitOffset => u8PinDescBitOffset_43
+  # DEBUG BEGIN_STMT
+  _24 = (int) u8MscrSiulInstance_40;
+  _25 = Port_apSiul2InstancePinModeAvailability[_24];
+  _26 = (int) PinMode_42(D);
+  _27 = u16MscrIdx_39 >> 4;
+  _28 = (int) _27;
+  u16PinDescWord_44 = *_25[_26][_28];
+  # DEBUG u16PinDescWord => u16PinDescWord_44
+  # DEBUG BEGIN_STMT
+  _29 = (int) u8PinDescBitOffset_43;
+  _30 = 1 << _29;
+  _31 = (short unsigned int) _30;
+  _32 = u16PinDescWord_44 & _31;
+  if (_32 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetMode (u8MscrSiulInstance_40, u16MscrIdx_39, PinIndex_38(D), PinMode_42(D), pConfigPtr_37(D));
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  PinModeError_45 = 13;
+  # DEBUG PinModeError => PinModeError_45
+
+  <bb 13> :
+  # PinModeError_33 = PHI <PinModeError_35(3), PinModeError_35(5), PinModeError_35(7), PinModeError_47(9), PinModeError_35(11), PinModeError_45(12)>
+  # DEBUG PinModeError => PinModeError_33
+  # DEBUG BEGIN_STMT
+  _51 = PinModeError_33;
+  return _51;
+
+}
+
+
+Port_Ipw_SetPinDirection (Port_PinType PinIndex, Port_PinDirectionType eDirection, const struct Port_ConfigType * pConfigPtr)
+{
+  uint16 u16PinChangeDirFlagWord;
+  uint8 u8PinDescBitOffset;
+  uint8 CoreId;
+  Std_ReturnType PinDirError;
+  uint32 u32LocalMSCR;
+  uint8 u8MscrSiulInstance;
+  uint16 u16MscrIdx;
+  const struct Port_Siul2_PinConfigType * _1;
+  long unsigned int _2;
+  const struct Port_Siul2_PinConfigType * _3;
+  const struct Port_Siul2_PinConfigType * _4;
+  long unsigned int _5;
+  const struct Port_Siul2_PinConfigType * _6;
+  short unsigned int _7;
+  long unsigned int _8;
+  const uint32 * _9;
+  long unsigned int _10;
+  const uint32 * _11;
+  long unsigned int _12;
+  int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  int _16;
+  long unsigned int _17;
+  unsigned char _18;
+  int _19;
+  short unsigned int _20;
+  unsigned char _21;
+  int _22;
+  const struct Port_Siul2_PinConfigType * _23;
+  long unsigned int _24;
+  const struct Port_Siul2_PinConfigType * _25;
+  _Bool _26;
+  int _27;
+  long unsigned int _28;
+  short unsigned int _29;
+  short unsigned int _30;
+  int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  volatile uint32 * _37;
+  int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  volatile uint32 * _44;
+  Std_ReturnType _71;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pConfigPtr_49(D)->pUsedPadConfig;
+  _2 = PinIndex_50(D) * 24;
+  _3 = _1 + _2;
+  u16MscrIdx_51 = _3->u16MscrIdx;
+  # DEBUG u16MscrIdx => u16MscrIdx_51
+  # DEBUG BEGIN_STMT
+  _4 = pConfigPtr_49(D)->pUsedPadConfig;
+  _5 = PinIndex_50(D) * 24;
+  _6 = _4 + _5;
+  u8MscrSiulInstance_52 = _6->u8MscrSiulInstance;
+  # DEBUG u8MscrSiulInstance => u8MscrSiulInstance_52
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  PinDirError_53 = 0;
+  # DEBUG PinDirError => PinDirError_53
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  CoreId_54 = 0;
+  # DEBUG CoreId => CoreId_54
+  # DEBUG BEGIN_STMT
+  _7 = pConfigPtr_49(D)->u16NumPins;
+  _8 = (long unsigned int) _7;
+  if (PinIndex_50(D) >= _8)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 1, 10);
+  goto <bb 17>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _9 = pConfigPtr_49(D)->pau32Port_PinToPartitionMap;
+  _10 = PinIndex_50(D) * 4;
+  _11 = _9 + _10;
+  _12 = *_11;
+  _13 = (int) CoreId_54;
+  _14 = 1 << _13;
+  _15 = _12 & _14;
+  _16 = (int) CoreId_54;
+  _17 = _15 >> _16;
+  if (_17 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (124, 0, 1, 240);
+  goto <bb 17>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _18 = (unsigned char) u16MscrIdx_51;
+  u8PinDescBitOffset_55 = _18 & 15;
+  # DEBUG u8PinDescBitOffset => u8PinDescBitOffset_55
+  # DEBUG BEGIN_STMT
+  _19 = (int) u8MscrSiulInstance_52;
+  _20 = u16MscrIdx_51 >> 4;
+  _21 = (unsigned char) _20;
+  _22 = (int) _21;
+  u16PinChangeDirFlagWord_56 = Port_Ipw_au16GPIODirChangeability[_19][_22];
+  # DEBUG u16PinChangeDirFlagWord => u16PinChangeDirFlagWord_56
+  # DEBUG BEGIN_STMT
+  _23 = pConfigPtr_49(D)->pUsedPadConfig;
+  _24 = PinIndex_50(D) * 24;
+  _25 = _23 + _24;
+  _26 = _25->bDC;
+  if (_26 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _27 = (int) u8PinDescBitOffset_55;
+  _28 = 1 << _27;
+  _29 = (short unsigned int) _28;
+  _30 = u16PinChangeDirFlagWord_56 & _29;
+  if (_30 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _31 = (int) u8MscrSiulInstance_52;
+  _32 = Port_au32Siul2BaseAddr[_31];
+  _33 = (long unsigned int) u16MscrIdx_51;
+  _34 = _33 << 2;
+  _35 = _32 + _34;
+  _36 = _35 + 576;
+  _37 = (volatile uint32 *) _36;
+  u32LocalMSCR_58 ={v} *_37;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_58
+  # DEBUG BEGIN_STMT
+  if (eDirection_59(D) == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_66 = u32LocalMSCR_58 & 4294443007;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_66
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_67 = u32LocalMSCR_66 | 2097152;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_67
+  goto <bb 15>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (eDirection_59(D) == 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_64 = u32LocalMSCR_58 | 524288;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_64
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_65 = u32LocalMSCR_64 & 4292870143;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_65
+  goto <bb 15>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  if (eDirection_59(D) == 2)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_62 = u32LocalMSCR_58 | 524288;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_62
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_63 = u32LocalMSCR_62 | 2097152;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_63
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_60 = u32LocalMSCR_58 & 4294443007;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_60
+  # DEBUG BEGIN_STMT
+  u32LocalMSCR_61 = u32LocalMSCR_60 & 4292870143;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_61
+
+  <bb 15> :
+  # u32LocalMSCR_45 = PHI <u32LocalMSCR_67(9), u32LocalMSCR_65(11), u32LocalMSCR_63(13), u32LocalMSCR_61(14)>
+  # DEBUG u32LocalMSCR => u32LocalMSCR_45
+  # DEBUG BEGIN_STMT
+  _38 = (int) u8MscrSiulInstance_52;
+  _39 = Port_au32Siul2BaseAddr[_38];
+  _40 = (long unsigned int) u16MscrIdx_51;
+  _41 = _40 << 2;
+  _42 = _39 + _41;
+  _43 = _42 + 576;
+  _44 = (volatile uint32 *) _43;
+  *_44 ={v} u32LocalMSCR_45;
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  PinDirError_57 = 1;
+  # DEBUG PinDirError => PinDirError_57
+
+  <bb 17> :
+  # PinDirError_46 = PHI <PinDirError_53(3), PinDirError_53(5), PinDirError_53(15), PinDirError_57(16)>
+  # DEBUG PinDirError => PinDirError_46
+  # DEBUG BEGIN_STMT
+  _71 = PinDirError_46;
+  return _71;
+
+}
+
+
+Port_Ipw_Init (const struct Port_ConfigType * pConfigPtr)
+{
+  struct SIUL2_Type * imcrBase;
+  uint8 u8Imcr;
+  uint16 u16ImcrIdx;
+  uint8 u8ImcrSiulInstance;
+  uint16 u16Counter;
+  int _1;
+  const Port_Siul2_ImcrConfigType * _2;
+  sizetype _3;
+  const Port_Siul2_ImcrConfigType * _4;
+  unsigned int _5;
+  unsigned int _6;
+  short unsigned int u16ImcrIdx.0_7;
+  int _8;
+  short unsigned int _9;
+  unsigned char u8ImcrSiulInstance.1_10;
+  const struct Siul2_Port_Ip_PinSettingsConfig * _11;
+  int _12;
+  int _13;
+  short unsigned int u16Counter.2_14;
+  unsigned char u8ImcrSiulInstance.3_15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  imcrBase_26 = 1074380800B;
+  # DEBUG imcrBase => imcrBase_26
+  # DEBUG BEGIN_STMT
+  u8ImcrSiulInstance_27 = 0;
+  # DEBUG u8ImcrSiulInstance => u8ImcrSiulInstance_27
+  goto <bb 13>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  u16ImcrIdx_37 = 0;
+  # DEBUG u16ImcrIdx => u16ImcrIdx_37
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8ImcrSiulInstance_17;
+  _2 = pConfigPtr_29(D)->pImcrConfig[_1];
+  _3 = (sizetype) u16ImcrIdx_19;
+  _4 = _2 + _3;
+  u8Imcr_39 = *_4;
+  # DEBUG u8Imcr => u8Imcr_39
+  # DEBUG BEGIN_STMT
+  if (u8Imcr_39 != 255)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (u16ImcrIdx_19 <= 83)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  imcrBase_41 = 1074380800B;
+  # DEBUG imcrBase => imcrBase_41
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  imcrBase_40 = 1140916224B;
+  # DEBUG imcrBase => imcrBase_40
+
+  <bb 8> :
+  # imcrBase_20 = PHI <imcrBase_41(6), imcrBase_40(7)>
+  # DEBUG imcrBase => imcrBase_20
+  # DEBUG BEGIN_STMT
+  if (u16ImcrIdx_19 <= 495)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _5 = (unsigned int) u16ImcrIdx_19;
+  _6 = _5 & 511;
+  imcrBase_20->IMCR[_6] ={v} 0;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  u16ImcrIdx.0_7 = u16ImcrIdx_19;
+  u16ImcrIdx_43 = u16ImcrIdx.0_7 + 1;
+  # DEBUG u16ImcrIdx => u16ImcrIdx_43
+
+  <bb 11> :
+  # u16ImcrIdx_19 = PHI <u16ImcrIdx_37(3), u16ImcrIdx_43(10)>
+  # DEBUG u16ImcrIdx => u16ImcrIdx_19
+  # DEBUG BEGIN_STMT
+  _8 = (int) u8ImcrSiulInstance_17;
+  _9 = pConfigPtr_29(D)->au16NumImcrs[_8];
+  if (u16ImcrIdx_19 < _9)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  u8ImcrSiulInstance.1_10 = u8ImcrSiulInstance_17;
+  u8ImcrSiulInstance_38 = u8ImcrSiulInstance.1_10 + 1;
+  # DEBUG u8ImcrSiulInstance => u8ImcrSiulInstance_38
+
+  <bb 13> :
+  # u8ImcrSiulInstance_17 = PHI <u8ImcrSiulInstance_27(2), u8ImcrSiulInstance_38(12)>
+  # DEBUG u8ImcrSiulInstance => u8ImcrSiulInstance_17
+  # DEBUG BEGIN_STMT
+  if (u8ImcrSiulInstance_17 <= 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _11 = pConfigPtr_29(D)->IpConfigPtr;
+  Siul2_Port_Ip_Init (15, _11);
+  # DEBUG BEGIN_STMT
+  Port_Ipw_Init_UnusedPins (pConfigPtr_29(D));
+  # DEBUG BEGIN_STMT
+  u8ImcrSiulInstance_32 = 0;
+  # DEBUG u8ImcrSiulInstance => u8ImcrSiulInstance_32
+  goto <bb 19>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  u16Counter_33 = 0;
+  # DEBUG u16Counter => u16Counter_33
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _12 = (int) u8ImcrSiulInstance_18;
+  _13 = (int) u16Counter_16;
+  Port_Ipw_au16GPIODirChangeability[_12][_13] = 0;
+  # DEBUG BEGIN_STMT
+  u16Counter.2_14 = u16Counter_16;
+  u16Counter_36 = u16Counter.2_14 + 1;
+  # DEBUG u16Counter => u16Counter_36
+
+  <bb 17> :
+  # u16Counter_16 = PHI <u16Counter_33(15), u16Counter_36(16)>
+  # DEBUG u16Counter => u16Counter_16
+  # DEBUG BEGIN_STMT
+  if (u16Counter_16 <= 11)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  u8ImcrSiulInstance.3_15 = u8ImcrSiulInstance_18;
+  u8ImcrSiulInstance_34 = u8ImcrSiulInstance.3_15 + 1;
+  # DEBUG u8ImcrSiulInstance => u8ImcrSiulInstance_34
+
+  <bb 19> :
+  # u8ImcrSiulInstance_18 = PHI <u8ImcrSiulInstance_32(14), u8ImcrSiulInstance_34(18)>
+  # DEBUG u8ImcrSiulInstance => u8ImcrSiulInstance_18
+  # DEBUG BEGIN_STMT
+  if (u8ImcrSiulInstance_18 <= 1)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 20> :
+  return;
+
+}
+
+
+Port_Ipw_SetAltMode (uint8 u8MscrSiulInstance, uint16 u16MscrIdx, Port_PinModeType PinMode)
+{
+  uint32 MscrValue;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  volatile uint32 * _7;
+  long unsigned int _8;
+  int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  volatile uint32 * _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8MscrSiulInstance_16(D);
+  _2 = Port_au32Siul2BaseAddr[_1];
+  _3 = (long unsigned int) u16MscrIdx_18(D);
+  _4 = _3 << 2;
+  _5 = _2 + _4;
+  _6 = _5 + 576;
+  _7 = (volatile uint32 *) _6;
+  MscrValue_19 ={v} *_7;
+  # DEBUG MscrValue => MscrValue_19
+  # DEBUG BEGIN_STMT
+  MscrValue_20 = MscrValue_19 & 4294967288;
+  # DEBUG MscrValue => MscrValue_20
+  # DEBUG BEGIN_STMT
+  _8 = (long unsigned int) PinMode_21(D);
+  MscrValue_22 = MscrValue_20 | _8;
+  # DEBUG MscrValue => MscrValue_22
+  # DEBUG BEGIN_STMT
+  MscrValue_23 = MscrValue_22 | 2097152;
+  # DEBUG MscrValue => MscrValue_23
+  # DEBUG BEGIN_STMT
+  _9 = (int) u8MscrSiulInstance_16(D);
+  _10 = Port_au32Siul2BaseAddr[_9];
+  _11 = (long unsigned int) u16MscrIdx_18(D);
+  _12 = _11 << 2;
+  _13 = _10 + _12;
+  _14 = _13 + 576;
+  _15 = (volatile uint32 *) _14;
+  *_15 ={v} MscrValue_23;
+  return;
+
+}
+
+
+Port_Ipw_SetOnlyInputMode (uint8 u8MscrSiulInstance, uint16 u16MscrIdx)
+{
+  uint32 MscrValue;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  volatile uint32 * _7;
+  int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  volatile uint32 * _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8MscrSiulInstance_15(D);
+  _2 = Port_au32Siul2BaseAddr[_1];
+  _3 = (long unsigned int) u16MscrIdx_17(D);
+  _4 = _3 << 2;
+  _5 = _2 + _4;
+  _6 = _5 + 576;
+  _7 = (volatile uint32 *) _6;
+  MscrValue_18 ={v} *_7;
+  # DEBUG MscrValue => MscrValue_18
+  # DEBUG BEGIN_STMT
+  MscrValue_19 = MscrValue_18 & 4292870136;
+  # DEBUG MscrValue => MscrValue_19
+  # DEBUG BEGIN_STMT
+  MscrValue_20 = MscrValue_19 | 524288;
+  # DEBUG MscrValue => MscrValue_20
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetGpioDirChangeability (u8MscrSiulInstance_15(D), u16MscrIdx_17(D), 0);
+  # DEBUG BEGIN_STMT
+  _8 = (int) u8MscrSiulInstance_15(D);
+  _9 = Port_au32Siul2BaseAddr[_8];
+  _10 = (long unsigned int) u16MscrIdx_17(D);
+  _11 = _10 << 2;
+  _12 = _9 + _11;
+  _13 = _12 + 576;
+  _14 = (volatile uint32 *) _13;
+  *_14 ={v} MscrValue_20;
+  return;
+
+}
+
+
+Port_Ipw_SetGpioMode (uint8 u8MscrSiulInstance, uint16 u16MscrIdx, Port_PinType PinIndex, const struct Port_ConfigType * pConfigPtr)
+{
+  uint32 MscrValue;
+  Port_PinDirectionType ePadDirection;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  volatile uint32 * _7;
+  const struct Port_Siul2_PinConfigType * _8;
+  long unsigned int _9;
+  const struct Port_Siul2_PinConfigType * _10;
+  int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  volatile uint32 * _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8MscrSiulInstance_20(D);
+  _2 = Port_au32Siul2BaseAddr[_1];
+  _3 = (long unsigned int) u16MscrIdx_22(D);
+  _4 = _3 << 2;
+  _5 = _2 + _4;
+  _6 = _5 + 576;
+  _7 = (volatile uint32 *) _6;
+  MscrValue_23 ={v} *_7;
+  # DEBUG MscrValue => MscrValue_23
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetGpioDirChangeability (u8MscrSiulInstance_20(D), u16MscrIdx_22(D), 1);
+  # DEBUG BEGIN_STMT
+  _8 = pConfigPtr_25(D)->pUsedPadConfig;
+  _9 = PinIndex_26(D) * 24;
+  _10 = _8 + _9;
+  ePadDirection_27 = _10->ePadDir;
+  # DEBUG ePadDirection => ePadDirection_27
+  # DEBUG BEGIN_STMT
+  MscrValue_28 = MscrValue_23 & 4294967288;
+  # DEBUG MscrValue => MscrValue_28
+  # DEBUG BEGIN_STMT
+  if (ePadDirection_27 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  MscrValue_33 = MscrValue_28 | 2097152;
+  # DEBUG MscrValue => MscrValue_33
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetGpioPadOutput (PinIndex_26(D), pConfigPtr_25(D));
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (ePadDirection_27 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  MscrValue_32 = MscrValue_28 | 524288;
+  # DEBUG MscrValue => MscrValue_32
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (ePadDirection_27 == 2)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  MscrValue_30 = MscrValue_28 | 2621440;
+  # DEBUG MscrValue => MscrValue_30
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetGpioPadOutput (PinIndex_26(D), pConfigPtr_25(D));
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  MscrValue_29 = MscrValue_28 & 4292345855;
+  # DEBUG MscrValue => MscrValue_29
+
+  <bb 9> :
+  # MscrValue_18 = PHI <MscrValue_33(3), MscrValue_32(5), MscrValue_30(7), MscrValue_29(8)>
+  # DEBUG MscrValue => MscrValue_18
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetPinDirection (PinIndex_26(D), ePadDirection_27, pConfigPtr_25(D));
+  # DEBUG BEGIN_STMT
+  _11 = (int) u8MscrSiulInstance_20(D);
+  _12 = Port_au32Siul2BaseAddr[_11];
+  _13 = (long unsigned int) u16MscrIdx_22(D);
+  _14 = _13 << 2;
+  _15 = _12 + _14;
+  _16 = _15 + 576;
+  _17 = (volatile uint32 *) _16;
+  *_17 ={v} MscrValue_18;
+  return;
+
+}
+
+
+Port_Ipw_SetInputMode (uint8 u8MscrSiulInstance, uint16 u16MscrIdx, Port_PinModeType PinMode)
+{
+  struct Port_InMuxSettingType PadInMuxData;
+  uint8 u8ImcrSiulInstance;
+  uint32 ImcrValue;
+  uint16 u16ImcrIdx;
+  uint32 MscrValue;
+  uint16 u16Index;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  volatile uint32 * _7;
+  int _8;
+  const uint16 * _9;
+  unsigned int _10;
+  unsigned int _11;
+  const uint16 * _12;
+  int _13;
+  const struct Port_InMuxSettingType * _14;
+  int _15;
+  int _16;
+  int _17;
+  sizetype _18;
+  sizetype _19;
+  sizetype _20;
+  const struct Port_InMuxSettingType * _21;
+  unsigned char _22;
+  int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  volatile uint32 * _29;
+  int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  volatile uint32 * _36;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u16ImcrIdx_37 = 0;
+  # DEBUG u16ImcrIdx => u16ImcrIdx_37
+  # DEBUG BEGIN_STMT
+  ImcrValue_38 = 0;
+  # DEBUG ImcrValue => ImcrValue_38
+  # DEBUG BEGIN_STMT
+  u8ImcrSiulInstance_39 = 0;
+  # DEBUG u8ImcrSiulInstance => u8ImcrSiulInstance_39
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8MscrSiulInstance_40(D);
+  _2 = Port_au32Siul2BaseAddr[_1];
+  _3 = (long unsigned int) u16MscrIdx_42(D);
+  _4 = _3 << 2;
+  _5 = _2 + _4;
+  _6 = _5 + 576;
+  _7 = (volatile uint32 *) _6;
+  MscrValue_43 ={v} *_7;
+  # DEBUG MscrValue => MscrValue_43
+  # DEBUG BEGIN_STMT
+  _8 = (int) u8MscrSiulInstance_40(D);
+  _9 = Port_apInMuxSettingsIndex[_8];
+  _10 = (unsigned int) u16MscrIdx_42(D);
+  _11 = _10 * 2;
+  _12 = _9 + _11;
+  u16Index_44 = *_12;
+  # DEBUG u16Index => u16Index_44
+  # DEBUG BEGIN_STMT
+  _13 = (int) u8MscrSiulInstance_40(D);
+  _14 = Port_apInMuxSettings[_13];
+  _15 = (int) u16Index_44;
+  _16 = (int) PinMode_45(D);
+  _17 = _15 + _16;
+  _18 = (sizetype) _17;
+  _19 = _18 + 1073741816;
+  _20 = _19 * 4;
+  _21 = _14 + _20;
+  PadInMuxData = *_21;
+  # DEBUG BEGIN_STMT
+  u8ImcrSiulInstance_47 = PadInMuxData.u8ImcrSiulInstance;
+  # DEBUG u8ImcrSiulInstance => u8ImcrSiulInstance_47
+  # DEBUG BEGIN_STMT
+  u16ImcrIdx_48 = PadInMuxData.u16ImcrIdx;
+  # DEBUG u16ImcrIdx => u16ImcrIdx_48
+  # DEBUG BEGIN_STMT
+  _22 = PadInMuxData.u8ImcrSSS;
+  ImcrValue_49 = (uint32) _22;
+  # DEBUG ImcrValue => ImcrValue_49
+  # DEBUG BEGIN_STMT
+  _23 = (int) u8ImcrSiulInstance_47;
+  _24 = Port_au32Siul2BaseAddr[_23];
+  _25 = (long unsigned int) u16ImcrIdx_48;
+  _26 = _25 << 2;
+  _27 = _24 + _26;
+  _28 = _27 + 2624;
+  _29 = (volatile uint32 *) _28;
+  *_29 ={v} ImcrValue_49;
+  # DEBUG BEGIN_STMT
+  MscrValue_51 = MscrValue_43 & 4292870136;
+  # DEBUG MscrValue => MscrValue_51
+  # DEBUG BEGIN_STMT
+  MscrValue_52 = MscrValue_51 | 524288;
+  # DEBUG MscrValue => MscrValue_52
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetGpioDirChangeability (u8MscrSiulInstance_40(D), u16MscrIdx_42(D), 0);
+  # DEBUG BEGIN_STMT
+  _30 = (int) u8MscrSiulInstance_40(D);
+  _31 = Port_au32Siul2BaseAddr[_30];
+  _32 = (long unsigned int) u16MscrIdx_42(D);
+  _33 = _32 << 2;
+  _34 = _31 + _33;
+  _35 = _34 + 576;
+  _36 = (volatile uint32 *) _35;
+  *_36 ={v} MscrValue_52;
+  PadInMuxData ={v} {CLOBBER};
+  return;
+
+}
+
+
+Port_Ipw_SetInoutMode (uint8 u8MscrSiulInstance, uint16 u16MscrIdx, Port_PinModeType PinMode)
+{
+  uint8 u8ImcrSiulInstance;
+  uint32 ImcrValue;
+  uint16 u16ImcrIdx;
+  uint16 u16Index;
+  uint32 MscrValue;
+  struct Port_InoutSettingType PadInoutData;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  volatile uint32 * _7;
+  int _8;
+  const struct Port_InoutSettingType * _9;
+  unsigned int _10;
+  unsigned int _11;
+  const struct Port_InoutSettingType * _12;
+  unsigned char _13;
+  int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  volatile uint32 * _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  volatile uint32 * _29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u16ImcrIdx_30 = 0;
+  # DEBUG u16ImcrIdx => u16ImcrIdx_30
+  # DEBUG BEGIN_STMT
+  ImcrValue_31 = 0;
+  # DEBUG ImcrValue => ImcrValue_31
+  # DEBUG BEGIN_STMT
+  u8ImcrSiulInstance_32 = 0;
+  # DEBUG u8ImcrSiulInstance => u8ImcrSiulInstance_32
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8MscrSiulInstance_33(D);
+  _2 = Port_au32Siul2BaseAddr[_1];
+  _3 = (long unsigned int) u16MscrIdx_35(D);
+  _4 = _3 << 2;
+  _5 = _2 + _4;
+  _6 = _5 + 576;
+  _7 = (volatile uint32 *) _6;
+  MscrValue_36 ={v} *_7;
+  # DEBUG MscrValue => MscrValue_36
+  # DEBUG BEGIN_STMT
+  u16Index_39 = Port_Ipw_GetIndexForInoutEntry (u8MscrSiulInstance_33(D), u16MscrIdx_35(D), PinMode_37(D));
+  # DEBUG u16Index => u16Index_39
+  # DEBUG BEGIN_STMT
+  _8 = (int) u8MscrSiulInstance_33(D);
+  _9 = Port_apInoutMuxSettings[_8];
+  _10 = (unsigned int) u16Index_39;
+  _11 = _10 * 8;
+  _12 = _9 + _11;
+  PadInoutData = *_12;
+  # DEBUG BEGIN_STMT
+  u8ImcrSiulInstance_41 = PadInoutData.u8ImcrSiulInstance;
+  # DEBUG u8ImcrSiulInstance => u8ImcrSiulInstance_41
+  # DEBUG BEGIN_STMT
+  u16ImcrIdx_42 = PadInoutData.u16ImcrIdx;
+  # DEBUG u16ImcrIdx => u16ImcrIdx_42
+  # DEBUG BEGIN_STMT
+  _13 = PadInoutData.u8ImcrSSS;
+  ImcrValue_43 = (uint32) _13;
+  # DEBUG ImcrValue => ImcrValue_43
+  # DEBUG BEGIN_STMT
+  _14 = (int) u8ImcrSiulInstance_41;
+  _15 = Port_au32Siul2BaseAddr[_14];
+  _16 = (long unsigned int) u16ImcrIdx_42;
+  _17 = _16 << 2;
+  _18 = _15 + _17;
+  _19 = _18 + 2624;
+  _20 = (volatile uint32 *) _19;
+  *_20 ={v} ImcrValue_43;
+  # DEBUG BEGIN_STMT
+  MscrValue_45 = MscrValue_36 & 4294967288;
+  # DEBUG MscrValue => MscrValue_45
+  # DEBUG BEGIN_STMT
+  _21 = (long unsigned int) PinMode_37(D);
+  _22 = _21 + 4294967282;
+  MscrValue_46 = MscrValue_45 | _22;
+  # DEBUG MscrValue => MscrValue_46
+  # DEBUG BEGIN_STMT
+  MscrValue_47 = MscrValue_46 | 2621440;
+  # DEBUG MscrValue => MscrValue_47
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetGpioDirChangeability (u8MscrSiulInstance_33(D), u16MscrIdx_35(D), 0);
+  # DEBUG BEGIN_STMT
+  _23 = (int) u8MscrSiulInstance_33(D);
+  _24 = Port_au32Siul2BaseAddr[_23];
+  _25 = (long unsigned int) u16MscrIdx_35(D);
+  _26 = _25 << 2;
+  _27 = _24 + _26;
+  _28 = _27 + 576;
+  _29 = (volatile uint32 *) _28;
+  *_29 ={v} MscrValue_47;
+  PadInoutData ={v} {CLOBBER};
+  return;
+
+}
+
+
+Port_Ipw_SetMode (uint8 u8MscrSiulInstance, uint16 u16MscrIdx, Port_PinType PinIndex, Port_PinModeType PinMode, const struct Port_ConfigType * pConfigPtr)
+{
+  int _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) PinMode_3(D);
+  switch (_1) <default: <L21> [INV], case 0: <L13> [INV], case 1 ... 6: <L15> [INV], case 7: <L14> [INV], case 8 ... 14: <L6> [INV], case 15 ... 20: <L0> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetInoutMode (u8MscrSiulInstance_5(D), u16MscrIdx_6(D), PinMode_3(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetInputMode (u8MscrSiulInstance_5(D), u16MscrIdx_6(D), PinMode_3(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetGpioMode (u8MscrSiulInstance_5(D), u16MscrIdx_6(D), PinIndex_11(D), pConfigPtr_12(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+<L14>:
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetOnlyInputMode (u8MscrSiulInstance_5(D), u16MscrIdx_6(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+<L15>:
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetAltMode (u8MscrSiulInstance_5(D), u16MscrIdx_6(D), PinMode_3(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+<L21>:
+  # DEBUG BEGIN_STMT
+  Port_Ipw_SetGpioDirChangeability (u8MscrSiulInstance_5(D), u16MscrIdx_6(D), 0);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 9> :
+  return;
+
+}
+
+
+Port_Ipw_GetIndexForInoutEntry (uint8 u8MscrSiulInstance, uint16 u16MscrIdx, Port_PinModeType PinMode)
+{
+  uint16 u16Counter;
+  uint16 u16ReturnIndex;
+  int _1;
+  const struct Port_InoutSettingType * _2;
+  unsigned int _3;
+  unsigned int _4;
+  const struct Port_InoutSettingType * _5;
+  short unsigned int _6;
+  int _7;
+  const struct Port_InoutSettingType * _8;
+  unsigned int _9;
+  unsigned int _10;
+  const struct Port_InoutSettingType * _11;
+  unsigned char _12;
+  short unsigned int u16Counter.5_13;
+  int _14;
+  short unsigned int _15;
+  uint16 _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u16ReturnIndex_18 = 0;
+  # DEBUG u16ReturnIndex => u16ReturnIndex_18
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u16Counter_19 = 0;
+  # DEBUG u16Counter => u16Counter_19
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8MscrSiulInstance_20(D);
+  _2 = Port_apInoutMuxSettings[_1];
+  _3 = (unsigned int) u16Counter_17;
+  _4 = _3 * 8;
+  _5 = _2 + _4;
+  _6 = _5->u16MscrIdx;
+  if (u16MscrIdx_22(D) == _6)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  _7 = (int) u8MscrSiulInstance_20(D);
+  _8 = Port_apInoutMuxSettings[_7];
+  _9 = (unsigned int) u16Counter_17;
+  _10 = _9 * 8;
+  _11 = _8 + _10;
+  _12 = _11->u8Mode;
+  if (PinMode_23(D) == _12)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  u16ReturnIndex_24 = u16Counter_17;
+  # DEBUG u16ReturnIndex => u16ReturnIndex_24
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  u16Counter.5_13 = u16Counter_17;
+  u16Counter_25 = u16Counter.5_13 + 1;
+  # DEBUG u16Counter => u16Counter_25
+
+  <bb 7> :
+  # u16Counter_17 = PHI <u16Counter_19(2), u16Counter_25(6)>
+  # DEBUG u16Counter => u16Counter_17
+  # DEBUG BEGIN_STMT
+  _14 = (int) u8MscrSiulInstance_20(D);
+  _15 = Port_au16NumInoutMuxSettings[_14];
+  if (u16Counter_17 < _15)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # u16ReturnIndex_16 = PHI <u16ReturnIndex_24(5), u16ReturnIndex_18(7)>
+  # DEBUG u16ReturnIndex => u16ReturnIndex_16
+  # DEBUG BEGIN_STMT
+  _26 = u16ReturnIndex_16;
+  return _26;
+
+}
+
+
+Port_Ipw_Init_UnusedPins (const struct Port_ConfigType * pConfigPtr)
+{
+  uint8 u8MscrSiulInstance;
+  uint16 u16MscrIdx;
+  uint32 u32LocalMSCR;
+  uint8 u8LocalPDO;
+  uint16 u16NumUnusedPins;
+  uint16 u16PinIndex;
+  const struct Port_Siul2_UnUsedPinConfigType * _1;
+  const struct Port_Siul2_UnUsedPinConfigType * _2;
+  const struct Port_Siul2_UnUsedPinType * _3;
+  unsigned int _4;
+  unsigned int _5;
+  const struct Port_Siul2_UnUsedPinType * _6;
+  const struct Port_Siul2_UnUsedPinType * _7;
+  unsigned int _8;
+  unsigned int _9;
+  const struct Port_Siul2_UnUsedPinType * _10;
+  int _11;
+  long unsigned int _12;
+  short unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  volatile uint8 * _17;
+  int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  volatile uint32 * _24;
+  short unsigned int u16PinIndex.4_25;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u16NumUnusedPins_31 = pConfigPtr_30(D)->u16NumUnusedPins;
+  # DEBUG u16NumUnusedPins => u16NumUnusedPins_31
+  # DEBUG BEGIN_STMT
+  _1 = pConfigPtr_30(D)->pUnusedPadConfig;
+  u8LocalPDO_32 = _1->u8PDO;
+  # DEBUG u8LocalPDO => u8LocalPDO_32
+  # DEBUG BEGIN_STMT
+  _2 = pConfigPtr_30(D)->pUnusedPadConfig;
+  u32LocalMSCR_33 = _2->u32MSCR;
+  # DEBUG u32LocalMSCR => u32LocalMSCR_33
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u16PinIndex_34 = 0;
+  # DEBUG u16PinIndex => u16PinIndex_34
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = pConfigPtr_30(D)->pUnusedPads;
+  _4 = (unsigned int) u16PinIndex_26;
+  _5 = _4 * 4;
+  _6 = _3 + _5;
+  u16MscrIdx_35 = _6->u16MscrIdx;
+  # DEBUG u16MscrIdx => u16MscrIdx_35
+  # DEBUG BEGIN_STMT
+  _7 = pConfigPtr_30(D)->pUnusedPads;
+  _8 = (unsigned int) u16PinIndex_26;
+  _9 = _8 * 4;
+  _10 = _7 + _9;
+  u8MscrSiulInstance_36 = _10->u8MscrSiulInstance;
+  # DEBUG u8MscrSiulInstance => u8MscrSiulInstance_36
+  # DEBUG BEGIN_STMT
+  if (u8LocalPDO_32 != 2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _11 = (int) u8MscrSiulInstance_36;
+  _12 = Port_au32Siul2BaseAddr[_11];
+  _13 = u16MscrIdx_35 ^ 3;
+  _14 = (long unsigned int) _13;
+  _15 = _12 + _14;
+  _16 = _15 + 4864;
+  _17 = (volatile uint8 *) _16;
+  *_17 ={v} u8LocalPDO_32;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _18 = (int) u8MscrSiulInstance_36;
+  _19 = Port_au32Siul2BaseAddr[_18];
+  _20 = (long unsigned int) u16MscrIdx_35;
+  _21 = _20 << 2;
+  _22 = _19 + _21;
+  _23 = _22 + 576;
+  _24 = (volatile uint32 *) _23;
+  *_24 ={v} u32LocalMSCR_33;
+  # DEBUG BEGIN_STMT
+  u16PinIndex.4_25 = u16PinIndex_26;
+  u16PinIndex_39 = u16PinIndex.4_25 + 1;
+  # DEBUG u16PinIndex => u16PinIndex_39
+
+  <bb 6> :
+  # u16PinIndex_26 = PHI <u16PinIndex_34(2), u16PinIndex_39(5)>
+  # DEBUG u16PinIndex => u16PinIndex_26
+  # DEBUG BEGIN_STMT
+  if (u16PinIndex_26 < u16NumUnusedPins_31)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+

@@ -1,0 +1,83 @@
+
+
+ local analysis of Crc_schm_read_msr
+   scanning: __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_1);
+    volatile is not const/pure
+  scanning: return reg_tmp_1;
+Function is locally looping.
+Function can locally free.
+callgraph:
+
+Crc_schm_read_msr/0 (Crc_schm_read_msr) @06ffdc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05127b38
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+Crc_schm_read_msr/0 (Crc_schm_read_msr) @06ffdc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05127b38
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+Crc_schm_read_msr: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+Crc_schm_read_msr: malloc_bottom
+callgraph:
+
+Crc_schm_read_msr/0 (Crc_schm_read_msr) @06ffdc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05127bd8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+Crc_schm_read_msr/0 (Crc_schm_read_msr) @06ffdc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @05127bd8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Crc_schm_read_msr ()
+{
+  register uint32 reg_tmp;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp_1);
+  # DEBUG reg_tmp => reg_tmp_1
+  # DEBUG BEGIN_STMT
+  return reg_tmp_1;
+
+}
+
+

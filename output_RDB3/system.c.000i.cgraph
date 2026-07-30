@@ -1,0 +1,478 @@
+Trivially needed symbols: SystemWfiConfig SystemInit Sys_GetCoreID default_interrupt_routine startup_go_to_user_mode RESET_CATCH_CORE
+
+
+Initial Symbol table:
+
+NVIC_SetPriorityGrouping/11 (NVIC_SetPriorityGrouping) @078d4380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+SystemWfiConfig/10 (SystemWfiConfig) @07649620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+sys_m7_cache_clean/9 (sys_m7_cache_clean) @076490e0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+sys_m7_cache_disable/8 (sys_m7_cache_disable) @07649d20
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+sys_m7_cache_init/7 (sys_m7_cache_init) @07649a80
+  Type: function definition analyzed
+  Visibility:
+  Aux: @07649620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+SystemInit/6 (SystemInit) @076497e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07649620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SystemWfiConfig/10 sys_m7_cache_init/7 NVIC_SetPriorityGrouping/11 Sys_GetCoreID/5 
+Sys_GetCoreID/5 (Sys_GetCoreID) @07649540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @076497e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+default_interrupt_routine/4 (default_interrupt_routine) @076492a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07649540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/3 (startup_go_to_user_mode) @07649000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @076492a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+RESET_CATCH_CORE/2 (RESET_CATCH_CORE) @076477e0
+  Type: variable definition analyzed
+  Visibility: public
+  Aux: @07649000
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+rasr/1 (rasr) @07641750
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+rbar/0 (rbar) @07641678
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+
+Removing unused symbols: sys_m7_cache_clean sys_m7_cache_disable rasr rbar
+
+Reclaimed Symbol table:
+
+NVIC_SetPriorityGrouping/11 (NVIC_SetPriorityGrouping) @078d4380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+SystemWfiConfig/10 (SystemWfiConfig) @07649620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+sys_m7_cache_init/7 (sys_m7_cache_init) @07649a80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+SystemInit/6 (SystemInit) @076497e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SystemWfiConfig/10 sys_m7_cache_init/7 NVIC_SetPriorityGrouping/11 Sys_GetCoreID/5 
+Sys_GetCoreID/5 (Sys_GetCoreID) @07649540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+default_interrupt_routine/4 (default_interrupt_routine) @076492a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/3 (startup_go_to_user_mode) @07649000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+RESET_CATCH_CORE/2 (RESET_CATCH_CORE) @076477e0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+
+
+Initial Symbol table:
+
+NVIC_SetPriorityGrouping/11 (NVIC_SetPriorityGrouping) @078d4380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+SystemWfiConfig/10 (SystemWfiConfig) @07649620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+sys_m7_cache_init/7 (sys_m7_cache_init) @07649a80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+SystemInit/6 (SystemInit) @076497e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SystemWfiConfig/10 sys_m7_cache_init/7 NVIC_SetPriorityGrouping/11 Sys_GetCoreID/5 
+Sys_GetCoreID/5 (Sys_GetCoreID) @07649540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+default_interrupt_routine/4 (default_interrupt_routine) @076492a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/3 (startup_go_to_user_mode) @07649000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+RESET_CATCH_CORE/2 (RESET_CATCH_CORE) @076477e0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+NVIC_SetPriorityGrouping/11 (NVIC_SetPriorityGrouping) @078d4380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+SystemWfiConfig/10 (SystemWfiConfig) @07649620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+sys_m7_cache_init/7 (sys_m7_cache_init) @07649a80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+SystemInit/6 (SystemInit) @076497e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: SystemWfiConfig/10 sys_m7_cache_init/7 NVIC_SetPriorityGrouping/11 Sys_GetCoreID/5 
+Sys_GetCoreID/5 (Sys_GetCoreID) @07649540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: SystemInit/6 
+  Calls: 
+default_interrupt_routine/4 (default_interrupt_routine) @076492a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/3 (startup_go_to_user_mode) @07649000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+RESET_CATCH_CORE/2 (RESET_CATCH_CORE) @076477e0
+  Type: variable definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+CSWTCH.8/14 (CSWTCH.8) @079a7048
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: SystemInit/6 (read)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+SystemWfiConfig.part.0/12 (SystemWfiConfig.part.0) @07649d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function SystemWfiConfig.part.0/12 is inline copy in SystemWfiConfig/10
+  Availability: local
+  Function flags: count:134217728 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: SystemWfiConfig/10 (inlined) (134217728 (estimated locally),0.12 per call) 
+  Calls: 
+NVIC_SetPriorityGrouping/11 (NVIC_SetPriorityGrouping) @078d4380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SystemInit/6 (10737418 (estimated locally),1.00 per call) 
+  Calls: 
+SystemWfiConfig/10 (SystemWfiConfig) @07649620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: SystemInit/6 (10737419 (estimated locally),1.00 per call) 
+  Calls: SystemWfiConfig.part.0/12 (inlined) (134217728 (estimated locally),0.12 per call) 
+SystemInit/6 (SystemInit) @076497e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: CSWTCH.8/14 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:10737418 (estimated locally) body optimize_size
+  Called by: 
+  Calls: SystemWfiConfig/10 (10737419 (estimated locally),1.00 per call) NVIC_SetPriorityGrouping/11 (10737418 (estimated locally),1.00 per call) 
+Sys_GetCoreID/5 (Sys_GetCoreID) @07649540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+default_interrupt_routine/4 (default_interrupt_routine) @076492a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) body nonfreeing_fn executed_once optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/3 (startup_go_to_user_mode) @07649000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+RESET_CATCH_CORE/2 (RESET_CATCH_CORE) @076477e0
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:startup_go_to_user_mode:0
+Time profile order in expand_all_functions:default_interrupt_routine:0
+Time profile order in expand_all_functions:Sys_GetCoreID:0
+Time profile order in expand_all_functions:SystemWfiConfig:0
+Time profile order in expand_all_functions:SystemInit:0
+Trivially needed variables: CSWTCH.8 RESET_CATCH_CORE
+Removing variables:
+
+Final Symbol table:
+
+CSWTCH.8/14 (CSWTCH.8) @079a7048
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written artificial
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+NVIC_SetPriorityGrouping/11 (NVIC_SetPriorityGrouping) @078d4380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SystemWfiConfig/10 (SystemWfiConfig) @07649620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+SystemInit/6 (SystemInit) @076497e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:10737418 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+Sys_GetCoreID/5 (Sys_GetCoreID) @07649540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+default_interrupt_routine/4 (default_interrupt_routine) @076492a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:107374 (estimated locally) nonfreeing_fn executed_once optimize_size
+  Called by: 
+  Calls: 
+startup_go_to_user_mode/3 (startup_go_to_user_mode) @07649000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+RESET_CATCH_CORE/2 (RESET_CATCH_CORE) @076477e0
+  Type: variable definition analyzed
+  Visibility: externally_visible asm_written public
+  Aux: @079a7048
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags:

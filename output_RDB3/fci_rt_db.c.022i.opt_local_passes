@@ -1,0 +1,539 @@
+fci_rt_db_drop_all (struct fci_rt_db_t * db)
+{
+  errno_t ret;
+  uint32_t index;
+  struct pfe_isa_t * _1;
+  long unsigned int _2;
+  errno_t _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_5 = 0;
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  index_8 = db_7(D)->rtdb_entries.occupied_items_count;
+  # DEBUG index => index_8
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = &db_7(D)->rtdb_entries;
+  _2 = index_3 + 4294967295;
+  isa_release_subscript (_1, _2);
+  # DEBUG BEGIN_STMT
+  index_11 = index_3 + 4294967295;
+  # DEBUG index => index_11
+
+  <bb 4> :
+  # index_3 = PHI <index_8(2), index_11(3)>
+  # DEBUG index => index_3
+  # DEBUG BEGIN_STMT
+  if (index_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _9 = ret_5;
+  return _9;
+
+}
+
+
+fci_rt_db_get_next (struct fci_rt_db_t * db)
+{
+  struct pfe_isa_t * isa;
+  bool_t match;
+  struct fci_rt_db_entry_t * entry;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  struct fci_rt_db_entry_t * _24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  match_13 = 0;
+  # DEBUG match => match_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  isa_15 = &db_14(D)->rtdb_entries;
+  # DEBUG isa => isa_15
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = db_14(D)->next_item;
+  entry_19 = isa_item (isa_15, _1);
+  # DEBUG entry => entry_19
+  # DEBUG BEGIN_STMT
+  _2 = db_14(D)->next_item;
+  _3 = _2 + 1;
+  db_14(D)->next_item = _3;
+  # DEBUG BEGIN_STMT
+  if (entry_19 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  match_22 = fci_rt_db_match_criterion (db_14(D), entry_19);
+  # DEBUG match => match_22
+  # DEBUG BEGIN_STMT
+  if (match_22 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # entry_6 = PHI <entry_16(D)(2), entry_19(3), entry_19(4)>
+  # match_9 = PHI <match_13(2), match_9(3), match_22(4)>
+  # DEBUG match => match_9
+  # DEBUG entry => entry_6
+  # DEBUG BEGIN_STMT
+  _4 = db_14(D)->next_item;
+  _5 = isa_15->occupied_items_count;
+  if (_4 < _5)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # entry_7 = PHI <entry_19(4), entry_6(5)>
+  # match_10 = PHI <match_22(4), match_9(5)>
+  # DEBUG match => match_10
+  # DEBUG entry => entry_7
+  # DEBUG BEGIN_STMT
+  if (match_10 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  entry_23 = 0B;
+  # DEBUG entry => entry_23
+
+  <bb 8> :
+  # entry_8 = PHI <entry_7(6), entry_23(7)>
+  # DEBUG entry => entry_8
+  # DEBUG BEGIN_STMT
+  _24 = entry_8;
+  return _24;
+
+}
+
+
+fci_rt_db_get_first (struct fci_rt_db_t * db, fci_rt_db_get_criterion_t crit, const void * arg)
+{
+  bool_t is_unknown_crit;
+  struct fci_rt_db_entry_t * entry;
+  <unnamed type> _1;
+  char_t[16] * _2;
+  char_t[16] * _3;
+  struct pfe_ip_addr_t * _4;
+  uint8_t[6] * _5;
+  uint32_t * _6;
+  struct fci_rt_db_entry_t * _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  entry_11 = 0B;
+  # DEBUG entry => entry_11
+  # DEBUG BEGIN_STMT
+  is_unknown_crit_12 = 0;
+  # DEBUG is_unknown_crit => is_unknown_crit_12
+  # DEBUG BEGIN_STMT
+  db_14(D)->cur_crit = crit_15(D);
+  # DEBUG BEGIN_STMT
+  _1 = db_14(D)->cur_crit;
+  switch (_1) <default: <L6> [INV], case 0: <L11> [INV], case 1: <L1> [INV], case 2: <L2> [INV], case 3: <L3> [INV], case 4: <L4> [INV], case 5: <L5> [INV]>
+
+  <bb 3> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  db_14(D)->cur_crit_arg.iface = arg_17(D);
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _2 = &db_14(D)->cur_crit_arg.outif_name;
+  autolibc_memset (_2, 0, 16);
+  # DEBUG BEGIN_STMT
+  _3 = &db_14(D)->cur_crit_arg.outif_name;
+  autolibc_strncpy (_3, arg_17(D), 15);
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  _4 = &db_14(D)->cur_crit_arg.dst_ip;
+  autolibc_memcpy (_4, arg_17(D), 22);
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  _5 = &db_14(D)->cur_crit_arg.dst_mac;
+  autolibc_memcpy (_5, arg_17(D), 6);
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  _6 = &db_14(D)->cur_crit_arg.id;
+  autolibc_memcpy (_6, arg_17(D), 4);
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  is_unknown_crit_24 = 1;
+  # DEBUG is_unknown_crit => is_unknown_crit_24
+  # DEBUG BEGIN_STMT
+
+  <bb 9> :
+  # is_unknown_crit_8 = PHI <is_unknown_crit_12(2), is_unknown_crit_12(3), is_unknown_crit_12(4), is_unknown_crit_12(5), is_unknown_crit_12(6), is_unknown_crit_12(7), is_unknown_crit_24(8)>
+<L11>:
+  # DEBUG is_unknown_crit => is_unknown_crit_8
+  # DEBUG BEGIN_STMT
+  if (is_unknown_crit_8 != 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  db_14(D)->next_item = 0;
+  # DEBUG BEGIN_STMT
+  entry_27 = fci_rt_db_get_next (db_14(D));
+  # DEBUG entry => entry_27
+
+  <bb 11> :
+  # entry_7 = PHI <entry_11(9), entry_27(10)>
+  # DEBUG entry => entry_7
+  # DEBUG BEGIN_STMT
+  _28 = entry_7;
+  return _28;
+
+}
+
+
+fci_rt_db_remove (struct fci_rt_db_t * db, struct fci_rt_db_entry_t * entry)
+{
+  errno_t ret;
+  int32_t entry_subscript;
+  struct pfe_isa_t * _1;
+  long unsigned int _2;
+  long int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  errno_t _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_7 = 0;
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  _1 = &db_8(D)->rtdb_entries;
+  entry_subscript_12 = isa_release (_1, entry_10(D));
+  # DEBUG entry_subscript => entry_subscript_12
+  # DEBUG BEGIN_STMT
+  if (entry_subscript_12 >= 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _2 = db_8(D)->next_item;
+  _3 = (long int) _2;
+  if (entry_subscript_12 < _3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = db_8(D)->next_item;
+  _5 = _4 + 4294967295;
+  db_8(D)->next_item = _5;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _14 = ret_7;
+  return _14;
+
+}
+
+
+fci_rt_db_add (struct fci_rt_db_t * db, struct pfe_ip_addr_t * dst_ip, uint8_t[6] * src_mac, uint8_t[6] * dst_mac, struct pfe_phy_if_t * iface, uint32_t id, void * refptr, bool_t overwrite)
+{
+  errno_t ret;
+  struct fci_rt_db_entry_t * new_entry;
+  struct pfe_isa_t * _1;
+  struct pfe_ip_addr_t * _2;
+  uint8_t[6] * _3;
+  uint8_t[6] * _4;
+  long unsigned int id.0_5;
+  errno_t _35;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_10 = 0;
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  new_entry_14 = fci_rt_db_get_first (db_12(D), 5, &id);
+  # DEBUG new_entry => new_entry_14
+  # DEBUG BEGIN_STMT
+  if (new_entry_14 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = &db_12(D)->rtdb_entries;
+  new_entry_18 = isa_reserve (_1);
+  # DEBUG new_entry => new_entry_18
+  # DEBUG BEGIN_STMT
+  if (new_entry_18 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FCI RTDB ISA exhausted, no more entries left\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_rt_db.c", 227, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_22 = 11;
+  # DEBUG ret => ret_22
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (new_entry_18, 0, 48);
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (overwrite_15(D) == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ret_16 = 115;
+  # DEBUG ret => ret_16
+
+  <bb 8> :
+  # new_entry_6 = PHI <new_entry_18(5), new_entry_14(6), new_entry_14(7), new_entry_18(4)>
+  # ret_7 = PHI <ret_10(5), ret_10(6), ret_16(7), ret_22(4)>
+  # DEBUG ret => ret_7
+  # DEBUG new_entry => new_entry_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _2 = &new_entry_6->dst_ip;
+  autolibc_memcpy (_2, dst_ip_23(D), 22);
+  # DEBUG BEGIN_STMT
+  _3 = &new_entry_6->src_mac;
+  autolibc_memcpy (_3, src_mac_25(D), 6);
+  # DEBUG BEGIN_STMT
+  _4 = &new_entry_6->dst_mac;
+  autolibc_memcpy (_4, dst_mac_27(D), 6);
+  # DEBUG BEGIN_STMT
+  new_entry_6->iface = iface_29(D);
+  # DEBUG BEGIN_STMT
+  id.0_5 = id;
+  new_entry_6->id = id.0_5;
+  # DEBUG BEGIN_STMT
+  new_entry_6->mtu = 0;
+  # DEBUG BEGIN_STMT
+  new_entry_6->refptr = refptr_33(D);
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _35 = ret_7;
+  return _35;
+
+}
+
+
+fci_rt_db_init (struct fci_rt_db_t * db)
+{
+  struct pfe_isa_definition_t * rtdb_isa_def;
+  pfe_isa_index_t[128] * _1;
+  struct fci_rt_db_entry_t[128] * _2;
+  struct pfe_isa_t * _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rtdb_isa_def_5 = &db_4(D)->rtdb_entries_isa_def;
+  # DEBUG rtdb_isa_def => rtdb_isa_def_5
+  # DEBUG BEGIN_STMT
+  rtdb_isa_def_5->item_count = 128;
+  # DEBUG BEGIN_STMT
+  rtdb_isa_def_5->item_size = 48;
+  # DEBUG BEGIN_STMT
+  rtdb_isa_def_5->flags.ordered = 1;
+  # DEBUG BEGIN_STMT
+  _1 = &db_4(D)->rtdb_entries_index;
+  rtdb_isa_def_5->item_indexes = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &db_4(D)->rtdb_entries_pool;
+  rtdb_isa_def_5->items = _2;
+  # DEBUG BEGIN_STMT
+  rtdb_isa_def_5->clear_cb = 0B;
+  # DEBUG BEGIN_STMT
+  _3 = &db_4(D)->rtdb_entries;
+  isa_init (_3, rtdb_isa_def_5);
+  return;
+
+}
+
+
+fci_rt_db_match_criterion (struct fci_rt_db_t * db, const struct fci_rt_db_entry_t * entry)
+{
+  bool_t match;
+  <unnamed type> _1;
+  struct pfe_phy_if_t * _2;
+  const struct pfe_phy_if_t * _3;
+  _Bool _4;
+  char_t[16] * _5;
+  struct pfe_phy_if_t * _6;
+  const char_t * _7;
+  long int _8;
+  _Bool _9;
+  struct pfe_ip_addr_t * _10;
+  const struct pfe_ip_addr_t * _11;
+  long int _12;
+  _Bool _13;
+  uint8_t[6] * _14;
+  const uint8_t[6] * _15;
+  long int _16;
+  _Bool _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  _Bool _20;
+  bool_t _37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  match_23 = 0;
+  # DEBUG match => match_23
+  # DEBUG BEGIN_STMT
+  _1 = db_25(D)->cur_crit;
+  switch (_1) <default: <L6> [INV], case 0: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV], case 3: <L3> [INV], case 4: <L4> [INV], case 5: <L5> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  match_35 = 1;
+  # DEBUG match => match_35
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _2 = entry_26(D)->iface;
+  _3 = db_25(D)->cur_crit_arg.iface;
+  _4 = _2 == _3;
+  match_34 = (bool_t) _4;
+  # DEBUG match => match_34
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _5 = &db_25(D)->cur_crit_arg.outif_name;
+  _6 = entry_26(D)->iface;
+  _7 = pfe_phy_if_get_name (_6);
+  _8 = autolibc_strcmp (_5, _7);
+  _9 = _8 == 0;
+  match_33 = (bool_t) _9;
+  # DEBUG match => match_33
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  _10 = &db_25(D)->cur_crit_arg.dst_ip;
+  _11 = &entry_26(D)->dst_ip;
+  _12 = autolibc_memcmp (_10, _11, 22);
+  _13 = _12 == 0;
+  match_31 = (bool_t) _13;
+  # DEBUG match => match_31
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  _14 = &db_25(D)->cur_crit_arg.dst_mac;
+  _15 = &entry_26(D)->dst_mac;
+  _16 = autolibc_memcmp (_14, _15, 6);
+  _17 = _16 == 0;
+  match_29 = (bool_t) _17;
+  # DEBUG match => match_29
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  _18 = db_25(D)->cur_crit_arg.id;
+  _19 = entry_26(D)->id;
+  _20 = _18 == _19;
+  match_27 = (bool_t) _20;
+  # DEBUG match => match_27
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  match_36 = 0;
+  # DEBUG match => match_36
+  # DEBUG BEGIN_STMT
+
+  <bb 10> :
+  # match_21 = PHI <match_35(3), match_34(4), match_33(5), match_31(6), match_29(7), match_27(8), match_36(9)>
+  # DEBUG match => match_21
+  # DEBUG BEGIN_STMT
+  _37 = match_21;
+  return _37;
+
+}
+
+

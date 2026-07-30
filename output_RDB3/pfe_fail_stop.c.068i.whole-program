@@ -1,0 +1,195 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: pfe_fail_stop_irq_unmask pfe_fail_stop_irq_mask pfe_fail_stop_isr pfe_fail_stop_destroy pfe_fail_stop_create
+
+
+Marking externally visible variables:
+
+Clearing variable flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+pfe_fail_stop_cfg_irq_unmask/18 (pfe_fail_stop_cfg_irq_unmask) @0700ae00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_unmask/13 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_fail_stop_cfg_isr/17 (pfe_fail_stop_cfg_isr) @0700ab60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_isr/11 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_fail_stop_cfg_irq_mask/16 (pfe_fail_stop_cfg_irq_mask) @0700a9a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_irq_mask/12 (1073741824 (estimated locally),1.00 per call) pfe_fail_stop_destroy/10 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_fail_stop_cfg_irq_unmask_all/15 (pfe_fail_stop_cfg_irq_unmask_all) @0700a7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+autolibc_memset/14 (autolibc_memset) @0700a700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fail_stop_create/9 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_fail_stop_irq_unmask/13 (pfe_fail_stop_irq_unmask) @0700a2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask/18 (1073741824 (estimated locally),1.00 per call) 
+pfe_fail_stop_irq_mask/12 (pfe_fail_stop_irq_mask) @0700a000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 (1073741824 (estimated locally),1.00 per call) 
+pfe_fail_stop_isr/11 (pfe_fail_stop_isr) @07006c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_isr/17 (1073741824 (estimated locally),1.00 per call) 
+pfe_fail_stop_destroy/10 (pfe_fail_stop_destroy) @07006e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_mask/16 (1073741824 (estimated locally),1.00 per call) 
+pfe_fail_stop_create/9 (pfe_fail_stop_create) @07006b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: fail_stop_instance/8 (addr)fail_stop_instance/8 (write)fail_stop_instance/8 (write)fail_stop_instance/8 (write)fail_stop_instance/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_fail_stop_cfg_irq_unmask_all/15 (1073741824 (estimated locally),1.00 per call) autolibc_memset/14 (1073741824 (estimated locally),1.00 per call) 
+fail_stop_instance/8 (fail_stop_instance) @07002b88
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: pfe_fail_stop_create/9 (addr)pfe_fail_stop_create/9 (write)pfe_fail_stop_create/9 (write)pfe_fail_stop_create/9 (write)pfe_fail_stop_create/9 (addr)
+  Availability: available
+  Varpool flags:
+pfe_fail_stop_irq_unmask (const struct pfe_fail_stop_t * fail_stop)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = fail_stop_3(D)->fail_stop_base_va;
+  pfe_fail_stop_cfg_irq_unmask (_1);
+  return;
+
+}
+
+
+pfe_fail_stop_irq_mask (const struct pfe_fail_stop_t * fail_stop)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = fail_stop_3(D)->fail_stop_base_va;
+  pfe_fail_stop_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_fail_stop_isr (const struct pfe_fail_stop_t * fail_stop)
+{
+  errno_t ret;
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _1 = fail_stop_3(D)->fail_stop_base_va;
+  ret_5 = pfe_fail_stop_cfg_isr (_1);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+pfe_fail_stop_destroy (struct pfe_fail_stop_t * fail_stop)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = fail_stop_3(D)->fail_stop_base_va;
+  pfe_fail_stop_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_fail_stop_create (addr_t cbus_base_va, addr_t fail_stop_base)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG fail_stop => &fail_stop_instance
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&fail_stop_instance, 0, 12);
+  # DEBUG BEGIN_STMT
+  fail_stop_instance.cbus_base_va = cbus_base_va_4(D);
+  # DEBUG BEGIN_STMT
+  fail_stop_instance.fail_stop_base_offset = fail_stop_base_6(D);
+  # DEBUG BEGIN_STMT
+  _1 = cbus_base_va_4(D) + fail_stop_base_6(D);
+  fail_stop_instance.fail_stop_base_va = _1;
+  # DEBUG BEGIN_STMT
+  pfe_fail_stop_cfg_irq_unmask_all (_1);
+  # DEBUG BEGIN_STMT
+  return &fail_stop_instance;
+
+}
+
+

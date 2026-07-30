@@ -1,0 +1,40 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: Serdes_schm_read_msr
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Serdes_schm_read_msr/0 (Serdes_schm_read_msr) @06dcad20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+Serdes_schm_read_msr ()
+{
+  register uint32 reg_tmp;
+  uint32 D.5656;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" mrs %0, primask " : "=r" reg_tmp);
+  # DEBUG BEGIN_STMT
+  D.5656 = reg_tmp;
+  return D.5656;
+
+}
+
+

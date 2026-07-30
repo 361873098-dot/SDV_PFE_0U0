@@ -1,0 +1,773 @@
+
+Marking local functions: vPortEnableVFP prvPortStartFirstTask vPortSetBASEPRI vPortRaiseBASEPRI
+
+
+Marking externally visible functions: vPortValidateInterruptPriority vPortSetupTimerInterrupt SysTick_Handler PendSV_Handler vPortExitCritical vPortEnterCritical vPortEndScheduler xPortStartScheduler SVC_Handler pxPortInitialiseStack
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+xTaskIncrementTick/22 (xTaskIncrementTick) @06e00e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SysTick_Handler/17 
+  Calls: 
+vTaskSwitchContext/21 (vTaskSwitchContext) @06e00540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: xPortStartScheduler/12 
+  Calls: 
+vPortValidateInterruptPriority/20 (vPortValidateInterruptPriority) @06dfb0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ucMaxSysCallPriority/5 (read)ulMaxPRIGROUPValue/6 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+vPortEnableVFP/19 (vPortEnableVFP) @06dfbc40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: xPortStartScheduler/12 
+  Calls: 
+vPortSetupTimerInterrupt/18 (vPortSetupTimerInterrupt) @06dfb8c0
+  Type: function definition analyzed
+  Visibility: externally_visible public weak
+  References: 
+  Referring: 
+  Availability: overwritable
+  Function flags: body optimize_size
+  Called by: xPortStartScheduler/12 
+  Calls: 
+SysTick_Handler/17 (SysTick_Handler) @06dfb620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 xTaskIncrementTick/22 vPortRaiseBASEPRI/1 
+PendSV_Handler/16 (PendSV_Handler) @06dfb380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+vPortExitCritical/15 (vPortExitCritical) @06dfb000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: uxCriticalNesting/4 (read)uxCriticalNesting/4 (read)uxCriticalNesting/4 (write)uxCriticalNesting/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortSetBASEPRI/3 vPortRaiseBASEPRI/1 
+vPortEnterCritical/14 (vPortEnterCritical) @06e47700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: uxCriticalNesting/4 (read)uxCriticalNesting/4 (write)uxCriticalNesting/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+vPortEndScheduler/13 (vPortEndScheduler) @06e470e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: uxCriticalNesting/4 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: vPortRaiseBASEPRI/1 
+xPortStartScheduler/12 (xPortStartScheduler) @06e47c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ucMaxSysCallPriority/5 (write)ulMaxPRIGROUPValue/6 (write)ulMaxPRIGROUPValue/6 (read)ulMaxPRIGROUPValue/6 (write)ulMaxPRIGROUPValue/6 (read)ulMaxPRIGROUPValue/6 (read)ulMaxPRIGROUPValue/6 (write)ulMaxPRIGROUPValue/6 (read)ulMaxPRIGROUPValue/6 (write)uxCriticalNesting/4 (write)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: prvTaskExitError/9 vTaskSwitchContext/21 prvPortStartFirstTask/11 vPortEnableVFP/19 vPortSetupTimerInterrupt/18 vPortRaiseBASEPRI/1 
+prvPortStartFirstTask/11 (prvPortStartFirstTask) @06e479a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: xPortStartScheduler/12 
+  Calls: 
+SVC_Handler/10 (SVC_Handler) @06e47620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+prvTaskExitError/9 (prvTaskExitError) @06e47380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  References: uxCriticalNesting/4 (read)
+  Referring: pxPortInitialiseStack/8 (addr)
+  Availability: available
+  Function flags: body optimize_size
+  Called by: xPortStartScheduler/12 
+  Calls: vPortRaiseBASEPRI/1 vPortRaiseBASEPRI/1 
+pxPortInitialiseStack/8 (pxPortInitialiseStack) @06e47000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: prvTaskExitError/9 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ulMaxPRIGROUPValue/6 (ulMaxPRIGROUPValue) @06e41c60
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: xPortStartScheduler/12 (write)xPortStartScheduler/12 (read)xPortStartScheduler/12 (write)xPortStartScheduler/12 (read)xPortStartScheduler/12 (read)xPortStartScheduler/12 (write)xPortStartScheduler/12 (read)xPortStartScheduler/12 (write)vPortValidateInterruptPriority/20 (read)
+  Availability: available
+  Varpool flags: initialized
+ucMaxSysCallPriority/5 (ucMaxSysCallPriority) @06e41bd0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: xPortStartScheduler/12 (write)vPortValidateInterruptPriority/20 (read)
+  Availability: available
+  Varpool flags: initialized
+uxCriticalNesting/4 (uxCriticalNesting) @06e41a68
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: prvTaskExitError/9 (read)xPortStartScheduler/12 (write)vPortEndScheduler/13 (read)vPortEnterCritical/14 (read)vPortEnterCritical/14 (write)vPortEnterCritical/14 (read)vPortExitCritical/15 (read)vPortExitCritical/15 (read)vPortExitCritical/15 (write)vPortExitCritical/15 (read)
+  Availability: available
+  Varpool flags: initialized
+vPortSetBASEPRI/3 (vPortSetBASEPRI) @06d9ad20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: SysTick_Handler/17 vPortExitCritical/15 
+  Calls: 
+vPortRaiseBASEPRI/1 (vPortRaiseBASEPRI) @06d9a700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: vPortValidateInterruptPriority/20 vPortValidateInterruptPriority/20 SysTick_Handler/17 vPortExitCritical/15 vPortEnterCritical/14 vPortEnterCritical/14 vPortEndScheduler/13 xPortStartScheduler/12 prvTaskExitError/9 prvTaskExitError/9 
+  Calls: 
+vPortValidateInterruptPriority ()
+{
+  uint8_t ucCurrentPriority;
+  uint32_t ulCurrentInterrupt;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("mrs %0, ipsr" : "=r" ulCurrentInterrupt :  : "memory");
+  # DEBUG BEGIN_STMT
+  if (ulCurrentInterrupt > 15)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = 3758154736B + ulCurrentInterrupt;
+  ucCurrentPriority = *_1;
+  # DEBUG BEGIN_STMT
+  ucMaxSysCallPriority.19_2 = ucMaxSysCallPriority;
+  if (ucCurrentPriority < ucMaxSysCallPriority.19_2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = 3758157068B;
+  _4 = *_3;
+  _5 = _4 & 1792;
+  ulMaxPRIGROUPValue.20_6 = ulMaxPRIGROUPValue;
+  if (_5 > ulMaxPRIGROUPValue.20_6)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+__attribute__((naked, noinline, noclone))
+vPortEnableVFP ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	ldr.w r0, =0xE000ED88		
+	ldr r1, [r0]				
+								
+	orr r1, r1, #( 0xf << 20 )	
+	str r1, [r0]				
+	bx r14						
+	.ltorg						
+");
+  return;
+
+}
+
+
+__attribute__((weak))
+vPortSetupTimerInterrupt ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 3758153744B;
+  *_1 = 0;
+  # DEBUG BEGIN_STMT
+  _2 = 3758153752B;
+  *_2 = 0;
+  # DEBUG BEGIN_STMT
+  _3 = 3758153748B;
+  *_3 = 399999;
+  # DEBUG BEGIN_STMT
+  _4 = 3758153744B;
+  *_4 = 7;
+  return;
+
+}
+
+
+SysTick_Handler ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  _1 = xTaskIncrementTick ();
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = 3758157060B;
+  *_2 = 268435456;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (0);
+  return;
+
+}
+
+
+__attribute__((naked, noinline, noclone))
+PendSV_Handler ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mrs r0, psp							
+	isb									
+										
+	ldr	r3, pxCurrentTCBConst			
+	ldr	r2, [r3]						
+										
+	tst r14, #0x10						
+	it eq								
+	vstmdbeq r0!, {s16-s31}				
+										
+	stmdb r0!, {r4-r11, r14}			
+	str r0, [r2]						
+										
+	stmdb sp!, {r0, r3}					
+	mov r0, %0 							
+	cpsid i								
+	msr basepri, r0						
+	dsb									
+	isb									
+	cpsie i								
+	bl vTaskSwitchContext				
+	mov r0, #0							
+	msr basepri, r0						
+	ldmia sp!, {r0, r3}					
+										
+	ldr r1, [r3]						
+	ldr r0, [r1]						
+										
+	ldmia r0!, {r4-r11, r14}			
+										
+	tst r14, #0x10						
+	it eq								
+	vldmiaeq r0!, {s16-s31}				
+										
+	msr psp, r0							
+	isb									
+										
+										
+	bx r14								
+										
+	.align 4							
+pxCurrentTCBConst: .word pxCurrentTCB	
+" :  : "i" 16);
+  return;
+
+}
+
+
+vPortExitCritical ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  uxCriticalNesting.16_1 = uxCriticalNesting;
+  if (uxCriticalNesting.16_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  uxCriticalNesting.17_2 = uxCriticalNesting;
+  _3 = uxCriticalNesting.17_2 + 4294967295;
+  uxCriticalNesting = _3;
+  # DEBUG BEGIN_STMT
+  uxCriticalNesting.18_4 = uxCriticalNesting;
+  if (uxCriticalNesting.18_4 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (0);
+
+  <bb 7> :
+  return;
+
+}
+
+
+vPortEnterCritical ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  uxCriticalNesting.14_1 = uxCriticalNesting;
+  _2 = uxCriticalNesting.14_1 + 1;
+  uxCriticalNesting = _2;
+  # DEBUG BEGIN_STMT
+  uxCriticalNesting.15_3 = uxCriticalNesting;
+  if (uxCriticalNesting.15_3 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = 3758157060B;
+  _5 = *_4;
+  _6 = _5 & 255;
+  if (_6 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+vPortEndScheduler ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  uxCriticalNesting.13_1 = uxCriticalNesting;
+  if (uxCriticalNesting.13_1 != 1000)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+xPortStartScheduler ()
+{
+  volatile uint8_t ucMaxPriorityValue;
+  volatile uint8_t * const pucFirstUserPriorityRegister;
+  volatile uint32_t ulOriginalPriority;
+  BaseType_t D.5859;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pucFirstUserPriorityRegister = 3758154752B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 3758154752B;
+  _2 = *_1;
+  _3 = (long unsigned int) _2;
+  ulOriginalPriority = _3;
+  # DEBUG BEGIN_STMT
+  _4 = 3758154752B;
+  *_4 = 255;
+  # DEBUG BEGIN_STMT
+  _5 = 3758154752B;
+  _6 = *_5;
+  ucMaxPriorityValue = _6;
+  # DEBUG BEGIN_STMT
+  ucMaxPriorityValue.5_7 = ucMaxPriorityValue;
+  _8 = ucMaxPriorityValue.5_7 & 16;
+  ucMaxSysCallPriority = _8;
+  # DEBUG BEGIN_STMT
+  ulMaxPRIGROUPValue = 7;
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ulMaxPRIGROUPValue.6_9 = ulMaxPRIGROUPValue;
+  _10 = ulMaxPRIGROUPValue.6_9 + 4294967295;
+  ulMaxPRIGROUPValue = _10;
+  # DEBUG BEGIN_STMT
+  ucMaxPriorityValue.7_11 = ucMaxPriorityValue;
+  _12 = ucMaxPriorityValue.7_11 << 1;
+  ucMaxPriorityValue = _12;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ucMaxPriorityValue.8_13 = ucMaxPriorityValue;
+  _14 = (int) ucMaxPriorityValue.8_13;
+  _15 = _14 & 128;
+  if (_15 == 128)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ulMaxPRIGROUPValue.9_16 = ulMaxPRIGROUPValue;
+  _17 = 7 - ulMaxPRIGROUPValue.9_16;
+  if (_17 != 4)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ulMaxPRIGROUPValue.10_18 = ulMaxPRIGROUPValue;
+  _19 = ulMaxPRIGROUPValue.10_18 << 8;
+  ulMaxPRIGROUPValue = _19;
+  # DEBUG BEGIN_STMT
+  ulMaxPRIGROUPValue.11_20 = ulMaxPRIGROUPValue;
+  _21 = ulMaxPRIGROUPValue.11_20 & 1792;
+  ulMaxPRIGROUPValue = _21;
+  # DEBUG BEGIN_STMT
+  ulOriginalPriority.12_22 = ulOriginalPriority;
+  _23 = 3758154752B;
+  _24 = (unsigned char) ulOriginalPriority.12_22;
+  *_23 = _24;
+  # DEBUG BEGIN_STMT
+  _25 = 3758157088B;
+  _26 = *_25;
+  _27 = 3758157088B;
+  _28 = _26 | 15728640;
+  *_27 = _28;
+  # DEBUG BEGIN_STMT
+  _29 = 3758157088B;
+  _30 = *_29;
+  _31 = 3758157088B;
+  _32 = _30 | 4026531840;
+  *_31 = _32;
+  # DEBUG BEGIN_STMT
+  vPortSetupTimerInterrupt ();
+  # DEBUG BEGIN_STMT
+  uxCriticalNesting = 0;
+  # DEBUG BEGIN_STMT
+  vPortEnableVFP ();
+  # DEBUG BEGIN_STMT
+  _33 = 3758157620B;
+  _34 = *_33;
+  _35 = 3758157620B;
+  _36 = _34 | 3221225472;
+  *_35 = _36;
+  # DEBUG BEGIN_STMT
+  prvPortStartFirstTask ();
+  # DEBUG BEGIN_STMT
+  vTaskSwitchContext ();
+  # DEBUG BEGIN_STMT
+  prvTaskExitError ();
+  # DEBUG BEGIN_STMT
+  D.5859 = 0;
+  return D.5859;
+
+}
+
+
+__attribute__((naked, noinline, noclone))
+prvPortStartFirstTask ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__(" ldr r0, =0xE000ED08 	
+ ldr r0, [r0] 			
+ ldr r0, [r0] 			
+ msr msp, r0			
+ mov r0, #0			
+ msr control, r0		
+ cpsie i				
+ cpsie f				
+ dsb					
+ isb					
+ svc 0					
+ nop					
+ .ltorg				
+");
+  return;
+
+}
+
+
+__attribute__((naked, noinline, noclone))
+SVC_Handler ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	ldr	r3, pxCurrentTCBConst2		
+	ldr r1, [r3]					
+	ldr r0, [r1]					
+	ldmia r0!, {r4-r11, r14}		
+	msr psp, r0						
+	isb								
+	mov r0, #0 						
+	msr	basepri, r0					
+	bx r14							
+									
+	.align 4						
+pxCurrentTCBConst2: .word pxCurrentTCB				
+");
+  return;
+
+}
+
+
+prvTaskExitError ()
+{
+  volatile uint32_t ulDummy;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ulDummy = 0;
+  # DEBUG BEGIN_STMT
+  uxCriticalNesting.3_1 = uxCriticalNesting;
+  if (uxCriticalNesting.3_1 != 4294967295)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ulDummy.4_2 = ulDummy;
+  if (ulDummy.4_2 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+
+pxPortInitialiseStack (StackType_t * pxTopOfStack, void (*TaskFunction_t) (void *) pxCode, void * pvParameters)
+{
+  StackType_t * D.5851;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxTopOfStack = pxTopOfStack + 4294967292;
+  # DEBUG BEGIN_STMT
+  *pxTopOfStack = 16777216;
+  # DEBUG BEGIN_STMT
+  pxTopOfStack = pxTopOfStack + 4294967292;
+  # DEBUG BEGIN_STMT
+  pxCode.0_1 = (long unsigned int) pxCode;
+  _2 = pxCode.0_1 & 4294967294;
+  *pxTopOfStack = _2;
+  # DEBUG BEGIN_STMT
+  pxTopOfStack = pxTopOfStack + 4294967292;
+  # DEBUG BEGIN_STMT
+  prvTaskExitError.1_3 = (long unsigned int) prvTaskExitError;
+  *pxTopOfStack = prvTaskExitError.1_3;
+  # DEBUG BEGIN_STMT
+  pxTopOfStack = pxTopOfStack + 4294967276;
+  # DEBUG BEGIN_STMT
+  pvParameters.2_4 = (long unsigned int) pvParameters;
+  *pxTopOfStack = pvParameters.2_4;
+  # DEBUG BEGIN_STMT
+  pxTopOfStack = pxTopOfStack + 4294967292;
+  # DEBUG BEGIN_STMT
+  *pxTopOfStack = 4294967293;
+  # DEBUG BEGIN_STMT
+  pxTopOfStack = pxTopOfStack + 4294967264;
+  # DEBUG BEGIN_STMT
+  D.5851 = pxTopOfStack;
+  return D.5851;
+
+}
+
+
+__attribute__((always_inline))
+vPortSetBASEPRI (uint32_t ulNewMaskValue)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	msr basepri, %0	" :  : "r" ulNewMaskValue : "memory");
+  return;
+
+}
+
+
+__attribute__((always_inline))
+vPortRaiseBASEPRI ()
+{
+  uint32_t ulNewBASEPRI;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI : "i" 16 : "memory");
+  return;
+
+}
+
+

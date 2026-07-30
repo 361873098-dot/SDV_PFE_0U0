@@ -1,0 +1,710 @@
+pfe_idex_down ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pfe_idex.is_up = 0;
+  return;
+
+}
+
+
+pfe_idex_set_rpc_ret_val (errno_t retval, void * resp, uint16_t resp_len)
+{
+  errno_t ret;
+  void * payload;
+  struct pfe_remote_client_t * client;
+  long unsigned int _1;
+  short unsigned int _2;
+  long unsigned int retval.17_3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  int _13;
+  unsigned int rpc_resp.21_14;
+  unsigned int _15;
+  long unsigned int _16;
+  <unnamed type> _17;
+  long unsigned int _18;
+  short unsigned int _19;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  client_22 = idex_current_client;
+  # DEBUG client => client_22
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG rpc_resp => &pfe_idex_response_frame.msg_rpc
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_idex_response_frame, 0, 1538);
+  # DEBUG BEGIN_STMT
+  _1 = client_22->rpc_msg.rpc_id;
+  MEM[(struct pfe_idex_msg_rpc_t *)&pfe_idex_response_frame + 25B].rpc_id = _1;
+  # DEBUG BEGIN_STMT
+  _2 = resp_len_25(D) r>> 8;
+  MEM[(struct pfe_idex_msg_rpc_t *)&pfe_idex_response_frame + 25B].plen = _2;
+  # DEBUG BEGIN_STMT
+  retval.17_3 = (long unsigned int) retval_27(D);
+  _4 = retval.17_3 >> 24;
+  _5 = retval.17_3 >> 8;
+  _6 = _5 & 65280;
+  _7 = _4 | _6;
+  _8 = retval.17_3 << 8;
+  _9 = _8 & 16711680;
+  _10 = _7 | _9;
+  _11 = retval.17_3 << 24;
+  _12 = _10 | _11;
+  _13 = (int) _12;
+  MEM[(struct pfe_idex_msg_rpc_t *)&pfe_idex_response_frame + 25B].rpc_ret = _13;
+  # DEBUG BEGIN_STMT
+  rpc_resp.21_14 = (unsigned int) &pfe_idex_response_frame.msg_rpc;
+  _15 = rpc_resp.21_14 + 10;
+  payload_29 = (void *) _15;
+  # DEBUG payload => payload_29
+  # DEBUG BEGIN_STMT
+  _16 = (long unsigned int) resp_len_25(D);
+  autolibc_memcpy (payload_29, resp_30(D), _16);
+  # DEBUG BEGIN_STMT
+  _17 = client_22->phy_id;
+  _18 = client_22->seqnum;
+  _19 = resp_len_25(D) + 10;
+  ret_33 = pfe_idex_send_response (_17, 1, _18, _19);
+  # DEBUG ret => ret_33
+  # DEBUG BEGIN_STMT
+  if (ret_33 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] IDEX RPC response failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1534, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_33;
+
+}
+
+
+pfe_idex_rpc (pfe_ct_phy_if_id_t dst_phy, uint32_t id, const void * buf, uint16_t buf_len, void * resp, uint16_t resp_len)
+{
+  void * payload;
+  const uint16_t response_buf_size;
+  const uint16_t request_buf_size;
+  errno_t ret;
+  <unnamed type> _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  short unsigned int _15;
+  unsigned int msg_req.13_16;
+  unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  short unsigned int _20;
+  unsigned int msg_resp.14_21;
+  unsigned int _22;
+  long unsigned int _23;
+  const uint32_t iftmp.12_26;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  request_buf_size_30 = buf_len_29(D) + 10;
+  # DEBUG request_buf_size => request_buf_size_30
+  # DEBUG BEGIN_STMT
+  response_buf_size_32 = resp_len_31(D) + 10;
+  # DEBUG response_buf_size => response_buf_size_32
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_idex.remote.server.version;
+  if (_1 > 1)
+    goto <bb 5>; [59.00%]
+  else
+    goto <bb 3>; [41.00%]
+
+  <bb 3> [local count: 440234148]:
+  if (id_34(D) == 4294967295)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 4> [local count: 290554537]:
+
+  <bb 5> [local count: 1073741824]:
+  # iftmp.12_26 = PHI <40(3), 1(4), 40(2)>
+  # DEBUG resend_count => iftmp.12_26
+  # DEBUG BEGIN_STMT
+  _2 = (unsigned int) request_buf_size_30;
+  _3 = _2 + 39;
+  if (_3 > 1522)
+    goto <bb 8>; [20.96%]
+  else
+    goto <bb 6>; [79.04%]
+
+  <bb 6> [local count: 848685538]:
+  _4 = (unsigned int) response_buf_size_32;
+  _5 = _4 + 39;
+  if (_5 > 1522)
+    goto <bb 8>; [52.23%]
+  else
+    goto <bb 7>; [47.77%]
+
+  <bb 7> [local count: 405417081]:
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_idex_response_frame.msg_rpc, 0, _4);
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_idex_request_frame.msg, 0, _2);
+  # DEBUG BEGIN_STMT
+  # DEBUG msg_req => &pfe_idex_request_frame.msg
+  # DEBUG BEGIN_STMT
+  # DEBUG msg_resp => &pfe_idex_response_frame.msg_rpc
+  # DEBUG BEGIN_STMT
+  _6 = id_34(D) >> 24;
+  _7 = id_34(D) >> 8;
+  _8 = _7 & 65280;
+  _9 = _6 | _8;
+  _10 = id_34(D) << 8;
+  _11 = _10 & 16711680;
+  _12 = _9 | _11;
+  _13 = id_34(D) << 24;
+  _14 = _12 | _13;
+  MEM[(struct pfe_idex_msg_rpc_t *)&pfe_idex_request_frame + 55B].rpc_id = _14;
+  # DEBUG BEGIN_STMT
+  _15 = buf_len_29(D) r>> 8;
+  MEM[(struct pfe_idex_msg_rpc_t *)&pfe_idex_request_frame + 55B].plen = _15;
+  # DEBUG BEGIN_STMT
+  MEM[(struct pfe_idex_msg_rpc_t *)&pfe_idex_request_frame + 55B].rpc_ret = 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct pfe_idex_msg_rpc_t *)&pfe_idex_response_frame + 25B].plen = resp_len_31(D);
+  # DEBUG BEGIN_STMT
+  pfe_idex.remote.server.rpc_msg = &pfe_idex_response_frame.msg_rpc;
+  # DEBUG BEGIN_STMT
+  msg_req.13_16 = (unsigned int) &pfe_idex_request_frame.msg;
+  _17 = msg_req.13_16 + 10;
+  payload_44 = (void *) _17;
+  # DEBUG payload => payload_44
+  # DEBUG BEGIN_STMT
+  _18 = (long unsigned int) buf_len_29(D);
+  autolibc_memcpy (payload_44, buf_45(D), _18);
+  # DEBUG BEGIN_STMT
+  ret_49 = pfe_idex_request_send (dst_phy_47(D), 1, iftmp.12_26, request_buf_size_30);
+  # DEBUG ret => ret_49
+  # DEBUG BEGIN_STMT
+  if (ret_49 != 0)
+    goto <bb 9>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 8> [local count: 668324743]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Buffers too big for request/response transport\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1406, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 11
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [100.00%]
+
+  <bb 9> [local count: 133787637]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] RPC transport failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1445, ret_49, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 10> [local count: 271629444]:
+  # DEBUG BEGIN_STMT
+  _19 = MEM[(struct pfe_idex_msg_rpc_t *)&pfe_idex_response_frame + 25B].rpc_id;
+  if (_19 != id_34(D))
+    goto <bb 15>; [66.00%]
+  else
+    goto <bb 11>; [34.00%]
+
+  <bb 11> [local count: 92354011]:
+  # DEBUG BEGIN_STMT
+  ret_50 = MEM[(struct pfe_idex_msg_rpc_t *)&pfe_idex_response_frame + 25B].rpc_ret;
+  # DEBUG ret => ret_50
+  # DEBUG BEGIN_STMT
+  _20 = MEM[(struct pfe_idex_msg_rpc_t *)&pfe_idex_response_frame + 25B].plen;
+  if (_20 == 0)
+    goto <bb 15>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 12> [local count: 46177005]:
+  # DEBUG BEGIN_STMT
+  if (_20 > resp_len_31(D))
+    goto <bb 13>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 13> [local count: 23088503]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Caller\'s buffer is too small\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1469, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 11
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 23088503]:
+  # DEBUG BEGIN_STMT
+  msg_resp.14_21 = (unsigned int) &pfe_idex_response_frame.msg_rpc;
+  _22 = msg_resp.14_21 + 10;
+  payload_51 = (void *) _22;
+  # DEBUG payload => payload_51
+  # DEBUG BEGIN_STMT
+  _23 = (long unsigned int) _20;
+  autolibc_memcpy (resp_52(D), payload_51, _23);
+
+  <bb 15> [local count: 405417080]:
+  # ret_24 = PHI <ret_49(9), 22(10), ret_50(11), 11(13), ret_50(14)>
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  pfe_idex.remote.server.rpc_msg = 0B;
+
+  <bb 16> [local count: 1073741823]:
+  # ret_25 = PHI <11(8), ret_24(15)>
+  # DEBUG ret => ret_25
+  # DEBUG BEGIN_STMT
+  return ret_25;
+
+}
+
+
+pfe_idex_master_rpc (uint32_t id, const void * buf, uint16_t buf_len, void * resp, uint16_t resp_len)
+{
+  errno_t ret;
+  unsigned char _1;
+  <unnamed type> _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG idex => &pfe_idex
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 115
+  # DEBUG BEGIN_STMT
+  _1 = pfe_idex.is_server;
+  if (_1 == 0)
+    goto <bb 3>; [47.77%]
+  else
+    goto <bb 4>; [52.23%]
+
+  <bb 3> [local count: 512926469]:
+  # DEBUG BEGIN_STMT
+  _2 = pfe_idex.remote.server.phy_id;
+  ret_12 = pfe_idex_rpc (_2, id_6(D), buf_7(D), buf_len_8(D), resp_9(D), resp_len_10(D));
+  # DEBUG ret => ret_12
+
+  <bb 4> [local count: 1073741824]:
+  # ret_3 = PHI <115(2), ret_12(3)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+
+pfe_idex_fini ()
+{
+  uint8_t i;
+  struct pfe_hif_t * _1;
+  struct pfe_hif_drv_client_t * _2;
+  unsigned char _3;
+  int _4;
+  struct pfe_idex_response_t * _5;
+
+  <bb 2> [local count: 631612842]:
+  # DEBUG BEGIN_STMT
+  # DEBUG idex => &pfe_idex
+  # DEBUG BEGIN_STMT
+  pfe_idex.is_up = 0;
+  # DEBUG BEGIN_STMT
+  _1 = pfe_idex.hif;
+  pfe_hif_clear_master_up (_1);
+  # DEBUG BEGIN_STMT
+  pfe_idex.hif = 0B;
+  # DEBUG BEGIN_STMT
+  pfe_idex.rpc_cbk = 0B;
+  # DEBUG BEGIN_STMT
+  pfe_idex.rpc_cbk_arg = 0B;
+  # DEBUG BEGIN_STMT
+  pfe_idex.txc_free_cbk = 0B;
+  # DEBUG BEGIN_STMT
+  _2 = pfe_idex.ihc_client;
+  if (_2 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 337723386]:
+  # DEBUG BEGIN_STMT
+  pfe_hif_drv_client_unregister (_2);
+  # DEBUG BEGIN_STMT
+  pfe_idex.ihc_client = 0B;
+
+  <bb 4> [local count: 631612842]:
+  # DEBUG BEGIN_STMT
+  _3 = pfe_idex.is_server;
+  if (_3 == 1)
+    goto <bb 10>; [34.00%]
+  else
+    goto <bb 9>; [66.00%]
+
+  <bb 10> [local count: 214748366]:
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 858993460]:
+  # DEBUG BEGIN_STMT
+  _4 = (int) i_6;
+  _5 = pfe_idex.remote.clients[_4].response;
+  if (_5 != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 6> [local count: 601295422]:
+  # DEBUG BEGIN_STMT
+  *_5 = {};
+  # DEBUG BEGIN_STMT
+  pfe_idex.remote.clients[_4].response = 0B;
+
+  <bb 7> [local count: 858993460]:
+  # DEBUG BEGIN_STMT
+  i_22 = i_6 + 1;
+  # DEBUG i => i_22
+
+  <bb 8> [local count: 1073741824]:
+  # i_6 = PHI <i_22(7), 0(10)>
+  # DEBUG i => i_6
+  # DEBUG BEGIN_STMT
+  if (i_6 != 4)
+    goto <bb 5>; [80.00%]
+  else
+    goto <bb 9>; [20.00%]
+
+  <bb 9> [local count: 631612841]:
+  # DEBUG BEGIN_STMT
+  pfe_idex.rpc_req_lock_init = 0;
+  return;
+
+}
+
+
+pfe_idex_init (struct pfe_hif_drv_t * hif_drv, pfe_ct_phy_if_id_t master, struct pfe_hif_t * hif, void (*pfe_idex_rpc_cbk_t) (pfe_ct_phy_if_id_t, uint32_t, void *, uint16_t, void *) cbk, void * arg, void (*pfe_idex_tx_conf_free_cbk_t) (void *) txcf_cbk)
+{
+  errno_t ret;
+  struct pfe_hif_drv_client_t * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG idex => &pfe_idex
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_idex, 0, 180);
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_idex_dummy_frame, 0, 80);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_idex.is_server = 1;
+  # DEBUG BEGIN_STMT
+  pfe_idex.hif = hif_7(D);
+  # DEBUG BEGIN_STMT
+  pfe_idex.txc_free_cbk = txcf_cbk_9(D);
+  # DEBUG BEGIN_STMT
+  pfe_idex.rpc_req_lock_init = 1;
+  # DEBUG BEGIN_STMT
+  _1 = pfe_hif_drv_ihc_client_register (hif_drv_12(D), pfe_idex_ihc_handler, 0B);
+  pfe_idex.ihc_client = _1;
+  # DEBUG BEGIN_STMT
+  if (_1 == 0B)
+    goto <bb 4>; [10.21%]
+  else
+    goto <bb 3>; [89.79%]
+
+  <bb 3> [local count: 964112785]:
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG cbk => cbk_18(D)
+  # DEBUG arg => arg_19(D)
+  # DEBUG INLINE_ENTRY pfe_idex_set_rpc_cbk
+  # DEBUG BEGIN_STMT
+  # DEBUG idex => &pfe_idex
+  # DEBUG BEGIN_STMT
+  pfe_idex.rpc_cbk_arg = arg_19(D);
+  # DEBUG BEGIN_STMT
+  pfe_idex.rpc_cbk = cbk_18(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG cbk => NULL
+  # DEBUG arg => NULL
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_idex.is_up = 1;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 109629040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t register IHC client\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1261, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_idex_fini ();
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 117
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 117
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 1073741824]:
+  # ret_23 = PHI <117(4), 0(3)>
+  # DEBUG BEGIN_STMT
+  return ret_23;
+
+}
+
+
+pfe_idex_send_frame (pfe_ct_phy_if_id_t dst_phy, pfe_idex_frame_type_t type, const void * data, uint16_t data_len)
+{
+  struct pfe_hif_chnl_t * hif_chnl;
+  struct pfe_hif_drv_t * hif_drv;
+  struct hif_drv_sg_list_t sg_list;
+  errno_t ret;
+  struct pfe_idex_frame_header_t * idex_hdr_pa;
+  struct pfe_idex_frame_header_t * idex_hdr;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  struct pfe_hif_drv_client_t * _4;
+  unsigned int data.0_5;
+  unsigned int _6;
+  unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _45;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  sg_list = {};
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_idex.is_up;
+  if (_1 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _2 = pfe_idex.stats.tx_skips;
+  _3 = _2 + 1;
+  pfe_idex.stats.tx_skips = _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+
+  <bb 4> [local count: 1073741824]:
+  # ret_10 = PHI <0(2), 22(3)>
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  _4 = pfe_idex.ihc_client;
+  hif_drv_18 = pfe_hif_drv_client_get_drv (_4);
+  # DEBUG hif_drv => hif_drv_18
+  # DEBUG BEGIN_STMT
+  if (ret_10 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+  if (hif_drv_18 == 0B)
+    goto <bb 6>; [10.21%]
+  else
+    goto <bb 7>; [89.79%]
+
+  <bb 6> [local count: 54814520]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Get hif_drv instance associated with the client failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1100, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  goto <bb 13>; [100.00%]
+
+  <bb 7> [local count: 1018927305]:
+  # DEBUG BEGIN_STMT
+  if (ret_10 == 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 13>; [67.00%]
+
+  <bb 8> [local count: 336246010]:
+  # DEBUG BEGIN_STMT
+  hif_chnl_22 = pfe_hif_drv_get_chnl (hif_drv_18);
+  # DEBUG hif_chnl => hif_chnl_22
+  # DEBUG BEGIN_STMT
+  if (hif_chnl_22 == 0B)
+    goto <bb 9>; [18.75%]
+  else
+    goto <bb 10>; [81.25%]
+
+  <bb 9> [local count: 63046127]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Get channel associated with the hif_drv instance failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1108, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  goto <bb 13>; [100.00%]
+
+  <bb 10> [local count: 273199883]:
+  # DEBUG BEGIN_STMT
+  data.0_5 = (unsigned int) data_23(D);
+  _6 = data.0_5 + 4294967294;
+  idex_hdr_24 = (struct pfe_idex_frame_header_t *) _6;
+  # DEBUG idex_hdr => idex_hdr_24
+  # DEBUG BEGIN_STMT
+  idex_hdr_24->dst_phy_if = dst_phy_25(D);
+  # DEBUG BEGIN_STMT
+  idex_hdr_24->type = type_27(D);
+  # DEBUG BEGIN_STMT
+  _7 = data.0_5 + 4294967278;
+  idex_hdr_29 = (struct pfe_idex_frame_header_t *) _7;
+  # DEBUG idex_hdr => idex_hdr_29
+  # DEBUG BEGIN_STMT
+  idex_hdr_pa_31 = oal_mm_virt_to_phys_contig (idex_hdr_29);
+  # DEBUG idex_hdr_pa => idex_hdr_pa_31
+  # DEBUG BEGIN_STMT
+  if (idex_hdr_pa_31 == 0B)
+    goto <bb 11>; [18.75%]
+  else
+    goto <bb 12>; [81.25%]
+
+  <bb 11> [local count: 51224978]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] VA to PA conversion failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_idex.c", 1155, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 11
+  goto <bb 13>; [100.00%]
+
+  <bb 12> [local count: 221974905]:
+  # DEBUG BEGIN_STMT
+  sg_list.size = 1;
+  # DEBUG BEGIN_STMT
+  sg_list.dst_phy = dst_phy_25(D);
+  # DEBUG BEGIN_STMT
+  sg_list.items[0].data_va = idex_hdr_29;
+  # DEBUG BEGIN_STMT
+  sg_list.items[0].data_pa = idex_hdr_pa_31;
+  # DEBUG BEGIN_STMT
+  _8 = (long unsigned int) data_len_36(D);
+  _9 = _8 + 18;
+  sg_list.items[0].len = _9;
+  # DEBUG BEGIN_STMT
+  _45 = MEM[(long unsigned int *)hif_chnl_22 + 4B];
+  # DEBUG D#2 => hif_chnl_22
+  ret_39 = pfe_idex_prep_tx_header_xmit.isra.0 (idex_hdr_29, sg_list, _45);
+  # DEBUG ret => ret_39
+
+  <bb 13> [local count: 1073741824]:
+  # ret_11 = PHI <2(6), ret_10(7), 2(9), 11(11), ret_39(12)>
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  sg_list ={v} {CLOBBER};
+  return ret_11;
+
+}
+
+
+pfe_idex_send_dummy_frame (pfe_ct_phy_if_id_t dst_phy)
+{
+  errno_t _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _4 = pfe_idex_send_frame (dst_phy_2(D), 100, &pfe_idex_dummy_frame.dummy_data, 62);
+  return _4;
+
+}
+
+
+pfe_idex_ihc_handler (struct pfe_hif_drv_client_t * client, void * arg, uint32_t event, uint32_t qno)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  if (event_3(D) == 0)
+    goto <bb 3>; [47.77%]
+  else
+    goto <bb 4>; [52.23%]
+
+  <bb 3> [local count: 512926469]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  pfe_idex_do_rx (client_5(D), &pfe_idex);
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # ret_1 = PHI <0(3), 22(2)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  return ret_1;
+
+}
+
+

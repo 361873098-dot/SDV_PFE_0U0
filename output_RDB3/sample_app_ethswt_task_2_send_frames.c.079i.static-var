@@ -1,0 +1,191 @@
+callgraph:
+
+Eth_43_PFE_TxConfirmation/21 (Eth_43_PFE_TxConfirmation) @089e3ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SampleAppTask2/16 (315357973 (estimated locally),2.67 per call) 
+  Calls: 
+Eth_43_PFE_Receive/20 (Eth_43_PFE_Receive) @089e3e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SampleAppTask2/16 (315357973 (estimated locally),2.67 per call) 
+  Calls: 
+Tst_Pfe_SendDummyFrame/17 (Tst_Pfe_SendDummyFrame) @089e3d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: SampleAppTask2/16 (955630223 (estimated locally),8.09 per call) 
+  Calls: 
+SampleAppTask2/16 (SampleAppTask2) @089e37e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: broadcastMac/18 (addr)Eth_43_PFE_StaticConfig/19 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:118111602 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Eth_43_PFE_TxConfirmation/21 (315357973 (estimated locally),2.67 per call) Eth_43_PFE_Receive/20 (315357973 (estimated locally),2.67 per call) Tst_Pfe_SendDummyFrame/17 (955630223 (estimated locally),8.09 per call) 
+SimpleDelay/15 (SimpleDelay) @089e3380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+Clearing variable flags:
+
+Function name:SampleAppTask2/16:
+  locals read: 
+  locals written: 
+Function name:SimpleDelay/15:
+  locals read: 
+  locals written: 
+
+ ordered call graph: reduced
+SampleAppTask2/16 (SampleAppTask2) @089e37e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ee5468
+  References: broadcastMac/18 (addr)Eth_43_PFE_StaticConfig/19 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:118111602 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Eth_43_PFE_TxConfirmation/21 (315357973 (estimated locally),2.67 per call) Eth_43_PFE_Receive/20 (315357973 (estimated locally),2.67 per call) Tst_Pfe_SendDummyFrame/17 (955630223 (estimated locally),8.09 per call) 
+SimpleDelay/15 (SimpleDelay) @089e3380
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06ee51c8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+Function name:SimpleDelay/15:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:SampleAppTask2/16:
+    locals read: 
+    locals written: 
+  globals read: ALL
+  globals written: ALL
+SampleAppTask2 ()
+{
+  Eth_RxStatusType RxStatus;
+  uint8 CtrlIndex;
+  Std_ReturnType tempRet;
+  const struct Eth_43_PFE_StaticCtrlCfgType * _2;
+  _Bool _3;
+  _Bool _5;
+  unsigned char _13;
+
+  <bb 2> [local count: 118111602]:
+  # DEBUG BEGIN_STMT
+  # DEBUG tempRet => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG frmType => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG CtrlIndex => 0
+  goto <bb 8>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _13 = Tst_Pfe_SendDummyFrame (0, &broadcastMac, 0);
+  tempRet_14 = tempRet_6 | _13;
+  # DEBUG tempRet => tempRet_14
+  # DEBUG BEGIN_STMT
+  _2 = Eth_43_PFE_StaticConfig.pController[0];
+  _3 = _2->EnableRxInterrupt;
+  if (_3 != 0)
+    goto <bb 5>; [67.00%]
+  else
+    goto <bb 4>; [33.00%]
+
+  <bb 4> [local count: 315357973]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_Receive (0, 0, &RxStatus);
+  RxStatus ={v} {CLOBBER};
+
+  <bb 5> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _5 = _2->EnableTxInterrupt;
+  if (_5 != 0)
+    goto <bb 7>; [67.00%]
+  else
+    goto <bb 6>; [33.00%]
+
+  <bb 6> [local count: 315357973]:
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_TxConfirmation (0);
+
+  <bb 7> [local count: 955630223]:
+  # tempRet_9 = PHI <tempRet_14(5), tempRet_14(6)>
+  # CtrlIndex_1 = PHI <1(5), 1(6)>
+
+  <bb 8> [local count: 1073741824]:
+  # tempRet_6 = PHI <tempRet_9(7), 0(2)>
+  # CtrlIndex_7 = PHI <CtrlIndex_1(7), 0(2)>
+  # DEBUG CtrlIndex => CtrlIndex_7
+  # DEBUG tempRet => tempRet_6
+  # DEBUG BEGIN_STMT
+  if (CtrlIndex_7 == 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 118111601]:
+  # tempRet_4 = PHI <tempRet_6(8)>
+  # DEBUG BEGIN_STMT
+  return tempRet_4;
+
+}
+
+
+SimpleDelay (uint32 timeout)
+{
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("nop");
+
+  <bb 4> [local count: 1073741824]:
+  # timeout_1 = PHI <timeout_3(D)(2), timeout_5(3)>
+  # DEBUG timeout => timeout_1
+  # DEBUG BEGIN_STMT
+  timeout_5 = timeout_1 + 4294967295;
+  # DEBUG timeout => timeout_5
+  if (timeout_1 != 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  return;
+
+}
+
+

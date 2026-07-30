@@ -1,0 +1,782 @@
+Clock_Ip_ClockPowerModeChangeNotification (Clock_Ip_PowerModesType PowerMode, Clock_Ip_PowerNotificationType Notification)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Clock_Ip_ClockInitializeObjects ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Clock_Ip_SpecificPlatformInitClock (const struct Clock_Ip_ClockConfigType * Config)
+{
+  uint32 RegValue;
+  uint32 PeriphDfsIsInReset;
+  uint32 CoreDfsIsInReset;
+  struct DFS_Type * _1;
+  long unsigned int _2;
+  struct DFS_Type * _3;
+  long unsigned int _4;
+  struct PLLDIG_Type * _5;
+  long unsigned int _6;
+  signed int _7;
+  struct PLLDIG_Type * _8;
+  struct PLLDIG_Type * _9;
+  struct PLLDIG_Type * _10;
+  long unsigned int _11;
+  struct PLLDIG_Type * _12;
+  long unsigned int _13;
+  struct PLLDIG_Type * _14;
+  long unsigned int _15;
+  struct PLLDIG_Type * _16;
+  long unsigned int _17;
+  struct PLLDIG_Type * _18;
+  long unsigned int _19;
+  struct PLLDIG_Type * _20;
+  long unsigned int _21;
+  signed int _22;
+  struct PLLDIG_Type * _23;
+  struct PLLDIG_Type * _24;
+  struct PLLDIG_Type * _25;
+  long unsigned int _26;
+  struct PLLDIG_Type * _27;
+  long unsigned int _28;
+  struct PLLDIG_Type * _29;
+  long unsigned int _30;
+  struct PLLDIG_Type * _31;
+  long unsigned int _32;
+  struct PLLDIG_Type * _33;
+  long unsigned int _34;
+  struct DFS_Type * _35;
+  long unsigned int _36;
+  struct DFS_Type * _37;
+  long unsigned int _38;
+  struct DFS_Type * _39;
+  struct DFS_Type * _40;
+  struct DFS_Type * _41;
+  struct DFS_Type * _42;
+  struct DFS_Type * _43;
+  struct DFS_Type * _44;
+  struct DFS_Type * _45;
+  long unsigned int _46;
+  struct DFS_Type * _47;
+  long unsigned int _48;
+  struct DFS_Type * _49;
+  long unsigned int _50;
+  struct DFS_Type * _51;
+  long unsigned int _52;
+  struct DFS_Type * _53;
+  struct DFS_Type * _54;
+  struct DFS_Type * _55;
+  struct DFS_Type * _56;
+  struct DFS_Type * _57;
+  struct DFS_Type * _58;
+  struct DFS_Type * _59;
+  long unsigned int _60;
+  struct DFS_Type * _61;
+  long unsigned int _62;
+  struct PLLDIG_Type * _63;
+  long unsigned int _64;
+  signed int _65;
+  struct PLLDIG_Type * _66;
+  struct PLLDIG_Type * _67;
+  struct PLLDIG_Type * _68;
+  long unsigned int _69;
+  struct PLLDIG_Type * _70;
+  long unsigned int _71;
+  struct PLLDIG_Type * _72;
+  long unsigned int _73;
+  struct PLLDIG_Type * _74;
+  long unsigned int _75;
+  struct PLLDIG_Type * _76;
+  long unsigned int _77;
+  struct DFS_Type * _78;
+  long unsigned int _79;
+  struct DFS_Type * _80;
+  long unsigned int _81;
+  struct DFS_Type * _82;
+  struct DFS_Type * _83;
+  struct DFS_Type * _84;
+  struct DFS_Type * _85;
+  struct DFS_Type * _86;
+  struct DFS_Type * _87;
+  struct DFS_Type * _88;
+  long unsigned int _89;
+  struct DFS_Type * _90;
+  long unsigned int _91;
+  struct PLLDIG_Type * _92;
+  long unsigned int _93;
+  signed int _94;
+  struct PLLDIG_Type * _95;
+  struct PLLDIG_Type * _96;
+  struct PLLDIG_Type * _97;
+  long unsigned int _98;
+  struct PLLDIG_Type * _99;
+  long unsigned int _100;
+  struct PLLDIG_Type * _101;
+  long unsigned int _102;
+  struct PLLDIG_Type * _103;
+  long unsigned int _104;
+  struct PLLDIG_Type * _105;
+  long unsigned int _106;
+  struct DFS_Type * _107;
+  long unsigned int _108;
+  struct DFS_Type * _109;
+  long unsigned int _110;
+  struct DFS_Type * _111;
+  struct DFS_Type * _112;
+  struct DFS_Type * _113;
+  struct DFS_Type * _114;
+  struct DFS_Type * _115;
+  struct DFS_Type * _116;
+  struct DFS_Type * _117;
+  long unsigned int _118;
+  struct DFS_Type * _119;
+  long unsigned int _120;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1074085888B;
+  _2 ={v} _1->CTL;
+  CoreDfsIsInReset_127 = _2 & 2;
+  # DEBUG CoreDfsIsInReset => CoreDfsIsInReset_127
+  # DEBUG BEGIN_STMT
+  _3 = 1074102272B;
+  _4 ={v} _3->CTL;
+  PeriphDfsIsInReset_128 = _4 & 2;
+  # DEBUG PeriphDfsIsInReset => PeriphDfsIsInReset_128
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Clock_Ip_PowerClockIpModules ();
+  # DEBUG BEGIN_STMT
+  if (CoreDfsIsInReset_127 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  if (PeriphDfsIsInReset_128 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 = 1073971200B;
+  _6 ={v} _5->PLLCR;
+  _7 = (signed int) _6;
+  if (_7 < 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _8 = 1073971200B;
+  _8->PLLCLKMUX ={v} 0;
+  # DEBUG BEGIN_STMT
+  _9 = 1073971200B;
+  RegValue_131 ={v} _9->PLLDV;
+  # DEBUG RegValue => RegValue_131
+  # DEBUG BEGIN_STMT
+  RegValue_132 = RegValue_131 & 4294938368;
+  # DEBUG RegValue => RegValue_132
+  # DEBUG BEGIN_STMT
+  _10 = 1073971200B;
+  _11 = RegValue_132 | 4126;
+  _10->PLLDV ={v} _11;
+  # DEBUG BEGIN_STMT
+  _12 = 1073971200B;
+  _13 ={v} _12->PLLFD;
+  _14 = 1073971200B;
+  _15 = _13 & 3221192704;
+  _14->PLLFD ={v} _15;
+  # DEBUG BEGIN_STMT
+  _16 = 1073971200B;
+  _17 ={v} _16->PLLCR;
+  _18 = 1073971200B;
+  _19 = _17 & 2147483647;
+  _18->PLLCR ={v} _19;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _20 = 1073987584B;
+  _21 ={v} _20->PLLCR;
+  _22 = (signed int) _21;
+  if (_22 < 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _23 = 1073987584B;
+  _23->PLLCLKMUX ={v} 0;
+  # DEBUG BEGIN_STMT
+  _24 = 1073987584B;
+  RegValue_137 ={v} _24->PLLDV;
+  # DEBUG RegValue => RegValue_137
+  # DEBUG BEGIN_STMT
+  RegValue_138 = RegValue_137 & 4294938368;
+  # DEBUG RegValue => RegValue_138
+  # DEBUG BEGIN_STMT
+  _25 = 1073987584B;
+  _26 = RegValue_138 | 4126;
+  _25->PLLDV ={v} _26;
+  # DEBUG BEGIN_STMT
+  _27 = 1073987584B;
+  _28 ={v} _27->PLLFD;
+  _29 = 1073987584B;
+  _30 = _28 & 3221192704;
+  _29->PLLFD ={v} _30;
+  # DEBUG BEGIN_STMT
+  _31 = 1073987584B;
+  _32 ={v} _31->PLLCR;
+  _33 = 1073987584B;
+  _34 = _32 & 2147483647;
+  _33->PLLCR ={v} _34;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _35 = 1074085888B;
+  _36 ={v} _35->PORTRESET;
+  _37 = 1074085888B;
+  _38 = _36 | 63;
+  _37->PORTRESET ={v} _38;
+  # DEBUG BEGIN_STMT
+  _39 = 1074085888B;
+  _39->DVPORT[0] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _40 = 1074085888B;
+  _40->DVPORT[1] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _41 = 1074085888B;
+  _41->DVPORT[2] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _42 = 1074085888B;
+  _42->DVPORT[3] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _43 = 1074085888B;
+  _43->DVPORT[4] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _44 = 1074085888B;
+  _44->DVPORT[5] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _45 = 1074085888B;
+  _46 ={v} _45->CTL;
+  _47 = 1074085888B;
+  _48 = _46 & 4294967293;
+  _47->CTL ={v} _48;
+  # DEBUG BEGIN_STMT
+  _49 = 1074102272B;
+  _50 ={v} _49->PORTRESET;
+  _51 = 1074102272B;
+  _52 = _50 | 63;
+  _51->PORTRESET ={v} _52;
+  # DEBUG BEGIN_STMT
+  _53 = 1074102272B;
+  _53->DVPORT[0] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _54 = 1074102272B;
+  _54->DVPORT[1] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _55 = 1074102272B;
+  _55->DVPORT[2] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _56 = 1074102272B;
+  _56->DVPORT[3] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _57 = 1074102272B;
+  _57->DVPORT[4] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _58 = 1074102272B;
+  _58->DVPORT[5] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _59 = 1074102272B;
+  _60 ={v} _59->CTL;
+  _61 = 1074102272B;
+  _62 = _60 & 4294967293;
+  _61->CTL ={v} _62;
+  goto <bb 17>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (CoreDfsIsInReset_127 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _63 = 1073971200B;
+  _64 ={v} _63->PLLCR;
+  _65 = (signed int) _64;
+  if (_65 < 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _66 = 1073971200B;
+  _66->PLLCLKMUX ={v} 0;
+  # DEBUG BEGIN_STMT
+  _67 = 1073971200B;
+  RegValue_173 ={v} _67->PLLDV;
+  # DEBUG RegValue => RegValue_173
+  # DEBUG BEGIN_STMT
+  RegValue_174 = RegValue_173 & 4294938368;
+  # DEBUG RegValue => RegValue_174
+  # DEBUG BEGIN_STMT
+  _68 = 1073971200B;
+  _69 = RegValue_174 | 4126;
+  _68->PLLDV ={v} _69;
+  # DEBUG BEGIN_STMT
+  _70 = 1073971200B;
+  _71 ={v} _70->PLLFD;
+  _72 = 1073971200B;
+  _73 = _71 & 3221192704;
+  _72->PLLFD ={v} _73;
+  # DEBUG BEGIN_STMT
+  _74 = 1073971200B;
+  _75 ={v} _74->PLLCR;
+  _76 = 1073971200B;
+  _77 = _75 & 2147483647;
+  _76->PLLCR ={v} _77;
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _78 = 1074085888B;
+  _79 ={v} _78->PORTRESET;
+  _80 = 1074085888B;
+  _81 = _79 | 63;
+  _80->PORTRESET ={v} _81;
+  # DEBUG BEGIN_STMT
+  _82 = 1074085888B;
+  _82->DVPORT[0] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _83 = 1074085888B;
+  _83->DVPORT[1] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _84 = 1074085888B;
+  _84->DVPORT[2] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _85 = 1074085888B;
+  _85->DVPORT[3] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _86 = 1074085888B;
+  _86->DVPORT[4] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _87 = 1074085888B;
+  _87->DVPORT[5] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _88 = 1074085888B;
+  _89 ={v} _88->CTL;
+  _90 = 1074085888B;
+  _91 = _89 & 4294967293;
+  _90->CTL ={v} _91;
+  goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  if (PeriphDfsIsInReset_128 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _92 = 1073987584B;
+  _93 ={v} _92->PLLCR;
+  _94 = (signed int) _93;
+  if (_94 < 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _95 = 1073987584B;
+  _95->PLLCLKMUX ={v} 0;
+  # DEBUG BEGIN_STMT
+  _96 = 1073987584B;
+  RegValue_159 ={v} _96->PLLDV;
+  # DEBUG RegValue => RegValue_159
+  # DEBUG BEGIN_STMT
+  RegValue_160 = RegValue_159 & 4294938368;
+  # DEBUG RegValue => RegValue_160
+  # DEBUG BEGIN_STMT
+  _97 = 1073987584B;
+  _98 = RegValue_160 | 4126;
+  _97->PLLDV ={v} _98;
+  # DEBUG BEGIN_STMT
+  _99 = 1073987584B;
+  _100 ={v} _99->PLLFD;
+  _101 = 1073987584B;
+  _102 = _100 & 3221192704;
+  _101->PLLFD ={v} _102;
+  # DEBUG BEGIN_STMT
+  _103 = 1073987584B;
+  _104 ={v} _103->PLLCR;
+  _105 = 1073987584B;
+  _106 = _104 & 2147483647;
+  _105->PLLCR ={v} _106;
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _107 = 1074102272B;
+  _108 ={v} _107->PORTRESET;
+  _109 = 1074102272B;
+  _110 = _108 | 63;
+  _109->PORTRESET ={v} _110;
+  # DEBUG BEGIN_STMT
+  _111 = 1074102272B;
+  _111->DVPORT[0] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _112 = 1074102272B;
+  _112->DVPORT[1] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _113 = 1074102272B;
+  _113->DVPORT[2] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _114 = 1074102272B;
+  _114->DVPORT[3] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _115 = 1074102272B;
+  _115->DVPORT[4] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _116 = 1074102272B;
+  _116->DVPORT[5] ={v} 256;
+  # DEBUG BEGIN_STMT
+  _117 = 1074102272B;
+  _118 ={v} _117->CTL;
+  _119 = 1074102272B;
+  _120 = _118 & 4294967293;
+  _119->CTL ={v} _120;
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Clock_Ip_SpecificPeripheralClockInitialization (const struct Clock_IP_SpecificPeriphConfigType * Config)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+Clock_Ip_McMeEnterKey ()
+{
+  struct MC_ME_Type * _1;
+  struct MC_ME_Type * _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = 1074298880B;
+  _1->CTL_KEY ={v} 23280;
+  # DEBUG BEGIN_STMT
+  _2 = 1074298880B;
+  _2->CTL_KEY ={v} 42255;
+  return;
+
+}
+
+
+Clock_Ip_PowerClockIpModules ()
+{
+  uint32 ResetDomainStatus;
+  boolean TimeoutOccurred;
+  uint32 TimeoutTicks;
+  uint32 ElapsedTime;
+  uint32 StartTime;
+  uint32 TempValue;
+  struct MC_ME_Type * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  struct MC_ME_Type * _4;
+  long unsigned int _5;
+  struct MC_ME_Type * _6;
+  long unsigned int _7;
+  struct MC_ME_Type * _8;
+  long unsigned int _9;
+  struct MC_ME_Type * _10;
+  long unsigned int _11;
+  long unsigned int TimeoutTicks.0_12;
+  struct MC_ME_Type * _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  _Bool _16;
+  struct RESET_Type * _17;
+  struct RESET_Type * _18;
+  struct RESET_Type * _19;
+  struct RESET_Type * _20;
+  long unsigned int TimeoutTicks.1_21;
+  struct RESET_Type * _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  _Bool _25;
+  struct RESET_Type * _26;
+  struct RESET_Type * _27;
+  struct MC_RGM_Type * _28;
+  long unsigned int _29;
+  struct MC_RGM_Type * _30;
+  long unsigned int _31;
+  struct MC_ME_Type * _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  struct MC_ME_Type * _35;
+  struct MC_ME_Type * _36;
+  struct MC_ME_Type * _37;
+  struct MC_ME_Type * _38;
+  long unsigned int TimeoutTicks.2_39;
+  struct MC_ME_Type * _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  _Bool _43;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  TempValue_50 = 0;
+  # DEBUG TempValue => TempValue_50
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutOccurred_51 = 0;
+  # DEBUG TimeoutOccurred => TimeoutOccurred_51
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 1074298880B;
+  _2 ={v} _1->PRTN1_STAT;
+  _3 = _2 & 1;
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = 1074298880B;
+  _5 ={v} _4->PRTN1_PCONF;
+  _6 = 1074298880B;
+  _7 = _5 | 1;
+  _6->PRTN1_PCONF ={v} _7;
+  # DEBUG BEGIN_STMT
+  _8 = 1074298880B;
+  _9 ={v} _8->PRTN1_PUPD;
+  _10 = 1074298880B;
+  _11 = _9 | 1;
+  _10->PRTN1_PUPD ={v} _11;
+  # DEBUG BEGIN_STMT
+  Clock_Ip_McMeEnterKey ();
+  # DEBUG BEGIN_STMT
+  Clock_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.0_12 = TimeoutTicks;
+  TimeoutOccurred_58 = Clock_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.0_12);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_58
+  # DEBUG BEGIN_STMT
+  _13 = 1074298880B;
+  _14 ={v} _13->PRTN1_STAT;
+  _15 = _14 & 1;
+  if (_15 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _16 = ~TimeoutOccurred_58;
+  if (_16 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_58 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_ReportClockErrors (1, 184);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _17 = 1074266112B;
+  TempValue_60 ={v} _17->RD1_CTRL_REG;
+  # DEBUG TempValue => TempValue_60
+  # DEBUG BEGIN_STMT
+  TempValue_61 = TempValue_60 & 2147483647;
+  # DEBUG TempValue => TempValue_61
+  # DEBUG BEGIN_STMT
+  TempValue_62 = TempValue_61 | 2147483648;
+  # DEBUG TempValue => TempValue_62
+  # DEBUG BEGIN_STMT
+  _18 = 1074266112B;
+  _18->RD1_CTRL_REG ={v} TempValue_62;
+  # DEBUG BEGIN_STMT
+  _19 = 1074266112B;
+  TempValue_64 ={v} _19->RD1_CTRL_REG;
+  # DEBUG TempValue => TempValue_64
+  # DEBUG BEGIN_STMT
+  TempValue_65 = TempValue_64 & 4294967287;
+  # DEBUG TempValue => TempValue_65
+  # DEBUG BEGIN_STMT
+  _20 = 1074266112B;
+  _20->RD1_CTRL_REG ={v} TempValue_65;
+  # DEBUG BEGIN_STMT
+  Clock_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.1_21 = TimeoutTicks;
+  TimeoutOccurred_69 = Clock_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.1_21);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_69
+  # DEBUG BEGIN_STMT
+  _22 = 1074266112B;
+  _23 ={v} _22->RD1_STAT_REG;
+  _24 = _23 >> 3;
+  ResetDomainStatus_70 = _24 & 1;
+  # DEBUG ResetDomainStatus => ResetDomainStatus_70
+  # DEBUG BEGIN_STMT
+  if (ResetDomainStatus_70 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _25 = ~TimeoutOccurred_69;
+  if (_25 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_69 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_ReportClockErrors (1, 184);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _26 = 1074266112B;
+  TempValue_72 ={v} _26->RD1_CTRL_REG;
+  # DEBUG TempValue => TempValue_72
+  # DEBUG BEGIN_STMT
+  TempValue_73 = TempValue_72 & 2147483647;
+  # DEBUG TempValue => TempValue_73
+  # DEBUG BEGIN_STMT
+  _27 = 1074266112B;
+  _27->RD1_CTRL_REG ={v} TempValue_73;
+  # DEBUG BEGIN_STMT
+  _28 = 1074233344B;
+  _29 ={v} _28->PRST_0[1].PRST_0;
+  _30 = 1074233344B;
+  _31 = _29 & 4294967294;
+  _30->PRST_0[1].PRST_0 ={v} _31;
+  # DEBUG BEGIN_STMT
+  _32 = 1074298880B;
+  _33 ={v} _32->PRTN1_STAT;
+  _34 = _33 & 4;
+  if (_34 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _35 = 1074298880B;
+  TempValue_76 ={v} _35->PRTN1_PCONF;
+  # DEBUG TempValue => TempValue_76
+  # DEBUG BEGIN_STMT
+  TempValue_77 = TempValue_76 & 4294967291;
+  # DEBUG TempValue => TempValue_77
+  # DEBUG BEGIN_STMT
+  _36 = 1074298880B;
+  _36->PRTN1_PCONF ={v} TempValue_77;
+  # DEBUG BEGIN_STMT
+  _37 = 1074298880B;
+  TempValue_79 ={v} _37->PRTN1_PUPD;
+  # DEBUG TempValue => TempValue_79
+  # DEBUG BEGIN_STMT
+  TempValue_80 = TempValue_79 & 4294967291;
+  # DEBUG TempValue => TempValue_80
+  # DEBUG BEGIN_STMT
+  TempValue_81 = TempValue_80 | 4;
+  # DEBUG TempValue => TempValue_81
+  # DEBUG BEGIN_STMT
+  _38 = 1074298880B;
+  _38->PRTN1_PUPD ={v} TempValue_81;
+  # DEBUG BEGIN_STMT
+  Clock_Ip_McMeEnterKey ();
+  # DEBUG BEGIN_STMT
+  Clock_Ip_StartTimeout (&StartTime, &ElapsedTime, &TimeoutTicks, 50000);
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  TimeoutTicks.2_39 = TimeoutTicks;
+  TimeoutOccurred_86 = Clock_Ip_TimeoutExpired (&StartTime, &ElapsedTime, TimeoutTicks.2_39);
+  # DEBUG TimeoutOccurred => TimeoutOccurred_86
+  # DEBUG BEGIN_STMT
+  _40 = 1074298880B;
+  _41 ={v} _40->PRTN1_STAT;
+  _42 = _41 & 4;
+  if (_42 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  _43 = ~TimeoutOccurred_86;
+  if (_43 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  if (TimeoutOccurred_86 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  Clock_Ip_ReportClockErrors (1, 184);
+
+  <bb 19> :
+  StartTime ={v} {CLOBBER};
+  ElapsedTime ={v} {CLOBBER};
+  TimeoutTicks ={v} {CLOBBER};
+  return;
+
+}
+
+

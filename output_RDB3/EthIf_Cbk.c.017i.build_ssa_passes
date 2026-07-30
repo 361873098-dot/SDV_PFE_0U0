@@ -1,0 +1,110 @@
+EthIf_GetRxMgmtObject (uint8 CtrlIdx, Eth_DataType * DataPtr, struct EthSwt_MgmtObjectType * * MgmtObjectPtr)
+{
+  Std_ReturnType Result;
+  Std_ReturnType D.13758;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Result = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.13758 = Result;
+  return D.13758;
+
+}
+
+
+EthIf_GetTxMgmtObject (uint8 CtrlIdx, Eth_BufIdxType BufIdx, struct EthSwt_MgmtObjectType * * MgmtObjectPtr)
+{
+  Std_ReturnType Result;
+  Std_ReturnType D.13756;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Result = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.13756 = Result;
+  return D.13756;
+
+}
+
+
+EthIf_SwitchPortModeIndication (uint8 SwitchIdx, uint8 SwitchPortIdx, EthTrcv_ModeType PortMode)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthIf_TrcvModeIndication (uint8 TrcvIdx, EthTrcv_ModeType TrcvMode)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthIf_CtrlModeIndication (uint8 CtrlIdx, Eth_ModeType CtrlMode)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthIf_TxConfirmation (uint8 CtrlIdx, Eth_BufIdxType BufIdx, Std_ReturnType Result)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pfeTxConfCtr.1_1 = pfeTxConfCtr;
+  _2 = (unsigned int) CtrlIdx;
+  _3 = _2 * 4;
+  _4 = pfeTxConfCtr.1_1 + _3;
+  _5 = *_4;
+  _6 = _5 + 1;
+  *_4 = _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthIf_RxIndication (uint8 CtrlIdx, Eth_FrameType FrameType, boolean IsBroadcast, uint8 * PhysAddrPtr, Eth_DataType * DataPtr, uint16 LenByte)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pfeRxCtr.0_1 = pfeRxCtr;
+  _2 = (unsigned int) CtrlIdx;
+  _3 = _2 * 4;
+  _4 = pfeRxCtr.0_1 + _3;
+  _5 = *_4;
+  _6 = _5 + 1;
+  *_4 = _6;
+  # DEBUG BEGIN_STMT
+  Lwip_EthIf_RxIndication (CtrlIdx, FrameType, IsBroadcast, PhysAddrPtr, DataPtr, LenByte);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

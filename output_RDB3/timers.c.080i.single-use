@@ -1,0 +1,1536 @@
+Variable xLastTime/42 is used by single function
+Variable xActiveTimerList2/5 is used by single function
+Variable xActiveTimerList1/4 is used by single function
+prvInsertTimerInActiveList.part.0 (struct Timer_t * const pxTimer)
+{
+  BaseType_t xProcessTimerNow;
+  const TickType_t xNextExpiryTime;
+  const TickType_t xTimeNow;
+  const TickType_t xCommandTime;
+  struct List_t * pxOverflowTimerList.14_1;
+  struct ListItem_t * _3;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#6 s=> xNextExpiryTime
+  # DEBUG xNextExpiryTime => D#6
+  # DEBUG D#5 s=> xTimeNow
+  # DEBUG xTimeNow => D#5
+  # DEBUG D#4 s=> xCommandTime
+  # DEBUG xCommandTime => D#4
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pxOverflowTimerList.14_1 = pxOverflowTimerList;
+  _3 = &pxTimer_2(D)->xTimerListItem;
+  vListInsert (pxOverflowTimerList.14_1, _3);
+
+  <bb 3> [local count: 1073741824]:
+  # xProcessTimerNow_4 = PHI <0(2)>
+  # DEBUG xProcessTimerNow => xProcessTimerNow_4
+  # DEBUG BEGIN_STMT
+  return xProcessTimerNow_4;
+
+}
+
+
+vTimerSetTimerNumber (struct tmrTimerControl * xTimer, UBaseType_t uxTimerNumber)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct Timer_t *)xTimer_2(D)].uxTimerNumber = uxTimerNumber_3(D);
+  return;
+
+}
+
+
+uxTimerGetTimerNumber (struct tmrTimerControl * xTimer)
+{
+  UBaseType_t _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct Timer_t *)xTimer_2(D)].uxTimerNumber;
+  return _3;
+
+}
+
+
+xTimerPendFunctionCall (void (*PendedFunction_t) (void *, uint32_t) xFunctionToPend, void * pvParameter1, uint32_t ulParameter2, TickType_t xTicksToWait)
+{
+  uint32_t ulNewBASEPRI;
+  BaseType_t xReturn;
+  struct DaemonTaskMessage_t xMessage;
+  struct QueueDefinition * xTimerQueue.26_1;
+
+  <bb 2> [local count: 230763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTimerQueue.26_1 = xTimerQueue;
+  if (xTimerQueue.26_1 == 0B)
+    goto <bb 3>; [46.53%]
+  else
+    goto <bb 5>; [53.47%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_14 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_14
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 123389]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xMessage.xMessageID = -1;
+  # DEBUG BEGIN_STMT
+  xMessage.u.xCallbackParameters.pxCallbackFunction = xFunctionToPend_4(D);
+  # DEBUG BEGIN_STMT
+  xMessage.u.xCallbackParameters.pvParameter1 = pvParameter1_6(D);
+  # DEBUG BEGIN_STMT
+  xMessage.u.xCallbackParameters.ulParameter2 = ulParameter2_8(D);
+  # DEBUG BEGIN_STMT
+  xReturn_12 = xQueueGenericSend (xTimerQueue.26_1, &xMessage, xTicksToWait_10(D), 0);
+  # DEBUG xReturn => xReturn_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xMessage ={v} {CLOBBER};
+  return xReturn_12;
+
+}
+
+
+xTimerPendFunctionCallFromISR (void (*PendedFunction_t) (void *, uint32_t) xFunctionToPend, void * pvParameter1, uint32_t ulParameter2, BaseType_t * pxHigherPriorityTaskWoken)
+{
+  BaseType_t xReturn;
+  struct DaemonTaskMessage_t xMessage;
+  struct QueueDefinition * xTimerQueue.25_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xMessage.xMessageID = -2;
+  # DEBUG BEGIN_STMT
+  xMessage.u.xCallbackParameters.pxCallbackFunction = xFunctionToPend_4(D);
+  # DEBUG BEGIN_STMT
+  xMessage.u.xCallbackParameters.pvParameter1 = pvParameter1_6(D);
+  # DEBUG BEGIN_STMT
+  xMessage.u.xCallbackParameters.ulParameter2 = ulParameter2_8(D);
+  # DEBUG BEGIN_STMT
+  xTimerQueue.25_1 = xTimerQueue;
+  xReturn_12 = xQueueGenericSendFromISR (xTimerQueue.25_1, &xMessage, pxHigherPriorityTaskWoken_10(D), 0);
+  # DEBUG xReturn => xReturn_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xMessage ={v} {CLOBBER};
+  return xReturn_12;
+
+}
+
+
+vTimerSetTimerID (struct tmrTimerControl * xTimer, void * pvNewID)
+{
+  uint32_t ulNewBASEPRI;
+
+  <bb 2> [local count: 230763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pxTimer => xTimer_1(D)
+  # DEBUG BEGIN_STMT
+  if (xTimer_1(D) == 0B)
+    goto <bb 3>; [46.53%]
+  else
+    goto <bb 5>; [53.47%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_7 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_7
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 123389]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  MEM[(struct Timer_t *)xTimer_1(D)].pvTimerID = pvNewID_4(D);
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  return;
+
+}
+
+
+pvTimerGetTimerID (struct tmrTimerControl * const xTimer)
+{
+  uint32_t ulNewBASEPRI;
+  void * pvReturn;
+
+  <bb 2> [local count: 230763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pxTimer => xTimer_1(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xTimer_1(D) == 0B)
+    goto <bb 3>; [46.53%]
+  else
+    goto <bb 5>; [53.47%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_6 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_6
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 123389]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  pvReturn_4 = MEM[(struct Timer_t *)xTimer_1(D)].pvTimerID;
+  # DEBUG pvReturn => pvReturn_4
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  return pvReturn_4;
+
+}
+
+
+xTimerIsTimerActive (struct tmrTimerControl * xTimer)
+{
+  uint32_t ulNewBASEPRI;
+  unsigned char _1;
+  long int _2;
+  unsigned char _4;
+
+  <bb 2> [local count: 230763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG pxTimer => xTimer_3(D)
+  # DEBUG BEGIN_STMT
+  if (xTimer_3(D) == 0B)
+    goto <bb 3>; [46.53%]
+  else
+    goto <bb 5>; [53.47%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_8 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_8
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 123389]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct Timer_t *)xTimer_3(D)].ucStatus;
+  _4 = _1 & 1;
+  _2 = (long int) _4;
+  # DEBUG xReturn => _2
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  return _2;
+
+}
+
+
+prvCheckForValidListAndQueue ()
+{
+  struct QueueDefinition * xTimerQueue.17_1;
+  struct QueueDefinition * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  xTimerQueue.17_1 = xTimerQueue;
+  if (xTimerQueue.17_1 == 0B)
+    goto <bb 3>; [17.43%]
+  else
+    goto <bb 5>; [82.57%]
+
+  <bb 3> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  vListInitialise (&xActiveTimerList1);
+  # DEBUG BEGIN_STMT
+  vListInitialise (&xActiveTimerList2);
+  # DEBUG BEGIN_STMT
+  pxCurrentTimerList = &xActiveTimerList1;
+  # DEBUG BEGIN_STMT
+  pxOverflowTimerList = &xActiveTimerList2;
+  # DEBUG BEGIN_STMT
+  _2 = xQueueGenericCreate (10, 16, 0);
+  xTimerQueue = _2;
+  # DEBUG BEGIN_STMT
+  if (_2 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 100070816]:
+  # DEBUG BEGIN_STMT
+  vQueueAddToRegistry (_2, "TmrQ");
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  return;
+
+}
+
+
+prvSwitchTimerLists ()
+{
+  TickType_t xNextExpireTime;
+  struct xLIST_ITEM * _1;
+  struct List_t * pxCurrentTimerList.11_2;
+  long unsigned int _3;
+  struct List_t * pxOverflowTimerList.12_4;
+  struct List_t * pxCurrentTimerList.11_7;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _1 = pxCurrentTimerList.11_2->xListEnd.pxNext;
+  xNextExpireTime_10 = _1->xItemValue;
+  # DEBUG xNextExpireTime => xNextExpireTime_10
+  # DEBUG BEGIN_STMT
+  prvProcessExpiredTimer (xNextExpireTime_10, 4294967295);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pxCurrentTimerList.11_2 = pxCurrentTimerList;
+  _3 ={v} pxCurrentTimerList.11_2->uxNumberOfItems;
+  if (_3 != 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  # pxCurrentTimerList.11_7 = PHI <pxCurrentTimerList.11_2(4)>
+  # DEBUG BEGIN_STMT
+  # DEBUG pxTemp => pxCurrentTimerList.11_7
+  # DEBUG BEGIN_STMT
+  pxOverflowTimerList.12_4 = pxOverflowTimerList;
+  pxCurrentTimerList = pxOverflowTimerList.12_4;
+  # DEBUG BEGIN_STMT
+  pxOverflowTimerList = pxCurrentTimerList.11_7;
+  return;
+
+}
+
+
+prvProcessReceivedCommands ()
+{
+  uint32_t ulNewBASEPRI;
+  TickType_t xTimeNow;
+  BaseType_t xTimerListsWereSwitched;
+  struct Timer_t * pxTimer;
+  struct DaemonTaskMessage_t xMessage;
+  long int _1;
+  void (*<T692>) (void *, uint32_t) _2;
+  void * _3;
+  long unsigned int _4;
+  long int _5;
+  struct xLIST * _6;
+  struct ListItem_t * _7;
+  long int _8;
+  unsigned char _9;
+  unsigned char _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long int _15;
+  unsigned char _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  unsigned char _21;
+  void (*<T68d>) (struct tmrTimerControl *) _22;
+  unsigned char _23;
+  unsigned char _24;
+  unsigned char _25;
+  unsigned char _26;
+  long unsigned int _27;
+  long unsigned int _30;
+  unsigned char _31;
+  unsigned char _33;
+  struct QueueDefinition * xTimerQueue.16_34;
+  long int _35;
+  unsigned char _63;
+  unsigned char _65;
+
+  <bb 2> [local count: 10436763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 23>; [100.00%]
+
+  <bb 3> [local count: 177477686]:
+  # DEBUG BEGIN_STMT
+  _1 = xMessage.xMessageID;
+  if (_1 < 0)
+    goto <bb 4>; [41.00%]
+  else
+    goto <bb 5>; [59.00%]
+
+  <bb 4> [local count: 72765851]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pxCallback => &xMessage.u.xCallbackParameters
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(const struct CallbackParameters_t *)&xMessage + 4B].pxCallbackFunction;
+  _3 = MEM[(const struct CallbackParameters_t *)&xMessage + 4B].pvParameter1;
+  _4 = MEM[(const struct CallbackParameters_t *)&xMessage + 4B].ulParameter2;
+  _2 (_3, _4);
+
+  <bb 5> [local count: 177477686]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = xMessage.xMessageID;
+  if (_5 >= 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 29>; [94.50%]
+
+  <bb 29> [local count: 167716413]:
+  goto <bb 25>; [100.00%]
+
+  <bb 6> [local count: 9761273]:
+  # DEBUG BEGIN_STMT
+  pxTimer_47 = xMessage.u.xTimerParameters.pxTimer;
+  # DEBUG pxTimer => pxTimer_47
+  # DEBUG BEGIN_STMT
+  _6 = pxTimer_47->xTimerListItem.pvContainer;
+  if (_6 != 0B)
+    goto <bb 7>; [53.47%]
+  else
+    goto <bb 8>; [46.53%]
+
+  <bb 7> [local count: 5219353]:
+  # DEBUG BEGIN_STMT
+  _7 = &pxTimer_47->xTimerListItem;
+  uxListRemove (_7);
+
+  <bb 8> [local count: 9761273]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTimeNow_50 = prvSampleTimeNow (&xTimerListsWereSwitched);
+  # DEBUG xTimeNow => xTimeNow_50
+  # DEBUG BEGIN_STMT
+  _8 = xMessage.xMessageID;
+  switch (_8) <default: <L41> [20.00%], case 1 ... 2: <L11> [20.00%], case 3: <L21> [20.00%], case 4: <L23> [20.00%], case 5: <L28> [20.00%], case 6 ... 7: <L11> [20.00%], case 8: <L21> [20.00%], case 9: <L23> [20.00%]>
+
+  <bb 28> [local count: 1952255]:
+<L41>:
+  goto <bb 24>; [100.00%]
+
+  <bb 9> [local count: 1952255]:
+  # pxTimer_14 = PHI <pxTimer_47(8)>
+  # xTimeNow_46 = PHI <xTimeNow_50(8)>
+<L11>:
+  # DEBUG BEGIN_STMT
+  _9 = pxTimer_14->ucStatus;
+  _10 = _9 | 1;
+  pxTimer_14->ucStatus = _10;
+  # DEBUG BEGIN_STMT
+  _11 = xMessage.u.xTimerParameters.xMessageValue;
+  _12 = pxTimer_14->xTimerPeriodInTicks;
+  _13 = _11 + _12;
+  _15 = prvInsertTimerInActiveList (pxTimer_14, _13, xTimeNow_46, _11);
+  if (_15 != 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 22>; [50.00%]
+
+  <bb 10> [local count: 976127]:
+  # DEBUG BEGIN_STMT
+  _16 = pxTimer_14->ucStatus;
+  _65 = _16 & 4;
+  if (_65 != 0)
+    goto <bb 11>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 11> [local count: 322122]:
+  # DEBUG BEGIN_STMT
+  _17 = xMessage.u.xTimerParameters.xMessageValue;
+  _18 = pxTimer_14->xTimerPeriodInTicks;
+  _19 = _17 + _18;
+  prvReloadTimer (pxTimer_14, _19, xTimeNow_46);
+  goto <bb 13>; [100.00%]
+
+  <bb 12> [local count: 654005]:
+  # DEBUG BEGIN_STMT
+  _21 = _16 & 254;
+  pxTimer_14->ucStatus = _21;
+
+  <bb 13> [local count: 976127]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _22 = pxTimer_14->pxCallbackFunction;
+  _22 (pxTimer_14);
+  goto <bb 22>; [100.00%]
+
+  <bb 14> [local count: 1952255]:
+  # pxTimer_20 = PHI <pxTimer_47(8)>
+<L21>:
+  # DEBUG BEGIN_STMT
+  _23 = pxTimer_20->ucStatus;
+  _24 = _23 & 254;
+  pxTimer_20->ucStatus = _24;
+  # DEBUG BEGIN_STMT
+  goto <bb 22>; [100.00%]
+
+  <bb 15> [local count: 1952255]:
+  # pxTimer_44 = PHI <pxTimer_47(8)>
+  # xTimeNow_67 = PHI <xTimeNow_50(8)>
+<L23>:
+  # DEBUG BEGIN_STMT
+  _25 = pxTimer_44->ucStatus;
+  _26 = _25 | 1;
+  pxTimer_44->ucStatus = _26;
+  # DEBUG BEGIN_STMT
+  _27 = xMessage.u.xTimerParameters.xMessageValue;
+  pxTimer_44->xTimerPeriodInTicks = _27;
+  # DEBUG BEGIN_STMT
+  if (_27 == 0)
+    goto <bb 16>; [5.50%]
+  else
+    goto <bb 18>; [94.50%]
+
+  <bb 16> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_64 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_64
+
+  <bb 17> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 27> [local count: 1073741824]:
+  goto <bb 17>; [100.00%]
+
+  <bb 18> [local count: 1844881]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _30 = _27 + xTimeNow_67;
+  prvInsertTimerInActiveList (pxTimer_44, _30, xTimeNow_67, xTimeNow_67);
+  # DEBUG BEGIN_STMT
+  goto <bb 22>; [100.00%]
+
+  <bb 19> [local count: 1952255]:
+  # pxTimer_56 = PHI <pxTimer_47(8)>
+<L28>:
+  # DEBUG BEGIN_STMT
+  _31 = pxTimer_56->ucStatus;
+  _63 = _31 & 2;
+  if (_63 == 0)
+    goto <bb 20>; [33.00%]
+  else
+    goto <bb 21>; [67.00%]
+
+  <bb 20> [local count: 644244]:
+  # DEBUG BEGIN_STMT
+  vPortFree (pxTimer_56);
+  goto <bb 22>; [100.00%]
+
+  <bb 21> [local count: 1308011]:
+  # DEBUG BEGIN_STMT
+  _33 = _31 & 254;
+  pxTimer_56->ucStatus = _33;
+
+  <bb 22> [local count: 7701644]:
+
+  <bb 23> [local count: 18138407]:
+
+  <bb 24> [local count: 20090662]:
+<L38>:
+
+  <bb 25> [local count: 187807075]:
+  # DEBUG BEGIN_STMT
+  xTimerQueue.16_34 = xTimerQueue;
+  _35 = xQueueReceive (xTimerQueue.16_34, &xMessage, 0);
+  if (_35 != 0)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 26>; [5.50%]
+
+  <bb 26> [local count: 10329389]:
+  xMessage ={v} {CLOBBER};
+  xTimerListsWereSwitched ={v} {CLOBBER};
+  return;
+
+}
+
+
+prvInsertTimerInActiveList (struct Timer_t * const pxTimer, const TickType_t xNextExpiryTime, const TickType_t xTimeNow, const TickType_t xCommandTime)
+{
+  BaseType_t xProcessTimerNow;
+  long unsigned int _1;
+  long unsigned int _2;
+  struct List_t * pxCurrentTimerList.15_3;
+  struct ListItem_t * _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG xProcessTimerNow => 0
+  # DEBUG BEGIN_STMT
+  pxTimer_8(D)->xTimerListItem.xItemValue = xNextExpiryTime_9(D);
+  # DEBUG BEGIN_STMT
+  pxTimer_8(D)->xTimerListItem.pvOwner = pxTimer_8(D);
+  # DEBUG BEGIN_STMT
+  if (xNextExpiryTime_9(D) <= xTimeNow_12(D))
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = xTimeNow_12(D) - xCommandTime_13(D);
+  _2 = pxTimer_8(D)->xTimerPeriodInTicks;
+  if (_1 >= _2)
+    goto <bb 8>; [67.00%]
+  else
+    goto <bb 4>; [33.00%]
+
+  <bb 4> [local count: 177167400]:
+  # DEBUG D#1 => xNextExpiryTime_9(D)
+  # DEBUG D#2 => xTimeNow_12(D)
+  # DEBUG D#3 => xCommandTime_13(D)
+  xProcessTimerNow_16 = prvInsertTimerInActiveList.part.0 (pxTimer_8(D));
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  if (xTimeNow_12(D) < xCommandTime_13(D))
+    goto <bb 6>; [67.00%]
+  else
+    goto <bb 7>; [33.00%]
+
+  <bb 6> [local count: 359703511]:
+  if (xNextExpiryTime_9(D) >= xCommandTime_13(D))
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 357019157]:
+  # DEBUG BEGIN_STMT
+  pxCurrentTimerList.15_3 = pxCurrentTimerList;
+  _4 = &pxTimer_8(D)->xTimerListItem;
+  vListInsert (pxCurrentTimerList.15_3, _4);
+
+  <bb 8> [local count: 1073741824]:
+  # xProcessTimerNow_5 = PHI <xProcessTimerNow_16(4), 1(6), 0(7), 1(3)>
+  # DEBUG xProcessTimerNow => xProcessTimerNow_5
+  # DEBUG BEGIN_STMT
+  return xProcessTimerNow_5;
+
+}
+
+
+prvSampleTimeNow (BaseType_t * const pxTimerListsWereSwitched)
+{
+  static TickType_t xLastTime = 0;
+  TickType_t xTimeNow;
+  long unsigned int xLastTime.9_1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTimeNow_5 = xTaskGetTickCount ();
+  # DEBUG xTimeNow => xTimeNow_5
+  # DEBUG BEGIN_STMT
+  xLastTime.9_1 = xLastTime;
+  if (xLastTime.9_1 > xTimeNow_5)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  prvSwitchTimerLists ();
+  # DEBUG BEGIN_STMT
+  *pxTimerListsWereSwitched_6(D) = 1;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  *pxTimerListsWereSwitched_6(D) = 0;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  xLastTime = xTimeNow_5;
+  # DEBUG BEGIN_STMT
+  return xTimeNow_5;
+
+}
+
+
+prvGetNextExpireTime (BaseType_t * const pxListWasEmpty)
+{
+  TickType_t xNextExpireTime;
+  struct List_t * pxCurrentTimerList.3_1;
+  long unsigned int _2;
+  struct xLIST_ITEM * _3;
+  long int iftmp.2_5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxCurrentTimerList.3_1 = pxCurrentTimerList;
+  _2 ={v} pxCurrentTimerList.3_1->uxNumberOfItems;
+  if (_2 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+
+  <bb 4> [local count: 1073741824]:
+  # iftmp.2_5 = PHI <1(2), 0(3)>
+  *pxListWasEmpty_7(D) = iftmp.2_5;
+  # DEBUG BEGIN_STMT
+  if (iftmp.2_5 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _3 = pxCurrentTimerList.3_1->xListEnd.pxNext;
+  xNextExpireTime_9 = _3->xItemValue;
+  # DEBUG xNextExpireTime => xNextExpireTime_9
+
+  <bb 6> [local count: 1073741824]:
+  # xNextExpireTime_4 = PHI <xNextExpireTime_9(5), 0(4)>
+  # DEBUG xNextExpireTime => xNextExpireTime_4
+  # DEBUG BEGIN_STMT
+  return xNextExpireTime_4;
+
+}
+
+
+prvProcessTimerOrBlockTask (const TickType_t xNextExpireTime, BaseType_t xListWasEmpty)
+{
+  BaseType_t xTimerListsWereSwitched;
+  TickType_t xTimeNow;
+  long int xTimerListsWereSwitched.5_1;
+  struct List_t * pxOverflowTimerList.7_2;
+  long unsigned int _3;
+  struct QueueDefinition * xTimerQueue.8_4;
+  long unsigned int _5;
+  long int _6;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vTaskSuspendAll ();
+  # DEBUG BEGIN_STMT
+  xTimeNow_12 = prvSampleTimeNow (&xTimerListsWereSwitched);
+  # DEBUG xTimeNow => xTimeNow_12
+  # DEBUG BEGIN_STMT
+  xTimerListsWereSwitched.5_1 = xTimerListsWereSwitched;
+  if (xTimerListsWereSwitched.5_1 == 0)
+    goto <bb 3>; [67.00%]
+  else
+    goto <bb 12>; [33.00%]
+
+  <bb 3> [local count: 719407022]:
+  # DEBUG BEGIN_STMT
+  if (xListWasEmpty_14(D) == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 4> [local count: 359703511]:
+  if (xTimeNow_12 >= xNextExpireTime_15(D))
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 118702158]:
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  # DEBUG BEGIN_STMT
+  prvProcessExpiredTimer (xNextExpireTime_15(D), xTimeNow_12);
+  goto <bb 13>; [100.00%]
+
+  <bb 6> [local count: 600704864]:
+  # DEBUG BEGIN_STMT
+  if (xListWasEmpty_14(D) != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 7> [local count: 300352432]:
+  # DEBUG BEGIN_STMT
+  pxOverflowTimerList.7_2 = pxOverflowTimerList;
+  _3 ={v} pxOverflowTimerList.7_2->uxNumberOfItems;
+  if (_3 == 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 8> [local count: 150176216]:
+
+  <bb 10> [local count: 600704864]:
+  # xListWasEmpty_7 = PHI <xListWasEmpty_14(D)(6), 0(8), 1(7)>
+  # DEBUG xListWasEmpty => xListWasEmpty_7
+  # DEBUG BEGIN_STMT
+  xTimerQueue.8_4 = xTimerQueue;
+  _5 = xNextExpireTime_15(D) - xTimeNow_12;
+  vQueueWaitForMessageRestricted (xTimerQueue.8_4, _5, xListWasEmpty_7);
+  # DEBUG BEGIN_STMT
+  _6 = xTaskResumeAll ();
+  if (_6 == 0)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 11> [local count: 300352432]:
+  # DEBUG BEGIN_STMT
+  MEM[(volatile uint32_t *)3758157060B] ={v} 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [100.00%]
+
+  <bb 12> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+
+  <bb 13> [local count: 1073741824]:
+  xTimerListsWereSwitched ={v} {CLOBBER};
+  return;
+
+}
+
+
+prvTimerTask (void * pvParameters)
+{
+  BaseType_t xListWasEmpty;
+  TickType_t xNextExpireTime;
+  long int xListWasEmpty.1_1;
+
+  <bb 2> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xNextExpireTime_5 = prvGetNextExpireTime (&xListWasEmpty);
+  # DEBUG xNextExpireTime => xNextExpireTime_5
+  # DEBUG BEGIN_STMT
+  xListWasEmpty.1_1 = xListWasEmpty;
+  prvProcessTimerOrBlockTask (xNextExpireTime_5, xListWasEmpty.1_1);
+  # DEBUG BEGIN_STMT
+  prvProcessReceivedCommands ();
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+}
+
+
+prvProcessExpiredTimer (const TickType_t xNextExpireTime, const TickType_t xTimeNow)
+{
+  struct Timer_t * const pxTimer;
+  struct List_t * pxCurrentTimerList.13_1;
+  struct xLIST_ITEM * _2;
+  struct ListItem_t * _3;
+  unsigned char _4;
+  unsigned char _5;
+  void (*<T68d>) (struct tmrTimerControl *) _6;
+  unsigned char _16;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pxCurrentTimerList.13_1 = pxCurrentTimerList;
+  _2 = pxCurrentTimerList.13_1->xListEnd.pxNext;
+  pxTimer_9 = _2->pvOwner;
+  # DEBUG pxTimer => pxTimer_9
+  # DEBUG BEGIN_STMT
+  _3 = &pxTimer_9->xTimerListItem;
+  uxListRemove (_3);
+  # DEBUG BEGIN_STMT
+  _4 = pxTimer_9->ucStatus;
+  _16 = _4 & 4;
+  if (_16 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  prvReloadTimer (pxTimer_9, xNextExpireTime_12(D), xTimeNow_13(D));
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  _5 = _4 & 254;
+  pxTimer_9->ucStatus = _5;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = pxTimer_9->pxCallbackFunction;
+  _6 (pxTimer_9);
+  return;
+
+}
+
+
+prvReloadTimer (struct Timer_t * const pxTimer, TickType_t xExpiredTime, const TickType_t xTimeNow)
+{
+  long unsigned int _1;
+  void (*<T68d>) (struct tmrTimerControl *) _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long int _5;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _1 = pxTimer_10(D)->xTimerPeriodInTicks;
+  xExpiredTime_13 = _1 + xExpiredTime_6;
+  # DEBUG xExpiredTime => xExpiredTime_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = pxTimer_10(D)->pxCallbackFunction;
+  _2 (pxTimer_10(D));
+
+  <bb 4> [local count: 1073741824]:
+  # xExpiredTime_6 = PHI <xExpiredTime_8(D)(2), xExpiredTime_13(3)>
+  # DEBUG xExpiredTime => xExpiredTime_6
+  # DEBUG BEGIN_STMT
+  _3 = pxTimer_10(D)->xTimerPeriodInTicks;
+  _4 = _3 + xExpiredTime_6;
+  _5 = prvInsertTimerInActiveList (pxTimer_10(D), _4, xTimeNow_11(D), xExpiredTime_6);
+  if (_5 != 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  return;
+
+}
+
+
+pcTimerGetName (struct tmrTimerControl * xTimer)
+{
+  uint32_t ulNewBASEPRI;
+  const char * _3;
+
+  <bb 2> [local count: 357913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pxTimer => xTimer_1(D)
+  # DEBUG BEGIN_STMT
+  if (xTimer_1(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_4 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_4
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 250539]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct Timer_t *)xTimer_1(D)].pcTimerName;
+  return _3;
+
+}
+
+
+xTimerGetExpiryTime (struct tmrTimerControl * xTimer)
+{
+  uint32_t ulNewBASEPRI;
+  TickType_t xReturn;
+
+  <bb 2> [local count: 357913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pxTimer => xTimer_1(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xTimer_1(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_4 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_4
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 250539]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xReturn_3 = MEM[(struct Timer_t *)xTimer_1(D)].xTimerListItem.xItemValue;
+  # DEBUG xReturn => xReturn_3
+  # DEBUG BEGIN_STMT
+  return xReturn_3;
+
+}
+
+
+uxTimerGetReloadMode (struct tmrTimerControl * xTimer)
+{
+  uint32_t ulNewBASEPRI;
+  UBaseType_t uxReturn;
+  unsigned char _1;
+  unsigned char _4;
+
+  <bb 2> [local count: 230763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pxTimer => xTimer_3(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xTimer_3(D) == 0B)
+    goto <bb 3>; [46.53%]
+  else
+    goto <bb 5>; [53.47%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_8 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_8
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 123389]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct Timer_t *)xTimer_3(D)].ucStatus;
+  _4 = _1 & 4;
+  if (_4 == 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 61694]:
+  # DEBUG BEGIN_STMT
+  # DEBUG uxReturn => 1
+
+  <bb 7> [local count: 123389]:
+  # uxReturn_2 = PHI <0(5), 1(6)>
+  # DEBUG uxReturn => uxReturn_2
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  return uxReturn_2;
+
+}
+
+
+vTimerSetReloadMode (struct tmrTimerControl * xTimer, const UBaseType_t uxAutoReload)
+{
+  uint32_t ulNewBASEPRI;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+
+  <bb 2> [local count: 230763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pxTimer => xTimer_6(D)
+  # DEBUG BEGIN_STMT
+  if (xTimer_6(D) == 0B)
+    goto <bb 3>; [46.53%]
+  else
+    goto <bb 5>; [53.47%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_13 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_13
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 9> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 123389]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  if (uxAutoReload_9(D) != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 61694]:
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct Timer_t *)xTimer_6(D)].ucStatus;
+  _2 = _1 | 4;
+  MEM[(struct Timer_t *)xTimer_6(D)].ucStatus = _2;
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 61694]:
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct Timer_t *)xTimer_6(D)].ucStatus;
+  _4 = _3 & 251;
+  MEM[(struct Timer_t *)xTimer_6(D)].ucStatus = _4;
+
+  <bb 8> [local count: 123389]:
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  return;
+
+}
+
+
+xTimerGetPeriod (struct tmrTimerControl * xTimer)
+{
+  uint32_t ulNewBASEPRI;
+  TickType_t _3;
+
+  <bb 2> [local count: 357913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pxTimer => xTimer_1(D)
+  # DEBUG BEGIN_STMT
+  if (xTimer_1(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_4 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_4
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 250539]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct Timer_t *)xTimer_1(D)].xTimerPeriodInTicks;
+  return _3;
+
+}
+
+
+xTimerGetTimerDaemonTaskHandle ()
+{
+  uint32_t ulNewBASEPRI;
+  struct tskTaskControlBlock * xTimerTaskHandle.24_1;
+
+  <bb 2> [local count: 357913]:
+  # DEBUG BEGIN_STMT
+  xTimerTaskHandle.24_1 = xTimerTaskHandle;
+  if (xTimerTaskHandle.24_1 == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_3 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_3
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 250539]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return xTimerTaskHandle.24_1;
+
+}
+
+
+xTimerGenericCommand (struct tmrTimerControl * xTimer, const BaseType_t xCommandID, const TickType_t xOptionalValue, BaseType_t * const pxHigherPriorityTaskWoken, const TickType_t xTicksToWait)
+{
+  uint32_t ulNewBASEPRI;
+  struct DaemonTaskMessage_t xMessage;
+  BaseType_t xReturn;
+  struct QueueDefinition * xTimerQueue.20_1;
+  long int _2;
+  struct QueueDefinition * xTimerQueue.21_3;
+  struct QueueDefinition * xTimerQueue.22_4;
+
+  <bb 2> [local count: 357913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG xReturn => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xTimer_7(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 3> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_24 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_24
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 250539]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTimerQueue.20_1 = xTimerQueue;
+  if (xTimerQueue.20_1 != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 11>; [30.00%]
+
+  <bb 6> [local count: 175378]:
+  # DEBUG BEGIN_STMT
+  xMessage.xMessageID = xCommandID_9(D);
+  # DEBUG BEGIN_STMT
+  xMessage.u.xTimerParameters.xMessageValue = xOptionalValue_11(D);
+  # DEBUG BEGIN_STMT
+  xMessage.u.xTimerParameters.pxTimer = xTimer_7(D);
+  # DEBUG BEGIN_STMT
+  if (xCommandID_9(D) <= 5)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 7> [local count: 87689]:
+  # DEBUG BEGIN_STMT
+  _2 = xTaskGetSchedulerState ();
+  if (_2 == 2)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 9>; [66.00%]
+
+  <bb 8> [local count: 29814]:
+  # DEBUG BEGIN_STMT
+  xTimerQueue.21_3 = xTimerQueue;
+  xReturn_22 = xQueueGenericSend (xTimerQueue.21_3, &xMessage, xTicksToWait_20(D), 0);
+  # DEBUG xReturn => xReturn_22
+  goto <bb 11>; [100.00%]
+
+  <bb 9> [local count: 57875]:
+  # DEBUG BEGIN_STMT
+  xTimerQueue.22_4 = xTimerQueue;
+  xReturn_19 = xQueueGenericSend (xTimerQueue.22_4, &xMessage, 0, 0);
+  # DEBUG xReturn => xReturn_19
+  goto <bb 11>; [100.00%]
+
+  <bb 10> [local count: 87689]:
+  # DEBUG BEGIN_STMT
+  xReturn_16 = xQueueGenericSendFromISR (xTimerQueue.20_1, &xMessage, pxHigherPriorityTaskWoken_14(D), 0);
+  # DEBUG xReturn => xReturn_16
+
+  <bb 11> [local count: 250539]:
+  # xReturn_5 = PHI <0(5), xReturn_16(10), xReturn_19(9), xReturn_22(8)>
+  # DEBUG xReturn => xReturn_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xMessage ={v} {CLOBBER};
+  return xReturn_5;
+
+}
+
+
+xTimerCreate (const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, void (*TimerCallbackFunction_t) (struct tmrTimerControl *) pxCallbackFunction)
+{
+  struct Timer_t * pxNewTimer;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxNewTimer_4 = pvPortMalloc (44);
+  # DEBUG pxNewTimer => pxNewTimer_4
+  # DEBUG BEGIN_STMT
+  if (pxNewTimer_4 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pxNewTimer_4->ucStatus = 0;
+  # DEBUG BEGIN_STMT
+  prvInitialiseNewTimer (pcTimerName_6(D), xTimerPeriodInTicks_7(D), uxAutoReload_8(D), pvTimerID_9(D), pxCallbackFunction_10(D), pxNewTimer_4);
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return pxNewTimer_4;
+
+}
+
+
+xTimerCreateTimerTask ()
+{
+  uint32_t ulNewBASEPRI;
+  BaseType_t xReturn;
+  struct QueueDefinition * xTimerQueue.0_1;
+
+  <bb 2> [local count: 146556]:
+  # DEBUG BEGIN_STMT
+  # DEBUG xReturn => 0
+  # DEBUG BEGIN_STMT
+  prvCheckForValidListAndQueue ();
+  # DEBUG BEGIN_STMT
+  xTimerQueue.0_1 = xTimerQueue;
+  if (xTimerQueue.0_1 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 78363]:
+  # DEBUG BEGIN_STMT
+  xReturn_5 = xTaskCreate (prvTimerTask, "Tmr Svc", 180, 0B, 2, &xTimerTaskHandle);
+  # DEBUG xReturn => xReturn_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xReturn_5 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 5> [local count: 107374]:
+  # DEBUG xReturn => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG INLINE_ENTRY vPortRaiseBASEPRI
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI_7 : "i" 16 : "memory");
+  # DEBUG ulNewBASEPRI => ulNewBASEPRI_7
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG ulNewBASEPRI => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 6>; [100.00%]
+
+  <bb 7> [local count: 39182]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return xReturn_5;
+
+}
+
+

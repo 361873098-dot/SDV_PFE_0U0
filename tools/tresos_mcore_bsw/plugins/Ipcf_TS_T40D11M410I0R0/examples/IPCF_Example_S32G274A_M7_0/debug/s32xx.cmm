@@ -1,0 +1,217 @@
+; Copyright 2023 NXP
+;
+; NXP Confidential. This software is owned or controlled by NXP and may only be 
+; used strictly
+; in accordance with the applicable license terms.  By expressly accepting
+; such terms or by downloading, installing, activating and/or otherwise using
+; the software, you are agreeing that you have read, and that you agree to
+; comply with and are bound by, such license terms.  If you do not agree to
+; be bound by the applicable license terms, then you may not retain,
+; install, activate or otherwise use the software.
+;
+; This file contains sample code only. It is not part of the production code 
+; deliverables.
+
+LOCAL &elf_file
+ENTRY &elf_file
+
+system.down
+RESet
+SYStem.RESet
+SYStem.CPU S32G274A-M7-0
+SYStem.Option TRST OFF
+SYStem.Option WaitReset ON
+SYStem.Option DUALPORT ON
+SYStem.config.debugporttype JTAG
+SYStem.JtagClock 40MHz
+
+trace.DISABLE
+ETM.OFF
+ITM.OFF
+
+sys.memaccess DAP
+WAIT 3.s
+sys.mode prepare
+
+GOSUB InitSramEccViaRAMCtrl
+;; Writing loop to self instruction to memory
+D.S eaxi:0x34000000 %LE %Long 0x34000100
+D.S eaxi:0x34000004 %LE %Long 0x34000025
+D.S eaxi:0x34000024 %LE %Long 0xFFFEF7FF
+
+GOSUB EnableCM7_0
+GOSUB EnableCM7_1
+GOSUB EnableCM7_2
+
+sys.Option DisMode THUMB
+sys.MemAccess AXI
+SYStem.Option.ResBreak OFF
+SYStem.Attach
+Break
+
+Data.Set 0x34100000--0x342FFFFF %quad 0x0 /Verify
+
+; load code symbols
+Data.LOAD.ELF &elf_file /GLOBTYPES /GT /MW /BUGFIX
+Break.RESet
+
+
+; set program breakpoints
+b.s handle_error
+
+; list source code
+Data.List
+Mode.Mix
+
+; Start the program execution
+Go
+
+ENDDO
+
+InitSramEccViaRAMCtrl:
+(
+  ;Initialize the RAM using OCPSRAMC[PRAMCR:INITREQ] controller.  ;SRAMC_0
+  PER.Set.simple eaxi:0x4019C00C %Long 0xFFFFFFFF ; clear all the errors, PRAMSR
+  PER.Set.simple eaxi:0x4019C004 %Long 0x00000000  ; range 0x34000000--0x343FFFFF
+  PER.Set.simple eaxi:0x4019C008 %Long 0x1FFFF  ; range 0x34000000--0x347FFFFF
+  PER.Set.simple eaxi:0x4019C000 %Long 0x00000001
+  WHILE ((data.long(eaxi:0x4019C00C)&0x00000001)==0x00000000)
+  (
+    ; wait for DMA DONE bit to be set
+  )
+  PER.Set.simple eaxi:0x4019C000 %Long 0x00000000
+
+  ;Initialize the RAM using OCPSRAMC[PRAMCR:INITREQ] controller.  ;SRAMC_1
+  PER.Set.simple eaxi:0x401A000C %Long 0xFFFFFFFF ; clear all the errors, PRAMSR
+  PER.Set.simple eaxi:0x401A0004 %Long 0x00000000  ; range 0x34000000--0x343FFFFF
+  PER.Set.simple eaxi:0x401A0008 %Long 0x1FFFF  ; range 0x34000000--0x347FFFFF
+  PER.Set.simple eaxi:0x401A0000 %Long 0x00000001
+  WHILE ((data.long(eaxi:0x401A000C)&0x00000001)==0x00000000)
+  (
+    ; wait for DMA DONE bit to be set
+  )
+  PER.Set.simple eaxi:0x401A0000 %Long 0x00000000
+  RETURN
+)
+
+EnableCM7_0:
+(
+  ; Partition 0 - enable peripherals. Optional, none used by MCAL.
+  Data.Set eaxi:0x40088100 %Long 0x00000001    ; MC_ME.PRTN0_PCONF.R = 1, PCE=1, Enable the clock to IPs
+  Data.Set eaxi:0x40088104 %Long 0x00000001    ; MC_ME.PRTN0_PUPD.R = 1, PCUD=1, Trigger the hardware process for enabling/disabling the clock to IPs (other than core(s))
+  Data.Set eaxi:0x40088130 %Long 0x00000003    ; MC_ME.PRTN0_COFB0_CLKEN.R = 0x3
+  Data.Set eaxi:0x40088000 %Long 0x00005AF0    ; MC_ME.MC_ME_CTL_KEY.R
+  Data.Set eaxi:0x40088000 %Long 0x0000A50F    ; MC_ME.MC_ME_CTL_KEY.R
+  ; wait for clock to be active
+  WAIT (Data.Long(eaxi:0x40088108)&0x00000001)==0x00000001      ; MC_ME.PRTN0_STAT.R
+  WAIT (Data.Long(eaxi:0x40088110)&0x00000003)==0x00000003      ; MC_ME.PRTN0_COFB0_STAT.R
+
+  ; Partition 0 - enable core.
+  ;Data.Set eaxi:0x40088004 %Long 0x00000001    ; MC_ME.MODE_CONF.R = 1, DEST_RST=1
+  Data.Set eaxi:0x4008814C %Long 0x34000000        ; MC_ME.PRTN0_CORE0_ADDR.R = x
+  Data.Set eaxi:0x40088140 %Long 0x00000001    ; MC_ME.PRTN0_CORE0_PCONF.R = 1, CCE=1, Enable the core clock
+  Data.Set eaxi:0x40088144 %Long 0x00000001    ; MC_ME.PRTN0_CORE0_PUPD.R = 1, CCUPD=1, Trigger the hardware process for enabling core clock to Core 0
+  Data.Set eaxi:0x40088000 %Long 0x00005AF0    ; MC_ME.MC_ME_CTL_KEY.R
+  Data.Set eaxi:0x40088000 %Long 0x0000A50F    ; MC_ME.MC_ME_CTL_KEY.R
+  ; wait for clock to be active
+  WAIT (Data.Long(eaxi:0x40088148)&0x00000001)==0x00000001      ; MC_ME.PRTN0_CORE0_STAT.R, CCS=1, Core 0 clock is active
+
+  ; CM7 Cluster 0 RGM_PRST0_0[PERIPH0_RST]
+  ; CM7 Cluster 1 RGM_PRST0_0[PERIPH1_RST]
+  ; CM7 Cluster 2 RGM_PRST0_0[PERIPH2_RST]
+  ; CA53 core 0 – Cluster 0 RGM_PRST1_0[PERIPH1_RST]
+  ; CA53 core 1 - Cluster 0 RGM_PRST1_0[PERIPH2_RST]
+  ; CA53 core 2 – Cluster 1 RGM_PRST1_0[PERIPH3_RST]
+  ; CA53 core 3 – Cluster 1 RGM_PRST1_0[PERIPH4_RST]
+  ; LLCE                    RGM_PRST3_0[PERIPH0_RST]
+
+  ;Release the core reset via the corresponding MC_RGM_PRST register
+  Data.Set eaxi:0x40078040 %Long 0yXXXXxxxxXXXXxxxxXXXXxxxxXXXXxxx0    ; MC_RGM.PRST0_0.R, PERIPH_0_RST=0, release CM7_0 from reset.
+
+  ;Wait for reset and output safe stating status bits
+  WAIT (Data.Long(eaxi:0x40078140)&0x00000001)==0x00000000      ; MC_RGM.PSTAT0_0; 0b - Peripheral PERIPH_28_STAT is not in reset
+
+  RETURN
+)
+
+
+EnableCM7_1:
+(
+  ; Partition 0 - enable peripherals. Optional, none used by MCAL.
+  ;Data.Set eaxi:0x40088100 %Long 0x00000001    ; MC_ME.PRTN0_PCONF.R = 1, PCE=1, Enable the clock to IPs
+  ;Data.Set eaxi:0x40088104 %Long 0x00000001    ; MC_ME.PRTN0_PUPD.R = 1, PCUD=1, Trigger the hardware process for enabling/disabling the clock to IPs (other than core(s))
+  ;Data.Set eaxi:0x40088130 %Long 0x00000003    ; MC_ME.PRTN0_COFB0_CLKEN.R = 0x3
+  ;Data.Set eaxi:0x40088000 %Long 0x00005AF0    ; MC_ME.MC_ME_CTL_KEY.R
+  ;Data.Set eaxi:0x40088000 %Long 0x0000A50F    ; MC_ME.MC_ME_CTL_KEY.R
+  ;; wait for clock to be active
+  ;WAIT (Data.Long(eaxi:0x40088108)&0x00000001)==0x00000001      ; MC_ME.PRTN0_STAT.R
+  ;WAIT (Data.Long(eaxi:0x40088110)&0x00000003)==0x00000003      ; MC_ME.PRTN0_COFB0_STAT.R
+
+  ; Partition 0 - enable core.
+  ;Data.Set eaxi:0x40088004 %Long 0x00000001    ; MC_ME.MODE_CONF.R = 1, DEST_RST=1
+  Data.Set eaxi:0x4008816C %Long 0x34000000        ; MC_ME.PRTN0_CORE1_ADDR.R = x
+  Data.Set eaxi:0x40088160 %Long 0x00000001    ; MC_ME.PRTN0_CORE1_PCONF.R = 1, CCE=1, Enable the core clock
+  Data.Set eaxi:0x40088164 %Long 0x00000001    ; MC_ME.PRTN0_CORE1_PUPD.R = 1, CCUPD=1, Trigger the hardware process for enabling core clock to Core 0
+  Data.Set eaxi:0x40088000 %Long 0x00005AF0    ; MC_ME.MC_ME_CTL_KEY.R
+  Data.Set eaxi:0x40088000 %Long 0x0000A50F    ; MC_ME.MC_ME_CTL_KEY.R
+  ; wait for clock to be active
+  WAIT (Data.Long(eaxi:0x40088168)&0x00000001)==0x00000001      ; MC_ME.PRTN0_CORE0_STAT.R, CCS=1, Core 1 clock is active
+
+  ; CM7 Cluster 0 RGM_PRST0_0[PERIPH0_RST]
+  ; CM7 Cluster 1 RGM_PRST0_0[PERIPH1_RST]
+  ; CM7 Cluster 2 RGM_PRST0_0[PERIPH2_RST]
+  ; CA53 core 0 – Cluster 0 RGM_PRST1_0[PERIPH1_RST]
+  ; CA53 core 1 - Cluster 0 RGM_PRST1_0[PERIPH2_RST]
+  ; CA53 core 2 – Cluster 1 RGM_PRST1_0[PERIPH3_RST]
+  ; CA53 core 3 – Cluster 1 RGM_PRST1_0[PERIPH4_RST]
+  ; LLCE                    RGM_PRST3_0[PERIPH0_RST]
+
+  ;Release the core reset via the corresponding MC_RGM_PRST register
+  Data.Set eaxi:0x40078040 %Long 0yXXXXxxxxXXXXxxxxXXXXxxxxXXXXxx0x    ; MC_RGM.PRST0_0.R, PERIPH_2_RST=0, release CM7_1 from reset.
+
+  ;Wait for reset and output safe stating status bits
+  WAIT (Data.Long(eaxi:0x40078140)&0x00000001)==0x00000000      ; MC_RGM.PSTAT0_0; 0b - Peripheral PERIPH_28_STAT is not in reset
+
+  RETURN
+)
+
+
+EnableCM7_2:
+(
+  ; Partition 0 - enable peripherals. Optional, none used by MCAL.
+  ;Data.Set eaxi:0x40088100 %Long 0x00000001    ; MC_ME.PRTN0_PCONF.R = 1, PCE=1, Enable the clock to IPs
+  ;Data.Set eaxi:0x40088104 %Long 0x00000001    ; MC_ME.PRTN0_PUPD.R = 1, PCUD=1, Trigger the hardware process for enabling/disabling the clock to IPs (other than core(s))
+  ;Data.Set eaxi:0x40088130 %Long 0x00000003    ; MC_ME.PRTN0_COFB0_CLKEN.R = 0x3
+  ;Data.Set eaxi:0x40088000 %Long 0x00005AF0    ; MC_ME.MC_ME_CTL_KEY.R
+  ;Data.Set eaxi:0x40088000 %Long 0x0000A50F    ; MC_ME.MC_ME_CTL_KEY.R
+  ;; wait for clock to be active
+  ;WAIT (Data.Long(eaxi:0x40088108)&0x00000001)==0x00000001      ; MC_ME.PRTN0_STAT.R
+  ;WAIT (Data.Long(eaxi:0x40088110)&0x00000003)==0x00000003      ; MC_ME.PRTN0_COFB0_STAT.R
+
+  ; Partition 0 - enable core.
+  ;Data.Set eaxi:0x40088004 %Long 0x00000001    ; MC_ME.MODE_CONF.R = 1, DEST_RST=1
+  Data.Set eaxi:0x4008818C %Long 0x34000000        ; MC_ME.PRTN0_CORE1_ADDR.R = x
+  Data.Set eaxi:0x40088180 %Long 0x00000001    ; MC_ME.PRTN0_CORE2_PCONF.R = 1, CCE=1, Enable the core clock
+  Data.Set eaxi:0x40088184 %Long 0x00000001    ; MC_ME.PRTN0_CORE2_PUPD.R = 1, CCUPD=1, Trigger the hardware process for enabling core clock to Core 0
+  Data.Set eaxi:0x40088000 %Long 0x00005AF0    ; MC_ME.MC_ME_CTL_KEY.R
+  Data.Set eaxi:0x40088000 %Long 0x0000A50F    ; MC_ME.MC_ME_CTL_KEY.R
+  ; wait for clock to be active
+  WAIT (Data.Long(eaxi:0x40088188)&0x00000001)==0x00000001      ; MC_ME.PRTN0_CORE0_STAT.R, CCS=1, Core 2 clock is active
+
+  ; CM7 Cluster 0 RGM_PRST0_0[PERIPH0_RST]
+  ; CM7 Cluster 1 RGM_PRST0_0[PERIPH1_RST]
+  ; CM7 Cluster 2 RGM_PRST0_0[PERIPH2_RST]
+  ; CA53 core 0 – Cluster 0 RGM_PRST1_0[PERIPH1_RST]
+  ; CA53 core 1 - Cluster 0 RGM_PRST1_0[PERIPH2_RST]
+  ; CA53 core 2 – Cluster 1 RGM_PRST1_0[PERIPH3_RST]
+  ; CA53 core 3 – Cluster 1 RGM_PRST1_0[PERIPH4_RST]
+  ; LLCE                    RGM_PRST3_0[PERIPH0_RST]
+
+  ;Release the core reset via the corresponding MC_RGM_PRST register
+  Data.Set eaxi:0x40078040 %Long 0yXXXXxxxxXXXXxxxxXXXXxxxxXXXXx0xx    ; MC_RGM.PRST0_0.R, PERIPH_2_RST=0, release CM7_2 from reset.
+
+  ;Wait for reset and output safe stating status bits
+  WAIT (Data.Long(eaxi:0x40078140)&0x00000001)==0x00000000      ; MC_RGM.PSTAT0_0; 0b - Peripheral PERIPH_28_STAT is not in reset
+
+  RETURN
+)

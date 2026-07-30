@@ -1,0 +1,180 @@
+Histogram:
+Serdes_Ipw_SetMode (uint8 Instance, Serdes_ModeType Mode)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  switch (Mode_2(D)) <default: <L5> [25.00%], case 0: <L0> [25.00%], case 1: <L1> [25.00%], case 2: <L2> [25.00%]>
+
+  <bb 3> [local count: 268435456]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  Serdes_Ip_SetMode (Instance_4(D), 1);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 268435456]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  Serdes_Ip_SetMode (Instance_4(D), 3);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 268435456]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  Serdes_Ip_SetMode (Instance_4(D), 2);
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+<L5>:
+  return;
+
+}
+
+
+Serdes_Ipw_GetJobResult (uint8 Instance)
+{
+  Serdes_Ip_JobResultType JobResult;
+  Serdes_JobResultType RetJobResult;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG RetJobResult => 4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  JobResult_5 = Serdes_Ip_GetJobResult (Instance_3(D));
+  # DEBUG JobResult => JobResult_5
+  # DEBUG BEGIN_STMT
+  if (JobResult_5 == 1)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 3>; [66.00%]
+
+  <bb 3> [local count: 708669604]:
+  # DEBUG BEGIN_STMT
+  if (JobResult_5 == 2)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 4> [local count: 467721938]:
+  # DEBUG BEGIN_STMT
+  # DEBUG RetJobResult => 4
+
+  <bb 5> [local count: 1073741824]:
+  # RetJobResult_1 = PHI <1(2), 2(3), 4(4)>
+  # DEBUG RetJobResult => RetJobResult_1
+  # DEBUG BEGIN_STMT
+  return RetJobResult_1;
+
+}
+
+
+Serdes_Ipw_GetStatus (uint8 Instance)
+{
+  Serdes_Ip_StatusType Status;
+  Serdes_StatusType RetStatus;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG RetStatus => 3
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Status_5 = Serdes_Ip_GetStatus (Instance_3(D));
+  # DEBUG Status => Status_5
+  # DEBUG BEGIN_STMT
+  if (Status_5 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  if (Status_5 == 1)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 4> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG RetStatus => 3
+
+  <bb 5> [local count: 1073741824]:
+  # RetStatus_1 = PHI <1(2), 2(3), 3(4)>
+  # DEBUG RetStatus => RetStatus_1
+  # DEBUG BEGIN_STMT
+  return RetStatus_1;
+
+}
+
+
+Serdes_Ipw_MainFunction (uint8 Instance)
+{
+  Serdes_StatusType Status;
+  <unnamed type> _1;
+  <unnamed type> _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Status => 3
+  # DEBUG BEGIN_STMT
+  _1 = Serdes_Ip_GetJobResult (Instance_6(D));
+  if (_1 == 2)
+    goto <bb 3>; [32.03%]
+  else
+    goto <bb 5>; [67.97%]
+
+  <bb 3> [local count: 343919506]:
+  # DEBUG BEGIN_STMT
+  _2 = Serdes_Ip_MainFunction (Instance_6(D));
+  if (_2 == 0)
+    goto <bb 4>; [65.00%]
+  else
+    goto <bb 5>; [35.00%]
+
+  <bb 4> [local count: 223547679]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Status => 1
+
+  <bb 5> [local count: 1073741824]:
+  # Status_3 = PHI <3(2), 3(3), 1(4)>
+  # DEBUG Status => Status_3
+  # DEBUG BEGIN_STMT
+  return Status_3;
+
+}
+
+
+Serdes_Ipw_InitChannel (const uint8 Instance, const struct Serdes_Ipw_HwChannelConfigType * ConfigPtr)
+{
+  Std_ReturnType StdStatus;
+  Serdes_Ip_StatusType Status;
+  const struct Serdes_Ip_ConfigType * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG StdStatus => 1
+  # DEBUG BEGIN_STMT
+  _1 = ConfigPtr_4(D)->SerdesHwConfig;
+  Status_7 = Serdes_Ip_Init (Instance_5(D), _1);
+  # DEBUG Status => Status_7
+  # DEBUG BEGIN_STMT
+  if (Status_7 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG StdStatus => 0
+
+  <bb 4> [local count: 1073741824]:
+  # StdStatus_2 = PHI <1(2), 0(3)>
+  # DEBUG StdStatus => StdStatus_2
+  # DEBUG BEGIN_STMT
+  return StdStatus_2;
+
+}
+
+

@@ -1,0 +1,3912 @@
+pfe_emac_cfg_isr (addr_t base_va, addr_t cbus_base)
+{
+  uint32_t dpp_fsm_status;
+  uint32_t mtl_ecc_status;
+  static const pfe_hm_evt_t dpp_fsm_events[25] = {36, 0, 0, 38, 0, 37, 0, 0, 40, 41, 0, 42, 43, 0, 0, 0, 44, 0, 0, 0, 0, 0, 0, 0, 39};
+  static const pfe_hm_evt_t mtl_ecc_events[7] = {30, 32, 31, 0, 33, 35, 34};
+  uint8_t instance_id;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  unsigned int _5;
+  volatile uint32_t * _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  errno_t _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  instance_id_13 = pfe_emac_cfg_get_index (base_va_10(D), cbus_base_11(D));
+  # DEBUG instance_id => instance_id_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_10(D) + 3276;
+  _2 = (volatile uint32_t *) _1;
+  mtl_ecc_status_14 ={v} *_2;
+  # DEBUG mtl_ecc_status => mtl_ecc_status_14
+  # DEBUG BEGIN_STMT
+  _3 = base_va_10(D) + 320;
+  _4 = (volatile uint32_t *) _3;
+  dpp_fsm_status_15 ={v} *_4;
+  # DEBUG dpp_fsm_status => dpp_fsm_status_15
+  # DEBUG BEGIN_STMT
+  pfe_emac_cfg_report_hm_event (instance_id_13, &mtl_ecc_events, 7, mtl_ecc_status_14);
+  # DEBUG BEGIN_STMT
+  pfe_emac_cfg_report_hm_event (instance_id_13, &dpp_fsm_events, 25, dpp_fsm_status_15);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = base_va_10(D) + 3276;
+  _6 = (volatile uint32_t *) _5;
+  *_6 ={v} mtl_ecc_status_14;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = base_va_10(D) + 320;
+  _8 = (volatile uint32_t *) _7;
+  *_8 ={v} dpp_fsm_status_15;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = 0;
+  return _20;
+
+}
+
+
+pfe_emac_cfg_report_hm_event (uint8_t id, const pfe_hm_evt_t * events, uint8_t events_len, uint32_t flags)
+{
+  const Dem_EventIdType emac_dem_err_id[3][4];
+  uint8_t emac_err_src_index;
+  pfe_hm_src_t src;
+  uint32_t isr_flags;
+  uint8_t index;
+  static const pfe_hm_src_t hm_src[3] = {3, 4, 5};
+  int _1;
+  long unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  const pfe_hm_evt_t * _5;
+  <unnamed type> _6;
+  unsigned int _7;
+  unsigned int _8;
+  const pfe_hm_evt_t * _9;
+  <unnamed type> _10;
+  unsigned int _11;
+  unsigned int _12;
+  const pfe_hm_evt_t * _13;
+  <unnamed type> _14;
+  unsigned int _15;
+  unsigned int _16;
+  const pfe_hm_evt_t * _17;
+  <unnamed type> _18;
+  unsigned int _19;
+  unsigned int _20;
+  const pfe_hm_evt_t * _21;
+  <unnamed type> _22;
+  int _23;
+  int _24;
+  short unsigned int _25;
+  unsigned char index.33_26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  index_32 = 0;
+  # DEBUG index => index_32
+  # DEBUG BEGIN_STMT
+  isr_flags_34 = flags_33(D);
+  # DEBUG isr_flags => isr_flags_34
+  # DEBUG BEGIN_STMT
+  src_35 = 3;
+  # DEBUG src => src_35
+  # DEBUG BEGIN_STMT
+  emac_err_src_index_36 = 0;
+  # DEBUG emac_err_src_index => emac_err_src_index_36
+  # DEBUG BEGIN_STMT
+  emac_dem_err_id = *.LC0;
+  # DEBUG BEGIN_STMT
+  if (id_39(D) <= 2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) id_39(D);
+  src_42 = hm_src[_1];
+  # DEBUG src => src_42
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = isr_flags_28 & 1;
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  _3 = (unsigned int) index_27;
+  _4 = _3 * 4;
+  _5 = events_44(D) + _4;
+  _6 = *_5;
+  if (_6 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _7 = (unsigned int) index_27;
+  _8 = _7 * 4;
+  _9 = events_44(D) + _8;
+  _10 = *_9;
+  switch (_10) <default: <L30> [INV], case 30: <L4> [INV], case 31 ... 32: <L6> [INV], case 33: <L4> [INV], case 34 ... 44: <L6> [INV]>
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  _11 = (unsigned int) index_27;
+  _12 = _11 * 4;
+  _13 = events_44(D) + _12;
+  _14 = *_13;
+  pfe_hm_report (src_42, 1, _14, "[%s:%d] ", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_emac_csr.c", 1882, "");
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  _15 = (unsigned int) index_27;
+  _16 = _15 * 4;
+  _17 = events_44(D) + _16;
+  _18 = *_17;
+  emac_err_src_index_46 = pfe_emac_get_emac_err_src_index (_18);
+  # DEBUG emac_err_src_index => emac_err_src_index_46
+  # DEBUG BEGIN_STMT
+  if (emac_err_src_index_46 != 255)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _19 = (unsigned int) index_27;
+  _20 = _19 * 4;
+  _21 = events_44(D) + _20;
+  _22 = *_21;
+  pfe_hm_report (src_42, 2, _22, "[%s:%d] ", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_emac_csr.c", 1902, "");
+  # DEBUG BEGIN_STMT
+  _23 = (int) id_39(D);
+  _24 = (int) emac_err_src_index_46;
+  _25 = emac_dem_err_id[_23][_24];
+  Dem_SetEventStatus (_25, 3);
+
+  <bb 10> :
+<L30>:
+  # DEBUG BEGIN_STMT
+  index.33_26 = index_27;
+  index_50 = index.33_26 + 1;
+  # DEBUG index => index_50
+  # DEBUG BEGIN_STMT
+  isr_flags_51 = isr_flags_28 >> 1;
+  # DEBUG isr_flags => isr_flags_51
+
+  <bb 11> :
+  # index_27 = PHI <index_32(3), index_50(10)>
+  # isr_flags_28 = PHI <isr_flags_34(3), isr_flags_51(10)>
+  # DEBUG isr_flags => isr_flags_28
+  # DEBUG index => index_27
+  # DEBUG BEGIN_STMT
+  if (isr_flags_28 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 12> :
+  if (index_27 < events_len_43(D))
+    goto <bb 4>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Argument out of range", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_emac_csr.c", 1922, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  emac_dem_err_id ={v} {CLOBBER};
+  return;
+
+}
+
+
+pfe_emac_cfg_get_rx_cnt (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+  uint32_t _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 1920;
+  _2 = (volatile uint32_t *) _1;
+  _5 ={v} *_2;
+  return _5;
+
+}
+
+
+pfe_emac_cfg_get_tx_cnt (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+  uint32_t _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 1816;
+  _2 = (volatile uint32_t *) _1;
+  _5 ={v} *_2;
+  return _5;
+
+}
+
+
+pfe_emac_cfg_pps0_set_pulse_width (addr_t base_va, uint32_t pulse_width)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 2956;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} pulse_width_5(D);
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_pps0_set_period (addr_t base_va, uint32_t period)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 2952;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} period_5(D);
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_pps0_set_target_time (addr_t base_va, uint32_t seconds, uint32_t nanoseconds)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_5(D) + 2948;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} nanoseconds_7(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_5(D) + 2944;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} seconds_9(D);
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_pps_cmd (addr_t base_va, uint8_t cmd)
+{
+  uint32_t regval;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_6(D) + 2928;
+  _2 = (volatile uint32_t *) _1;
+  regval_8 ={v} *_2;
+  # DEBUG regval => regval_8
+  # DEBUG BEGIN_STMT
+  regval_9 = regval_8 & 4294967280;
+  # DEBUG regval => regval_9
+  # DEBUG BEGIN_STMT
+  _3 = (long unsigned int) cmd_10(D);
+  regval_11 = regval_9 | _3;
+  # DEBUG regval => regval_11
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_6(D) + 2928;
+  _5 = (volatile uint32_t *) _4;
+  *_5 ={v} regval_11;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_pps0_configure (addr_t base_va, bool_t mcgr_en, uint8_t trgtmodsel, bool_t flexible_en)
+{
+  uint32_t regval;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  unsigned int _5;
+  volatile uint32_t * _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_9(D) + 2928;
+  _2 = (volatile uint32_t *) _1;
+  regval_11 ={v} *_2;
+  # DEBUG regval => regval_11
+  # DEBUG BEGIN_STMT
+  if (mcgr_en_12(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  regval_14 = regval_11 | 128;
+  # DEBUG regval => regval_14
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  regval_13 = regval_11 & 4294967167;
+  # DEBUG regval => regval_13
+
+  <bb 5> :
+  # regval_7 = PHI <regval_14(3), regval_13(4)>
+  # DEBUG regval => regval_7
+  # DEBUG BEGIN_STMT
+  regval_15 = regval_7 & 4294967199;
+  # DEBUG regval => regval_15
+  # DEBUG BEGIN_STMT
+  _3 = (long unsigned int) trgtmodsel_16(D);
+  _4 = _3 << 5;
+  regval_17 = regval_15 | _4;
+  # DEBUG regval => regval_17
+  # DEBUG BEGIN_STMT
+  if (flexible_en_18(D) != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  regval_20 = regval_17 | 16;
+  # DEBUG regval => regval_20
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  regval_19 = regval_17 & 4294967279;
+  # DEBUG regval => regval_19
+
+  <bb 8> :
+  # regval_8 = PHI <regval_20(6), regval_19(7)>
+  # DEBUG regval => regval_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = base_va_9(D) + 2928;
+  _6 = (volatile uint32_t *) _5;
+  *_6 ={v} regval_8;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_mdio_write45 (addr_t base_va, uint8_t pa, uint8_t dev, uint16_t ra, uint16_t val)
+{
+  errno_t ret;
+  uint32_t timeout;
+  uint32_t reg;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  long unsigned int timeout.32_15;
+  unsigned int _16;
+  volatile uint32_t * _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  errno_t _38;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  timeout_23 = 500;
+  # DEBUG timeout => timeout_23
+  # DEBUG BEGIN_STMT
+  ret_24 = 0;
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) val_25(D);
+  _2 = (long unsigned int) ra_26(D);
+  _3 = _2 << 16;
+  reg_27 = _1 | _3;
+  # DEBUG reg => reg_27
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_28(D) + 516;
+  _5 = (volatile uint32_t *) _4;
+  *_5 ={v} reg_27;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = (long unsigned int) dev_31(D);
+  _7 = _6 << 16;
+  _8 = _7 & 2031616;
+  _9 = (long unsigned int) pa_32(D);
+  _10 = _9 << 21;
+  _11 = _10 & 65011712;
+  _12 = _8 | _11;
+  reg_33 = _12 | 1543;
+  # DEBUG reg => reg_33
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = base_va_28(D) + 512;
+  _14 = (volatile uint32_t *) _13;
+  *_14 ={v} reg_33;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  timeout.32_15 = timeout_20;
+  timeout_35 = timeout.32_15 + 4294967295;
+  # DEBUG timeout => timeout_35
+  if (timeout.32_15 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_37 = 62;
+  # DEBUG ret => ret_37
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+
+  <bb 6> :
+  # timeout_20 = PHI <timeout_23(2), timeout_35(5)>
+  # DEBUG timeout => timeout_20
+  # DEBUG BEGIN_STMT
+  _16 = base_va_28(D) + 512;
+  _17 = (volatile uint32_t *) _16;
+  _18 ={v} *_17;
+  _19 = _18 & 1;
+  if (_19 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # ret_21 = PHI <ret_37(4), ret_24(6)>
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  _38 = ret_21;
+  return _38;
+
+}
+
+
+pfe_emac_cfg_mdio_write22 (addr_t base_va, uint8_t pa, uint8_t ra, uint16_t val)
+{
+  errno_t ret;
+  uint32_t timeout;
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  long unsigned int timeout.31_12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  errno_t _34;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  timeout_20 = 500;
+  # DEBUG timeout => timeout_20
+  # DEBUG BEGIN_STMT
+  ret_21 = 0;
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  reg_23 = (uint32_t) val_22(D);
+  # DEBUG reg => reg_23
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_24(D) + 516;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} reg_23;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = (long unsigned int) ra_27(D);
+  _4 = _3 << 16;
+  _5 = _4 & 2031616;
+  _6 = (long unsigned int) pa_28(D);
+  _7 = _6 << 21;
+  _8 = _7 & 65011712;
+  _9 = _5 | _8;
+  reg_29 = _9 | 1541;
+  # DEBUG reg => reg_29
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = base_va_24(D) + 512;
+  _11 = (volatile uint32_t *) _10;
+  *_11 ={v} reg_29;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  timeout.31_12 = timeout_17;
+  timeout_31 = timeout.31_12 + 4294967295;
+  # DEBUG timeout => timeout_31
+  if (timeout.31_12 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_33 = 62;
+  # DEBUG ret => ret_33
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+
+  <bb 6> :
+  # timeout_17 = PHI <timeout_20(2), timeout_31(5)>
+  # DEBUG timeout => timeout_17
+  # DEBUG BEGIN_STMT
+  _13 = base_va_24(D) + 512;
+  _14 = (volatile uint32_t *) _13;
+  _15 ={v} *_14;
+  _16 = _15 & 1;
+  if (_16 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # ret_18 = PHI <ret_33(4), ret_21(6)>
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _34 = ret_18;
+  return _34;
+
+}
+
+
+pfe_emac_cfg_mdio_read45 (addr_t base_va, uint8_t pa, uint8_t dev, uint16_t ra, uint16_t * val)
+{
+  errno_t ret;
+  uint32_t timeout;
+  uint32_t reg;
+  long unsigned int _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  long unsigned int timeout.30_13;
+  unsigned int _14;
+  volatile uint32_t * _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  unsigned int _18;
+  volatile uint32_t * _19;
+  short unsigned int _20;
+  errno_t _42;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  timeout_25 = 500;
+  # DEBUG timeout => timeout_25
+  # DEBUG BEGIN_STMT
+  ret_26 = 0;
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) ra_27(D);
+  reg_28 = _1 << 16;
+  # DEBUG reg => reg_28
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = base_va_29(D) + 516;
+  _3 = (volatile uint32_t *) _2;
+  *_3 ={v} reg_28;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) dev_32(D);
+  _5 = _4 << 16;
+  _6 = _5 & 2031616;
+  _7 = (long unsigned int) pa_33(D);
+  _8 = _7 << 21;
+  _9 = _8 & 65011712;
+  _10 = _6 | _9;
+  reg_34 = _10 | 1551;
+  # DEBUG reg => reg_34
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = base_va_29(D) + 512;
+  _12 = (volatile uint32_t *) _11;
+  *_12 ={v} reg_34;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  timeout.30_13 = timeout_21;
+  timeout_36 = timeout.30_13 + 4294967295;
+  # DEBUG timeout => timeout_36
+  if (timeout.30_13 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_38 = 62;
+  # DEBUG ret => ret_38
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+
+  <bb 6> :
+  # timeout_21 = PHI <timeout_25(2), timeout_36(5)>
+  # DEBUG timeout => timeout_21
+  # DEBUG BEGIN_STMT
+  _14 = base_va_29(D) + 512;
+  _15 = (volatile uint32_t *) _14;
+  _16 ={v} *_15;
+  _17 = _16 & 1;
+  if (_17 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # ret_22 = PHI <ret_38(4), ret_26(6)>
+  # DEBUG ret => ret_22
+  # DEBUG BEGIN_STMT
+  if (ret_22 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _18 = base_va_29(D) + 516;
+  _19 = (volatile uint32_t *) _18;
+  reg_39 ={v} *_19;
+  # DEBUG reg => reg_39
+  # DEBUG BEGIN_STMT
+  _20 = (short unsigned int) reg_39;
+  *val_40(D) = _20;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _42 = ret_22;
+  return _42;
+
+}
+
+
+pfe_emac_cfg_mdio_read22 (addr_t base_va, uint8_t pa, uint8_t ra, uint16_t * val)
+{
+  errno_t ret;
+  uint32_t timeout;
+  uint32_t reg;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  long unsigned int _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  short unsigned int _15;
+  errno_t _36;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  timeout_21 = 500;
+  # DEBUG timeout => timeout_21
+  # DEBUG BEGIN_STMT
+  ret_22 = 0;
+  # DEBUG ret => ret_22
+  # DEBUG BEGIN_STMT
+  _1 = (long unsigned int) ra_23(D);
+  _2 = _1 << 16;
+  _3 = _2 & 2031616;
+  _4 = (long unsigned int) pa_24(D);
+  _5 = _4 << 21;
+  _6 = _5 & 65011712;
+  _7 = _3 | _6;
+  reg_25 = _7 | 1549;
+  # DEBUG reg => reg_25
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = base_va_26(D) + 512;
+  _9 = (volatile uint32_t *) _8;
+  *_9 ={v} reg_25;
+
+  <bb 3> :
+  # timeout_16 = PHI <timeout_21(2), timeout_30(5)>
+  # DEBUG timeout => timeout_16
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = base_va_26(D) + 512;
+  _11 = (volatile uint32_t *) _10;
+  reg_29 ={v} *_11;
+  # DEBUG reg => reg_29
+  # DEBUG BEGIN_STMT
+  if (timeout_16 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_32 = 62;
+  # DEBUG ret => ret_32
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  timeout_30 = timeout_16 + 4294967295;
+  # DEBUG timeout => timeout_30
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+  # DEBUG BEGIN_STMT
+  _12 = reg_29 & 1;
+  if (_12 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # ret_17 = PHI <ret_32(4), ret_22(5)>
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  if (ret_17 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _13 = base_va_26(D) + 516;
+  _14 = (volatile uint32_t *) _13;
+  reg_33 ={v} *_14;
+  # DEBUG reg => reg_33
+  # DEBUG BEGIN_STMT
+  _15 = (short unsigned int) reg_33;
+  *val_34(D) = _15;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _36 = ret_17;
+  return _36;
+
+}
+
+
+pfe_emac_cfg_set_rx_flow_control (addr_t base_va, bool_t en)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int iftmp.29_5;
+  long unsigned int iftmp.29_11;
+  long unsigned int iftmp.29_12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_6(D) + 144;
+  _2 = (volatile uint32_t *) _1;
+  reg_8 ={v} *_2;
+  # DEBUG reg => reg_8
+  # DEBUG BEGIN_STMT
+  reg_9 = reg_8 & 4294967294;
+  # DEBUG reg => reg_9
+  # DEBUG BEGIN_STMT
+  if (en_10(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.29_12 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.29_11 = 0;
+
+  <bb 5> :
+  # iftmp.29_5 = PHI <iftmp.29_12(3), iftmp.29_11(4)>
+  reg_13 = iftmp.29_5 | reg_9;
+  # DEBUG reg => reg_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_6(D) + 144;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} reg_13;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_set_tx_flow_control (addr_t base_va, bool_t en)
+{
+  uint32_t ii;
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int iftmp.28_7;
+  long unsigned int iftmp.28_18;
+  long unsigned int iftmp.28_19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ii_10 = 0;
+  # DEBUG ii => ii_10
+
+  <bb 3> :
+  # ii_6 = PHI <ii_10(2), ii_15(4)>
+  # DEBUG ii => ii_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_12(D) + 112;
+  _2 = (volatile uint32_t *) _1;
+  reg_13 ={v} *_2;
+  # DEBUG reg => reg_13
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (100);
+  # DEBUG BEGIN_STMT
+  ii_15 = ii_6 + 1;
+  # DEBUG ii => ii_15
+  # DEBUG BEGIN_STMT
+  _3 = reg_13 & 1;
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  if (ii_15 <= 9)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (ii_15 > 9)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Flow control is busy, exiting...\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_emac_csr.c", 1518, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  reg_16 = reg_13 & 4294967293;
+  # DEBUG reg => reg_16
+  # DEBUG BEGIN_STMT
+  if (en_17(D) != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.28_19 = 2;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.28_18 = 0;
+
+  <bb 10> :
+  # iftmp.28_7 = PHI <iftmp.28_19(8), iftmp.28_18(9)>
+  reg_20 = iftmp.28_7 | reg_16;
+  # DEBUG reg => reg_20
+  # DEBUG BEGIN_STMT
+  reg_21 = reg_20 | 4026531840;
+  # DEBUG reg => reg_21
+  # DEBUG BEGIN_STMT
+  reg_22 = reg_21;
+  # DEBUG reg => reg_22
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_12(D) + 112;
+  _5 = (volatile uint32_t *) _4;
+  *_5 ={v} reg_22;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_get_rx_flow_control (addr_t base_va, bool_t * en)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  _Bool _4;
+  unsigned char _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_6(D) + 144;
+  _2 = (volatile uint32_t *) _1;
+  reg_8 ={v} *_2;
+  # DEBUG reg => reg_8
+  # DEBUG BEGIN_STMT
+  _3 = reg_8 & 1;
+  _4 = _3 != 0;
+  _5 = (unsigned char) _4;
+  *en_9(D) = _5;
+  return;
+
+}
+
+
+pfe_emac_cfg_get_tx_flow_control (addr_t base_va, bool_t * en)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  _Bool _4;
+  unsigned char _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_6(D) + 112;
+  _2 = (volatile uint32_t *) _1;
+  reg_8 ={v} *_2;
+  # DEBUG reg => reg_8
+  # DEBUG BEGIN_STMT
+  _3 = reg_8 & 2;
+  _4 = _3 != 0;
+  _5 = (unsigned char) _4;
+  *en_9(D) = _5;
+  return;
+
+}
+
+
+pfe_emac_cfg_set_enable (addr_t base_va, bool_t en)
+{
+  uint32_t reg;
+  volatile uint32_t * base_va.24_1;
+  long unsigned int _2;
+  volatile uint32_t * base_va.27_3;
+  long unsigned int iftmp.25_4;
+  long unsigned int iftmp.26_5;
+  long unsigned int iftmp.25_11;
+  long unsigned int iftmp.25_12;
+  long unsigned int iftmp.26_13;
+  long unsigned int iftmp.26_14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  base_va.24_1 = (volatile uint32_t *) base_va_6(D);
+  reg_8 ={v} *base_va.24_1;
+  # DEBUG reg => reg_8
+  # DEBUG BEGIN_STMT
+  reg_9 = reg_8 & 4294967292;
+  # DEBUG reg => reg_9
+  # DEBUG BEGIN_STMT
+  if (en_10(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.25_12 = 2;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.25_11 = 0;
+
+  <bb 5> :
+  # iftmp.25_4 = PHI <iftmp.25_12(3), iftmp.25_11(4)>
+  if (en_10(D) != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.26_14 = 1;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.26_13 = 0;
+
+  <bb 8> :
+  # iftmp.26_5 = PHI <iftmp.26_14(6), iftmp.26_13(7)>
+  _2 = iftmp.25_4 | iftmp.26_5;
+  reg_15 = reg_9 | _2;
+  # DEBUG reg => reg_15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  base_va.27_3 = (volatile uint32_t *) base_va_6(D);
+  *base_va.27_3 ={v} reg_15;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_set_broadcast (addr_t base_va, bool_t en)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int iftmp.23_6;
+  long unsigned int iftmp.23_11;
+  long unsigned int iftmp.23_12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_7(D) + 8;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_9 = _3 & 4294967263;
+  # DEBUG reg => reg_9
+  # DEBUG BEGIN_STMT
+  if (en_10(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.23_12 = 32;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.23_11 = 0;
+
+  <bb 5> :
+  # iftmp.23_6 = PHI <iftmp.23_12(3), iftmp.23_11(4)>
+  reg_13 = iftmp.23_6 | reg_9;
+  # DEBUG reg => reg_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_7(D) + 8;
+  _5 = (volatile uint32_t *) _4;
+  *_5 ={v} reg_13;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_set_allmulti_mode (addr_t base_va, bool_t en)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int iftmp.22_6;
+  long unsigned int iftmp.22_11;
+  long unsigned int iftmp.22_12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_7(D) + 8;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_9 = _3 & 4294967279;
+  # DEBUG reg => reg_9
+  # DEBUG BEGIN_STMT
+  if (en_10(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.22_12 = 16;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.22_11 = 0;
+
+  <bb 5> :
+  # iftmp.22_6 = PHI <iftmp.22_12(3), iftmp.22_11(4)>
+  reg_13 = iftmp.22_6 | reg_9;
+  # DEBUG reg => reg_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_7(D) + 8;
+  _5 = (volatile uint32_t *) _4;
+  *_5 ={v} reg_13;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_set_promisc_mode (addr_t base_va, bool_t en)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int iftmp.21_6;
+  long unsigned int iftmp.21_11;
+  long unsigned int iftmp.21_12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_7(D) + 8;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_9 = _3 & 4294967294;
+  # DEBUG reg => reg_9
+  # DEBUG BEGIN_STMT
+  if (en_10(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.21_12 = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.21_11 = 0;
+
+  <bb 5> :
+  # iftmp.21_6 = PHI <iftmp.21_12(3), iftmp.21_11(4)>
+  reg_13 = iftmp.21_6 | reg_9;
+  # DEBUG reg => reg_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_7(D) + 8;
+  _5 = (volatile uint32_t *) _4;
+  *_5 ={v} reg_13;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_set_loopback (addr_t base_va, bool_t en)
+{
+  uint32_t reg;
+  volatile uint32_t * base_va.18_1;
+  long unsigned int _2;
+  volatile uint32_t * base_va.20_3;
+  long unsigned int iftmp.19_4;
+  long unsigned int iftmp.19_9;
+  long unsigned int iftmp.19_10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  base_va.18_1 = (volatile uint32_t *) base_va_5(D);
+  _2 ={v} *base_va.18_1;
+  reg_7 = _2 & 4294963199;
+  # DEBUG reg => reg_7
+  # DEBUG BEGIN_STMT
+  if (en_8(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.19_10 = 4096;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.19_9 = 0;
+
+  <bb 5> :
+  # iftmp.19_4 = PHI <iftmp.19_10(3), iftmp.19_9(4)>
+  reg_11 = iftmp.19_4 | reg_7;
+  # DEBUG reg => reg_11
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  base_va.20_3 = (volatile uint32_t *) base_va_5(D);
+  *base_va.20_3 ={v} reg_11;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_clear_hash_table (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_5(D) + 16;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_5(D) + 20;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_time_udelay (10);
+  return;
+
+}
+
+
+pfe_emac_cfg_set_hash_group (addr_t base_va, uint32_t hash, bool_t en)
+{
+  uint8_t pos;
+  uint8_t hash_table_idx;
+  uint32_t val;
+  uint32_t old_reg;
+  uint32_t reg;
+  unsigned char _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned char _4;
+  unsigned char _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  volatile uint32_t * _10;
+  int _11;
+  long unsigned int _12;
+  int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  unsigned int _16;
+  unsigned int _17;
+  unsigned int _18;
+  unsigned int _19;
+  volatile uint32_t * _20;
+  unsigned int _21;
+  unsigned int _22;
+  unsigned int _23;
+  unsigned int _24;
+  volatile uint32_t * _25;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  val_29 = hash_28(D) >> 26;
+  # DEBUG val => val_29
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) val_29;
+  _2 = (unsigned int) _1;
+  _3 = _2 >> 5;
+  _4 = (unsigned char) _3;
+  hash_table_idx_30 = _4 & 1;
+  # DEBUG hash_table_idx => hash_table_idx_30
+  # DEBUG BEGIN_STMT
+  _5 = (unsigned char) val_29;
+  pos_31 = _5 & 31;
+  # DEBUG pos => pos_31
+  # DEBUG BEGIN_STMT
+  _6 = (unsigned int) hash_table_idx_30;
+  _7 = _6 + 4;
+  _8 = _7 * 4;
+  _9 = base_va_32(D) + _8;
+  _10 = (volatile uint32_t *) _9;
+  reg_34 ={v} *_10;
+  # DEBUG reg => reg_34
+  # DEBUG BEGIN_STMT
+  old_reg_35 = reg_34;
+  # DEBUG old_reg => old_reg_35
+  # DEBUG BEGIN_STMT
+  if (en_36(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _11 = (int) pos_31;
+  _12 = 1 << _11;
+  reg_38 = reg_34 | _12;
+  # DEBUG reg => reg_38
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _13 = (int) pos_31;
+  _14 = 1 << _13;
+  _15 = ~_14;
+  reg_37 = reg_34 & _15;
+  # DEBUG reg => reg_37
+
+  <bb 5> :
+  # reg_26 = PHI <reg_38(3), reg_37(4)>
+  # DEBUG reg => reg_26
+  # DEBUG BEGIN_STMT
+  if (reg_26 != old_reg_35)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = (unsigned int) hash_table_idx_30;
+  _17 = _16 + 4;
+  _18 = _17 * 4;
+  _19 = base_va_32(D) + _18;
+  _20 = (volatile uint32_t *) _19;
+  *_20 ={v} reg_26;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_time_udelay (10);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _21 = (unsigned int) hash_table_idx_30;
+  _22 = _21 + 4;
+  _23 = _22 * 4;
+  _24 = base_va_32(D) + _23;
+  _25 = (volatile uint32_t *) _24;
+  *_25 ={v} reg_26;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_get_hash (addr_t base_va, const uint8_t * addr)
+{
+  uint32_t _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = crc32_reversed (addr_2(D), 6);
+  return _4;
+
+}
+
+
+pfe_emac_cfg_read_addr_slot (addr_t base_va, uint8_t * addr, uint8_t slot)
+{
+  uint32_t bottom;
+  uint32_t top;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  volatile uint32_t * _10;
+  signed int top.16_11;
+  unsigned char _12;
+  long unsigned int _13;
+  uint8_t * _14;
+  unsigned char _15;
+  long unsigned int _16;
+  uint8_t * _17;
+  unsigned char _18;
+  long unsigned int _19;
+  uint8_t * _20;
+  unsigned char _21;
+  uint8_t * _22;
+  unsigned char _23;
+  long unsigned int _24;
+  uint8_t * _25;
+  unsigned char _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned int) slot_28(D);
+  _2 = _1 + 96;
+  _3 = _2 * 8;
+  _4 = base_va_29(D) + _3;
+  _5 = (volatile uint32_t *) _4;
+  top_31 ={v} *_5;
+  # DEBUG top => top_31
+  # DEBUG BEGIN_STMT
+  _6 = (unsigned int) slot_28(D);
+  _7 = _6 * 8;
+  _8 = base_va_29(D) + _7;
+  _9 = _8 + 772;
+  _10 = (volatile uint32_t *) _9;
+  bottom_32 ={v} *_10;
+  # DEBUG bottom => bottom_32
+  # DEBUG BEGIN_STMT
+  top.16_11 = (signed int) top_31;
+  if (top.16_11 < 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _12 = (unsigned char) bottom_32;
+  *addr_33(D) = _12;
+  # DEBUG BEGIN_STMT
+  _13 = bottom_32 >> 8;
+  _14 = addr_33(D) + 1;
+  _15 = (unsigned char) _13;
+  *_14 = _15;
+  # DEBUG BEGIN_STMT
+  _16 = bottom_32 >> 16;
+  _17 = addr_33(D) + 2;
+  _18 = (unsigned char) _16;
+  *_17 = _18;
+  # DEBUG BEGIN_STMT
+  _19 = bottom_32 >> 24;
+  _20 = addr_33(D) + 3;
+  _21 = (unsigned char) _19;
+  *_20 = _21;
+  # DEBUG BEGIN_STMT
+  _22 = addr_33(D) + 4;
+  _23 = (unsigned char) top_31;
+  *_22 = _23;
+  # DEBUG BEGIN_STMT
+  _24 = top_31 >> 8;
+  _25 = addr_33(D) + 5;
+  _26 = (unsigned char) _24;
+  *_25 = _26;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (addr_33(D), 0, 6);
+
+  <bb 5> :
+  return;
+
+}
+
+
+pfe_emac_cfg_write_addr_slot (addr_t base_va, const uint8_t * addr, uint8_t slot)
+{
+  uint32_t top;
+  uint32_t bottom;
+  const uint8_t * _1;
+  unsigned char _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  const uint8_t * _5;
+  unsigned char _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  const uint8_t * _10;
+  unsigned char _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  unsigned char _15;
+  long unsigned int _16;
+  const uint8_t * _17;
+  unsigned char _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  const uint8_t * _21;
+  unsigned char _22;
+  long unsigned int _23;
+  unsigned int _24;
+  unsigned int _25;
+  unsigned int _26;
+  unsigned int _27;
+  volatile uint32_t * _28;
+  unsigned int _29;
+  unsigned int _30;
+  unsigned int _31;
+  unsigned int _32;
+  volatile uint32_t * _33;
+  unsigned int _34;
+  unsigned int _35;
+  unsigned int _36;
+  unsigned int _37;
+  volatile uint32_t * _38;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = addr_40(D) + 3;
+  _2 = *_1;
+  _3 = (long unsigned int) _2;
+  _4 = _3 << 24;
+  _5 = addr_40(D) + 2;
+  _6 = *_5;
+  _7 = (long unsigned int) _6;
+  _8 = _7 << 16;
+  _9 = _4 | _8;
+  _10 = addr_40(D) + 1;
+  _11 = *_10;
+  _12 = (long unsigned int) _11;
+  _13 = _12 << 8;
+  _14 = _9 | _13;
+  _15 = *addr_40(D);
+  _16 = (long unsigned int) _15;
+  bottom_42 = _14 | _16;
+  # DEBUG bottom => bottom_42
+  # DEBUG BEGIN_STMT
+  _17 = addr_40(D) + 5;
+  _18 = *_17;
+  _19 = (long unsigned int) _18;
+  _20 = _19 << 8;
+  _21 = addr_40(D) + 4;
+  _22 = *_21;
+  _23 = (long unsigned int) _22;
+  top_43 = _20 | _23;
+  # DEBUG top => top_43
+  # DEBUG BEGIN_STMT
+  if (top_43 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (bottom_42 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  top_44 = top_43 | 2147483648;
+  # DEBUG top => top_44
+
+  <bb 5> :
+  # top_39 = PHI <top_43(3), top_44(4)>
+  # DEBUG top => top_39
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = (unsigned int) slot_45(D);
+  _25 = _24 + 96;
+  _26 = _25 * 8;
+  _27 = base_va_46(D) + _26;
+  _28 = (volatile uint32_t *) _27;
+  *_28 ={v} top_39;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _29 = (unsigned int) slot_45(D);
+  _30 = _29 * 8;
+  _31 = base_va_46(D) + _30;
+  _32 = _31 + 772;
+  _33 = (volatile uint32_t *) _32;
+  *_33 ={v} bottom_42;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_time_udelay (10);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _34 = (unsigned int) slot_45(D);
+  _35 = _34 * 8;
+  _36 = base_va_46(D) + _35;
+  _37 = _36 + 772;
+  _38 = (volatile uint32_t *) _37;
+  *_38 ={v} bottom_42;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_set_max_frame_length (addr_t base_va, uint32_t len)
+{
+  errno_t ret;
+  bool_t edvlp;
+  bool_t gpslce;
+  bool_t s2kp;
+  bool_t je;
+  uint32_t maxlen;
+  uint32_t reg;
+  volatile uint32_t * base_va.15_1;
+  long unsigned int _2;
+  _Bool _3;
+  long unsigned int _4;
+  _Bool _5;
+  long unsigned int _6;
+  _Bool _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  long unsigned int _10;
+  _Bool _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  unsigned int _14;
+  volatile uint32_t * _15;
+  errno_t _47;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  maxlen_24 = 0;
+  # DEBUG maxlen => maxlen_24
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  base_va.15_1 = (volatile uint32_t *) base_va_25(D);
+  reg_27 ={v} *base_va.15_1;
+  # DEBUG reg => reg_27
+  # DEBUG BEGIN_STMT
+  _2 = reg_27 & 65536;
+  _3 = _2 != 0;
+  je_28 = (bool_t) _3;
+  # DEBUG je => je_28
+  # DEBUG BEGIN_STMT
+  _4 = reg_27 & 4194304;
+  _5 = _4 != 0;
+  s2kp_29 = (bool_t) _5;
+  # DEBUG s2kp => s2kp_29
+  # DEBUG BEGIN_STMT
+  _6 = reg_27 & 8388608;
+  _7 = _6 != 0;
+  gpslce_30 = (bool_t) _7;
+  # DEBUG gpslce => gpslce_30
+  # DEBUG BEGIN_STMT
+  _8 = base_va_25(D) + 80;
+  _9 = (volatile uint32_t *) _8;
+  reg_31 ={v} *_9;
+  # DEBUG reg => reg_31
+  # DEBUG BEGIN_STMT
+  _10 = reg_31 & 67108864;
+  _11 = _10 != 0;
+  edvlp_32 = (bool_t) _11;
+  # DEBUG edvlp => edvlp_32
+  # DEBUG BEGIN_STMT
+  if (je_28 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  if (edvlp_32 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  maxlen_33 = 9026;
+  # DEBUG maxlen => maxlen_33
+
+  <bb 5> :
+  # maxlen_16 = PHI <maxlen_24(2), maxlen_24(3), maxlen_33(4)>
+  # DEBUG maxlen => maxlen_16
+  # DEBUG BEGIN_STMT
+  if (je_28 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  if (s2kp_29 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  maxlen_34 = 2000;
+  # DEBUG maxlen => maxlen_34
+
+  <bb 8> :
+  # maxlen_17 = PHI <maxlen_16(5), maxlen_16(6), maxlen_34(7)>
+  # DEBUG maxlen => maxlen_17
+  # DEBUG BEGIN_STMT
+  if (je_28 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 9> :
+  if (s2kp_29 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 10> :
+  if (gpslce_30 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 11> :
+  if (edvlp_32 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _12 = base_va_25(D) + 4;
+  _13 = (volatile uint32_t *) _12;
+  reg_35 ={v} *_13;
+  # DEBUG reg => reg_35
+  # DEBUG BEGIN_STMT
+  maxlen_36 = reg_35 & 16383;
+  # DEBUG maxlen => maxlen_36
+  # DEBUG BEGIN_STMT
+  maxlen_37 = maxlen_36 + 8;
+  # DEBUG maxlen => maxlen_37
+
+  <bb 13> :
+  # maxlen_18 = PHI <maxlen_17(8), maxlen_17(9), maxlen_17(10), maxlen_17(11), maxlen_37(12)>
+  # DEBUG maxlen => maxlen_18
+  # DEBUG BEGIN_STMT
+  if (je_28 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 14> :
+  if (s2kp_29 == 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 15> :
+  if (gpslce_30 == 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 16> :
+  if (edvlp_32 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  maxlen_38 = 1526;
+  # DEBUG maxlen => maxlen_38
+
+  <bb 18> :
+  # maxlen_19 = PHI <maxlen_18(13), maxlen_18(14), maxlen_18(15), maxlen_18(16), maxlen_38(17)>
+  # DEBUG maxlen => maxlen_19
+  # DEBUG BEGIN_STMT
+  if (je_28 != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 19> :
+  if (edvlp_32 == 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  maxlen_39 = 9022;
+  # DEBUG maxlen => maxlen_39
+
+  <bb 21> :
+  # maxlen_20 = PHI <maxlen_19(18), maxlen_19(19), maxlen_39(20)>
+  # DEBUG maxlen => maxlen_20
+  # DEBUG BEGIN_STMT
+  if (je_28 == 0)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 22> :
+  if (s2kp_29 == 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 23> :
+  if (gpslce_30 != 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 24> :
+  if (edvlp_32 == 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  _14 = base_va_25(D) + 4;
+  _15 = (volatile uint32_t *) _14;
+  reg_40 ={v} *_15;
+  # DEBUG reg => reg_40
+  # DEBUG BEGIN_STMT
+  maxlen_41 = reg_40 & 16383;
+  # DEBUG maxlen => maxlen_41
+  # DEBUG BEGIN_STMT
+  maxlen_42 = maxlen_41 + 4;
+  # DEBUG maxlen => maxlen_42
+
+  <bb 26> :
+  # maxlen_21 = PHI <maxlen_20(21), maxlen_20(22), maxlen_20(23), maxlen_20(24), maxlen_42(25)>
+  # DEBUG maxlen => maxlen_21
+  # DEBUG BEGIN_STMT
+  if (je_28 == 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 27> :
+  if (s2kp_29 == 0)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 28> :
+  if (gpslce_30 == 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 29> :
+  if (edvlp_32 == 0)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 30> :
+  # DEBUG BEGIN_STMT
+  maxlen_43 = 1522;
+  # DEBUG maxlen => maxlen_43
+
+  <bb 31> :
+  # maxlen_22 = PHI <maxlen_21(26), maxlen_21(27), maxlen_21(28), maxlen_21(29), maxlen_43(30)>
+  # DEBUG maxlen => maxlen_22
+  # DEBUG BEGIN_STMT
+  if (len_44(D) > maxlen_22)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 32> :
+  # DEBUG BEGIN_STMT
+  ret_46 = 22;
+  # DEBUG ret => ret_46
+  goto <bb 34>; [INV]
+
+  <bb 33> :
+  # DEBUG BEGIN_STMT
+  ret_45 = 0;
+  # DEBUG ret => ret_45
+
+  <bb 34> :
+  # ret_23 = PHI <ret_46(32), ret_45(33)>
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  _47 = ret_23;
+  return _47;
+
+}
+
+
+pfe_emac_cfg_get_link_status (addr_t base_va, pfe_emac_link_speed_t * link_speed, pfe_emac_duplex_t * duplex, bool_t * link)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  _Bool _9;
+  unsigned char _10;
+  pfe_emac_duplex_t iftmp.14_11;
+  pfe_emac_duplex_t iftmp.14_21;
+  pfe_emac_duplex_t iftmp.14_22;
+  errno_t _27;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = base_va_13(D) + 248;
+  _2 = (volatile uint32_t *) _1;
+  reg_15 ={v} *_2;
+  # DEBUG reg => reg_15
+  # DEBUG BEGIN_STMT
+  _3 = reg_15 >> 17;
+  _4 = _3 & 3;
+  switch (_4) <default: <L3> [INV], case 1: <L0> [INV], case 2: <L1> [INV], case 3: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  *link_speed_16(D) = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  *link_speed_16(D) = 3;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  *link_speed_16(D) = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  *link_speed_16(D) = 1;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _5 = reg_15 >> 16;
+  _6 = _5 & 1;
+  if (_6 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.14_22 = 2;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.14_21 = 1;
+
+  <bb 10> :
+  # iftmp.14_11 = PHI <iftmp.14_22(8), iftmp.14_21(9)>
+  *duplex_23(D) = iftmp.14_11;
+  # DEBUG BEGIN_STMT
+  _7 = reg_15 >> 19;
+  _8 = _7 & 1;
+  _9 = _8 != 0;
+  _10 = (unsigned char) _9;
+  *link_25(D) = _10;
+  # DEBUG BEGIN_STMT
+  _27 = 0;
+  return _27;
+
+}
+
+
+pfe_emac_cfg_set_speed (addr_t base_va, pfe_emac_speed_t speed)
+{
+  errno_t ret;
+  uint32_t reg;
+  volatile uint32_t * base_va.12_1;
+  long unsigned int _2;
+  volatile uint32_t * base_va.13_3;
+  errno_t _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  base_va.12_1 = (volatile uint32_t *) base_va_7(D);
+  _2 ={v} *base_va.12_1;
+  reg_9 = _2 & 4294918143;
+  # DEBUG reg => reg_9
+  # DEBUG BEGIN_STMT
+  ret_10 = 0;
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  switch (speed_11(D)) <default: <L4> [INV], case 1: <L0> [INV], case 2: <L1> [INV], case 3: <L2> [INV], case 4: <L3> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  reg_18 = reg_9 | 32768;
+  # DEBUG reg => reg_18
+  # DEBUG BEGIN_STMT
+  reg_19 = reg_18;
+  # DEBUG reg => reg_19
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  reg_16 = reg_9 | 32768;
+  # DEBUG reg => reg_16
+  # DEBUG BEGIN_STMT
+  reg_17 = reg_16 | 16384;
+  # DEBUG reg => reg_17
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  reg_14 = reg_9;
+  # DEBUG reg => reg_14
+  # DEBUG BEGIN_STMT
+  reg_15 = reg_14;
+  # DEBUG reg => reg_15
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  reg_12 = reg_9;
+  # DEBUG reg => reg_12
+  # DEBUG BEGIN_STMT
+  reg_13 = reg_12 | 16384;
+  # DEBUG reg => reg_13
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  ret_20 = 22;
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # reg_4 = PHI <reg_19(3), reg_17(4), reg_15(5), reg_13(6), reg_9(7)>
+  # ret_5 = PHI <ret_10(3), ret_10(4), ret_10(5), ret_10(6), ret_20(7)>
+  # DEBUG ret => ret_5
+  # DEBUG reg => reg_4
+  # DEBUG BEGIN_STMT
+  if (ret_5 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  base_va.13_3 = (volatile uint32_t *) base_va_7(D);
+  *base_va.13_3 ={v} reg_4;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _22 = ret_5;
+  return _22;
+
+}
+
+
+pfe_emac_cfg_set_mii_mode (addr_t base_va, pfe_emac_mii_mode_t mode)
+{
+  errno_t _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = 0;
+  return _1;
+
+}
+
+
+pfe_emac_cfg_set_duplex (addr_t base_va, pfe_emac_duplex_t duplex)
+{
+  errno_t ret;
+  uint32_t reg;
+  volatile uint32_t * base_va.10_1;
+  long unsigned int _2;
+  volatile uint32_t * base_va.11_3;
+  errno_t _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  base_va.10_1 = (volatile uint32_t *) base_va_7(D);
+  _2 ={v} *base_va.10_1;
+  reg_9 = _2 & 4294959103;
+  # DEBUG reg => reg_9
+  # DEBUG BEGIN_STMT
+  ret_10 = 0;
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  switch (duplex_11(D)) <default: <L2> [INV], case 1: <L0> [INV], case 2: <L1> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  reg_13 = reg_9;
+  # DEBUG reg => reg_13
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  reg_12 = reg_9 | 8192;
+  # DEBUG reg => reg_12
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  ret_14 = 22;
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+
+  <bb 6> :
+  # reg_4 = PHI <reg_13(3), reg_12(4), reg_9(5)>
+  # ret_5 = PHI <ret_10(3), ret_10(4), ret_14(5)>
+  # DEBUG ret => ret_5
+  # DEBUG reg => reg_4
+  # DEBUG BEGIN_STMT
+  if (ret_5 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  base_va.11_3 = (volatile uint32_t *) base_va_7(D);
+  *base_va.11_3 ={v} reg_4;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = ret_5;
+  return _16;
+
+}
+
+
+pfe_emac_cfg_tx_disable (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 2816;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_get_stat_value (addr_t base_va, uint32_t stat_id)
+{
+  uint32_t stat_value;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  uint32_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + stat_id_4(D);
+  _2 = (volatile uint32_t *) _1;
+  stat_value_6 ={v} *_2;
+  # DEBUG stat_value => stat_value_6
+  # DEBUG BEGIN_STMT
+  _7 = stat_value_6;
+  return _7;
+
+}
+
+
+pfe_emac_cfg_get_link_config (addr_t base_va, pfe_emac_speed_t * speed, pfe_emac_duplex_t * duplex)
+{
+  uint32_t reg;
+  volatile uint32_t * base_va.8_1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  pfe_emac_duplex_t iftmp.9_6;
+  pfe_emac_duplex_t iftmp.9_16;
+  pfe_emac_duplex_t iftmp.9_17;
+  errno_t _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  base_va.8_1 = (volatile uint32_t *) base_va_8(D);
+  reg_10 ={v} *base_va.8_1;
+  # DEBUG reg => reg_10
+  # DEBUG BEGIN_STMT
+  _2 = reg_10 >> 14;
+  _3 = _2 & 3;
+  switch (_3) <default: <L3> [INV], case 1: <L0> [INV], case 2: <L1> [INV], case 3: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  *speed_11(D) = 4;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  *speed_11(D) = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  *speed_11(D) = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  *speed_11(D) = 3;
+  # DEBUG BEGIN_STMT
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _4 = reg_10 >> 13;
+  _5 = _4 & 1;
+  if (_5 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.9_17 = 2;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.9_16 = 1;
+
+  <bb 10> :
+  # iftmp.9_6 = PHI <iftmp.9_17(8), iftmp.9_16(9)>
+  *duplex_18(D) = iftmp.9_6;
+  # DEBUG BEGIN_STMT
+  _20 = 0;
+  return _20;
+
+}
+
+
+pfe_emac_cfg_adjust_ts_time (addr_t base_va, uint32_t sec, uint32_t nsec, bool_t sgn)
+{
+  errno_t ret;
+  uint32_t sec_temp;
+  uint32_t nsec_temp;
+  uint32_t regval;
+  signed int nsec_temp.6_1;
+  unsigned char _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  unsigned int _9;
+  volatile uint32_t * _10;
+  long unsigned int _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  unsigned int _14;
+  volatile uint32_t * _15;
+  unsigned int _16;
+  const uint32_t * _17;
+  long unsigned int iftmp.7_23;
+  long unsigned int iftmp.7_40;
+  long unsigned int iftmp.7_41;
+  errno_t _50;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  nsec_temp_26 = nsec_25(D);
+  # DEBUG nsec_temp => nsec_temp_26
+  # DEBUG BEGIN_STMT
+  sec_temp_28 = sec_27(D);
+  # DEBUG sec_temp => sec_temp_28
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  nsec_temp.6_1 = (signed int) nsec_temp_26;
+  if (nsec_temp.6_1 < 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_49 = 22;
+  # DEBUG ret => ret_49
+  goto <bb 19>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = is_eclk_enabled (base_va_30(D));
+  if (_2 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_48 = 13;
+  # DEBUG ret => ret_48
+  goto <bb 19>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_32 = 0;
+  # DEBUG ret => ret_32
+  # DEBUG BEGIN_STMT
+  _3 = base_va_30(D) + 2816;
+  _4 = (volatile uint32_t *) _3;
+  regval_33 ={v} *_4;
+  # DEBUG regval => regval_33
+  # DEBUG BEGIN_STMT
+  if (sgn_34(D) == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _5 = regval_33 & 512;
+  if (_5 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  nsec_temp_36 = 1000000000 - nsec_25(D);
+  # DEBUG nsec_temp => nsec_temp_36
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  nsec_temp_35 = 2147483648 - nsec_25(D);
+  # DEBUG nsec_temp => nsec_temp_35
+
+  <bb 10> :
+  # nsec_temp_18 = PHI <nsec_temp_36(8), nsec_temp_35(9)>
+  # DEBUG nsec_temp => nsec_temp_18
+  # DEBUG BEGIN_STMT
+  sec_temp_37 = -sec_27(D);
+  # DEBUG sec_temp => sec_temp_37
+
+  <bb 11> :
+  # nsec_temp_19 = PHI <nsec_temp_26(6), nsec_temp_18(10)>
+  # sec_temp_20 = PHI <sec_temp_28(6), sec_temp_37(10)>
+  # DEBUG sec_temp => sec_temp_20
+  # DEBUG nsec_temp => nsec_temp_19
+  # DEBUG BEGIN_STMT
+  _6 = regval_33 & 512;
+  if (_6 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  if (nsec_temp_19 > 999999999)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  ret_38 = 22;
+  # DEBUG ret => ret_38
+
+  <bb 14> :
+  # ret_21 = PHI <ret_32(11), ret_32(12), ret_38(13)>
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  if (ret_21 == 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = base_va_30(D) + 2832;
+  _8 = (volatile uint32_t *) _7;
+  *_8 ={v} sec_temp_20;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (sgn_34(D) == 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  iftmp.7_41 = 2147483648;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  iftmp.7_40 = 0;
+
+  <bb 18> :
+  # iftmp.7_23 = PHI <iftmp.7_41(16), iftmp.7_40(17)>
+  _9 = base_va_30(D) + 2836;
+  _10 = (volatile uint32_t *) _9;
+  _11 = iftmp.7_23 | nsec_temp_19;
+  *_10 ={v} _11;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = base_va_30(D) + 2816;
+  _13 = (volatile uint32_t *) _12;
+  regval_43 ={v} *_13;
+  # DEBUG regval => regval_43
+  # DEBUG BEGIN_STMT
+  regval_44 = regval_43 | 8;
+  # DEBUG regval => regval_44
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = base_va_30(D) + 2816;
+  _15 = (volatile uint32_t *) _14;
+  *_15 ={v} regval_44;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = base_va_30(D) + 2816;
+  _17 = (const uint32_t *) _16;
+  ret_47 = reg_wait_for_clear (_17, 8, 10);
+  # DEBUG ret => ret_47
+
+  <bb 19> :
+  # ret_22 = PHI <ret_49(3), ret_48(5), ret_21(14), ret_47(18)>
+  # DEBUG ret => ret_22
+  # DEBUG BEGIN_STMT
+  _50 = ret_22;
+  return _50;
+
+}
+
+
+pfe_emac_cfg_set_ts_time (addr_t base_va, uint32_t sec, uint32_t nsec, uint16_t sec_hi)
+{
+  errno_t ret;
+  uint32_t regval;
+  signed int nsec.5_1;
+  unsigned char _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  unsigned int _5;
+  volatile uint32_t * _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  long unsigned int _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  unsigned int _14;
+  const uint32_t * _15;
+  errno_t _34;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  nsec.5_1 = (signed int) nsec_18(D);
+  if (nsec.5_1 < 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_33 = 22;
+  # DEBUG ret => ret_33
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = is_eclk_enabled (base_va_20(D));
+  if (_2 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_32 = 13;
+  # DEBUG ret => ret_32
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_20(D) + 2832;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} sec_22(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = base_va_20(D) + 2836;
+  _6 = (volatile uint32_t *) _5;
+  *_6 ={v} nsec_18(D);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = base_va_20(D) + 2844;
+  _8 = (volatile uint32_t *) _7;
+  _9 = (long unsigned int) sec_hi_25(D);
+  *_8 ={v} _9;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = base_va_20(D) + 2816;
+  _11 = (volatile uint32_t *) _10;
+  regval_27 ={v} *_11;
+  # DEBUG regval => regval_27
+  # DEBUG BEGIN_STMT
+  regval_28 = regval_27 | 4;
+  # DEBUG regval => regval_28
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = base_va_20(D) + 2816;
+  _13 = (volatile uint32_t *) _12;
+  *_13 ={v} regval_28;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = base_va_20(D) + 2816;
+  _15 = (const uint32_t *) _14;
+  ret_31 = reg_wait_for_clear (_15, 4, 10);
+  # DEBUG ret => ret_31
+
+  <bb 7> :
+  # ret_16 = PHI <ret_33(3), ret_32(5), ret_31(6)>
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  _34 = ret_16;
+  return _34;
+
+}
+
+
+pfe_emac_cfg_get_ts_time (addr_t base_va, uint32_t * sec, uint32_t * nsec, uint16_t * sec_hi)
+{
+  uint32_t sec_tmp;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  long unsigned int _9;
+  short unsigned int _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  long unsigned int _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_16(D) + 2824;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  *sec_17(D) = _3;
+  # DEBUG BEGIN_STMT
+  _4 = base_va_16(D) + 2828;
+  _5 = (volatile uint32_t *) _4;
+  _6 ={v} *_5;
+  *nsec_19(D) = _6;
+  # DEBUG BEGIN_STMT
+  _7 = base_va_16(D) + 2844;
+  _8 = (volatile uint32_t *) _7;
+  _9 ={v} *_8;
+  _10 = (short unsigned int) _9;
+  *sec_hi_21(D) = _10;
+  # DEBUG BEGIN_STMT
+  _11 = base_va_16(D) + 2824;
+  _12 = (volatile uint32_t *) _11;
+  sec_tmp_23 ={v} *_12;
+  # DEBUG sec_tmp => sec_tmp_23
+  # DEBUG BEGIN_STMT
+  _13 = *sec_17(D);
+  if (sec_tmp_23 != _13)
+    goto <bb 2>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  return;
+
+}
+
+
+pfe_emac_cfg_adjust_ts_freq (addr_t base_va, uint32_t i_clk_hz, uint32_t o_clk_hz, uint32_t ppb, bool_t sgn)
+{
+  const uint64_t u64_delta;
+  const uint64_t u64_nil;
+  errno_t ret;
+  uint32_t regval;
+  uint32_t delta;
+  uint32_t nil;
+  unsigned char _1;
+  long long unsigned int _2;
+  long long unsigned int _3;
+  long long unsigned int _4;
+  long long unsigned int _5;
+  long long unsigned int _6;
+  long long unsigned int _7;
+  long long unsigned int _8;
+  long long unsigned int _9;
+  long long unsigned int _10;
+  unsigned int _11;
+  volatile uint32_t * _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  unsigned int _15;
+  volatile uint32_t * _16;
+  long unsigned int _17;
+  unsigned int _18;
+  const uint32_t * _19;
+  errno_t _47;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = is_eclk_enabled (base_va_24(D));
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_46 = 13;
+  # DEBUG ret => ret_46
+  goto <bb 14>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (i_clk_hz_26(D) == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid frequency value", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_emac_csr.c", 623, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_45 = 22;
+  # DEBUG ret => ret_45
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = (long long unsigned int) o_clk_hz_27(D);
+  _3 = _2 << 32;
+  _4 = (long long unsigned int) i_clk_hz_26(D);
+  u64_nil_28 = _3 / _4;
+  # DEBUG u64_nil => u64_nil_28
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  nil_29 = (uint32_t) u64_nil_28;
+  # DEBUG nil => nil_29
+  # DEBUG BEGIN_STMT
+  _5 = (long long unsigned int) nil_29;
+  _6 = (long long unsigned int) ppb_30(D);
+  _7 = _5 * _6;
+  u64_delta_31 = _7 / 1000000000;
+  # DEBUG u64_delta => u64_delta_31
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  delta_32 = (uint32_t) u64_delta_31;
+  # DEBUG delta => delta_32
+  # DEBUG BEGIN_STMT
+  if (sgn_33(D) != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _8 = (long long unsigned int) nil_29;
+  _9 = (long long unsigned int) delta_32;
+  _10 = _8 + _9;
+  if (_10 > 4294967295)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regval_37 = 4294967295;
+  # DEBUG regval => regval_37
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  regval_36 = nil_29 + delta_32;
+  # DEBUG regval => regval_36
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (delta_32 > nil_29)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  regval_35 = 0;
+  # DEBUG regval => regval_35
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  regval_34 = nil_29 - delta_32;
+  # DEBUG regval => regval_34
+
+  <bb 13> :
+  # regval_20 = PHI <regval_36(9), regval_35(11), regval_34(12), regval_37(8)>
+  # DEBUG regval => regval_20
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _11 = base_va_24(D) + 2840;
+  _12 = (volatile uint32_t *) _11;
+  *_12 ={v} regval_20;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = base_va_24(D) + 2816;
+  _14 = (volatile uint32_t *) _13;
+  regval_39 ={v} *_14;
+  # DEBUG regval => regval_39
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _15 = base_va_24(D) + 2816;
+  _16 = (volatile uint32_t *) _15;
+  _17 = regval_39 | 32;
+  *_16 ={v} _17;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = base_va_24(D) + 2816;
+  _19 = (const uint32_t *) _18;
+  ret_42 = reg_wait_for_clear (_19, 32, 10);
+  # DEBUG ret => ret_42
+
+  <bb 14> :
+  # ret_21 = PHI <ret_46(3), ret_45(5), ret_42(13)>
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  _47 = ret_21;
+  return _47;
+
+}
+
+
+pfe_emac_cfg_get_index (addr_t emac_base, addr_t cbus_base)
+{
+  uint8_t idx;
+  unsigned int _1;
+  uint8_t _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = emac_base_3(D) - cbus_base_4(D);
+  switch (_1) <default: <L3> [INV], case 655360: <L0> [INV], case 671744: <L1> [INV], case 688128: <L2> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  idx_7 = 0;
+  # DEBUG idx => idx_7
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  idx_6 = 1;
+  # DEBUG idx => idx_6
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  idx_5 = 2;
+  # DEBUG idx => idx_5
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  idx_8 = 255;
+  # DEBUG idx => idx_8
+  # DEBUG BEGIN_STMT
+
+  <bb 7> :
+  # idx_2 = PHI <idx_7(3), idx_6(4), idx_5(5), idx_8(6)>
+  # DEBUG idx => idx_2
+  # DEBUG BEGIN_STMT
+  _9 = idx_2;
+  return _9;
+
+}
+
+
+reg_wait_for_clear (const uint32_t * reg_address, uint32_t value, uint8_t timeout_100us)
+{
+  uint32_t regval;
+  uint8_t timeout_cnt;
+  errno_t result;
+  long unsigned int _1;
+  unsigned char timeout_cnt.4_2;
+  errno_t _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  result_6 = 62;
+  # DEBUG result => result_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  timeout_cnt_7 = 0;
+  # DEBUG timeout_cnt => timeout_cnt_7
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  regval_11 ={v} *reg_address_10(D);
+  # DEBUG regval => regval_11
+  # DEBUG BEGIN_STMT
+  _1 = regval_11 & value_12(D);
+  if (_1 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  result_15 = 0;
+  # DEBUG result => result_15
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (100);
+  # DEBUG BEGIN_STMT
+  timeout_cnt.4_2 = timeout_cnt_4;
+  timeout_cnt_14 = timeout_cnt.4_2 + 1;
+  # DEBUG timeout_cnt => timeout_cnt_14
+
+  <bb 6> :
+  # timeout_cnt_4 = PHI <timeout_cnt_7(2), timeout_cnt_14(5)>
+  # DEBUG timeout_cnt => timeout_cnt_4
+  # DEBUG BEGIN_STMT
+  if (timeout_cnt_4 < timeout_100us_9(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # result_3 = PHI <result_15(4), result_6(6)>
+  # DEBUG result => result_3
+  # DEBUG BEGIN_STMT
+  _16 = result_3;
+  return _16;
+
+}
+
+
+is_eclk_enabled (addr_t base_va)
+{
+  uint32_t regval;
+  bool_t eclk_enabled;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  bool_t _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eclk_enabled_5 = 0;
+  # DEBUG eclk_enabled => eclk_enabled_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_6(D) + 2816;
+  _2 = (volatile uint32_t *) _1;
+  regval_8 ={v} *_2;
+  # DEBUG regval => regval_8
+  # DEBUG BEGIN_STMT
+  _3 = regval_8 & 1048576;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  eclk_enabled_9 = 1;
+  # DEBUG eclk_enabled => eclk_enabled_9
+
+  <bb 4> :
+  # eclk_enabled_4 = PHI <eclk_enabled_5(2), eclk_enabled_9(3)>
+  # DEBUG eclk_enabled => eclk_enabled_4
+  # DEBUG BEGIN_STMT
+  _10 = eclk_enabled_4;
+  return _10;
+
+}
+
+
+pfe_emac_cfg_disable_ts (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 2816;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 0;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_enable_ts (addr_t base_va, bool_t eclk, uint32_t i_clk_hz, uint32_t o_clk_hz)
+{
+  const uint32_t u32_addend;
+  const uint64_t u64_addend;
+  const uint8_t sns;
+  errno_t ret;
+  uint32_t regval;
+  uint32_t ss;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long long unsigned int _3;
+  long long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  int _7;
+  int _8;
+  long unsigned int _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  long unsigned int _12;
+  long long unsigned int _13;
+  long long unsigned int _14;
+  long long unsigned int _15;
+  unsigned int _16;
+  volatile uint32_t * _17;
+  unsigned int _18;
+  volatile uint32_t * _19;
+  unsigned int _20;
+  volatile uint32_t * _21;
+  long unsigned int _22;
+  unsigned int _23;
+  const uint32_t * _24;
+  unsigned int _25;
+  volatile uint32_t * _26;
+  unsigned int _27;
+  volatile uint32_t * _28;
+  unsigned int _29;
+  volatile uint32_t * _30;
+  unsigned int _31;
+  volatile uint32_t * _32;
+  unsigned int _33;
+  const uint32_t * _34;
+  long unsigned int iftmp.3_36;
+  long unsigned int iftmp.3_40;
+  long unsigned int iftmp.3_41;
+  errno_t _68;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ss_38 = 0;
+  # DEBUG ss => ss_38
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (eclk_39(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.3_41 = 1130243;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.3_40 = 81667;
+
+  <bb 5> :
+  # iftmp.3_36 = PHI <iftmp.3_41(3), iftmp.3_40(4)>
+  _1 = base_va_42(D) + 2816;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} iftmp.3_36;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (eclk_39(D) == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_67 = 0;
+  # DEBUG ret => ret_67
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (o_clk_hz_45(D) == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  if (i_clk_hz_46(D) == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid frequency value", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_emac_csr.c", 410, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_66 = 22;
+  # DEBUG ret => ret_66
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ss_47 = 1000000000 / o_clk_hz_45(D);
+  # DEBUG ss => ss_47
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = (long long unsigned int) o_clk_hz_45(D);
+  _4 = 256000000000 / _3;
+  sns_48 = (const uint8_t) _4;
+  # DEBUG sns => sns_48
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = ss_47 << 16;
+  _6 = _5 & 16711680;
+  _7 = (int) sns_48;
+  _8 = _7 << 8;
+  _9 = (long unsigned int) _8;
+  _10 = base_va_42(D) + 2820;
+  _11 = (volatile uint32_t *) _10;
+  _12 = _6 | _9;
+  *_11 ={v} _12;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = (long long unsigned int) o_clk_hz_45(D);
+  _14 = _13 << 32;
+  _15 = (long long unsigned int) i_clk_hz_46(D);
+  u64_addend_50 = _14 / _15;
+  # DEBUG u64_addend => u64_addend_50
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32_addend_51 = (const uint32_t) u64_addend_50;
+  # DEBUG u32_addend => u32_addend_51
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = base_va_42(D) + 2840;
+  _17 = (volatile uint32_t *) _16;
+  *_17 ={v} u32_addend_51;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = base_va_42(D) + 2816;
+  _19 = (volatile uint32_t *) _18;
+  regval_53 ={v} *_19;
+  # DEBUG regval => regval_53
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = base_va_42(D) + 2816;
+  _21 = (volatile uint32_t *) _20;
+  _22 = regval_53 | 32;
+  *_21 ={v} _22;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _23 = base_va_42(D) + 2816;
+  _24 = (const uint32_t *) _23;
+  ret_56 = reg_wait_for_clear (_24, 32, 10);
+  # DEBUG ret => ret_56
+  # DEBUG BEGIN_STMT
+  if (ret_56 == 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _25 = base_va_42(D) + 2832;
+  _26 = (volatile uint32_t *) _25;
+  *_26 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _27 = base_va_42(D) + 2836;
+  _28 = (volatile uint32_t *) _27;
+  *_28 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _29 = base_va_42(D) + 2816;
+  _30 = (volatile uint32_t *) _29;
+  regval_59 ={v} *_30;
+  # DEBUG regval => regval_59
+  # DEBUG BEGIN_STMT
+  regval_60 = regval_59 | 4;
+  # DEBUG regval => regval_60
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _31 = base_va_42(D) + 2816;
+  _32 = (volatile uint32_t *) _31;
+  *_32 ={v} regval_60;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _33 = base_va_42(D) + 2816;
+  _34 = (const uint32_t *) _33;
+  ret_63 = reg_wait_for_clear (_34, 4, 10);
+  # DEBUG ret => ret_63
+
+  <bb 12> :
+  # ret_35 = PHI <ret_67(6), ret_66(9), ret_56(10), ret_63(11)>
+  # DEBUG ret => ret_35
+  # DEBUG BEGIN_STMT
+  _68 = ret_35;
+  return _68;
+
+}
+
+
+pfe_emac_cfg_init (addr_t base_va, pfe_emac_mii_mode_t mode, pfe_emac_speed_t speed, pfe_emac_duplex_t duplex)
+{
+  errno_t ret;
+  uint32_t reg;
+  volatile uint32_t * base_va.0_1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  unsigned int _6;
+  volatile uint32_t * _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+  unsigned int _12;
+  volatile uint32_t * _13;
+  unsigned int _14;
+  volatile uint32_t * _15;
+  unsigned int _16;
+  volatile uint32_t * _17;
+  unsigned int _18;
+  volatile uint32_t * _19;
+  unsigned int _20;
+  volatile uint32_t * _21;
+  unsigned int _22;
+  volatile uint32_t * _23;
+  unsigned int _24;
+  volatile uint32_t * _25;
+  long unsigned int _26;
+  unsigned int _27;
+  volatile uint32_t * _28;
+  unsigned int _29;
+  volatile uint32_t * _30;
+  unsigned char _31;
+  volatile uint32_t * base_va.1_32;
+  unsigned int _33;
+  volatile uint32_t * _34;
+  unsigned int _35;
+  volatile uint32_t * _36;
+  unsigned char _37;
+  unsigned int _38;
+  volatile uint32_t * _39;
+  unsigned int _40;
+  volatile uint32_t * _41;
+  unsigned int _42;
+  volatile uint32_t * _43;
+  unsigned int _44;
+  volatile uint32_t * _45;
+  int _46;
+  int _47;
+  int _48;
+  errno_t _94;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_emac_cfg_clear_registers (base_va_54(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  base_va.0_1 = (volatile uint32_t *) base_va_54(D);
+  *base_va.0_1 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = base_va_54(D) + 768;
+  _3 = (volatile uint32_t *) _2;
+  *_3 ={v} 2147549166;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_54(D) + 772;
+  _5 = (volatile uint32_t *) _4;
+  *_5 ={v} 3721182122;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = base_va_54(D) + 8;
+  _7 = (volatile uint32_t *) _6;
+  *_7 ={v} 1094;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = base_va_54(D) + 112;
+  _9 = (volatile uint32_t *) _8;
+  reg_60 ={v} *_9;
+  # DEBUG reg => reg_60
+  # DEBUG BEGIN_STMT
+  reg_61 = reg_60 & 4294967293;
+  # DEBUG reg => reg_61
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = base_va_54(D) + 112;
+  _11 = (volatile uint32_t *) _10;
+  *_11 ={v} reg_61;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = base_va_54(D) + 180;
+  _13 = (volatile uint32_t *) _12;
+  *_13 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = base_va_54(D) + 1804;
+  _15 = (volatile uint32_t *) _14;
+  *_15 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = base_va_54(D) + 1808;
+  _17 = (volatile uint32_t *) _16;
+  *_17 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = base_va_54(D) + 2048;
+  _19 = (volatile uint32_t *) _18;
+  *_19 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = base_va_54(D) + 3264;
+  _21 = (volatile uint32_t *) _20;
+  *_21 ={v} 31;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _22 = base_va_54(D) + 332;
+  _23 = (volatile uint32_t *) _22;
+  reg_68 ={v} *_23;
+  # DEBUG reg => reg_68
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = base_va_54(D) + 332;
+  _25 = (volatile uint32_t *) _24;
+  _26 = reg_68 | 2228524;
+  *_25 ={v} _26;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _27 = base_va_54(D) + 3296;
+  _28 = (volatile uint32_t *) _27;
+  *_28 ={v} 5;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _29 = base_va_54(D) + 328;
+  _30 = (volatile uint32_t *) _29;
+  *_30 ={v} 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  reg_72 = 146415616;
+  # DEBUG reg => reg_72
+  # DEBUG BEGIN_STMT
+  _31 = pfe_feature_mgr_is_available ("jumbo_frames");
+  if (_31 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  reg_75 = reg_72 | 65536;
+  # DEBUG reg => reg_75
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  reg_74 = reg_72;
+  # DEBUG reg => reg_74
+
+  <bb 5> :
+  # reg_49 = PHI <reg_75(3), reg_74(4)>
+  # DEBUG reg => reg_49
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  base_va.1_32 = (volatile uint32_t *) base_va_54(D);
+  *base_va.1_32 ={v} reg_49;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _33 = base_va_54(D) + 3376;
+  _34 = (volatile uint32_t *) _33;
+  *_34 ={v} 16;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _35 = base_va_54(D) + 3328;
+  _36 = (volatile uint32_t *) _35;
+  *_36 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _37 = pfe_feature_mgr_is_available ("jumbo_frames");
+  if (_37 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _38 = base_va_54(D) + 4;
+  _39 = (volatile uint32_t *) _38;
+  *_39 ={v} 9022;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _40 = base_va_54(D) + 4;
+  _41 = (volatile uint32_t *) _40;
+  *_41 ={v} 1522;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _42 = base_va_54(D) + 2816;
+  _43 = (volatile uint32_t *) _42;
+  *_43 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _44 = base_va_54(D) + 2820;
+  _45 = (volatile uint32_t *) _44;
+  *_45 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _46 = pfe_emac_cfg_set_speed (base_va_54(D), speed_84(D));
+  if (_46 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret_93 = 22;
+  # DEBUG ret => ret_93
+  goto <bb 15>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _47 = pfe_emac_cfg_set_mii_mode (base_va_54(D), mode_86(D));
+  if (_47 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  ret_92 = 22;
+  # DEBUG ret => ret_92
+  goto <bb 15>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _48 = pfe_emac_cfg_set_duplex (base_va_54(D), duplex_88(D));
+  if (_48 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  ret_91 = 22;
+  # DEBUG ret => ret_91
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  ret_90 = 0;
+  # DEBUG ret => ret_90
+
+  <bb 15> :
+  # ret_50 = PHI <ret_93(9), ret_92(11), ret_91(13), ret_90(14)>
+  # DEBUG ret => ret_50
+  # DEBUG BEGIN_STMT
+  _94 = ret_50;
+  return _94;
+
+}
+
+
+pfe_emac_cfg_pre_init (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 3296;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 1;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_emac_cfg_clear_registers (addr_t base_va)
+{
+  uint8_t slot;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  volatile uint32_t * _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  volatile uint32_t * _14;
+  unsigned char slot.2_15;
+  unsigned int _16;
+  volatile uint32_t * _17;
+  unsigned int _18;
+  volatile uint32_t * _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_22(D) + 768;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 2147549183;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = base_va_22(D) + 772;
+  _4 = (volatile uint32_t *) _3;
+  *_4 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  slot_26 = 1;
+  # DEBUG slot => slot_26
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = (unsigned int) slot_20;
+  _6 = _5 + 96;
+  _7 = _6 * 8;
+  _8 = base_va_22(D) + _7;
+  _9 = (volatile uint32_t *) _8;
+  *_9 ={v} 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = (unsigned int) slot_20;
+  _11 = _10 * 8;
+  _12 = base_va_22(D) + _11;
+  _13 = _12 + 772;
+  _14 = (volatile uint32_t *) _13;
+  *_14 ={v} 4294967295;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  slot.2_15 = slot_20;
+  slot_32 = slot.2_15 + 1;
+  # DEBUG slot => slot_32
+
+  <bb 4> :
+  # slot_20 = PHI <slot_26(2), slot_32(3)>
+  # DEBUG slot => slot_20
+  # DEBUG BEGIN_STMT
+  if (slot_20 <= 7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = base_va_22(D) + 16;
+  _17 = (volatile uint32_t *) _16;
+  *_17 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = base_va_22(D) + 20;
+  _19 = (volatile uint32_t *) _18;
+  *_19 ={v} 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_time_udelay (10);
+  return;
+
+}
+
+
+pfe_emac_get_emac_err_src_index (pfe_hm_evt_t event)
+{
+  uint8_t index;
+  uint8_t _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  index_3 = 255;
+  # DEBUG index => index_3
+  # DEBUG BEGIN_STMT
+  switch (event_4(D)) <default: <L13> [INV], case 31: <L0> [INV], case 32: <L2> [INV], case 34: <L0> [INV], case 35: <L2> [INV], case 36 ... 39: <L4> [INV], case 40 ... 44: <L8> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  index_9 = 0;
+  # DEBUG index => index_9
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  index_8 = 1;
+  # DEBUG index => index_8
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  index_7 = 2;
+  # DEBUG index => index_7
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  index_5 = 3;
+  # DEBUG index => index_5
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Invalid event to get index", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_emac_csr.c", 181, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # index_1 = PHI <index_9(3), index_8(4), index_7(5), index_5(6), index_3(7)>
+  # DEBUG index => index_1
+  # DEBUG BEGIN_STMT
+  _12 = index_1;
+  return _12;
+
+}
+
+
+crc32_reversed (const uint8_t * const data, const uint32_t len)
+{
+  uint32_t jj;
+  uint32_t ii;
+  uint32_t res;
+  const uint32_t poly;
+  const uint8_t * _1;
+  unsigned char _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  uint32_t _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  poly_11 = 3988292384;
+  # DEBUG poly => poly_11
+  # DEBUG BEGIN_STMT
+  res_12 = 4294967295;
+  # DEBUG res => res_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_13 = 0;
+  # DEBUG ii => ii_13
+  goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = data_18(D) + ii_9;
+  _2 = *_1;
+  _3 = (long unsigned int) _2;
+  res_19 = res_8 ^ _3;
+  # DEBUG res => res_19
+  # DEBUG BEGIN_STMT
+  jj_20 = 0;
+  # DEBUG jj => jj_20
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = res_7 & 1;
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  res_23 = res_7 >> 1;
+  # DEBUG res => res_23
+  # DEBUG BEGIN_STMT
+  res_24 = res_23 ^ 3988292384;
+  # DEBUG res => res_24
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  res_22 = res_7 >> 1;
+  # DEBUG res => res_22
+
+  <bb 7> :
+  # res_6 = PHI <res_24(5), res_22(6)>
+  # DEBUG res => res_6
+  # DEBUG BEGIN_STMT
+  jj_25 = jj_10 + 1;
+  # DEBUG jj => jj_25
+
+  <bb 8> :
+  # res_7 = PHI <res_19(3), res_6(7)>
+  # jj_10 = PHI <jj_20(3), jj_25(7)>
+  # DEBUG jj => jj_10
+  # DEBUG res => res_7
+  # DEBUG BEGIN_STMT
+  if (jj_10 <= 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ii_21 = ii_9 + 1;
+  # DEBUG ii => ii_21
+
+  <bb 10> :
+  # res_8 = PHI <res_12(2), res_7(9)>
+  # ii_9 = PHI <ii_13(2), ii_21(9)>
+  # DEBUG ii => ii_9
+  # DEBUG res => res_8
+  # DEBUG BEGIN_STMT
+  if (ii_9 < len_14(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _5 = ~res_8;
+  _17 = reverse_bits_32 (_5);
+  return _17;
+
+}
+
+
+reverse_bits_32 (uint32_t u32Data)
+{
+  uint32_t u32RevData;
+  uint32_t u32DataTemp;
+  uint8_t u8Index;
+  long unsigned int _1;
+  long unsigned int _2;
+  unsigned char u8Index.17_3;
+  uint32_t _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  u32DataTemp_8 = u32Data_7(D);
+  # DEBUG u32DataTemp => u32DataTemp_8
+  # DEBUG BEGIN_STMT
+  u32RevData_9 = 0;
+  # DEBUG u32RevData => u32RevData_9
+  # DEBUG BEGIN_STMT
+  u8Index_10 = 0;
+  # DEBUG u8Index => u8Index_10
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = u32RevData_6 << 1;
+  _2 = u32DataTemp_5 & 1;
+  u32RevData_13 = _1 | _2;
+  # DEBUG u32RevData => u32RevData_13
+  # DEBUG BEGIN_STMT
+  u32DataTemp_14 = u32DataTemp_5 >> 1;
+  # DEBUG u32DataTemp => u32DataTemp_14
+  # DEBUG BEGIN_STMT
+  u8Index.17_3 = u8Index_4;
+  u8Index_15 = u8Index.17_3 + 1;
+  # DEBUG u8Index => u8Index_15
+
+  <bb 4> :
+  # u8Index_4 = PHI <u8Index_10(2), u8Index_15(3)>
+  # u32DataTemp_5 = PHI <u32DataTemp_8(2), u32DataTemp_14(3)>
+  # u32RevData_6 = PHI <u32RevData_9(2), u32RevData_13(3)>
+  # DEBUG u32RevData => u32RevData_6
+  # DEBUG u32DataTemp => u32DataTemp_5
+  # DEBUG u8Index => u8Index_4
+  # DEBUG BEGIN_STMT
+  if (u8Index_4 <= 31)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _11 = u32RevData_6;
+  return _11;
+
+}
+
+

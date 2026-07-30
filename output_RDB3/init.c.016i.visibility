@@ -1,0 +1,146 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: lwip_init
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+sys_timeouts_init/10 (sys_timeouts_init) @0665c1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: lwip_init/1 
+  Calls: 
+dns_init/9 (dns_init) @0665c0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: lwip_init/1 
+  Calls: 
+igmp_init/8 (igmp_init) @0665c000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: lwip_init/1 
+  Calls: 
+tcp_init/7 (tcp_init) @071ee460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: lwip_init/1 
+  Calls: 
+udp_init/6 (udp_init) @071eeee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: lwip_init/1 
+  Calls: 
+netif_init/5 (netif_init) @071eee00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: lwip_init/1 
+  Calls: 
+memp_init/4 (memp_init) @071eed20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: lwip_init/1 
+  Calls: 
+mem_init/3 (mem_init) @071eec40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: lwip_init/1 
+  Calls: 
+stats_init/2 (stats_init) @071eeb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: lwip_init/1 
+  Calls: 
+lwip_init/1 (lwip_init) @071ee700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: sys_timeouts_init/10 dns_init/9 igmp_init/8 tcp_init/7 udp_init/6 netif_init/5 memp_init/4 mem_init/3 stats_init/2 
+lwip_init ()
+{
+  int a;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  a = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  stats_init ();
+  # DEBUG BEGIN_STMT
+  mem_init ();
+  # DEBUG BEGIN_STMT
+  memp_init ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  netif_init ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  udp_init ();
+  # DEBUG BEGIN_STMT
+  tcp_init ();
+  # DEBUG BEGIN_STMT
+  igmp_init ();
+  # DEBUG BEGIN_STMT
+  dns_init ();
+  # DEBUG BEGIN_STMT
+  sys_timeouts_init ();
+  a = {CLOBBER};
+  return;
+
+}
+
+

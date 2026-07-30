@@ -1,0 +1,3655 @@
+vQueueWaitForMessageRestricted (struct QueueDefinition * xQueue, TickType_t xTicksToWait, const BaseType_t xWaitIndefinitely)
+{
+  struct Queue_t * const pxQueue;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->cRxLock;
+  if (_1 == -1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cRxLock = 0;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pxQueue->cTxLock;
+  if (_2 == -1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cTxLock = 0;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  _3 = pxQueue->uxMessagesWaiting;
+  if (_3 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _4 = &pxQueue->xTasksWaitingToReceive;
+  vTaskPlaceOnEventListRestricted (_4, xTicksToWait, xWaitIndefinitely);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  return;
+
+}
+
+
+vQueueUnregisterQueue (struct QueueDefinition * xQueue)
+{
+  UBaseType_t ux;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ux = 0;
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = xQueueRegistry[ux].xHandle;
+  if (xQueue == _1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  xQueueRegistry[ux].pcQueueName = 0B;
+  # DEBUG BEGIN_STMT
+  xQueueRegistry[ux].xHandle = 0B;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ux = ux + 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (ux <= 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  return;
+
+}
+
+
+pcQueueGetName (struct QueueDefinition * xQueue)
+{
+  const char * pcReturn;
+  UBaseType_t ux;
+  const char * D.7269;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcReturn = 0B;
+  # DEBUG BEGIN_STMT
+  if (xQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ux = 0;
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = xQueueRegistry[ux].xHandle;
+  if (xQueue == _1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  pcReturn = xQueueRegistry[ux].pcQueueName;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ux = ux + 1;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (ux <= 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.7269 = pcReturn;
+  return D.7269;
+
+}
+
+
+vQueueAddToRegistry (struct QueueDefinition * xQueue, const char * pcQueueName)
+{
+  struct QueueRegistryItem_t * pxEntryToWrite;
+  UBaseType_t ux;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxEntryToWrite = 0B;
+  # DEBUG BEGIN_STMT
+  if (pcQueueName != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ux = 0;
+  goto <bb 13>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _1 = xQueueRegistry[ux].xHandle;
+  if (xQueue == _1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  pxEntryToWrite = &xQueueRegistry[ux];
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (pxEntryToWrite == 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  _2 = xQueueRegistry[ux].pcQueueName;
+  if (_2 == 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  pxEntryToWrite = &xQueueRegistry[ux];
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ux = ux + 1;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  if (ux <= 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  if (pxEntryToWrite != 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  pxEntryToWrite->pcQueueName = pcQueueName;
+  # DEBUG BEGIN_STMT
+  pxEntryToWrite->xHandle = xQueue;
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+xQueueIsQueueFullFromISR (struct QueueDefinition * const xQueue)
+{
+  struct Queue_t * const pxQueue;
+  BaseType_t xReturn;
+  BaseType_t D.7250;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->uxMessagesWaiting;
+  _2 = pxQueue->uxLength;
+  if (_1 == _2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.7250 = xReturn;
+  return D.7250;
+
+}
+
+
+prvIsQueueFull (const struct Queue_t * pxQueue)
+{
+  BaseType_t xReturn;
+  BaseType_t D.6937;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->uxMessagesWaiting;
+  _2 = pxQueue->uxLength;
+  if (_1 == _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  D.6937 = xReturn;
+  return D.6937;
+
+}
+
+
+xQueueIsQueueEmptyFromISR (struct QueueDefinition * const xQueue)
+{
+  struct Queue_t * const pxQueue;
+  BaseType_t xReturn;
+  BaseType_t D.7243;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->uxMessagesWaiting;
+  if (_1 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.7243 = xReturn;
+  return D.7243;
+
+}
+
+
+prvIsQueueEmpty (const struct Queue_t * pxQueue)
+{
+  BaseType_t xReturn;
+  BaseType_t D.7070;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->uxMessagesWaiting;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  D.7070 = xReturn;
+  return D.7070;
+
+}
+
+
+prvUnlockQueue (struct Queue_t * const pxQueue)
+{
+  int8_t cRxLock;
+  int8_t cTxLock;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  cTxLock = pxQueue->cTxLock;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->xTasksWaitingToReceive.uxNumberOfItems;
+  if (_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = &pxQueue->xTasksWaitingToReceive;
+  _3 = xTaskRemoveFromEventList (_2);
+  if (_3 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  vTaskMissedYield ();
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  cTxLock.6_4 = (unsigned char) cTxLock;
+  _5 = cTxLock.6_4 + 255;
+  cTxLock = (int8_t) _5;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (cTxLock > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cTxLock = -1;
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  cRxLock = pxQueue->cRxLock;
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _6 = pxQueue->xTasksWaitingToSend.uxNumberOfItems;
+  if (_6 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _7 = &pxQueue->xTasksWaitingToSend;
+  _8 = xTaskRemoveFromEventList (_7);
+  if (_8 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  vTaskMissedYield ();
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  cRxLock.7_9 = (unsigned char) cRxLock;
+  _10 = cRxLock.7_9 + 255;
+  cRxLock = (int8_t) _10;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  if (cRxLock > 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cRxLock = -1;
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  return;
+
+}
+
+
+prvCopyDataFromQueue (struct Queue_t * const pxQueue, void * const pvBuffer)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->uxItemSize;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = pxQueue->u.xQueue.pcReadFrom;
+  _3 = pxQueue->uxItemSize;
+  _4 = _2 + _3;
+  pxQueue->u.xQueue.pcReadFrom = _4;
+  # DEBUG BEGIN_STMT
+  _5 = pxQueue->u.xQueue.pcReadFrom;
+  _6 = pxQueue->u.xQueue.pcTail;
+  if (_5 >= _6)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _7 = pxQueue->pcHead;
+  pxQueue->u.xQueue.pcReadFrom = _7;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = pxQueue->u.xQueue.pcReadFrom;
+  _9 = pxQueue->uxItemSize;
+  memcpy (pvBuffer, _8, _9);
+
+  <bb 6> :
+  return;
+
+}
+
+
+prvCopyDataToQueue (struct Queue_t * const pxQueue, const void * pvItemToQueue, const BaseType_t xPosition)
+{
+  UBaseType_t uxMessagesWaiting;
+  BaseType_t xReturn;
+  BaseType_t D.6932;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  uxMessagesWaiting = pxQueue->uxMessagesWaiting;
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->uxItemSize;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = pxQueue->pcHead;
+  if (_2 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = pxQueue->u.xSemaphore.xMutexHolder;
+  xReturn = xTaskPriorityDisinherit (_3);
+  # DEBUG BEGIN_STMT
+  pxQueue->u.xSemaphore.xMutexHolder = 0B;
+  goto <bb 13>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (xPosition == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _4 = pxQueue->pcWriteTo;
+  _5 = pxQueue->uxItemSize;
+  memcpy (_4, pvItemToQueue, _5);
+  # DEBUG BEGIN_STMT
+  _6 = pxQueue->pcWriteTo;
+  _7 = pxQueue->uxItemSize;
+  _8 = _6 + _7;
+  pxQueue->pcWriteTo = _8;
+  # DEBUG BEGIN_STMT
+  _9 = pxQueue->pcWriteTo;
+  _10 = pxQueue->u.xQueue.pcTail;
+  if (_9 >= _10)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _11 = pxQueue->pcHead;
+  pxQueue->pcWriteTo = _11;
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _12 = pxQueue->u.xQueue.pcReadFrom;
+  _13 = pxQueue->uxItemSize;
+  memcpy (_12, pvItemToQueue, _13);
+  # DEBUG BEGIN_STMT
+  _14 = pxQueue->u.xQueue.pcReadFrom;
+  _15 = pxQueue->uxItemSize;
+  _16 = -_15;
+  _17 = _14 + _16;
+  pxQueue->u.xQueue.pcReadFrom = _17;
+  # DEBUG BEGIN_STMT
+  _18 = pxQueue->u.xQueue.pcReadFrom;
+  _19 = pxQueue->pcHead;
+  if (_18 < _19)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _20 = pxQueue->u.xQueue.pcTail;
+  _21 = pxQueue->uxItemSize;
+  _22 = -_21;
+  _23 = _20 + _22;
+  pxQueue->u.xQueue.pcReadFrom = _23;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xPosition == 2)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (uxMessagesWaiting != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  uxMessagesWaiting = uxMessagesWaiting + 4294967295;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = uxMessagesWaiting + 1;
+  pxQueue->uxMessagesWaiting = _24;
+  # DEBUG BEGIN_STMT
+  D.6932 = xReturn;
+  return D.6932;
+
+}
+
+
+prvGetDisinheritPriorityAfterTimeout (const struct Queue_t * const pxQueue)
+{
+  UBaseType_t uxHighestPriorityOfWaitingTasks;
+  UBaseType_t D.7127;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->xTasksWaitingToReceive.uxNumberOfItems;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = pxQueue->xTasksWaitingToReceive.xListEnd.pxNext;
+  _3 = _2->xItemValue;
+  uxHighestPriorityOfWaitingTasks = 10 - _3;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  uxHighestPriorityOfWaitingTasks = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.7127 = uxHighestPriorityOfWaitingTasks;
+  return D.7127;
+
+}
+
+
+ucQueueGetQueueType (struct QueueDefinition * xQueue)
+{
+  uint8_t D.7236;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  D.7236 = MEM[(struct Queue_t *)xQueue].ucQueueType;
+  return D.7236;
+
+}
+
+
+vQueueSetQueueNumber (struct QueueDefinition * xQueue, UBaseType_t uxQueueNumber)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  MEM[(struct Queue_t *)xQueue].uxQueueNumber = uxQueueNumber;
+  return;
+
+}
+
+
+uxQueueGetQueueNumber (struct QueueDefinition * xQueue)
+{
+  UBaseType_t D.7234;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  D.7234 = MEM[(struct Queue_t *)xQueue].uxQueueNumber;
+  return D.7234;
+
+}
+
+
+vQueueDelete (struct QueueDefinition * xQueue)
+{
+  struct Queue_t * const pxQueue;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vQueueUnregisterQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  vPortFree (pxQueue);
+  return;
+
+}
+
+
+uxQueueMessagesWaitingFromISR (struct QueueDefinition * const xQueue)
+{
+  struct Queue_t * const pxQueue;
+  UBaseType_t uxReturn;
+  UBaseType_t D.7230;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  uxReturn = pxQueue->uxMessagesWaiting;
+  # DEBUG BEGIN_STMT
+  D.7230 = uxReturn;
+  return D.7230;
+
+}
+
+
+uxQueueSpacesAvailable (struct QueueDefinition * const xQueue)
+{
+  struct Queue_t * const pxQueue;
+  UBaseType_t uxReturn;
+  UBaseType_t D.7226;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->uxLength;
+  _2 = pxQueue->uxMessagesWaiting;
+  uxReturn = _1 - _2;
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  D.7226 = uxReturn;
+  return D.7226;
+
+}
+
+
+uxQueueMessagesWaiting (struct QueueDefinition * const xQueue)
+{
+  UBaseType_t uxReturn;
+  UBaseType_t D.7222;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  uxReturn = MEM[(struct Queue_t *)xQueue].uxMessagesWaiting;
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  D.7222 = uxReturn;
+  return D.7222;
+
+}
+
+
+xQueuePeekFromISR (struct QueueDefinition * xQueue, void * const pvBuffer)
+{
+  struct Queue_t * const pxQueue;
+  int8_t * pcOriginalReadPosition;
+  UBaseType_t uxSavedInterruptStatus;
+  BaseType_t xReturn;
+  BaseType_t D.7218;
+  int iftmp.29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pvBuffer != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _1 = pxQueue->uxItemSize;
+  if (_1 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.29 = 1;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.29 = 0;
+
+  <bb 9> :
+  if (iftmp.29 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = pxQueue->uxItemSize;
+  if (_2 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortValidateInterruptPriority ();
+  # DEBUG BEGIN_STMT
+  uxSavedInterruptStatus = ulPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  _3 = pxQueue->uxMessagesWaiting;
+  if (_3 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcOriginalReadPosition = pxQueue->u.xQueue.pcReadFrom;
+  # DEBUG BEGIN_STMT
+  prvCopyDataFromQueue (pxQueue, pvBuffer);
+  # DEBUG BEGIN_STMT
+  pxQueue->u.xQueue.pcReadFrom = pcOriginalReadPosition;
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (uxSavedInterruptStatus);
+  # DEBUG BEGIN_STMT
+  D.7218 = xReturn;
+  return D.7218;
+
+}
+
+
+xQueueReceiveFromISR (struct QueueDefinition * xQueue, void * const pvBuffer, BaseType_t * const pxHigherPriorityTaskWoken)
+{
+  const int8_t cRxLock;
+  const UBaseType_t uxMessagesWaiting;
+  struct Queue_t * const pxQueue;
+  UBaseType_t uxSavedInterruptStatus;
+  BaseType_t xReturn;
+  BaseType_t D.7202;
+  int iftmp.27;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pvBuffer != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _1 = pxQueue->uxItemSize;
+  if (_1 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.27 = 1;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.27 = 0;
+
+  <bb 9> :
+  if (iftmp.27 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortValidateInterruptPriority ();
+  # DEBUG BEGIN_STMT
+  uxSavedInterruptStatus = ulPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  uxMessagesWaiting = pxQueue->uxMessagesWaiting;
+  # DEBUG BEGIN_STMT
+  if (uxMessagesWaiting != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  cRxLock = pxQueue->cRxLock;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  prvCopyDataFromQueue (pxQueue, pvBuffer);
+  # DEBUG BEGIN_STMT
+  _2 = uxMessagesWaiting + 4294967295;
+  pxQueue->uxMessagesWaiting = _2;
+  # DEBUG BEGIN_STMT
+  if (cRxLock == -1)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _3 = pxQueue->xTasksWaitingToSend.uxNumberOfItems;
+  if (_3 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _4 = &pxQueue->xTasksWaitingToSend;
+  _5 = xTaskRemoveFromEventList (_4);
+  if (_5 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  if (pxHigherPriorityTaskWoken != 0B)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  *pxHigherPriorityTaskWoken = 1;
+  goto <bb 22>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  if (cRxLock == 127)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 20>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  cRxLock.28_6 = (unsigned char) cRxLock;
+  _7 = cRxLock.28_6 + 1;
+  _8 = (signed char) _7;
+  pxQueue->cRxLock = _8;
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 24>; [INV]
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (uxSavedInterruptStatus);
+  # DEBUG BEGIN_STMT
+  D.7202 = xReturn;
+  return D.7202;
+
+}
+
+
+xQueuePeek (struct QueueDefinition * xQueue, void * const pvBuffer, TickType_t xTicksToWait)
+{
+  const UBaseType_t uxMessagesWaiting;
+  struct Queue_t * const pxQueue;
+  int8_t * pcOriginalReadPosition;
+  struct TimeOut_t xTimeOut;
+  BaseType_t xEntryTimeSet;
+  BaseType_t D.7153;
+  int iftmp.23;
+  int iftmp.22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  xEntryTimeSet = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pvBuffer != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _1 = pxQueue->uxItemSize;
+  if (_1 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.22 = 1;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.22 = 0;
+
+  <bb 9> :
+  if (iftmp.22 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = xTaskGetSchedulerState ();
+  if (_2 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  xTicksToWait.24_3 = xTicksToWait;
+  if (xTicksToWait.24_3 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  iftmp.23 = 1;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  iftmp.23 = 0;
+
+  <bb 16> :
+  if (iftmp.23 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  uxMessagesWaiting = pxQueue->uxMessagesWaiting;
+  # DEBUG BEGIN_STMT
+  if (uxMessagesWaiting != 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  pcOriginalReadPosition = pxQueue->u.xQueue.pcReadFrom;
+  # DEBUG BEGIN_STMT
+  prvCopyDataFromQueue (pxQueue, pvBuffer);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue->u.xQueue.pcReadFrom = pcOriginalReadPosition;
+  # DEBUG BEGIN_STMT
+  _4 = pxQueue->xTasksWaitingToReceive.uxNumberOfItems;
+  if (_4 != 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  _5 = &pxQueue->xTasksWaitingToReceive;
+  _6 = xTaskRemoveFromEventList (_5);
+  if (_6 != 0)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  _7 = 3758157060B;
+  *_7 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  D.7153 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 39>; [INV]
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  xTicksToWait.25_8 = xTicksToWait;
+  if (xTicksToWait.25_8 == 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7153 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 39>; [INV]
+
+  <bb 26> :
+  # DEBUG BEGIN_STMT
+  if (xEntryTimeSet == 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 27> :
+  # DEBUG BEGIN_STMT
+  vTaskInternalSetTimeOutState (&xTimeOut);
+  # DEBUG BEGIN_STMT
+  xEntryTimeSet = 1;
+
+  <bb 28> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  vTaskSuspendAll ();
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _9 = pxQueue->cRxLock;
+  if (_9 == -1)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 29> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cRxLock = 0;
+
+  <bb 30> :
+  # DEBUG BEGIN_STMT
+  _10 = pxQueue->cTxLock;
+  if (_10 == -1)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 31> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cTxLock = 0;
+
+  <bb 32> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  _11 = xTaskCheckForTimeOut (&xTimeOut, &xTicksToWait);
+  if (_11 == 0)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 33> :
+  # DEBUG BEGIN_STMT
+  _12 = prvIsQueueEmpty (pxQueue);
+  if (_12 != 0)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 34> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = &pxQueue->xTasksWaitingToReceive;
+  xTicksToWait.26_14 = xTicksToWait;
+  vTaskPlaceOnEventList (_13, xTicksToWait.26_14);
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  _15 = xTaskResumeAll ();
+  if (_15 == 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 35> :
+  # DEBUG BEGIN_STMT
+  _16 = 3758157060B;
+  *_16 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  goto <bb 19>; [INV]
+
+  <bb 36> :
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  goto <bb 19>; [INV]
+
+  <bb 37> :
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  # DEBUG BEGIN_STMT
+  _17 = prvIsQueueEmpty (pxQueue);
+  if (_17 != 0)
+    goto <bb 38>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 38> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7153 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 39> :
+  xTimeOut = {CLOBBER};
+  return D.7153;
+
+}
+
+
+xQueueSemaphoreTake (struct QueueDefinition * xQueue, TickType_t xTicksToWait)
+{
+  UBaseType_t uxHighestWaitingPriority;
+  const UBaseType_t uxSemaphoreCount;
+  BaseType_t xInheritanceOccurred;
+  struct Queue_t * const pxQueue;
+  struct TimeOut_t xTimeOut;
+  BaseType_t xEntryTimeSet;
+  BaseType_t D.7094;
+  int iftmp.18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  xEntryTimeSet = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  xInheritanceOccurred = 0;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->uxItemSize;
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = xTaskGetSchedulerState ();
+  if (_2 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  xTicksToWait.19_3 = xTicksToWait;
+  if (xTicksToWait.19_3 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.18 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.18 = 0;
+
+  <bb 12> :
+  if (iftmp.18 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  uxSemaphoreCount = pxQueue->uxMessagesWaiting;
+  # DEBUG BEGIN_STMT
+  if (uxSemaphoreCount != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = uxSemaphoreCount + 4294967295;
+  pxQueue->uxMessagesWaiting = _4;
+  # DEBUG BEGIN_STMT
+  _5 = pxQueue->pcHead;
+  if (_5 == 0B)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  _6 = pvTaskIncrementMutexHeldCount ();
+  pxQueue->u.xSemaphore.xMutexHolder = _6;
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = pxQueue->xTasksWaitingToSend.uxNumberOfItems;
+  if (_7 != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  _8 = &pxQueue->xTasksWaitingToSend;
+  _9 = xTaskRemoveFromEventList (_8);
+  if (_9 != 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  _10 = 3758157060B;
+  *_10 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  D.7094 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 44>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  xTicksToWait.20_11 = xTicksToWait;
+  if (xTicksToWait.20_11 == 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  if (xInheritanceOccurred != 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 25>; [INV]
+
+  <bb 26> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7094 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 44>; [INV]
+
+  <bb 27> :
+  # DEBUG BEGIN_STMT
+  if (xEntryTimeSet == 0)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 28> :
+  # DEBUG BEGIN_STMT
+  vTaskInternalSetTimeOutState (&xTimeOut);
+  # DEBUG BEGIN_STMT
+  xEntryTimeSet = 1;
+
+  <bb 29> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  vTaskSuspendAll ();
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _12 = pxQueue->cRxLock;
+  if (_12 == -1)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 30> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cRxLock = 0;
+
+  <bb 31> :
+  # DEBUG BEGIN_STMT
+  _13 = pxQueue->cTxLock;
+  if (_13 == -1)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 32> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cTxLock = 0;
+
+  <bb 33> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  _14 = xTaskCheckForTimeOut (&xTimeOut, &xTicksToWait);
+  if (_14 == 0)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 40>; [INV]
+
+  <bb 34> :
+  # DEBUG BEGIN_STMT
+  _15 = prvIsQueueEmpty (pxQueue);
+  if (_15 != 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 35> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _16 = pxQueue->pcHead;
+  if (_16 == 0B)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 36> :
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _17 = pxQueue->u.xSemaphore.xMutexHolder;
+  xInheritanceOccurred = xTaskPriorityInherit (_17);
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+
+  <bb 37> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = &pxQueue->xTasksWaitingToReceive;
+  xTicksToWait.21_19 = xTicksToWait;
+  vTaskPlaceOnEventList (_18, xTicksToWait.21_19);
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  _20 = xTaskResumeAll ();
+  if (_20 == 0)
+    goto <bb 38>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 38> :
+  # DEBUG BEGIN_STMT
+  _21 = 3758157060B;
+  *_21 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 39> :
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  goto <bb 15>; [INV]
+
+  <bb 40> :
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  # DEBUG BEGIN_STMT
+  _22 = prvIsQueueEmpty (pxQueue);
+  if (_22 != 0)
+    goto <bb 41>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 41> :
+  # DEBUG BEGIN_STMT
+  if (xInheritanceOccurred != 0)
+    goto <bb 42>; [INV]
+  else
+    goto <bb 43>; [INV]
+
+  <bb 42> :
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  uxHighestWaitingPriority = prvGetDisinheritPriorityAfterTimeout (pxQueue);
+  # DEBUG BEGIN_STMT
+  _23 = pxQueue->u.xSemaphore.xMutexHolder;
+  vTaskPriorityDisinheritAfterTimeout (_23, uxHighestWaitingPriority);
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+
+  <bb 43> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7094 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 44> :
+  xTimeOut = {CLOBBER};
+  return D.7094;
+
+}
+
+
+xQueueReceive (struct QueueDefinition * xQueue, void * const pvBuffer, TickType_t xTicksToWait)
+{
+  const UBaseType_t uxMessagesWaiting;
+  struct Queue_t * const pxQueue;
+  struct TimeOut_t xTimeOut;
+  BaseType_t xEntryTimeSet;
+  BaseType_t D.7039;
+  int iftmp.14;
+  int iftmp.13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  xEntryTimeSet = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pvBuffer != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _1 = pxQueue->uxItemSize;
+  if (_1 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.13 = 1;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.13 = 0;
+
+  <bb 9> :
+  if (iftmp.13 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = xTaskGetSchedulerState ();
+  if (_2 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  xTicksToWait.15_3 = xTicksToWait;
+  if (xTicksToWait.15_3 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  iftmp.14 = 1;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  iftmp.14 = 0;
+
+  <bb 16> :
+  if (iftmp.14 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  uxMessagesWaiting = pxQueue->uxMessagesWaiting;
+  # DEBUG BEGIN_STMT
+  if (uxMessagesWaiting != 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  prvCopyDataFromQueue (pxQueue, pvBuffer);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = uxMessagesWaiting + 4294967295;
+  pxQueue->uxMessagesWaiting = _4;
+  # DEBUG BEGIN_STMT
+  _5 = pxQueue->xTasksWaitingToSend.uxNumberOfItems;
+  if (_5 != 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  _6 = &pxQueue->xTasksWaitingToSend;
+  _7 = xTaskRemoveFromEventList (_6);
+  if (_7 != 0)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  _8 = 3758157060B;
+  *_8 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  D.7039 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 39>; [INV]
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  xTicksToWait.16_9 = xTicksToWait;
+  if (xTicksToWait.16_9 == 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7039 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 39>; [INV]
+
+  <bb 26> :
+  # DEBUG BEGIN_STMT
+  if (xEntryTimeSet == 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 27> :
+  # DEBUG BEGIN_STMT
+  vTaskInternalSetTimeOutState (&xTimeOut);
+  # DEBUG BEGIN_STMT
+  xEntryTimeSet = 1;
+
+  <bb 28> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  vTaskSuspendAll ();
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _10 = pxQueue->cRxLock;
+  if (_10 == -1)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 29> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cRxLock = 0;
+
+  <bb 30> :
+  # DEBUG BEGIN_STMT
+  _11 = pxQueue->cTxLock;
+  if (_11 == -1)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 31> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cTxLock = 0;
+
+  <bb 32> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  _12 = xTaskCheckForTimeOut (&xTimeOut, &xTicksToWait);
+  if (_12 == 0)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 33> :
+  # DEBUG BEGIN_STMT
+  _13 = prvIsQueueEmpty (pxQueue);
+  if (_13 != 0)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 34> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _14 = &pxQueue->xTasksWaitingToReceive;
+  xTicksToWait.17_15 = xTicksToWait;
+  vTaskPlaceOnEventList (_14, xTicksToWait.17_15);
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  _16 = xTaskResumeAll ();
+  if (_16 == 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 35> :
+  # DEBUG BEGIN_STMT
+  _17 = 3758157060B;
+  *_17 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  goto <bb 19>; [INV]
+
+  <bb 36> :
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  goto <bb 19>; [INV]
+
+  <bb 37> :
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  # DEBUG BEGIN_STMT
+  _18 = prvIsQueueEmpty (pxQueue);
+  if (_18 != 0)
+    goto <bb 38>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 38> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.7039 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 39> :
+  xTimeOut = {CLOBBER};
+  return D.7039;
+
+}
+
+
+xQueueGiveFromISR (struct QueueDefinition * xQueue, BaseType_t * const pxHigherPriorityTaskWoken)
+{
+  const int8_t cTxLock;
+  const UBaseType_t uxMessagesWaiting;
+  struct Queue_t * const pxQueue;
+  UBaseType_t uxSavedInterruptStatus;
+  BaseType_t xReturn;
+  BaseType_t D.7013;
+  int iftmp.11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxQueue->uxItemSize;
+  if (_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = pxQueue->pcHead;
+  if (_2 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _3 = pxQueue->u.xSemaphore.xMutexHolder;
+  if (_3 == 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.11 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.11 = 0;
+
+  <bb 12> :
+  if (iftmp.11 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortValidateInterruptPriority ();
+  # DEBUG BEGIN_STMT
+  uxSavedInterruptStatus = ulPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  uxMessagesWaiting = pxQueue->uxMessagesWaiting;
+  # DEBUG BEGIN_STMT
+  _4 = pxQueue->uxLength;
+  if (uxMessagesWaiting < _4)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  cTxLock = pxQueue->cTxLock;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = uxMessagesWaiting + 1;
+  pxQueue->uxMessagesWaiting = _5;
+  # DEBUG BEGIN_STMT
+  if (cTxLock == -1)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  _6 = pxQueue->xTasksWaitingToReceive.uxNumberOfItems;
+  if (_6 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  _7 = &pxQueue->xTasksWaitingToReceive;
+  _8 = xTaskRemoveFromEventList (_7);
+  if (_8 != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  if (pxHigherPriorityTaskWoken != 0B)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  *pxHigherPriorityTaskWoken = 1;
+  goto <bb 25>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  if (cTxLock == 127)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 23>; [INV]
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  cTxLock.12_9 = (unsigned char) cTxLock;
+  _10 = cTxLock.12_9 + 1;
+  _11 = (signed char) _10;
+  pxQueue->cTxLock = _11;
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 27>; [INV]
+
+  <bb 26> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 27> :
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (uxSavedInterruptStatus);
+  # DEBUG BEGIN_STMT
+  D.7013 = xReturn;
+  return D.7013;
+
+}
+
+
+xQueueGenericSendFromISR (struct QueueDefinition * xQueue, const void * const pvItemToQueue, BaseType_t * const pxHigherPriorityTaskWoken, const BaseType_t xCopyPosition)
+{
+  const UBaseType_t uxPreviousMessagesWaiting;
+  const int8_t cTxLock;
+  struct Queue_t * const pxQueue;
+  UBaseType_t uxSavedInterruptStatus;
+  BaseType_t xReturn;
+  BaseType_t D.6981;
+  int iftmp.9;
+  int iftmp.8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pvItemToQueue != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _1 = pxQueue->uxItemSize;
+  if (_1 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.8 = 1;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.8 = 0;
+
+  <bb 9> :
+  if (iftmp.8 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xCopyPosition != 2)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  _2 = pxQueue->uxLength;
+  if (_2 == 1)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  iftmp.9 = 1;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  iftmp.9 = 0;
+
+  <bb 16> :
+  if (iftmp.9 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortValidateInterruptPriority ();
+  # DEBUG BEGIN_STMT
+  uxSavedInterruptStatus = ulPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  _3 = pxQueue->uxMessagesWaiting;
+  _4 = pxQueue->uxLength;
+  if (_3 < _4)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 20> :
+  if (xCopyPosition == 2)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  cTxLock = pxQueue->cTxLock;
+  # DEBUG BEGIN_STMT
+  uxPreviousMessagesWaiting = pxQueue->uxMessagesWaiting;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  prvCopyDataToQueue (pxQueue, pvItemToQueue, xCopyPosition);
+  # DEBUG BEGIN_STMT
+  if (cTxLock == -1)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  _5 = pxQueue->xTasksWaitingToReceive.uxNumberOfItems;
+  if (_5 != 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  _6 = &pxQueue->xTasksWaitingToReceive;
+  _7 = xTaskRemoveFromEventList (_6);
+  if (_7 != 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  if (pxHigherPriorityTaskWoken != 0B)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  *pxHigherPriorityTaskWoken = 1;
+  goto <bb 30>; [INV]
+
+  <bb 26> :
+  # DEBUG BEGIN_STMT
+  if (cTxLock == 127)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 27> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 28> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 28>; [INV]
+
+  <bb 29> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  cTxLock.10_8 = (unsigned char) cTxLock;
+  _9 = cTxLock.10_8 + 1;
+  _10 = (signed char) _9;
+  pxQueue->cTxLock = _10;
+
+  <bb 30> :
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 32>; [INV]
+
+  <bb 31> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 32> :
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (uxSavedInterruptStatus);
+  # DEBUG BEGIN_STMT
+  D.6981 = xReturn;
+  return D.6981;
+
+}
+
+
+xQueueGenericSend (struct QueueDefinition * xQueue, const void * const pvItemToQueue, TickType_t xTicksToWait, const BaseType_t xCopyPosition)
+{
+  struct Queue_t * const pxQueue;
+  struct TimeOut_t xTimeOut;
+  BaseType_t xYieldRequired;
+  BaseType_t xEntryTimeSet;
+  BaseType_t D.6891;
+  int iftmp.2;
+  int iftmp.1;
+  int iftmp.0;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  xEntryTimeSet = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pvItemToQueue != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _1 = pxQueue->uxItemSize;
+  if (_1 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.0 = 1;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.0 = 0;
+
+  <bb 9> :
+  if (iftmp.0 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xCopyPosition != 2)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  _2 = pxQueue->uxLength;
+  if (_2 == 1)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  iftmp.1 = 1;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  iftmp.1 = 0;
+
+  <bb 16> :
+  if (iftmp.1 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = xTaskGetSchedulerState ();
+  if (_3 != 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 20> :
+  xTicksToWait.3_4 = xTicksToWait;
+  if (xTicksToWait.3_4 == 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  iftmp.2 = 1;
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  iftmp.2 = 0;
+
+  <bb 23> :
+  if (iftmp.2 == 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 25>; [INV]
+
+  <bb 26> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _5 = pxQueue->uxMessagesWaiting;
+  _6 = pxQueue->uxLength;
+  if (_5 < _6)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 27> :
+  if (xCopyPosition == 2)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 28> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xYieldRequired = prvCopyDataToQueue (pxQueue, pvItemToQueue, xCopyPosition);
+  # DEBUG BEGIN_STMT
+  _7 = pxQueue->xTasksWaitingToReceive.uxNumberOfItems;
+  if (_7 != 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 29> :
+  # DEBUG BEGIN_STMT
+  _8 = &pxQueue->xTasksWaitingToReceive;
+  _9 = xTaskRemoveFromEventList (_8);
+  if (_9 != 0)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 30> :
+  # DEBUG BEGIN_STMT
+  _10 = 3758157060B;
+  *_10 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  goto <bb 33>; [INV]
+
+  <bb 31> :
+  # DEBUG BEGIN_STMT
+  if (xYieldRequired != 0)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 32> :
+  # DEBUG BEGIN_STMT
+  _11 = 3758157060B;
+  *_11 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+
+  <bb 33> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  D.6891 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 48>; [INV]
+
+  <bb 34> :
+  # DEBUG BEGIN_STMT
+  xTicksToWait.4_12 = xTicksToWait;
+  if (xTicksToWait.4_12 == 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 35> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6891 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 48>; [INV]
+
+  <bb 36> :
+  # DEBUG BEGIN_STMT
+  if (xEntryTimeSet == 0)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 37> :
+  # DEBUG BEGIN_STMT
+  vTaskInternalSetTimeOutState (&xTimeOut);
+  # DEBUG BEGIN_STMT
+  xEntryTimeSet = 1;
+
+  <bb 38> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  vTaskSuspendAll ();
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _13 = pxQueue->cRxLock;
+  if (_13 == -1)
+    goto <bb 39>; [INV]
+  else
+    goto <bb 40>; [INV]
+
+  <bb 39> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cRxLock = 0;
+
+  <bb 40> :
+  # DEBUG BEGIN_STMT
+  _14 = pxQueue->cTxLock;
+  if (_14 == -1)
+    goto <bb 41>; [INV]
+  else
+    goto <bb 42>; [INV]
+
+  <bb 41> :
+  # DEBUG BEGIN_STMT
+  pxQueue->cTxLock = 0;
+
+  <bb 42> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  _15 = xTaskCheckForTimeOut (&xTimeOut, &xTicksToWait);
+  if (_15 == 0)
+    goto <bb 43>; [INV]
+  else
+    goto <bb 47>; [INV]
+
+  <bb 43> :
+  # DEBUG BEGIN_STMT
+  _16 = prvIsQueueFull (pxQueue);
+  if (_16 != 0)
+    goto <bb 44>; [INV]
+  else
+    goto <bb 46>; [INV]
+
+  <bb 44> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = &pxQueue->xTasksWaitingToSend;
+  xTicksToWait.5_18 = xTicksToWait;
+  vTaskPlaceOnEventList (_17, xTicksToWait.5_18);
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  _19 = xTaskResumeAll ();
+  if (_19 == 0)
+    goto <bb 45>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 45> :
+  # DEBUG BEGIN_STMT
+  _20 = 3758157060B;
+  *_20 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  goto <bb 26>; [INV]
+
+  <bb 46> :
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  goto <bb 26>; [INV]
+
+  <bb 47> :
+  # DEBUG BEGIN_STMT
+  prvUnlockQueue (pxQueue);
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6891 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 48> :
+  xTimeOut = {CLOBBER};
+  return D.6891;
+
+}
+
+
+xQueueCreateCountingSemaphore (const UBaseType_t uxMaxCount, const UBaseType_t uxInitialCount)
+{
+  struct QueueDefinition * xHandle;
+  struct QueueDefinition * D.6854;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  xHandle = 0B;
+  # DEBUG BEGIN_STMT
+  if (uxMaxCount != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  if (uxInitialCount <= uxMaxCount)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  xHandle = xQueueGenericCreate (uxMaxCount, 0, 2);
+  # DEBUG BEGIN_STMT
+  if (xHandle != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  MEM[(struct Queue_t *)xHandle].uxMessagesWaiting = uxInitialCount;
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (xHandle == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6854 = xHandle;
+  return D.6854;
+
+}
+
+
+xQueueTakeMutexRecursive (struct QueueDefinition * xMutex, TickType_t xTicksToWait)
+{
+  struct Queue_t * const pxMutex;
+  BaseType_t xReturn;
+  BaseType_t D.6843;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxMutex = xMutex;
+  # DEBUG BEGIN_STMT
+  if (pxMutex == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxMutex->u.xSemaphore.xMutexHolder;
+  _2 = xTaskGetCurrentTaskHandle ();
+  if (_1 == _2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = pxMutex->u.xSemaphore.uxRecursiveCallCount;
+  _4 = _3 + 1;
+  pxMutex->u.xSemaphore.uxRecursiveCallCount = _4;
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  xReturn = xQueueSemaphoreTake (pxMutex, xTicksToWait);
+  # DEBUG BEGIN_STMT
+  if (xReturn != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _5 = pxMutex->u.xSemaphore.uxRecursiveCallCount;
+  _6 = _5 + 1;
+  pxMutex->u.xSemaphore.uxRecursiveCallCount = _6;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6843 = xReturn;
+  return D.6843;
+
+}
+
+
+xQueueGiveMutexRecursive (struct QueueDefinition * xMutex)
+{
+  struct Queue_t * const pxMutex;
+  BaseType_t xReturn;
+  BaseType_t D.6833;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxMutex = xMutex;
+  # DEBUG BEGIN_STMT
+  if (pxMutex == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxMutex->u.xSemaphore.xMutexHolder;
+  _2 = xTaskGetCurrentTaskHandle ();
+  if (_1 == _2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = pxMutex->u.xSemaphore.uxRecursiveCallCount;
+  _4 = _3 + 4294967295;
+  pxMutex->u.xSemaphore.uxRecursiveCallCount = _4;
+  # DEBUG BEGIN_STMT
+  _5 = pxMutex->u.xSemaphore.uxRecursiveCallCount;
+  if (_5 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  xQueueGenericSend (pxMutex, 0B, 0, 0);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6833 = xReturn;
+  return D.6833;
+
+}
+
+
+xQueueGetMutexHolderFromISR (struct QueueDefinition * xSemaphore)
+{
+  struct tskTaskControlBlock * pxReturn;
+  struct tskTaskControlBlock * D.6823;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xSemaphore == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct Queue_t *)xSemaphore].pcHead;
+  if (_1 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  pxReturn = MEM[(struct Queue_t *)xSemaphore].u.xSemaphore.xMutexHolder;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  pxReturn = 0B;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.6823 = pxReturn;
+  return D.6823;
+
+}
+
+
+xQueueGetMutexHolder (struct QueueDefinition * xSemaphore)
+{
+  struct Queue_t * const pxSemaphore;
+  struct tskTaskControlBlock * pxReturn;
+  struct tskTaskControlBlock * D.6816;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxSemaphore = xSemaphore;
+  # DEBUG BEGIN_STMT
+  if (xSemaphore == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _1 = pxSemaphore->pcHead;
+  if (_1 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  pxReturn = pxSemaphore->u.xSemaphore.xMutexHolder;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  pxReturn = 0B;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  D.6816 = pxReturn;
+  return D.6816;
+
+}
+
+
+xQueueCreateMutex (const uint8_t ucQueueType)
+{
+  const UBaseType_t uxMutexSize;
+  const UBaseType_t uxMutexLength;
+  struct QueueDefinition * xNewQueue;
+  struct QueueDefinition * D.6806;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  uxMutexLength = 1;
+  uxMutexSize = 0;
+  # DEBUG BEGIN_STMT
+  xNewQueue = xQueueGenericCreate (1, 0, ucQueueType);
+  # DEBUG BEGIN_STMT
+  prvInitialiseMutex (xNewQueue);
+  # DEBUG BEGIN_STMT
+  D.6806 = xNewQueue;
+  return D.6806;
+
+}
+
+
+prvInitialiseMutex (struct Queue_t * pxNewQueue)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (pxNewQueue != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pxNewQueue->u.xSemaphore.xMutexHolder = 0B;
+  # DEBUG BEGIN_STMT
+  pxNewQueue->pcHead = 0B;
+  # DEBUG BEGIN_STMT
+  pxNewQueue->u.xSemaphore.uxRecursiveCallCount = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xQueueGenericSend (pxNewQueue, 0B, 0, 0);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+prvInitialiseNewQueue (const UBaseType_t uxQueueLength, const UBaseType_t uxItemSize, uint8_t * pucQueueStorage, const uint8_t ucQueueType, struct Queue_t * pxNewQueue)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (uxItemSize == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pxNewQueue->pcHead = pxNewQueue;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  pxNewQueue->pcHead = pucQueueStorage;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  pxNewQueue->uxLength = uxQueueLength;
+  # DEBUG BEGIN_STMT
+  pxNewQueue->uxItemSize = uxItemSize;
+  # DEBUG BEGIN_STMT
+  xQueueGenericReset (pxNewQueue, 1);
+  # DEBUG BEGIN_STMT
+  pxNewQueue->ucQueueType = ucQueueType;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+xQueueGenericCreate (const UBaseType_t uxQueueLength, const UBaseType_t uxItemSize, const uint8_t ucQueueType)
+{
+  uint8_t * pucQueueStorage;
+  size_t xQueueSizeInBytes;
+  struct Queue_t * pxNewQueue;
+  struct QueueDefinition * D.6801;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxNewQueue = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (uxQueueLength != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  _1 = .MUL_OVERFLOW (uxItemSize, uxQueueLength);
+  _2 = IMAGPART_EXPR <_1>;
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  _3 = uxQueueLength * uxItemSize;
+  if (_3 <= 4294967215)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  xQueueSizeInBytes = uxQueueLength * uxItemSize;
+  # DEBUG BEGIN_STMT
+  _4 = xQueueSizeInBytes + 80;
+  pxNewQueue = pvPortMalloc (_4);
+  # DEBUG BEGIN_STMT
+  if (pxNewQueue != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  pucQueueStorage = pxNewQueue;
+  # DEBUG BEGIN_STMT
+  pucQueueStorage = pucQueueStorage + 80;
+  # DEBUG BEGIN_STMT
+  prvInitialiseNewQueue (uxQueueLength, uxItemSize, pucQueueStorage, ucQueueType, pxNewQueue);
+  goto <bb 10>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (pxNewQueue == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6801 = pxNewQueue;
+  return D.6801;
+
+}
+
+
+xQueueGenericReset (struct QueueDefinition * xQueue, BaseType_t xNewQueue)
+{
+  struct Queue_t * const pxQueue;
+  BaseType_t xReturn;
+  BaseType_t D.6789;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  # DEBUG BEGIN_STMT
+  pxQueue = xQueue;
+  # DEBUG BEGIN_STMT
+  if (pxQueue == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxQueue != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 6> :
+  _1 = pxQueue->uxLength;
+  if (_1 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 7> :
+  _3 = pxQueue->uxItemSize;
+  _4 = pxQueue->uxLength;
+  _2 = .MUL_OVERFLOW (_3, _4);
+  _5 = IMAGPART_EXPR <_2>;
+  if (_5 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _6 = pxQueue->pcHead;
+  _7 = pxQueue->uxLength;
+  _8 = pxQueue->uxItemSize;
+  _9 = _7 * _8;
+  _10 = _6 + _9;
+  pxQueue->u.xQueue.pcTail = _10;
+  # DEBUG BEGIN_STMT
+  pxQueue->uxMessagesWaiting = 0;
+  # DEBUG BEGIN_STMT
+  _11 = pxQueue->pcHead;
+  pxQueue->pcWriteTo = _11;
+  # DEBUG BEGIN_STMT
+  _12 = pxQueue->pcHead;
+  _13 = pxQueue->uxLength;
+  _14 = _13 + 4294967295;
+  _15 = pxQueue->uxItemSize;
+  _16 = _14 * _15;
+  _17 = _12 + _16;
+  pxQueue->u.xQueue.pcReadFrom = _17;
+  # DEBUG BEGIN_STMT
+  pxQueue->cRxLock = -1;
+  # DEBUG BEGIN_STMT
+  pxQueue->cTxLock = -1;
+  # DEBUG BEGIN_STMT
+  if (xNewQueue == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _18 = pxQueue->xTasksWaitingToSend.uxNumberOfItems;
+  if (_18 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _19 = &pxQueue->xTasksWaitingToSend;
+  _20 = xTaskRemoveFromEventList (_19);
+  if (_20 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _21 = 3758157060B;
+  *_21 = 268435456;
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("dsb" :  :  : "memory");
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("isb");
+  # DEBUG BEGIN_STMT
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _22 = &pxQueue->xTasksWaitingToSend;
+  vListInitialise (_22);
+  # DEBUG BEGIN_STMT
+  _23 = &pxQueue->xTasksWaitingToReceive;
+  vListInitialise (_23);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  if (xReturn == 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6789 = xReturn;
+  return D.6789;
+
+}
+
+
+__attribute__((always_inline))
+vPortSetBASEPRI (uint32_t ulNewMaskValue)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	msr basepri, %0	" :  : "r" ulNewMaskValue : "memory");
+  return;
+
+}
+
+
+__attribute__((always_inline))
+ulPortRaiseBASEPRI ()
+{
+  uint32_t ulNewBASEPRI;
+  uint32_t ulOriginalBASEPRI;
+  uint32_t D.6983;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mrs %0, basepri											
+	mov %1, %2												
+	cpsid i													
+	msr basepri, %1											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulOriginalBASEPRI, "=r" ulNewBASEPRI : "i" 16 : "memory");
+  # DEBUG BEGIN_STMT
+  D.6983 = ulOriginalBASEPRI;
+  return D.6983;
+
+}
+
+
+__attribute__((always_inline))
+vPortRaiseBASEPRI ()
+{
+  uint32_t ulNewBASEPRI;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI : "i" 16 : "memory");
+  return;
+
+}
+
+

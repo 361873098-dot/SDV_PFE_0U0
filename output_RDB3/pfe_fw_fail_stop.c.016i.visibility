@@ -1,0 +1,193 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: pfe_fw_fail_stop_irq_unmask pfe_fw_fail_stop_irq_mask pfe_fw_fail_stop_isr pfe_fw_fail_stop_destroy pfe_fw_fail_stop_create
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+pfe_fw_fail_stop_cfg_irq_unmask/18 (pfe_fw_fail_stop_cfg_irq_unmask) @06f36e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fw_fail_stop_irq_unmask/13 
+  Calls: 
+pfe_fw_fail_stop_cfg_isr/17 (pfe_fw_fail_stop_cfg_isr) @06f36b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fw_fail_stop_isr/11 
+  Calls: 
+pfe_fw_fail_stop_cfg_irq_mask/16 (pfe_fw_fail_stop_cfg_irq_mask) @06f369a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fw_fail_stop_irq_mask/12 pfe_fw_fail_stop_destroy/10 
+  Calls: 
+pfe_fw_fail_stop_cfg_irq_unmask_all/15 (pfe_fw_fail_stop_cfg_irq_unmask_all) @06f367e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fw_fail_stop_create/9 
+  Calls: 
+autolibc_memset/14 (autolibc_memset) @06f36700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_fw_fail_stop_create/9 
+  Calls: 
+pfe_fw_fail_stop_irq_unmask/13 (pfe_fw_fail_stop_irq_unmask) @06f362a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fw_fail_stop_cfg_irq_unmask/18 
+pfe_fw_fail_stop_irq_mask/12 (pfe_fw_fail_stop_irq_mask) @06f36000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fw_fail_stop_cfg_irq_mask/16 
+pfe_fw_fail_stop_isr/11 (pfe_fw_fail_stop_isr) @06f32c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fw_fail_stop_cfg_isr/17 
+pfe_fw_fail_stop_destroy/10 (pfe_fw_fail_stop_destroy) @06f32e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fw_fail_stop_cfg_irq_mask/16 
+pfe_fw_fail_stop_create/9 (pfe_fw_fail_stop_create) @06f32b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: fw_fail_stop_instance/8 (addr)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_fw_fail_stop_cfg_irq_unmask_all/15 autolibc_memset/14 
+fw_fail_stop_instance/8 (fw_fail_stop_instance) @06f2eb88
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: pfe_fw_fail_stop_create/9 (addr)
+  Availability: available
+  Varpool flags:
+pfe_fw_fail_stop_irq_unmask (const struct pfe_fw_fail_stop_t * fw_fail_stop)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = fw_fail_stop->fw_fail_stop_base_va;
+  pfe_fw_fail_stop_cfg_irq_unmask (_1);
+  return;
+
+}
+
+
+pfe_fw_fail_stop_irq_mask (const struct pfe_fw_fail_stop_t * fw_fail_stop)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = fw_fail_stop->fw_fail_stop_base_va;
+  pfe_fw_fail_stop_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_fw_fail_stop_isr (const struct pfe_fw_fail_stop_t * fw_fail_stop)
+{
+  errno_t ret;
+  errno_t D.7290;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  # DEBUG BEGIN_STMT
+  _1 = fw_fail_stop->fw_fail_stop_base_va;
+  ret = pfe_fw_fail_stop_cfg_isr (_1);
+  # DEBUG BEGIN_STMT
+  D.7290 = ret;
+  return D.7290;
+
+}
+
+
+pfe_fw_fail_stop_destroy (struct pfe_fw_fail_stop_t * fw_fail_stop)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = fw_fail_stop->fw_fail_stop_base_va;
+  pfe_fw_fail_stop_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_fw_fail_stop_create (addr_t cbus_base_va, addr_t fw_fail_stop_base)
+{
+  struct pfe_fw_fail_stop_t * fw_fail_stop;
+  struct pfe_fw_fail_stop_t * D.7288;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fw_fail_stop = &fw_fail_stop_instance;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (fw_fail_stop, 0, 12);
+  # DEBUG BEGIN_STMT
+  fw_fail_stop->cbus_base_va = cbus_base_va;
+  # DEBUG BEGIN_STMT
+  fw_fail_stop->fw_fail_stop_base_offset = fw_fail_stop_base;
+  # DEBUG BEGIN_STMT
+  _1 = fw_fail_stop->cbus_base_va;
+  _2 = fw_fail_stop->fw_fail_stop_base_offset;
+  _3 = _1 + _2;
+  fw_fail_stop->fw_fail_stop_base_va = _3;
+  # DEBUG BEGIN_STMT
+  _4 = fw_fail_stop->fw_fail_stop_base_va;
+  pfe_fw_fail_stop_cfg_irq_unmask_all (_4);
+  # DEBUG BEGIN_STMT
+  D.7288 = fw_fail_stop;
+  return D.7288;
+
+}
+
+

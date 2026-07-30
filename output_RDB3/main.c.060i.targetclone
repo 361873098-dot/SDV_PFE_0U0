@@ -1,0 +1,281 @@
+GetStatistics ()
+{
+  uint8_t idxBmu;
+  uint8_t idxGpi;
+  unsigned char getStatisticsFromCtrl.8_1;
+  unsigned char getStatisticsFromCtrl.9_2;
+  unsigned char getStatisticsFromCtrl.10_3;
+  unsigned char getStatisticsFromCtrl.11_4;
+  int _5;
+  struct Eth_43_PFE_GpiStatsType * _6;
+  int _7;
+  struct Eth_43_PFE_BmuStatsType * _8;
+
+  <bb 2> [local count: 268435456]:
+  # DEBUG BEGIN_STMT
+  getStatisticsFromCtrl.8_1 ={v} getStatisticsFromCtrl;
+  Eth_43_PFE_GetCounterValues (getStatisticsFromCtrl.8_1, &pfeCounterValues);
+  # DEBUG BEGIN_STMT
+  getStatisticsFromCtrl.9_2 ={v} getStatisticsFromCtrl;
+  Eth_43_PFE_GetRxStats (getStatisticsFromCtrl.9_2, &pfeRxStats);
+  # DEBUG BEGIN_STMT
+  getStatisticsFromCtrl.10_3 ={v} getStatisticsFromCtrl;
+  Eth_43_PFE_GetTxStats (getStatisticsFromCtrl.10_3, &pfeTxStats);
+  # DEBUG BEGIN_STMT
+  getStatisticsFromCtrl.11_4 ={v} getStatisticsFromCtrl;
+  Eth_43_PFE_GetTxErrorCounterValues (getStatisticsFromCtrl.11_4, &pfeTxErrorCounterValues);
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_GetClassStats (&pfeStatsClass);
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_GetTmuStats (&pfeStatsTmu);
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_GetRtableStats (&pfeStatsConntrack, 0);
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_GetL2BridgeDomainStats (&pfeStatsVlan, 0);
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_GetL2BridgeStats (&pfeStatsL2Br, 0);
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_GetWdtStats (&pfeStatsWdt);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG idxGpi => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 805306369]:
+  # DEBUG BEGIN_STMT
+  _5 = (int) idxGpi_9;
+  _6 = &pfeStatsGpi[_5];
+  Eth_43_PFE_GetGpiStats (idxGpi_9, _6);
+  # DEBUG BEGIN_STMT
+  idxGpi_27 = idxGpi_9 + 1;
+  # DEBUG idxGpi => idxGpi_27
+
+  <bb 4> [local count: 1073741824]:
+  # idxGpi_9 = PHI <0(2), idxGpi_27(3)>
+  # DEBUG idxGpi => idxGpi_9
+  # DEBUG BEGIN_STMT
+  if (idxGpi_9 != 3)
+    goto <bb 3>; [75.00%]
+  else
+    goto <bb 8>; [25.00%]
+
+  <bb 8> [local count: 268435456]:
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 536951452]:
+  # DEBUG BEGIN_STMT
+  _7 = (int) idxBmu_10;
+  _8 = &pfeStatsBmu[_7];
+  Eth_43_PFE_GetBmuStats (idxBmu_10, _8);
+  # DEBUG BEGIN_STMT
+  idxBmu_25 = idxBmu_10 + 1;
+  # DEBUG idxBmu => idxBmu_25
+
+  <bb 6> [local count: 805386908]:
+  # idxBmu_10 = PHI <idxBmu_25(5), 0(8)>
+  # DEBUG idxBmu => idxBmu_10
+  # DEBUG BEGIN_STMT
+  if (idxBmu_10 != 2)
+    goto <bb 5>; [66.67%]
+  else
+    goto <bb 7>; [33.33%]
+
+  <bb 7> [local count: 268435456]:
+  return;
+
+}
+
+
+main ()
+{
+  Std_ReturnType ret;
+  volatile struct app_debug_info_t * app_debug_info_ptr.1_1;
+  volatile struct app_debug_info_t * app_debug_info_ptr.2_2;
+  volatile uint32_t[8] * _3;
+  volatile uint32_t[8] * _4;
+  volatile uint32_t[8] * _5;
+  volatile uint32_t[8] * _6;
+
+  <bb 2> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG last_tick => 0
+  # DEBUG BEGIN_STMT
+  Mpu_Configuration ();
+  # DEBUG BEGIN_STMT
+  ret_10 = SampleAppInitTask ();
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 976127]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 4>; [11.00%]
+
+  <bb 7> [local count: 868753]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  SampleAppFciTestTask ();
+  # DEBUG BEGIN_STMT
+  app_debug_info_ptr.1_1 = app_debug_info_ptr;
+  autolibc_memset (app_debug_info_ptr.1_1, 0, 152);
+  # DEBUG BEGIN_STMT
+  app_debug_info_ptr.2_2 = app_debug_info_ptr;
+  app_debug_info_ptr.2_2->version ={v} 1;
+  # DEBUG BEGIN_STMT
+  _3 = &app_debug_info_ptr.2_2->counter.rxCtr;
+  pfeRxCtr = _3;
+  # DEBUG BEGIN_STMT
+  _4 = &app_debug_info_ptr.2_2->counter.txCtr;
+  pfeTxCtr = _4;
+  # DEBUG BEGIN_STMT
+  _5 = &app_debug_info_ptr.2_2->counter.tx_confCtr;
+  pfeTxConfCtr = _5;
+  # DEBUG BEGIN_STMT
+  _6 = &app_debug_info_ptr.2_2->counter.tx_errCtr;
+  pfeTxErrorCtr = _6;
+  # DEBUG BEGIN_STMT
+  app_debug_info_ptr.2_2->initialized ={v} 1;
+  # DEBUG BEGIN_STMT
+  demo_lwip_init ();
+  # DEBUG BEGIN_STMT
+  creat_tasks_m7 ();
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 5>; [100.00%]
+
+}
+
+
+ipv4_string_to_int (const char * p_ip_addr)
+{
+  uint16_t n;
+  char c;
+  const char * str;
+  uint8_t i;
+  uint32_t val;
+  char _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  long unsigned int _4;
+  uint32_t _11;
+
+  <bb 2> [local count: 168063667]:
+  # DEBUG BEGIN_STMT
+  # DEBUG val => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG str => p_ip_addr_13(D)
+  # DEBUG BEGIN_STMT
+  if (p_ip_addr_13(D) != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 11>; [30.00%]
+
+  <bb 3> [local count: 1073741824]:
+  # str_8 = PHI <str_16(4), str_9(10)>
+  # n_10 = PHI <n_21(4), 0(10)>
+  # DEBUG n => n_10
+  # DEBUG str => str_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  c_15 = *str_8;
+  # DEBUG c => c_15
+  # DEBUG BEGIN_STMT
+  str_16 = str_8 + 1;
+  # DEBUG str => str_16
+  # DEBUG BEGIN_STMT
+  _1 = c_15 + 208;
+  if (_1 <= 9)
+    goto <bb 4>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 4> [local count: 955630225]:
+  # DEBUG BEGIN_STMT
+  n_20 = n_10 * 10;
+  # DEBUG n => n_20
+  # DEBUG BEGIN_STMT
+  _2 = (short unsigned int) c_15;
+  _3 = _2 + n_20;
+  n_21 = _3 + 65488;
+  # DEBUG n => n_21
+  # DEBUG BEGIN_STMT
+  goto <bb 3>; [100.00%]
+
+  <bb 5> [local count: 118111601]:
+  # n_5 = PHI <n_10(3)>
+  # c_22 = PHI <c_15(3)>
+  # str_12 = PHI <str_16(3)>
+  # DEBUG BEGIN_STMT
+  if (i_7 != 3)
+    goto <bb 6>; [77.53%]
+  else
+    goto <bb 7>; [22.47%]
+
+  <bb 6> [local count: 91571924]:
+  if (c_22 == 46)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 7>; [66.00%]
+
+  <bb 7> [local count: 86977146]:
+  if (i_7 == 3)
+    goto <bb 8>; [0.00%]
+  else
+    goto <bb 11>; [100.00%]
+
+  <bb 8> [local count: 31134454]:
+  # DEBUG BEGIN_STMT
+  if (n_5 > 255)
+    goto <bb 11>; [3.66%]
+  else
+    goto <bb 9>; [96.34%]
+
+  <bb 9> [local count: 29994933]:
+  # DEBUG BEGIN_STMT
+  val_17 = val_6 * 256;
+  # DEBUG val => val_17
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) n_5;
+  val_18 = _4 + val_17;
+  # DEBUG val => val_18
+  # DEBUG BEGIN_STMT
+  i_19 = i_7 + 1;
+  # DEBUG i => i_19
+
+  <bb 10> [local count: 147639500]:
+  # val_6 = PHI <val_18(9), 0(2)>
+  # i_7 = PHI <i_19(9), 0(2)>
+  # str_9 = PHI <str_12(9), p_ip_addr_13(D)(2)>
+  # DEBUG str => str_9
+  # DEBUG i => i_7
+  # DEBUG val => val_6
+  # DEBUG BEGIN_STMT
+  if (i_7 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 11>; [20.00%]
+
+  <bb 11> [local count: 168063668]:
+  # _11 = PHI <0(7), 0(8), val_6(10), 0(2)>
+  # DEBUG val => NULL
+  return _11;
+
+}
+
+

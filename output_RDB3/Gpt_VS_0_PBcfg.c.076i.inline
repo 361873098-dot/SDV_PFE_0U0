@@ -1,0 +1,63 @@
+
+Flattening functions:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Deciding on inlining of small functions.  Starting with size 0.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+Overall time estimate: 0.000000 weighted by profile: 0.000000
+
+Why inlining failed?
+Symbol table:
+
+Gpt_Ipw_ChannelConfig_PB_VS_0/7 (Gpt_Ipw_ChannelConfig_PB_VS_0) @070716c0
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Gpt_InitChannelPB_VS_0/3 (addr)Gpt_InitChannelPB_VS_0/3 (addr)
+  Availability: not_available
+  Varpool flags:
+EthSwt_Tst_PitNotification/6 (EthSwt_Tst_PitNotification) @070739a0
+  Type: function
+  Visibility: external public
+  Address is taken.
+  References: 
+  Referring: Gpt_InitChannelPB_VS_0/3 (addr)
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+Gpt_Ipw_HwInstanceConfig_PB_VS_0/5 (Gpt_Ipw_HwInstanceConfig_PB_VS_0) @07071678
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public
+  References: 
+  Referring: Gpt_Config/4 (addr)
+  Availability: not_available
+  Varpool flags:
+Gpt_Config/4 (Gpt_Config) @07071558
+  Type: variable definition analyzed
+  Visibility: externally_visible public
+  References: Gpt_InitChannelPB_VS_0/3 (addr)Gpt_Ipw_HwInstanceConfig_PB_VS_0/5 (addr)u8GptChannelIdToIndexMap_VS_0/2 (addr)
+  Referring: 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+Gpt_InitChannelPB_VS_0/3 (Gpt_InitChannelPB_VS_0) @070714c8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: EthSwt_Tst_PitNotification/6 (addr)Gpt_Ipw_ChannelConfig_PB_VS_0/7 (addr)Gpt_Ipw_ChannelConfig_PB_VS_0/7 (addr)
+  Referring: Gpt_Config/4 (addr)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+u8GptChannelIdToIndexMap_VS_0/2 (u8GptChannelIdToIndexMap_VS_0) @070713a8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: Gpt_Config/4 (addr)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known

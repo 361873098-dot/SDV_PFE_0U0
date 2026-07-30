@@ -1,0 +1,209 @@
+Parsed function:EthIf_GetRxMgmtObject
+Parsed function:EthIf_GetTxMgmtObject
+Parsed function:EthIf_SwitchPortModeIndication
+Parsed function:EthIf_TrcvModeIndication
+Parsed function:EthIf_CtrlModeIndication
+Parsed function:EthIf_TxConfirmation
+Parsed function:EthIf_RxIndication
+Dump after hash based groups
+Congruence classes: 5 (unique hash values: 5), with total: 7 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 3 classes
+[2]: 2 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 6 (unique hash values: 5), with total: 7 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 5 classes
+[2]: 1 classes
+
+
+Worklist has been filled with: 0
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 6 (unique hash values: 5), with total: 7 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 5 classes
+[2]: 1 classes
+
+
+Init called for 2 items (28.57%).
+Dump after full equality comparison of groups
+Congruence classes: 6 (unique hash values: 5), with total: 7 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 5 classes
+[2]: 1 classes
+
+
+Worklist has been filled with: 0
+Address reference subdivision created: 0 new classes.
+Congruence classes: 6 (unique hash values: 5), with total: 7 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 5 classes
+[2]: 1 classes
+
+
+
+Item count: 7
+Congruent classes before: 6, after: 6
+Average class size before: 1.17, after: 1.17
+Average non-singular class size: 2.00, count: 1
+Equal symbols: 1
+Fraction of visited symbols: 14.29%
+
+Semantic equality hit:EthIf_CtrlModeIndication->EthIf_TrcvModeIndication
+Assembler symbol names:EthIf_CtrlModeIndication->EthIf_TrcvModeIndication
+
+Symbols to be put in SSA form
+{ D.13731 D.13732 D.13774 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 3
+Number of blocks to update: 2 ( 67%)
+
+
+
+Analyzing function: EthIf_TrcvModeIndication/23
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EthIf_TrcvModeIndication
+
+IPA function summary for EthIf_TrcvModeIndication/23 inlinable
+  global time:     14.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    EthIf_CtrlModeIndication/22 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 3 time: 12callee size: 1 stack: 0
+
+Unified; Wrapper has been created.
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+EthIf_GetRxMgmtObject (uint8 CtrlIdx, Eth_DataType * DataPtr, struct EthSwt_MgmtObjectType * * MgmtObjectPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Result => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 1;
+
+}
+
+
+EthIf_GetTxMgmtObject (uint8 CtrlIdx, Eth_BufIdxType BufIdx, struct EthSwt_MgmtObjectType * * MgmtObjectPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG Result => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 1;
+
+}
+
+
+EthIf_SwitchPortModeIndication (uint8 SwitchIdx, uint8 SwitchPortIdx, EthTrcv_ModeType PortMode)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthIf_TrcvModeIndication (uint8 TrcvIdx, EthTrcv_ModeType TrcvMode)
+{
+  <bb 2> [local count: 1073741824]:
+  EthIf_CtrlModeIndication (TrcvIdx_1(D), TrcvMode_2(D)); [tail call]
+  return;
+
+}
+
+
+EthIf_CtrlModeIndication (uint8 CtrlIdx, Eth_ModeType CtrlMode)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthIf_TxConfirmation (uint8 CtrlIdx, Eth_BufIdxType BufIdx, Std_ReturnType Result)
+{
+  volatile uint32_t * pfeTxConfCtr.1_1;
+  unsigned int _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pfeTxConfCtr.1_1 = pfeTxConfCtr;
+  _2 = (unsigned int) CtrlIdx_8(D);
+  _3 = _2 * 4;
+  _4 = pfeTxConfCtr.1_1 + _3;
+  _5 ={v} *_4;
+  _6 = _5 + 1;
+  *_4 ={v} _6;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthIf_RxIndication (uint8 CtrlIdx, Eth_FrameType FrameType, boolean IsBroadcast, uint8 * PhysAddrPtr, Eth_DataType * DataPtr, uint16 LenByte)
+{
+  volatile uint32_t * pfeRxCtr.0_1;
+  unsigned int _2;
+  unsigned int _3;
+  volatile uint32_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  pfeRxCtr.0_1 = pfeRxCtr;
+  _2 = (unsigned int) CtrlIdx_8(D);
+  _3 = _2 * 4;
+  _4 = pfeRxCtr.0_1 + _3;
+  _5 ={v} *_4;
+  _6 = _5 + 1;
+  *_4 ={v} _6;
+  # DEBUG BEGIN_STMT
+  Lwip_EthIf_RxIndication (CtrlIdx_8(D), FrameType_10(D), IsBroadcast_11(D), PhysAddrPtr_12(D), DataPtr_13(D), LenByte_14(D));
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

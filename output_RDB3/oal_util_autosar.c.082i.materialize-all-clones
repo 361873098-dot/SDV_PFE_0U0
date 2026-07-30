@@ -1,0 +1,532 @@
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1
+
+Symbols to be put in SSA form
+{ D.11074 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 6
+Number of blocks to update: 5 ( 83%)
+
+
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1
+
+Symbols to be put in SSA form
+{ D.11077 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 6
+Number of blocks to update: 5 ( 83%)
+
+
+oal_mutex_lock.constprop ()
+{
+  const oal_mutex_t mutex;
+  void (*<T4e6>) (void) _1;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG mutex => 93
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (1 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_93;
+  _1 ();
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_unlock.constprop ()
+{
+  const oal_mutex_t mutex;
+  void (*<T4e6>) (void) _1;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG mutex => 93
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (1 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_93;
+  _1 ();
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_util_raise_dem_for_drv_runtime_err ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (32, 3);
+  return;
+
+}
+
+
+oal_util_get_unique_seqnum32 ()
+{
+  uint32_t val;
+  long unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (93);
+  # DEBUG BEGIN_STMT
+  val_4 = base;
+  # DEBUG val => val_4
+  # DEBUG BEGIN_STMT
+  _1 = val_4 + 1;
+  base = _1;
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (93);
+  # DEBUG BEGIN_STMT
+  return val_4;
+
+}
+
+
+oal_util_parse_ptp (uint8_t * buffer, size_t len, struct oal_util_ptp_header_t * * ptph)
+{
+  bool_t quick_exit;
+  errno_t ret;
+  addr_t hdr_addr;
+  uint8_t off;
+  uint8_t l3_len;
+  uint8_t l2_len;
+  unsigned int buffer.7_1;
+  unsigned int _2;
+  uint16_t * _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  uint16_t * _8;
+  short unsigned int _9;
+  short unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  struct oal_util_ptp_header_t * _13;
+  unsigned int _14;
+  unsigned int buffer.10_15;
+  unsigned int _16;
+  unsigned char l3_len.11_17;
+  unsigned int _18;
+  sizetype _19;
+  uint16_t * _20;
+  short unsigned int _21;
+  short unsigned int _22;
+  short unsigned int _23;
+  unsigned int _24;
+  struct oal_util_ptp_header_t * _25;
+  uint8_t iftmp.6_31;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG off => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG quick_exit => 0
+  # DEBUG BEGIN_STMT
+  if (len_34(D) > 13)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  buffer.7_1 = (unsigned int) buffer_37(D);
+  _2 = buffer.7_1 + 12;
+  _3 = (uint16_t *) _2;
+  _4 = *_3;
+  _5 = _4 r>> 8;
+  if (_5 == 33024)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 4> [local count: 354334802]:
+
+  <bb 5> [local count: 536870913]:
+  # iftmp.6_31 = PHI <16(3), 12(4)>
+  # DEBUG off => iftmp.6_31
+  # DEBUG BEGIN_STMT
+  l2_len_38 = iftmp.6_31 + 2;
+  # DEBUG l2_len => l2_len_38
+  # DEBUG BEGIN_STMT
+  _6 = (unsigned int) iftmp.6_31;
+  _7 = buffer.7_1 + _6;
+  _8 = (uint16_t *) _7;
+  _9 = *_8;
+  _10 = _9 r>> 8;
+  if (_10 == 35063)
+    goto <bb 6>; [34.00%]
+  else
+    goto <bb 7>; [66.00%]
+
+  <bb 6> [local count: 182536110]:
+  # DEBUG BEGIN_STMT
+  _11 = (unsigned int) l2_len_38;
+  _12 = buffer.7_1 + _11;
+  _13 = (struct oal_util_ptp_header_t *) _12;
+  *ptph_39(D) = _13;
+  # DEBUG BEGIN_STMT
+  # DEBUG quick_exit => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 7> [local count: 1073741824]:
+  # l2_len_26 = PHI <l2_len_38(6), l2_len_35(D)(2), l2_len_38(5)>
+  # off_27 = PHI <iftmp.6_31(6), 0(2), iftmp.6_31(5)>
+  # ret_28 = PHI <0(6), 2(2), 0(5)>
+  # quick_exit_30 = PHI <1(6), 1(2), 0(5)>
+  # DEBUG quick_exit => quick_exit_30
+  # DEBUG ret => ret_28
+  # DEBUG off => off_27
+  # DEBUG l2_len => l2_len_26
+  # DEBUG BEGIN_STMT
+  if (quick_exit_30 != 1)
+    goto <bb 8>; [48.88%]
+  else
+    goto <bb 12>; [51.12%]
+
+  <bb 8> [local count: 524845004]:
+  # DEBUG BEGIN_STMT
+  ret_42 = oal_util_parse_ptp_l3 (buffer_37(D), len_34(D), l2_len_26, &l3_len, off_27);
+  # DEBUG ret => ret_42
+  # DEBUG BEGIN_STMT
+  if (ret_42 == 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 9> [local count: 262422502]:
+  # DEBUG BEGIN_STMT
+  _14 = (unsigned int) l2_len_26;
+  buffer.10_15 = (unsigned int) buffer_37(D);
+  _16 = _14 + buffer.10_15;
+  l3_len.11_17 = l3_len;
+  _18 = (unsigned int) l3_len.11_17;
+  hdr_addr_43 = _16 + _18;
+  # DEBUG hdr_addr => hdr_addr_43
+  # DEBUG BEGIN_STMT
+  # DEBUG l4_len => 8
+  # DEBUG BEGIN_STMT
+  _19 = hdr_addr_43 + 2;
+  _20 = (uint16_t *) _19;
+  _21 = *_20;
+  _22 = _21 r>> 8;
+  _23 = _22 + 65217;
+  if (_23 <= 1)
+    goto <bb 10>; [56.34%]
+  else
+    goto <bb 12>; [43.66%]
+
+  <bb 10> [local count: 147848838]:
+  # DEBUG BEGIN_STMT
+  _24 = hdr_addr_43 + 8;
+  _25 = (struct oal_util_ptp_header_t *) _24;
+  *ptph_39(D) = _25;
+  # DEBUG BEGIN_STMT
+  # DEBUG quick_exit => 1
+  # DEBUG BEGIN_STMT
+  # DEBUG quick_exit => 1
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 1073741824]:
+  # ret_29 = PHI <ret_28(7), ret_42(8), 0(10), 2(9)>
+  # DEBUG quick_exit => NULL
+  # DEBUG ret => ret_29
+  # DEBUG BEGIN_STMT
+  l3_len ={v} {CLOBBER};
+  return ret_29;
+
+}
+
+
+oal_util_parse_ptp_l3 (uint8_t * buffer, size_t len, uint8_t l2_len, uint8_t * l3_len, uint8_t off)
+{
+  errno_t ret;
+  addr_t hdr_addr;
+  unsigned int _1;
+  unsigned int buffer.0_2;
+  unsigned int _3;
+  unsigned int _4;
+  uint16_t * _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned int) l2_len_12(D);
+  buffer.0_2 = (unsigned int) buffer_13(D);
+  hdr_addr_14 = _1 + buffer.0_2;
+  # DEBUG hdr_addr => hdr_addr_14
+  # DEBUG BEGIN_STMT
+  _3 = (unsigned int) off_15(D);
+  _4 = buffer.0_2 + _3;
+  _5 = (uint16_t *) _4;
+  _6 = *_5;
+  _7 = _6 r>> 8;
+  if (_7 == 2048)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 3> [local count: 365072220]:
+  _8 = _1 + 20;
+  if (_8 <= len_17(D))
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 182536110]:
+  # DEBUG BEGIN_STMT
+  *l3_len_18(D) = 20;
+  # DEBUG BEGIN_STMT
+  ret_20 = check_ipv4_udp_header (hdr_addr_14);
+  # DEBUG ret => ret_20
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 891205715]:
+  # DEBUG BEGIN_STMT
+  if (_7 == 34525)
+    goto <bb 6>; [48.89%]
+  else
+    goto <bb 8>; [51.11%]
+
+  <bb 6> [local count: 435710474]:
+  _9 = _1 + 40;
+  if (_9 <= len_17(D))
+    goto <bb 7>; [47.77%]
+  else
+    goto <bb 8>; [52.23%]
+
+  <bb 7> [local count: 208138893]:
+  # DEBUG BEGIN_STMT
+  *l3_len_18(D) = 40;
+  # DEBUG BEGIN_STMT
+  ret_23 = check_ipv6_udp_header (hdr_addr_14);
+  # DEBUG ret => ret_23
+
+  <bb 8> [local count: 1073741824]:
+  # ret_10 = PHI <ret_20(4), 2(5), 2(6), ret_23(7)>
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_10;
+
+}
+
+
+check_ipv6_udp_header (addr_t hdr_addr)
+{
+  errno_t ret;
+  sizetype _1;
+  uint8_t * _2;
+  unsigned char _3;
+  uint8_t * hdr_addr.5_4;
+  unsigned char _5;
+  unsigned char _6;
+  sizetype _7;
+  const void * _8;
+  long int _9;
+  sizetype _10;
+  uint8_t * _11;
+  unsigned char _12;
+  sizetype _13;
+  const void * _14;
+  long int _15;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _1 = hdr_addr_18(D) + 6;
+  _2 = (uint8_t *) _1;
+  _3 = *_2;
+  if (_3 == 17)
+    goto <bb 3>; [48.89%]
+  else
+    goto <bb 8>; [51.11%]
+
+  <bb 3> [local count: 524952378]:
+  hdr_addr.5_4 = (uint8_t *) hdr_addr_18(D);
+  _5 = *hdr_addr.5_4;
+  _6 = _5 >> 4;
+  if (_6 == 6)
+    goto <bb 4>; [32.03%]
+  else
+    goto <bb 8>; [67.97%]
+
+  <bb 4> [local count: 168142247]:
+  # DEBUG BEGIN_STMT
+  _7 = hdr_addr_18(D) + 26;
+  _8 = (const void *) _7;
+  _9 = autolibc_memcmp (_8, &primary_mcast[2], 14);
+  if (_9 == 0)
+    goto <bb 5>; [67.00%]
+  else
+    goto <bb 6>; [33.00%]
+
+  <bb 5> [local count: 112655305]:
+  _10 = hdr_addr_18(D) + 24;
+  _11 = (uint8_t *) _10;
+  _12 = *_11;
+  if (_12 == 255)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 6> [local count: 129839443]:
+  # DEBUG BEGIN_STMT
+  _13 = hdr_addr_18(D) + 24;
+  _14 = (const void *) _13;
+  _15 = autolibc_memcmp (_14, &pdelay_mcast, 16);
+  if (_15 == 0)
+    goto <bb 7>; [65.00%]
+  else
+    goto <bb 8>; [35.00%]
+
+  <bb 7> [local count: 84395638]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 8> [local count: 1073741824]:
+  # ret_16 = PHI <2(2), 2(3), 0(5), 2(6), 0(7)>
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_16;
+
+}
+
+
+check_ipv4_udp_header (addr_t hdr_addr)
+{
+  errno_t ret;
+  sizetype _1;
+  uint8_t * _2;
+  unsigned char _3;
+  uint8_t * hdr_addr.3_4;
+  unsigned char _5;
+  unsigned char _6;
+  sizetype _7;
+  uint32_t * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  unsigned char _21;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _1 = hdr_addr_22(D) + 9;
+  _2 = (uint8_t *) _1;
+  _3 = *_2;
+  if (_3 == 17)
+    goto <bb 3>; [48.89%]
+  else
+    goto <bb 8>; [51.11%]
+
+  <bb 3> [local count: 524952378]:
+  hdr_addr.3_4 = (uint8_t *) hdr_addr_22(D);
+  _5 = *hdr_addr.3_4;
+  _6 = _5 >> 4;
+  if (_6 == 4)
+    goto <bb 4>; [48.89%]
+  else
+    goto <bb 8>; [51.11%]
+
+  <bb 4> [local count: 256649217]:
+  _21 = _5 & 15;
+  if (_21 == 5)
+    goto <bb 5>; [48.89%]
+  else
+    goto <bb 8>; [51.11%]
+
+  <bb 5> [local count: 125475802]:
+  _7 = hdr_addr_22(D) + 16;
+  _8 = (uint32_t *) _7;
+  _9 = *_8;
+  _10 = _9 >> 24;
+  _11 = _9 >> 8;
+  _12 = _11 & 65280;
+  _13 = _10 | _12;
+  _14 = _9 << 8;
+  _15 = _14 & 16711680;
+  _16 = _13 | _15;
+  _17 = _9 << 24;
+  _18 = _16 | _17;
+  _19 = _18 + 536870527;
+  if (_19 <= 3)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 62737901]:
+  if (_18 == 3758096488)
+    goto <bb 7>; [48.89%]
+  else
+    goto <bb 8>; [51.11%]
+
+  <bb 7> [local count: 93410461]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 8> [local count: 1073741824]:
+  # ret_20 = PHI <2(2), 2(3), 2(4), 2(6), 0(7)>
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  return ret_20;
+
+}
+
+

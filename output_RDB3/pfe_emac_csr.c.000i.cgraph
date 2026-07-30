@@ -1,0 +1,3604 @@
+Trivially needed symbols: pfe_emac_cfg_isr pfe_emac_cfg_get_rx_cnt pfe_emac_cfg_get_tx_cnt pfe_emac_cfg_pps0_set_pulse_width pfe_emac_cfg_pps0_set_period pfe_emac_cfg_pps0_set_target_time pfe_emac_cfg_pps_cmd pfe_emac_cfg_pps0_configure pfe_emac_cfg_mdio_write45 pfe_emac_cfg_mdio_write22 pfe_emac_cfg_mdio_read45 pfe_emac_cfg_mdio_read22 pfe_emac_cfg_set_rx_flow_control pfe_emac_cfg_set_tx_flow_control pfe_emac_cfg_get_rx_flow_control pfe_emac_cfg_get_tx_flow_control pfe_emac_cfg_set_enable pfe_emac_cfg_set_broadcast pfe_emac_cfg_set_allmulti_mode pfe_emac_cfg_set_promisc_mode pfe_emac_cfg_set_loopback pfe_emac_cfg_clear_hash_table pfe_emac_cfg_set_hash_group pfe_emac_cfg_get_hash pfe_emac_cfg_read_addr_slot pfe_emac_cfg_write_addr_slot pfe_emac_cfg_set_max_frame_length pfe_emac_cfg_get_link_status pfe_emac_cfg_set_speed pfe_emac_cfg_set_mii_mode pfe_emac_cfg_set_duplex pfe_emac_cfg_tx_disable pfe_emac_cfg_get_stat_value pfe_emac_cfg_get_link_config pfe_emac_cfg_adjust_ts_time pfe_emac_cfg_set_ts_time pfe_emac_cfg_get_ts_time pfe_emac_cfg_adjust_ts_freq pfe_emac_cfg_get_index pfe_emac_cfg_disable_ts pfe_emac_cfg_enable_ts pfe_emac_cfg_init pfe_emac_cfg_pre_init
+
+
+Initial Symbol table:
+
+Dem_SetEventStatus/73 (Dem_SetEventStatus) @076deee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_report_hm_event/61 
+  Calls: 
+hm_src/72 (hm_src) @076f5438
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @076e8cf0
+  References: 
+  Referring: pfe_emac_cfg_report_hm_event/61 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC0/71 (*.LC0) @076e8e10
+  Type: variable definition analyzed
+  Visibility: artificial
+  Aux: @0759b620
+  References: 
+  Referring: pfe_emac_cfg_report_hm_event/61 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+dpp_fsm_events/70 (dpp_fsm_events) @076e8d80
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @01733ea0
+  References: 
+  Referring: pfe_emac_cfg_isr/62 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+mtl_ecc_events/69 (mtl_ecc_events) @076e8cf0
+  Type: variable definition analyzed
+  Visibility:
+  Aux: @076e8d80
+  References: 
+  Referring: pfe_emac_cfg_isr/62 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+autolibc_memset/68 (autolibc_memset) @076bf620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_read_addr_slot/37 
+  Calls: 
+oal_time_usleep/67 (oal_time_usleep) @07698380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_mdio_write45/53 pfe_emac_cfg_mdio_write22/52 pfe_emac_cfg_mdio_read45/51 pfe_emac_cfg_mdio_read22/50 pfe_emac_cfg_set_tx_flow_control/48 reg_wait_for_clear/22 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/66 (oal_util_raise_dem_for_drv_runtime_err) @076981c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_get_emac_err_src_index/15 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_set_tx_flow_control/48 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 
+  Calls: 
+pfe_hm_report/65 (pfe_hm_report) @076980e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_get_emac_err_src_index/15 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_set_tx_flow_control/48 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 
+  Calls: 
+oal_time_udelay/64 (oal_time_udelay) @076882a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_clear_hash_table/40 pfe_emac_cfg_set_hash_group/39 pfe_emac_cfg_write_addr_slot/36 pfe_emac_cfg_clear_registers/16 
+  Calls: 
+pfe_feature_mgr_is_available/63 (pfe_feature_mgr_is_available) @07688e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_init/18 pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_isr/62 (pfe_emac_cfg_isr) @076888c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: mtl_ecc_events/69 (addr)dpp_fsm_events/70 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_get_index/23 
+pfe_emac_cfg_report_hm_event/61 (pfe_emac_cfg_report_hm_event) @076881c0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @076e8cf0
+  References: *.LC0/71 (read)hm_src/72 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_isr/62 pfe_emac_cfg_isr/62 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 Dem_SetEventStatus/73 pfe_hm_report/65 pfe_emac_get_emac_err_src_index/15 pfe_hm_report/65 
+pfe_emac_cfg_get_rx_cnt/60 (pfe_emac_cfg_get_rx_cnt) @076838c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @076888c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_cnt/59 (pfe_emac_cfg_get_tx_cnt) @07683ee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @076838c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_pulse_width/58 (pfe_emac_cfg_pps0_set_pulse_width) @07683b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07683ee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_period/57 (pfe_emac_cfg_pps0_set_period) @076837e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07683b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_target_time/56 (pfe_emac_cfg_pps0_set_target_time) @07683460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @076837e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps_cmd/55 (pfe_emac_cfg_pps_cmd) @07683000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07683460
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_configure/54 (pfe_emac_cfg_pps0_configure) @0767ed20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07683000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_mdio_write45/53 (pfe_emac_cfg_mdio_write45) @0767e8c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0767ed20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_write22/52 (pfe_emac_cfg_mdio_write22) @07677d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0767e8c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_read45/51 (pfe_emac_cfg_mdio_read45) @07677000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07677d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_read22/50 (pfe_emac_cfg_mdio_read22) @076742a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07677000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_set_rx_flow_control/49 (pfe_emac_cfg_set_rx_flow_control) @07670700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @076742a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_tx_flow_control/48 (pfe_emac_cfg_set_tx_flow_control) @076700e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07670700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 oal_time_usleep/67 
+pfe_emac_cfg_get_rx_flow_control/47 (pfe_emac_cfg_get_rx_flow_control) @07668a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @076700e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_flow_control/46 (pfe_emac_cfg_get_tx_flow_control) @07668620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07668a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_enable/45 (pfe_emac_cfg_set_enable) @076681c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07668620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_broadcast/44 (pfe_emac_cfg_set_broadcast) @07664c40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @076681c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_allmulti_mode/43 (pfe_emac_cfg_set_allmulti_mode) @07664620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07664c40
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_promisc_mode/42 (pfe_emac_cfg_set_promisc_mode) @07664000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07664620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_loopback/41 (pfe_emac_cfg_set_loopback) @0765dd20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07664000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_hash_table/40 (pfe_emac_cfg_clear_hash_table) @0765d700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0765dd20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_set_hash_group/39 (pfe_emac_cfg_set_hash_group) @0765d2a0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0765d700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_get_hash/38 (pfe_emac_cfg_get_hash) @0765d000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0765d2a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: crc32_reversed/14 
+pfe_emac_cfg_read_addr_slot/37 (pfe_emac_cfg_read_addr_slot) @07652c40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0765d000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memset/68 
+pfe_emac_cfg_write_addr_slot/36 (pfe_emac_cfg_write_addr_slot) @07652e00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07652c40
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_set_max_frame_length/35 (pfe_emac_cfg_set_max_frame_length) @07652b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07652e00
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_status/34 (pfe_emac_cfg_get_link_status) @07652000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07652b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_speed/33 (pfe_emac_cfg_set_speed) @0764bee0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07652000
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_set_mii_mode/32 (pfe_emac_cfg_set_mii_mode) @0764b1c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0764bee0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_set_duplex/31 (pfe_emac_cfg_set_duplex) @075e1c40
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0764b1c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_tx_disable/30 (pfe_emac_cfg_tx_disable) @075e1b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075e1c40
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_stat_value/29 (pfe_emac_cfg_get_stat_value) @075e17e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075e1b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_config/28 (pfe_emac_cfg_get_link_config) @075e1460
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075e17e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_time/27 (pfe_emac_cfg_adjust_ts_time) @075e10e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075e1460
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 is_eclk_enabled/21 
+pfe_emac_cfg_set_ts_time/26 (pfe_emac_cfg_set_ts_time) @075dc540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075e10e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 is_eclk_enabled/21 
+pfe_emac_cfg_get_ts_time/25 (pfe_emac_cfg_get_ts_time) @075d3e00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075dc540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_freq/24 (pfe_emac_cfg_adjust_ts_freq) @075d37e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075d3e00
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 is_eclk_enabled/21 
+pfe_emac_cfg_get_index/23 (pfe_emac_cfg_get_index) @075cde00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075d37e0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_isr/62 
+  Calls: 
+reg_wait_for_clear/22 (reg_wait_for_clear) @075cd620
+  Type: function definition analyzed
+  Visibility:
+  Aux: @075cd8c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_adjust_ts_time/27 pfe_emac_cfg_set_ts_time/26 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 pfe_emac_cfg_enable_ts/19 
+  Calls: oal_time_usleep/67 
+is_eclk_enabled/21 (is_eclk_enabled) @075cdd20
+  Type: function definition analyzed
+  Visibility:
+  Aux: @075d3e00
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_adjust_ts_time/27 pfe_emac_cfg_set_ts_time/26 pfe_emac_cfg_adjust_ts_freq/24 
+  Calls: 
+pfe_emac_cfg_disable_ts/20 (pfe_emac_cfg_disable_ts) @075cd8c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075cde00
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_enable_ts/19 (pfe_emac_cfg_enable_ts) @075cd540
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075cd8c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 reg_wait_for_clear/22 oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 
+pfe_emac_cfg_init/18 (pfe_emac_cfg_init) @075c0d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075cd540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_set_duplex/31 pfe_emac_cfg_set_mii_mode/32 pfe_emac_cfg_set_speed/33 pfe_feature_mgr_is_available/63 pfe_feature_mgr_is_available/63 pfe_emac_cfg_clear_registers/16 
+pfe_emac_cfg_pre_init/17 (pfe_emac_cfg_pre_init) @0759be00
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @075c0d20
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_registers/16 (pfe_emac_cfg_clear_registers) @0759ba80
+  Type: function definition analyzed
+  Visibility:
+  Aux: @075cd540
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: oal_time_udelay/64 
+pfe_emac_get_emac_err_src_index/15 (pfe_emac_get_emac_err_src_index) @0759b620
+  Type: function definition analyzed
+  Visibility:
+  Aux: @076f5438
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_report_hm_event/61 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 
+crc32_reversed/14 (crc32_reversed) @0759b2a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0765d2a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_get_hash/38 
+  Calls: reverse_bits_32/13 
+reverse_bits_32/13 (reverse_bits_32) @0759b000
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0765d2a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: crc32_reversed/14 
+  Calls: 
+fifo_get/12 (fifo_get) @073f57e0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fifo_put/11 (fifo_put) @073f5540
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_is_multi/10 (pfe_emac_is_multi) @07352c40
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_is_broad/9 (pfe_emac_is_broad) @073529a0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_is_zero/8 (pfe_emac_is_zero) @07352700
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+hal_ip_ready_get/7 (hal_ip_ready_get) @0719e9a0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+hal_ip_ready_set/6 (hal_ip_ready_set) @0719e700
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+find_irq_idx_from_id/5 (find_irq_idx_from_id) @0714b540
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_unlock/4 (oal_mutex_unlock) @070a6c40
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_lock/3 (oal_mutex_lock) @070a69a0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @0709bca8
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @0709bbd0
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+oal_swap_endian_long/0 (oal_swap_endian_long) @06eeed20
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: fifo_get fifo_put pfe_emac_is_multi pfe_emac_is_broad pfe_emac_is_zero hal_ip_ready_get hal_ip_ready_set find_irq_idx_from_id oal_mutex_unlock oal_mutex_lock SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+Dem_SetEventStatus/73 (Dem_SetEventStatus) @076deee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_report_hm_event/61 
+  Calls: 
+hm_src/72 (hm_src) @076f5438
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_emac_cfg_report_hm_event/61 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC0/71 (*.LC0) @076e8e10
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: 
+  Referring: pfe_emac_cfg_report_hm_event/61 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+dpp_fsm_events/70 (dpp_fsm_events) @076e8d80
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_emac_cfg_isr/62 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+mtl_ecc_events/69 (mtl_ecc_events) @076e8cf0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_emac_cfg_isr/62 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+autolibc_memset/68 (autolibc_memset) @076bf620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_read_addr_slot/37 
+  Calls: 
+oal_time_usleep/67 (oal_time_usleep) @07698380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_mdio_write45/53 pfe_emac_cfg_mdio_write22/52 pfe_emac_cfg_mdio_read45/51 pfe_emac_cfg_mdio_read22/50 pfe_emac_cfg_set_tx_flow_control/48 reg_wait_for_clear/22 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/66 (oal_util_raise_dem_for_drv_runtime_err) @076981c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_get_emac_err_src_index/15 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_set_tx_flow_control/48 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 
+  Calls: 
+pfe_hm_report/65 (pfe_hm_report) @076980e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_get_emac_err_src_index/15 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_set_tx_flow_control/48 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 
+  Calls: 
+oal_time_udelay/64 (oal_time_udelay) @076882a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_clear_hash_table/40 pfe_emac_cfg_set_hash_group/39 pfe_emac_cfg_write_addr_slot/36 pfe_emac_cfg_clear_registers/16 
+  Calls: 
+pfe_feature_mgr_is_available/63 (pfe_feature_mgr_is_available) @07688e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_init/18 pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_isr/62 (pfe_emac_cfg_isr) @076888c0
+  Type: function definition analyzed
+  Visibility: public
+  References: mtl_ecc_events/69 (addr)dpp_fsm_events/70 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_get_index/23 
+pfe_emac_cfg_report_hm_event/61 (pfe_emac_cfg_report_hm_event) @076881c0
+  Type: function definition analyzed
+  Visibility:
+  References: *.LC0/71 (read)hm_src/72 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_isr/62 pfe_emac_cfg_isr/62 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 Dem_SetEventStatus/73 pfe_hm_report/65 pfe_emac_get_emac_err_src_index/15 pfe_hm_report/65 
+pfe_emac_cfg_get_rx_cnt/60 (pfe_emac_cfg_get_rx_cnt) @076838c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_cnt/59 (pfe_emac_cfg_get_tx_cnt) @07683ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_pulse_width/58 (pfe_emac_cfg_pps0_set_pulse_width) @07683b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_period/57 (pfe_emac_cfg_pps0_set_period) @076837e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_target_time/56 (pfe_emac_cfg_pps0_set_target_time) @07683460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps_cmd/55 (pfe_emac_cfg_pps_cmd) @07683000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_configure/54 (pfe_emac_cfg_pps0_configure) @0767ed20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_mdio_write45/53 (pfe_emac_cfg_mdio_write45) @0767e8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_write22/52 (pfe_emac_cfg_mdio_write22) @07677d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_read45/51 (pfe_emac_cfg_mdio_read45) @07677000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_read22/50 (pfe_emac_cfg_mdio_read22) @076742a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_set_rx_flow_control/49 (pfe_emac_cfg_set_rx_flow_control) @07670700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_tx_flow_control/48 (pfe_emac_cfg_set_tx_flow_control) @076700e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 oal_time_usleep/67 
+pfe_emac_cfg_get_rx_flow_control/47 (pfe_emac_cfg_get_rx_flow_control) @07668a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_flow_control/46 (pfe_emac_cfg_get_tx_flow_control) @07668620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_enable/45 (pfe_emac_cfg_set_enable) @076681c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_broadcast/44 (pfe_emac_cfg_set_broadcast) @07664c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_allmulti_mode/43 (pfe_emac_cfg_set_allmulti_mode) @07664620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_promisc_mode/42 (pfe_emac_cfg_set_promisc_mode) @07664000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_loopback/41 (pfe_emac_cfg_set_loopback) @0765dd20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_hash_table/40 (pfe_emac_cfg_clear_hash_table) @0765d700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_set_hash_group/39 (pfe_emac_cfg_set_hash_group) @0765d2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_get_hash/38 (pfe_emac_cfg_get_hash) @0765d000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: crc32_reversed/14 
+pfe_emac_cfg_read_addr_slot/37 (pfe_emac_cfg_read_addr_slot) @07652c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memset/68 
+pfe_emac_cfg_write_addr_slot/36 (pfe_emac_cfg_write_addr_slot) @07652e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_set_max_frame_length/35 (pfe_emac_cfg_set_max_frame_length) @07652b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_status/34 (pfe_emac_cfg_get_link_status) @07652000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_speed/33 (pfe_emac_cfg_set_speed) @0764bee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_set_mii_mode/32 (pfe_emac_cfg_set_mii_mode) @0764b1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_set_duplex/31 (pfe_emac_cfg_set_duplex) @075e1c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_tx_disable/30 (pfe_emac_cfg_tx_disable) @075e1b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_stat_value/29 (pfe_emac_cfg_get_stat_value) @075e17e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_config/28 (pfe_emac_cfg_get_link_config) @075e1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_time/27 (pfe_emac_cfg_adjust_ts_time) @075e10e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 is_eclk_enabled/21 
+pfe_emac_cfg_set_ts_time/26 (pfe_emac_cfg_set_ts_time) @075dc540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 is_eclk_enabled/21 
+pfe_emac_cfg_get_ts_time/25 (pfe_emac_cfg_get_ts_time) @075d3e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_freq/24 (pfe_emac_cfg_adjust_ts_freq) @075d37e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 is_eclk_enabled/21 
+pfe_emac_cfg_get_index/23 (pfe_emac_cfg_get_index) @075cde00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_isr/62 
+  Calls: 
+reg_wait_for_clear/22 (reg_wait_for_clear) @075cd620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_adjust_ts_time/27 pfe_emac_cfg_set_ts_time/26 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 pfe_emac_cfg_enable_ts/19 
+  Calls: oal_time_usleep/67 
+is_eclk_enabled/21 (is_eclk_enabled) @075cdd20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_adjust_ts_time/27 pfe_emac_cfg_set_ts_time/26 pfe_emac_cfg_adjust_ts_freq/24 
+  Calls: 
+pfe_emac_cfg_disable_ts/20 (pfe_emac_cfg_disable_ts) @075cd8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_enable_ts/19 (pfe_emac_cfg_enable_ts) @075cd540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 reg_wait_for_clear/22 oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 
+pfe_emac_cfg_init/18 (pfe_emac_cfg_init) @075c0d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_set_duplex/31 pfe_emac_cfg_set_mii_mode/32 pfe_emac_cfg_set_speed/33 pfe_feature_mgr_is_available/63 pfe_feature_mgr_is_available/63 pfe_emac_cfg_clear_registers/16 
+pfe_emac_cfg_pre_init/17 (pfe_emac_cfg_pre_init) @0759be00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_registers/16 (pfe_emac_cfg_clear_registers) @0759ba80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: oal_time_udelay/64 
+pfe_emac_get_emac_err_src_index/15 (pfe_emac_get_emac_err_src_index) @0759b620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_report_hm_event/61 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 
+crc32_reversed/14 (crc32_reversed) @0759b2a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_get_hash/38 
+  Calls: reverse_bits_32/13 
+reverse_bits_32/13 (reverse_bits_32) @0759b000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: crc32_reversed/14 
+  Calls: 
+
+
+Initial Symbol table:
+
+Dem_SetEventStatus/73 (Dem_SetEventStatus) @076deee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_report_hm_event/61 
+  Calls: 
+hm_src.9858/72 (hm_src) @076f5438
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_emac_cfg_report_hm_event/61 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC0/71 (*.LC0) @076e8e10
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: 
+  Referring: pfe_emac_cfg_report_hm_event/61 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+dpp_fsm_events.9890/70 (dpp_fsm_events) @076e8d80
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_emac_cfg_isr/62 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+mtl_ecc_events.9889/69 (mtl_ecc_events) @076e8cf0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_emac_cfg_isr/62 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+autolibc_memset/68 (autolibc_memset) @076bf620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_read_addr_slot/37 
+  Calls: 
+oal_time_usleep/67 (oal_time_usleep) @07698380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_mdio_write45/53 pfe_emac_cfg_mdio_write22/52 pfe_emac_cfg_mdio_read45/51 pfe_emac_cfg_mdio_read22/50 pfe_emac_cfg_set_tx_flow_control/48 reg_wait_for_clear/22 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/66 (oal_util_raise_dem_for_drv_runtime_err) @076981c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_get_emac_err_src_index/15 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_set_tx_flow_control/48 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 
+  Calls: 
+pfe_hm_report/65 (pfe_hm_report) @076980e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_get_emac_err_src_index/15 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_set_tx_flow_control/48 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 
+  Calls: 
+oal_time_udelay/64 (oal_time_udelay) @076882a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_clear_hash_table/40 pfe_emac_cfg_set_hash_group/39 pfe_emac_cfg_write_addr_slot/36 pfe_emac_cfg_clear_registers/16 
+  Calls: 
+pfe_feature_mgr_is_available/63 (pfe_feature_mgr_is_available) @07688e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_init/18 pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_isr/62 (pfe_emac_cfg_isr) @076888c0
+  Type: function definition analyzed
+  Visibility: public
+  References: mtl_ecc_events.9889/69 (addr)dpp_fsm_events.9890/70 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_get_index/23 
+pfe_emac_cfg_report_hm_event/61 (pfe_emac_cfg_report_hm_event) @076881c0
+  Type: function definition analyzed
+  Visibility:
+  References: *.LC0/71 (read)hm_src.9858/72 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_isr/62 pfe_emac_cfg_isr/62 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 Dem_SetEventStatus/73 pfe_hm_report/65 pfe_emac_get_emac_err_src_index/15 pfe_hm_report/65 
+pfe_emac_cfg_get_rx_cnt/60 (pfe_emac_cfg_get_rx_cnt) @076838c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_cnt/59 (pfe_emac_cfg_get_tx_cnt) @07683ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_pulse_width/58 (pfe_emac_cfg_pps0_set_pulse_width) @07683b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_period/57 (pfe_emac_cfg_pps0_set_period) @076837e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_target_time/56 (pfe_emac_cfg_pps0_set_target_time) @07683460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps_cmd/55 (pfe_emac_cfg_pps_cmd) @07683000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_configure/54 (pfe_emac_cfg_pps0_configure) @0767ed20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_mdio_write45/53 (pfe_emac_cfg_mdio_write45) @0767e8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_write22/52 (pfe_emac_cfg_mdio_write22) @07677d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_read45/51 (pfe_emac_cfg_mdio_read45) @07677000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_read22/50 (pfe_emac_cfg_mdio_read22) @076742a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_set_rx_flow_control/49 (pfe_emac_cfg_set_rx_flow_control) @07670700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_tx_flow_control/48 (pfe_emac_cfg_set_tx_flow_control) @076700e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 oal_time_usleep/67 
+pfe_emac_cfg_get_rx_flow_control/47 (pfe_emac_cfg_get_rx_flow_control) @07668a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_flow_control/46 (pfe_emac_cfg_get_tx_flow_control) @07668620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_enable/45 (pfe_emac_cfg_set_enable) @076681c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_broadcast/44 (pfe_emac_cfg_set_broadcast) @07664c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_allmulti_mode/43 (pfe_emac_cfg_set_allmulti_mode) @07664620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_promisc_mode/42 (pfe_emac_cfg_set_promisc_mode) @07664000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_loopback/41 (pfe_emac_cfg_set_loopback) @0765dd20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_hash_table/40 (pfe_emac_cfg_clear_hash_table) @0765d700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_set_hash_group/39 (pfe_emac_cfg_set_hash_group) @0765d2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_get_hash/38 (pfe_emac_cfg_get_hash) @0765d000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: crc32_reversed/14 
+pfe_emac_cfg_read_addr_slot/37 (pfe_emac_cfg_read_addr_slot) @07652c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memset/68 
+pfe_emac_cfg_write_addr_slot/36 (pfe_emac_cfg_write_addr_slot) @07652e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_set_max_frame_length/35 (pfe_emac_cfg_set_max_frame_length) @07652b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_status/34 (pfe_emac_cfg_get_link_status) @07652000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_speed/33 (pfe_emac_cfg_set_speed) @0764bee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_set_mii_mode/32 (pfe_emac_cfg_set_mii_mode) @0764b1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_set_duplex/31 (pfe_emac_cfg_set_duplex) @075e1c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_tx_disable/30 (pfe_emac_cfg_tx_disable) @075e1b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_stat_value/29 (pfe_emac_cfg_get_stat_value) @075e17e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_config/28 (pfe_emac_cfg_get_link_config) @075e1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_time/27 (pfe_emac_cfg_adjust_ts_time) @075e10e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 is_eclk_enabled/21 
+pfe_emac_cfg_set_ts_time/26 (pfe_emac_cfg_set_ts_time) @075dc540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 is_eclk_enabled/21 
+pfe_emac_cfg_get_ts_time/25 (pfe_emac_cfg_get_ts_time) @075d3e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_freq/24 (pfe_emac_cfg_adjust_ts_freq) @075d37e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 is_eclk_enabled/21 
+pfe_emac_cfg_get_index/23 (pfe_emac_cfg_get_index) @075cde00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_isr/62 
+  Calls: 
+reg_wait_for_clear/22 (reg_wait_for_clear) @075cd620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_adjust_ts_time/27 pfe_emac_cfg_set_ts_time/26 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 pfe_emac_cfg_enable_ts/19 
+  Calls: oal_time_usleep/67 
+is_eclk_enabled/21 (is_eclk_enabled) @075cdd20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_adjust_ts_time/27 pfe_emac_cfg_set_ts_time/26 pfe_emac_cfg_adjust_ts_freq/24 
+  Calls: 
+pfe_emac_cfg_disable_ts/20 (pfe_emac_cfg_disable_ts) @075cd8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_enable_ts/19 (pfe_emac_cfg_enable_ts) @075cd540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 reg_wait_for_clear/22 oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 
+pfe_emac_cfg_init/18 (pfe_emac_cfg_init) @075c0d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_set_duplex/31 pfe_emac_cfg_set_mii_mode/32 pfe_emac_cfg_set_speed/33 pfe_feature_mgr_is_available/63 pfe_feature_mgr_is_available/63 pfe_emac_cfg_clear_registers/16 
+pfe_emac_cfg_pre_init/17 (pfe_emac_cfg_pre_init) @0759be00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_registers/16 (pfe_emac_cfg_clear_registers) @0759ba80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: oal_time_udelay/64 
+pfe_emac_get_emac_err_src_index/15 (pfe_emac_get_emac_err_src_index) @0759b620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_report_hm_event/61 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 
+crc32_reversed/14 (crc32_reversed) @0759b2a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_get_hash/38 
+  Calls: reverse_bits_32/13 
+reverse_bits_32/13 (reverse_bits_32) @0759b000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: crc32_reversed/14 
+  Calls: 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+Dem_SetEventStatus/73 (Dem_SetEventStatus) @076deee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_report_hm_event/61 
+  Calls: 
+hm_src.9858/72 (hm_src) @076f5438
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_emac_cfg_report_hm_event/61 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+*.LC0/71 (*.LC0) @076e8e10
+  Type: variable definition analyzed
+  Visibility: artificial
+  References: 
+  Referring: pfe_emac_cfg_report_hm_event/61 (read)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+dpp_fsm_events.9890/70 (dpp_fsm_events) @076e8d80
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_emac_cfg_isr/62 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+mtl_ecc_events.9889/69 (mtl_ecc_events) @076e8cf0
+  Type: variable definition analyzed
+  Visibility:
+  References: 
+  Referring: pfe_emac_cfg_isr/62 (addr)
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+autolibc_memset/68 (autolibc_memset) @076bf620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_read_addr_slot/37 
+  Calls: 
+oal_time_usleep/67 (oal_time_usleep) @07698380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_mdio_write45/53 pfe_emac_cfg_mdio_write22/52 pfe_emac_cfg_mdio_read45/51 pfe_emac_cfg_mdio_read22/50 pfe_emac_cfg_set_tx_flow_control/48 reg_wait_for_clear/22 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/66 (oal_util_raise_dem_for_drv_runtime_err) @076981c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_get_emac_err_src_index/15 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_set_tx_flow_control/48 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 
+  Calls: 
+pfe_hm_report/65 (pfe_hm_report) @076980e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_get_emac_err_src_index/15 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_set_tx_flow_control/48 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 
+  Calls: 
+oal_time_udelay/64 (oal_time_udelay) @076882a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_clear_hash_table/40 pfe_emac_cfg_set_hash_group/39 pfe_emac_cfg_write_addr_slot/36 pfe_emac_cfg_clear_registers/16 
+  Calls: 
+pfe_feature_mgr_is_available/63 (pfe_feature_mgr_is_available) @07688e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_init/18 pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_isr/62 (pfe_emac_cfg_isr) @076888c0
+  Type: function definition analyzed
+  Visibility: public
+  References: mtl_ecc_events.9889/69 (addr)dpp_fsm_events.9890/70 (addr)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_report_hm_event/61 pfe_emac_cfg_get_index/23 
+pfe_emac_cfg_report_hm_event/61 (pfe_emac_cfg_report_hm_event) @076881c0
+  Type: function definition analyzed
+  Visibility:
+  References: *.LC0/71 (read)hm_src.9858/72 (read)
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_isr/62 pfe_emac_cfg_isr/62 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 Dem_SetEventStatus/73 pfe_hm_report/65 pfe_emac_get_emac_err_src_index/15 pfe_hm_report/65 
+pfe_emac_cfg_get_rx_cnt/60 (pfe_emac_cfg_get_rx_cnt) @076838c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_cnt/59 (pfe_emac_cfg_get_tx_cnt) @07683ee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_pulse_width/58 (pfe_emac_cfg_pps0_set_pulse_width) @07683b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_period/57 (pfe_emac_cfg_pps0_set_period) @076837e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_target_time/56 (pfe_emac_cfg_pps0_set_target_time) @07683460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps_cmd/55 (pfe_emac_cfg_pps_cmd) @07683000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_configure/54 (pfe_emac_cfg_pps0_configure) @0767ed20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_mdio_write45/53 (pfe_emac_cfg_mdio_write45) @0767e8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_write22/52 (pfe_emac_cfg_mdio_write22) @07677d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_read45/51 (pfe_emac_cfg_mdio_read45) @07677000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_mdio_read22/50 (pfe_emac_cfg_mdio_read22) @076742a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 
+pfe_emac_cfg_set_rx_flow_control/49 (pfe_emac_cfg_set_rx_flow_control) @07670700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_tx_flow_control/48 (pfe_emac_cfg_set_tx_flow_control) @076700e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 oal_time_usleep/67 
+pfe_emac_cfg_get_rx_flow_control/47 (pfe_emac_cfg_get_rx_flow_control) @07668a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_flow_control/46 (pfe_emac_cfg_get_tx_flow_control) @07668620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_enable/45 (pfe_emac_cfg_set_enable) @076681c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_broadcast/44 (pfe_emac_cfg_set_broadcast) @07664c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_allmulti_mode/43 (pfe_emac_cfg_set_allmulti_mode) @07664620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_promisc_mode/42 (pfe_emac_cfg_set_promisc_mode) @07664000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_loopback/41 (pfe_emac_cfg_set_loopback) @0765dd20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_hash_table/40 (pfe_emac_cfg_clear_hash_table) @0765d700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_set_hash_group/39 (pfe_emac_cfg_set_hash_group) @0765d2a0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_get_hash/38 (pfe_emac_cfg_get_hash) @0765d000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: crc32_reversed/14 
+pfe_emac_cfg_read_addr_slot/37 (pfe_emac_cfg_read_addr_slot) @07652c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: autolibc_memset/68 
+pfe_emac_cfg_write_addr_slot/36 (pfe_emac_cfg_write_addr_slot) @07652e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 
+pfe_emac_cfg_set_max_frame_length/35 (pfe_emac_cfg_set_max_frame_length) @07652b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_status/34 (pfe_emac_cfg_get_link_status) @07652000
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_speed/33 (pfe_emac_cfg_set_speed) @0764bee0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_set_mii_mode/32 (pfe_emac_cfg_set_mii_mode) @0764b1c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_set_duplex/31 (pfe_emac_cfg_set_duplex) @075e1c40
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: 
+pfe_emac_cfg_tx_disable/30 (pfe_emac_cfg_tx_disable) @075e1b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_stat_value/29 (pfe_emac_cfg_get_stat_value) @075e17e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_config/28 (pfe_emac_cfg_get_link_config) @075e1460
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_time/27 (pfe_emac_cfg_adjust_ts_time) @075e10e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 is_eclk_enabled/21 
+pfe_emac_cfg_set_ts_time/26 (pfe_emac_cfg_set_ts_time) @075dc540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 is_eclk_enabled/21 
+pfe_emac_cfg_get_ts_time/25 (pfe_emac_cfg_get_ts_time) @075d3e00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_freq/24 (pfe_emac_cfg_adjust_ts_freq) @075d37e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 is_eclk_enabled/21 
+pfe_emac_cfg_get_index/23 (pfe_emac_cfg_get_index) @075cde00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_isr/62 
+  Calls: 
+reg_wait_for_clear/22 (reg_wait_for_clear) @075cd620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_adjust_ts_time/27 pfe_emac_cfg_set_ts_time/26 pfe_emac_cfg_adjust_ts_freq/24 pfe_emac_cfg_enable_ts/19 pfe_emac_cfg_enable_ts/19 
+  Calls: oal_time_usleep/67 
+is_eclk_enabled/21 (is_eclk_enabled) @075cdd20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_adjust_ts_time/27 pfe_emac_cfg_set_ts_time/26 pfe_emac_cfg_adjust_ts_freq/24 
+  Calls: 
+pfe_emac_cfg_disable_ts/20 (pfe_emac_cfg_disable_ts) @075cd8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_enable_ts/19 (pfe_emac_cfg_enable_ts) @075cd540
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear/22 reg_wait_for_clear/22 oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 
+pfe_emac_cfg_init/18 (pfe_emac_cfg_init) @075c0d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_set_duplex/31 pfe_emac_cfg_set_mii_mode/32 pfe_emac_cfg_set_speed/33 pfe_feature_mgr_is_available/63 pfe_feature_mgr_is_available/63 pfe_emac_cfg_clear_registers/16 
+pfe_emac_cfg_pre_init/17 (pfe_emac_cfg_pre_init) @0759be00
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_registers/16 (pfe_emac_cfg_clear_registers) @0759ba80
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_init/18 
+  Calls: oal_time_udelay/64 
+pfe_emac_get_emac_err_src_index/15 (pfe_emac_get_emac_err_src_index) @0759b620
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_report_hm_event/61 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 pfe_hm_report/65 
+crc32_reversed/14 (crc32_reversed) @0759b2a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: pfe_emac_cfg_get_hash/38 
+  Calls: reverse_bits_32/13 
+reverse_bits_32/13 (reverse_bits_32) @0759b000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: crc32_reversed/14 
+  Calls: 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+is_eclk_enabled/79 (is_eclk_enabled) @0719e700
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 78
+  References: 
+  Referring: 
+  Function is_eclk_enabled/79 is inline copy in pfe_emac_cfg_set_ts_time/26
+  Clone of is_eclk_enabled/21
+  Availability: local
+  Function flags: count:610207479 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: pfe_emac_cfg_set_ts_time/26 (inlined) (610207479 (estimated locally),0.57 per call) 
+  Calls: 
+is_eclk_enabled/78 (is_eclk_enabled) @0714b540
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 21
+  previous sharing asm name: 79
+  References: 
+  Referring: 
+  Function is_eclk_enabled/78 is inline copy in pfe_emac_cfg_adjust_ts_freq/24
+  Clone of is_eclk_enabled/21
+  Availability: local
+  Function flags: count:1073741823 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: pfe_emac_cfg_adjust_ts_freq/24 (inlined) (1073741823 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_emac_cfg_disable_ts/77 (pfe_emac_cfg_disable_ts) @070a6c40
+  Type: function definition analyzed
+  Visibility: public
+  next sharing asm name: 20
+  References: 
+  Referring: 
+  Function pfe_emac_cfg_disable_ts/77 is inline copy in pfe_emac_cfg_tx_disable/30
+  Clone of pfe_emac_cfg_disable_ts/20
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local icf_merged nonfreeing_fn optimize_size
+  Called by: pfe_emac_cfg_tx_disable/30 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+crc32_reversed.constprop.0/76 (crc32_reversed.constprop) @070a69a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function crc32_reversed.constprop/76 is inline copy in pfe_emac_cfg_get_hash/38
+  Clone of crc32_reversed/14
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local nonfreeing_fn optimize_size
+  Called by: pfe_emac_cfg_get_hash/38 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: reverse_bits_32/13 (inlined) (1073741897 (estimated locally),1.00 per call) 
+reg_wait_for_clear.constprop.0/75 (reg_wait_for_clear.constprop) @06eeed20
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Clone of reg_wait_for_clear/22
+  Availability: local
+  Function flags: count:114863532 (estimated locally) local optimize_size
+  Called by: pfe_emac_cfg_enable_ts/19 (267575274 (estimated locally),0.25 per call) pfe_emac_cfg_enable_ts/19 (88299840 (estimated locally),0.08 per call) pfe_emac_cfg_adjust_ts_freq/24 (664351040 (estimated locally),0.62 per call) pfe_emac_cfg_set_ts_time/26 (390349724 (estimated locally),0.36 per call) pfe_emac_cfg_adjust_ts_time/27 (394078092 (estimated locally),0.37 per call) 
+  Calls: oal_time_usleep/67 (958878293 (estimated locally),8.35 per call) 
+Dem_SetEventStatus/73 (Dem_SetEventStatus) @076deee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_report_hm_event/61 (39054403 (estimated locally),0.23 per call) 
+  Calls: 
+hm_src.9858/72 (hm_src) @076f5438
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: pfe_emac_cfg_report_hm_event/61 (read)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+*.LC0/71 (*.LC0) @076e8e10
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: pfe_emac_cfg_report_hm_event/61 (read)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+dpp_fsm_events.9890/70 (dpp_fsm_events) @076e8d80
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: pfe_emac_cfg_isr/62 (addr)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+mtl_ecc_events.9889/69 (mtl_ecc_events) @076e8cf0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: pfe_emac_cfg_isr/62 (addr)
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+autolibc_memset/68 (autolibc_memset) @076bf620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_read_addr_slot/37 (445388109 (estimated locally),0.41 per call) 
+  Calls: 
+oal_time_usleep/67 (oal_time_usleep) @07698380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: reg_wait_for_clear.constprop/75 (958878293 (estimated locally),8.35 per call) pfe_emac_cfg_mdio_write45/53 (1004539164 (estimated locally),14.52 per call) pfe_emac_cfg_mdio_write22/52 (1004539164 (estimated locally),14.52 per call) pfe_emac_cfg_mdio_read45/51 (1004539164 (estimated locally),14.52 per call) pfe_emac_cfg_mdio_read22/50 (1063004405 (estimated locally),15.36 per call) pfe_emac_cfg_set_tx_flow_control/48 (1073741824 (estimated locally),6.69 per call) 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/66 (oal_util_raise_dem_for_drv_runtime_err) @076981c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_set_tx_flow_control/48 (32490139 (estimated locally),0.20 per call) pfe_emac_cfg_adjust_ts_freq/24 (176174061 (estimated locally),0.16 per call) pfe_emac_cfg_enable_ts/19 (441094331 (estimated locally),0.41 per call) pfe_emac_cfg_report_hm_event/61 (56586383 (estimated locally),0.33 per call) pfe_emac_get_emac_err_src_index/15 (15979707 (estimated locally),0.09 per call) 
+  Calls: 
+pfe_hm_report/65 (pfe_hm_report) @076980e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_set_tx_flow_control/48 (32490139 (estimated locally),0.20 per call) pfe_emac_cfg_adjust_ts_freq/24 (176174061 (estimated locally),0.16 per call) pfe_emac_cfg_enable_ts/19 (441094331 (estimated locally),0.41 per call) pfe_emac_cfg_report_hm_event/61 (56586383 (estimated locally),0.33 per call) pfe_emac_cfg_report_hm_event/61 (39054403 (estimated locally),0.23 per call) pfe_emac_cfg_report_hm_event/61 (79898534 (estimated locally),0.47 per call) pfe_emac_get_emac_err_src_index/15 (15979707 (estimated locally),0.09 per call) 
+  Calls: 
+oal_time_udelay/64 (oal_time_udelay) @076882a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_clear_hash_table/40 (1073741824 (estimated locally),1.00 per call) pfe_emac_cfg_set_hash_group/39 (524845004 (estimated locally),0.49 per call) pfe_emac_cfg_write_addr_slot/36 (1073741824 (estimated locally),1.00 per call) pfe_emac_cfg_clear_registers/16 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_feature_mgr_is_available/63 (pfe_feature_mgr_is_available) @07688e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_emac_cfg_init/18 (1073741824 (estimated locally),1.00 per call) pfe_emac_cfg_init/18 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_emac_cfg_isr/62 (pfe_emac_cfg_isr) @076888c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: mtl_ecc_events.9889/69 (addr)dpp_fsm_events.9890/70 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_report_hm_event/61 (1073741824 (estimated locally),1.00 per call) pfe_emac_cfg_report_hm_event/61 (1073741824 (estimated locally),1.00 per call) pfe_emac_cfg_get_index/23 (1073741824 (estimated locally),1.00 per call) 
+pfe_emac_cfg_report_hm_event/61 (pfe_emac_cfg_report_hm_event) @076881c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: *.LC0/71 (read)hm_src.9858/72 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:171473887 (estimated locally) body local optimize_size
+  Called by: pfe_emac_cfg_isr/62 (1073741824 (estimated locally),1.00 per call) pfe_emac_cfg_isr/62 (1073741824 (estimated locally),1.00 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 (56586383 (estimated locally),0.33 per call) pfe_hm_report/65 (56586383 (estimated locally),0.33 per call) Dem_SetEventStatus/73 (39054403 (estimated locally),0.23 per call) pfe_hm_report/65 (39054403 (estimated locally),0.23 per call) pfe_emac_get_emac_err_src_index/15 (inlined) (79898534 (estimated locally),0.47 per call) pfe_hm_report/65 (79898534 (estimated locally),0.47 per call) 
+pfe_emac_cfg_get_rx_cnt/60 (pfe_emac_cfg_get_rx_cnt) @076838c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_cnt/59 (pfe_emac_cfg_get_tx_cnt) @07683ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_pulse_width/58 (pfe_emac_cfg_pps0_set_pulse_width) @07683b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_period/57 (pfe_emac_cfg_pps0_set_period) @076837e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_target_time/56 (pfe_emac_cfg_pps0_set_target_time) @07683460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps_cmd/55 (pfe_emac_cfg_pps_cmd) @07683000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_configure/54 (pfe_emac_cfg_pps0_configure) @0767ed20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_mdio_write45/53 (pfe_emac_cfg_mdio_write45) @0767e8c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:69202660 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 (1004539164 (estimated locally),14.52 per call) 
+pfe_emac_cfg_mdio_write22/52 (pfe_emac_cfg_mdio_write22) @07677d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:69202660 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 (1004539164 (estimated locally),14.52 per call) 
+pfe_emac_cfg_mdio_read45/51 (pfe_emac_cfg_mdio_read45) @07677000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:69202660 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 (1004539164 (estimated locally),14.52 per call) 
+pfe_emac_cfg_mdio_read22/50 (pfe_emac_cfg_mdio_read22) @076742a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:69202660 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_time_usleep/67 (1063004405 (estimated locally),15.36 per call) 
+pfe_emac_cfg_set_rx_flow_control/49 (pfe_emac_cfg_set_rx_flow_control) @07670700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_tx_flow_control/48 (pfe_emac_cfg_set_tx_flow_control) @076700e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:160524402 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 (32490139 (estimated locally),0.20 per call) pfe_hm_report/65 (32490139 (estimated locally),0.20 per call) oal_time_usleep/67 (1073741824 (estimated locally),6.69 per call) 
+pfe_emac_cfg_get_rx_flow_control/47 (pfe_emac_cfg_get_rx_flow_control) @07668a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_flow_control/46 (pfe_emac_cfg_get_tx_flow_control) @07668620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_enable/45 (pfe_emac_cfg_set_enable) @076681c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_broadcast/44 (pfe_emac_cfg_set_broadcast) @07664c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_allmulti_mode/43 (pfe_emac_cfg_set_allmulti_mode) @07664620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_promisc_mode/42 (pfe_emac_cfg_set_promisc_mode) @07664000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_loopback/41 (pfe_emac_cfg_set_loopback) @0765dd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_hash_table/40 (pfe_emac_cfg_clear_hash_table) @0765d700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 (1073741824 (estimated locally),1.00 per call) 
+pfe_emac_cfg_set_hash_group/39 (pfe_emac_cfg_set_hash_group) @0765d2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 (524845004 (estimated locally),0.49 per call) 
+pfe_emac_cfg_get_hash/38 (pfe_emac_cfg_get_hash) @0765d000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: crc32_reversed.constprop/76 (inlined) (1073741824 (estimated locally),1.00 per call) 
+pfe_emac_cfg_read_addr_slot/37 (pfe_emac_cfg_read_addr_slot) @07652c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: autolibc_memset/68 (445388109 (estimated locally),0.41 per call) 
+pfe_emac_cfg_write_addr_slot/36 (pfe_emac_cfg_write_addr_slot) @07652e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_time_udelay/64 (1073741824 (estimated locally),1.00 per call) 
+pfe_emac_cfg_set_max_frame_length/35 (pfe_emac_cfg_set_max_frame_length) @07652b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_status/34 (pfe_emac_cfg_get_link_status) @07652000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_speed/33 (pfe_emac_cfg_set_speed) @0764bee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: pfe_emac_cfg_init/18 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_emac_cfg_set_mii_mode/32 (pfe_emac_cfg_set_mii_mode) @0764b1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_duplex/31 (pfe_emac_cfg_set_duplex) @075e1c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: pfe_emac_cfg_init/18 (512926469 (estimated locally),0.48 per call) 
+  Calls: 
+pfe_emac_cfg_tx_disable/30 (pfe_emac_cfg_tx_disable) @075e1b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged nonfreeing_fn optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_disable_ts/77 (inlined) (1073741824 (estimated locally),1.00 per call) 
+pfe_emac_cfg_get_stat_value/29 (pfe_emac_cfg_get_stat_value) @075e17e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_config/28 (pfe_emac_cfg_get_link_config) @075e1460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_time/27 (pfe_emac_cfg_adjust_ts_time) @075e10e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear.constprop/75 (394078092 (estimated locally),0.37 per call) is_eclk_enabled/21 (inlined) (610207479 (estimated locally),0.57 per call) 
+pfe_emac_cfg_set_ts_time/26 (pfe_emac_cfg_set_ts_time) @075dc540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear.constprop/75 (390349724 (estimated locally),0.36 per call) is_eclk_enabled/79 (inlined) (610207479 (estimated locally),0.57 per call) 
+pfe_emac_cfg_get_ts_time/25 (pfe_emac_cfg_get_ts_time) @075d3e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_freq/24 (pfe_emac_cfg_adjust_ts_freq) @075d37e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear.constprop/75 (664351040 (estimated locally),0.62 per call) oal_util_raise_dem_for_drv_runtime_err/66 (176174061 (estimated locally),0.16 per call) pfe_hm_report/65 (176174061 (estimated locally),0.16 per call) is_eclk_enabled/78 (inlined) (1073741823 (estimated locally),1.00 per call) 
+pfe_emac_cfg_get_index/23 (pfe_emac_cfg_get_index) @075cde00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: pfe_emac_cfg_isr/62 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+reg_wait_for_clear/22 (reg_wait_for_clear) @075cd620
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:114863532 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+is_eclk_enabled/21 (is_eclk_enabled) @075cdd20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 78
+  References: 
+  Referring: 
+  Function is_eclk_enabled/21 is inline copy in pfe_emac_cfg_adjust_ts_time/27
+  Availability: local
+  Function flags: count:610207479 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: pfe_emac_cfg_adjust_ts_time/27 (inlined) (610207479 (estimated locally),0.57 per call) 
+  Calls: 
+pfe_emac_cfg_disable_ts/20 (pfe_emac_cfg_disable_ts) @075cd8c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  previous sharing asm name: 77
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body icf_merged nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_enable_ts/19 (pfe_emac_cfg_enable_ts) @075cd540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: reg_wait_for_clear.constprop/75 (88299840 (estimated locally),0.08 per call) reg_wait_for_clear.constprop/75 (267575274 (estimated locally),0.25 per call) oal_util_raise_dem_for_drv_runtime_err/66 (441094331 (estimated locally),0.41 per call) pfe_hm_report/65 (441094331 (estimated locally),0.41 per call) 
+pfe_emac_cfg_init/18 (pfe_emac_cfg_init) @075c0d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_emac_cfg_set_duplex/31 (512926469 (estimated locally),0.48 per call) pfe_emac_cfg_set_speed/33 (1073741824 (estimated locally),1.00 per call) pfe_feature_mgr_is_available/63 (1073741824 (estimated locally),1.00 per call) pfe_feature_mgr_is_available/63 (1073741824 (estimated locally),1.00 per call) pfe_emac_cfg_clear_registers/16 (inlined) (1073741824 (estimated locally),1.00 per call) 
+pfe_emac_cfg_pre_init/17 (pfe_emac_cfg_pre_init) @0759be00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_registers/16 (pfe_emac_cfg_clear_registers) @0759ba80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function pfe_emac_cfg_clear_registers/16 is inline copy in pfe_emac_cfg_init/18
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: pfe_emac_cfg_init/18 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: oal_time_udelay/64 (1073741824 (estimated locally),1.00 per call) 
+pfe_emac_get_emac_err_src_index/15 (pfe_emac_get_emac_err_src_index) @0759b620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function pfe_emac_get_emac_err_src_index/15 is inline copy in pfe_emac_cfg_report_hm_event/61
+  Availability: local
+  Function flags: count:79898534 (estimated locally) body local optimize_size
+  Called by: pfe_emac_cfg_report_hm_event/61 (inlined) (79898534 (estimated locally),0.47 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/66 (15979707 (estimated locally),0.09 per call) pfe_hm_report/65 (15979707 (estimated locally),0.09 per call) 
+crc32_reversed/14 (crc32_reversed) @0759b2a0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:14744043 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+reverse_bits_32/13 (reverse_bits_32) @0759b000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function reverse_bits_32/13 is inline copy in pfe_emac_cfg_get_hash/38
+  Availability: local
+  Function flags: count:1073741897 (estimated locally) body local nonfreeing_fn optimize_size
+  Called by: crc32_reversed.constprop/76 (inlined) (1073741897 (estimated locally),1.00 per call) 
+  Calls: 
+Materializing clones
+cloning crc32_reversed to crc32_reversed.constprop
+   replace map:  -> 6(replace);
+   args_to_skip: 1
+   combined_args_to_skip:1
+crc32_reversed (const uint8_t * const data, const uint32_t len)
+{
+  uint32_t jj;
+  uint32_t ii;
+  uint32_t res;
+
+  <bb 2> [local count: 14744043]:
+  # DEBUG BEGIN_STMT
+  # DEBUG poly => 3988292384
+  # DEBUG BEGIN_STMT
+  # DEBUG res => 4294967295
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 10>; [100.00%]
+
+  <bb 3> [local count: 119292716]:
+  # DEBUG BEGIN_STMT
+  _1 = data_16(D) + ii_9;
+  _2 = *_1;
+  _3 = (long unsigned int) _2;
+  res_17 = _3 ^ res_8;
+  # DEBUG res => res_17
+  # DEBUG BEGIN_STMT
+  # DEBUG jj => 0
+  goto <bb 8>; [100.00%]
+
+  <bb 4> [local count: 954449108]:
+  # DEBUG BEGIN_STMT
+  _4 = res_7 & 1;
+  if (_4 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 477224554]:
+  # DEBUG BEGIN_STMT
+  res_20 = res_7 >> 1;
+  # DEBUG res => res_20
+  # DEBUG BEGIN_STMT
+  res_21 = res_20 ^ 3988292384;
+  # DEBUG res => res_21
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 477224554]:
+  # DEBUG BEGIN_STMT
+  res_19 = res_7 >> 1;
+  # DEBUG res => res_19
+
+  <bb 7> [local count: 954449108]:
+  # res_6 = PHI <res_21(5), res_19(6)>
+  # DEBUG res => res_6
+  # DEBUG BEGIN_STMT
+  jj_22 = jj_10 + 1;
+  # DEBUG jj => jj_22
+
+  <bb 8> [local count: 1073741824]:
+  # res_7 = PHI <res_17(3), res_6(7)>
+  # jj_10 = PHI <0(3), jj_22(7)>
+  # DEBUG jj => jj_10
+  # DEBUG res => res_7
+  # DEBUG BEGIN_STMT
+  if (jj_10 != 8)
+    goto <bb 4>; [88.89%]
+  else
+    goto <bb 9>; [11.11%]
+
+  <bb 9> [local count: 119292717]:
+  # res_11 = PHI <res_7(8)>
+  # DEBUG BEGIN_STMT
+  ii_18 = ii_9 + 1;
+  # DEBUG ii => ii_18
+
+  <bb 10> [local count: 134036760]:
+  # res_8 = PHI <4294967295(2), res_11(9)>
+  # ii_9 = PHI <0(2), ii_18(9)>
+  # DEBUG ii => ii_9
+  # DEBUG res => res_8
+  # DEBUG BEGIN_STMT
+  if (ii_9 < len_13(D))
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 11> [local count: 14744044]:
+  # res_12 = PHI <res_8(10)>
+  # DEBUG BEGIN_STMT
+  _5 = ~res_12;
+  _15 = reverse_bits_32 (_5);
+  return _15;
+
+}
+
+
+crc32_reversed.constprop (const uint8_t * const data)
+{
+  uint32_t res;
+  uint32_t ii;
+  uint32_t jj;
+  const uint32_t len;
+
+  <bb 12> [local count: 14744043]:
+  # DEBUG len => 6
+
+  <bb 2> [local count: 14744043]:
+  # DEBUG BEGIN_STMT
+  # DEBUG poly => 3988292384
+  # DEBUG BEGIN_STMT
+  # DEBUG res => 4294967295
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 10>; [100.00%]
+
+  <bb 3> [local count: 119292716]:
+  # DEBUG BEGIN_STMT
+  _3 = data_1(D) + ii_2;
+  _4 = *_3;
+  _5 = (long unsigned int) _4;
+  res_7 = _5 ^ res_6;
+  # DEBUG res => res_7
+  # DEBUG BEGIN_STMT
+  # DEBUG jj => 0
+  goto <bb 8>; [100.00%]
+
+  <bb 4> [local count: 954449108]:
+  # DEBUG BEGIN_STMT
+  _9 = res_8 & 1;
+  if (_9 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 477224554]:
+  # DEBUG BEGIN_STMT
+  res_10 = res_8 >> 1;
+  # DEBUG res => res_10
+  # DEBUG BEGIN_STMT
+  res_11 = res_10 ^ 3988292384;
+  # DEBUG res => res_11
+  goto <bb 7>; [100.00%]
+
+  <bb 6> [local count: 477224554]:
+  # DEBUG BEGIN_STMT
+  res_12 = res_8 >> 1;
+  # DEBUG res => res_12
+
+  <bb 7> [local count: 954449108]:
+  # res_19 = PHI <res_11(5), res_12(6)>
+  # DEBUG res => res_19
+  # DEBUG BEGIN_STMT
+  jj_14 = jj_13 + 1;
+  # DEBUG jj => jj_14
+
+  <bb 8> [local count: 1073741824]:
+  # res_8 = PHI <res_7(3), res_19(7)>
+  # jj_13 = PHI <0(3), jj_14(7)>
+  # DEBUG jj => jj_13
+  # DEBUG res => res_8
+  # DEBUG BEGIN_STMT
+  if (jj_13 != 8)
+    goto <bb 4>; [88.89%]
+  else
+    goto <bb 9>; [11.11%]
+
+  <bb 9> [local count: 119292717]:
+  # res_20 = PHI <res_8(8)>
+  # DEBUG BEGIN_STMT
+  ii_15 = ii_2 + 1;
+  # DEBUG ii => ii_15
+
+  <bb 10> [local count: 134036760]:
+  # res_6 = PHI <4294967295(2), res_20(9)>
+  # ii_2 = PHI <0(2), ii_15(9)>
+  # DEBUG ii => ii_2
+  # DEBUG res => res_6
+  # DEBUG BEGIN_STMT
+  if (ii_2 <= 5)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 11> [local count: 14744044]:
+  # res_16 = PHI <res_6(10)>
+  # DEBUG BEGIN_STMT
+  _17 = ~res_16;
+  _18 = reverse_bits_32 (_17);
+  return _18;
+
+}
+
+
+cloning reg_wait_for_clear to reg_wait_for_clear.constprop
+   replace map:  -> 10(replace);
+   args_to_skip: 2
+   combined_args_to_skip:2
+reg_wait_for_clear (const uint32_t * reg_address, uint32_t value, uint8_t timeout_100us)
+{
+  uint32_t regval;
+  uint8_t timeout_cnt;
+  errno_t result;
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  # DEBUG result => 62
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG timeout_cnt => 0
+  goto <bb 5>; [100.00%]
+
+  <bb 3> [local count: 1014686025]:
+  # DEBUG BEGIN_STMT
+  regval_8 ={v} *reg_address_7(D);
+  # DEBUG regval => regval_8
+  # DEBUG BEGIN_STMT
+  _1 = regval_8 & value_9(D);
+  if (_1 == 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 4>; [94.50%]
+
+  <bb 4> [local count: 958878293]:
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (100);
+  # DEBUG BEGIN_STMT
+  timeout_cnt_11 = timeout_cnt_3 + 1;
+  # DEBUG timeout_cnt => timeout_cnt_11
+
+  <bb 5> [local count: 1073741824]:
+  # timeout_cnt_3 = PHI <0(2), timeout_cnt_11(4)>
+  # DEBUG timeout_cnt => timeout_cnt_3
+  # DEBUG BEGIN_STMT
+  if (timeout_cnt_3 < timeout_100us_6(D))
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 6> [local count: 114863532]:
+  # result_2 = PHI <0(3), 62(5)>
+  # DEBUG result => result_2
+  # DEBUG BEGIN_STMT
+  return result_2;
+
+}
+
+
+reg_wait_for_clear.constprop (const uint32_t * reg_address, uint32_t value)
+{
+  errno_t result;
+  uint8_t timeout_cnt;
+  uint32_t regval;
+  uint8_t timeout_100us;
+
+  <bb 7> [local count: 114863532]:
+  # DEBUG timeout_100us => 10
+
+  <bb 2> [local count: 114863532]:
+  # DEBUG BEGIN_STMT
+  # DEBUG result => 62
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG timeout_cnt => 0
+  goto <bb 5>; [100.00%]
+
+  <bb 3> [local count: 1014686025]:
+  # DEBUG BEGIN_STMT
+  regval_2 ={v} *reg_address_1(D);
+  # DEBUG regval => regval_2
+  # DEBUG BEGIN_STMT
+  _4 = regval_2 & value_3(D);
+  if (_4 == 0)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 4>; [94.50%]
+
+  <bb 4> [local count: 958878293]:
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (100);
+  # DEBUG BEGIN_STMT
+  timeout_cnt_6 = timeout_cnt_5 + 1;
+  # DEBUG timeout_cnt => timeout_cnt_6
+
+  <bb 5> [local count: 1073741824]:
+  # timeout_cnt_5 = PHI <0(2), timeout_cnt_6(4)>
+  # DEBUG timeout_cnt => timeout_cnt_5
+  # DEBUG BEGIN_STMT
+  if (timeout_cnt_5 <= 9)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 6> [local count: 114863532]:
+  # result_7 = PHI <0(3), 62(5)>
+  # DEBUG result => result_7
+  # DEBUG BEGIN_STMT
+  return result_7;
+
+}
+
+
+Materialization Call site updates done.
+
+Reclaiming functions: reg_wait_for_clear/22 crc32_reversed/14
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:pfe_emac_cfg_report_hm_event:0
+Time profile order in expand_all_functions:reg_wait_for_clear.constprop.0:0
+Time profile order in expand_all_functions:pfe_emac_cfg_pre_init:0
+Time profile order in expand_all_functions:pfe_emac_cfg_enable_ts:0
+updating call of pfe_emac_cfg_enable_ts/19 -> reg_wait_for_clear.constprop/75: ret_47 = reg_wait_for_clear (_2, 4, 10);
+ combined args to skip: 2
+  updated to:ret_47 = reg_wait_for_clear.constprop (_2, 4);
+updating call of pfe_emac_cfg_enable_ts/19 -> reg_wait_for_clear.constprop/75: ret_40 = reg_wait_for_clear (_2, 32, 10);
+ combined args to skip: 2
+  updated to:ret_40 = reg_wait_for_clear.constprop (_2, 32);
+Time profile order in expand_all_functions:pfe_emac_cfg_disable_ts:0
+Time profile order in expand_all_functions:pfe_emac_cfg_get_index:0
+Time profile order in expand_all_functions:pfe_emac_cfg_adjust_ts_freq:0
+updating call of pfe_emac_cfg_adjust_ts_freq/24 -> reg_wait_for_clear.constprop/75: ret_34 = reg_wait_for_clear (_11, 32, 10);
+ combined args to skip: 2
+  updated to:ret_34 = reg_wait_for_clear.constprop (_11, 32);
+Time profile order in expand_all_functions:pfe_emac_cfg_get_ts_time:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_ts_time:0
+updating call of pfe_emac_cfg_set_ts_time/26 -> reg_wait_for_clear.constprop/75: ret_27 = reg_wait_for_clear (_11, 4, 10);
+ combined args to skip: 2
+  updated to:ret_27 = reg_wait_for_clear.constprop (_11, 4);
+Time profile order in expand_all_functions:pfe_emac_cfg_adjust_ts_time:0
+updating call of pfe_emac_cfg_adjust_ts_time/27 -> reg_wait_for_clear.constprop/75: ret_34 = reg_wait_for_clear (_4, 8, 10);
+ combined args to skip: 2
+  updated to:ret_34 = reg_wait_for_clear.constprop (_4, 8);
+Time profile order in expand_all_functions:pfe_emac_cfg_get_link_config:0
+Time profile order in expand_all_functions:pfe_emac_cfg_get_stat_value:0
+Time profile order in expand_all_functions:pfe_emac_cfg_tx_disable:0
+updating call of pfe_emac_cfg_tx_disable/30 -> pfe_emac_cfg_disable_ts/77: pfe_emac_cfg_disable_ts (base_va_2(D)); [tail call]
+  updated to:pfe_emac_cfg_disable_ts (base_va_2(D)); [tail call]
+Time profile order in expand_all_functions:pfe_emac_cfg_set_duplex:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_mii_mode:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_speed:0
+Time profile order in expand_all_functions:pfe_emac_cfg_init:0
+Time profile order in expand_all_functions:pfe_emac_cfg_get_link_status:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_max_frame_length:0
+Time profile order in expand_all_functions:pfe_emac_cfg_write_addr_slot:0
+Time profile order in expand_all_functions:pfe_emac_cfg_read_addr_slot:0
+Time profile order in expand_all_functions:pfe_emac_cfg_get_hash:0
+updating call of pfe_emac_cfg_get_hash/38 -> crc32_reversed.constprop/76: _3 = crc32_reversed (addr_2(D), 6);
+ combined args to skip: 1
+  updated to:_3 = crc32_reversed.constprop (addr_2(D));
+Time profile order in expand_all_functions:pfe_emac_cfg_set_hash_group:0
+Time profile order in expand_all_functions:pfe_emac_cfg_clear_hash_table:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_loopback:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_promisc_mode:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_allmulti_mode:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_broadcast:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_enable:0
+Time profile order in expand_all_functions:pfe_emac_cfg_get_tx_flow_control:0
+Time profile order in expand_all_functions:pfe_emac_cfg_get_rx_flow_control:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_tx_flow_control:0
+Time profile order in expand_all_functions:pfe_emac_cfg_set_rx_flow_control:0
+Time profile order in expand_all_functions:pfe_emac_cfg_mdio_read22:0
+Time profile order in expand_all_functions:pfe_emac_cfg_mdio_read45:0
+Time profile order in expand_all_functions:pfe_emac_cfg_mdio_write22:0
+Time profile order in expand_all_functions:pfe_emac_cfg_mdio_write45:0
+Time profile order in expand_all_functions:pfe_emac_cfg_pps0_configure:0
+Time profile order in expand_all_functions:pfe_emac_cfg_pps_cmd:0
+Time profile order in expand_all_functions:pfe_emac_cfg_pps0_set_target_time:0
+Time profile order in expand_all_functions:pfe_emac_cfg_pps0_set_period:0
+Time profile order in expand_all_functions:pfe_emac_cfg_pps0_set_pulse_width:0
+Time profile order in expand_all_functions:pfe_emac_cfg_get_tx_cnt:0
+Time profile order in expand_all_functions:pfe_emac_cfg_get_rx_cnt:0
+Time profile order in expand_all_functions:pfe_emac_cfg_isr:0
+Trivially needed variables: hm_src.9858 *.LC0 dpp_fsm_events.9890 mtl_ecc_events.9889
+Removing variables:
+
+Final Symbol table:
+
+reg_wait_for_clear.constprop.0/75 (reg_wait_for_clear.constprop) @06eeed20
+  Type: function definition analyzed
+  Visibility: asm_written artificial
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:114863532 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+Dem_SetEventStatus/73 (Dem_SetEventStatus) @076deee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+hm_src.9858/72 (hm_src) @076f5438
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @00000001
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+*.LC0/71 (*.LC0) @076e8e10
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written artificial
+  Aux: @076f5438
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+dpp_fsm_events.9890/70 (dpp_fsm_events) @076e8d80
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @076e8e10
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+mtl_ecc_events.9889/69 (mtl_ecc_events) @076e8cf0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  Aux: @076e8d80
+  References: 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized used-by-single-function read-only const-value-known
+autolibc_memset/68 (autolibc_memset) @076bf620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_time_usleep/67 (oal_time_usleep) @07698380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/66 (oal_util_raise_dem_for_drv_runtime_err) @076981c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_hm_report/65 (pfe_hm_report) @076980e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_time_udelay/64 (oal_time_udelay) @076882a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_feature_mgr_is_available/63 (pfe_feature_mgr_is_available) @07688e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_isr/62 (pfe_emac_cfg_isr) @076888c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_report_hm_event/61 (pfe_emac_cfg_report_hm_event) @076881c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:171473887 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_rx_cnt/60 (pfe_emac_cfg_get_rx_cnt) @076838c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_cnt/59 (pfe_emac_cfg_get_tx_cnt) @07683ee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_pulse_width/58 (pfe_emac_cfg_pps0_set_pulse_width) @07683b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_period/57 (pfe_emac_cfg_pps0_set_period) @076837e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_set_target_time/56 (pfe_emac_cfg_pps0_set_target_time) @07683460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps_cmd/55 (pfe_emac_cfg_pps_cmd) @07683000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pps0_configure/54 (pfe_emac_cfg_pps0_configure) @0767ed20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_mdio_write45/53 (pfe_emac_cfg_mdio_write45) @0767e8c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:69202660 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_mdio_write22/52 (pfe_emac_cfg_mdio_write22) @07677d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:69202660 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_mdio_read45/51 (pfe_emac_cfg_mdio_read45) @07677000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:69202660 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_mdio_read22/50 (pfe_emac_cfg_mdio_read22) @076742a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:69202660 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_rx_flow_control/49 (pfe_emac_cfg_set_rx_flow_control) @07670700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_tx_flow_control/48 (pfe_emac_cfg_set_tx_flow_control) @076700e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:160524402 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_rx_flow_control/47 (pfe_emac_cfg_get_rx_flow_control) @07668a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_tx_flow_control/46 (pfe_emac_cfg_get_tx_flow_control) @07668620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_enable/45 (pfe_emac_cfg_set_enable) @076681c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_broadcast/44 (pfe_emac_cfg_set_broadcast) @07664c40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_allmulti_mode/43 (pfe_emac_cfg_set_allmulti_mode) @07664620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_promisc_mode/42 (pfe_emac_cfg_set_promisc_mode) @07664000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_loopback/41 (pfe_emac_cfg_set_loopback) @0765dd20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_clear_hash_table/40 (pfe_emac_cfg_clear_hash_table) @0765d700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_hash_group/39 (pfe_emac_cfg_set_hash_group) @0765d2a0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_hash/38 (pfe_emac_cfg_get_hash) @0765d000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_read_addr_slot/37 (pfe_emac_cfg_read_addr_slot) @07652c40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_write_addr_slot/36 (pfe_emac_cfg_write_addr_slot) @07652e00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_max_frame_length/35 (pfe_emac_cfg_set_max_frame_length) @07652b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_status/34 (pfe_emac_cfg_get_link_status) @07652000
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_speed/33 (pfe_emac_cfg_set_speed) @0764bee0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_mii_mode/32 (pfe_emac_cfg_set_mii_mode) @0764b1c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_duplex/31 (pfe_emac_cfg_set_duplex) @075e1c40
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_tx_disable/30 (pfe_emac_cfg_tx_disable) @075e1b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) icf_merged nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_stat_value/29 (pfe_emac_cfg_get_stat_value) @075e17e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_link_config/28 (pfe_emac_cfg_get_link_config) @075e1460
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_time/27 (pfe_emac_cfg_adjust_ts_time) @075e10e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_set_ts_time/26 (pfe_emac_cfg_set_ts_time) @075dc540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_ts_time/25 (pfe_emac_cfg_get_ts_time) @075d3e00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_adjust_ts_freq/24 (pfe_emac_cfg_adjust_ts_freq) @075d37e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_get_index/23 (pfe_emac_cfg_get_index) @075cde00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_disable_ts/20 (pfe_emac_cfg_disable_ts) @075cd8c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) icf_merged nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_enable_ts/19 (pfe_emac_cfg_enable_ts) @075cd540
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_init/18 (pfe_emac_cfg_init) @075c0d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_cfg_pre_init/17 (pfe_emac_cfg_pre_init) @0759be00
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 

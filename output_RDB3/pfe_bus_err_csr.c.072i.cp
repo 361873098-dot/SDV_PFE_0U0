@@ -1,0 +1,317 @@
+
+IPA constant propagation start:
+
+IPA structures before propagation:
+
+Jump functions:
+  Jump functions of caller  Dem_SetEventStatus/19:
+  Jump functions of caller  pfe_hm_report/18:
+  Jump functions of caller  pfe_bus_err_cfg_irq_unmask_all/16:
+  Jump functions of caller  pfe_bus_err_cfg_irq_unmask/15:
+  Jump functions of caller  pfe_bus_err_cfg_irq_mask/14:
+  Jump functions of caller  pfe_bus_err_cfg_isr/13:
+
+ Propagating constants:
+
+Not considering pfe_bus_err_cfg_irq_unmask_all for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bus_err_cfg_irq_unmask for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bus_err_cfg_irq_mask for cloning; -fipa-cp-clone disabled.
+Not considering pfe_bus_err_cfg_isr for cloning; -fipa-cp-clone disabled.
+
+overall_size: 56, max_new_size: 11001
+
+IPA lattices after all propagation:
+
+Lattices:
+  Node: pfe_bus_err_cfg_irq_unmask_all/16:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bus_err_cfg_irq_unmask/15:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bus_err_cfg_irq_mask/14:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+  Node: pfe_bus_err_cfg_isr/13:
+    param [0]: BOTTOM
+         ctxs: BOTTOM
+         Bits unusable (BOTTOM)
+         VARYING
+        AGGS BOTTOM
+
+IPA decision stage:
+
+
+IPA constant propagation end
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Dem_SetEventStatus/19 (Dem_SetEventStatus) @0746ba80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_bus_err_cfg_isr/13 (315357974 (estimated locally),1.74 per call) 
+  Calls: 
+pfe_hm_report/18 (pfe_hm_report) @0746b700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_bus_err_cfg_isr/13 (315357974 (estimated locally),1.74 per call) 
+  Calls: 
+event_id.9233/17 (event_id) @07460ee8
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: pfe_bus_err_cfg_isr/13 (read)
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+pfe_bus_err_cfg_irq_unmask_all/16 (pfe_bus_err_cfg_irq_unmask_all) @0746bc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bus_err_cfg_irq_unmask/15 (pfe_bus_err_cfg_irq_unmask) @0746b9a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bus_err_cfg_irq_mask/14 (pfe_bus_err_cfg_irq_mask) @0746b620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_bus_err_cfg_isr/13 (pfe_bus_err_cfg_isr) @0746b2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: event_id.9233/17 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:181710157 (estimated locally) body optimize_size
+  Called by: 
+  Calls: Dem_SetEventStatus/19 (315357974 (estimated locally),1.74 per call) pfe_hm_report/18 (315357974 (estimated locally),1.74 per call) 
+
+;; Function pfe_bus_err_cfg_isr (pfe_bus_err_cfg_isr, funcdef_no=11, decl_uid=7255, cgraph_uid=12, symbol_order=13)
+
+Modification phase of node pfe_bus_err_cfg_isr/13
+pfe_bus_err_cfg_isr (addr_t base_va)
+{
+  static const pfe_hm_evt_t event_id[20] = {60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79};
+  uint8_t index;
+  uint32_t trig_en_interrupts;
+  errno_t ret;
+  uint32_t reg_src;
+  uint32_t reg_en;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+  unsigned int _4;
+  volatile uint32_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  int _8;
+  <unnamed type> _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 2> [local count: 181710157]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG index => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_18(D) + 212;
+  _2 = (volatile uint32_t *) _1;
+  reg_en_20 ={v} *_2;
+  # DEBUG reg_en => reg_en_20
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = reg_en_20 & 4294967294;
+  *_2 ={v} _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = base_va_18(D) + 208;
+  _5 = (volatile uint32_t *) _4;
+  reg_src_22 ={v} *_5;
+  # DEBUG reg_src => reg_src_22
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_5 ={v} reg_src_22;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = reg_en_20 & reg_src_22;
+  trig_en_interrupts_24 = _6 & 2097150;
+  # DEBUG trig_en_interrupts => trig_en_interrupts_24
+  # DEBUG BEGIN_STMT
+  if (trig_en_interrupts_24 != 0)
+    goto <bb 3>; [65.00%]
+  else
+    goto <bb 8>; [35.00%]
+
+  <bb 3> [local count: 118111602]:
+  # DEBUG BEGIN_STMT
+  trig_en_interrupts_25 = trig_en_interrupts_24 >> 1;
+  # DEBUG trig_en_interrupts => trig_en_interrupts_25
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = trig_en_interrupts_13 & 1;
+  if (_7 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 315357974]:
+  # DEBUG BEGIN_STMT
+  _8 = (int) index_14;
+  _9 = event_id[_8];
+  pfe_hm_report (6, 2, _9, "[%s:%d] ", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_bus_err_csr.c", 107, "");
+  # DEBUG BEGIN_STMT
+  Dem_SetEventStatus (47, 3);
+
+  <bb 6> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  trig_en_interrupts_28 = trig_en_interrupts_13 >> 1;
+  # DEBUG trig_en_interrupts => trig_en_interrupts_28
+  # DEBUG BEGIN_STMT
+  index_29 = index_14 + 1;
+  # DEBUG index => index_29
+
+  <bb 7> [local count: 1073741824]:
+  # trig_en_interrupts_13 = PHI <trig_en_interrupts_25(3), trig_en_interrupts_28(6)>
+  # index_14 = PHI <0(3), index_29(6)>
+  # DEBUG index => index_14
+  # DEBUG trig_en_interrupts => trig_en_interrupts_13
+  # DEBUG BEGIN_STMT
+  if (trig_en_interrupts_13 != 0)
+    goto <bb 4>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 181710156]:
+  # ret_12 = PHI <2(2), 0(7)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = ~reg_src_22;
+  _11 = _10 & reg_en_20;
+  *_2 ={v} _11;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_12;
+
+}
+
+
+
+;; Function pfe_bus_err_cfg_irq_mask (pfe_bus_err_cfg_irq_mask, funcdef_no=12, decl_uid=7257, cgraph_uid=13, symbol_order=14)
+
+Modification phase of node pfe_bus_err_cfg_irq_mask/14
+pfe_bus_err_cfg_irq_mask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 212;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 & 4294967294;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_bus_err_cfg_irq_unmask (pfe_bus_err_cfg_irq_unmask, funcdef_no=13, decl_uid=7259, cgraph_uid=14, symbol_order=15)
+
+Modification phase of node pfe_bus_err_cfg_irq_unmask/15
+pfe_bus_err_cfg_irq_unmask (addr_t base_va)
+{
+  uint32_t reg;
+  unsigned int _1;
+  volatile uint32_t * _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_4(D) + 212;
+  _2 = (volatile uint32_t *) _1;
+  _3 ={v} *_2;
+  reg_6 = _3 | 1;
+  # DEBUG reg => reg_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *_2 ={v} reg_6;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+
+;; Function pfe_bus_err_cfg_irq_unmask_all (pfe_bus_err_cfg_irq_unmask_all, funcdef_no=14, decl_uid=7261, cgraph_uid=15, symbol_order=16)
+
+Modification phase of node pfe_bus_err_cfg_irq_unmask_all/16
+pfe_bus_err_cfg_irq_unmask_all (addr_t base_va)
+{
+  unsigned int _1;
+  volatile uint32_t * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = base_va_3(D) + 212;
+  _2 = (volatile uint32_t *) _1;
+  *_2 ={v} 2097151;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

@@ -1,0 +1,4407 @@
+
+
+ local analysis of dns_backupserver_available.part.0
+   scanning: _1 = dns_servers[1].addr;
+  scanning: if (_1 != 0)
+  scanning: return ret_2;
+Function is locally const.
+
+
+ local analysis of dns_gethostbyname_addrtype
+   scanning: if (addr_7(D) == 0B)
+  scanning: if (hostname_8(D) == 0B)
+  scanning: _1 = *hostname_8(D);
+    Indirect ref read is not const
+  scanning: if (_1 == 0)
+  scanning: hostnamelen_10 = strlen (hostname_8(D));
+  scanning: if (hostnamelen_10 > 255)
+  scanning: _2 = ip4addr_aton (hostname_8(D), addr_7(D));
+  scanning: if (_2 != 0)
+  scanning: _3 = dns_lookup (hostname_8(D), addr_7(D));
+  scanning: if (_3 == 0)
+  scanning: _4 = dns_servers[0].addr;
+  scanning: if (_4 == 0)
+  scanning: _16 = dns_enqueue (hostname_8(D), hostnamelen_10, found_13(D), callback_arg_14(D));
+  scanning: return _5;
+Function is locally pure.
+
+
+ local analysis of dns_gethostbyname
+   scanning: _7 = dns_gethostbyname_addrtype (hostname_2(D), addr_3(D), found_4(D), callback_arg_5(D), 0);
+  scanning: return _7;
+Function is locally const.
+
+
+ local analysis of dns_enqueue
+   scanning: _1 = (int) i_23;
+  scanning: _2 = dns_table[_1].state;
+  scanning: if (_2 == 2)
+  scanning: _3 = &dns_table[_1].name;
+  scanning: _4 = lwip_strnicmp (name_58(D), _3, 256);
+  scanning: if (_4 == 0)
+  scanning: _5 = (int) r_34;
+  scanning: _6 = dns_requests[_5].found;
+  scanning: if (_6 == 0B)
+  scanning: dns_requests[_9].found = found_52(D);
+  scanning: dns_requests[_9].arg = callback_arg_54(D);
+  scanning: dns_requests[_9].dns_table_idx = i_45;
+  scanning: r_68 = r_34 + 1;
+  scanning: if (r_34 != 4)
+  scanning: i_72 = i_23 + 1;
+  scanning: if (i_23 != 4)
+  scanning: _7 = (int) i_24;
+  scanning: entry_41 = &dns_table[_7];
+  scanning: _8 = MEM[(struct dns_table_entry *)&dns_table][_7].state;
+    Indirect ref read is not const
+  scanning: if (_8 == 0)
+  scanning: if (_8 == 3)
+  scanning: dns_seqno.6_10 = dns_seqno;
+  scanning: _11 = MEM[(struct dns_table_entry *)&dns_table][_7].seqno;
+    Indirect ref read is not const
+  scanning: age_42 = dns_seqno.6_10 - _11;
+  scanning: if (lseq_27 < age_42)
+  scanning: i_44 = i_24 + 1;
+  scanning: if (i_24 != 4)
+  scanning: if (i_14 == 4)
+  scanning: if (lseqi_17 > 3)
+  scanning: _12 = (int) lseqi_17;
+  scanning: _13 = dns_table[_12].state;
+  scanning: if (_13 != 3)
+  scanning: entry_46 = &dns_table[_12];
+  scanning: _15 = (int) r_35;
+  scanning: _16 = dns_requests[_15].found;
+  scanning: if (_16 == 0B)
+  scanning: req_48 = &dns_requests[_43];
+  scanning: r_47 = r_35 + 1;
+  scanning: if (r_35 != 4)
+  scanning: if (req_33 == 0B)
+  scanning: req_33->dns_table_idx = i_25;
+    Indirect ref write is not const/pure
+  scanning: entry_32->state = 1;
+    Indirect ref write is not const/pure
+  scanning: dns_seqno.8_18 = dns_seqno;
+  scanning: entry_32->seqno = dns_seqno.8_18;
+    Indirect ref write is not const/pure
+  scanning: req_33->found = found_52(D);
+    Indirect ref write is not const/pure
+  scanning: req_33->arg = callback_arg_54(D);
+    Indirect ref write is not const/pure
+  scanning: namelen_57 = MIN_EXPR <hostnamelen_56(D), 255>;
+  scanning: _19 = &entry_32->name;
+  scanning: memcpy (_19, name_58(D), namelen_57);
+  scanning: entry_32->name[namelen_57] = 0;
+    Indirect ref write is not const/pure
+  scanning: _20 = dns_alloc_pcb ();
+  scanning: entry_32->pcb_idx = _20;
+    Indirect ref write is not const/pure
+  scanning: if (_20 > 3)
+  scanning: entry_32->state = 0;
+    Indirect ref write is not const/pure
+  scanning: req_33->found = 0B;
+    Indirect ref write is not const/pure
+  scanning: dns_seqno.9_21 = dns_seqno;
+  scanning: _22 = dns_seqno.9_21 + 1;
+  scanning: dns_seqno = _22;
+  scanning: dns_check_entry (i_25);
+  scanning: return _36;
+
+
+ local analysis of dns_recv
+   scanning: _1 = p_48(D)->tot_len;
+    Indirect ref read is not const
+  scanning: if (_1 <= 15)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: _2 = pbuf_copy_partial (p_48(D), &hdr, 12, 0);
+  scanning: if (_2 == 12)
+  scanning: _3 = hdr.id;
+  scanning: txid_51 = lwip_htons (_3);
+  scanning: _4 = (int) i_40;
+  scanning: entry_53 = &dns_table[_4];
+  scanning: _5 = MEM[(struct dns_table_entry *)&dns_table][_4].state;
+    Indirect ref read is not const
+  scanning: if (_5 == 2)
+  scanning: _6 = MEM[(struct dns_table_entry *)&dns_table][_4].txid;
+    Indirect ref read is not const
+  scanning: if (_6 == txid_51)
+  scanning: _7 = hdr.numquestions;
+  scanning: nquestions_55 = lwip_htons (_7);
+  scanning: _8 = hdr.numanswers;
+  scanning: nanswers_57 = lwip_htons (_8);
+  scanning: _9 = hdr.flags1;
+  scanning: _10 = (signed char) _9;
+  scanning: if (_10 >= 0)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: if (nquestions_55 != 1)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: _11 = addr_58(D)->addr;
+    Indirect ref read is not const
+  scanning: _12 = MEM[(struct dns_table_entry *)&dns_table][_26].server_idx;
+    Indirect ref read is not const
+  scanning: _13 = (int) _12;
+  scanning: _14 = dns_servers[_13].addr;
+  scanning: if (_11 != _14)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: _15 = &MEM[(struct dns_table_entry *)&dns_table][_26].name;
+  scanning: res_idx_60 = dns_compare_name (_15, p_48(D), 12);
+  scanning: if (res_idx_60 == 65535)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: _16 = pbuf_copy_partial (p_48(D), &qry, 4, res_idx_60);
+  scanning: if (_16 != 4)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: _17 = qry.cls;
+  scanning: if (_17 != 256)
+  scanning: _18 = qry.type;
+  scanning: if (_18 != 256)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: if (res_idx_60 > 65531)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: res_idx_62 = res_idx_60 + 4;
+  scanning: _19 = hdr.flags2;
+  scanning: _52 = _19 & 15;
+  scanning: if (_52 != 0)
+  scanning: _20 = dns_backupserver_available (entry_39);
+  scanning: if (_20 != 0)
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_26].retries = 3;
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_26].tmr = 1;
+    Indirect ref write is not const/pure
+  scanning: dns_check_entry (i_38);
+  scanning: // predicted unlikely by goto predictor.
+  scanning: res_idx_64 = dns_skip_name (p_48(D), res_idx_41);
+  scanning: if (res_idx_64 == 65535)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: _21 = pbuf_copy_partial (p_48(D), &ans, 10, res_idx_64);
+  scanning: if (_21 != 10)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: if (res_idx_64 > 65525)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: res_idx_66 = res_idx_64 + 10;
+  scanning: _22 = ans.cls;
+  scanning: if (_22 == 256)
+  scanning: _23 = ans.type;
+  scanning: if (_23 == 256)
+  scanning: _24 = ans.len;
+  scanning: if (_24 == 1024)
+  scanning: _25 = pbuf_copy_partial (p_48(D), &ip4addr, 4, res_idx_78);
+  scanning: if (_25 != 4)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: _27 = ip4addr.addr;
+  scanning: dns_table[_26].ipaddr.addr = _27;
+  scanning: pbuf_free (p_48(D));
+  scanning: _28 = ans.ttl;
+  scanning: _29 = lwip_htonl (_28);
+  scanning: dns_correct_response (i_38, _29);
+  scanning: _30 = (int) res_idx_66;
+  scanning: _31 = ans.len;
+  scanning: _32 = lwip_htons (_31);
+  scanning: _33 = (int) _32;
+  scanning: _34 = _30 + _33;
+  scanning: if (_34 > 65535)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: _35 = ans.len;
+  scanning: _36 = lwip_htons (_35);
+  scanning: res_idx_76 = _36 + res_idx_66;
+  scanning: nanswers_77 = nanswers_42 + 65535;
+  scanning: if (nanswers_42 != 0)
+  scanning: _37 = p_48(D)->tot_len;
+    Indirect ref read is not const
+  scanning: if (_37 > res_idx_41)
+  scanning: pbuf_free (p_48(D));
+  scanning: dns_call_found (i_38, 0B);
+  scanning: dns_table[_26].state = 0;
+  scanning: i_85 = i_40 + 1;
+  scanning: if (i_40 != 4)
+  scanning: ignore_packet:
+  scanning: pbuf_free (p_48(D));
+  scanning: return;
+
+
+ local analysis of dns_correct_response
+   scanning: _1 = (int) idx_7(D);
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].state = 3;
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].ttl = ttl_10(D);
+    Indirect ref write is not const/pure
+  scanning: if (ttl_10(D) > 604800)
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].ttl = 604800;
+    Indirect ref write is not const/pure
+  scanning: _2 = &MEM[(struct dns_table_entry *)&dns_table][_1].ipaddr;
+  scanning: dns_call_found (idx_7(D), _2);
+  scanning: _3 = MEM[(struct dns_table_entry *)&dns_table][_1].ttl;
+    Indirect ref read is not const
+  scanning: if (_3 == 0)
+  scanning: _4 = MEM[(struct dns_table_entry *)&dns_table][_1].state;
+    Indirect ref read is not const
+  scanning: if (_4 == 3)
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].state = 0;
+    Indirect ref write is not const/pure
+  scanning: return;
+
+
+ local analysis of dns_check_entries
+   scanning: dns_check_entry (i_1);
+  scanning: i_5 = i_1 + 1;
+  scanning: if (i_1 != 4)
+  scanning: return;
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 1 }
+Function is locally const.
+
+
+ local analysis of dns_check_entry
+   scanning: _1 = (int) i_18(D);
+  scanning: entry_19 = &dns_table[_1];
+  scanning: if (i_18(D) > 3)
+  scanning: __asm__ __volatile__("BKPT #0
+	");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: _2 = MEM[(struct dns_table_entry *)&dns_table][_1].state;
+    Indirect ref read is not const
+  scanning: switch (_2) <default: <L31> [20.00%], case 0: <L27> [20.00%], case 1: <L3> [20.00%], case 2: <L6> [20.00%], case 3: <L17> [20.00%]>
+  scanning: <L31>:
+  scanning: <L3>:
+  scanning: _3 = dns_create_txid ();
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].txid = _3;
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].state = 2;
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].server_idx = 0;
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].tmr = 1;
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].retries = 0;
+    Indirect ref write is not const/pure
+  scanning: dns_send (i_18(D));
+  scanning: <L6>:
+  scanning: _4 = MEM[(struct dns_table_entry *)&dns_table][_1].tmr;
+    Indirect ref read is not const
+  scanning: _5 = _4 + 255;
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].tmr = _5;
+    Indirect ref write is not const/pure
+  scanning: if (_5 == 0)
+  scanning: _6 = MEM[(struct dns_table_entry *)&dns_table][_1].retries;
+    Indirect ref read is not const
+  scanning: _7 = _6 + 1;
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].retries = _7;
+    Indirect ref write is not const/pure
+  scanning: if (_7 == 4)
+  scanning: _8 = dns_backupserver_available (entry_19);
+  scanning: if (_8 != 0)
+  scanning: _9 = MEM[(struct dns_table_entry *)&dns_table][_1].server_idx;
+    Indirect ref read is not const
+  scanning: _10 = _9 + 1;
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].server_idx = _10;
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].tmr = 1;
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].retries = 0;
+    Indirect ref write is not const/pure
+  scanning: dns_call_found (i_18(D), 0B);
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].state = 0;
+    Indirect ref write is not const/pure
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].tmr = _7;
+    Indirect ref write is not const/pure
+  scanning: dns_send (i_18(D));
+  scanning: <L17>:
+  scanning: _11 = MEM[(struct dns_table_entry *)&dns_table][_1].ttl;
+    Indirect ref read is not const
+  scanning: if (_11 == 0)
+  scanning: _12 = _11 + 4294967295;
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].ttl = _12;
+    Indirect ref write is not const/pure
+  scanning: if (_12 == 0)
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].state = 0;
+    Indirect ref write is not const/pure
+  scanning: <L28>:
+  scanning: __asm__ __volatile__("BKPT #0
+	");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: <L27>:
+  scanning: return;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of dns_backupserver_available
+   scanning: if (pentry_4(D) != 0B)
+  scanning: _1 = pentry_4(D)->server_idx;
+    Indirect ref read is not const
+  scanning: if (_1 == 0)
+  scanning: ret_2 = dns_backupserver_available.part.0 ();
+  scanning: return ret_3;
+Function is locally pure.
+
+
+ local analysis of dns_create_txid
+   scanning: again:
+  scanning: _1 = rand ();
+  scanning: txid_10 = (u16_t) _1;
+  scanning: _2 = (int) i_6;
+  scanning: _3 = dns_table[_2].state;
+  scanning: if (_3 == 2)
+  scanning: _5 = dns_table[_2].txid;
+  scanning: if (_5 == txid_10)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: i_11 = i_6 + 1;
+  scanning: if (i_6 != 4)
+  scanning: return txid_4;
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9
+;;
+;; Loop 1
+;;  header 3, latch 6
+;;  depth 1, outer 0
+;;  nodes: 3 6 5 4 8 7
+;;
+;; Loop 2
+;;  header 8, latch 7
+;;  depth 2, outer 1
+;;  nodes: 8 7 4 5
+;; 2 succs { 3 }
+;; 3 succs { 8 }
+;; 4 succs { 5 7 }
+;; 5 succs { 6 7 }
+;; 6 succs { 3 }
+;; 7 succs { 8 }
+;; 8 succs { 4 9 }
+;; 9 succs { 1 }
+    cannot prove finiteness of loop 1
+Function is locally looping.
+Function is locally const.
+
+
+ local analysis of dns_call_found
+   scanning: _1 = (int) i_19;
+  scanning: _2 = dns_requests[_1].found;
+  scanning: if (_2 != 0B)
+  scanning: _3 = dns_requests[_1].dns_table_idx;
+  scanning: if (_3 == idx_26(D))
+  scanning: _4 = (int) idx_26(D);
+  scanning: _5 = &dns_table[_4].name;
+  scanning: _6 = dns_requests[_1].arg;
+  scanning: _2 (_5, addr_32(D), _6);
+  scanning: dns_requests[_1].found = 0B;
+  scanning: i_35 = i_19 + 1;
+  scanning: if (i_19 != 4)
+  scanning: if (i_20 == idx_26(D))
+  scanning: // predicted unlikely by continue predictor.
+  scanning: _7 = (int) i_20;
+  scanning: _8 = dns_table[_7].state;
+  scanning: if (_8 == 2)
+  scanning: _10 = dns_table[_7].pcb_idx;
+  scanning: _11 = (int) idx_26(D);
+  scanning: _12 = dns_table[_11].pcb_idx;
+  scanning: if (_10 == _12)
+  scanning: dns_table[_9].pcb_idx = 4;
+  scanning: i_28 = i_20 + 1;
+  scanning: if (i_20 != 4)
+  scanning: _13 = (int) idx_26(D);
+  scanning: _14 = dns_table[_13].pcb_idx;
+  scanning: if (_14 <= 3)
+  scanning: _15 = (int) _14;
+  scanning: _16 = dns_pcbs[_15];
+  scanning: udp_remove (_16);
+  scanning: _17 = dns_table[_13].pcb_idx;
+  scanning: _18 = (int) _17;
+  scanning: dns_pcbs[_18] = 0B;
+  scanning: dns_table[_13].pcb_idx = 4;
+  scanning: return;
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 18 8 9 10 11 12 13 14 15 16 17
+;;
+;; Loop 2
+;;  header 14, latch 13
+;;  depth 1, outer 0
+;;  nodes: 14 13 9 10 11 8
+;;
+;; Loop 1
+;;  header 7, latch 6
+;;  depth 1, outer 0
+;;  nodes: 7 6 3 4 5
+;; 2 succs { 7 }
+;; 3 succs { 4 6 }
+;; 4 succs { 5 6 }
+;; 5 succs { 6 }
+;; 6 succs { 7 }
+;; 7 succs { 3 18 }
+;; 18 succs { 14 }
+;; 8 succs { 9 10 }
+;; 9 succs { 13 }
+;; 10 succs { 11 13 }
+;; 11 succs { 12 13 }
+;; 12 succs { 15 }
+;; 13 succs { 14 }
+;; 14 succs { 8 15 }
+;; 15 succs { 16 17 }
+;; 16 succs { 17 }
+;; 17 succs { 1 }
+Function is locally const.
+
+
+ local analysis of dns_alloc_pcb
+   scanning: _1 = (int) i_10;
+  scanning: _2 = dns_pcbs[_1];
+  scanning: if (_2 == 0B)
+  scanning: i_18 = i_10 + 1;
+  scanning: if (i_10 != 4)
+  scanning: if (i_3 != 4)
+  scanning: _4 = (int) i_3;
+  scanning: _5 = dns_alloc_random_port ();
+  scanning: dns_pcbs[_4] = _5;
+  scanning: if (_5 != 0B)
+  scanning: dns_last_pcb_idx = i_3;
+  scanning: dns_last_pcb_idx.12_7 = dns_last_pcb_idx;
+  scanning: idx_22 = dns_last_pcb_idx.12_7 + 1;
+  scanning: if (idx_13 > 3)
+  scanning: _8 = (int) idx_12;
+  scanning: _9 = dns_pcbs[_8];
+  scanning: if (_9 != 0B)
+  scanning: dns_last_pcb_idx = idx_6;
+  scanning: i_23 = i_11 + 1;
+  scanning: idx_24 = idx_12 + 1;
+  scanning: if (i_11 != 4)
+  scanning: return _14;
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+;;
+;; Loop 2
+;;  header 15, latch 14
+;;  depth 1, outer 0
+;;  nodes: 15 14 12 10 11
+;;
+;; Loop 1
+;;  header 5, latch 4
+;;  depth 1, outer 0
+;;  nodes: 5 4 3
+;; 2 succs { 5 }
+;; 3 succs { 6 4 }
+;; 4 succs { 5 }
+;; 5 succs { 3 6 }
+;; 6 succs { 7 9 }
+;; 7 succs { 8 9 }
+;; 8 succs { 16 }
+;; 9 succs { 15 }
+;; 10 succs { 11 12 }
+;; 11 succs { 12 }
+;; 12 succs { 13 14 }
+;; 13 succs { 16 }
+;; 14 succs { 15 }
+;; 15 succs { 10 16 }
+;; 16 succs { 1 }
+Function is locally const.
+
+
+ local analysis of dns_alloc_random_port
+   scanning: pcb_8 = udp_new_ip_type (46);
+  scanning: if (pcb_8 == 0B)
+  scanning: _1 = rand ();
+  scanning: port_10 = (u16_t) _1;
+  scanning: if (port_10 > 1023)
+  scanning: err_13 = udp_bind (pcb_8, &ip_addr_any, port_10);
+  scanning: if (err_13 == -8)
+  scanning: if (err_4 != 0)
+  scanning: udp_remove (pcb_8);
+  scanning: udp_recv (pcb_8, dns_recv, 0B);
+  scanning: return _2;
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 10 3 4 12 5 11 6 7 8 9
+;;
+;; Loop 1
+;;  header 3, latch 11
+;;  depth 1, outer 0
+;;  nodes: 3 11 5 4 12
+;;
+;; Loop 2
+;;  header 4, latch 12
+;;  depth 2, outer 1
+;;  nodes: 4 12
+;; 2 succs { 9 10 }
+;; 10 succs { 3 }
+;; 3 succs { 4 }
+;; 4 succs { 5 12 }
+;; 12 succs { 4 }
+;; 5 succs { 11 6 }
+;; 11 succs { 3 }
+;; 6 succs { 7 8 }
+;; 7 succs { 9 }
+;; 8 succs { 9 }
+;; 9 succs { 1 }
+    cannot prove finiteness of loop 1
+Function is locally looping.
+Function is locally const.
+
+
+ local analysis of dns_send
+   scanning: _1 = (int) idx_34(D);
+  scanning: _2 = MEM[(struct dns_table_entry *)&dns_table][_1].server_idx;
+    Indirect ref read is not const
+  scanning: if (_2 > 1)
+  scanning: __asm__ __volatile__("BKPT #0
+	");
+    memory asm clobber is not const/pure
+    volatile is not const/pure
+  scanning: _4 = (int) _2;
+  scanning: _5 = dns_servers[_4].addr;
+  scanning: if (_5 == 0)
+  scanning: dns_call_found (idx_34(D), 0B);
+  scanning: MEM[(struct dns_table_entry *)&dns_table][_1].state = 0;
+    Indirect ref write is not const/pure
+  scanning: _6 = &MEM[(struct dns_table_entry *)&dns_table][_1].name;
+  scanning: _7 = strlen (_6);
+  scanning: _8 = (short unsigned int) _7;
+  scanning: _9 = _8 + 18;
+  scanning: p_37 = pbuf_alloc (54, _9, 640);
+  scanning: if (p_37 != 0B)
+  scanning: memset (&hdr, 0, 12);
+  scanning: _10 = MEM[(struct dns_table_entry *)&dns_table][_1].txid;
+    Indirect ref read is not const
+  scanning: _11 = lwip_htons (_10);
+  scanning: hdr.id = _11;
+  scanning: hdr.flags1 = 1;
+  scanning: hdr.numquestions = 256;
+  scanning: pbuf_take (p_37, &hdr, 12);
+  scanning: hostname_45 = _6 + 4294967295;
+  scanning: hostname_46 = hostname_27 + 1;
+  scanning: n_48 = n_29 + 1;
+  scanning: hostname_49 = hostname_28 + 1;
+  scanning: _12 = *hostname_28;
+    Indirect ref read is not const
+  scanning: if (_12 != 46)
+  scanning: if (_12 != 0)
+  scanning: _14 = hostname_44 - hostname_46;
+  scanning: copy_len_50 = (u16_t) _14;
+  scanning: _15 = (int) query_idx_26;
+  scanning: _16 = (int) n_47;
+  scanning: _17 = _15 + _16;
+  scanning: if (_17 > 65534)
+  scanning: // predicted unlikely by goto predictor.
+  scanning: pbuf_free (p_37);
+  scanning: pbuf_put_at (p_37, query_idx_26, n_47);
+  scanning: _18 = query_idx_26 + 1;
+  scanning: pbuf_take_at (p_37, hostname_46, copy_len_50, _18);
+  scanning: _19 = (short unsigned int) n_47;
+  scanning: _20 = _19 + query_idx_26;
+  scanning: query_idx_53 = _20 + 1;
+  scanning: _21 = *hostname_44;
+    Indirect ref read is not const
+  scanning: if (_21 != 0)
+  scanning: pbuf_put_at (p_37, query_idx_13, 0);
+  scanning: query_idx_55 = _3 + 2;
+  scanning: qry.type = 256;
+  scanning: qry.cls = 256;
+  scanning: pbuf_take_at (p_37, &qry, 4, query_idx_55);
+  scanning: pcb_idx_59 = MEM[(struct dns_table_entry *)&dns_table][_1].pcb_idx;
+    Indirect ref read is not const
+  scanning: _22 = MEM[(struct dns_table_entry *)&dns_table][_1].server_idx;
+    Indirect ref read is not const
+  scanning: _23 = (int) _22;
+  scanning: dst_60 = &dns_servers[_23];
+  scanning: _24 = (int) pcb_idx_59;
+  scanning: _25 = dns_pcbs[_24];
+  scanning: err_62 = udp_sendto (_25, p_37, dst_60, 53);
+  scanning: pbuf_free (p_37);
+  scanning: return _30;
+Function is locally looping.
+Function can locally free.
+
+
+ local analysis of dns_skip_name
+   scanning: offset_15 = offset_7 + 1;
+  scanning: n_18 = pbuf_try_get_at (p_16(D), offset_7);
+  scanning: if (n_18 < 0)
+  scanning: if (offset_15 == 0)
+  scanning: _1 = n_18 & 192;
+  scanning: if (_1 == 192)
+  scanning: _2 = (int) offset_15;
+  scanning: _3 = _2 + n_18;
+  scanning: _4 = p_16(D)->tot_len;
+    Indirect ref read is not const
+  scanning: _5 = (int) _4;
+  scanning: if (_3 >= _5)
+  scanning: _6 = (short unsigned int) n_18;
+  scanning: offset_19 = _6 + offset_15;
+  scanning: n_21 = pbuf_try_get_at (p_16(D), offset_19);
+  scanning: if (n_21 < 0)
+  scanning: if (n_21 != 0)
+  scanning: if (offset_8 == 65535)
+  scanning: _22 = offset_8 + 1;
+  scanning: return _9;
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 12 9 10 11
+;;
+;; Loop 1
+;;  header 3, latch 12
+;;  depth 1, outer 0
+;;  nodes: 3 12 8 7 6 5 4
+;; 2 succs { 3 }
+;; 3 succs { 11 4 }
+;; 4 succs { 11 5 }
+;; 5 succs { 9 6 }
+;; 6 succs { 11 7 }
+;; 7 succs { 11 8 }
+;; 8 succs { 12 9 }
+;; 12 succs { 3 }
+;; 9 succs { 11 10 }
+;; 10 succs { 11 }
+;; 11 succs { 1 }
+    cannot prove finiteness of loop 1
+Function is locally looping.
+Function is locally pure.
+
+
+ local analysis of dns_compare_name
+   scanning: n_29 = pbuf_try_get_at (p_27(D), response_offset_15);
+  scanning: if (n_29 < 0)
+  scanning: if (response_offset_15 == 65535)
+  scanning: response_offset_30 = response_offset_15 + 1;
+  scanning: _2 = n_29 & 192;
+  scanning: if (_2 == 192)
+  scanning: c_38 = pbuf_try_get_at (p_27(D), response_offset_16);
+  scanning: if (c_38 < 0)
+  scanning: __x_39 = *query_13;
+    Indirect ref read is not const
+  scanning: _3 = (sizetype) __x_39;
+  scanning: _4 = _3 + 1;
+  scanning: _5 = &_ctype_ + _4;
+  scanning: _6 = *_5;
+    Indirect ref read is not const
+  scanning: _24 = _6 & 3;
+  scanning: if (_24 == 1)
+  scanning: _7 = (int) __x_39;
+  scanning: iftmp.17_41 = _7 + 32;
+  scanning: iftmp.17_40 = (int) __x_39;
+  scanning: _35 = c_38 & 255;
+  scanning: _8 = (sizetype) _35;
+  scanning: _9 = _8 + 1;
+  scanning: _10 = &_ctype_ + _9;
+  scanning: _11 = *_10;
+    Indirect ref read is not const
+  scanning: _36 = _11 & 3;
+  scanning: if (_36 == 1)
+  scanning: iftmp.18_43 = _35 + 32;
+  scanning: if (iftmp.17_18 != iftmp.18_19)
+  scanning: if (response_offset_16 == 65535)
+  scanning: response_offset_44 = response_offset_16 + 1;
+  scanning: query_45 = query_13 + 1;
+  scanning: n_46 = n_14 + -1;
+  scanning: if (n_14 > 0)
+  scanning: query_31 = query_1 + 1;
+  scanning: n_33 = pbuf_try_get_at (p_27(D), response_offset_42);
+  scanning: if (n_33 < 0)
+  scanning: if (n_33 != 0)
+  scanning: if (response_offset_47 == 65535)
+  scanning: _34 = response_offset_47 + 1;
+  scanning: return _17;
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 21 6 7 8 9 10 11 12 13 14 15 16 17 22 18 19 20
+;;
+;; Loop 1
+;;  header 3, latch 22
+;;  depth 1, outer 0
+;;  nodes: 3 22 17 16 15 14 21 5 4 13 12 11 10 8 9 7 6
+;;
+;; Loop 2
+;;  header 15, latch 14
+;;  depth 2, outer 1
+;;  nodes: 15 14 13 12 11 10 8 9 7 6
+;; 2 succs { 3 }
+;; 3 succs { 20 4 }
+;; 4 succs { 20 5 }
+;; 5 succs { 20 21 }
+;; 21 succs { 15 }
+;; 6 succs { 20 7 }
+;; 7 succs { 8 9 }
+;; 8 succs { 10 }
+;; 9 succs { 10 }
+;; 10 succs { 11 12 }
+;; 11 succs { 12 }
+;; 12 succs { 20 13 }
+;; 13 succs { 20 14 }
+;; 14 succs { 15 }
+;; 15 succs { 6 16 }
+;; 16 succs { 20 17 }
+;; 17 succs { 22 18 }
+;; 22 succs { 3 }
+;; 18 succs { 20 19 }
+;; 19 succs { 20 }
+;; 20 succs { 1 }
+    cannot prove finiteness of loop 1
+Function is locally looping.
+Function is locally pure.
+
+
+ local analysis of dns_lookup
+   scanning: _1 = (int) i_7;
+  scanning: _2 = dns_table[_1].state;
+  scanning: if (_2 == 3)
+  scanning: _4 = &dns_table[_1].name;
+  scanning: _5 = lwip_strnicmp (name_14(D), _4, 256);
+  scanning: if (_5 == 0)
+  scanning: if (addr_16(D) != 0B)
+  scanning: _6 = dns_table[_3].ipaddr.addr;
+  scanning: addr_16(D)->addr = _6;
+    Indirect ref write is not const/pure
+  scanning: i_18 = i_7 + 1;
+  scanning: if (i_7 != 4)
+  scanning: return _8;
+
+
+ local analysis of dns_tmr
+   scanning: dns_check_entries ();
+  scanning: return;
+Function is locally const.
+
+
+ local analysis of dns_getserver
+   scanning: if (numdns_3(D) <= 1)
+  scanning: _1 = (int) numdns_3(D);
+  scanning: _4 = &dns_servers[_1];
+  scanning: return _2;
+Function is locally const.
+
+
+ local analysis of dns_setserver
+   scanning: if (numdns_4(D) <= 1)
+  scanning: if (dnsserver_6(D) != 0B)
+  scanning: _1 = (int) numdns_4(D);
+  scanning: dns_servers[_1] = *dnsserver_6(D);
+    Indirect ref read is not const
+  scanning: _2 = (int) numdns_4(D);
+  scanning: dns_servers[_2] = ip_addr_any;
+  scanning: return;
+Function is locally pure.
+
+
+ local analysis of dns_init
+   scanning: return;
+Function is locally const.
+callgraph:
+
+dns_backupserver_available.part.0/53 (dns_backupserver_available.part.0) @0727d540
+  Type: function definition analyzed
+  Visibility: artificial
+  next sharing asm name: 50
+  Aux: @06fc03a0
+  References: dns_servers/6 (read)
+  Referring: 
+  Function dns_backupserver_available.part.0/53 is inline copy in dns_check_entry/21
+  Clone of dns_backupserver_available.part.0/50
+  Availability: local
+  Function flags: count:1278 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: dns_backupserver_available/52 (inlined) (1278 (estimated locally),0.01 per call) 
+  Calls: 
+dns_backupserver_available/52 (dns_backupserver_available) @0727d2a0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 20
+  Aux: @06fc0260
+  References: 
+  Referring: 
+  Function dns_backupserver_available/52 is inline copy in dns_check_entry/21
+  Clone of dns_backupserver_available/20
+  Availability: local
+  Function flags: count:3651 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (inlined) (3651 (estimated locally),0.02 per call) 
+  Calls: dns_backupserver_available.part.0/53 (inlined) (1278 (estimated locally),0.01 per call) 
+dns_compare_name.constprop.0/51 (dns_compare_name.constprop) @0727d0e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @072371a8
+  References: _ctype_/49 (addr)_ctype_/49 (addr)
+  Referring: 
+  Function dns_compare_name.constprop/51 is inline copy in dns_recv/24
+  Clone of dns_compare_name/13
+  Availability: local
+  Function flags: count:700549 (estimated locally) local optimize_size
+  Called by: dns_recv/24 (inlined) (700549 (estimated locally),0.00 per call) 
+  Calls: pbuf_try_get_at/48 (916371 (estimated locally),0.00 per call) pbuf_try_get_at/48 (7946963 (estimated locally),0.01 per call) pbuf_try_get_at/48 (224721 (estimated locally),0.00 per call) 
+dns_backupserver_available.part.0/50 (dns_backupserver_available.part.0) @06e33620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  previous sharing asm name: 53
+  Aux: @072373a8
+  References: dns_servers/6 (read)
+  Referring: 
+  Function dns_backupserver_available.part.0/50 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:6573 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: dns_backupserver_available/20 (inlined) (6573 (estimated locally),0.00 per call) 
+  Calls: 
+pbuf_try_get_at/48 (pbuf_try_get_at) @071038c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_compare_name.constprop/51 (916371 (estimated locally),0.00 per call) dns_compare_name.constprop/51 (7946963 (estimated locally),0.01 per call) dns_compare_name.constprop/51 (224721 (estimated locally),0.00 per call) dns_skip_name/14 (1243074 (estimated locally),0.00 per call) dns_skip_name/14 (1347698 (estimated locally),0.00 per call) 
+  Calls: 
+lwip_htonl/47 (lwip_htonl) @07103540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_recv/24 (102 (estimated locally),0.00 per call) 
+  Calls: 
+pbuf_copy_partial/46 (pbuf_copy_partial) @07103460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_recv/24 (503 (estimated locally),0.00 per call) dns_recv/24 (150773 (estimated locally),0.00 per call) dns_recv/24 (455287 (estimated locally),0.00 per call) dns_recv/24 (524845004 (estimated locally),0.49 per call) 
+  Calls: 
+udp_recv/45 (udp_recv) @071030e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_alloc_random_port/16 (61887400 (estimated locally),0.06 per call) 
+  Calls: 
+udp_bind/44 (udp_bind) @07103000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_alloc_random_port/16 (680964362 (estimated locally),0.63 per call) 
+  Calls: 
+udp_new_ip_type/43 (udp_new_ip_type) @070eeb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_alloc_random_port/16 (81659302 (estimated locally),0.08 per call) 
+  Calls: 
+memcpy/42 (memcpy) @070eec40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_enqueue/25 (167060765 (estimated locally),0.16 per call) 
+  Calls: 
+lwip_strnicmp/41 (lwip_strnicmp) @070ee7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_enqueue/25 (253659705 (estimated locally),0.24 per call) dns_lookup/12 (390616645 (estimated locally),0.36 per call) 
+  Calls: 
+ip4addr_aton/40 (ip4addr_aton) @070ee620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (1031024857 (estimated locally),0.96 per call) 
+  Calls: 
+udp_sendto/39 (udp_sendto) @070ee380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (23511 (estimated locally),0.13 per call) 
+  Calls: 
+pbuf_take_at/38 (pbuf_take_at) @070ee2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (23511 (estimated locally),0.13 per call) dns_send/15 (427466 (estimated locally),2.35 per call) 
+  Calls: 
+pbuf_put_at/37 (pbuf_put_at) @070ee1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (23511 (estimated locally),0.13 per call) dns_send/15 (427466 (estimated locally),2.35 per call) 
+  Calls: 
+pbuf_free/36 (pbuf_free) @070ee0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_recv/24 (1073722794 (estimated locally),1.00 per call) dns_recv/24 (18927 (estimated locally),0.00 per call) dns_recv/24 (102 (estimated locally),0.00 per call) dns_send/15 (23511 (estimated locally),0.13 per call) dns_send/15 (24879 (estimated locally),0.14 per call) 
+  Calls: 
+pbuf_take/35 (pbuf_take) @070ee000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (48390 (estimated locally),0.27 per call) 
+  Calls: 
+lwip_htons/34 (lwip_htons) @070b89a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_recv/24 (141413 (estimated locally),0.00 per call) dns_recv/24 (144299 (estimated locally),0.00 per call) dns_recv/24 (7392912 (estimated locally),0.01 per call) dns_recv/24 (7392912 (estimated locally),0.01 per call) dns_recv/24 (106228629 (estimated locally),0.10 per call) dns_send/15 (48390 (estimated locally),0.27 per call) 
+  Calls: 
+memset/33 (memset) @070b8ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (48390 (estimated locally),0.27 per call) 
+  Calls: 
+pbuf_alloc/32 (pbuf_alloc) @070b8e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (49246 (estimated locally),0.27 per call) 
+  Calls: 
+strlen/31 (strlen) @070b8d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (1053033253 (estimated locally),0.98 per call) dns_send/15 (49246 (estimated locally),0.27 per call) 
+  Calls: 
+udp_remove/30 (udp_remove) @070b8a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_alloc_random_port/16 (13018679 (estimated locally),0.01 per call) dns_call_found/18 (70866960 (estimated locally),0.33 per call) 
+  Calls: 
+rand/29 (rand) @070b8700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_alloc_random_port/16 (6190585093 (estimated locally),5.77 per call) dns_create_txid/19 (23081 (estimated locally),0.11 per call) 
+  Calls: 
+dns_gethostbyname_addrtype/27 (dns_gethostbyname_addrtype) @070a6ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07237168
+  References: dns_servers/6 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: dns_gethostbyname/26 (1073741824 (estimated locally),1.00 per call) 
+  Calls: dns_enqueue/25 (inlined) (325665174 (estimated locally),0.30 per call) dns_lookup/12 (inlined) (503964950 (estimated locally),0.47 per call) ip4addr_aton/40 (1031024857 (estimated locally),0.96 per call) strlen/31 (1053033253 (estimated locally),0.98 per call) 
+dns_gethostbyname/26 (dns_gethostbyname) @070a6c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @072372e8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: dns_gethostbyname_addrtype/27 (1073741824 (estimated locally),1.00 per call) 
+dns_enqueue/25 (dns_enqueue) @070a69a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072372c8
+  References: dns_table/4 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (write)dns_requests/5 (write)dns_requests/5 (write)dns_table/4 (addr)dns_table/4 (read)dns_seqno/3 (read)dns_table/4 (read)dns_table/4 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (addr)dns_seqno/3 (read)dns_seqno/3 (read)dns_seqno/3 (write)
+  Referring: 
+  Function dns_enqueue/25 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:325665174 (estimated locally) body local optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (inlined) (325665174 (estimated locally),0.30 per call) 
+  Calls: dns_check_entry/21 (81659302 (estimated locally),0.08 per call) dns_alloc_pcb/17 (inlined) (167060765 (estimated locally),0.16 per call) memcpy/42 (167060765 (estimated locally),0.16 per call) lwip_strnicmp/41 (253659705 (estimated locally),0.24 per call) 
+dns_recv/24 (dns_recv) @070a6700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @07237328
+  References: dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_servers/6 (read)dns_table/4 (addr)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)
+  Referring: dns_alloc_random_port/16 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_free/36 (1073722794 (estimated locally),1.00 per call) dns_call_found/18 (18927 (estimated locally),0.00 per call) pbuf_free/36 (18927 (estimated locally),0.00 per call) lwip_htons/34 (141413 (estimated locally),0.00 per call) lwip_htons/34 (144299 (estimated locally),0.00 per call) dns_correct_response/23 (inlined) (102 (estimated locally),0.00 per call) lwip_htonl/47 (102 (estimated locally),0.00 per call) pbuf_free/36 (102 (estimated locally),0.00 per call) pbuf_copy_partial/46 (503 (estimated locally),0.00 per call) pbuf_copy_partial/46 (150773 (estimated locally),0.00 per call) dns_skip_name/14 (inlined) (153850 (estimated locally),0.00 per call) dns_check_entry/21 (6198 (estimated locally),0.00 per call) dns_backupserver_available/20 (inlined) (18781 (estimated locally),0.00 per call) pbuf_copy_partial/46 (455287 (estimated locally),0.00 per call) dns_compare_name.constprop/51 (inlined) (700549 (estimated locally),0.00 per call) lwip_htons/34 (7392912 (estimated locally),0.01 per call) lwip_htons/34 (7392912 (estimated locally),0.01 per call) lwip_htons/34 (106228629 (estimated locally),0.10 per call) pbuf_copy_partial/46 (524845004 (estimated locally),0.49 per call) 
+dns_correct_response/23 (dns_correct_response) @070a61c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072373c8
+  References: dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (write)
+  Referring: 
+  Function dns_correct_response/23 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:102 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (102 (estimated locally),0.00 per call) 
+  Calls: dns_call_found/18 (102 (estimated locally),0.00 per call) 
+dns_check_entries/22 (dns_check_entries) @0709bc40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072374c8
+  References: 
+  Referring: 
+  Function dns_check_entries/22 is inline copy in dns_tmr/11
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: dns_tmr/11 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: dns_check_entry/21 (4294967311 (estimated locally),4.00 per call) 
+dns_check_entry/21 (dns_check_entry) @0709b9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237548
+  References: dns_table/4 (addr)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)
+  Referring: 
+  Availability: local
+  Function flags: count:214748 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (6198 (estimated locally),0.00 per call) dns_enqueue/25 (81659302 (estimated locally),0.08 per call) dns_check_entries/22 (4294967311 (estimated locally),4.00 per call) 
+  Calls: dns_send/15 (9533 (estimated locally),0.04 per call) dns_call_found/18 (1205 (estimated locally),0.01 per call) dns_backupserver_available/52 (inlined) (3651 (estimated locally),0.02 per call) dns_send/15 (21475 (estimated locally),0.10 per call) dns_create_txid/19 (inlined) (21475 (estimated locally),0.10 per call) 
+dns_backupserver_available/20 (dns_backupserver_available) @0709b620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 52
+  Aux: @07237408
+  References: 
+  Referring: 
+  Function dns_backupserver_available/20 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:18781 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (18781 (estimated locally),0.00 per call) 
+  Calls: dns_backupserver_available.part.0/50 (inlined) (6573 (estimated locally),0.00 per call) 
+dns_create_txid/19 (dns_create_txid) @0709b2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237528
+  References: dns_table/4 (read)dns_table/4 (read)
+  Referring: 
+  Function dns_create_txid/19 is inline copy in dns_check_entry/21
+  Availability: local
+  Function flags: count:21475 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (inlined) (21475 (estimated locally),0.10 per call) 
+  Calls: rand/29 (23081 (estimated locally),0.11 per call) 
+dns_call_found/18 (dns_call_found) @0709b000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237448
+  References: dns_requests/5 (read)dns_requests/5 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (write)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_pcbs/1 (read)dns_table/4 (read)dns_pcbs/1 (write)dns_table/4 (write)
+  Referring: 
+  Availability: local
+  Function flags: count:214748364 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (18927 (estimated locally),0.00 per call) dns_check_entry/21 (1205 (estimated locally),0.01 per call) dns_send/15 (25369 (estimated locally),0.14 per call) dns_correct_response/23 (102 (estimated locally),0.00 per call) 
+  Calls: udp_remove/30 (70866960 (estimated locally),0.33 per call) 
+   Indirect call(204440443 (estimated locally),0.95 per call) 
+dns_alloc_pcb/17 (dns_alloc_pcb) @0706ae00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bb0
+  References: dns_pcbs/1 (read)dns_pcbs/1 (write)dns_last_pcb_idx/2 (write)dns_last_pcb_idx/2 (read)dns_pcbs/1 (read)dns_last_pcb_idx/2 (write)
+  Referring: 
+  Function dns_alloc_pcb/17 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:167060765 (estimated locally) body local optimize_size
+  Called by: dns_enqueue/25 (inlined) (167060765 (estimated locally),0.16 per call) 
+  Calls: dns_alloc_random_port/16 (inlined) (81659302 (estimated locally),0.08 per call) 
+dns_alloc_random_port/16 (dns_alloc_random_port) @0706ab60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7d90
+  References: ip_addr_any/28 (addr)dns_recv/24 (addr)
+  Referring: 
+  Function dns_alloc_random_port/16 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:81659302 (estimated locally) body local optimize_size
+  Called by: dns_alloc_pcb/17 (inlined) (81659302 (estimated locally),0.08 per call) 
+  Calls: udp_recv/45 (61887400 (estimated locally),0.06 per call) udp_remove/30 (13018679 (estimated locally),0.01 per call) udp_bind/44 (680964362 (estimated locally),0.63 per call) rand/29 (6190585093 (estimated locally),5.77 per call) udp_new_ip_type/43 (81659302 (estimated locally),0.08 per call) 
+dns_send/15 (dns_send) @0706a8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7db0
+  References: dns_table/4 (read)dns_servers/6 (read)dns_table/4 (write)dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_servers/6 (addr)dns_pcbs/1 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:181990 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (9533 (estimated locally),0.04 per call) dns_check_entry/21 (21475 (estimated locally),0.10 per call) 
+  Calls: pbuf_free/36 (23511 (estimated locally),0.13 per call) udp_sendto/39 (23511 (estimated locally),0.13 per call) pbuf_take_at/38 (23511 (estimated locally),0.13 per call) pbuf_put_at/37 (23511 (estimated locally),0.13 per call) pbuf_take_at/38 (427466 (estimated locally),2.35 per call) pbuf_put_at/37 (427466 (estimated locally),2.35 per call) pbuf_free/36 (24879 (estimated locally),0.14 per call) pbuf_take/35 (48390 (estimated locally),0.27 per call) lwip_htons/34 (48390 (estimated locally),0.27 per call) memset/33 (48390 (estimated locally),0.27 per call) pbuf_alloc/32 (49246 (estimated locally),0.27 per call) strlen/31 (49246 (estimated locally),0.27 per call) dns_call_found/18 (25369 (estimated locally),0.14 per call) 
+dns_skip_name/14 (dns_skip_name) @0706a620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bd0
+  References: 
+  Referring: 
+  Function dns_skip_name/14 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:153850 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (153850 (estimated locally),0.00 per call) 
+  Calls: pbuf_try_get_at/48 (1243074 (estimated locally),0.00 per call) pbuf_try_get_at/48 (1347698 (estimated locally),0.00 per call) 
+dns_compare_name/13 (dns_compare_name) @0706a380
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:92050635 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dns_lookup/12 (dns_lookup) @07051540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bf0
+  References: dns_table/4 (read)dns_table/4 (addr)dns_table/4 (read)
+  Referring: 
+  Function dns_lookup/12 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:503964950 (estimated locally) body local optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (inlined) (503964950 (estimated locally),0.47 per call) 
+  Calls: lwip_strnicmp/41 (390616645 (estimated locally),0.36 per call) 
+dns_tmr/11 (dns_tmr) @07051c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f7c30
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: dns_check_entries/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+dns_getserver/10 (dns_getserver) @070519a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f79f0
+  References: dns_servers/6 (addr)ip_addr_any/28 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dns_setserver/9 (dns_setserver) @07051700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f76d0
+  References: dns_servers/6 (write)dns_servers/6 (write)ip_addr_any/28 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dns_init/8 (dns_init) @07051460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f7790
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+dns_backupserver_available.part.0/53 (dns_backupserver_available.part.0) @0727d540
+  Type: function definition analyzed
+  Visibility: artificial
+  next sharing asm name: 50
+  Aux: @06fc03a0
+  References: dns_servers/6 (read)
+  Referring: 
+  Function dns_backupserver_available.part.0/53 is inline copy in dns_check_entry/21
+  Clone of dns_backupserver_available.part.0/50
+  Availability: local
+  Function flags: count:1278 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: dns_backupserver_available/52 (inlined) (1278 (estimated locally),0.01 per call) 
+  Calls: 
+dns_backupserver_available/52 (dns_backupserver_available) @0727d2a0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 20
+  Aux: @06fc0260
+  References: 
+  Referring: 
+  Function dns_backupserver_available/52 is inline copy in dns_check_entry/21
+  Clone of dns_backupserver_available/20
+  Availability: local
+  Function flags: count:3651 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (inlined) (3651 (estimated locally),0.02 per call) 
+  Calls: dns_backupserver_available.part.0/53 (inlined) (1278 (estimated locally),0.01 per call) 
+dns_compare_name.constprop.0/51 (dns_compare_name.constprop) @0727d0e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @072371a8
+  References: _ctype_/49 (addr)_ctype_/49 (addr)
+  Referring: 
+  Function dns_compare_name.constprop/51 is inline copy in dns_recv/24
+  Clone of dns_compare_name/13
+  Availability: local
+  Function flags: count:700549 (estimated locally) local optimize_size
+  Called by: dns_recv/24 (inlined) (700549 (estimated locally),0.00 per call) 
+  Calls: pbuf_try_get_at/48 (916371 (estimated locally),0.00 per call) pbuf_try_get_at/48 (7946963 (estimated locally),0.01 per call) pbuf_try_get_at/48 (224721 (estimated locally),0.00 per call) 
+dns_backupserver_available.part.0/50 (dns_backupserver_available.part.0) @06e33620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  previous sharing asm name: 53
+  Aux: @072373a8
+  References: dns_servers/6 (read)
+  Referring: 
+  Function dns_backupserver_available.part.0/50 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:6573 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: dns_backupserver_available/20 (inlined) (6573 (estimated locally),0.00 per call) 
+  Calls: 
+dns_gethostbyname_addrtype/27 (dns_gethostbyname_addrtype) @070a6ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07237168
+  References: dns_servers/6 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: dns_gethostbyname/26 (1073741824 (estimated locally),1.00 per call) 
+  Calls: dns_enqueue/25 (inlined) (325665174 (estimated locally),0.30 per call) dns_lookup/12 (inlined) (503964950 (estimated locally),0.47 per call) ip4addr_aton/40 (1031024857 (estimated locally),0.96 per call) strlen/31 (1053033253 (estimated locally),0.98 per call) 
+dns_gethostbyname/26 (dns_gethostbyname) @070a6c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @072372e8
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: dns_gethostbyname_addrtype/27 (1073741824 (estimated locally),1.00 per call) 
+dns_enqueue/25 (dns_enqueue) @070a69a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072372c8
+  References: dns_table/4 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (write)dns_requests/5 (write)dns_requests/5 (write)dns_table/4 (addr)dns_table/4 (read)dns_seqno/3 (read)dns_table/4 (read)dns_table/4 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (addr)dns_seqno/3 (read)dns_seqno/3 (read)dns_seqno/3 (write)
+  Referring: 
+  Function dns_enqueue/25 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:325665174 (estimated locally) body local optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (inlined) (325665174 (estimated locally),0.30 per call) 
+  Calls: dns_check_entry/21 (81659302 (estimated locally),0.08 per call) dns_alloc_pcb/17 (inlined) (167060765 (estimated locally),0.16 per call) memcpy/42 (167060765 (estimated locally),0.16 per call) lwip_strnicmp/41 (253659705 (estimated locally),0.24 per call) 
+dns_recv/24 (dns_recv) @070a6700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @07237328
+  References: dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_servers/6 (read)dns_table/4 (addr)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)
+  Referring: dns_alloc_random_port/16 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_free/36 (1073722794 (estimated locally),1.00 per call) dns_call_found/18 (18927 (estimated locally),0.00 per call) pbuf_free/36 (18927 (estimated locally),0.00 per call) lwip_htons/34 (141413 (estimated locally),0.00 per call) lwip_htons/34 (144299 (estimated locally),0.00 per call) dns_correct_response/23 (inlined) (102 (estimated locally),0.00 per call) lwip_htonl/47 (102 (estimated locally),0.00 per call) pbuf_free/36 (102 (estimated locally),0.00 per call) pbuf_copy_partial/46 (503 (estimated locally),0.00 per call) pbuf_copy_partial/46 (150773 (estimated locally),0.00 per call) dns_skip_name/14 (inlined) (153850 (estimated locally),0.00 per call) dns_check_entry/21 (6198 (estimated locally),0.00 per call) dns_backupserver_available/20 (inlined) (18781 (estimated locally),0.00 per call) pbuf_copy_partial/46 (455287 (estimated locally),0.00 per call) dns_compare_name.constprop/51 (inlined) (700549 (estimated locally),0.00 per call) lwip_htons/34 (7392912 (estimated locally),0.01 per call) lwip_htons/34 (7392912 (estimated locally),0.01 per call) lwip_htons/34 (106228629 (estimated locally),0.10 per call) pbuf_copy_partial/46 (524845004 (estimated locally),0.49 per call) 
+dns_correct_response/23 (dns_correct_response) @070a61c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072373c8
+  References: dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (write)
+  Referring: 
+  Function dns_correct_response/23 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:102 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (102 (estimated locally),0.00 per call) 
+  Calls: dns_call_found/18 (102 (estimated locally),0.00 per call) 
+dns_check_entries/22 (dns_check_entries) @0709bc40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072374c8
+  References: 
+  Referring: 
+  Function dns_check_entries/22 is inline copy in dns_tmr/11
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: dns_tmr/11 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: dns_check_entry/21 (4294967311 (estimated locally),4.00 per call) 
+dns_check_entry/21 (dns_check_entry) @0709b9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237548
+  References: dns_table/4 (addr)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)
+  Referring: 
+  Availability: local
+  Function flags: count:214748 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (6198 (estimated locally),0.00 per call) dns_enqueue/25 (81659302 (estimated locally),0.08 per call) dns_check_entries/22 (4294967311 (estimated locally),4.00 per call) 
+  Calls: dns_send/15 (9533 (estimated locally),0.04 per call) dns_call_found/18 (1205 (estimated locally),0.01 per call) dns_backupserver_available/52 (inlined) (3651 (estimated locally),0.02 per call) dns_send/15 (21475 (estimated locally),0.10 per call) dns_create_txid/19 (inlined) (21475 (estimated locally),0.10 per call) 
+dns_backupserver_available/20 (dns_backupserver_available) @0709b620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 52
+  Aux: @07237408
+  References: 
+  Referring: 
+  Function dns_backupserver_available/20 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:18781 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (18781 (estimated locally),0.00 per call) 
+  Calls: dns_backupserver_available.part.0/50 (inlined) (6573 (estimated locally),0.00 per call) 
+dns_create_txid/19 (dns_create_txid) @0709b2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237528
+  References: dns_table/4 (read)dns_table/4 (read)
+  Referring: 
+  Function dns_create_txid/19 is inline copy in dns_check_entry/21
+  Availability: local
+  Function flags: count:21475 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (inlined) (21475 (estimated locally),0.10 per call) 
+  Calls: rand/29 (23081 (estimated locally),0.11 per call) 
+dns_call_found/18 (dns_call_found) @0709b000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237448
+  References: dns_requests/5 (read)dns_requests/5 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (write)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_pcbs/1 (read)dns_table/4 (read)dns_pcbs/1 (write)dns_table/4 (write)
+  Referring: 
+  Availability: local
+  Function flags: count:214748364 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (18927 (estimated locally),0.00 per call) dns_check_entry/21 (1205 (estimated locally),0.01 per call) dns_send/15 (25369 (estimated locally),0.14 per call) dns_correct_response/23 (102 (estimated locally),0.00 per call) 
+  Calls: udp_remove/30 (70866960 (estimated locally),0.33 per call) 
+   Indirect call(204440443 (estimated locally),0.95 per call) 
+dns_alloc_pcb/17 (dns_alloc_pcb) @0706ae00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bb0
+  References: dns_pcbs/1 (read)dns_pcbs/1 (write)dns_last_pcb_idx/2 (write)dns_last_pcb_idx/2 (read)dns_pcbs/1 (read)dns_last_pcb_idx/2 (write)
+  Referring: 
+  Function dns_alloc_pcb/17 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:167060765 (estimated locally) body local optimize_size
+  Called by: dns_enqueue/25 (inlined) (167060765 (estimated locally),0.16 per call) 
+  Calls: dns_alloc_random_port/16 (inlined) (81659302 (estimated locally),0.08 per call) 
+dns_alloc_random_port/16 (dns_alloc_random_port) @0706ab60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7d90
+  References: ip_addr_any/28 (addr)dns_recv/24 (addr)
+  Referring: 
+  Function dns_alloc_random_port/16 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:81659302 (estimated locally) body local optimize_size
+  Called by: dns_alloc_pcb/17 (inlined) (81659302 (estimated locally),0.08 per call) 
+  Calls: udp_recv/45 (61887400 (estimated locally),0.06 per call) udp_remove/30 (13018679 (estimated locally),0.01 per call) udp_bind/44 (680964362 (estimated locally),0.63 per call) rand/29 (6190585093 (estimated locally),5.77 per call) udp_new_ip_type/43 (81659302 (estimated locally),0.08 per call) 
+dns_send/15 (dns_send) @0706a8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7db0
+  References: dns_table/4 (read)dns_servers/6 (read)dns_table/4 (write)dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_servers/6 (addr)dns_pcbs/1 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:181990 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (9533 (estimated locally),0.04 per call) dns_check_entry/21 (21475 (estimated locally),0.10 per call) 
+  Calls: pbuf_free/36 (23511 (estimated locally),0.13 per call) udp_sendto/39 (23511 (estimated locally),0.13 per call) pbuf_take_at/38 (23511 (estimated locally),0.13 per call) pbuf_put_at/37 (23511 (estimated locally),0.13 per call) pbuf_take_at/38 (427466 (estimated locally),2.35 per call) pbuf_put_at/37 (427466 (estimated locally),2.35 per call) pbuf_free/36 (24879 (estimated locally),0.14 per call) pbuf_take/35 (48390 (estimated locally),0.27 per call) lwip_htons/34 (48390 (estimated locally),0.27 per call) memset/33 (48390 (estimated locally),0.27 per call) pbuf_alloc/32 (49246 (estimated locally),0.27 per call) strlen/31 (49246 (estimated locally),0.27 per call) dns_call_found/18 (25369 (estimated locally),0.14 per call) 
+dns_skip_name/14 (dns_skip_name) @0706a620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bd0
+  References: 
+  Referring: 
+  Function dns_skip_name/14 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:153850 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (153850 (estimated locally),0.00 per call) 
+  Calls: pbuf_try_get_at/48 (1243074 (estimated locally),0.00 per call) pbuf_try_get_at/48 (1347698 (estimated locally),0.00 per call) 
+dns_lookup/12 (dns_lookup) @07051540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bf0
+  References: dns_table/4 (read)dns_table/4 (addr)dns_table/4 (read)
+  Referring: 
+  Function dns_lookup/12 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:503964950 (estimated locally) body local optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (inlined) (503964950 (estimated locally),0.47 per call) 
+  Calls: lwip_strnicmp/41 (390616645 (estimated locally),0.36 per call) 
+dns_tmr/11 (dns_tmr) @07051c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f7c30
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: dns_check_entries/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+dns_getserver/10 (dns_getserver) @070519a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f79f0
+  References: dns_servers/6 (addr)ip_addr_any/28 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dns_setserver/9 (dns_setserver) @07051700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f76d0
+  References: dns_servers/6 (write)dns_servers/6 (write)ip_addr_any/28 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dns_init/8 (dns_init) @07051460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f7790
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+
+MALLOC LATTICE Initial:
+dns_backupserver_available.part.0: malloc_bottom
+dns_backupserver_available: malloc_bottom
+dns_compare_name.constprop: malloc_bottom
+dns_backupserver_available.part.0: malloc_bottom
+dns_gethostbyname_addrtype: malloc_bottom
+dns_gethostbyname: malloc_bottom
+dns_enqueue: malloc_bottom
+dns_recv: malloc_bottom
+dns_correct_response: malloc_bottom
+dns_check_entries: malloc_bottom
+dns_check_entry: malloc_bottom
+dns_backupserver_available: malloc_bottom
+dns_create_txid: malloc_bottom
+dns_call_found: malloc_bottom
+dns_alloc_pcb: malloc_bottom
+dns_alloc_random_port: malloc_bottom
+dns_send: malloc_bottom
+dns_skip_name: malloc_bottom
+dns_compare_name: malloc_bottom
+dns_lookup: malloc_bottom
+dns_tmr: malloc_bottom
+dns_getserver: malloc_bottom
+dns_setserver: malloc_bottom
+dns_init: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+dns_backupserver_available.part.0: malloc_bottom
+dns_backupserver_available: malloc_bottom
+dns_compare_name.constprop: malloc_bottom
+dns_backupserver_available.part.0: malloc_bottom
+dns_gethostbyname_addrtype: malloc_bottom
+dns_gethostbyname: malloc_bottom
+dns_enqueue: malloc_bottom
+dns_recv: malloc_bottom
+dns_correct_response: malloc_bottom
+dns_check_entries: malloc_bottom
+dns_check_entry: malloc_bottom
+dns_backupserver_available: malloc_bottom
+dns_create_txid: malloc_bottom
+dns_call_found: malloc_bottom
+dns_alloc_pcb: malloc_bottom
+dns_alloc_random_port: malloc_bottom
+dns_send: malloc_bottom
+dns_skip_name: malloc_bottom
+dns_compare_name: malloc_bottom
+dns_lookup: malloc_bottom
+dns_tmr: malloc_bottom
+dns_getserver: malloc_bottom
+dns_setserver: malloc_bottom
+dns_init: malloc_bottom
+callgraph:
+
+dns_backupserver_available.part.0/53 (dns_backupserver_available.part.0) @0727d540
+  Type: function definition analyzed
+  Visibility: artificial
+  next sharing asm name: 50
+  Aux: @065f79f0
+  References: dns_servers/6 (read)
+  Referring: 
+  Function dns_backupserver_available.part.0/53 is inline copy in dns_check_entry/21
+  Clone of dns_backupserver_available.part.0/50
+  Availability: local
+  Function flags: count:1278 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: dns_backupserver_available/52 (inlined) (1278 (estimated locally),0.01 per call) 
+  Calls: 
+dns_backupserver_available/52 (dns_backupserver_available) @0727d2a0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 20
+  Aux: @065f76d0
+  References: 
+  Referring: 
+  Function dns_backupserver_available/52 is inline copy in dns_check_entry/21
+  Clone of dns_backupserver_available/20
+  Availability: local
+  Function flags: count:3651 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (inlined) (3651 (estimated locally),0.02 per call) 
+  Calls: dns_backupserver_available.part.0/53 (inlined) (1278 (estimated locally),0.01 per call) 
+dns_compare_name.constprop.0/51 (dns_compare_name.constprop) @0727d0e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @065f78f0
+  References: _ctype_/49 (addr)_ctype_/49 (addr)
+  Referring: 
+  Function dns_compare_name.constprop/51 is inline copy in dns_recv/24
+  Clone of dns_compare_name/13
+  Availability: local
+  Function flags: count:700549 (estimated locally) local optimize_size
+  Called by: dns_recv/24 (inlined) (700549 (estimated locally),0.00 per call) 
+  Calls: pbuf_try_get_at/48 (916371 (estimated locally),0.00 per call) pbuf_try_get_at/48 (7946963 (estimated locally),0.01 per call) pbuf_try_get_at/48 (224721 (estimated locally),0.00 per call) 
+dns_backupserver_available.part.0/50 (dns_backupserver_available.part.0) @06e33620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  previous sharing asm name: 53
+  Aux: @065f7830
+  References: dns_servers/6 (read)
+  Referring: 
+  Function dns_backupserver_available.part.0/50 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:6573 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: dns_backupserver_available/20 (inlined) (6573 (estimated locally),0.00 per call) 
+  Calls: 
+pbuf_try_get_at/48 (pbuf_try_get_at) @071038c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_compare_name.constprop/51 (916371 (estimated locally),0.00 per call) dns_compare_name.constprop/51 (7946963 (estimated locally),0.01 per call) dns_compare_name.constprop/51 (224721 (estimated locally),0.00 per call) dns_skip_name/14 (1243074 (estimated locally),0.00 per call) dns_skip_name/14 (1347698 (estimated locally),0.00 per call) 
+  Calls: 
+lwip_htonl/47 (lwip_htonl) @07103540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_recv/24 (102 (estimated locally),0.00 per call) 
+  Calls: 
+pbuf_copy_partial/46 (pbuf_copy_partial) @07103460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_recv/24 (503 (estimated locally),0.00 per call) dns_recv/24 (150773 (estimated locally),0.00 per call) dns_recv/24 (455287 (estimated locally),0.00 per call) dns_recv/24 (524845004 (estimated locally),0.49 per call) 
+  Calls: 
+udp_recv/45 (udp_recv) @071030e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_alloc_random_port/16 (61887400 (estimated locally),0.06 per call) 
+  Calls: 
+udp_bind/44 (udp_bind) @07103000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_alloc_random_port/16 (680964362 (estimated locally),0.63 per call) 
+  Calls: 
+udp_new_ip_type/43 (udp_new_ip_type) @070eeb60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_alloc_random_port/16 (81659302 (estimated locally),0.08 per call) 
+  Calls: 
+memcpy/42 (memcpy) @070eec40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_enqueue/25 (167060765 (estimated locally),0.16 per call) 
+  Calls: 
+lwip_strnicmp/41 (lwip_strnicmp) @070ee7e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_enqueue/25 (253659705 (estimated locally),0.24 per call) dns_lookup/12 (390616645 (estimated locally),0.36 per call) 
+  Calls: 
+ip4addr_aton/40 (ip4addr_aton) @070ee620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (1031024857 (estimated locally),0.96 per call) 
+  Calls: 
+udp_sendto/39 (udp_sendto) @070ee380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (23511 (estimated locally),0.13 per call) 
+  Calls: 
+pbuf_take_at/38 (pbuf_take_at) @070ee2a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (23511 (estimated locally),0.13 per call) dns_send/15 (427466 (estimated locally),2.35 per call) 
+  Calls: 
+pbuf_put_at/37 (pbuf_put_at) @070ee1c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (23511 (estimated locally),0.13 per call) dns_send/15 (427466 (estimated locally),2.35 per call) 
+  Calls: 
+pbuf_free/36 (pbuf_free) @070ee0e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_recv/24 (1073722794 (estimated locally),1.00 per call) dns_recv/24 (18927 (estimated locally),0.00 per call) dns_recv/24 (102 (estimated locally),0.00 per call) dns_send/15 (23511 (estimated locally),0.13 per call) dns_send/15 (24879 (estimated locally),0.14 per call) 
+  Calls: 
+pbuf_take/35 (pbuf_take) @070ee000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (48390 (estimated locally),0.27 per call) 
+  Calls: 
+lwip_htons/34 (lwip_htons) @070b89a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_recv/24 (141413 (estimated locally),0.00 per call) dns_recv/24 (144299 (estimated locally),0.00 per call) dns_recv/24 (7392912 (estimated locally),0.01 per call) dns_recv/24 (7392912 (estimated locally),0.01 per call) dns_recv/24 (106228629 (estimated locally),0.10 per call) dns_send/15 (48390 (estimated locally),0.27 per call) 
+  Calls: 
+memset/33 (memset) @070b8ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (48390 (estimated locally),0.27 per call) 
+  Calls: 
+pbuf_alloc/32 (pbuf_alloc) @070b8e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_send/15 (49246 (estimated locally),0.27 per call) 
+  Calls: 
+strlen/31 (strlen) @070b8d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (1053033253 (estimated locally),0.98 per call) dns_send/15 (49246 (estimated locally),0.27 per call) 
+  Calls: 
+udp_remove/30 (udp_remove) @070b8a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_alloc_random_port/16 (13018679 (estimated locally),0.01 per call) dns_call_found/18 (70866960 (estimated locally),0.33 per call) 
+  Calls: 
+rand/29 (rand) @070b8700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: dns_alloc_random_port/16 (6190585093 (estimated locally),5.77 per call) dns_create_txid/19 (23081 (estimated locally),0.11 per call) 
+  Calls: 
+dns_gethostbyname_addrtype/27 (dns_gethostbyname_addrtype) @070a6ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f7790
+  References: dns_servers/6 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: dns_gethostbyname/26 (1073741824 (estimated locally),1.00 per call) 
+  Calls: dns_enqueue/25 (inlined) (325665174 (estimated locally),0.30 per call) dns_lookup/12 (inlined) (503964950 (estimated locally),0.47 per call) ip4addr_aton/40 (1031024857 (estimated locally),0.96 per call) strlen/31 (1053033253 (estimated locally),0.98 per call) 
+dns_gethostbyname/26 (dns_gethostbyname) @070a6c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f7c30
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: dns_gethostbyname_addrtype/27 (1073741824 (estimated locally),1.00 per call) 
+dns_enqueue/25 (dns_enqueue) @070a69a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bb0
+  References: dns_table/4 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (write)dns_requests/5 (write)dns_requests/5 (write)dns_table/4 (addr)dns_table/4 (read)dns_seqno/3 (read)dns_table/4 (read)dns_table/4 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (addr)dns_seqno/3 (read)dns_seqno/3 (read)dns_seqno/3 (write)
+  Referring: 
+  Function dns_enqueue/25 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:325665174 (estimated locally) body local optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (inlined) (325665174 (estimated locally),0.30 per call) 
+  Calls: dns_check_entry/21 (81659302 (estimated locally),0.08 per call) dns_alloc_pcb/17 (inlined) (167060765 (estimated locally),0.16 per call) memcpy/42 (167060765 (estimated locally),0.16 per call) lwip_strnicmp/41 (253659705 (estimated locally),0.24 per call) 
+dns_recv/24 (dns_recv) @070a6700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065f7d90
+  References: dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_servers/6 (read)dns_table/4 (addr)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)
+  Referring: dns_alloc_random_port/16 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_free/36 (1073722794 (estimated locally),1.00 per call) dns_call_found/18 (18927 (estimated locally),0.00 per call) pbuf_free/36 (18927 (estimated locally),0.00 per call) lwip_htons/34 (141413 (estimated locally),0.00 per call) lwip_htons/34 (144299 (estimated locally),0.00 per call) dns_correct_response/23 (inlined) (102 (estimated locally),0.00 per call) lwip_htonl/47 (102 (estimated locally),0.00 per call) pbuf_free/36 (102 (estimated locally),0.00 per call) pbuf_copy_partial/46 (503 (estimated locally),0.00 per call) pbuf_copy_partial/46 (150773 (estimated locally),0.00 per call) dns_skip_name/14 (inlined) (153850 (estimated locally),0.00 per call) dns_check_entry/21 (6198 (estimated locally),0.00 per call) dns_backupserver_available/20 (inlined) (18781 (estimated locally),0.00 per call) pbuf_copy_partial/46 (455287 (estimated locally),0.00 per call) dns_compare_name.constprop/51 (inlined) (700549 (estimated locally),0.00 per call) lwip_htons/34 (7392912 (estimated locally),0.01 per call) lwip_htons/34 (7392912 (estimated locally),0.01 per call) lwip_htons/34 (106228629 (estimated locally),0.10 per call) pbuf_copy_partial/46 (524845004 (estimated locally),0.49 per call) 
+dns_correct_response/23 (dns_correct_response) @070a61c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7db0
+  References: dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (write)
+  Referring: 
+  Function dns_correct_response/23 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:102 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (102 (estimated locally),0.00 per call) 
+  Calls: dns_call_found/18 (102 (estimated locally),0.00 per call) 
+dns_check_entries/22 (dns_check_entries) @0709bc40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bd0
+  References: 
+  Referring: 
+  Function dns_check_entries/22 is inline copy in dns_tmr/11
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: dns_tmr/11 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: dns_check_entry/21 (4294967311 (estimated locally),4.00 per call) 
+dns_check_entry/21 (dns_check_entry) @0709b9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bf0
+  References: dns_table/4 (addr)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)
+  Referring: 
+  Availability: local
+  Function flags: count:214748 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (6198 (estimated locally),0.00 per call) dns_enqueue/25 (81659302 (estimated locally),0.08 per call) dns_check_entries/22 (4294967311 (estimated locally),4.00 per call) 
+  Calls: dns_send/15 (9533 (estimated locally),0.04 per call) dns_call_found/18 (1205 (estimated locally),0.01 per call) dns_backupserver_available/52 (inlined) (3651 (estimated locally),0.02 per call) dns_send/15 (21475 (estimated locally),0.10 per call) dns_create_txid/19 (inlined) (21475 (estimated locally),0.10 per call) 
+dns_backupserver_available/20 (dns_backupserver_available) @0709b620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 52
+  Aux: @072372c8
+  References: 
+  Referring: 
+  Function dns_backupserver_available/20 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:18781 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (18781 (estimated locally),0.00 per call) 
+  Calls: dns_backupserver_available.part.0/50 (inlined) (6573 (estimated locally),0.00 per call) 
+dns_create_txid/19 (dns_create_txid) @0709b2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237328
+  References: dns_table/4 (read)dns_table/4 (read)
+  Referring: 
+  Function dns_create_txid/19 is inline copy in dns_check_entry/21
+  Availability: local
+  Function flags: count:21475 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (inlined) (21475 (estimated locally),0.10 per call) 
+  Calls: rand/29 (23081 (estimated locally),0.11 per call) 
+dns_call_found/18 (dns_call_found) @0709b000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072372e8
+  References: dns_requests/5 (read)dns_requests/5 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (write)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_pcbs/1 (read)dns_table/4 (read)dns_pcbs/1 (write)dns_table/4 (write)
+  Referring: 
+  Availability: local
+  Function flags: count:214748364 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (18927 (estimated locally),0.00 per call) dns_check_entry/21 (1205 (estimated locally),0.01 per call) dns_send/15 (25369 (estimated locally),0.14 per call) dns_correct_response/23 (102 (estimated locally),0.00 per call) 
+  Calls: udp_remove/30 (70866960 (estimated locally),0.33 per call) 
+   Indirect call(204440443 (estimated locally),0.95 per call) 
+dns_alloc_pcb/17 (dns_alloc_pcb) @0706ae00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237528
+  References: dns_pcbs/1 (read)dns_pcbs/1 (write)dns_last_pcb_idx/2 (write)dns_last_pcb_idx/2 (read)dns_pcbs/1 (read)dns_last_pcb_idx/2 (write)
+  Referring: 
+  Function dns_alloc_pcb/17 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:167060765 (estimated locally) body local optimize_size
+  Called by: dns_enqueue/25 (inlined) (167060765 (estimated locally),0.16 per call) 
+  Calls: dns_alloc_random_port/16 (inlined) (81659302 (estimated locally),0.08 per call) 
+dns_alloc_random_port/16 (dns_alloc_random_port) @0706ab60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072373a8
+  References: ip_addr_any/28 (addr)dns_recv/24 (addr)
+  Referring: 
+  Function dns_alloc_random_port/16 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:81659302 (estimated locally) body local optimize_size
+  Called by: dns_alloc_pcb/17 (inlined) (81659302 (estimated locally),0.08 per call) 
+  Calls: udp_recv/45 (61887400 (estimated locally),0.06 per call) udp_remove/30 (13018679 (estimated locally),0.01 per call) udp_bind/44 (680964362 (estimated locally),0.63 per call) rand/29 (6190585093 (estimated locally),5.77 per call) udp_new_ip_type/43 (81659302 (estimated locally),0.08 per call) 
+dns_send/15 (dns_send) @0706a8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072374c8
+  References: dns_table/4 (read)dns_servers/6 (read)dns_table/4 (write)dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_servers/6 (addr)dns_pcbs/1 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:181990 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (9533 (estimated locally),0.04 per call) dns_check_entry/21 (21475 (estimated locally),0.10 per call) 
+  Calls: pbuf_free/36 (23511 (estimated locally),0.13 per call) udp_sendto/39 (23511 (estimated locally),0.13 per call) pbuf_take_at/38 (23511 (estimated locally),0.13 per call) pbuf_put_at/37 (23511 (estimated locally),0.13 per call) pbuf_take_at/38 (427466 (estimated locally),2.35 per call) pbuf_put_at/37 (427466 (estimated locally),2.35 per call) pbuf_free/36 (24879 (estimated locally),0.14 per call) pbuf_take/35 (48390 (estimated locally),0.27 per call) lwip_htons/34 (48390 (estimated locally),0.27 per call) memset/33 (48390 (estimated locally),0.27 per call) pbuf_alloc/32 (49246 (estimated locally),0.27 per call) strlen/31 (49246 (estimated locally),0.27 per call) dns_call_found/18 (25369 (estimated locally),0.14 per call) 
+dns_skip_name/14 (dns_skip_name) @0706a620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237548
+  References: 
+  Referring: 
+  Function dns_skip_name/14 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:153850 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (153850 (estimated locally),0.00 per call) 
+  Calls: pbuf_try_get_at/48 (1243074 (estimated locally),0.00 per call) pbuf_try_get_at/48 (1347698 (estimated locally),0.00 per call) 
+dns_compare_name/13 (dns_compare_name) @0706a380
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:92050635 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dns_lookup/12 (dns_lookup) @07051540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072371a8
+  References: dns_table/4 (read)dns_table/4 (addr)dns_table/4 (read)
+  Referring: 
+  Function dns_lookup/12 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:503964950 (estimated locally) body local optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (inlined) (503964950 (estimated locally),0.47 per call) 
+  Calls: lwip_strnicmp/41 (390616645 (estimated locally),0.36 per call) 
+dns_tmr/11 (dns_tmr) @07051c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07237168
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: dns_check_entries/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+dns_getserver/10 (dns_getserver) @070519a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @072373c8
+  References: dns_servers/6 (addr)ip_addr_any/28 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dns_setserver/9 (dns_setserver) @07051700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07237408
+  References: dns_servers/6 (write)dns_servers/6 (write)ip_addr_any/28 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dns_init/8 (dns_init) @07051460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07237448
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+dns_gethostbyname/26 (dns_gethostbyname) @070a6c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f7c30
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: dns_gethostbyname_addrtype/27 (1073741824 (estimated locally),1.00 per call) 
+dns_gethostbyname_addrtype/27 (dns_gethostbyname_addrtype) @070a6ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @065f7790
+  References: dns_servers/6 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: dns_gethostbyname/26 (1073741824 (estimated locally),1.00 per call) 
+  Calls: dns_enqueue/25 (inlined) (325665174 (estimated locally),0.30 per call) dns_lookup/12 (inlined) (503964950 (estimated locally),0.47 per call) ip4addr_aton/40 (1031024857 (estimated locally),0.96 per call) strlen/31 (1053033253 (estimated locally),0.98 per call) 
+dns_enqueue/25 (dns_enqueue) @070a69a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bb0
+  References: dns_table/4 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (write)dns_requests/5 (write)dns_requests/5 (write)dns_table/4 (addr)dns_table/4 (read)dns_seqno/3 (read)dns_table/4 (read)dns_table/4 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (addr)dns_seqno/3 (read)dns_seqno/3 (read)dns_seqno/3 (write)
+  Referring: 
+  Function dns_enqueue/25 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:325665174 (estimated locally) body local optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (inlined) (325665174 (estimated locally),0.30 per call) 
+  Calls: dns_check_entry/21 (81659302 (estimated locally),0.08 per call) dns_alloc_pcb/17 (inlined) (167060765 (estimated locally),0.16 per call) memcpy/42 (167060765 (estimated locally),0.16 per call) lwip_strnicmp/41 (253659705 (estimated locally),0.24 per call) 
+dns_recv/24 (dns_recv) @070a6700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Address is taken.
+  Aux: @065f7d90
+  References: dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_servers/6 (read)dns_table/4 (addr)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)
+  Referring: dns_alloc_random_port/16 (addr)
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pbuf_free/36 (1073722794 (estimated locally),1.00 per call) dns_call_found/18 (18927 (estimated locally),0.00 per call) pbuf_free/36 (18927 (estimated locally),0.00 per call) lwip_htons/34 (141413 (estimated locally),0.00 per call) lwip_htons/34 (144299 (estimated locally),0.00 per call) dns_correct_response/23 (inlined) (102 (estimated locally),0.00 per call) lwip_htonl/47 (102 (estimated locally),0.00 per call) pbuf_free/36 (102 (estimated locally),0.00 per call) pbuf_copy_partial/46 (503 (estimated locally),0.00 per call) pbuf_copy_partial/46 (150773 (estimated locally),0.00 per call) dns_skip_name/14 (inlined) (153850 (estimated locally),0.00 per call) dns_check_entry/21 (6198 (estimated locally),0.00 per call) dns_backupserver_available/20 (inlined) (18781 (estimated locally),0.00 per call) pbuf_copy_partial/46 (455287 (estimated locally),0.00 per call) dns_compare_name.constprop/51 (inlined) (700549 (estimated locally),0.00 per call) lwip_htons/34 (7392912 (estimated locally),0.01 per call) lwip_htons/34 (7392912 (estimated locally),0.01 per call) lwip_htons/34 (106228629 (estimated locally),0.10 per call) pbuf_copy_partial/46 (524845004 (estimated locally),0.49 per call) 
+dns_compare_name.constprop.0/51 (dns_compare_name.constprop) @0727d0e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @065f78f0
+  References: _ctype_/49 (addr)_ctype_/49 (addr)
+  Referring: 
+  Function dns_compare_name.constprop/51 is inline copy in dns_recv/24
+  Clone of dns_compare_name/13
+  Availability: local
+  Function flags: count:700549 (estimated locally) local optimize_size
+  Called by: dns_recv/24 (inlined) (700549 (estimated locally),0.00 per call) 
+  Calls: pbuf_try_get_at/48 (916371 (estimated locally),0.00 per call) pbuf_try_get_at/48 (7946963 (estimated locally),0.01 per call) pbuf_try_get_at/48 (224721 (estimated locally),0.00 per call) 
+dns_correct_response/23 (dns_correct_response) @070a61c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7db0
+  References: dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (write)
+  Referring: 
+  Function dns_correct_response/23 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:102 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (102 (estimated locally),0.00 per call) 
+  Calls: dns_call_found/18 (102 (estimated locally),0.00 per call) 
+dns_backupserver_available/20 (dns_backupserver_available) @0709b620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  previous sharing asm name: 52
+  Aux: @072372c8
+  References: 
+  Referring: 
+  Function dns_backupserver_available/20 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:18781 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (18781 (estimated locally),0.00 per call) 
+  Calls: dns_backupserver_available.part.0/50 (inlined) (6573 (estimated locally),0.00 per call) 
+dns_backupserver_available.part.0/50 (dns_backupserver_available.part.0) @06e33620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  previous sharing asm name: 53
+  Aux: @065f7830
+  References: dns_servers/6 (read)
+  Referring: 
+  Function dns_backupserver_available.part.0/50 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:6573 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: dns_backupserver_available/20 (inlined) (6573 (estimated locally),0.00 per call) 
+  Calls: 
+dns_alloc_pcb/17 (dns_alloc_pcb) @0706ae00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237528
+  References: dns_pcbs/1 (read)dns_pcbs/1 (write)dns_last_pcb_idx/2 (write)dns_last_pcb_idx/2 (read)dns_pcbs/1 (read)dns_last_pcb_idx/2 (write)
+  Referring: 
+  Function dns_alloc_pcb/17 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:167060765 (estimated locally) body local optimize_size
+  Called by: dns_enqueue/25 (inlined) (167060765 (estimated locally),0.16 per call) 
+  Calls: dns_alloc_random_port/16 (inlined) (81659302 (estimated locally),0.08 per call) 
+dns_alloc_random_port/16 (dns_alloc_random_port) @0706ab60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072373a8
+  References: ip_addr_any/28 (addr)dns_recv/24 (addr)
+  Referring: 
+  Function dns_alloc_random_port/16 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:81659302 (estimated locally) body local optimize_size
+  Called by: dns_alloc_pcb/17 (inlined) (81659302 (estimated locally),0.08 per call) 
+  Calls: udp_recv/45 (61887400 (estimated locally),0.06 per call) udp_remove/30 (13018679 (estimated locally),0.01 per call) udp_bind/44 (680964362 (estimated locally),0.63 per call) rand/29 (6190585093 (estimated locally),5.77 per call) udp_new_ip_type/43 (81659302 (estimated locally),0.08 per call) 
+dns_skip_name/14 (dns_skip_name) @0706a620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237548
+  References: 
+  Referring: 
+  Function dns_skip_name/14 is inline copy in dns_recv/24
+  Availability: local
+  Function flags: count:153850 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (inlined) (153850 (estimated locally),0.00 per call) 
+  Calls: pbuf_try_get_at/48 (1243074 (estimated locally),0.00 per call) pbuf_try_get_at/48 (1347698 (estimated locally),0.00 per call) 
+dns_lookup/12 (dns_lookup) @07051540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072371a8
+  References: dns_table/4 (read)dns_table/4 (addr)dns_table/4 (read)
+  Referring: 
+  Function dns_lookup/12 is inline copy in dns_gethostbyname_addrtype/27
+  Availability: local
+  Function flags: count:503964950 (estimated locally) body local optimize_size
+  Called by: dns_gethostbyname_addrtype/27 (inlined) (503964950 (estimated locally),0.47 per call) 
+  Calls: lwip_strnicmp/41 (390616645 (estimated locally),0.36 per call) 
+dns_tmr/11 (dns_tmr) @07051c40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07237168
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: dns_check_entries/22 (inlined) (1073741824 (estimated locally),1.00 per call) 
+dns_check_entries/22 (dns_check_entries) @0709bc40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bd0
+  References: 
+  Referring: 
+  Function dns_check_entries/22 is inline copy in dns_tmr/11
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: dns_tmr/11 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: dns_check_entry/21 (4294967311 (estimated locally),4.00 per call) 
+dns_check_entry/21 (dns_check_entry) @0709b9a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @065f7bf0
+  References: dns_table/4 (addr)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (write)dns_table/4 (read)dns_table/4 (write)dns_table/4 (write)
+  Referring: 
+  Availability: local
+  Function flags: count:214748 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (6198 (estimated locally),0.00 per call) dns_enqueue/25 (81659302 (estimated locally),0.08 per call) dns_check_entries/22 (4294967311 (estimated locally),4.00 per call) 
+  Calls: dns_send/15 (9533 (estimated locally),0.04 per call) dns_call_found/18 (1205 (estimated locally),0.01 per call) dns_backupserver_available/52 (inlined) (3651 (estimated locally),0.02 per call) dns_send/15 (21475 (estimated locally),0.10 per call) dns_create_txid/19 (inlined) (21475 (estimated locally),0.10 per call) 
+dns_create_txid/19 (dns_create_txid) @0709b2a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @07237328
+  References: dns_table/4 (read)dns_table/4 (read)
+  Referring: 
+  Function dns_create_txid/19 is inline copy in dns_check_entry/21
+  Availability: local
+  Function flags: count:21475 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (inlined) (21475 (estimated locally),0.10 per call) 
+  Calls: rand/29 (23081 (estimated locally),0.11 per call) 
+dns_backupserver_available/52 (dns_backupserver_available) @0727d2a0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 20
+  Aux: @065f76d0
+  References: 
+  Referring: 
+  Function dns_backupserver_available/52 is inline copy in dns_check_entry/21
+  Clone of dns_backupserver_available/20
+  Availability: local
+  Function flags: count:3651 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (inlined) (3651 (estimated locally),0.02 per call) 
+  Calls: dns_backupserver_available.part.0/53 (inlined) (1278 (estimated locally),0.01 per call) 
+dns_backupserver_available.part.0/53 (dns_backupserver_available.part.0) @0727d540
+  Type: function definition analyzed
+  Visibility: artificial
+  next sharing asm name: 50
+  Aux: @065f79f0
+  References: dns_servers/6 (read)
+  Referring: 
+  Function dns_backupserver_available.part.0/53 is inline copy in dns_check_entry/21
+  Clone of dns_backupserver_available.part.0/50
+  Availability: local
+  Function flags: count:1278 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: dns_backupserver_available/52 (inlined) (1278 (estimated locally),0.01 per call) 
+  Calls: 
+dns_send/15 (dns_send) @0706a8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072374c8
+  References: dns_table/4 (read)dns_servers/6 (read)dns_table/4 (write)dns_table/4 (addr)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_servers/6 (addr)dns_pcbs/1 (read)
+  Referring: 
+  Availability: local
+  Function flags: count:181990 (estimated locally) body local optimize_size
+  Called by: dns_check_entry/21 (9533 (estimated locally),0.04 per call) dns_check_entry/21 (21475 (estimated locally),0.10 per call) 
+  Calls: pbuf_free/36 (23511 (estimated locally),0.13 per call) udp_sendto/39 (23511 (estimated locally),0.13 per call) pbuf_take_at/38 (23511 (estimated locally),0.13 per call) pbuf_put_at/37 (23511 (estimated locally),0.13 per call) pbuf_take_at/38 (427466 (estimated locally),2.35 per call) pbuf_put_at/37 (427466 (estimated locally),2.35 per call) pbuf_free/36 (24879 (estimated locally),0.14 per call) pbuf_take/35 (48390 (estimated locally),0.27 per call) lwip_htons/34 (48390 (estimated locally),0.27 per call) memset/33 (48390 (estimated locally),0.27 per call) pbuf_alloc/32 (49246 (estimated locally),0.27 per call) strlen/31 (49246 (estimated locally),0.27 per call) dns_call_found/18 (25369 (estimated locally),0.14 per call) 
+dns_call_found/18 (dns_call_found) @0709b000
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @072372e8
+  References: dns_requests/5 (read)dns_requests/5 (read)dns_table/4 (addr)dns_requests/5 (read)dns_requests/5 (write)dns_table/4 (read)dns_table/4 (read)dns_table/4 (read)dns_table/4 (write)dns_table/4 (read)dns_pcbs/1 (read)dns_table/4 (read)dns_pcbs/1 (write)dns_table/4 (write)
+  Referring: 
+  Availability: local
+  Function flags: count:214748364 (estimated locally) body local optimize_size
+  Called by: dns_recv/24 (18927 (estimated locally),0.00 per call) dns_check_entry/21 (1205 (estimated locally),0.01 per call) dns_send/15 (25369 (estimated locally),0.14 per call) dns_correct_response/23 (102 (estimated locally),0.00 per call) 
+  Calls: udp_remove/30 (70866960 (estimated locally),0.33 per call) 
+   Indirect call(204440443 (estimated locally),0.95 per call) 
+dns_getserver/10 (dns_getserver) @070519a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @072373c8
+  References: dns_servers/6 (addr)ip_addr_any/28 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dns_setserver/9 (dns_setserver) @07051700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07237408
+  References: dns_servers/6 (write)dns_servers/6 (write)ip_addr_any/28 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+dns_init/8 (dns_init) @07051460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @07237448
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+Function found not to call free: dns_init
+Function found not to call free: dns_setserver
+Function found not to call free: dns_getserver
+Function found not to call free: dns_backupserver_available.part.0
+Function found not to call free: dns_backupserver_available
+Function found not to call free: dns_backupserver_available.part.0
+Function found not to call free: dns_backupserver_available
+dns_backupserver_available.part.0 ()
+{
+  u8_t ret;
+  struct dns_table_entry * pentry;
+  long unsigned int _1;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG D#2 s=> pentry
+  # DEBUG pentry => D#2
+
+  <bb 2> [local count: 1073741824]:
+  _1 = dns_servers[1].addr;
+  if (_1 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 1
+
+  <bb 4> [local count: 1073741824]:
+  # ret_2 = PHI <0(2), 1(3)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  return ret_2;
+
+}
+
+
+dns_gethostbyname_addrtype (const char * hostname, struct ip_addr_t * addr, void (*dns_found_callback) (const char *, const struct ip_addr_t *, void *) found, void * callback_arg, u8_t dns_addrtype)
+{
+  size_t hostnamelen;
+  char _1;
+  int _2;
+  signed char _3;
+  long unsigned int _4;
+  err_t _5;
+  err_t _16;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (addr_7(D) == 0B)
+    goto <bb 10>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 1068909987]:
+  if (hostname_8(D) == 0B)
+    goto <bb 10>; [0.45%]
+  else
+    goto <bb 4>; [99.55%]
+
+  <bb 4> [local count: 1064099892]:
+  _1 = *hostname_8(D);
+  if (_1 == 0)
+    goto <bb 10>; [1.04%]
+  else
+    goto <bb 5>; [98.96%]
+
+  <bb 5> [local count: 1053033253]:
+  # DEBUG BEGIN_STMT
+  hostnamelen_10 = strlen (hostname_8(D));
+  # DEBUG hostnamelen => hostnamelen_10
+  # DEBUG BEGIN_STMT
+  if (hostnamelen_10 > 255)
+    goto <bb 10>; [2.09%]
+  else
+    goto <bb 6>; [97.91%]
+
+  <bb 6> [local count: 1031024857]:
+  # DEBUG BEGIN_STMT
+  _2 = ip4addr_aton (hostname_8(D), addr_7(D));
+  if (_2 != 0)
+    goto <bb 10>; [51.12%]
+  else
+    goto <bb 7>; [48.88%]
+
+  <bb 7> [local count: 503964950]:
+  # DEBUG BEGIN_STMT
+  _3 = dns_lookup (hostname_8(D), addr_7(D));
+  if (_3 == 0)
+    goto <bb 10>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 8> [local count: 332616867]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = dns_servers[0].addr;
+  if (_4 == 0)
+    goto <bb 10>; [2.09%]
+  else
+    goto <bb 9>; [97.91%]
+
+  <bb 9> [local count: 325665174]:
+  # DEBUG BEGIN_STMT
+  _16 = dns_enqueue (hostname_8(D), hostnamelen_10, found_13(D), callback_arg_14(D));
+
+  <bb 10> [local count: 1073741824]:
+  # _5 = PHI <-16(3), -16(5), 0(6), 0(7), -6(8), _16(9), -16(2), -16(4)>
+  return _5;
+
+}
+
+
+dns_gethostbyname (const char * hostname, struct ip_addr_t * addr, void (*dns_found_callback) (const char *, const struct ip_addr_t *, void *) found, void * callback_arg)
+{
+  err_t _7;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _7 = dns_gethostbyname_addrtype (hostname_2(D), addr_3(D), found_4(D), callback_arg_5(D), 0);
+  return _7;
+
+}
+
+
+dns_enqueue (const char * name, size_t hostnamelen, void (*dns_found_callback) (const char *, const struct ip_addr_t *, void *) found, void * callback_arg)
+{
+  u8_t age;
+  u8_t r;
+  struct dns_req_entry * req;
+  size_t namelen;
+  struct dns_table_entry * entry;
+  u8_t lseqi;
+  u8_t lseq;
+  u8_t i;
+  int _1;
+  unsigned char _2;
+  char[256] * _3;
+  int _4;
+  int _5;
+  void (*<T6bc>) (const char *, const struct ip_addr_t *, void *) _6;
+  int _7;
+  unsigned char _8;
+  int _9;
+  unsigned char dns_seqno.6_10;
+  unsigned char _11;
+  int _12;
+  unsigned char _13;
+  int _15;
+  void (*<T6bc>) (const char *, const struct ip_addr_t *, void *) _16;
+  unsigned char dns_seqno.8_18;
+  char[256] * _19;
+  unsigned char _20;
+  unsigned char dns_seqno.9_21;
+  unsigned char _22;
+  err_t _36;
+  int _43;
+
+  <bb 2> [local count: 223213368]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG entry => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 10>; [100.00%]
+
+  <bb 3> [local count: 858993460]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) i_23;
+  _2 = dns_table[_1].state;
+  if (_2 == 2)
+    goto <bb 4>; [20.24%]
+  else
+    goto <bb 9>; [79.76%]
+
+  <bb 4> [local count: 173860276]:
+  _3 = &dns_table[_1].name;
+  _4 = lwip_strnicmp (name_58(D), _3, 256);
+  if (_4 == 0)
+    goto <bb 32>; [27.00%]
+  else
+    goto <bb 9>; [73.00%]
+
+  <bb 32> [local count: 46942275]:
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 153909097]:
+  # DEBUG BEGIN_STMT
+  _5 = (int) r_34;
+  _6 = dns_requests[_5].found;
+  if (_6 == 0B)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 7>; [94.50%]
+
+  <bb 6> [local count: 8465000]:
+  # _9 = PHI <_5(5)>
+  # i_45 = PHI <i_23(5)>
+  # DEBUG BEGIN_STMT
+  dns_requests[_9].found = found_52(D);
+  # DEBUG BEGIN_STMT
+  dns_requests[_9].arg = callback_arg_54(D);
+  # DEBUG BEGIN_STMT
+  dns_requests[_9].dns_table_idx = i_45;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 30>; [100.00%]
+
+  <bb 7> [local count: 145444097]:
+  # DEBUG BEGIN_STMT
+  r_68 = r_34 + 1;
+  # DEBUG r => r_68
+
+  <bb 8> [local count: 192386372]:
+  # r_34 = PHI <r_68(7), 0(32)>
+  # DEBUG r => r_34
+  # DEBUG BEGIN_STMT
+  if (r_34 != 4)
+    goto <bb 5>; [80.00%]
+  else
+    goto <bb 9>; [20.00%]
+
+  <bb 9> [local count: 850528459]:
+  # DEBUG BEGIN_STMT
+  i_72 = i_23 + 1;
+  # DEBUG i => i_72
+
+  <bb 10> [local count: 1073741824]:
+  # i_23 = PHI <0(2), i_72(9)>
+  # DEBUG i => i_23
+  # DEBUG BEGIN_STMT
+  if (i_23 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 31>; [20.00%]
+
+  <bb 31> [local count: 214748368]:
+  goto <bb 16>; [100.00%]
+
+  <bb 11> [local count: 704093003]:
+  # DEBUG BEGIN_STMT
+  _7 = (int) i_24;
+  entry_41 = &dns_table[_7];
+  # DEBUG entry => entry_41
+  # DEBUG BEGIN_STMT
+  _8 = MEM[(struct dns_table_entry *)&dns_table][_7].state;
+  if (_8 == 0)
+    goto <bb 17>; [5.50%]
+  else
+    goto <bb 12>; [94.50%]
+
+  <bb 12> [local count: 665367887]:
+  # DEBUG BEGIN_STMT
+  if (_8 == 3)
+    goto <bb 13>; [34.00%]
+  else
+    goto <bb 15>; [66.00%]
+
+  <bb 13> [local count: 226225081]:
+  # DEBUG BEGIN_STMT
+  dns_seqno.6_10 = dns_seqno;
+  _11 = MEM[(struct dns_table_entry *)&dns_table][_7].seqno;
+  age_42 = dns_seqno.6_10 - _11;
+  # DEBUG age => age_42
+  # DEBUG BEGIN_STMT
+  if (lseq_27 < age_42)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 14> [local count: 113112541]:
+  # DEBUG BEGIN_STMT
+  # DEBUG lseq => age_42
+  # DEBUG BEGIN_STMT
+  # DEBUG lseqi => i_24
+
+  <bb 15> [local count: 665367888]:
+  # lseq_26 = PHI <lseq_27(12), lseq_27(13), age_42(14)>
+  # lseqi_28 = PHI <lseqi_29(12), lseqi_29(13), i_24(14)>
+  # DEBUG lseqi => lseqi_28
+  # DEBUG lseq => lseq_26
+  # DEBUG BEGIN_STMT
+  i_44 = i_24 + 1;
+  # DEBUG i => i_44
+
+  <bb 16> [local count: 880116254]:
+  # i_24 = PHI <i_44(15), 0(31)>
+  # lseq_27 = PHI <lseq_26(15), 0(31)>
+  # lseqi_29 = PHI <lseqi_28(15), 4(31)>
+  # entry_30 = PHI <entry_41(15), 0B(31)>
+  # DEBUG entry => entry_30
+  # DEBUG lseqi => lseqi_29
+  # DEBUG lseq => lseq_27
+  # DEBUG i => i_24
+  # DEBUG BEGIN_STMT
+  if (i_24 != 4)
+    goto <bb 11>; [80.00%]
+  else
+    goto <bb 17>; [20.00%]
+
+  <bb 17> [local count: 214748366]:
+  # entry_31 = PHI <entry_41(11), entry_30(16)>
+  # i_14 = PHI <i_24(11), i_24(16)>
+  # lseqi_17 = PHI <lseqi_29(11), lseqi_29(16)>
+  # DEBUG entry => entry_31
+  # DEBUG BEGIN_STMT
+  if (i_14 == 4)
+    goto <bb 18>; [34.00%]
+  else
+    goto <bb 21>; [66.00%]
+
+  <bb 18> [local count: 73014444]:
+  # DEBUG BEGIN_STMT
+  if (lseqi_17 > 3)
+    goto <bb 30>; [34.00%]
+  else
+    goto <bb 19>; [66.00%]
+
+  <bb 19> [local count: 48189533]:
+  _12 = (int) lseqi_17;
+  _13 = dns_table[_12].state;
+  if (_13 != 3)
+    goto <bb 30>; [50.00%]
+  else
+    goto <bb 20>; [50.00%]
+
+  <bb 20> [local count: 24094767]:
+  # DEBUG BEGIN_STMT
+  # DEBUG i => lseqi_17
+  # DEBUG BEGIN_STMT
+  entry_46 = &dns_table[_12];
+  # DEBUG entry => entry_46
+
+  <bb 21> [local count: 165828688]:
+  # i_25 = PHI <i_14(17), lseqi_17(20)>
+  # entry_32 = PHI <entry_31(17), entry_46(20)>
+  # DEBUG entry => entry_32
+  # DEBUG i => i_25
+  # DEBUG BEGIN_STMT
+  # DEBUG req => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG r => 0
+  goto <bb 25>; [100.00%]
+
+  <bb 22> [local count: 543700618]:
+  # DEBUG BEGIN_STMT
+  _15 = (int) r_35;
+  _16 = dns_requests[_15].found;
+  if (_16 == 0B)
+    goto <bb 23>; [5.50%]
+  else
+    goto <bb 24>; [94.50%]
+
+  <bb 23> [local count: 29903534]:
+  # _43 = PHI <_15(22)>
+  # DEBUG BEGIN_STMT
+  req_48 = &dns_requests[_43];
+  # DEBUG req => req_48
+  # DEBUG BEGIN_STMT
+  goto <bb 26>; [100.00%]
+
+  <bb 24> [local count: 513797084]:
+  # DEBUG BEGIN_STMT
+  r_47 = r_35 + 1;
+  # DEBUG r => r_47
+
+  <bb 25> [local count: 679625773]:
+  # r_35 = PHI <0(21), r_47(24)>
+  # DEBUG r => r_35
+  # DEBUG BEGIN_STMT
+  if (r_35 != 4)
+    goto <bb 22>; [80.00%]
+  else
+    goto <bb 26>; [20.00%]
+
+  <bb 26> [local count: 165828688]:
+  # req_33 = PHI <req_48(23), 0B(25)>
+  # DEBUG req => req_33
+  # DEBUG BEGIN_STMT
+  if (req_33 == 0B)
+    goto <bb 30>; [30.95%]
+  else
+    goto <bb 27>; [69.05%]
+
+  <bb 27> [local count: 114504709]:
+  # DEBUG BEGIN_STMT
+  req_33->dns_table_idx = i_25;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_32->state = 1;
+  # DEBUG BEGIN_STMT
+  dns_seqno.8_18 = dns_seqno;
+  entry_32->seqno = dns_seqno.8_18;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  req_33->found = found_52(D);
+  # DEBUG BEGIN_STMT
+  req_33->arg = callback_arg_54(D);
+  # DEBUG BEGIN_STMT
+  namelen_57 = MIN_EXPR <hostnamelen_56(D), 255>;
+  # DEBUG namelen => namelen_57
+  # DEBUG BEGIN_STMT
+  _19 = &entry_32->name;
+  memcpy (_19, name_58(D), namelen_57);
+  # DEBUG BEGIN_STMT
+  entry_32->name[namelen_57] = 0;
+  # DEBUG BEGIN_STMT
+  _20 = dns_alloc_pcb ();
+  entry_32->pcb_idx = _20;
+  # DEBUG BEGIN_STMT
+  if (_20 > 3)
+    goto <bb 28>; [51.12%]
+  else
+    goto <bb 29>; [48.88%]
+
+  <bb 28> [local count: 58534807]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_32->state = 0;
+  # DEBUG BEGIN_STMT
+  req_33->found = 0B;
+  # DEBUG BEGIN_STMT
+  goto <bb 30>; [100.00%]
+
+  <bb 29> [local count: 55969902]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  dns_seqno.9_21 = dns_seqno;
+  _22 = dns_seqno.9_21 + 1;
+  dns_seqno = _22;
+  # DEBUG BEGIN_STMT
+  dns_check_entry (i_25);
+  # DEBUG BEGIN_STMT
+
+  <bb 30> [local count: 223213366]:
+  # _36 = PHI <-5(6), -1(19), -1(26), -1(28), -5(29), -1(18)>
+  return _36;
+
+}
+
+
+dns_recv (void * arg, struct udp_pcb * pcb, struct pbuf * p, const struct ip_addr_t * addr, u16_t port)
+{
+  struct ip4_addr_t ip4addr;
+  struct dns_table_entry * entry;
+  u16_t nanswers;
+  u16_t nquestions;
+  struct dns_query qry;
+  struct dns_answer ans;
+  struct dns_hdr hdr;
+  u16_t res_idx;
+  u16_t txid;
+  u8_t i;
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  int _4;
+  unsigned char _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  short unsigned int _8;
+  unsigned char _9;
+  signed char _10;
+  long unsigned int _11;
+  unsigned char _12;
+  int _13;
+  long unsigned int _14;
+  char[256] * _15;
+  short unsigned int _16;
+  short unsigned int _17;
+  short unsigned int _18;
+  unsigned char _19;
+  unsigned char _20;
+  short unsigned int _21;
+  short unsigned int _22;
+  short unsigned int _23;
+  short unsigned int _24;
+  short unsigned int _25;
+  int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  int _30;
+  short unsigned int _31;
+  short unsigned int _32;
+  int _33;
+  int _34;
+  short unsigned int _35;
+  short unsigned int _36;
+  short unsigned int _37;
+  unsigned char _52;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = p_48(D)->tot_len;
+  if (_1 <= 15)
+    goto <bb 3>; [51.12%]
+  else
+    goto <bb 4>; [48.88%]
+
+  <bb 3> [local count: 548896821]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 4> [local count: 524845004]:
+  # DEBUG BEGIN_STMT
+  _2 = pbuf_copy_partial (p_48(D), &hdr, 12, 0);
+  if (_2 == 12)
+    goto <bb 5>; [20.24%]
+  else
+    goto <bb 46>; [79.76%]
+
+  <bb 5> [local count: 106228629]:
+  # DEBUG BEGIN_STMT
+  _3 = hdr.id;
+  txid_51 = lwip_htons (_3);
+  # DEBUG txid => txid_51
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 45>; [100.00%]
+
+  <bb 6> [local count: 395342869]:
+  # DEBUG BEGIN_STMT
+  _4 = (int) i_40;
+  entry_53 = &dns_table[_4];
+  # DEBUG entry => entry_53
+  # DEBUG BEGIN_STMT
+  _5 = MEM[(struct dns_table_entry *)&dns_table][_4].state;
+  if (_5 == 2)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 44>; [66.00%]
+
+  <bb 7> [local count: 134416575]:
+  _6 = MEM[(struct dns_table_entry *)&dns_table][_4].txid;
+  if (_6 == txid_51)
+    goto <bb 8>; [5.50%]
+  else
+    goto <bb 44>; [94.50%]
+
+  <bb 8> [local count: 7392912]:
+  # _26 = PHI <_4(7)>
+  # i_38 = PHI <i_40(7)>
+  # entry_39 = PHI <entry_53(7)>
+  # DEBUG BEGIN_STMT
+  _7 = hdr.numquestions;
+  nquestions_55 = lwip_htons (_7);
+  # DEBUG nquestions => nquestions_55
+  # DEBUG BEGIN_STMT
+  _8 = hdr.numanswers;
+  nanswers_57 = lwip_htons (_8);
+  # DEBUG nanswers => nanswers_57
+  # DEBUG BEGIN_STMT
+  _9 = hdr.flags1;
+  _10 = (signed char) _9;
+  if (_10 >= 0)
+    goto <bb 9>; [42.57%]
+  else
+    goto <bb 10>; [57.43%]
+
+  <bb 9> [local count: 3147162]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 10> [local count: 4245749]:
+  # DEBUG BEGIN_STMT
+  if (nquestions_55 != 1)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 11> [local count: 2122875]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 12> [local count: 2122875]:
+  # DEBUG BEGIN_STMT
+  _11 = addr_58(D)->addr;
+  _12 = MEM[(struct dns_table_entry *)&dns_table][_26].server_idx;
+  _13 = (int) _12;
+  _14 = dns_servers[_13].addr;
+  if (_11 != _14)
+    goto <bb 13>; [67.00%]
+  else
+    goto <bb 14>; [33.00%]
+
+  <bb 13> [local count: 1422326]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 14> [local count: 700549]:
+  # DEBUG BEGIN_STMT
+  _15 = &MEM[(struct dns_table_entry *)&dns_table][_26].name;
+  res_idx_60 = dns_compare_name (_15, p_48(D), 12);
+  # DEBUG res_idx => res_idx_60
+  # DEBUG BEGIN_STMT
+  if (res_idx_60 == 65535)
+    goto <bb 15>; [35.01%]
+  else
+    goto <bb 16>; [64.99%]
+
+  <bb 15> [local count: 245262]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 16> [local count: 455287]:
+  # DEBUG BEGIN_STMT
+  _16 = pbuf_copy_partial (p_48(D), &qry, 4, res_idx_60);
+  if (_16 != 4)
+    goto <bb 17>; [50.00%]
+  else
+    goto <bb 18>; [50.00%]
+
+  <bb 17> [local count: 227643]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 18> [local count: 227643]:
+  # DEBUG BEGIN_STMT
+  _17 = qry.cls;
+  if (_17 != 256)
+    goto <bb 20>; [50.00%]
+  else
+    goto <bb 19>; [50.00%]
+
+  <bb 19> [local count: 113822]:
+  _18 = qry.type;
+  if (_18 != 256)
+    goto <bb 20>; [50.00%]
+  else
+    goto <bb 21>; [50.00%]
+
+  <bb 20> [local count: 170732]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 21> [local count: 56911]:
+  # DEBUG BEGIN_STMT
+  if (res_idx_60 > 65531)
+    goto <bb 22>; [34.00%]
+  else
+    goto <bb 23>; [66.00%]
+
+  <bb 22> [local count: 19350]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 23> [local count: 37561]:
+  # DEBUG BEGIN_STMT
+  res_idx_62 = res_idx_60 + 4;
+  # DEBUG res_idx => res_idx_62
+  # DEBUG BEGIN_STMT
+  _19 = hdr.flags2;
+  _52 = _19 & 15;
+  if (_52 != 0)
+    goto <bb 24>; [50.00%]
+  else
+    goto <bb 48>; [50.00%]
+
+  <bb 48> [local count: 18781]:
+  goto <bb 41>; [100.00%]
+
+  <bb 24> [local count: 18781]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _20 = dns_backupserver_available (entry_39);
+  if (_20 != 0)
+    goto <bb 25>; [33.00%]
+  else
+    goto <bb 43>; [67.00%]
+
+  <bb 25> [local count: 6198]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_26].retries = 3;
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_26].tmr = 1;
+  # DEBUG BEGIN_STMT
+  dns_check_entry (i_38);
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 26> [local count: 153850]:
+  # DEBUG BEGIN_STMT
+  res_idx_64 = dns_skip_name (p_48(D), res_idx_41);
+  # DEBUG res_idx => res_idx_64
+  # DEBUG BEGIN_STMT
+  if (res_idx_64 == 65535)
+    goto <bb 27>; [2.00%]
+  else
+    goto <bb 28>; [98.00%]
+
+  <bb 27> [local count: 3077]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 28> [local count: 150773]:
+  # DEBUG BEGIN_STMT
+  _21 = pbuf_copy_partial (p_48(D), &ans, 10, res_idx_64);
+  if (_21 != 10)
+    goto <bb 29>; [2.00%]
+  else
+    goto <bb 30>; [98.00%]
+
+  <bb 29> [local count: 3015]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 30> [local count: 147757]:
+  # DEBUG BEGIN_STMT
+  if (res_idx_64 > 65525)
+    goto <bb 31>; [2.00%]
+  else
+    goto <bb 32>; [98.00%]
+
+  <bb 31> [local count: 2955]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 32> [local count: 144802]:
+  # DEBUG BEGIN_STMT
+  res_idx_66 = res_idx_64 + 10;
+  # DEBUG res_idx => res_idx_66
+  # DEBUG BEGIN_STMT
+  _22 = ans.cls;
+  if (_22 == 256)
+    goto <bb 33>; [51.12%]
+  else
+    goto <bb 38>; [48.88%]
+
+  <bb 33> [local count: 74023]:
+  # DEBUG BEGIN_STMT
+  _23 = ans.type;
+  if (_23 == 256)
+    goto <bb 34>; [34.00%]
+  else
+    goto <bb 38>; [66.00%]
+
+  <bb 34> [local count: 25168]:
+  _24 = ans.len;
+  if (_24 == 1024)
+    goto <bb 35>; [2.00%]
+  else
+    goto <bb 38>; [98.00%]
+
+  <bb 35> [local count: 503]:
+  # res_idx_78 = PHI <res_idx_66(34)>
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _25 = pbuf_copy_partial (p_48(D), &ip4addr, 4, res_idx_78);
+  if (_25 != 4)
+    goto <bb 36>; [79.76%]
+  else
+    goto <bb 37>; [20.24%]
+
+  <bb 36> [local count: 401]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  ip4addr ={v} {CLOBBER};
+  goto <bb 46>; [100.00%]
+
+  <bb 37> [local count: 102]:
+  # DEBUG BEGIN_STMT
+  _27 = ip4addr.addr;
+  dns_table[_26].ipaddr.addr = _27;
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_48(D));
+  # DEBUG BEGIN_STMT
+  _28 = ans.ttl;
+  _29 = lwip_htonl (_28);
+  dns_correct_response (i_38, _29);
+  # DEBUG BEGIN_STMT
+  ip4addr ={v} {CLOBBER};
+  goto <bb 47>; [100.00%]
+
+  <bb 38> [local count: 144299]:
+  # DEBUG BEGIN_STMT
+  _30 = (int) res_idx_66;
+  _31 = ans.len;
+  _32 = lwip_htons (_31);
+  _33 = (int) _32;
+  _34 = _30 + _33;
+  if (_34 > 65535)
+    goto <bb 39>; [2.00%]
+  else
+    goto <bb 40>; [98.00%]
+
+  <bb 39> [local count: 2886]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 46>; [100.00%]
+
+  <bb 40> [local count: 141413]:
+  # DEBUG BEGIN_STMT
+  _35 = ans.len;
+  _36 = lwip_htons (_35);
+  res_idx_76 = _36 + res_idx_66;
+  # DEBUG res_idx => res_idx_76
+  # DEBUG BEGIN_STMT
+  nanswers_77 = nanswers_42 + 65535;
+  # DEBUG nanswers => nanswers_77
+
+  <bb 41> [local count: 160193]:
+  # res_idx_41 = PHI <res_idx_76(40), res_idx_62(48)>
+  # nanswers_42 = PHI <nanswers_77(40), nanswers_57(48)>
+  # DEBUG nanswers => nanswers_42
+  # DEBUG res_idx => res_idx_41
+  # DEBUG BEGIN_STMT
+  if (nanswers_42 != 0)
+    goto <bb 42>; [98.00%]
+  else
+    goto <bb 43>; [2.00%]
+
+  <bb 42> [local count: 156989]:
+  _37 = p_48(D)->tot_len;
+  if (_37 > res_idx_41)
+    goto <bb 26>; [98.00%]
+  else
+    goto <bb 43>; [2.00%]
+
+  <bb 43> [local count: 18927]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_48(D));
+  # DEBUG BEGIN_STMT
+  dns_call_found (i_38, 0B);
+  # DEBUG BEGIN_STMT
+  dns_table[_26].state = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 47>; [100.00%]
+
+  <bb 44> [local count: 387949957]:
+  # DEBUG BEGIN_STMT
+  i_85 = i_40 + 1;
+  # DEBUG i => i_85
+
+  <bb 45> [local count: 494178586]:
+  # i_40 = PHI <0(5), i_85(44)>
+  # DEBUG i => i_40
+  # DEBUG BEGIN_STMT
+  if (i_40 != 4)
+    goto <bb 6>; [80.00%]
+  else
+    goto <bb 46>; [20.00%]
+
+  <bb 46> [local count: 1073722794]:
+ignore_packet:
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_48(D));
+  # DEBUG BEGIN_STMT
+
+  <bb 47> [local count: 1073741822]:
+  hdr ={v} {CLOBBER};
+  ans ={v} {CLOBBER};
+  qry ={v} {CLOBBER};
+  return;
+
+}
+
+
+dns_correct_response (u8_t idx, u32_t ttl)
+{
+  int _1;
+  struct ip_addr_t * _2;
+  long unsigned int _3;
+  unsigned char _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) idx_7(D);
+  # DEBUG D#3 => &dns_table[_1]
+  # DEBUG entry => D#3
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].state = 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].ttl = ttl_10(D);
+  # DEBUG BEGIN_STMT
+  if (ttl_10(D) > 604800)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].ttl = 604800;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = &MEM[(struct dns_table_entry *)&dns_table][_1].ipaddr;
+  dns_call_found (idx_7(D), _2);
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct dns_table_entry *)&dns_table][_1].ttl;
+  if (_3 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 5> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(struct dns_table_entry *)&dns_table][_1].state;
+  if (_4 == 3)
+    goto <bb 6>; [34.00%]
+  else
+    goto <bb 7>; [66.00%]
+
+  <bb 6> [local count: 182536110]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].state = 0;
+
+  <bb 7> [local count: 1073741824]:
+  return;
+
+}
+
+
+dns_check_entries ()
+{
+  u8_t i;
+
+  <bb 2> [local count: 214748364]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 858993459]:
+  # DEBUG BEGIN_STMT
+  dns_check_entry (i_1);
+  # DEBUG BEGIN_STMT
+  i_5 = i_1 + 1;
+  # DEBUG i => i_5
+
+  <bb 4> [local count: 1073741824]:
+  # i_1 = PHI <0(2), i_5(3)>
+  # DEBUG i => i_1
+  # DEBUG BEGIN_STMT
+  if (i_1 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 5> [local count: 214748365]:
+  return;
+
+}
+
+
+dns_check_entry (u8_t i)
+{
+  struct dns_table_entry * entry;
+  int _1;
+  unsigned char _2;
+  short unsigned int _3;
+  unsigned char _4;
+  unsigned char _5;
+  unsigned char _6;
+  unsigned char _7;
+  unsigned char _8;
+  unsigned char _9;
+  unsigned char _10;
+  long unsigned int _11;
+  long unsigned int _12;
+
+  <bb 2> [local count: 214748]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) i_18(D);
+  entry_19 = &dns_table[_1];
+  # DEBUG entry => entry_19
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (i_18(D) > 3)
+    goto <bb 18>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 18> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 20> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 107374]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct dns_table_entry *)&dns_table][_1].state;
+  switch (_2) <default: <L31> [20.00%], case 0: <L27> [20.00%], case 1: <L3> [20.00%], case 2: <L6> [20.00%], case 3: <L17> [20.00%]>
+
+  <bb 19> [local count: 21475]:
+<L31>:
+  goto <bb 16>; [100.00%]
+
+  <bb 5> [local count: 21475]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  _3 = dns_create_txid ();
+  MEM[(struct dns_table_entry *)&dns_table][_1].txid = _3;
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].state = 2;
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].server_idx = 0;
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].tmr = 1;
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].retries = 0;
+  # DEBUG BEGIN_STMT
+  dns_send (i_18(D));
+  # DEBUG err => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [100.00%]
+
+  <bb 6> [local count: 21475]:
+<L6>:
+  # DEBUG BEGIN_STMT
+  _4 = MEM[(struct dns_table_entry *)&dns_table][_1].tmr;
+  _5 = _4 + 255;
+  MEM[(struct dns_table_entry *)&dns_table][_1].tmr = _5;
+  if (_5 == 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 17>; [50.00%]
+
+  <bb 7> [local count: 10737]:
+  # DEBUG BEGIN_STMT
+  _6 = MEM[(struct dns_table_entry *)&dns_table][_1].retries;
+  _7 = _6 + 1;
+  MEM[(struct dns_table_entry *)&dns_table][_1].retries = _7;
+  if (_7 == 4)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 11>; [66.00%]
+
+  <bb 8> [local count: 3651]:
+  # DEBUG BEGIN_STMT
+  _8 = dns_backupserver_available (entry_19);
+  if (_8 != 0)
+    goto <bb 9>; [67.00%]
+  else
+    goto <bb 10>; [33.00%]
+
+  <bb 9> [local count: 2446]:
+  # DEBUG BEGIN_STMT
+  _9 = MEM[(struct dns_table_entry *)&dns_table][_1].server_idx;
+  _10 = _9 + 1;
+  MEM[(struct dns_table_entry *)&dns_table][_1].server_idx = _10;
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].tmr = 1;
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].retries = 0;
+  goto <bb 12>; [100.00%]
+
+  <bb 10> [local count: 1205]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  dns_call_found (i_18(D), 0B);
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].state = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [100.00%]
+
+  <bb 11> [local count: 7087]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].tmr = _7;
+
+  <bb 12> [local count: 9533]:
+  # DEBUG BEGIN_STMT
+  dns_send (i_18(D));
+  # DEBUG err => NULL
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [100.00%]
+
+  <bb 13> [local count: 21475]:
+<L17>:
+  # DEBUG BEGIN_STMT
+  _11 = MEM[(struct dns_table_entry *)&dns_table][_1].ttl;
+  if (_11 == 0)
+    goto <bb 15>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 14> [local count: 10737]:
+  _12 = _11 + 4294967295;
+  MEM[(struct dns_table_entry *)&dns_table][_1].ttl = _12;
+  if (_12 == 0)
+    goto <bb 15>; [50.00%]
+  else
+    goto <bb 17>; [50.00%]
+
+  <bb 15> [local count: 16106]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].state = 0;
+  goto <bb 17>; [100.00%]
+
+  <bb 21> [local count: 214748365]:
+
+  <bb 16> [local count: 214748365]:
+<L28>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+  goto <bb 21>; [100.00%]
+
+  <bb 17> [local count: 85899]:
+<L27>:
+  return;
+
+}
+
+
+dns_backupserver_available (struct dns_table_entry * pentry)
+{
+  u8_t ret;
+  unsigned char _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  if (pentry_4(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  _1 = pentry_4(D)->server_idx;
+  if (_1 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 375809639]:
+  # DEBUG D#1 => pentry_4(D)
+  ret_2 = dns_backupserver_available.part.0 ();
+
+  <bb 5> [local count: 1073741824]:
+  # ret_3 = PHI <0(2), 0(3), ret_2(4)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+
+dns_create_txid ()
+{
+  u8_t i;
+  u16_t txid;
+  int _1;
+  int _2;
+  unsigned char _3;
+  short unsigned int _5;
+
+  <bb 2> [local count: 214748364]:
+
+  <bb 3> [local count: 230811542]:
+again:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = rand ();
+  txid_10 = (u16_t) _1;
+  # DEBUG txid => txid_10
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 8>; [100.00%]
+
+  <bb 4> [local count: 858993461]:
+  # DEBUG BEGIN_STMT
+  _2 = (int) i_6;
+  _3 = dns_table[_2].state;
+  if (_3 == 2)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 7>; [66.00%]
+
+  <bb 5> [local count: 292057777]:
+  _5 = dns_table[_2].txid;
+  if (_5 == txid_10)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 7>; [94.50%]
+
+  <bb 6> [local count: 16063178]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  goto <bb 3>; [100.00%]
+
+  <bb 7> [local count: 842930283]:
+  # DEBUG BEGIN_STMT
+  i_11 = i_6 + 1;
+  # DEBUG i => i_11
+
+  <bb 8> [local count: 1073741824]:
+  # i_6 = PHI <0(3), i_11(7)>
+  # DEBUG i => i_6
+  # DEBUG BEGIN_STMT
+  if (i_6 != 4)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 9>; [20.00%]
+
+  <bb 9> [local count: 214748365]:
+  # txid_4 = PHI <txid_10(8)>
+  # DEBUG BEGIN_STMT
+  return txid_4;
+
+}
+
+
+dns_call_found (u8_t idx, struct ip_addr_t * addr)
+{
+  u8_t i;
+  int _1;
+  void (*<T6bc>) (const char *, const struct ip_addr_t *, void *) _2;
+  unsigned char _3;
+  int _4;
+  char[256] * _5;
+  void * _6;
+  int _7;
+  unsigned char _8;
+  int _9;
+  unsigned char _10;
+  int _11;
+  unsigned char _12;
+  int _13;
+  unsigned char _14;
+  int _15;
+  struct udp_pcb * _16;
+  unsigned char _17;
+  int _18;
+
+  <bb 2> [local count: 214748364]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 858993459]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) i_19;
+  _2 = dns_requests[_1].found;
+  if (_2 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 4> [local count: 601295421]:
+  _3 = dns_requests[_1].dns_table_idx;
+  if (_3 == idx_26(D))
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 204440443]:
+  # DEBUG BEGIN_STMT
+  _4 = (int) idx_26(D);
+  _5 = &dns_table[_4].name;
+  _6 = dns_requests[_1].arg;
+  _2 (_5, addr_32(D), _6);
+  # DEBUG BEGIN_STMT
+  dns_requests[_1].found = 0B;
+
+  <bb 6> [local count: 858993459]:
+  # DEBUG BEGIN_STMT
+  i_35 = i_19 + 1;
+  # DEBUG i => i_35
+
+  <bb 7> [local count: 1073741824]:
+  # i_19 = PHI <0(2), i_35(6)>
+  # DEBUG i => i_19
+  # DEBUG BEGIN_STMT
+  if (i_19 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 18>; [20.00%]
+
+  <bb 18> [local count: 214748365]:
+  goto <bb 14>; [100.00%]
+
+  <bb 8> [local count: 810630832]:
+  # DEBUG BEGIN_STMT
+  if (i_20 == idx_26(D))
+    goto <bb 9>; [20.24%]
+  else
+    goto <bb 10>; [79.76%]
+
+  <bb 9> [local count: 164071680]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by continue predictor.
+  goto <bb 13>; [100.00%]
+
+  <bb 10> [local count: 646559152]:
+  # DEBUG BEGIN_STMT
+  _7 = (int) i_20;
+  _8 = dns_table[_7].state;
+  if (_8 == 2)
+    goto <bb 11>; [34.00%]
+  else
+    goto <bb 13>; [66.00%]
+
+  <bb 11> [local count: 219830111]:
+  # DEBUG BEGIN_STMT
+  _10 = dns_table[_7].pcb_idx;
+  _11 = (int) idx_26(D);
+  _12 = dns_table[_11].pcb_idx;
+  if (_10 == _12)
+    goto <bb 12>; [5.50%]
+  else
+    goto <bb 13>; [94.50%]
+
+  <bb 12> [local count: 12090656]:
+  # _9 = PHI <_11(11)>
+  # DEBUG BEGIN_STMT
+  dns_table[_9].pcb_idx = 4;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 13> [local count: 798540176]:
+  # DEBUG BEGIN_STMT
+  i_28 = i_20 + 1;
+  # DEBUG i => i_28
+
+  <bb 14> [local count: 1013288540]:
+  # i_20 = PHI <i_28(13), 0(18)>
+  # DEBUG i => i_20
+  # DEBUG BEGIN_STMT
+  if (i_20 != 4)
+    goto <bb 8>; [80.00%]
+  else
+    goto <bb 15>; [20.00%]
+
+  <bb 15> [local count: 214748364]:
+  # DEBUG BEGIN_STMT
+  _13 = (int) idx_26(D);
+  _14 = dns_table[_13].pcb_idx;
+  if (_14 <= 3)
+    goto <bb 16>; [33.00%]
+  else
+    goto <bb 17>; [67.00%]
+
+  <bb 16> [local count: 70866960]:
+  # DEBUG BEGIN_STMT
+  _15 = (int) _14;
+  _16 = dns_pcbs[_15];
+  udp_remove (_16);
+  # DEBUG BEGIN_STMT
+  _17 = dns_table[_13].pcb_idx;
+  _18 = (int) _17;
+  dns_pcbs[_18] = 0B;
+  # DEBUG BEGIN_STMT
+  dns_table[_13].pcb_idx = 4;
+
+  <bb 17> [local count: 214748364]:
+  return;
+
+}
+
+
+dns_alloc_pcb ()
+{
+  u8_t idx;
+  u8_t i;
+  int _1;
+  struct udp_pcb * _2;
+  int _4;
+  struct udp_pcb * _5;
+  unsigned char dns_last_pcb_idx.12_7;
+  int _8;
+  struct udp_pcb * _9;
+  u8_t _14;
+
+  <bb 2> [local count: 261993004]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 5>; [100.00%]
+
+  <bb 3> [local count: 858993459]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) i_10;
+  _2 = dns_pcbs[_1];
+  if (_2 == 0B)
+    goto <bb 6>; [5.50%]
+  else
+    goto <bb 4>; [94.50%]
+
+  <bb 4> [local count: 811748819]:
+  # DEBUG BEGIN_STMT
+  i_18 = i_10 + 1;
+  # DEBUG i => i_18
+
+  <bb 5> [local count: 1073741824]:
+  # i_10 = PHI <0(2), i_18(4)>
+  # DEBUG i => i_10
+  # DEBUG BEGIN_STMT
+  if (i_10 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 6>; [20.00%]
+
+  <bb 6> [local count: 261993005]:
+  # i_3 = PHI <i_10(3), i_10(5)>
+  # DEBUG BEGIN_STMT
+  if (i_3 != 4)
+    goto <bb 7>; [48.88%]
+  else
+    goto <bb 9>; [51.12%]
+
+  <bb 7> [local count: 128062181]:
+  # DEBUG BEGIN_STMT
+  _4 = (int) i_3;
+  _5 = dns_alloc_random_port ();
+  dns_pcbs[_4] = _5;
+  # DEBUG BEGIN_STMT
+  if (_5 != 0B)
+    goto <bb 8>; [54.59%]
+  else
+    goto <bb 9>; [45.41%]
+
+  <bb 8> [local count: 69909144]:
+  # DEBUG BEGIN_STMT
+  dns_last_pcb_idx = i_3;
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [100.00%]
+
+  <bb 9> [local count: 192083860]:
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  dns_last_pcb_idx.12_7 = dns_last_pcb_idx;
+  idx_22 = dns_last_pcb_idx.12_7 + 1;
+  # DEBUG idx => idx_22
+  goto <bb 15>; [100.00%]
+
+  <bb 10> [local count: 629783151]:
+  # DEBUG BEGIN_STMT
+  if (idx_13 > 3)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 11> [local count: 314891575]:
+  # DEBUG BEGIN_STMT
+  # DEBUG idx => 0
+
+  <bb 12> [local count: 629783151]:
+  # idx_12 = PHI <idx_13(10), 0(11)>
+  # DEBUG idx => idx_12
+  # DEBUG BEGIN_STMT
+  _8 = (int) idx_12;
+  _9 = dns_pcbs[_8];
+  if (_9 != 0B)
+    goto <bb 13>; [5.50%]
+  else
+    goto <bb 14>; [94.50%]
+
+  <bb 13> [local count: 34638073]:
+  # idx_6 = PHI <idx_12(12)>
+  # DEBUG BEGIN_STMT
+  dns_last_pcb_idx = idx_6;
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [100.00%]
+
+  <bb 14> [local count: 595145078]:
+  # DEBUG BEGIN_STMT
+  i_23 = i_11 + 1;
+  # DEBUG i => i_23
+  idx_24 = idx_12 + 1;
+  # DEBUG idx => idx_24
+
+  <bb 15> [local count: 787228940]:
+  # i_11 = PHI <0(9), i_23(14)>
+  # idx_13 = PHI <idx_22(9), idx_24(14)>
+  # DEBUG idx => idx_13
+  # DEBUG i => i_11
+  # DEBUG BEGIN_STMT
+  if (i_11 != 4)
+    goto <bb 10>; [80.00%]
+  else
+    goto <bb 16>; [20.00%]
+
+  <bb 16> [local count: 261993006]:
+  # _14 = PHI <i_3(8), idx_6(13), 4(15)>
+  return _14;
+
+}
+
+
+dns_alloc_random_port ()
+{
+  u16_t port;
+  struct udp_pcb * pcb;
+  err_t err;
+  int _1;
+  struct udp_pcb * _2;
+
+  <bb 2> [local count: 14163606]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcb_8 = udp_new_ip_type (46);
+  # DEBUG pcb => pcb_8
+  # DEBUG BEGIN_STMT
+  if (pcb_8 == 0B)
+    goto <bb 9>; [8.27%]
+  else
+    goto <bb 10>; [91.73%]
+
+  <bb 10> [local count: 12992276]:
+
+  <bb 3> [local count: 118111600]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG err => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = rand ();
+  port_10 = (u16_t) _1;
+  # DEBUG port => port_10
+  # DEBUG BEGIN_STMT
+  if (port_10 > 1023)
+    goto <bb 5>; [11.00%]
+  else
+    goto <bb 12>; [89.00%]
+
+  <bb 12> [local count: 955630224]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  err_13 = udp_bind (pcb_8, &ip_addr_any, port_10);
+  # DEBUG err => err_13
+  # DEBUG BEGIN_STMT
+  if (err_13 == -8)
+    goto <bb 11>; [89.00%]
+  else
+    goto <bb 6>; [11.00%]
+
+  <bb 11> [local count: 105119325]:
+  goto <bb 3>; [100.00%]
+
+  <bb 6> [local count: 12992276]:
+  # err_4 = PHI <err_13(5)>
+  # DEBUG BEGIN_STMT
+  if (err_4 != 0)
+    goto <bb 7>; [17.38%]
+  else
+    goto <bb 8>; [82.62%]
+
+  <bb 7> [local count: 2258058]:
+  # DEBUG BEGIN_STMT
+  udp_remove (pcb_8);
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 10734218]:
+  # DEBUG BEGIN_STMT
+  udp_recv (pcb_8, dns_recv, 0B);
+  # DEBUG BEGIN_STMT
+
+  <bb 9> [local count: 14163606]:
+  # _2 = PHI <0B(2), 0B(7), pcb_8(8)>
+  return _2;
+
+}
+
+
+dns_send (u8_t idx)
+{
+  const struct ip_addr_t * dst;
+  u8_t pcb_idx;
+  u8_t n;
+  const char * hostname;
+  u16_t copy_len;
+  u16_t query_idx;
+  struct pbuf * p;
+  struct dns_query qry;
+  struct dns_hdr hdr;
+  err_t err;
+  int _1;
+  unsigned char _2;
+  short unsigned int _3;
+  int _4;
+  long unsigned int _5;
+  char[256] * _6;
+  unsigned int _7;
+  short unsigned int _8;
+  short unsigned int _9;
+  short unsigned int _10;
+  short unsigned int _11;
+  char _12;
+  int _14;
+  int _15;
+  int _16;
+  int _17;
+  short unsigned int _18;
+  short unsigned int _19;
+  short unsigned int _20;
+  char _21;
+  unsigned char _22;
+  int _23;
+  int _24;
+  struct udp_pcb * _25;
+  err_t _30;
+
+  <bb 2> [local count: 181990]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) idx_34(D);
+  # DEBUG D#4 => &dns_table[_1]
+  # DEBUG entry => D#4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct dns_table_entry *)&dns_table][_1].server_idx;
+  if (_2 > 1)
+    goto <bb 17>; [59.00%]
+  else
+    goto <bb 4>; [41.00%]
+
+  <bb 17> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 18> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 74616]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = (int) _2;
+  _5 = dns_servers[_4].addr;
+  if (_5 == 0)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 25369]:
+  # DEBUG BEGIN_STMT
+  dns_call_found (idx_34(D), 0B);
+  # DEBUG BEGIN_STMT
+  MEM[(struct dns_table_entry *)&dns_table][_1].state = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [100.00%]
+
+  <bb 6> [local count: 49246]:
+  # DEBUG BEGIN_STMT
+  _6 = &MEM[(struct dns_table_entry *)&dns_table][_1].name;
+  _7 = strlen (_6);
+  _8 = (short unsigned int) _7;
+  _9 = _8 + 18;
+  p_37 = pbuf_alloc (54, _9, 640);
+  # DEBUG p => p_37
+  # DEBUG BEGIN_STMT
+  if (p_37 != 0B)
+    goto <bb 7>; [98.26%]
+  else
+    goto <bb 16>; [1.74%]
+
+  <bb 7> [local count: 48390]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  memset (&hdr, 0, 12);
+  # DEBUG BEGIN_STMT
+  _10 = MEM[(struct dns_table_entry *)&dns_table][_1].txid;
+  _11 = lwip_htons (_10);
+  hdr.id = _11;
+  # DEBUG BEGIN_STMT
+  hdr.flags1 = 1;
+  # DEBUG BEGIN_STMT
+  hdr.numquestions = 256;
+  # DEBUG BEGIN_STMT
+  pbuf_take (p_37, &hdr, 12);
+  # DEBUG BEGIN_STMT
+  # DEBUG hostname => _6
+  # DEBUG BEGIN_STMT
+  hostname_45 = _6 + 4294967295;
+  # DEBUG hostname => hostname_45
+  # DEBUG BEGIN_STMT
+  # DEBUG query_idx => 12
+
+  <bb 8> [local count: 452345]:
+  # query_idx_26 = PHI <12(7), query_idx_53(19)>
+  # hostname_27 = PHI <hostname_45(7), hostname_44(19)>
+  # DEBUG hostname => hostname_27
+  # DEBUG query_idx => query_idx_26
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  hostname_46 = hostname_27 + 1;
+  # DEBUG hostname => hostname_46
+  # DEBUG BEGIN_STMT
+  # DEBUG hostname_part => hostname_46
+  # DEBUG BEGIN_STMT
+  # DEBUG n => 0
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 3776163]:
+  # DEBUG BEGIN_STMT
+  n_48 = n_29 + 1;
+  # DEBUG n => n_48
+  # DEBUG BEGIN_STMT
+  hostname_49 = hostname_28 + 1;
+  # DEBUG hostname => hostname_49
+
+  <bb 10> [local count: 4228507]:
+  # hostname_28 = PHI <hostname_46(8), hostname_49(9)>
+  # n_29 = PHI <0(8), n_48(9)>
+  # DEBUG n => n_29
+  # DEBUG hostname => hostname_28
+  # DEBUG BEGIN_STMT
+  _12 = *hostname_28;
+  if (_12 != 46)
+    goto <bb 11>; [94.50%]
+  else
+    goto <bb 12>; [5.50%]
+
+  <bb 11> [local count: 3995939]:
+  if (_12 != 0)
+    goto <bb 9>; [94.50%]
+  else
+    goto <bb 12>; [5.50%]
+
+  <bb 12> [local count: 452345]:
+  # hostname_44 = PHI <hostname_28(10), hostname_28(11)>
+  # n_47 = PHI <n_29(10), n_29(11)>
+  # DEBUG BEGIN_STMT
+  _14 = hostname_44 - hostname_46;
+  copy_len_50 = (u16_t) _14;
+  # DEBUG copy_len => copy_len_50
+  # DEBUG BEGIN_STMT
+  _15 = (int) query_idx_26;
+  _16 = (int) n_47;
+  _17 = _15 + _16;
+  if (_17 > 65534)
+    goto <bb 13>; [5.50%]
+  else
+    goto <bb 14>; [94.50%]
+
+  <bb 13> [local count: 24879]:
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by goto predictor.
+  # DEBUG overflow_return => NULL
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_37);
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [100.00%]
+
+  <bb 14> [local count: 427466]:
+  # DEBUG BEGIN_STMT
+  pbuf_put_at (p_37, query_idx_26, n_47);
+  # DEBUG BEGIN_STMT
+  _18 = query_idx_26 + 1;
+  pbuf_take_at (p_37, hostname_46, copy_len_50, _18);
+  # DEBUG BEGIN_STMT
+  _19 = (short unsigned int) n_47;
+  _20 = _19 + query_idx_26;
+  query_idx_53 = _20 + 1;
+  # DEBUG query_idx => query_idx_53
+  # DEBUG BEGIN_STMT
+  _21 = *hostname_44;
+  if (_21 != 0)
+    goto <bb 19>; [94.50%]
+  else
+    goto <bb 15>; [5.50%]
+
+  <bb 19> [local count: 403955]:
+  goto <bb 8>; [100.00%]
+
+  <bb 15> [local count: 23511]:
+  # _3 = PHI <_20(14)>
+  # query_idx_13 = PHI <query_idx_53(14)>
+  # DEBUG BEGIN_STMT
+  pbuf_put_at (p_37, query_idx_13, 0);
+  # DEBUG BEGIN_STMT
+  query_idx_55 = _3 + 2;
+  # DEBUG query_idx => query_idx_55
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  qry.type = 256;
+  # DEBUG BEGIN_STMT
+  qry.cls = 256;
+  # DEBUG BEGIN_STMT
+  pbuf_take_at (p_37, &qry, 4, query_idx_55);
+  # DEBUG BEGIN_STMT
+  pcb_idx_59 = MEM[(struct dns_table_entry *)&dns_table][_1].pcb_idx;
+  # DEBUG pcb_idx => pcb_idx_59
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG dst_port => 53
+  # DEBUG BEGIN_STMT
+  _22 = MEM[(struct dns_table_entry *)&dns_table][_1].server_idx;
+  _23 = (int) _22;
+  dst_60 = &dns_servers[_23];
+  # DEBUG dst => dst_60
+  # DEBUG BEGIN_STMT
+  _24 = (int) pcb_idx_59;
+  _25 = dns_pcbs[_24];
+  err_62 = udp_sendto (_25, p_37, dst_60, 53);
+  # DEBUG err => err_62
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_37);
+
+  <bb 16> [local count: 74616]:
+  # _30 = PHI <0(5), -1(6), -6(13), err_62(15)>
+  # DEBUG err => NULL
+  hdr ={v} {CLOBBER};
+  qry ={v} {CLOBBER};
+  return _30;
+
+}
+
+
+dns_skip_name (struct pbuf * p, u16_t query_idx)
+{
+  u16_t offset;
+  int n;
+  int _1;
+  int _2;
+  int _3;
+  short unsigned int _4;
+  int _5;
+  short unsigned int _6;
+  u16_t _9;
+  u16_t _22;
+
+  <bb 2> [local count: 122575812]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG offset => query_idx_13(D)
+
+  <bb 3> [local count: 1073741824]:
+  # offset_7 = PHI <query_idx_13(D)(2), offset_19(12)>
+  # DEBUG offset => offset_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  offset_15 = offset_7 + 1;
+  # DEBUG offset => offset_15
+  n_18 = pbuf_try_get_at (p_16(D), offset_7);
+  # DEBUG n => n_18
+  # DEBUG BEGIN_STMT
+  if (n_18 < 0)
+    goto <bb 11>; [2.00%]
+  else
+    goto <bb 4>; [98.00%]
+
+  <bb 4> [local count: 1052266988]:
+  if (offset_15 == 0)
+    goto <bb 11>; [2.00%]
+  else
+    goto <bb 5>; [98.00%]
+
+  <bb 5> [local count: 1031221649]:
+  # DEBUG BEGIN_STMT
+  _1 = n_18 & 192;
+  if (_1 == 192)
+    goto <bb 9>; [2.00%]
+  else
+    goto <bb 6>; [98.00%]
+
+  <bb 6> [local count: 1010597217]:
+  # DEBUG BEGIN_STMT
+  _2 = (int) offset_15;
+  _3 = _2 + n_18;
+  _4 = p_16(D)->tot_len;
+  _5 = (int) _4;
+  if (_3 >= _5)
+    goto <bb 11>; [2.00%]
+  else
+    goto <bb 7>; [98.00%]
+
+  <bb 7> [local count: 990385272]:
+  # DEBUG BEGIN_STMT
+  _6 = (short unsigned int) n_18;
+  offset_19 = _6 + offset_15;
+  # DEBUG offset => offset_19
+  # DEBUG BEGIN_STMT
+  n_21 = pbuf_try_get_at (p_16(D), offset_19);
+  # DEBUG n => n_21
+  # DEBUG BEGIN_STMT
+  if (n_21 < 0)
+    goto <bb 11>; [2.00%]
+  else
+    goto <bb 8>; [98.00%]
+
+  <bb 8> [local count: 970577566]:
+  # DEBUG BEGIN_STMT
+  if (n_21 != 0)
+    goto <bb 12>; [98.00%]
+  else
+    goto <bb 9>; [2.00%]
+
+  <bb 12> [local count: 951166011]:
+  goto <bb 3>; [100.00%]
+
+  <bb 9> [local count: 40035984]:
+  # offset_8 = PHI <offset_15(5), offset_19(8)>
+  # DEBUG offset => offset_8
+  # DEBUG BEGIN_STMT
+  if (offset_8 == 65535)
+    goto <bb 11>; [12.50%]
+  else
+    goto <bb 10>; [87.50%]
+
+  <bb 10> [local count: 35031486]:
+  # DEBUG BEGIN_STMT
+  _22 = offset_8 + 1;
+
+  <bb 11> [local count: 122575810]:
+  # _9 = PHI <65535(4), 65535(6), 65535(7), 65535(9), _22(10), 65535(3)>
+  return _9;
+
+}
+
+
+dns_lookup (const char * name, struct ip_addr_t * addr)
+{
+  u8_t i;
+  int _1;
+  unsigned char _2;
+  int _3;
+  char[256] * _4;
+  int _5;
+  long unsigned int _6;
+  err_t _8;
+
+  <bb 2> [local count: 224310680]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 9>; [100.00%]
+
+  <bb 3> [local count: 858993459]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) i_7;
+  _2 = dns_table[_1].state;
+  if (_2 == 3)
+    goto <bb 4>; [20.24%]
+  else
+    goto <bb 8>; [79.76%]
+
+  <bb 4> [local count: 173860276]:
+  _4 = &dns_table[_1].name;
+  _5 = lwip_strnicmp (name_14(D), _4, 256);
+  if (_5 == 0)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 8>; [94.50%]
+
+  <bb 5> [local count: 9562315]:
+  # _3 = PHI <_1(4)>
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (addr_16(D) != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 6> [local count: 6693621]:
+  # DEBUG BEGIN_STMT
+  _6 = dns_table[_3].ipaddr.addr;
+  addr_16(D)->addr = _6;
+
+  <bb 7> [local count: 9562315]:
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [100.00%]
+
+  <bb 8> [local count: 849431143]:
+  # DEBUG BEGIN_STMT
+  i_18 = i_7 + 1;
+  # DEBUG i => i_18
+
+  <bb 9> [local count: 1073741824]:
+  # i_7 = PHI <0(2), i_18(8)>
+  # DEBUG i => i_7
+  # DEBUG BEGIN_STMT
+  if (i_7 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 10>; [20.00%]
+
+  <bb 10> [local count: 224310680]:
+  # _8 = PHI <0(7), -16(9)>
+  return _8;
+
+}
+
+
+dns_tmr ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  dns_check_entries ();
+  return;
+
+}
+
+
+dns_getserver (u8_t numdns)
+{
+  int _1;
+  const struct ip_addr_t * _2;
+  const struct ip_addr_t * _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (numdns_3(D) <= 1)
+    goto <bb 3>; [41.00%]
+  else
+    goto <bb 4>; [59.00%]
+
+  <bb 3> [local count: 440234148]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) numdns_3(D);
+  _4 = &dns_servers[_1];
+
+  <bb 4> [local count: 1073741824]:
+  # _2 = PHI <_4(3), &ip_addr_any(2)>
+  return _2;
+
+}
+
+
+dns_setserver (u8_t numdns, const struct ip_addr_t * dnsserver)
+{
+  int _1;
+  int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (numdns_4(D) <= 1)
+    goto <bb 3>; [41.00%]
+  else
+    goto <bb 6>; [59.00%]
+
+  <bb 3> [local count: 440234148]:
+  # DEBUG BEGIN_STMT
+  if (dnsserver_6(D) != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 4> [local count: 308163903]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) numdns_4(D);
+  dns_servers[_1] = *dnsserver_6(D);
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 132070244]:
+  # DEBUG BEGIN_STMT
+  _2 = (int) numdns_4(D);
+  dns_servers[_2] = ip_addr_any;
+
+  <bb 6> [local count: 1073741824]:
+  return;
+
+}
+
+
+dns_init ()
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

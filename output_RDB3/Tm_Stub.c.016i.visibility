@@ -1,0 +1,92 @@
+
+Marking local functions:
+
+
+Marking externally visible functions: Tm_BusyWait1us32bit
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+Gpt_StopTimer/5 (Gpt_StopTimer) @06f99a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Tm_BusyWait1us32bit/2 
+  Calls: 
+Gpt_GetTimeElapsed/4 (Gpt_GetTimeElapsed) @06f999a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Tm_BusyWait1us32bit/2 Tm_BusyWait1us32bit/2 
+  Calls: 
+Gpt_StartTimer/3 (Gpt_StartTimer) @06f998c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: Tm_BusyWait1us32bit/2 
+  Calls: 
+Tm_BusyWait1us32bit/2 (Tm_BusyWait1us32bit) @06f99460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: Gpt_StopTimer/5 Gpt_GetTimeElapsed/4 Gpt_GetTimeElapsed/4 Gpt_StartTimer/3 
+Tm_BusyWait1us32bit (uint8 WaitingTimeMin)
+{
+  volatile Gpt_ValueType TimeNow;
+  volatile Gpt_ValueType TimeStart;
+  Std_ReturnType D.6214;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Gpt_StartTimer (1, 4294967294);
+  # DEBUG BEGIN_STMT
+  _1 = Gpt_GetTimeElapsed (1);
+  TimeStart = _1;
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = Gpt_GetTimeElapsed (1);
+  TimeNow = _2;
+  # DEBUG BEGIN_STMT
+  TimeNow.0_3 = TimeNow;
+  TimeStart.1_4 = TimeStart;
+  _5 = TimeNow.0_3 - TimeStart.1_4;
+  _6 = (long unsigned int) WaitingTimeMin;
+  _7 = _6 * 133;
+  if (_5 < _7)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Gpt_StopTimer (1);
+  # DEBUG BEGIN_STMT
+  D.6214 = 0;
+  return D.6214;
+
+}
+
+

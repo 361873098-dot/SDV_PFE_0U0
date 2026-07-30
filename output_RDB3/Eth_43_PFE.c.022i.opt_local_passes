@@ -1,0 +1,2961 @@
+Eth_43_PFE_ChannelBdFlushRx (pfe_ct_phy_if_id_t DestHifChnl)
+{
+  Std_ReturnType eReturnStatus;
+  Std_ReturnType _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  eReturnStatus_4 = Eth_PFE_LLD_ChannelBdFlushRx (DestHifChnl_2(D));
+  # DEBUG eReturnStatus => eReturnStatus_4
+  # DEBUG BEGIN_STMT
+  _5 = eReturnStatus_4;
+  return _5;
+
+}
+
+
+Eth_43_PFE_GetTxErrorCounterValues (uint8 u8CtrlIdx, struct Eth_TxErrorCounterValuesType * TxErrorCounterValuesPtr)
+{
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  Std_ReturnType _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_6(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 29, 1);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_6(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 29, 2);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (TxErrorCounterValuesPtr_8(D) == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 29, 3);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_10 = Eth_PFE_LLD_GetTxErrorCounterValues (u8CtrlIdx_6(D), TxErrorCounterValuesPtr_8(D));
+  # DEBUG eReturnStatus => eReturnStatus_10
+
+  <bb 9> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_5(7), eReturnStatus_10(8)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _14 = eReturnStatus_3;
+  return _14;
+
+}
+
+
+Eth_43_PFE_GetTxStats (uint8 u8CtrlIdx, struct Eth_TxStatsType * TxStatsPtr)
+{
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  Std_ReturnType _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_6(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 28, 1);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_6(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 28, 2);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (TxStatsPtr_8(D) == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 28, 3);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_10 = Eth_PFE_LLD_GetTxStats (u8CtrlIdx_6(D), TxStatsPtr_8(D));
+  # DEBUG eReturnStatus => eReturnStatus_10
+
+  <bb 9> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_5(7), eReturnStatus_10(8)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _14 = eReturnStatus_3;
+  return _14;
+
+}
+
+
+Eth_43_PFE_GetRxStats (uint8 u8CtrlIdx, struct Eth_RxStatsType * RxStatsPtr)
+{
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  Std_ReturnType _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_6(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 21, 1);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_6(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 21, 2);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (RxStatsPtr_8(D) == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 21, 3);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_10 = Eth_PFE_LLD_GetRxStats (u8CtrlIdx_6(D), RxStatsPtr_8(D));
+  # DEBUG eReturnStatus => eReturnStatus_10
+
+  <bb 9> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_5(7), eReturnStatus_10(8)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _14 = eReturnStatus_3;
+  return _14;
+
+}
+
+
+Eth_43_PFE_GetCounterValues (uint8 u8CtrlIdx, struct Eth_CounterType * CounterPtr)
+{
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  Std_ReturnType _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_6(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 20, 1);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_6(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 20, 2);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (CounterPtr_8(D) == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 20, 3);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_10 = Eth_PFE_LLD_GetCounterValues (u8CtrlIdx_6(D), CounterPtr_8(D));
+  # DEBUG eReturnStatus => eReturnStatus_10
+
+  <bb 9> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_5(7), eReturnStatus_10(8)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _14 = eReturnStatus_3;
+  return _14;
+
+}
+
+
+Eth_43_PFE_GetTmuStats (struct Eth_43_PFE_TmuStatsType * stat)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+  _Bool _2;
+  Std_ReturnType _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (stat_6(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 42, 3);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  _2 = ~_1;
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 42, 2);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_10 = Eth_43_PFE_LLD_GetTmuStats (stat_6(D));
+  # DEBUG eReturnStatus => eReturnStatus_10
+
+  <bb 7> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_10(6)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _13 = eReturnStatus_3;
+  return _13;
+
+}
+
+
+Eth_43_PFE_GetRtableStats (struct pfe_ct_conntrack_stats_t * stat, uint8 conntrack_index)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+  _Bool _2;
+  Std_ReturnType _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (stat_6(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 41, 3);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  _2 = ~_1;
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 41, 2);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_11 = Eth_43_PFE_LLD_GetRtableStats (stat_6(D), conntrack_index_9(D));
+  # DEBUG eReturnStatus => eReturnStatus_11
+
+  <bb 7> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_11(6)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _14 = eReturnStatus_3;
+  return _14;
+
+}
+
+
+Eth_43_PFE_GetL2BridgeDomainStats (struct pfe_ct_vlan_stats_t * stat, uint32 index_vlan)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+  _Bool _2;
+  unsigned char _3;
+  Std_ReturnType _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_6 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_6
+  # DEBUG BEGIN_STMT
+  if (stat_7(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 39, 3);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  _2 = ~_1;
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 39, 2);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = (unsigned char) index_vlan_10(D);
+  eReturnStatus_12 = Eth_43_PFE_LLD_GetL2BridgeDomainStats (stat_7(D), _3);
+  # DEBUG eReturnStatus => eReturnStatus_12
+
+  <bb 7> :
+  # eReturnStatus_4 = PHI <eReturnStatus_6(3), eReturnStatus_6(5), eReturnStatus_12(6)>
+  # DEBUG eReturnStatus => eReturnStatus_4
+  # DEBUG BEGIN_STMT
+  _15 = eReturnStatus_4;
+  return _15;
+
+}
+
+
+Eth_43_PFE_GetL2BridgeStats (struct Eth_43_PFE_L2BridgeStatsType * stat, uint32 index_entry)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+  _Bool _2;
+  Std_ReturnType _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (stat_6(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 38, 3);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  _2 = ~_1;
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 38, 2);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_11 = Eth_43_PFE_LLD_GetL2BridgeStats (stat_6(D), index_entry_9(D));
+  # DEBUG eReturnStatus => eReturnStatus_11
+
+  <bb 7> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_11(6)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _14 = eReturnStatus_3;
+  return _14;
+
+}
+
+
+Eth_43_PFE_GetWdtStats (struct Eth_43_PFE_WdtStatsType * stat)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+  _Bool _2;
+  Std_ReturnType _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (stat_6(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 40, 3);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  _2 = ~_1;
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 40, 2);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_10 = Eth_43_PFE_LLD_GetWdtStats (stat_6(D));
+  # DEBUG eReturnStatus => eReturnStatus_10
+
+  <bb 7> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_10(6)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _13 = eReturnStatus_3;
+  return _13;
+
+}
+
+
+Eth_43_PFE_GetGpiStats (uint8 u8GpiIndex, struct Eth_43_PFE_GpiStatsType * stat)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+  _Bool _2;
+  Std_ReturnType _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (stat_6(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 37, 3);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (u8GpiIndex_7(D) > 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 37, 4);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  _2 = ~_1;
+  if (_2 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 37, 2);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_11 = Eth_43_PFE_LLD_GetGpiStats (u8GpiIndex_7(D), stat_6(D));
+  # DEBUG eReturnStatus => eReturnStatus_11
+
+  <bb 9> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_5(7), eReturnStatus_11(8)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _15 = eReturnStatus_3;
+  return _15;
+
+}
+
+
+Eth_43_PFE_GetBmuStats (uint8 u8BmuIndex, struct Eth_43_PFE_BmuStatsType * stat)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+  _Bool _2;
+  Std_ReturnType _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (stat_6(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 36, 3);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (u8BmuIndex_7(D) > 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 36, 4);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  _2 = ~_1;
+  if (_2 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 36, 2);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_11 = Eth_43_PFE_LLD_GetBmuStats (u8BmuIndex_7(D), stat_6(D));
+  # DEBUG eReturnStatus => eReturnStatus_11
+
+  <bb 9> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_5(7), eReturnStatus_11(8)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _15 = eReturnStatus_3;
+  return _15;
+
+}
+
+
+Eth_43_PFE_GetClassStats (struct pfe_ct_classify_stats_t * stat)
+{
+  Std_ReturnType eReturnStatus;
+  _Bool _1;
+  _Bool _2;
+  Std_ReturnType _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (stat_6(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 35, 3);
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_Check_Driver_Init ();
+  _2 = ~_1;
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 35, 2);
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_10 = Eth_43_PFE_LLD_GetClassStats (stat_6(D));
+  # DEBUG eReturnStatus => eReturnStatus_10
+
+  <bb 7> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(5), eReturnStatus_10(6)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _13 = eReturnStatus_3;
+  return _13;
+
+}
+
+
+Eth_43_PFE_PreInit (const struct Eth_43_PFE_ConfigType * CfgPtr)
+{
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.20_1;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.21_2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (CfgPtr_4(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 33, 3);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr = &Eth_43_PFE_Config;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.20_1 = Eth_43_PFE_InternalCfgPtr;
+  Eth_PFE_LLD_InitInterfaces (Eth_43_PFE_InternalCfgPtr.20_1);
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.21_2 = Eth_43_PFE_InternalCfgPtr;
+  Eth_PFE_LLD_InitEMACs (Eth_43_PFE_InternalCfgPtr.21_2);
+
+  <bb 5> :
+  return;
+
+}
+
+
+Eth_43_PFE_GetPlatform ()
+{
+  void * _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _3 = Eth_PFE_LLD_GetPlatform ();
+  return _3;
+
+}
+
+
+Eth_43_PFE_GetIngressTimeStamp (uint8 u8CtrlIdx, const Eth_DataType * DataPtr, Eth_TimeStampQualType * timeQualPtr, struct Eth_TimeStampType * timeStampPtr)
+{
+  uint8 DetectedError;
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  <unnamed type> _3;
+  Std_ReturnType _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_7 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_7
+  # DEBUG BEGIN_STMT
+  DetectedError_8 = 0;
+  # DEBUG DetectedError => DetectedError_8
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_9(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DetectedError_16 = 1;
+  # DEBUG DetectedError => DetectedError_16
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (DataPtr_10(D) == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (timeQualPtr_11(D) == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  if (timeStampPtr_12(D) == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  DetectedError_15 = 3;
+  # DEBUG DetectedError => DetectedError_15
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_9(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  DetectedError_14 = 2;
+  # DEBUG DetectedError => DetectedError_14
+
+  <bb 10> :
+  # DetectedError_5 = PHI <DetectedError_16(3), DetectedError_15(7), DetectedError_8(8), DetectedError_14(9)>
+  # DEBUG DetectedError => DetectedError_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (DetectedError_5 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 25, DetectedError_5);
+  goto <bb 14>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  *timeQualPtr_11(D) = 2;
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_LLD_GetRxTimeStamp (u8CtrlIdx_9(D), DataPtr_10(D), timeQualPtr_11(D), timeStampPtr_12(D));
+  # DEBUG BEGIN_STMT
+  _3 = *timeQualPtr_11(D);
+  if (_3 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_19 = 0;
+  # DEBUG eReturnStatus => eReturnStatus_19
+
+  <bb 14> :
+  # eReturnStatus_4 = PHI <eReturnStatus_7(11), eReturnStatus_7(12), eReturnStatus_19(13)>
+  # DEBUG eReturnStatus => eReturnStatus_4
+  # DEBUG BEGIN_STMT
+  _21 = eReturnStatus_4;
+  return _21;
+
+}
+
+
+Eth_43_PFE_GetEgressTimeStamp (uint8 u8CtrlIdx, Eth_BufIdxType BufIdx, Eth_TimeStampQualType * timeQualPtr, struct Eth_TimeStampType * timeStampPtr)
+{
+  uint8 DetectedError;
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  <unnamed type> _3;
+  Std_ReturnType _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_7 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_7
+  # DEBUG BEGIN_STMT
+  DetectedError_8 = 0;
+  # DEBUG DetectedError => DetectedError_8
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_9(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DetectedError_15 = 1;
+  # DEBUG DetectedError => DetectedError_15
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (timeQualPtr_10(D) == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (timeStampPtr_11(D) == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  DetectedError_14 = 3;
+  # DEBUG DetectedError => DetectedError_14
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_9(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  DetectedError_13 = 2;
+  # DEBUG DetectedError => DetectedError_13
+
+  <bb 9> :
+  # DetectedError_5 = PHI <DetectedError_15(3), DetectedError_14(6), DetectedError_8(7), DetectedError_13(8)>
+  # DEBUG DetectedError => DetectedError_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (DetectedError_5 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 24, DetectedError_5);
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  *timeQualPtr_10(D) = 2;
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_LLD_GetTxTimeStamp (u8CtrlIdx_9(D), BufIdx_17(D), timeQualPtr_10(D), timeStampPtr_11(D));
+  # DEBUG BEGIN_STMT
+  _3 = *timeQualPtr_10(D);
+  if (_3 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_19 = 0;
+  # DEBUG eReturnStatus => eReturnStatus_19
+
+  <bb 13> :
+  # eReturnStatus_4 = PHI <eReturnStatus_7(10), eReturnStatus_7(11), eReturnStatus_19(12)>
+  # DEBUG eReturnStatus => eReturnStatus_4
+  # DEBUG BEGIN_STMT
+  _21 = eReturnStatus_4;
+  return _21;
+
+}
+
+
+Eth_43_PFE_EnableEgressTimeStamp (uint8 u8CtrlIdx, Eth_BufIdxType BufIdx)
+{
+  uint8 DetectedError;
+  int _1;
+  <unnamed type> _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  DetectedError_5 = 0;
+  # DEBUG DetectedError => DetectedError_5
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_6(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DetectedError_11 = 1;
+  # DEBUG DetectedError => DetectedError_11
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (BufIdx_7(D) > 3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  DetectedError_10 = 4;
+  # DEBUG DetectedError => DetectedError_10
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_6(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  DetectedError_9 = 2;
+  # DEBUG DetectedError => DetectedError_9
+
+  <bb 8> :
+  # DetectedError_3 = PHI <DetectedError_11(3), DetectedError_10(5), DetectedError_5(6), DetectedError_9(7)>
+  # DEBUG DetectedError => DetectedError_3
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (DetectedError_3 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 23, DetectedError_3);
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_LLD_EnableEgressTimeStamp (u8CtrlIdx_6(D), BufIdx_7(D));
+
+  <bb 11> :
+  return;
+
+}
+
+
+Eth_43_PFE_GetCurrentTime (uint8 u8CtrlIdx, Eth_TimeStampQualType * timeQualPtr, struct Eth_TimeStampType * timeStampPtr)
+{
+  uint8 DetectedError;
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  <unnamed type> _3;
+  Std_ReturnType _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_7 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_7
+  # DEBUG BEGIN_STMT
+  DetectedError_8 = 0;
+  # DEBUG DetectedError => DetectedError_8
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_9(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DetectedError_15 = 1;
+  # DEBUG DetectedError => DetectedError_15
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (timeQualPtr_10(D) == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (timeStampPtr_11(D) == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  DetectedError_14 = 3;
+  # DEBUG DetectedError => DetectedError_14
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_9(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  DetectedError_13 = 2;
+  # DEBUG DetectedError => DetectedError_13
+
+  <bb 9> :
+  # DetectedError_5 = PHI <DetectedError_15(3), DetectedError_14(6), DetectedError_8(7), DetectedError_13(8)>
+  # DEBUG DetectedError => DetectedError_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (DetectedError_5 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 22, DetectedError_5);
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  *timeQualPtr_10(D) = 2;
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_LLD_GetCurrentTime (u8CtrlIdx_9(D), timeQualPtr_10(D), timeStampPtr_11(D));
+  # DEBUG BEGIN_STMT
+  _3 = *timeQualPtr_10(D);
+  if (_3 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_18 = 0;
+  # DEBUG eReturnStatus => eReturnStatus_18
+
+  <bb 13> :
+  # eReturnStatus_4 = PHI <eReturnStatus_7(10), eReturnStatus_7(11), eReturnStatus_18(12)>
+  # DEBUG eReturnStatus => eReturnStatus_4
+  # DEBUG BEGIN_STMT
+  _20 = eReturnStatus_4;
+  return _20;
+
+}
+
+
+Eth_43_PFE_SetCorrectionTime (uint8 u8CtrlIdx, const struct Eth_TimeIntDiffType * timeOffsetPtr, const struct Eth_RateRatioType * rateRatioPtr)
+{
+  uint8 DetectedError;
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  Std_ReturnType _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_6 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_6
+  # DEBUG BEGIN_STMT
+  DetectedError_7 = 0;
+  # DEBUG DetectedError => DetectedError_7
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_8(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DetectedError_14 = 1;
+  # DEBUG DetectedError => DetectedError_14
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (timeOffsetPtr_9(D) == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (rateRatioPtr_10(D) == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  DetectedError_13 = 3;
+  # DEBUG DetectedError => DetectedError_13
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_8(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  DetectedError_12 = 2;
+  # DEBUG DetectedError => DetectedError_12
+
+  <bb 9> :
+  # DetectedError_4 = PHI <DetectedError_14(3), DetectedError_13(6), DetectedError_7(7), DetectedError_12(8)>
+  # DEBUG DetectedError => DetectedError_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (DetectedError_4 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 26, DetectedError_4);
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_16 = Eth_43_PFE_LLD_SetCorrectionTime (u8CtrlIdx_8(D), timeOffsetPtr_9(D), rateRatioPtr_10(D));
+  # DEBUG eReturnStatus => eReturnStatus_16
+
+  <bb 12> :
+  # eReturnStatus_3 = PHI <eReturnStatus_6(10), eReturnStatus_16(11)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _18 = eReturnStatus_3;
+  return _18;
+
+}
+
+
+Eth_43_PFE_SetGlobalTime (uint8 u8CtrlIdx, const struct Eth_TimeStampType * timeStampPtr)
+{
+  uint8 DetectedError;
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  Std_ReturnType _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_6 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_6
+  # DEBUG BEGIN_STMT
+  DetectedError_7 = 0;
+  # DEBUG DetectedError => DetectedError_7
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_8(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  DetectedError_13 = 1;
+  # DEBUG DetectedError => DetectedError_13
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (timeStampPtr_9(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  DetectedError_12 = 3;
+  # DEBUG DetectedError => DetectedError_12
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_8(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  DetectedError_11 = 2;
+  # DEBUG DetectedError => DetectedError_11
+
+  <bb 8> :
+  # DetectedError_4 = PHI <DetectedError_13(3), DetectedError_12(5), DetectedError_7(6), DetectedError_11(7)>
+  # DEBUG DetectedError => DetectedError_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (DetectedError_4 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 27, DetectedError_4);
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_15 = Eth_43_PFE_LLD_SetGlobalTime (u8CtrlIdx_8(D), timeStampPtr_9(D));
+  # DEBUG eReturnStatus => eReturnStatus_15
+
+  <bb 11> :
+  # eReturnStatus_3 = PHI <eReturnStatus_6(9), eReturnStatus_15(10)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  _17 = eReturnStatus_3;
+  return _17;
+
+}
+
+
+Eth_43_PFE_ReadMii45 (uint8 u8CtrlIdx, uint8 u8TrcvIdx, uint8 u8DevIdx, uint16 u16RegIdx, uint16 * pu16RegValPtr)
+{
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  Std_ReturnType _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_6(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 31, 1);
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (u8TrcvIdx_7(D) > 31)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (u8DevIdx_8(D) > 31)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 31, 4);
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (pu16RegValPtr_9(D) == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 31, 3);
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_6(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 31, 2);
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_13 = Eth_43_PFE_LLD_ReadMii45 (u8CtrlIdx_6(D), u8TrcvIdx_7(D), u8DevIdx_8(D), u16RegIdx_11(D), pu16RegValPtr_9(D));
+  # DEBUG eReturnStatus => eReturnStatus_13
+  # DEBUG BEGIN_STMT
+
+  <bb 12> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(6), eReturnStatus_5(8), eReturnStatus_5(10), eReturnStatus_13(11)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = eReturnStatus_3;
+  return _18;
+
+}
+
+
+Eth_43_PFE_WriteMii45 (uint8 u8CtrlIdx, uint8 u8TrcvIdx, uint8 u8DevIdx, uint16 u16RegIdx, uint16 u16RegVal)
+{
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  Std_ReturnType _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_5 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_5
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_6(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 30, 1);
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (u8TrcvIdx_7(D) > 31)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (u8DevIdx_8(D) > 31)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 30, 4);
+  goto <bb 10>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_6(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 30, 2);
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_13 = Eth_43_PFE_LLD_WriteMii45 (u8CtrlIdx_6(D), u8TrcvIdx_7(D), u8DevIdx_8(D), u16RegIdx_10(D), u16RegVal_11(D));
+  # DEBUG eReturnStatus => eReturnStatus_13
+  # DEBUG BEGIN_STMT
+
+  <bb 10> :
+  # eReturnStatus_3 = PHI <eReturnStatus_5(3), eReturnStatus_5(6), eReturnStatus_5(8), eReturnStatus_13(9)>
+  # DEBUG eReturnStatus => eReturnStatus_3
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = eReturnStatus_3;
+  return _17;
+
+}
+
+
+Eth_43_PFE_ReadMii (uint8 u8CtrlIdx, uint8 u8TrcvIdx, uint8 u8RegIdx, uint16 * pu16RegValPtr)
+{
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.19_3;
+  int _4;
+  const struct Eth_43_PFE_CtrlCfgType * _5;
+  void (*<T8a7>) (uint8, uint8, uint8, uint16) _6;
+  short unsigned int _7;
+  Std_ReturnType _23;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_10 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_10
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_11(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 6, 1);
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (u8TrcvIdx_12(D) > 31)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (u8RegIdx_13(D) > 31)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 6, 4);
+  goto <bb 13>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (pu16RegValPtr_14(D) == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 6, 3);
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_11(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 6, 2);
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_17 = Eth_43_PFE_LLD_ReadMii (u8CtrlIdx_11(D), u8TrcvIdx_12(D), u8RegIdx_13(D), pu16RegValPtr_14(D));
+  # DEBUG eReturnStatus => eReturnStatus_17
+  # DEBUG BEGIN_STMT
+  if (eReturnStatus_17 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.19_3 = Eth_43_PFE_InternalCfgPtr;
+  _4 = (int) u8CtrlIdx_11(D);
+  _5 = Eth_43_PFE_InternalCfgPtr.19_3->pController[_4];
+  _6 = _5->Eth_43_PFE_EthTrcvDriverFunctionList.ReadMiiIndicationFunction;
+  _7 = *pu16RegValPtr_14(D);
+  _6 (u8CtrlIdx_11(D), u8TrcvIdx_12(D), u8RegIdx_13(D), _7);
+
+  <bb 13> :
+  # eReturnStatus_8 = PHI <eReturnStatus_10(3), eReturnStatus_10(6), eReturnStatus_10(8), eReturnStatus_10(10), eReturnStatus_17(11), eReturnStatus_17(12)>
+  # DEBUG eReturnStatus => eReturnStatus_8
+  # DEBUG BEGIN_STMT
+  _23 = eReturnStatus_8;
+  return _23;
+
+}
+
+
+Eth_43_PFE_WriteMii (uint8 u8CtrlIdx, uint8 u8TrcvIdx, uint8 u8RegIdx, uint16 u16RegVal)
+{
+  Std_ReturnType eReturnStatus;
+  int _1;
+  <unnamed type> _2;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.18_3;
+  int _4;
+  const struct Eth_43_PFE_CtrlCfgType * _5;
+  void (*<T8ab>) (uint8, uint8, uint8) _6;
+  Std_ReturnType _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_9 = 1;
+  # DEBUG eReturnStatus => eReturnStatus_9
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_10(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 5, 1);
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (u8TrcvIdx_11(D) > 31)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (u8RegIdx_12(D) > 31)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 5, 4);
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_10(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 5, 2);
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  eReturnStatus_16 = Eth_43_PFE_LLD_WriteMii (u8CtrlIdx_10(D), u8TrcvIdx_11(D), u8RegIdx_12(D), u16RegVal_14(D));
+  # DEBUG eReturnStatus => eReturnStatus_16
+  # DEBUG BEGIN_STMT
+  if (eReturnStatus_16 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.18_3 = Eth_43_PFE_InternalCfgPtr;
+  _4 = (int) u8CtrlIdx_10(D);
+  _5 = Eth_43_PFE_InternalCfgPtr.18_3->pController[_4];
+  _6 = _5->Eth_43_PFE_EthTrcvDriverFunctionList.WriteMiiIndicationFunction;
+  _6 (u8CtrlIdx_10(D), u8TrcvIdx_11(D), u8RegIdx_12(D));
+
+  <bb 11> :
+  # eReturnStatus_7 = PHI <eReturnStatus_9(3), eReturnStatus_9(6), eReturnStatus_9(8), eReturnStatus_16(9), eReturnStatus_16(10)>
+  # DEBUG eReturnStatus => eReturnStatus_7
+  # DEBUG BEGIN_STMT
+  _21 = eReturnStatus_7;
+  return _21;
+
+}
+
+
+Eth_43_PFE_MainFunction ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_MainFunction ();
+  return;
+
+}
+
+
+Eth_43_PFE_GetVersionInfo (struct Std_VersionInfoType * VersionInfoPtr)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (VersionInfoPtr_2(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 13, 3);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->moduleID = 88;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->vendorID = 43;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->sw_major_version = 1;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->sw_minor_version = 4;
+  # DEBUG BEGIN_STMT
+  VersionInfoPtr_2(D)->sw_patch_version = 0;
+
+  <bb 5> :
+  return;
+
+}
+
+
+Eth_43_PFE_TxConfirmation (uint8 u8CtrlIdx)
+{
+  uint8 u8FifoIdx;
+  uint8 u8NumsFifo;
+  int _1;
+  <unnamed type> _2;
+  <unnamed type> _3;
+  int _4;
+  const struct Eth_43_PFE_StaticCtrlCfgType * _5;
+  _Bool _6;
+  _Bool _7;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.16_8;
+  int _9;
+  const struct Eth_43_PFE_CtrlCfgType * _10;
+  unsigned char u8FifoIdx.17_11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_15(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 12, 1);
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_15(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 12, 2);
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = Eth_PFE_LLD_CheckControllerIsActive (u8CtrlIdx_15(D));
+  if (_3 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 12, 5);
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _4 = (int) u8CtrlIdx_15(D);
+  _5 = Eth_43_PFE_StaticConfig.pController[_4];
+  _6 = _5->EnableTxInterrupt;
+  _7 = ~_6;
+  if (_7 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.16_8 = Eth_43_PFE_InternalCfgPtr;
+  _9 = (int) u8CtrlIdx_15(D);
+  _10 = Eth_43_PFE_InternalCfgPtr.16_8->pController[_9];
+  u8NumsFifo_18 = _10->EthCtrlEgressFifoCnt;
+  # DEBUG u8NumsFifo => u8NumsFifo_18
+  # DEBUG BEGIN_STMT
+  u8FifoIdx_19 = 0;
+  # DEBUG u8FifoIdx => u8FifoIdx_19
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_ReportTransmission (u8CtrlIdx_15(D), u8FifoIdx_12);
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_ReportTransmissionTS (u8CtrlIdx_15(D), u8FifoIdx_12);
+  # DEBUG BEGIN_STMT
+  u8FifoIdx.17_11 = u8FifoIdx_12;
+  u8FifoIdx_22 = u8FifoIdx.17_11 + 1;
+  # DEBUG u8FifoIdx => u8FifoIdx_22
+
+  <bb 11> :
+  # u8FifoIdx_12 = PHI <u8FifoIdx_19(9), u8FifoIdx_22(10)>
+  # DEBUG u8FifoIdx => u8FifoIdx_12
+  # DEBUG BEGIN_STMT
+  if (u8FifoIdx_12 < u8NumsFifo_18)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  return;
+
+}
+
+
+Eth_43_PFE_Receive (uint8 u8CtrlIdx, uint8 FifoIdx, Eth_RxStatusType * RxStatusPtr)
+{
+  int _1;
+  <unnamed type> _2;
+  <unnamed type> _3;
+  int _4;
+  const struct Eth_43_PFE_StaticCtrlCfgType * _5;
+  _Bool _6;
+  _Bool _7;
+  <unnamed type> _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_10(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 11, 1);
+  goto <bb 14>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (FifoIdx_11(D) > 7)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 11, 4);
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (RxStatusPtr_12(D) == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 11, 3);
+  goto <bb 14>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_10(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 11, 2);
+  goto <bb 14>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _3 = Eth_PFE_LLD_CheckControllerIsActive (u8CtrlIdx_10(D));
+  if (_3 != 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 11, 5);
+  goto <bb 14>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _4 = (int) u8CtrlIdx_10(D);
+  _5 = Eth_43_PFE_StaticConfig.pController[_4];
+  _6 = _5->EnableRxInterrupt;
+  _7 = ~_6;
+  if (_7 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _8 = Eth_PFE_LLD_ReportReception (u8CtrlIdx_10(D), FifoIdx_11(D), 0);
+  *RxStatusPtr_12(D) = _8;
+
+  <bb 14> :
+  return;
+
+}
+
+
+Eth_43_PFE_ReleaseTxBuffer (uint8 u8CtrlIdx, Eth_BufIdxType BufIdx)
+{
+  uint8 u8DetError;
+  BufReq_ReturnType eReturnValue;
+  int _1;
+  <unnamed type> _2;
+  _Bool _3;
+  BufReq_ReturnType iftmp.15_6;
+  BufReq_ReturnType iftmp.15_17;
+  BufReq_ReturnType iftmp.15_18;
+  BufReq_ReturnType _21;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eReturnValue_8 = 1;
+  # DEBUG eReturnValue => eReturnValue_8
+  # DEBUG BEGIN_STMT
+  u8DetError_9 = 0;
+  # DEBUG u8DetError => u8DetError_9
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_10(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  u8DetError_15 = 1;
+  # DEBUG u8DetError => u8DetError_15
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (BufIdx_11(D) > 3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  u8DetError_14 = 4;
+  # DEBUG u8DetError => u8DetError_14
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_10(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  u8DetError_13 = 2;
+  # DEBUG u8DetError => u8DetError_13
+
+  <bb 8> :
+  # u8DetError_5 = PHI <u8DetError_15(3), u8DetError_14(5), u8DetError_9(6), u8DetError_13(7)>
+  # DEBUG u8DetError => u8DetError_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (u8DetError_5 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 44, u8DetError_5);
+  goto <bb 14>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _3 = Eth_PFE_LLD_ReleaseTxBuffer (u8CtrlIdx_10(D), BufIdx_11(D));
+  if (_3 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.15_18 = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  iftmp.15_17 = 2;
+
+  <bb 13> :
+  # iftmp.15_6 = PHI <iftmp.15_18(11), iftmp.15_17(12)>
+  eReturnValue_19 = iftmp.15_6;
+  # DEBUG eReturnValue => eReturnValue_19
+
+  <bb 14> :
+  # eReturnValue_4 = PHI <eReturnValue_8(9), eReturnValue_19(13)>
+  # DEBUG eReturnValue => eReturnValue_4
+  # DEBUG BEGIN_STMT
+  _21 = eReturnValue_4;
+  return _21;
+
+}
+
+
+Eth_43_PFE_Transmit (uint8 u8CtrlIdx, Eth_BufIdxType BufIdx, Eth_FrameType FrameType, boolean TxConfirmation, uint16 LenByte, const uint8 * PhysAddrPtr)
+{
+  uint32 u32BufHdrSize;
+  uint32 u32BufLen;
+  uint8 u8FifoIdx;
+  uint16 lmem_header_size;
+  Std_ReturnType u8FunctionSuccess;
+  int _1;
+  <unnamed type> _2;
+  <unnamed type> _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  short unsigned int _9;
+  Std_ReturnType _38;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_12 = 1;
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_13(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 10, 1);
+  goto <bb 16>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (PhysAddrPtr_14(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 10, 3);
+  goto <bb 16>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_13(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 10, 2);
+  goto <bb 16>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = Eth_PFE_LLD_CheckControllerIsActive (u8CtrlIdx_13(D));
+  if (_3 != 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 10, 5);
+  goto <bb 16>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  u8FifoIdx_19 = Eth_43_PFE_LLD_GetTxFifoIdx (u8CtrlIdx_13(D), BufIdx_17(D));
+  # DEBUG u8FifoIdx => u8FifoIdx_19
+  # DEBUG BEGIN_STMT
+  lmem_header_size_21 = Eth_43_PFE_LLD_GetLmemHdrSize (u8CtrlIdx_13(D));
+  # DEBUG lmem_header_size => lmem_header_size_21
+  # DEBUG BEGIN_STMT
+  _4 = (long unsigned int) lmem_header_size_21;
+  u32BufHdrSize_22 = _4 + 30;
+  # DEBUG u32BufHdrSize => u32BufHdrSize_22
+  # DEBUG BEGIN_STMT
+  _5 = Eth_43_PFE_LLD_GetTxBufferSize (u8CtrlIdx_13(D), u8FifoIdx_19);
+  if (u32BufHdrSize_22 > _5)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Size of TX buffer is invalid\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/Eth_43_PFE.c", 898, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 16>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _6 = Eth_43_PFE_LLD_GetTxBufferSize (u8CtrlIdx_13(D), u8FifoIdx_19);
+  _7 = (long unsigned int) lmem_header_size_21;
+  _8 = _6 - _7;
+  u32BufLen_25 = _8 + 4294967266;
+  # DEBUG u32BufLen => u32BufLen_25
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (BufIdx_17(D) > 3)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  _9 = (short unsigned int) u32BufLen_25;
+  if (LenByte_26(D) > _9)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 10, 4);
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_30 = Eth_PFE_LLD_Transmit (u8CtrlIdx_13(D), BufIdx_17(D), FrameType_27(D), LenByte_26(D), TxConfirmation_28(D), PhysAddrPtr_14(D));
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_30
+
+  <bb 16> :
+  # u8FunctionSuccess_10 = PHI <u8FunctionSuccess_12(3), u8FunctionSuccess_12(5), u8FunctionSuccess_12(7), u8FunctionSuccess_12(9), u8FunctionSuccess_12(11), u8FunctionSuccess_12(14), u8FunctionSuccess_30(15)>
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_10
+  # DEBUG BEGIN_STMT
+  _38 = u8FunctionSuccess_10;
+  return _38;
+
+}
+
+
+Eth_43_PFE_ProvideTxBuffer (uint8 u8CtrlIdx, uint8 Priority, Eth_BufIdxType * BufIdxPtr, uint8 * * BufPtr, uint16 * LenBytePtr)
+{
+  BufReq_ReturnType eFunctionSuccess;
+  int _1;
+  <unnamed type> _2;
+  BufReq_ReturnType _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eFunctionSuccess_5 = 1;
+  # DEBUG eFunctionSuccess => eFunctionSuccess_5
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_6(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 9, 1);
+  goto <bb 15>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (BufIdxPtr_7(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 9, 3);
+  goto <bb 15>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (BufPtr_8(D) == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 9, 3);
+  goto <bb 15>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (LenBytePtr_9(D) == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 9, 3);
+  goto <bb 15>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_6(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 9, 2);
+  goto <bb 15>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  if (Priority_11(D) <= 7)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  eFunctionSuccess_14 = update_and_provide_buffer (u8CtrlIdx_6(D), Priority_11(D), BufIdxPtr_7(D), BufPtr_8(D), LenBytePtr_9(D));
+  # DEBUG eFunctionSuccess => eFunctionSuccess_14
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  eFunctionSuccess_12 = 1;
+  # DEBUG eFunctionSuccess => eFunctionSuccess_12
+
+  <bb 15> :
+  # eFunctionSuccess_3 = PHI <eFunctionSuccess_5(3), eFunctionSuccess_5(5), eFunctionSuccess_5(7), eFunctionSuccess_5(9), eFunctionSuccess_5(11), eFunctionSuccess_14(13), eFunctionSuccess_12(14)>
+  # DEBUG eFunctionSuccess => eFunctionSuccess_3
+  # DEBUG BEGIN_STMT
+  _20 = eFunctionSuccess_3;
+  return _20;
+
+}
+
+
+Eth_43_PFE_UpdatePhysAddrFilter (uint8 u8CtrlIdx, const uint8 * PhysAddrPtr, Eth_FilterActionType Action)
+{
+  Std_ReturnType u8FunctionSuccess;
+  int _1;
+  <unnamed type> _2;
+  Std_ReturnType _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_5 = 1;
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_5
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_6(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 18, 1);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (PhysAddrPtr_7(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 18, 3);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_6(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 18, 2);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_11 = Eth_PFE_LLD_UpdatePhysAddrFilter (u8CtrlIdx_6(D), PhysAddrPtr_7(D), Action_9(D));
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_11
+
+  <bb 9> :
+  # u8FunctionSuccess_3 = PHI <u8FunctionSuccess_5(3), u8FunctionSuccess_5(5), u8FunctionSuccess_5(7), u8FunctionSuccess_11(8)>
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_3
+  # DEBUG BEGIN_STMT
+  _15 = u8FunctionSuccess_3;
+  return _15;
+
+}
+
+
+Eth_43_PFE_SetPhysAddr (uint8 u8CtrlIdx, const uint8 * PhysAddrPtr)
+{
+  int _1;
+  <unnamed type> _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 19, 1);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (PhysAddrPtr_5(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 19, 3);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_4(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 19, 2);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_SetPhysAddr (u8CtrlIdx_4(D), PhysAddrPtr_5(D));
+
+  <bb 9> :
+  return;
+
+}
+
+
+Eth_43_PFE_GetPhysAddr (uint8 u8CtrlIdx, uint8 * PhysAddrPtr)
+{
+  int _1;
+  <unnamed type> _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_4(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 8, 1);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (PhysAddrPtr_5(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 8, 3);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_4(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 8, 2);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_GetPhysicalAddress (u8CtrlIdx_4(D), PhysAddrPtr_5(D));
+
+  <bb 9> :
+  return;
+
+}
+
+
+Eth_43_PFE_GetControllerMode (uint8 u8CtrlIdx, Eth_ModeType * CtrlModePtr)
+{
+  Std_ReturnType u8FunctionSuccess;
+  int _1;
+  <unnamed type> _2;
+  <unnamed type> _3;
+  Std_ReturnType _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_6 = 1;
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_6
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_7(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 4, 1);
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (CtrlModePtr_8(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 4, 3);
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_7(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 4, 2);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = Eth_PFE_LLD_CheckControllerIsActive (u8CtrlIdx_7(D));
+  *CtrlModePtr_8(D) = _3;
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_12 = 0;
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_12
+
+  <bb 9> :
+  # u8FunctionSuccess_4 = PHI <u8FunctionSuccess_6(3), u8FunctionSuccess_6(5), u8FunctionSuccess_6(7), u8FunctionSuccess_12(8)>
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_4
+  # DEBUG BEGIN_STMT
+  _16 = u8FunctionSuccess_4;
+  return _16;
+
+}
+
+
+Eth_43_PFE_SetControllerMode (uint8 u8CtrlIdx, Eth_ModeType CtrlMode)
+{
+  Std_ReturnType u8FunctionSuccess;
+  int _1;
+  <unnamed type> _2;
+  _Bool _3;
+  _Bool _4;
+  unsigned char _5;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.7_6;
+  int _7;
+  const struct Eth_43_PFE_CtrlCfgType * _8;
+  long unsigned int _9;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.8_10;
+  int _11;
+  const struct Eth_43_PFE_CtrlCfgType * _12;
+  long unsigned int _13;
+  short unsigned int _14;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.9_15;
+  int _16;
+  const struct Eth_43_PFE_CtrlCfgType * _17;
+  long unsigned int _18;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.10_19;
+  int _20;
+  const struct Eth_43_PFE_CtrlCfgType * _21;
+  long unsigned int _22;
+  short unsigned int _23;
+  Std_ReturnType _41;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_28 = 1;
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_28
+  # DEBUG BEGIN_STMT
+  if (u8CtrlIdx_29(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 3, 1);
+  goto <bb 16>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlIdx_29(D);
+  _2 ={v} Eth_43_PFE_CtrlState[_1];
+  if (_2 != 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 3, 2);
+  goto <bb 16>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = Eth_PFE_LLD_CheckAccessToController ();
+  if (_3 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (CtrlMode_33(D) == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _4 = Eth_PFE_LLD_EnableController (u8CtrlIdx_29(D));
+  if (_4 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_37 = 0;
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_37
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _5 = Eth_PFE_LLD_DisableController (u8CtrlIdx_29(D));
+  if (_5 == 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  u8FunctionSuccess_35 = 0;
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_35
+
+  <bb 12> :
+  # u8FunctionSuccess_24 = PHI <u8FunctionSuccess_37(9), u8FunctionSuccess_28(10), u8FunctionSuccess_35(11), u8FunctionSuccess_28(8)>
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_24
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.7_6 = Eth_43_PFE_InternalCfgPtr;
+  _7 = (int) u8CtrlIdx_29(D);
+  _8 = Eth_43_PFE_InternalCfgPtr.7_6->pController[_7];
+  _9 = _8->ETH_43_PFE_DEM_E_ACCESS_Cfg.state;
+  if (_9 == 1)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.8_10 = Eth_43_PFE_InternalCfgPtr;
+  _11 = (int) u8CtrlIdx_29(D);
+  _12 = Eth_43_PFE_InternalCfgPtr.8_10->pController[_11];
+  _13 = _12->ETH_43_PFE_DEM_E_ACCESS_Cfg.id;
+  _14 = (short unsigned int) _13;
+  Dem_SetEventStatus (_14, 2);
+  goto <bb 16>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.9_15 = Eth_43_PFE_InternalCfgPtr;
+  _16 = (int) u8CtrlIdx_29(D);
+  _17 = Eth_43_PFE_InternalCfgPtr.9_15->pController[_16];
+  _18 = _17->ETH_43_PFE_DEM_E_ACCESS_Cfg.state;
+  if (_18 == 1)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.10_19 = Eth_43_PFE_InternalCfgPtr;
+  _20 = (int) u8CtrlIdx_29(D);
+  _21 = Eth_43_PFE_InternalCfgPtr.10_19->pController[_20];
+  _22 = _21->ETH_43_PFE_DEM_E_ACCESS_Cfg.id;
+  _23 = (short unsigned int) _22;
+  Dem_SetEventStatus (_23, 3);
+
+  <bb 16> :
+  # u8FunctionSuccess_25 = PHI <u8FunctionSuccess_28(3), u8FunctionSuccess_28(5), u8FunctionSuccess_24(13), u8FunctionSuccess_28(14), u8FunctionSuccess_28(15), u8FunctionSuccess_24(12)>
+  # DEBUG u8FunctionSuccess => u8FunctionSuccess_25
+  # DEBUG BEGIN_STMT
+  _41 = u8FunctionSuccess_25;
+  return _41;
+
+}
+
+
+Eth_43_PFE_DeInit ()
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_DeInit ();
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr = 0B;
+  return;
+
+}
+
+
+Eth_43_PFE_Init (const struct Eth_43_PFE_ConfigType * CfgPtr)
+{
+  uint8 u8CtrlCount;
+  int _1;
+  unsigned char u8CtrlCount.0_2;
+  _Bool _3;
+  unsigned char _4;
+  unsigned char u8CtrlCount.1_5;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.2_6;
+  int _7;
+  const struct Eth_43_PFE_CtrlCfgType * _8;
+  long unsigned int _9;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.3_10;
+  int _11;
+  const struct Eth_43_PFE_CtrlCfgType * _12;
+  long unsigned int _13;
+  short unsigned int _14;
+  int _15;
+  unsigned char u8CtrlCount.4_16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  u8CtrlCount_25 = 0;
+  # DEBUG u8CtrlCount => u8CtrlCount_25
+  # DEBUG BEGIN_STMT
+  if (CfgPtr_26(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  Det_ReportError (88, 0, 1, 3);
+  goto <bb 18>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  u8CtrlCount_27 = 0;
+  # DEBUG u8CtrlCount => u8CtrlCount_27
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) u8CtrlCount_17;
+  Eth_43_PFE_CtrlState[_1] ={v} 0;
+  # DEBUG BEGIN_STMT
+  u8CtrlCount.0_2 = u8CtrlCount_17;
+  u8CtrlCount_44 = u8CtrlCount.0_2 + 1;
+  # DEBUG u8CtrlCount => u8CtrlCount_44
+
+  <bb 6> :
+  # u8CtrlCount_17 = PHI <u8CtrlCount_27(4), u8CtrlCount_44(5)>
+  # DEBUG u8CtrlCount => u8CtrlCount_17
+  # DEBUG BEGIN_STMT
+  if (u8CtrlCount_17 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr = &Eth_43_PFE_Config;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = Eth_PFE_LLD_CheckAccessToController ();
+  if (_3 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _4 = Eth_PFE_LLD_PlatformDrvPrepare ();
+  if (_4 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_EMACPrepare ();
+  # DEBUG BEGIN_STMT
+  u8CtrlCount_37 = 0;
+  # DEBUG u8CtrlCount => u8CtrlCount_37
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_InterfacePrepare (u8CtrlCount_18);
+  # DEBUG BEGIN_STMT
+  check_and_configure_controller (u8CtrlCount_18);
+  # DEBUG BEGIN_STMT
+  u8CtrlCount.1_5 = u8CtrlCount_18;
+  u8CtrlCount_42 = u8CtrlCount.1_5 + 1;
+  # DEBUG u8CtrlCount => u8CtrlCount_42
+
+  <bb 11> :
+  # u8CtrlCount_18 = PHI <u8CtrlCount_37(9), u8CtrlCount_42(10)>
+  # DEBUG u8CtrlCount => u8CtrlCount_18
+  # DEBUG BEGIN_STMT
+  if (u8CtrlCount_18 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  Eth_PFE_LLD_bIrqInitStatus ={v} 1;
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_LLD_SetMasterUp ();
+  goto <bb 18>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  u8CtrlCount_31 = 0;
+  # DEBUG u8CtrlCount => u8CtrlCount_31
+  goto <bb 17>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.2_6 = Eth_43_PFE_InternalCfgPtr;
+  _7 = (int) u8CtrlCount_19;
+  _8 = Eth_43_PFE_InternalCfgPtr.2_6->pController[_7];
+  _9 = _8->ETH_43_PFE_DEM_E_ACCESS_Cfg.state;
+  if (_9 == 1)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.3_10 = Eth_43_PFE_InternalCfgPtr;
+  _11 = (int) u8CtrlCount_19;
+  _12 = Eth_43_PFE_InternalCfgPtr.3_10->pController[_11];
+  _13 = _12->ETH_43_PFE_DEM_E_ACCESS_Cfg.id;
+  _14 = (short unsigned int) _13;
+  Dem_SetEventStatus (_14, 3);
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  _15 = (int) u8CtrlCount_19;
+  Eth_43_PFE_CtrlState[_15] ={v} 0;
+  # DEBUG BEGIN_STMT
+  u8CtrlCount.4_16 = u8CtrlCount_19;
+  u8CtrlCount_34 = u8CtrlCount.4_16 + 1;
+  # DEBUG u8CtrlCount => u8CtrlCount_34
+
+  <bb 17> :
+  # u8CtrlCount_19 = PHI <u8CtrlCount_31(13), u8CtrlCount_34(16)>
+  # DEBUG u8CtrlCount => u8CtrlCount_19
+  # DEBUG BEGIN_STMT
+  if (u8CtrlCount_19 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  return;
+
+}
+
+
+update_and_provide_buffer (uint8 u8CtrlIdx, uint8 Priority, Eth_BufIdxType * BufIdxPtr, uint8 * * BufPtr, uint16 * LenBytePtr)
+{
+  uint8 u8QueueIdx;
+  uint16 u16TempLenByte;
+  BufReq_ReturnType eFunctionSuccess;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.11_1;
+  int _2;
+  const struct Eth_43_PFE_CtrlCfgType * _3;
+  int _4;
+  short unsigned int _5;
+  _Bool _6;
+  short unsigned int u16TempLenByte.12_7;
+  short unsigned int _8;
+  short unsigned int u16TempLenByte.13_9;
+  short unsigned int u16TempLenByte.14_10;
+  BufReq_ReturnType _28;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  eFunctionSuccess_13 = 1;
+  # DEBUG eFunctionSuccess => eFunctionSuccess_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.11_1 = Eth_43_PFE_InternalCfgPtr;
+  _2 = (int) u8CtrlIdx_15(D);
+  _3 = Eth_43_PFE_InternalCfgPtr.11_1->pController[_2];
+  _4 = (int) Priority_16(D);
+  u8QueueIdx_17 = _3->EthCtrlEgressPrioToFifoIdx[_4];
+  # DEBUG u8QueueIdx => u8QueueIdx_17
+  # DEBUG BEGIN_STMT
+  _5 = *LenBytePtr_18(D);
+  u16TempLenByte = _5;
+  # DEBUG BEGIN_STMT
+  _6 = Eth_PFE_LLD_ProvideBufferDataArea (u8CtrlIdx_15(D), u8QueueIdx_17, BufIdxPtr_20(D), BufPtr_21(D), &u16TempLenByte);
+  if (_6 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  u16TempLenByte.12_7 = u16TempLenByte;
+  *LenBytePtr_18(D) = u16TempLenByte.12_7;
+  # DEBUG BEGIN_STMT
+  eFunctionSuccess_27 = 0;
+  # DEBUG eFunctionSuccess => eFunctionSuccess_27
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _8 = *LenBytePtr_18(D);
+  u16TempLenByte.13_9 = u16TempLenByte;
+  if (_8 > u16TempLenByte.13_9)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  u16TempLenByte.14_10 = u16TempLenByte;
+  *LenBytePtr_18(D) = u16TempLenByte.14_10;
+  # DEBUG BEGIN_STMT
+  eFunctionSuccess_25 = 3;
+  # DEBUG eFunctionSuccess => eFunctionSuccess_25
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  eFunctionSuccess_23 = 2;
+  # DEBUG eFunctionSuccess => eFunctionSuccess_23
+
+  <bb 7> :
+  # eFunctionSuccess_11 = PHI <eFunctionSuccess_27(3), eFunctionSuccess_25(5), eFunctionSuccess_23(6)>
+  # DEBUG eFunctionSuccess => eFunctionSuccess_11
+  # DEBUG BEGIN_STMT
+  _28 = eFunctionSuccess_11;
+  u16TempLenByte ={v} {CLOBBER};
+  return _28;
+
+}
+
+
+check_and_configure_controller (uint8 u8CtrlCount)
+{
+  _Bool _1;
+  unsigned char _2;
+  int _3;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.5_4;
+  int _5;
+  const struct Eth_43_PFE_CtrlCfgType * _6;
+  long unsigned int _7;
+  const struct Eth_43_PFE_ConfigType * Eth_43_PFE_InternalCfgPtr.6_8;
+  int _9;
+  const struct Eth_43_PFE_CtrlCfgType * _10;
+  long unsigned int _11;
+  short unsigned int _12;
+  int _13;
+  int _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Eth_PFE_LLD_CheckInitializationStatus (u8CtrlCount_17(D));
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Eth_PFE_LLD_ConfigureController (u8CtrlCount_17(D));
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) u8CtrlCount_17(D);
+  Eth_43_PFE_CtrlState[_3] ={v} 1;
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.5_4 = Eth_43_PFE_InternalCfgPtr;
+  _5 = (int) u8CtrlCount_17(D);
+  _6 = Eth_43_PFE_InternalCfgPtr.5_4->pController[_5];
+  _7 = _6->ETH_43_PFE_DEM_E_ACCESS_Cfg.state;
+  if (_7 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  Eth_43_PFE_InternalCfgPtr.6_8 = Eth_43_PFE_InternalCfgPtr;
+  _9 = (int) u8CtrlCount_17(D);
+  _10 = Eth_43_PFE_InternalCfgPtr.6_8->pController[_9];
+  _11 = _10->ETH_43_PFE_DEM_E_ACCESS_Cfg.id;
+  _12 = (short unsigned int) _11;
+  Dem_SetEventStatus (_12, 2);
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _13 = (int) u8CtrlCount_17(D);
+  Eth_43_PFE_CtrlState[_13] ={v} 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _14 = (int) u8CtrlCount_17(D);
+  Eth_43_PFE_CtrlState[_14] ={v} 0;
+
+  <bb 8> :
+  return;
+
+}
+
+

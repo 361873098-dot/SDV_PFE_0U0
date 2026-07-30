@@ -1,0 +1,1211 @@
+pfe_util_get_fw_version (const struct pfe_util_t * util, struct pfe_ct_version_t * ver)
+{
+  errno_t ret;
+  union pfe_ct_pe_mmap_t pfe_pe_mmap;
+  const struct pfe_pe_t * _1;
+  long unsigned int _2;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &util_5(D)->pe[0];
+  ret_8 = pfe_pe_get_mmap (_1, &pfe_pe_mmap);
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _2 = util_5(D)->pe_num;
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (ret_8 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_12 = 22;
+  # DEBUG ret => ret_12
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (ver_9(D), &pfe_pe_mmap.util_pe.common.version, 108);
+  # DEBUG BEGIN_STMT
+  ret_11 = 0;
+  # DEBUG ret => ret_11
+
+  <bb 6> :
+  # ret_3 = PHI <ret_12(4), ret_11(5)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  _13 = ret_3;
+  pfe_pe_mmap ={v} {CLOBBER};
+  return _13;
+
+}
+
+
+pfe_util_irq_unmask (const struct pfe_util_t * util)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_util_irq_mask (const struct pfe_util_t * util)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_util_isr (struct pfe_util_t * util)
+{
+  errno_t ret;
+  uint32_t count;
+  struct pfe_pe_t[1] * _1;
+  struct pfe_pe_t * _2;
+  struct pfe_pe_t * _3;
+  long unsigned int _4;
+  struct pfe_pe_t[1] * _5;
+  unsigned int _6;
+  errno_t _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (35);
+  # DEBUG BEGIN_STMT
+  _1 = &util_11(D)->pe;
+  pfe_pe_lock_family (_1);
+  # DEBUG BEGIN_STMT
+  count_13 = 0;
+  # DEBUG count => count_13
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = &util_11(D)->pe[count_7];
+  pfe_pe_get_fw_messages_nolock (_2);
+  # DEBUG BEGIN_STMT
+  _3 = &util_11(D)->pe[count_7];
+  pfe_pe_check_stalled_nolock (_3);
+  # DEBUG BEGIN_STMT
+  count_21 = count_7 + 1;
+  # DEBUG count => count_21
+
+  <bb 4> :
+  # count_7 = PHI <count_13(2), count_21(3)>
+  # DEBUG count => count_7
+  # DEBUG BEGIN_STMT
+  _4 = util_11(D)->pe_num;
+  if (count_7 < _4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _5 = &util_11(D)->pe;
+  pfe_pe_unlock_family (_5);
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (35);
+  # DEBUG BEGIN_STMT
+  _6 = util_11(D)->cbus_base_va;
+  pfe_util_cfg_isr (_6);
+  # DEBUG BEGIN_STMT
+  ret_17 = 0;
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  _18 = ret_17;
+  return _18;
+
+}
+
+
+pfe_util_read_dmem (void * util_p, int32_t pe_idx, void * dst_ptr, addr_t src_addr, uint32_t len)
+{
+  errno_t ret;
+  struct pfe_util_t * util;
+  long long int _1;
+  long unsigned int _2;
+  long long int _3;
+  struct pfe_pe_t * _4;
+  errno_t _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  util_8 = util_p_7(D);
+  # DEBUG util => util_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long long int) pe_idx_9(D);
+  _2 = util_8->pe_num;
+  _3 = (long long int) _2;
+  if (_1 >= _3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_16 = 22;
+  # DEBUG ret => ret_16
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = &util_8->pe[pe_idx_9(D)];
+  pfe_pe_memcpy_from_dmem_to_host_32 (_4, dst_ptr_11(D), src_addr_12(D), len_13(D));
+  # DEBUG BEGIN_STMT
+  ret_15 = 0;
+  # DEBUG ret => ret_15
+
+  <bb 5> :
+  # ret_5 = PHI <ret_16(3), ret_15(4)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  _17 = ret_5;
+  return _17;
+
+}
+
+
+pfe_util_write_dmem (void * util_p, int32_t pe_idx, addr_t dst_addr, const void * src_ptr, uint32_t len)
+{
+  errno_t ret;
+  struct pfe_util_t * util;
+  uint32_t count;
+  long long int _1;
+  long unsigned int _2;
+  long long int _3;
+  struct pfe_pe_t * _4;
+  struct pfe_pe_t * _5;
+  long unsigned int _6;
+  errno_t _25;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  util_13 = util_p_12(D);
+  # DEBUG util => util_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (long long int) pe_idx_14(D);
+  _2 = util_13->pe_num;
+  _3 = (long long int) _2;
+  if (_1 >= _3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_24 = 22;
+  # DEBUG ret => ret_24
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (pe_idx_14(D) >= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = &util_13->pe[pe_idx_14(D)];
+  pfe_pe_memcpy_from_host_to_dmem_32 (_4, dst_addr_17(D), src_ptr_18(D), len_19(D));
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  count_16 = 0;
+  # DEBUG count => count_16
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _5 = &util_13->pe[count_7];
+  pfe_pe_memcpy_from_host_to_dmem_32 (_5, dst_addr_17(D), src_ptr_18(D), len_19(D));
+  # DEBUG BEGIN_STMT
+  count_21 = count_7 + 1;
+  # DEBUG count => count_21
+
+  <bb 8> :
+  # count_7 = PHI <count_16(6), count_21(7)>
+  # DEBUG count => count_7
+  # DEBUG BEGIN_STMT
+  _6 = util_13->pe_num;
+  if (count_7 < _6)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret_23 = 0;
+  # DEBUG ret => ret_23
+
+  <bb 10> :
+  # ret_8 = PHI <ret_24(3), ret_23(9)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _25 = ret_8;
+  return _25;
+
+}
+
+
+pfe_util_get_feature_next (struct pfe_util_t * util, struct pfe_fw_feature_t * * feature)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  struct pfe_fw_feature_t * _8;
+  errno_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = util_12(D)->fw_features_count;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = util_12(D)->current_feature;
+  _3 = _2 + 1;
+  _4 = util_12(D)->fw_features_count;
+  if (_3 < _4)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 = util_12(D)->current_feature;
+  _6 = _5 + 1;
+  util_12(D)->current_feature = _6;
+  # DEBUG BEGIN_STMT
+  _7 = util_12(D)->current_feature;
+  _8 = &util_12(D)->fw_features[_7];
+  *feature_16(D) = _8;
+  # DEBUG BEGIN_STMT
+  ret_18 = 0;
+  # DEBUG ret => ret_18
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_14 = 2;
+  # DEBUG ret => ret_14
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_13 = 2;
+  # DEBUG ret => ret_13
+
+  <bb 7> :
+  # ret_9 = PHI <ret_14(5), ret_13(6), ret_18(4)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  _19 = ret_9;
+  return _19;
+
+}
+
+
+pfe_util_get_feature_first (struct pfe_util_t * util, struct pfe_fw_feature_t * * feature)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  struct pfe_fw_feature_t * _3;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = util_7(D)->fw_features_count;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  util_7(D)->current_feature = 0;
+  # DEBUG BEGIN_STMT
+  _2 = util_7(D)->current_feature;
+  _3 = &util_7(D)->fw_features[_2];
+  *feature_10(D) = _3;
+  # DEBUG BEGIN_STMT
+  ret_12 = 0;
+  # DEBUG ret => ret_12
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_8 = 2;
+  # DEBUG ret => ret_8
+
+  <bb 5> :
+  # ret_4 = PHI <ret_12(3), ret_8(4)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _13 = ret_4;
+  return _13;
+
+}
+
+
+pfe_util_get_feature (struct pfe_util_t * util, struct pfe_fw_feature_t * * feature, const char * name)
+{
+  errno_t ret;
+  const char * fname;
+  uint32_t count;
+  struct pfe_fw_feature_t * _1;
+  const char * fname.2_2;
+  long int _3;
+  struct pfe_fw_feature_t * _4;
+  long unsigned int _5;
+  errno_t _26;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_13 = 2;
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  count_14 = 0;
+  # DEBUG count => count_14
+  goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = &util_16(D)->fw_features[count_6];
+  ret_18 = pfe_fw_feature_get_name (_1, &fname);
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  if (ret_18 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  fname.2_2 = fname;
+  _3 = autolibc_strcmp (fname.2_2, name_19(D));
+  if (_3 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = &util_16(D)->fw_features[count_6];
+  *feature_22(D) = _4;
+  # DEBUG BEGIN_STMT
+  ret_24 = 0;
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_21 = 2;
+  # DEBUG ret => ret_21
+
+  <bb 7> :
+  # ret_7 = PHI <ret_18(3), ret_21(6)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  count_25 = count_6 + 1;
+  # DEBUG count => count_25
+
+  <bb 8> :
+  # count_6 = PHI <count_14(2), count_25(7)>
+  # ret_8 = PHI <ret_13(2), ret_7(7)>
+  # DEBUG ret => ret_8
+  # DEBUG count => count_6
+  # DEBUG BEGIN_STMT
+  _5 = util_16(D)->fw_features_count;
+  if (count_6 < _5)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # ret_9 = PHI <ret_24(5), ret_8(8)>
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  _26 = ret_9;
+  fname ={v} {CLOBBER};
+  return _26;
+
+}
+
+
+pfe_util_destroy (struct pfe_util_t * util)
+{
+  uint32_t count;
+  struct pfe_pe_t[1] * _1;
+  long unsigned int _2;
+  struct pfe_fw_feature_t * _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (util_8(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = &util_8(D)->pe;
+  _2 = util_8(D)->pe_num;
+  pfe_pe_destroy (_1, _2);
+  # DEBUG BEGIN_STMT
+  count_11 = 0;
+  # DEBUG count => count_11
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = &util_8(D)->fw_features[count_5];
+  pfe_fw_feature_destroy (_3);
+  # DEBUG BEGIN_STMT
+  count_15 = count_5 + 1;
+  # DEBUG count => count_15
+
+  <bb 5> :
+  # count_5 = PHI <count_11(3), count_15(4)>
+  # DEBUG count => count_5
+  # DEBUG BEGIN_STMT
+  _4 = util_8(D)->fw_features_count;
+  if (count_5 < _4)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  util_8(D)->fw_features_count = 0;
+  # DEBUG BEGIN_STMT
+  util_8(D)->pe_num = 0;
+
+  <bb 7> :
+  return;
+
+}
+
+
+pfe_util_load_firmware (struct pfe_util_t * util, const void * elf)
+{
+  errno_t ret;
+  struct pfe_pe_t[1] * _1;
+  long unsigned int _2;
+  errno_t _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &util_5(D)->pe;
+  _2 = util_5(D)->pe_num;
+  ret_9 = pfe_pe_load_firmware (_1, _2, elf_7(D));
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] UTIL firmware loading failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_util.c", 402, ret_9, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  util_5(D)->is_fw_loaded = 1;
+  # DEBUG BEGIN_STMT
+  ret_14 = pfe_util_load_fw_features (util_5(D));
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed to initialize FW features\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_util.c", 409, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = ret_14;
+  return _17;
+
+}
+
+
+pfe_util_default_init (struct pfe_util_t * util)
+{
+  errno_t ret;
+  struct pfe_pe_t[1] * _1;
+  long unsigned int _2;
+  errno_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &util_3(D)->pe;
+  _2 = util_3(D)->pe_num;
+  ret_6 = pfe_pe_mem_default_init (_1, _2);
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  _7 = ret_6;
+  return _7;
+
+}
+
+
+pfe_util_disable (struct pfe_util_t * util)
+{
+  unsigned int _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = util_5(D)->cbus_base_va;
+  _2 = _1 + 835588;
+  _3 = (volatile uint32_t *) _2;
+  *_3 ={v} 0;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_util_enable (struct pfe_util_t * util)
+{
+  unsigned char _1;
+  _Bool _2;
+  long int _3;
+  long int _4;
+  unsigned int _5;
+  unsigned int _6;
+  volatile uint32_t * _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = util_9(D)->is_fw_loaded;
+  _2 = _1 == 0;
+  _3 = (long int) _2;
+  _4 = __builtin_expect (_3, 0);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = util_9(D)->cbus_base_va;
+  _6 = _5 + 835588;
+  _7 = (volatile uint32_t *) _6;
+  *_7 ={v} 1;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_util_reset (struct pfe_util_t * util)
+{
+  unsigned int _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = util_5(D)->cbus_base_va;
+  _2 = _1 + 835588;
+  _3 = (volatile uint32_t *) _2;
+  *_3 ={v} 2;
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_util_create (addr_t cbus_base_va, uint32_t pe_num, const struct pfe_util_cfg_t * cfg)
+{
+  errno_t ret;
+  struct pfe_util_t * util;
+  struct pfe_util_t * _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_3 = 0;
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  util_4 = &util_instance;
+  # DEBUG util => util_4
+  # DEBUG BEGIN_STMT
+  autolibc_memset (util_4, 0, 328);
+  # DEBUG BEGIN_STMT
+  util_4->cbus_base_va = cbus_base_va_7(D);
+  # DEBUG BEGIN_STMT
+  if (pe_num_9(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_12 = pfe_util_create_pe (pe_num_9(D), cbus_base_va_7(D), util_4);
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  pfe_util_destroy (util_4);
+  # DEBUG BEGIN_STMT
+  util_18 = 0B;
+  # DEBUG util => util_18
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  pfe_util_reset (util_4);
+  # DEBUG BEGIN_STMT
+  pfe_util_disable (util_4);
+  # DEBUG BEGIN_STMT
+  pfe_util_set_config (util_4, cfg_15(D));
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  util_10 = 0B;
+  # DEBUG util => util_10
+
+  <bb 7> :
+  # util_1 = PHI <util_4(5), util_10(6), util_18(4)>
+  # DEBUG util => util_1
+  # DEBUG BEGIN_STMT
+  _19 = util_1;
+  return _19;
+
+}
+
+
+pfe_util_create_pe (uint32_t pe_num, addr_t cbus_base_va, struct pfe_util_t * util)
+{
+  errno_t ret;
+  uint32_t count;
+  struct pfe_pe_t * pe;
+  unsigned char _1;
+  struct pfe_pe_t * _2;
+  bool_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  errno_t _25;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_11 = 0;
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  count_12 = 0;
+  # DEBUG count => count_12
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) count_7;
+  _2 = &util_15(D)->pe[count_7];
+  _3 = &util_15(D)->miflock_pe;
+  pe_18 = pfe_pe_create (cbus_base_va_16(D), 3, _1, _2, _3);
+  # DEBUG pe => pe_18
+  # DEBUG BEGIN_STMT
+  if (pe_18 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_24 = 121;
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  pfe_pe_set_iaccess (pe_18, 835844, 835848, 835840);
+  # DEBUG BEGIN_STMT
+  pfe_pe_set_dmem (pe_18, 0, 8192);
+  # DEBUG BEGIN_STMT
+  pfe_pe_set_imem (pe_18, 2680160256, 32768);
+  # DEBUG BEGIN_STMT
+  _4 = util_15(D)->pe_num;
+  # DEBUG BEGIN_STMT
+  _5 = util_15(D)->pe_num;
+  _6 = _5 + 1;
+  util_15(D)->pe_num = _6;
+  # DEBUG BEGIN_STMT
+  count_23 = count_7 + 1;
+  # DEBUG count => count_23
+
+  <bb 6> :
+  # count_7 = PHI <count_12(2), count_23(5)>
+  # DEBUG count => count_7
+  # DEBUG BEGIN_STMT
+  if (count_7 < pe_num_14(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # ret_8 = PHI <ret_24(4), ret_11(6)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _25 = ret_8;
+  return _25;
+
+}
+
+
+pfe_util_set_config (const struct pfe_util_t * util, const struct pfe_util_cfg_t * cfg)
+{
+  uint32_t regval;
+  unsigned int _1;
+  unsigned int _2;
+  volatile uint32_t * _3;
+  long unsigned int _4;
+  unsigned char _5;
+  unsigned int _6;
+  unsigned int _7;
+  volatile uint32_t * _8;
+  unsigned int _9;
+  unsigned int _10;
+  volatile uint32_t * _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = util_14(D)->cbus_base_va;
+  _2 = _1 + 836096;
+  _3 = (volatile uint32_t *) _2;
+  _4 = cfg_15(D)->pe_sys_clk_ratio;
+  *_3 ={v} _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = cfg_15(D)->on_g3;
+  if (_5 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _6 = util_14(D)->cbus_base_va;
+  _7 = _6 + 836160;
+  _8 = (volatile uint32_t *) _7;
+  regval_17 ={v} *_8;
+  # DEBUG regval => regval_17
+  # DEBUG BEGIN_STMT
+  regval_18 = regval_17 | 3;
+  # DEBUG regval => regval_18
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = util_14(D)->cbus_base_va;
+  _10 = _9 + 836160;
+  _11 = (volatile uint32_t *) _10;
+  *_11 ={v} regval_18;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_util_load_fw_features (struct pfe_util_t * util)
+{
+  bool_t val_break;
+  uint32_t fw_features_idx;
+  errno_t ret;
+  union pfe_ct_pe_mmap_t mmap;
+  struct pfe_pe_t * _1;
+  int _2;
+  int ret.0_3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  struct pfe_fw_feature_t * _20;
+  long unsigned int _21;
+  errno_t _42;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  val_break_27 = 0;
+  # DEBUG val_break => val_break_27
+  # DEBUG BEGIN_STMT
+  _1 = &util_28(D)->pe[0];
+  _2 = pfe_pe_get_mmap (_1, &mmap);
+  ret = _2;
+  # DEBUG BEGIN_STMT
+  ret.0_3 = ret;
+  if (ret.0_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = mmap.common.version.features_count;
+  _5 = _4 >> 24;
+  _6 = mmap.common.version.features_count;
+  _7 = _6 >> 8;
+  _8 = _7 & 65280;
+  _9 = _5 | _8;
+  _10 = mmap.common.version.features_count;
+  _11 = _10 << 8;
+  _12 = _11 & 16711680;
+  _13 = _9 | _12;
+  _14 = mmap.common.version.features_count;
+  _15 = _14 << 24;
+  _16 = _13 | _15;
+  util_28(D)->fw_features_count = _16;
+  # DEBUG BEGIN_STMT
+  _17 = util_28(D)->fw_features_count;
+  if (_17 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _18 = util_28(D)->fw_features_count;
+  if (_18 > 8)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = util_28(D)->fw_features_count;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Insufficient util features storage for %u entries\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_util.c", 154, _19, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  util_28(D)->fw_features_count = 0;
+  # DEBUG BEGIN_STMT
+  ret = 11;
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  util_28(D)->current_feature = 0;
+  # DEBUG BEGIN_STMT
+  fw_features_idx_33 = 0;
+  # DEBUG fw_features_idx => fw_features_idx_33
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _20 = &util_28(D)->fw_features[fw_features_idx_22];
+  pfe_fw_feature_create (_20);
+  # DEBUG BEGIN_STMT
+  val_break_36 = pfe_util_check_new_fw_features (util_28(D), &ret, fw_features_idx_22);
+  # DEBUG val_break => val_break_36
+  # DEBUG BEGIN_STMT
+  if (val_break_36 == 1)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  fw_features_idx_37 = fw_features_idx_22 + 1;
+  # DEBUG fw_features_idx => fw_features_idx_37
+
+  <bb 9> :
+  # fw_features_idx_22 = PHI <fw_features_idx_33(6), fw_features_idx_37(8)>
+  # DEBUG fw_features_idx => fw_features_idx_22
+  # DEBUG BEGIN_STMT
+  _21 = util_28(D)->fw_features_count;
+  if (fw_features_idx_22 < _21)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _42 = ret;
+  mmap ={v} {CLOBBER};
+  ret ={v} {CLOBBER};
+  return _42;
+
+}
+
+
+pfe_util_check_new_fw_features (struct pfe_util_t * util, errno_t * ret, uint32_t features_idx)
+{
+  uint32_t j;
+  struct pfe_ct_feature_desc_t * entry;
+  bool_t val_break;
+  struct pfe_pe_t * _1;
+  int _2;
+  int _3;
+  struct pfe_fw_feature_t * _4;
+  long unsigned int _5;
+  struct pfe_fw_feature_t * _6;
+  struct pfe_ct_feature_desc_t * entry.1_7;
+  long unsigned int _8;
+  unsigned char _9;
+  struct pfe_fw_feature_t * _10;
+  struct pfe_pe_t * _11;
+  char * _12;
+  int _13;
+  int _14;
+  struct pfe_fw_feature_t * _15;
+  struct pfe_fw_feature_t * _16;
+  bool_t _51;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  val_break_23 = 0;
+  # DEBUG val_break => val_break_23
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &util_24(D)->pe[0];
+  _2 = pfe_pe_get_fw_feature_entry (_1, features_idx_26(D), &entry);
+  *ret_28(D) = _2;
+  # DEBUG BEGIN_STMT
+  _3 = *ret_28(D);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed get ll data for feature %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_util.c", 95, features_idx_26(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  j_45 = 0;
+  # DEBUG j => j_45
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = &util_24(D)->fw_features[j_18];
+  pfe_fw_feature_destroy (_4);
+  # DEBUG BEGIN_STMT
+  j_50 = j_18 + 1;
+  # DEBUG j => j_50
+
+  <bb 5> :
+  # j_18 = PHI <j_45(3), j_50(4)>
+  # DEBUG j => j_18
+  # DEBUG BEGIN_STMT
+  if (j_18 < features_idx_26(D))
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  util_24(D)->fw_features_count = 0;
+  # DEBUG BEGIN_STMT
+  *ret_28(D) = 22;
+  # DEBUG BEGIN_STMT
+  val_break_48 = 1;
+  # DEBUG val_break => val_break_48
+  goto <bb 13>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _5 = util_24(D)->pe_num;
+  # DEBUG BEGIN_STMT
+  _6 = &util_24(D)->fw_features[features_idx_26(D)];
+  entry.1_7 = entry;
+  _8 = util_24(D)->pe_num;
+  _9 = (unsigned char) _8;
+  pfe_fw_feature_set_ll_data (_6, entry.1_7, _9);
+  # DEBUG BEGIN_STMT
+  _10 = &util_24(D)->fw_features[features_idx_26(D)];
+  _11 = &util_24(D)->pe[0];
+  _12 = pfe_pe_get_fw_feature_str_base (_11);
+  _13 = pfe_fw_feature_set_string_base (_10, _12);
+  *ret_28(D) = _13;
+  # DEBUG BEGIN_STMT
+  _14 = *ret_28(D);
+  if (_14 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed to set string base for feature %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_util.c", 114, features_idx_26(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  j_37 = 0;
+  # DEBUG j => j_37
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _15 = &util_24(D)->fw_features[j_19];
+  pfe_fw_feature_destroy (_15);
+  # DEBUG BEGIN_STMT
+  j_42 = j_19 + 1;
+  # DEBUG j => j_42
+
+  <bb 10> :
+  # j_19 = PHI <j_37(8), j_42(9)>
+  # DEBUG j => j_19
+  # DEBUG BEGIN_STMT
+  if (j_19 < features_idx_26(D))
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  util_24(D)->fw_features_count = 0;
+  # DEBUG BEGIN_STMT
+  *ret_28(D) = 22;
+  # DEBUG BEGIN_STMT
+  val_break_40 = 1;
+  # DEBUG val_break => val_break_40
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _16 = &util_24(D)->fw_features[features_idx_26(D)];
+  pfe_fw_feature_set_dmem_funcs (_16, pfe_util_read_dmem, pfe_util_write_dmem, util_24(D));
+
+  <bb 13> :
+  # val_break_17 = PHI <val_break_48(6), val_break_40(11), val_break_23(12)>
+  # DEBUG val_break => val_break_17
+  # DEBUG BEGIN_STMT
+  _51 = val_break_17;
+  entry ={v} {CLOBBER};
+  return _51;
+
+}
+
+
+oal_mutex_unlock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock (const oal_mutex_t mutex)
+{
+  void (*<T4e6>) (void) _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex_3(D) <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex_3(D)];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

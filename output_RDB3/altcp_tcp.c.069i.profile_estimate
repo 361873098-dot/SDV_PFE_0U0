@@ -1,0 +1,2114 @@
+Histogram:
+6 indirect calls trained.
+0 (0.00%) have common target.
+0 (0.00%) targets was not found.
+0 (0.00%) targets had parameter count mismatch.
+0 (0.00%) targets was not in polymorphic call target list.
+0 (0.00%) speculations seems useless.
+0 (0.00%) speculations produced.
+altcp_tcp_bind.part.0 (struct altcp_pcb * conn, const struct ip_addr_t * ipaddr, u16_t port)
+{
+  struct tcp_pcb * pcb;
+  signed char _5;
+  signed char _6;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcb_2 = conn_1(D)->state;
+  # DEBUG pcb => pcb_2
+  # DEBUG BEGIN_STMT
+  _5 = tcp_bind (pcb_2, ipaddr_3(D), port_4(D));
+
+  <bb 3> [local count: 1073741824]:
+  # _6 = PHI <_5(2)>
+  return _6;
+
+}
+
+
+altcp_tcp_connect.part.0 (struct altcp_pcb * conn, const struct ip_addr_t * ipaddr, u16_t port, err_t (*altcp_connected_fn) (void *, struct altcp_pcb *, err_t) connected)
+{
+  struct tcp_pcb * pcb;
+  signed char _6;
+  signed char _7;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  conn_2(D)->connected = connected_1(D);
+  # DEBUG BEGIN_STMT
+  pcb_3 = conn_2(D)->state;
+  # DEBUG pcb => pcb_3
+  # DEBUG BEGIN_STMT
+  _6 = tcp_connect (pcb_3, ipaddr_4(D), port_5(D), altcp_tcp_connected);
+
+  <bb 3> [local count: 1073741824]:
+  # _7 = PHI <_6(2)>
+  return _7;
+
+}
+
+
+altcp_tcp_listen.part.0 (struct altcp_pcb * conn, u8_t backlog, err_t * err)
+{
+  struct tcp_pcb * pcb;
+  struct tcp_pcb * lpcb;
+  struct altcp_pcb * _6;
+
+  <bb 5> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcb_2 = conn_1(D)->state;
+  # DEBUG pcb => pcb_2
+  # DEBUG BEGIN_STMT
+  lpcb_5 = tcp_listen_with_backlog_and_err (pcb_2, backlog_3(D), err_4(D));
+  # DEBUG lpcb => lpcb_5
+  # DEBUG BEGIN_STMT
+  if (lpcb_5 != 0B)
+    goto <bb 3>; [59.18%]
+  else
+    goto <bb 4>; [40.82%]
+
+  <bb 3> [local count: 635440412]:
+  # DEBUG BEGIN_STMT
+  conn_1(D)->state = lpcb_5;
+  # DEBUG BEGIN_STMT
+  tcp_accept (lpcb_5, altcp_tcp_accept);
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 4> [local count: 1073741824]:
+  # _6 = PHI <0B(2), conn_1(D)(3)>
+  return _6;
+
+}
+
+
+altcp_tcp_close.part.0 (struct altcp_pcb * conn)
+{
+  struct tcp_pcb * pcb;
+  err_t err;
+  err_t (*tcp_poll_fn) (void *, struct tcp_pcb *) oldpoll;
+  unsigned char _5;
+  signed char _6;
+
+  <bb 8> [local count: 1073741823]:
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcb_2 = conn_1(D)->state;
+  # DEBUG pcb => pcb_2
+  # DEBUG BEGIN_STMT
+  if (pcb_2 != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oldpoll_3 = pcb_2->poll;
+  # DEBUG oldpoll => oldpoll_3
+  # DEBUG BEGIN_STMT
+  altcp_tcp_remove_callbacks (pcb_2);
+  # DEBUG BEGIN_STMT
+  err_4 = tcp_close (pcb_2);
+  # DEBUG err => err_4
+  # DEBUG BEGIN_STMT
+  if (err_4 != 0)
+    goto <bb 4>; [20.24%]
+  else
+    goto <bb 5>; [79.76%]
+
+  <bb 4> [local count: 152127742]:
+  # DEBUG BEGIN_STMT
+  altcp_tcp_setup_callbacks (conn_1(D), pcb_2);
+  # DEBUG BEGIN_STMT
+  _5 = pcb_2->pollinterval;
+  tcp_poll (pcb_2, oldpoll_3, _5);
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 599491536]:
+  # DEBUG BEGIN_STMT
+  conn_1(D)->state = 0B;
+
+  <bb 6> [local count: 921614082]:
+  # DEBUG BEGIN_STMT
+  altcp_free (conn_1(D));
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1073741824]:
+  # _6 = PHI <err_4(4), 0(6)>
+  return _6;
+
+}
+
+
+altcp_tcp_shutdown.part.0 (struct altcp_pcb * conn, int shut_rx, int shut_tx)
+{
+  struct tcp_pcb * pcb;
+  signed char _5;
+  signed char _6;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcb_2 = conn_1(D)->state;
+  # DEBUG pcb => pcb_2
+  # DEBUG BEGIN_STMT
+  _5 = tcp_shutdown (pcb_2, shut_rx_3(D), shut_tx_4(D));
+
+  <bb 3> [local count: 1073741824]:
+  # _6 = PHI <_5(2)>
+  return _6;
+
+}
+
+
+altcp_tcp_write.part.0 (struct altcp_pcb * conn, const void * dataptr, u16_t len, u8_t apiflags)
+{
+  struct tcp_pcb * pcb;
+  signed char _6;
+  signed char _7;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcb_2 = conn_1(D)->state;
+  # DEBUG pcb => pcb_2
+  # DEBUG BEGIN_STMT
+  _6 = tcp_write (pcb_2, dataptr_3(D), len_4(D), apiflags_5(D));
+
+  <bb 3> [local count: 1073741824]:
+  # _7 = PHI <_6(2)>
+  return _7;
+
+}
+
+
+altcp_tcp_output.part.0 (struct altcp_pcb * conn)
+{
+  struct tcp_pcb * pcb;
+  signed char _3;
+  signed char _4;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcb_2 = conn_1(D)->state;
+  # DEBUG pcb => pcb_2
+  # DEBUG BEGIN_STMT
+  _3 = tcp_output (pcb_2);
+
+  <bb 3> [local count: 1073741824]:
+  # _4 = PHI <_3(2)>
+  return _4;
+
+}
+
+
+altcp_tcp_recv.part.0 (struct pbuf * p)
+{
+  struct altcp_pcb * conn;
+  void * arg;
+  struct tcp_pcb * tpcb;
+  err_t err;
+  signed char _2;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG D#14 s=> arg
+  # DEBUG arg => D#14
+  # DEBUG D#13 s=> tpcb
+  # DEBUG tpcb => D#13
+  # DEBUG D#12 s=> err
+  # DEBUG err => D#12
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (p_1(D) != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  pbuf_free (p_1(D));
+
+  <bb 4> [local count: 1073741824]:
+  # _2 = PHI <0(2), 0(3)>
+  return _2;
+
+}
+
+
+altcp_tcp_setup_callbacks.part.0 (struct tcp_pcb * tpcb)
+{
+  struct altcp_pcb * conn;
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG D#8 s=> conn
+  # DEBUG conn => D#8
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  tcp_recv (tpcb_1(D), altcp_tcp_recv);
+  # DEBUG BEGIN_STMT
+  tcp_sent (tpcb_1(D), altcp_tcp_sent);
+  # DEBUG BEGIN_STMT
+  tcp_err (tpcb_1(D), altcp_tcp_err);
+
+  <bb 3> [local count: 1073741824]:
+  return;
+
+}
+
+
+altcp_tcp_sndbuf.part.0 (struct altcp_pcb * conn)
+{
+  struct tcp_pcb * pcb;
+  long unsigned int _3;
+  short unsigned int iftmp.0_4;
+  short unsigned int _5;
+
+  <bb 5> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcb_2 = conn_1(D)->state;
+  # DEBUG pcb => pcb_2
+  # DEBUG BEGIN_STMT
+  _3 = pcb_2->snd_buf;
+  if (_3 <= 65534)
+    goto <bb 3>; [65.00%]
+  else
+    goto <bb 4>; [35.00%]
+
+  <bb 3> [local count: 697932186]:
+  iftmp.0_4 = (short unsigned int) _3;
+
+  <bb 4> [local count: 1073741824]:
+  # _5 = PHI <65535(2), iftmp.0_4(3)>
+  return _5;
+
+}
+
+
+altcp_tcp_poll.part.0 (void * arg)
+{
+  struct altcp_pcb * conn;
+  struct tcp_pcb * tpcb;
+  err_t (*<T63b>) (void *, struct altcp_pcb *) _2;
+  void * _3;
+  signed char _4;
+  signed char _5;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG D#6 s=> tpcb
+  # DEBUG tpcb => D#6
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_1(D)].poll;
+  if (_2 != 0B)
+    goto <bb 3>; [54.59%]
+  else
+    goto <bb 4>; [45.41%]
+
+  <bb 3> [local count: 586155663]:
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+  _4 = _2 (_3, arg_1(D));
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 4> [local count: 1073741824]:
+  # _5 = PHI <0(2), _4(3)>
+  return _5;
+
+}
+
+
+altcp_tcp_sent.part.0 (void * arg, u16_t len)
+{
+  struct altcp_pcb * conn;
+  struct tcp_pcb * tpcb;
+  err_t (*<T636>) (void *, struct altcp_pcb *, u16_t) _2;
+  void * _3;
+  signed char _5;
+  signed char _6;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG D#4 s=> tpcb
+  # DEBUG tpcb => D#4
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_1(D)].sent;
+  if (_2 != 0B)
+    goto <bb 3>; [54.59%]
+  else
+    goto <bb 4>; [45.41%]
+
+  <bb 3> [local count: 586155663]:
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+  _5 = _2 (_3, arg_1(D), len_4(D));
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 4> [local count: 1073741824]:
+  # _6 = PHI <0(2), _5(3)>
+  return _6;
+
+}
+
+
+altcp_tcp_connected.part.0 (void * arg, err_t err)
+{
+  struct altcp_pcb * conn;
+  struct tcp_pcb * tpcb;
+  err_t (*<T62b>) (void *, struct altcp_pcb *, err_t) _2;
+  void * _3;
+  signed char _5;
+  signed char _6;
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG D#2 s=> tpcb
+  # DEBUG tpcb => D#2
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_1(D)].connected;
+  if (_2 != 0B)
+    goto <bb 3>; [54.59%]
+  else
+    goto <bb 4>; [45.41%]
+
+  <bb 3> [local count: 586155663]:
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct altcp_pcb *)arg_1(D)].arg;
+  _5 = _2 (_3, arg_1(D), err_4(D));
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 4> [local count: 1073741824]:
+  # _6 = PHI <0(2), _5(3)>
+  return _6;
+
+}
+
+
+altcp_tcp_get_port (struct altcp_pcb * conn, int local)
+{
+  struct tcp_pcb * pcb;
+  struct altcp_pcb * _1;
+  u16_t _2;
+  u16_t _8;
+  u16_t _9;
+
+  <bb 2> [local count: 219131]:
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 9>; [30.00%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  pcb_6 = conn_4(D)->state;
+  # DEBUG pcb => pcb_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 10> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 11> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pcb_6 != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 9>; [30.00%]
+
+  <bb 6> [local count: 32212]:
+  # DEBUG BEGIN_STMT
+  if (local_7(D) != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 16106]:
+  # DEBUG BEGIN_STMT
+  _9 = pcb_6->local_port;
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 16106]:
+  # DEBUG BEGIN_STMT
+  _8 = pcb_6->remote_port;
+
+  <bb 9> [local count: 111757]:
+  # _2 = PHI <_9(7), _8(8), 0(5), 0(2)>
+  return _2;
+
+}
+
+
+altcp_tcp_get_ip (struct altcp_pcb * conn, int local)
+{
+  struct tcp_pcb * pcb;
+  struct altcp_pcb * _1;
+  struct ip_addr_t * _2;
+  struct ip_addr_t * _8;
+  struct ip_addr_t * _9;
+
+  <bb 2> [local count: 180248]:
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) != 0B)
+    goto <bb 3>; [85.10%]
+  else
+    goto <bb 9>; [14.90%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  pcb_6 = conn_4(D)->state;
+  # DEBUG pcb => pcb_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 10> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 11> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pcb_6 != 0B)
+    goto <bb 6>; [85.10%]
+  else
+    goto <bb 9>; [14.90%]
+
+  <bb 6> [local count: 39161]:
+  # DEBUG BEGIN_STMT
+  if (local_7(D) != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 19580]:
+  # DEBUG BEGIN_STMT
+  _9 = &pcb_6->local_ip;
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 19580]:
+  # DEBUG BEGIN_STMT
+  _8 = &pcb_6->remote_ip;
+
+  <bb 9> [local count: 72874]:
+  # _2 = PHI <_9(7), _8(8), 0B(5), 0B(2)>
+  return _2;
+
+}
+
+
+altcp_tcp_get_tcp_addrinfo (struct altcp_pcb * conn, int local, struct ip_addr_t * addr, u16_t * port)
+{
+  struct tcp_pcb * pcb;
+  struct altcp_pcb * _1;
+  err_t _2;
+  err_t _12;
+
+  <bb 2> [local count: 120098]:
+  # DEBUG BEGIN_STMT
+  if (conn_5(D) != 0B)
+    goto <bb 3>; [99.13%]
+  else
+    goto <bb 6>; [0.87%]
+
+  <bb 3> [local count: 119053]:
+  # DEBUG BEGIN_STMT
+  pcb_7 = conn_5(D)->state;
+  # DEBUG pcb => pcb_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_5(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [90.19%]
+  else
+    goto <bb 5>; [9.81%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 11679]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = tcp_tcp_get_tcp_addrinfo (pcb_7, local_8(D), addr_9(D), port_10(D));
+
+  <bb 6> [local count: 12724]:
+  # _2 = PHI <_12(5), -6(2)>
+  return _2;
+
+}
+
+
+altcp_tcp_dealloc (struct altcp_pcb * conn)
+{
+  struct altcp_pcb * _1;
+
+  <bb 2> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 5>; [70.00%]
+  else
+    goto <bb 4>; [30.00%]
+
+  <bb 5> [local count: 107374]:
+
+  <bb 3> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+altcp_tcp_setprio (struct altcp_pcb * conn, u8_t prio)
+{
+  struct tcp_pcb * pcb;
+  struct altcp_pcb * _1;
+
+  <bb 2> [local count: 185771]:
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 130040]:
+  # DEBUG BEGIN_STMT
+  pcb_6 = conn_4(D)->state;
+  # DEBUG pcb => pcb_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [82.57%]
+  else
+    goto <bb 5>; [17.43%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 22666]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  tcp_setprio (pcb_6, prio_7(D));
+
+  <bb 6> [local count: 78397]:
+  return;
+
+}
+
+
+altcp_tcp_nagle_disabled (struct altcp_pcb * conn)
+{
+  void * _1;
+  struct altcp_pcb * _2;
+  short unsigned int _3;
+  _Bool _4;
+  int _5;
+  int _9;
+  short unsigned int _11;
+
+  <bb 2> [local count: 267526]:
+  # DEBUG BEGIN_STMT
+  if (conn_7(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 3> [local count: 187268]:
+  _1 = conn_7(D)->state;
+  if (_1 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 4> [local count: 131088]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pcb => _1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = conn_7(D)->inner_conn;
+  if (_2 != 0B)
+    goto <bb 8>; [81.91%]
+  else
+    goto <bb 6>; [18.09%]
+
+  <bb 8> [local count: 107374]:
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 9> [local count: 1073741824]:
+  goto <bb 5>; [100.00%]
+
+  <bb 6> [local count: 23714]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct tcp_pcb *)_1].flags;
+  _11 = _3 & 64;
+  _4 = _11 != 0;
+  _9 = (int) _4;
+
+  <bb 7> [local count: 160152]:
+  # _5 = PHI <_9(6), 0(3), 0(2)>
+  return _5;
+
+}
+
+
+altcp_tcp_nagle_enable (struct altcp_pcb * conn)
+{
+  void * _1;
+  struct altcp_pcb * _2;
+  short unsigned int _3;
+  short unsigned int _4;
+
+  <bb 2> [local count: 313044]:
+  # DEBUG BEGIN_STMT
+  if (conn_7(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 3> [local count: 219131]:
+  _1 = conn_7(D)->state;
+  if (_1 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 4> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pcb => _1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = conn_7(D)->inner_conn;
+  if (_2 != 0B)
+    goto <bb 8>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 8> [local count: 107374]:
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 9> [local count: 1073741824]:
+  goto <bb 5>; [100.00%]
+
+  <bb 6> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct tcp_pcb *)_1].flags;
+  _4 = _3 & 65471;
+  MEM[(struct tcp_pcb *)_1].flags = _4;
+
+  <bb 7> [local count: 205670]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+altcp_tcp_nagle_disable (struct altcp_pcb * conn)
+{
+  void * _1;
+  struct altcp_pcb * _2;
+  short unsigned int _3;
+  short unsigned int _4;
+
+  <bb 2> [local count: 313044]:
+  # DEBUG BEGIN_STMT
+  if (conn_7(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 3> [local count: 219131]:
+  _1 = conn_7(D)->state;
+  if (_1 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 4> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pcb => _1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = conn_7(D)->inner_conn;
+  if (_2 != 0B)
+    goto <bb 8>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 8> [local count: 107374]:
+
+  <bb 5> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 9> [local count: 1073741824]:
+  goto <bb 5>; [100.00%]
+
+  <bb 6> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct tcp_pcb *)_1].flags;
+  _4 = _3 | 64;
+  MEM[(struct tcp_pcb *)_1].flags = _4;
+
+  <bb 7> [local count: 205670]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+altcp_tcp_sndqueuelen (struct altcp_pcb * conn)
+{
+  struct tcp_pcb * pcb;
+  struct altcp_pcb * _1;
+  u16_t _2;
+  u16_t _7;
+
+  <bb 2> [local count: 187268]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcb_6 = conn_4(D)->state;
+  # DEBUG pcb => pcb_6
+  # DEBUG BEGIN_STMT
+  _7 = pcb_6->snd_queuelen;
+
+  <bb 6> [local count: 79894]:
+  # _2 = PHI <0(2), _7(5)>
+  return _2;
+
+}
+
+
+altcp_tcp_sndbuf (struct altcp_pcb * conn)
+{
+  struct altcp_pcb * _1;
+  u16_t _3;
+  short unsigned int _4;
+
+  <bb 2> [local count: 187268]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_6(D) == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_6(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  _4 = altcp_tcp_sndbuf.part.0 (conn_6(D));
+
+  <bb 6> [local count: 79894]:
+  # _3 = PHI <0(2), _4(5)>
+  return _3;
+
+}
+
+
+altcp_tcp_mss (struct altcp_pcb * conn)
+{
+  struct tcp_pcb * pcb;
+  struct altcp_pcb * _1;
+  u16_t _2;
+  u16_t _7;
+
+  <bb 2> [local count: 187268]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pcb_6 = conn_4(D)->state;
+  # DEBUG pcb => pcb_6
+  # DEBUG BEGIN_STMT
+  _7 = pcb_6->mss;
+
+  <bb 6> [local count: 79894]:
+  # _2 = PHI <0(2), _7(5)>
+  return _2;
+
+}
+
+
+altcp_tcp_output (struct altcp_pcb * conn)
+{
+  struct altcp_pcb * _1;
+  err_t _2;
+  signed char _7;
+
+  <bb 2> [local count: 130628]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) == 0B)
+    goto <bb 6>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 130040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [82.57%]
+  else
+    goto <bb 5>; [17.43%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 22666]:
+  _7 = altcp_tcp_output.part.0 (conn_4(D));
+
+  <bb 6> [local count: 23254]:
+  # _2 = PHI <-6(2), _7(5)>
+  return _2;
+
+}
+
+
+altcp_tcp_write (struct altcp_pcb * conn, const void * dataptr, u16_t len, u8_t apiflags)
+{
+  struct altcp_pcb * _1;
+  err_t _2;
+  signed char _10;
+
+  <bb 2> [local count: 130628]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) == 0B)
+    goto <bb 6>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 130040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [82.57%]
+  else
+    goto <bb 5>; [17.43%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 22666]:
+  _10 = altcp_tcp_write.part.0 (conn_4(D), dataptr_6(D), len_7(D), apiflags_8(D));
+
+  <bb 6> [local count: 23254]:
+  # _2 = PHI <-6(2), _10(5)>
+  return _2;
+
+}
+
+
+altcp_tcp_shutdown (struct altcp_pcb * conn, int shut_rx, int shut_tx)
+{
+  struct altcp_pcb * _1;
+  err_t _2;
+  signed char _9;
+
+  <bb 2> [local count: 130628]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) == 0B)
+    goto <bb 6>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 130040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [82.57%]
+  else
+    goto <bb 5>; [17.43%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 22666]:
+  _9 = altcp_tcp_shutdown.part.0 (conn_4(D), shut_rx_6(D), shut_tx_7(D));
+
+  <bb 6> [local count: 23254]:
+  # _2 = PHI <-6(2), _9(5)>
+  return _2;
+
+}
+
+
+altcp_tcp_close (struct altcp_pcb * conn)
+{
+  struct altcp_pcb * _1;
+  err_t _2;
+  signed char _6;
+
+  <bb 2> [local count: 154085]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) == 0B)
+    goto <bb 6>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  _6 = altcp_tcp_close.part.0 (conn_4(D));
+
+  <bb 6> [local count: 46711]:
+  # _2 = PHI <-6(2), _6(5)>
+  return _2;
+
+}
+
+
+altcp_tcp_abort (struct altcp_pcb * conn)
+{
+  struct tcp_pcb * pcb;
+  struct altcp_pcb * _1;
+
+  <bb 2> [local count: 219131]:
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  pcb_6 = conn_4(D)->state;
+  # DEBUG pcb => pcb_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 8>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 8> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 9> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pcb_6 != 0B)
+    goto <bb 6>; [53.47%]
+  else
+    goto <bb 7>; [46.53%]
+
+  <bb 6> [local count: 24606]:
+  # DEBUG BEGIN_STMT
+  tcp_abort (pcb_6);
+
+  <bb 7> [local count: 111757]:
+  return;
+
+}
+
+
+altcp_tcp_listen (struct altcp_pcb * conn, u8_t backlog, err_t * err)
+{
+  struct altcp_pcb * _1;
+  struct altcp_pcb * _2;
+  struct altcp_pcb * _8;
+
+  <bb 2> [local count: 141764]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) == 0B)
+    goto <bb 6>; [8.27%]
+  else
+    goto <bb 3>; [91.73%]
+
+  <bb 3> [local count: 130040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [82.57%]
+  else
+    goto <bb 5>; [17.43%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 22666]:
+  _8 = altcp_tcp_listen.part.0 (conn_4(D), backlog_6(D), err_7(D));
+
+  <bb 6> [local count: 34390]:
+  # _2 = PHI <0B(2), _8(5)>
+  return _2;
+
+}
+
+
+altcp_tcp_connect (struct altcp_pcb * conn, const struct ip_addr_t * ipaddr, u16_t port, err_t (*altcp_connected_fn) (void *, struct altcp_pcb *, err_t) connected)
+{
+  struct altcp_pcb * _1;
+  err_t _2;
+  signed char _10;
+
+  <bb 2> [local count: 130628]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) == 0B)
+    goto <bb 6>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 130040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [82.57%]
+  else
+    goto <bb 5>; [17.43%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 22666]:
+  _10 = altcp_tcp_connect.part.0 (conn_4(D), ipaddr_7(D), port_8(D), connected_6(D));
+
+  <bb 6> [local count: 23254]:
+  # _2 = PHI <-6(2), _10(5)>
+  return _2;
+
+}
+
+
+altcp_tcp_bind (struct altcp_pcb * conn, const struct ip_addr_t * ipaddr, u16_t port)
+{
+  struct altcp_pcb * _1;
+  err_t _2;
+  signed char _9;
+
+  <bb 2> [local count: 130628]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) == 0B)
+    goto <bb 6>; [0.45%]
+  else
+    goto <bb 3>; [99.55%]
+
+  <bb 3> [local count: 130040]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [82.57%]
+  else
+    goto <bb 5>; [17.43%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 22666]:
+  _9 = altcp_tcp_bind.part.0 (conn_4(D), ipaddr_6(D), port_7(D));
+
+  <bb 6> [local count: 23254]:
+  # _2 = PHI <-6(2), _9(5)>
+  return _2;
+
+}
+
+
+altcp_tcp_recved (struct altcp_pcb * conn, u16_t len)
+{
+  struct tcp_pcb * pcb;
+  struct altcp_pcb * _1;
+
+  <bb 2> [local count: 185771]:
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 130040]:
+  # DEBUG BEGIN_STMT
+  pcb_6 = conn_4(D)->state;
+  # DEBUG pcb => pcb_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [82.57%]
+  else
+    goto <bb 5>; [17.43%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 22666]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  tcp_recved (pcb_6, len_7(D));
+
+  <bb 6> [local count: 78397]:
+  return;
+
+}
+
+
+altcp_tcp_set_poll (struct altcp_pcb * conn, u8_t interval)
+{
+  struct tcp_pcb * pcb;
+  struct altcp_pcb * _1;
+
+  <bb 2> [local count: 185771]:
+  # DEBUG BEGIN_STMT
+  if (conn_4(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 130040]:
+  # DEBUG BEGIN_STMT
+  pcb_6 = conn_4(D)->state;
+  # DEBUG pcb => pcb_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = conn_4(D)->inner_conn;
+  if (_1 != 0B)
+    goto <bb 7>; [82.57%]
+  else
+    goto <bb 5>; [17.43%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 22666]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  tcp_poll (pcb_6, altcp_tcp_poll, interval_7(D));
+
+  <bb 6> [local count: 78397]:
+  return;
+
+}
+
+
+altcp_tcp_wrap (struct tcp_pcb * tpcb)
+{
+  struct altcp_pcb * ret;
+  struct altcp_pcb * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  if (tpcb_3(D) != 0B)
+    goto <bb 3>; [73.78%]
+  else
+    goto <bb 5>; [26.22%]
+
+  <bb 3> [local count: 792206719]:
+  # DEBUG BEGIN_STMT
+  ret_6 = altcp_alloc ();
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  if (ret_6 != 0B)
+    goto <bb 4>; [59.18%]
+  else
+    goto <bb 5>; [40.82%]
+
+  <bb 4> [local count: 468827936]:
+  # DEBUG BEGIN_STMT
+  altcp_tcp_setup (ret_6, tpcb_3(D));
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 1073741824]:
+  # _1 = PHI <ret_6(4), 0B(3), 0B(2)>
+  return _1;
+
+}
+
+
+altcp_tcp_alloc (void * arg, u8_t ip_type)
+{
+  struct altcp_pcb * _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = altcp_tcp_new_ip_type (ip_type_2(D));
+  return _4;
+
+}
+
+
+altcp_tcp_new_ip_type (u8_t ip_type)
+{
+  struct altcp_pcb * ret;
+  struct tcp_pcb * tpcb;
+  struct altcp_pcb * _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  tpcb_6 = tcp_new_ip_type (ip_type_4(D));
+  # DEBUG tpcb => tpcb_6
+  # DEBUG BEGIN_STMT
+  if (tpcb_6 != 0B)
+    goto <bb 3>; [73.78%]
+  else
+    goto <bb 6>; [26.22%]
+
+  <bb 3> [local count: 792206719]:
+  # DEBUG BEGIN_STMT
+  ret_8 = altcp_alloc ();
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  if (ret_8 != 0B)
+    goto <bb 4>; [74.64%]
+  else
+    goto <bb 5>; [25.36%]
+
+  <bb 4> [local count: 591303095]:
+  # DEBUG BEGIN_STMT
+  altcp_tcp_setup (ret_8, tpcb_6);
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 200903624]:
+  # DEBUG BEGIN_STMT
+  tcp_close (tpcb_6);
+
+  <bb 6> [local count: 1073741824]:
+  # _1 = PHI <ret_8(4), 0B(5), 0B(2)>
+  return _1;
+
+}
+
+
+altcp_tcp_setup (struct altcp_pcb * conn, struct tcp_pcb * tpcb)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  altcp_tcp_setup_callbacks (conn_2(D), tpcb_3(D));
+  # DEBUG BEGIN_STMT
+  conn_2(D)->state = tpcb_3(D);
+  # DEBUG BEGIN_STMT
+  conn_2(D)->fns = &altcp_tcp_functions;
+  return;
+
+}
+
+
+altcp_tcp_setup_callbacks (struct altcp_pcb * conn, struct tcp_pcb * tpcb)
+{
+  tcp_state _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  tcp_arg (tpcb_3(D), conn_4(D));
+  # DEBUG BEGIN_STMT
+  _1 = tpcb_3(D)->state;
+  if (_1 != 1)
+    goto <bb 3>; [48.88%]
+  else
+    goto <bb 4>; [51.12%]
+
+  <bb 3> [local count: 524845000]:
+  # DEBUG D#7 => conn_4(D)
+  altcp_tcp_setup_callbacks.part.0 (tpcb_3(D));
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+altcp_tcp_remove_callbacks (struct tcp_pcb * tpcb)
+{
+  tcp_state _1;
+  unsigned char _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  tcp_arg (tpcb_5(D), 0B);
+  # DEBUG BEGIN_STMT
+  _1 = tpcb_5(D)->state;
+  if (_1 != 1)
+    goto <bb 3>; [48.88%]
+  else
+    goto <bb 4>; [51.12%]
+
+  <bb 3> [local count: 524845004]:
+  # DEBUG BEGIN_STMT
+  tcp_recv (tpcb_5(D), 0B);
+  # DEBUG BEGIN_STMT
+  tcp_sent (tpcb_5(D), 0B);
+  # DEBUG BEGIN_STMT
+  tcp_err (tpcb_5(D), 0B);
+  # DEBUG BEGIN_STMT
+  _2 = tpcb_5(D)->pollinterval;
+  tcp_poll (tpcb_5(D), 0B, _2);
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+altcp_tcp_err (void * arg, err_t err)
+{
+  void (*<T640>) (void *, err_t) _1;
+  void * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG conn => arg_5(D)
+  # DEBUG BEGIN_STMT
+  if (arg_5(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 3> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  MEM[(struct altcp_pcb *)arg_5(D)].state = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct altcp_pcb *)arg_5(D)].err;
+  if (_1 != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 4> [local count: 526133494]:
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_5(D)].arg;
+  _1 (_2, err_8(D));
+
+  <bb 5> [local count: 751619278]:
+  # DEBUG BEGIN_STMT
+  altcp_free (arg_5(D));
+
+  <bb 6> [local count: 1073741824]:
+  return;
+
+}
+
+
+altcp_tcp_poll (void * arg, struct tcp_pcb * tpcb)
+{
+  void * _1;
+  struct altcp_pcb * _2;
+  signed char _3;
+  err_t _4;
+
+  <bb 2> [local count: 219131]:
+  # DEBUG BEGIN_STMT
+  # DEBUG conn => arg_7(D)
+  # DEBUG BEGIN_STMT
+  if (arg_7(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct altcp_pcb *)arg_7(D)].state;
+  if (_1 != tpcb_10(D))
+    goto <bb 9>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 9> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 11> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_7(D)].inner_conn;
+  if (_2 != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 10> [local count: 32212]:
+
+  <bb 6> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 322122547]:
+  goto <bb 6>; [100.00%]
+
+  <bb 7> [local count: 13805]:
+  # DEBUG D#5 => tpcb_10(D)
+  _3 = altcp_tcp_poll.part.0 (arg_7(D));
+
+  <bb 8> [local count: 79544]:
+  # _4 = PHI <_3(7), 0(2)>
+  return _4;
+
+}
+
+
+altcp_tcp_sent (void * arg, struct tcp_pcb * tpcb, u16_t len)
+{
+  void * _1;
+  struct altcp_pcb * _2;
+  signed char _3;
+  err_t _4;
+
+  <bb 2> [local count: 219131]:
+  # DEBUG BEGIN_STMT
+  # DEBUG conn => arg_7(D)
+  # DEBUG BEGIN_STMT
+  if (arg_7(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct altcp_pcb *)arg_7(D)].state;
+  if (_1 != tpcb_10(D))
+    goto <bb 9>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 9> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 11> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_7(D)].inner_conn;
+  if (_2 != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 10> [local count: 32212]:
+
+  <bb 6> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 322122547]:
+  goto <bb 6>; [100.00%]
+
+  <bb 7> [local count: 13805]:
+  # DEBUG D#3 => tpcb_10(D)
+  _3 = altcp_tcp_sent.part.0 (arg_7(D), len_11(D));
+
+  <bb 8> [local count: 79544]:
+  # _4 = PHI <_3(7), 0(2)>
+  return _4;
+
+}
+
+
+altcp_tcp_recv (void * arg, struct tcp_pcb * tpcb, struct pbuf * p, err_t err)
+{
+  void * _1;
+  struct altcp_pcb * _2;
+  err_t (*<T631>) (void *, struct altcp_pcb *, struct pbuf *, err_t) _3;
+  void * _5;
+  err_t _6;
+  signed char _9;
+  err_t _17;
+
+  <bb 2> [local count: 219131]:
+  # DEBUG BEGIN_STMT
+  # DEBUG conn => arg_10(D)
+  # DEBUG BEGIN_STMT
+  if (arg_10(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 9>; [30.00%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct altcp_pcb *)arg_10(D)].state;
+  if (_1 != tpcb_13(D))
+    goto <bb 11>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 11> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 13> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_10(D)].inner_conn;
+  if (_2 != 0B)
+    goto <bb 12>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 12> [local count: 32212]:
+
+  <bb 6> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 14> [local count: 322122547]:
+  goto <bb 6>; [100.00%]
+
+  <bb 7> [local count: 13805]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = MEM[(struct altcp_pcb *)arg_10(D)].recv;
+  if (_3 != 0B)
+    goto <bb 8>; [54.59%]
+  else
+    goto <bb 9>; [45.41%]
+
+  <bb 8> [local count: 7536]:
+  # DEBUG BEGIN_STMT
+  _5 = MEM[(struct altcp_pcb *)arg_10(D)].arg;
+  _17 = _3 (_5, arg_10(D), p_14(D), err_15(D));
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 72008]:
+  # DEBUG D#9 => arg_10(D)
+  # DEBUG D#10 => tpcb_13(D)
+  # DEBUG D#11 => err_15(D)
+  _9 = altcp_tcp_recv.part.0 (p_14(D));
+
+  <bb 10> [local count: 79544]:
+  # _6 = PHI <_17(8), _9(9)>
+  return _6;
+
+}
+
+
+altcp_tcp_connected (void * arg, struct tcp_pcb * tpcb, err_t err)
+{
+  void * _1;
+  struct altcp_pcb * _2;
+  signed char _3;
+  err_t _4;
+
+  <bb 2> [local count: 219131]:
+  # DEBUG BEGIN_STMT
+  # DEBUG conn => arg_7(D)
+  # DEBUG BEGIN_STMT
+  if (arg_7(D) != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 3> [local count: 153391]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(struct altcp_pcb *)arg_7(D)].state;
+  if (_1 != tpcb_10(D))
+    goto <bb 9>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 9> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 11> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 46017]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_7(D)].inner_conn;
+  if (_2 != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 10> [local count: 32212]:
+
+  <bb 6> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 322122547]:
+  goto <bb 6>; [100.00%]
+
+  <bb 7> [local count: 13805]:
+  # DEBUG D#1 => tpcb_10(D)
+  _3 = altcp_tcp_connected.part.0 (arg_7(D), err_11(D));
+
+  <bb 8> [local count: 79544]:
+  # _4 = PHI <_3(7), 0(2)>
+  return _4;
+
+}
+
+
+altcp_tcp_accept (void * arg, struct tcp_pcb * new_tpcb, err_t err)
+{
+  struct altcp_pcb * new_conn;
+  err_t (*<T62b>) (void *, struct altcp_pcb *, err_t) _1;
+  err_t (*<T62b>) (void *, struct altcp_pcb *, err_t) _2;
+  void * _3;
+  err_t _4;
+  err_t _14;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG listen_conn => arg_6(D)
+  # DEBUG BEGIN_STMT
+  if (arg_6(D) != 0B)
+    goto <bb 3>; [99.13%]
+  else
+    goto <bb 6>; [0.87%]
+
+  <bb 3> [local count: 1064400271]:
+  _1 = MEM[(struct altcp_pcb *)arg_6(D)].accept;
+  if (_1 != 0B)
+    goto <bb 4>; [98.26%]
+  else
+    goto <bb 6>; [1.74%]
+
+  <bb 4> [local count: 1045879706]:
+  # DEBUG BEGIN_STMT
+  new_conn_9 = altcp_alloc ();
+  # DEBUG new_conn => new_conn_9
+  # DEBUG BEGIN_STMT
+  if (new_conn_9 == 0B)
+    goto <bb 6>; [1.74%]
+  else
+    goto <bb 5>; [98.26%]
+
+  <bb 5> [local count: 1027681399]:
+  # DEBUG BEGIN_STMT
+  altcp_tcp_setup (new_conn_9, new_tpcb_10(D));
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct altcp_pcb *)arg_6(D)].accept;
+  _3 = MEM[(struct altcp_pcb *)arg_6(D)].arg;
+  _14 = _2 (_3, new_conn_9, err_12(D));
+
+  <bb 6> [local count: 1073741824]:
+  # _4 = PHI <-1(4), _14(5), -16(3), -16(2)>
+  return _4;
+
+}
+
+

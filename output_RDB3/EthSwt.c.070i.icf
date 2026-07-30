@@ -1,0 +1,201 @@
+Parsed function:EthSwt_EthTxFinishedIndication
+Parsed function:EthSwt_EthTxProcessFrame
+Parsed function:EthSwt_EthTxAdaptBufferLength
+Parsed function:EthSwt_EthTxPrepareFrame
+Parsed function:EthSwt_EthRxFinishedIndication
+Parsed function:EthSwt_EthRxProcessFrame
+Dump after hash based groups
+Congruence classes: 4 (unique hash values: 4), with total: 6 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 2 classes
+[2]: 2 classes
+
+
+Dump after WPA based types groups
+Congruence classes: 4 (unique hash values: 4), with total: 6 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 2 classes
+[2]: 2 classes
+
+
+Worklist has been filled with: 0
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 4 (unique hash values: 4), with total: 6 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 2 classes
+[2]: 2 classes
+
+
+Init called for 4 items (66.67%).
+Dump after full equality comparison of groups
+Congruence classes: 4 (unique hash values: 4), with total: 6 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 2 classes
+[2]: 2 classes
+
+
+Worklist has been filled with: 0
+Address reference subdivision created: 0 new classes.
+Congruence classes: 4 (unique hash values: 4), with total: 6 items
+Class size histogram [num of members]: number of classe number of classess
+[1]: 2 classes
+[2]: 2 classes
+
+
+
+Item count: 6
+Congruent classes before: 4, after: 4
+Average class size before: 1.50, after: 1.50
+Average non-singular class size: 2.00, count: 2
+Equal symbols: 2
+Fraction of visited symbols: 33.33%
+
+Semantic equality hit:EthSwt_EthRxFinishedIndication->EthSwt_EthTxFinishedIndication
+Assembler symbol names:EthSwt_EthRxFinishedIndication->EthSwt_EthTxFinishedIndication
+
+Symbols to be put in SSA form
+{ D.5703 D.5704 D.5733 D.5734 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 3
+Number of blocks to update: 2 ( 67%)
+
+
+
+Analyzing function: EthSwt_EthTxFinishedIndication/5
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EthSwt_EthTxFinishedIndication
+
+IPA function summary for EthSwt_EthTxFinishedIndication/5 inlinable
+  global time:     15.000000
+  self size:       7
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    EthSwt_EthRxFinishedIndication/1 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 4 time: 13callee size: 1 stack: 0
+
+Unified; Wrapper has been created.
+
+Semantic equality hit:EthSwt_EthTxPrepareFrame->EthSwt_EthTxProcessFrame
+Assembler symbol names:EthSwt_EthTxPrepareFrame->EthSwt_EthTxProcessFrame
+
+Symbols to be put in SSA form
+{ D.5697 D.5698 D.5699 D.5700 D.5735 D.5736 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 3
+Number of blocks to update: 2 ( 67%)
+
+
+
+Analyzing function: EthSwt_EthTxProcessFrame/4
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: EthSwt_EthTxProcessFrame
+
+IPA function summary for EthSwt_EthTxProcessFrame/4 inlinable
+  global time:     17.000000
+  self size:       9
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    EthSwt_EthTxPrepareFrame/2 function not considered for inlining
+      loop depth: 0 freq:1.00 size: 6 time: 15callee size: 1 stack: 0
+
+Unified; Wrapper has been created.
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+EthSwt_EthTxFinishedIndication (uint8 CtrlIdx, Eth_BufIdxType BufIdx)
+{
+  Std_ReturnType retval.6;
+
+  <bb 2> [local count: 1073741824]:
+  retval.6_3 = EthSwt_EthRxFinishedIndication (CtrlIdx_1(D), BufIdx_2(D)); [tail call]
+  return retval.6_3;
+
+}
+
+
+EthSwt_EthTxProcessFrame (uint8 CtrlIdx, Eth_BufIdxType BufIdx, uint8 * * DataPtr, uint16 * LengthPtr)
+{
+  Std_ReturnType retval.7;
+
+  <bb 2> [local count: 1073741824]:
+  retval.7_5 = EthSwt_EthTxPrepareFrame (CtrlIdx_1(D), BufIdx_2(D), DataPtr_3(D), LengthPtr_4(D)); [tail call]
+  return retval.7_5;
+
+}
+
+
+EthSwt_EthTxAdaptBufferLength (uint16 * LengthPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+EthSwt_EthTxPrepareFrame (uint8 CtrlIdx, Eth_BufIdxType BufIdx, uint8 * * DataPtr, uint16 * LengthPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+EthSwt_EthRxFinishedIndication (uint8 CtrlIdx, Eth_BufIdxType BufIdx)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+EthSwt_EthRxProcessFrame (uint8 CtrlIdx, Eth_BufIdxType BufIdx, uint8 * * DataPtr, uint16 * LengthPtr, boolean * IsMgmtFrameOnlyPtr)
+{
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *IsMgmtFrameOnlyPtr_2(D) = 0;
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+

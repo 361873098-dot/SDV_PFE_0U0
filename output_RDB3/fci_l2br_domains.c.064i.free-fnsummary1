@@ -1,0 +1,2114 @@
+fci_l2br_static_entry_get_valid_fw_list.part.0 ()
+{
+  uint32_t ii;
+  uint32_t session_id;
+  uint32_t valid_if_list;
+  errno_t ret;
+  const struct fci_t * fci_context;
+  struct pfe_if_db_entry_t * if_db_entry;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] DB unlock failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 868, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG valid_if_list => 0
+
+  <bb 3> [local count: 1073741824]:
+  # valid_if_list_1 = PHI <0(2)>
+  # DEBUG valid_if_list => valid_if_list_1
+  # DEBUG BEGIN_STMT
+  session_id ={v} {CLOBBER};
+  if_db_entry ={v} {CLOBBER};
+  return valid_if_list_1;
+
+}
+
+
+l2br_static_entry_cmd_fpp_action_query_cont.isra.0 (uint16_t * fci_ret, struct fpp_l2_static_ent_cmd_t * reply_buf, uint32_t * reply_len, struct pfe_l2br_static_entry_t * entry)
+{
+  struct pfe_l2br_t * _2;
+  short unsigned int _7;
+  short unsigned int _8;
+  uint8_t[6] * _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  struct pfe_l2br_t * _21;
+  uint8_t * _22;
+  struct pfe_l2br_t * _23;
+  uint8_t * _24;
+  struct pfe_l2br_t * _25;
+  uint8_t * _26;
+
+  <bb 7> [local count: 1073741824]:
+  # DEBUG br_ent_cmd s=> br_ent_cmd
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG break_switch => 0
+  # DEBUG BEGIN_STMT
+  if (entry_1(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 3> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  _2 = context.l2_bridge;
+  entry_3 = pfe_l2br_static_entry_get_next (_2);
+  # DEBUG entry => entry_3
+  # DEBUG BEGIN_STMT
+  if (entry_3 == 0B)
+    goto <bb 4>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 4> [local count: 96636764]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  *fci_ret_4(D) = 62274;
+  # DEBUG BEGIN_STMT
+  # DEBUG break_switch => 1
+  # DEBUG ret => 0
+  # DEBUG entry => 0B
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 977105061]:
+  # entry_6 = PHI <entry_1(D)(2), entry_3(3)>
+  # DEBUG break_switch => NULL
+  # DEBUG ret => NULL
+  # DEBUG entry => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG br_ent_cmd => reply_buf_9(D)
+  # DEBUG BEGIN_STMT
+  *reply_len_5(D) = 20;
+  # DEBUG BEGIN_STMT
+  _7 = pfe_l2br_static_entry_get_vlan (entry_6);
+  # DEBUG BEGIN_STMT
+  _8 = _7 r>> 8;
+  reply_buf_9(D)->vlan = _8;
+  # DEBUG BEGIN_STMT
+  _10 = &reply_buf_9(D)->mac;
+  pfe_l2br_static_entry_get_mac (entry_6, _10);
+  # DEBUG BEGIN_STMT
+  _11 = pfe_l2br_static_entry_get_fw_list (entry_6);
+  _12 = _11 >> 24;
+  _13 = _11 >> 8;
+  _14 = _13 & 65280;
+  _15 = _12 | _14;
+  _16 = _11 << 8;
+  _17 = _16 & 16711680;
+  _18 = _15 | _17;
+  _19 = _11 << 24;
+  _20 = _18 | _19;
+  reply_buf_9(D)->forward_list = _20;
+  # DEBUG BEGIN_STMT
+  _21 = context.l2_bridge;
+  _22 = &reply_buf_9(D)->local;
+  pfe_l2br_static_entry_get_local_flag (_21, entry_6, _22);
+  # DEBUG BEGIN_STMT
+  _23 = context.l2_bridge;
+  _24 = &reply_buf_9(D)->src_discard;
+  pfe_l2br_static_entry_get_src_discard_flag (_23, entry_6, _24);
+  # DEBUG BEGIN_STMT
+  _25 = context.l2_bridge;
+  _26 = &reply_buf_9(D)->dst_discard;
+  pfe_l2br_static_entry_get_dst_discard_flag (_25, entry_6, _26);
+  # DEBUG BEGIN_STMT
+  *fci_ret_4(D) = 0;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+fci_l2br_domain_cmd_query_cont_build_repply_buf.isra.0 (struct pfe_l2br_domain_t * domain, struct fpp_l2_bd_cmd_t * * bd_cmd, uint16_t * fci_ret, struct fpp_l2_bd_cmd_t * reply_buf, struct pfe_l2br_t * const * ISRA.33)
+{
+  struct pfe_ct_vlan_stats_t stats;
+  uint16_t * _3;
+  int _5;
+  struct fpp_l2_bd_cmd_t * _7;
+  short unsigned int _8;
+  short unsigned int _9;
+  uint8_t * _10;
+  uint8_t * _11;
+  int _12;
+  struct fpp_l2_bd_cmd_t * _13;
+  uint8_t * _14;
+  uint8_t * _15;
+  int _16;
+  struct pfe_l2br_t * _18;
+  unsigned char _19;
+  int _20;
+  struct fpp_l2_bd_cmd_t * _21;
+  struct fpp_l2_bd_stats_t * _22;
+  unsigned char _23;
+  struct fpp_l2_bd_cmd_t * _24;
+  <unnamed type> _25;
+  <unnamed type> _26;
+  unsigned char _27;
+  struct fpp_l2_bd_cmd_t * _28;
+  <unnamed type> _29;
+  <unnamed type> _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  struct fpp_l2_bd_cmd_t * _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+
+  <bb 16> [local count: 1073741824]:
+  # DEBUG fci_context s=> fci_context
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  stats = {};
+  # DEBUG BEGIN_STMT
+  *bd_cmd_2(D) = reply_buf_1(D);
+  # DEBUG BEGIN_STMT
+  _3 = &reply_buf_1(D)->vlan;
+  _5 = pfe_l2br_domain_get_vlan (domain_4(D), _3);
+  if (_5 != 0)
+    goto <bb 3>; [67.00%]
+  else
+    goto <bb 4>; [33.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_6(D) = 65535;
+  goto <bb 15>; [100.00%]
+
+  <bb 4> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _7 = *bd_cmd_2(D);
+  _8 = _7->vlan;
+  _9 = _8 r>> 8;
+  _7->vlan = _9;
+  # DEBUG BEGIN_STMT
+  _10 = &_7->ucast_hit;
+  _11 = &_7->ucast_miss;
+  _12 = pfe_l2br_domain_get_ucast_action (domain_4(D), _10, _11);
+  if (_12 != 0)
+    goto <bb 5>; [67.00%]
+  else
+    goto <bb 6>; [33.00%]
+
+  <bb 5> [local count: 237404317]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_6(D) = 65535;
+  goto <bb 15>; [100.00%]
+
+  <bb 6> [local count: 116930485]:
+  # DEBUG BEGIN_STMT
+  _13 = *bd_cmd_2(D);
+  _14 = &_13->mcast_hit;
+  _15 = &_13->mcast_miss;
+  _16 = pfe_l2br_domain_get_mcast_action (domain_4(D), _14, _15);
+  if (_16 != 0)
+    goto <bb 7>; [67.00%]
+  else
+    goto <bb 8>; [33.00%]
+
+  <bb 7> [local count: 78343425]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_6(D) = 65535;
+  goto <bb 15>; [100.00%]
+
+  <bb 8> [local count: 38587060]:
+  # DEBUG BEGIN_STMT
+  _18 = *ISRA.33_82(D);
+  _19 = pfe_l2br_get_vlan_stats_index (domain_4(D));
+  _20 = pfe_l2br_get_domain_stats (_18, &stats, _19);
+  if (_20 != 0)
+    goto <bb 9>; [67.00%]
+  else
+    goto <bb 10>; [33.00%]
+
+  <bb 9> [local count: 25853330]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_6(D) = 65535;
+  goto <bb 15>; [100.00%]
+
+  <bb 10> [local count: 12733730]:
+  # DEBUG BEGIN_STMT
+  _21 = *bd_cmd_2(D);
+  _22 = &_21->stats;
+  autolibc_memcpy (_22, &stats, 16);
+  # DEBUG BEGIN_STMT
+  _23 = pfe_l2br_domain_is_default (domain_4(D));
+  if (_23 == 1)
+    goto <bb 11>; [34.00%]
+  else
+    goto <bb 12>; [66.00%]
+
+  <bb 11> [local count: 4329468]:
+  # DEBUG BEGIN_STMT
+  _24 = *bd_cmd_2(D);
+  _25 = _24->flags;
+  _26 = _25 | 1;
+  _24->flags = _26;
+
+  <bb 12> [local count: 12733730]:
+  # DEBUG BEGIN_STMT
+  _27 = pfe_l2br_domain_is_fallback (domain_4(D));
+  if (_27 == 1)
+    goto <bb 13>; [34.00%]
+  else
+    goto <bb 14>; [66.00%]
+
+  <bb 13> [local count: 4329468]:
+  # DEBUG BEGIN_STMT
+  _28 = *bd_cmd_2(D);
+  _29 = _28->flags;
+  _30 = _29 | 2;
+  _28->flags = _30;
+
+  <bb 14> [local count: 12733730]:
+  # DEBUG BEGIN_STMT
+  _31 = pfe_l2br_domain_get_if_list (domain_4(D));
+  _32 = _31 >> 24;
+  _33 = pfe_l2br_domain_get_if_list (domain_4(D));
+  _34 = _33 >> 8;
+  _35 = _34 & 65280;
+  _36 = _32 | _35;
+  _37 = pfe_l2br_domain_get_if_list (domain_4(D));
+  _38 = _37 << 8;
+  _39 = _38 & 16711680;
+  _40 = _36 | _39;
+  _41 = pfe_l2br_domain_get_if_list (domain_4(D));
+  _42 = _41 << 24;
+  _43 = *bd_cmd_2(D);
+  _44 = _40 | _42;
+  _43->if_list = _44;
+  # DEBUG BEGIN_STMT
+  _45 = pfe_l2br_domain_get_untag_if_list (domain_4(D));
+  _46 = _45 >> 24;
+  _47 = _45 >> 8;
+  _48 = _47 & 65280;
+  _49 = _46 | _48;
+  _50 = _45 << 8;
+  _51 = _50 & 16711680;
+  _52 = _49 | _51;
+  _53 = _45 << 24;
+  _54 = _52 | _53;
+  _43->untag_if_list = _54;
+  # DEBUG BEGIN_STMT
+  *fci_ret_6(D) = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 15> [local count: 1073741824]:
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  stats ={v} {CLOBBER};
+  return 0;
+
+}
+
+
+fci_l2br_domain_cmd_update_check_if_list.isra.0 (struct pfe_l2br_domain_t * domain, struct pfe_if_db_t * const * ISRA.30, uint32_t session_id, uint16_t * fci_ret, const struct fpp_l2_bd_cmd_t * bd_cmd)
+{
+  uint32_t ii;
+  bool_t tag;
+  struct pfe_phy_if_t * phy_if;
+  errno_t ret;
+  struct pfe_if_db_entry_t * if_db_entry;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _13;
+  long unsigned int _14;
+  struct pfe_if_db_t * _16;
+  void * ii.7_17;
+  struct pfe_if_db_entry_t * if_db_entry.8_21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  const uint16_t * _41;
+
+  <bb 16> [local count: 136066902]:
+  # DEBUG fci_context s=> fci_context
+
+  <bb 2> [local count: 136066902]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  if_db_entry = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 14>; [100.00%]
+
+  <bb 3> [local count: 976138694]:
+  # DEBUG BEGIN_STMT
+  _2 = bd_cmd_1(D)->if_list;
+  _3 = _2 >> 24;
+  _4 = _2 >> 8;
+  _5 = _4 & 65280;
+  _6 = _3 | _5;
+  _7 = _2 << 8;
+  _8 = _7 & 16711680;
+  _9 = _6 | _8;
+  _10 = _2 << 24;
+  _11 = _9 | _10;
+  _13 = _11 >> ii_12;
+  _14 = _13 & 1;
+  if (_14 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 4> [local count: 488069347]:
+  # DEBUG BEGIN_STMT
+  _16 = *ISRA.30_62(D);
+  ii.7_17 = (void *) ii_12;
+  ret_19 = pfe_if_db_get_first (_16, session_id_18(D), 1, ii.7_17, &if_db_entry);
+  # DEBUG ret => ret_19
+  # DEBUG BEGIN_STMT
+  if (ret_19 != 0)
+    goto <bb 5>; [2.00%]
+  else
+    goto <bb 6>; [98.00%]
+
+  <bb 5> [local count: 9761387]:
+  # ret_45 = PHI <ret_19(4)>
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_20(D) = 61713;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 6> [local count: 478307960]:
+  # DEBUG BEGIN_STMT
+  if_db_entry.8_21 = if_db_entry;
+  if (if_db_entry.8_21 != 0B)
+    goto <bb 7>; [98.00%]
+  else
+    goto <bb 11>; [2.00%]
+
+  <bb 7> [local count: 468741801]:
+  # DEBUG BEGIN_STMT
+  _22 = bd_cmd_1(D)->untag_if_list;
+  _23 = _22 >> 24;
+  _24 = _22 >> 8;
+  _25 = _24 & 65280;
+  _26 = _23 | _25;
+  _27 = _22 << 8;
+  _28 = _27 & 16711680;
+  _29 = _26 | _28;
+  _30 = _22 << 24;
+  _31 = _29 | _30;
+  _32 = _31 >> ii_12;
+  _33 = _32 & 1;
+  _34 = _33 ^ 1;
+  tag_35 = (bool_t) _34;
+  # DEBUG tag => tag_35
+  # DEBUG BEGIN_STMT
+  phy_if_36 = pfe_if_db_entry_get_phy_if (if_db_entry.8_21);
+  # DEBUG phy_if => phy_if_36
+  # DEBUG BEGIN_STMT
+  ret_38 = pfe_l2br_domain_add_if (domain_37(D), phy_if_36, tag_35);
+  # DEBUG ret => ret_38
+  # DEBUG BEGIN_STMT
+  if (ret_38 == 116)
+    goto <bb 8>; [20.24%]
+  else
+    goto <bb 9>; [79.76%]
+
+  <bb 8> [local count: 94873341]:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#9 => bd_cmd_1(D)
+  # DEBUG D#10 => ii_12
+  ret_39 = update_domain_if.isra.0 (domain_37(D), phy_if_36, tag_35);
+  # DEBUG ret => ret_39
+  # DEBUG BEGIN_STMT
+  if (ret_39 != 0)
+    goto <bb 15>; [2.00%]
+  else
+    goto <bb 13>; [98.00%]
+
+  <bb 9> [local count: 373868460]:
+  # DEBUG BEGIN_STMT
+  if (ret_38 != 0)
+    goto <bb 10>; [2.00%]
+  else
+    goto <bb 13>; [98.00%]
+
+  <bb 10> [local count: 7477369]:
+  # ret_40 = PHI <ret_38(9)>
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not add interface to bridge domain: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 270, ret_40, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 11> [local count: 9566159]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_20(D) = 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [100.00%]
+
+  <bb 12> [local count: 488069347]:
+  # DEBUG BEGIN_STMT
+  _41 = &MEM[(short unsigned int *)bd_cmd_1(D) + 2B];
+  # DEBUG D#8 => bd_cmd_1(D)
+  ret_42 = remove_if_from_domain.isra.0 (domain_37(D), fci_ret_20(D), _41, ii_12);
+  # DEBUG ret => ret_42
+  # DEBUG BEGIN_STMT
+  if (ret_42 != 0)
+    goto <bb 15>; [2.00%]
+  else
+    goto <bb 13>; [98.00%]
+
+  <bb 13> [local count: 937674925]:
+  # ret_46 = PHI <ret_39(8), ret_38(9), ret_42(12)>
+  # DEBUG ret => ret_46
+  # DEBUG BEGIN_STMT
+  ii_43 = ii_12 + 1;
+  # DEBUG ii => ii_43
+
+  <bb 14> [local count: 1073741824]:
+  # ii_12 = PHI <0(2), ii_43(13)>
+  # ret_47 = PHI <0(2), ret_46(13)>
+  # DEBUG ret => ret_47
+  # DEBUG ii => ii_12
+  # DEBUG BEGIN_STMT
+  if (ii_12 != 10)
+    goto <bb 3>; [90.91%]
+  else
+    goto <bb 15>; [9.09%]
+
+  <bb 15> [local count: 136066901]:
+  # ret_44 = PHI <ret_45(5), ret_39(8), ret_40(10), 0(11), ret_42(12), ret_47(14)>
+  # DEBUG ret => ret_44
+  # DEBUG BEGIN_STMT
+  if_db_entry ={v} {CLOBBER};
+  return ret_44;
+
+}
+
+
+update_domain_if.isra.0 (struct pfe_l2br_domain_t * domain, struct pfe_phy_if_t * phy_if, bool_t tag)
+{
+  errno_t ret;
+
+  <bb 7> [local count: 1073741824]:
+  # DEBUG bd_cmd s=> bd_cmd
+  # DEBUG ii s=> ii
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_3 = pfe_l2br_domain_del_if (domain_1(D), phy_if_2(D));
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  if (ret_3 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not update interface within bridge domain: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 207, ret_3, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  ret_5 = pfe_l2br_domain_add_if (domain_1(D), phy_if_2(D), tag_4(D));
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  if (ret_5 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not update interface within bridge domain: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 214, ret_5, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  # ret_6 = PHI <ret_3(3), ret_5(4), ret_5(5)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_6;
+
+}
+
+
+remove_if_from_domain.isra.0 (struct pfe_l2br_domain_t * domain, uint16_t * fci_ret, const uint16_t * ISRA.27, uint32_t ii)
+{
+  errno_t ret;
+  struct pfe_phy_if_t * phy_if;
+  void * ii.10_2;
+  short unsigned int _8;
+  short unsigned int _9;
+  int _10;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG bd_cmd s=> bd_cmd
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii.10_2 = (void *) ii_1(D);
+  phy_if_4 = pfe_l2br_domain_get_first_if (domain_3(D), 1, ii.10_2);
+  # DEBUG phy_if => phy_if_4
+  # DEBUG BEGIN_STMT
+  if (phy_if_4 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  ret_5 = fci_l2br_domain_remove_if (domain_3(D), phy_if_4);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  if (ret_5 != 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 4> [local count: 189462818]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_6(D) = 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = *ISRA.27_19(D);
+  _9 = _8 r>> 8;
+  _10 = (int) _9;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Domain %d: Failed to remove interface %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 185, _10, ii_1(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 1073741824]:
+  # ret_11 = PHI <0(2), ret_5(3), ret_5(4)>
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_11;
+
+}
+
+
+fci_l2br_domain_cmd_deregister.isra.0 (struct pfe_l2br_t * const * ISRA.24, uint16_t * fci_ret, uint16_t ISRA.25)
+{
+  errno_t ret;
+  struct pfe_l2br_domain_t * local_domain;
+  short unsigned int _2;
+  short unsigned int _3;
+  struct pfe_l2br_t * _5;
+  unsigned int _6;
+  void * _7;
+
+  <bb 9> [local count: 1073741824]:
+  # DEBUG fci_context s=> fci_context
+  # DEBUG bd_cmd s=> bd_cmd
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  # DEBUG local_domain => 0B
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.25_21(D);
+  _3 = _2 r>> 8;
+  if (_3 <= 1)
+    goto <bb 4>; [58.52%]
+  else
+    goto <bb 3>; [41.48%]
+
+  <bb 3> [local count: 445388109]:
+  # DEBUG ret => 22
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = *ISRA.24_22(D);
+  _6 = (unsigned int) _3;
+  _7 = (void *) _6;
+  local_domain_8 = pfe_l2br_get_first_domain (_5, 1, _7);
+  # DEBUG local_domain => local_domain_8
+  # DEBUG BEGIN_STMT
+  if (local_domain_8 == 0B)
+    goto <bb 5>; [46.53%]
+  else
+    goto <bb 6>; [53.47%]
+
+  <bb 4> [local count: 628353716]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_9(D) = 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 207239087]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_9(D) = 61954;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 238149022]:
+  # DEBUG BEGIN_STMT
+  ret_10 = fci_l2br_domain_remove (local_domain_8);
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 7> [local count: 78589177]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not destroy bridge domain: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 159, ret_10, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_9(D) = 65535;
+
+  <bb 8> [local count: 1073741824]:
+  # ret_11 = PHI <0(4), 0(5), ret_10(6), ret_10(7)>
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_11;
+
+}
+
+
+fci_l2br_domain_cmd_update_set_action.isra.0 (struct pfe_l2br_domain_t * * domain, struct pfe_l2br_t * const ISRA.22, uint16_t * fci_ret, const struct fpp_l2_bd_cmd_t * bd_cmd)
+{
+  errno_t ret;
+  struct pfe_l2br_t * _2;
+  short unsigned int _4;
+  short unsigned int _5;
+  unsigned int _6;
+  void * _7;
+  struct pfe_l2br_domain_t * _8;
+  unsigned char _10;
+  int _11;
+  <unnamed type> _12;
+  unsigned char _13;
+  int _14;
+  <unnamed type> _15;
+  short unsigned int _18;
+  short unsigned int _19;
+  struct pfe_l2br_domain_t * _20;
+  unsigned char _21;
+  int _22;
+  <unnamed type> _23;
+  unsigned char _24;
+  int _25;
+  <unnamed type> _26;
+  short unsigned int _28;
+
+  <bb 9> [local count: 1073741824]:
+  # DEBUG fci_context s=> fci_context
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.22_41(D);
+  _4 = bd_cmd_3(D)->vlan;
+  _5 = _4 r>> 8;
+  _6 = (unsigned int) _5;
+  _7 = (void *) _6;
+  _8 = pfe_l2br_get_first_domain (_2, 1, _7);
+  *domain_9(D) = _8;
+  # DEBUG BEGIN_STMT
+  if (_8 == 0B)
+    goto <bb 4>; [18.75%]
+  else
+    goto <bb 3>; [81.25%]
+
+  <bb 3> [local count: 872415233]:
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = bd_cmd_3(D)->ucast_hit;
+  _11 = (int) _10;
+  _12 = fci_to_l2br_action[_11];
+  _13 = bd_cmd_3(D)->ucast_miss;
+  _14 = (int) _13;
+  _15 = fci_to_l2br_action[_14];
+  ret_16 = pfe_l2br_domain_set_ucast_action (_8, _12, _15);
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 4> [local count: 201326592]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_17(D) = 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  _18 = MEM[(short unsigned int *)bd_cmd_3(D)];
+  # DEBUG D#2 => bd_cmd_3(D)
+  revert_domain_creation.isra.0 (fci_ret_17(D), _18, domain_9(D));
+  # DEBUG ret => 2
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 436207616]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = MEM[(short unsigned int *)bd_cmd_3(D)];
+  # DEBUG D#2 => bd_cmd_3(D)
+  revert_domain_creation.isra.0 (fci_ret_17(D), _19, domain_9(D));
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 436207616]:
+  # DEBUG BEGIN_STMT
+  _20 = *domain_9(D);
+  _21 = bd_cmd_3(D)->mcast_hit;
+  _22 = (int) _21;
+  _23 = fci_to_l2br_action[_22];
+  _24 = bd_cmd_3(D)->mcast_miss;
+  _25 = (int) _24;
+  _26 = fci_to_l2br_action[_25];
+  ret_27 = pfe_l2br_domain_set_mcast_action (_20, _23, _26);
+  # DEBUG ret => ret_27
+  # DEBUG BEGIN_STMT
+  if (ret_27 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 7> [local count: 143948513]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_17(D) = 65535;
+  # DEBUG BEGIN_STMT
+  _28 = MEM[(short unsigned int *)bd_cmd_3(D)];
+  # DEBUG D#2 => bd_cmd_3(D)
+  revert_domain_creation.isra.0 (fci_ret_17(D), _28, domain_9(D));
+
+  <bb 8> [local count: 1073741824]:
+  # ret_29 = PHI <2(4), ret_16(5), ret_27(6), ret_27(7)>
+  # DEBUG ret => ret_29
+  # DEBUG BEGIN_STMT
+  return ret_29;
+
+}
+
+
+revert_domain_creation.isra.0.part.0 (uint16_t * fci_ret, struct pfe_l2br_domain_t * * domain)
+{
+  const struct fpp_l2_bd_cmd_t * bd_cmd;
+  const uint16_t ISRA.20;
+  struct pfe_l2br_domain_t * _2;
+  int _3;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG D#4 s=> ISRA.20
+  # DEBUG ISRA.20 => D#4
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = *domain_1(D);
+  _3 = fci_l2br_domain_remove (_2);
+  if (_3 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not revert domain creation\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 309, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_4(D) = 65535;
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+
+revert_domain_creation.isra.0 (uint16_t * fci_ret, const uint16_t ISRA.20, struct pfe_l2br_domain_t * * domain)
+{
+  short unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG bd_cmd s=> bd_cmd
+  # DEBUG BEGIN_STMT
+  _2 = ISRA.20_6(D);
+  if (_2 == 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334800]:
+  # DEBUG D#3 => ISRA.20_6(D)
+  revert_domain_creation.isra.0.part.0 (fci_ret_4(D), domain_3(D));
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+fci_l2br_domain_remove.part.0 (struct pfe_l2br_domain_t * domain)
+{
+  const struct pfe_phy_if_t * phy_if;
+  errno_t ret;
+  uint16_t vlan;
+  int _4;
+  int _5;
+
+  <bb 12> [local count: 118111600]:
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  phy_if_2 = pfe_l2br_domain_get_first_if (domain_1(D), 0, 0B);
+  # DEBUG phy_if => phy_if_2
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _4 = fci_l2br_domain_remove_if (domain_1(D), phy_if_3);
+  if (_4 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 477815111]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Interface removal failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 933, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 477815111]:
+  # DEBUG BEGIN_STMT
+  _5 = pfe_l2br_domain_get_vlan (domain_1(D), &vlan);
+  if (_5 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 157678987]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not get domain VLAN ID\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 939, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 7> [local count: 955630225]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  phy_if_6 = pfe_l2br_domain_get_next_if (domain_1(D));
+  # DEBUG phy_if => phy_if_6
+
+  <bb 8> [local count: 1073741824]:
+  # phy_if_3 = PHI <phy_if_2(2), phy_if_6(7)>
+  # DEBUG phy_if => phy_if_3
+  # DEBUG BEGIN_STMT
+  if (phy_if_3 != 0B)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 118111601]:
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_l2br_domain_destroy (domain_1(D));
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 != 0)
+    goto <bb 10>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 10> [local count: 38976828]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Fatal: Could not destroy bridge domain: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 953, ret_7, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 11> [local count: 118111601]:
+  # ret_8 = PHI <ret_7(9), ret_7(10)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vlan ={v} {CLOBBER};
+  return ret_8;
+
+}
+
+
+fci_l2br_domain_remove_if.part.0 (struct pfe_l2br_domain_t * domain, const struct pfe_phy_if_t * phy_if)
+{
+  errno_t ret;
+
+  <bb 6> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ret_3 = pfe_l2br_domain_del_if (domain_1(D), phy_if_2(D));
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  if (ret_3 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Could not remove interface from domain\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 901, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  ret_4 = pfe_l2br_domain_flush_by_if (domain_1(D), phy_if_2(D));
+  # DEBUG ret => ret_4
+
+  <bb 5> [local count: 1073741824]:
+  # ret_5 = PHI <ret_3(3), ret_4(4)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+
+fci_l2br_domain_cmd_register.isra.0 (struct pfe_l2br_t * const * ISRA.16, uint16_t * fci_ret, struct fpp_l2_bd_cmd_t * bd_cmd)
+{
+  errno_t ret;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+  unsigned char _5;
+  short unsigned int _7;
+  short unsigned int _8;
+  struct pfe_l2br_t * _10;
+
+  <bb 14> [local count: 1073741824]:
+  # DEBUG fci_context s=> fci_context
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _2 = bd_cmd_1(D)->ucast_hit;
+  if (_2 > 3)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  _3 = bd_cmd_1(D)->ucast_miss;
+  if (_3 > 3)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 268435456]:
+  _4 = bd_cmd_1(D)->mcast_hit;
+  if (_4 > 3)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 134217728]:
+  _5 = bd_cmd_1(D)->mcast_miss;
+  if (_5 > 3)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 1006632961]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_6(D) = 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 13>; [100.00%]
+
+  <bb 7> [local count: 67108864]:
+  # DEBUG BEGIN_STMT
+  _7 = bd_cmd_1(D)->vlan;
+  _8 = _7 r>> 8;
+  if (_8 <= 1)
+    goto <bb 8>; [58.52%]
+  else
+    goto <bb 9>; [41.48%]
+
+  <bb 8> [local count: 39272107]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_6(D) = 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 13>; [100.00%]
+
+  <bb 9> [local count: 27836757]:
+  # DEBUG BEGIN_STMT
+  _10 = *ISRA.16_20(D);
+  ret_11 = pfe_l2br_domain_create (_10, _8);
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  if (ret_11 == 115)
+    goto <bb 10>; [34.00%]
+  else
+    goto <bb 11>; [66.00%]
+
+  <bb 10> [local count: 9464497]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_6(D) = 61953;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 13>; [100.00%]
+
+  <bb 11> [local count: 18372259]:
+  # DEBUG BEGIN_STMT
+  if (ret_11 != 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 12> [local count: 9186130]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_6(D) = 65535;
+
+  <bb 13> [local count: 1073741824]:
+  # ret_12 = PHI <0(6), 0(8), 0(10), ret_11(11), ret_11(12)>
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_12;
+
+}
+
+
+fci_l2br_domain_remove (struct pfe_l2br_domain_t * domain)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 220893212]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (domain_3(D) != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 118111600]:
+  ret_2 = fci_l2br_domain_remove.part.0 (domain_3(D));
+
+  <bb 4> [local count: 220893212]:
+  # ret_1 = PHI <0(2), ret_2(3)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_1;
+
+}
+
+
+fci_l2br_domain_remove_if (struct pfe_l2br_domain_t * domain, const struct pfe_phy_if_t * phy_if)
+{
+  errno_t ret;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  if (phy_if_3(D) != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129752]:
+  ret_2 = fci_l2br_domain_remove_if.part.0 (domain_5(D), phy_if_3(D));
+
+  <bb 4> [local count: 1073741824]:
+  # ret_1 = PHI <0(2), ret_2(3)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  return ret_1;
+
+}
+
+
+fci_l2br_static_entry_get_valid_fw_list ()
+{
+  struct pfe_if_db_entry_t * if_db_entry;
+  errno_t ret;
+  uint32_t valid_if_list;
+  uint32_t session_id;
+  uint32_t ii;
+  struct pfe_if_db_t * _1;
+  long unsigned int session_id.11_2;
+  void * ii.12_3;
+  struct pfe_if_db_entry_t * if_db_entry.13_4;
+  long unsigned int _5;
+  long unsigned int session_id.14_6;
+  int _7;
+
+  <bb 2> [local count: 302581520]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG valid_if_list => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  if_db_entry = 0B;
+  # DEBUG BEGIN_STMT
+  ret_20 = pfe_if_db_lock (&session_id);
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  if (ret_20 != 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 3> [local count: 976138693]:
+  # DEBUG BEGIN_STMT
+  if_db_entry = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = context.phy_if_db;
+  session_id.11_2 = session_id;
+  ii.12_3 = (void *) ii_8;
+  ret_23 = pfe_if_db_get_first (_1, session_id.11_2, 1, ii.12_3, &if_db_entry);
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  if (ret_23 != 0)
+    goto <bb 8>; [5.50%]
+  else
+    goto <bb 4>; [94.50%]
+
+  <bb 4> [local count: 922451064]:
+  # DEBUG BEGIN_STMT
+  if_db_entry.13_4 = if_db_entry;
+  if (if_db_entry.13_4 != 0B)
+    goto <bb 5>; [70.00%]
+  else
+    goto <bb 6>; [30.00%]
+
+  <bb 5> [local count: 645715745]:
+  # DEBUG BEGIN_STMT
+  _5 = 1 << ii_8;
+  valid_if_list_24 = _5 | valid_if_list_10;
+  # DEBUG valid_if_list => valid_if_list_24
+
+  <bb 6> [local count: 922451063]:
+  # valid_if_list_9 = PHI <valid_if_list_10(4), valid_if_list_24(5)>
+  # DEBUG valid_if_list => valid_if_list_9
+  # DEBUG BEGIN_STMT
+  ii_25 = ii_8 + 1;
+  # DEBUG ii => ii_25
+
+  <bb 7> [local count: 1073741824]:
+  # ii_8 = PHI <ii_25(6), 0(2)>
+  # valid_if_list_10 = PHI <valid_if_list_9(6), 0(2)>
+  # DEBUG valid_if_list => valid_if_list_10
+  # DEBUG ii => ii_8
+  # DEBUG BEGIN_STMT
+  if (ii_8 != 10)
+    goto <bb 3>; [90.91%]
+  else
+    goto <bb 8>; [9.09%]
+
+  <bb 8> [local count: 151290760]:
+  # valid_if_list_11 = PHI <0(3), valid_if_list_10(7)>
+  # DEBUG valid_if_list => valid_if_list_11
+  # DEBUG BEGIN_STMT
+  session_id.14_6 = session_id;
+  _7 = pfe_if_db_unlock (session_id.14_6);
+  if (_7 != 0)
+    goto <bb 9>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 9> [local count: 49925951]:
+  valid_if_list_27 = fci_l2br_static_entry_get_valid_fw_list.part.0 ();
+
+  <bb 10> [local count: 302581520]:
+  # valid_if_list_12 = PHI <0(2), valid_if_list_11(8), valid_if_list_27(9)>
+  # DEBUG valid_if_list => valid_if_list_12
+  # DEBUG BEGIN_STMT
+  session_id ={v} {CLOBBER};
+  if_db_entry ={v} {CLOBBER};
+  return valid_if_list_12;
+
+}
+
+
+fci_l2br_static_entry_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_l2_static_ent_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  struct pfe_l2br_static_entry_t * entry;
+  struct fpp_l2_static_ent_cmd_t * br_ent_cmd;
+  errno_t ret;
+  long unsigned int _1;
+  short unsigned int _2;
+  struct pfe_l2br_t * _3;
+
+  <bb 2> [local count: 1073639251]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG entry => 0B
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len_9(D);
+  if (_1 <= 19)
+    goto <bb 11>; [52.23%]
+  else
+    goto <bb 3>; [47.77%]
+
+  <bb 3> [local count: 512877470]:
+  # DEBUG BEGIN_STMT
+  *reply_len_9(D) = 0;
+  # DEBUG BEGIN_STMT
+  br_ent_cmd_12 = &msg_11(D)->msg_cmd.payload;
+  # DEBUG br_ent_cmd => br_ent_cmd_12
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf_13(D), 0, 20);
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct fpp_l2_static_ent_cmd_t *)msg_11(D) + 16B].action;
+  switch (_2) <default: <L9> [16.67%], case 0: <L2> [16.67%], case 1: <L4> [16.67%], case 4: <L3> [16.67%], case 6: <L5> [16.67%], case 7: <L7> [16.67%]>
+
+  <bb 4> [local count: 85496674]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  ret_26 = l2br_static_entry_cmd_fpp_action_register (fci_ret_17(D), br_ent_cmd_12);
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [100.00%]
+
+  <bb 5> [local count: 85496674]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  ret_22 = l2br_static_entry_cmd_fpp_action_update (fci_ret_17(D), br_ent_cmd_12);
+  # DEBUG ret => ret_22
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [100.00%]
+
+  <bb 6> [local count: 85496674]:
+<L4>:
+  # DEBUG BEGIN_STMT
+  ret_24 = l2br_static_entry_cmd_fpp_action_deregister (fci_ret_17(D), br_ent_cmd_12);
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [100.00%]
+
+  <bb 7> [local count: 85496674]:
+<L5>:
+  # DEBUG BEGIN_STMT
+  _3 = context.l2_bridge;
+  entry_16 = pfe_l2br_static_entry_get_first (_3, 0, 0B, 0B);
+  # DEBUG entry => entry_16
+  # DEBUG BEGIN_STMT
+  if (entry_16 == 0B)
+    goto <bb 8>; [30.00%]
+  else
+    goto <bb 9>; [70.00%]
+
+  <bb 8> [local count: 25649002]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  *fci_ret_17(D) = 62274;
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [100.00%]
+
+  <bb 9> [local count: 145344346]:
+  # entry_5 = PHI <0B(3), entry_16(7)>
+<L7>:
+  # DEBUG entry => entry_5
+  # DEBUG BEGIN_STMT
+  # DEBUG D#13 => br_ent_cmd_12
+  ret_20 = l2br_static_entry_cmd_fpp_action_query_cont.isra.0 (fci_ret_17(D), reply_buf_13(D), reply_len_9(D), entry_5);
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [100.00%]
+
+  <bb 10> [local count: 85496674]:
+<L9>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_17(D) = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 11> [local count: 1073741824]:
+  # ret_4 = PHI <22(2), ret_26(4), ret_22(5), ret_24(6), 0(8), ret_20(9), 0(10)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  return ret_4;
+
+}
+
+
+fci_l2br_domain_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_l2_bd_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  uint32_t session_id;
+  errno_t ret;
+  struct fpp_l2_bd_cmd_t * bd_cmd;
+  long unsigned int _1;
+  long unsigned int session_id.0_2;
+  long unsigned int session_id.1_3;
+  int _4;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len_8(D);
+  if (_1 <= 35)
+    goto <bb 7>; [52.23%]
+  else
+    goto <bb 3>; [47.77%]
+
+  <bb 3> [local count: 512926469]:
+  # DEBUG BEGIN_STMT
+  *reply_len_8(D) = 0;
+  # DEBUG BEGIN_STMT
+  bd_cmd_11 = &msg_10(D)->msg_cmd.payload;
+  # DEBUG bd_cmd => bd_cmd_11
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf_12(D), 0, 36);
+  # DEBUG BEGIN_STMT
+  ret_15 = pfe_if_db_lock (&session_id);
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  if (ret_15 != 0)
+    goto <bb 4>; [67.00%]
+  else
+    goto <bb 5>; [33.00%]
+
+  <bb 4> [local count: 343660734]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_16(D) = 61712;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 169265735]:
+  # DEBUG BEGIN_STMT
+  session_id.0_2 = session_id;
+  ret_18 = process_l2br_command (fci_ret_16(D), reply_buf_12(D), reply_len_8(D), bd_cmd_11, session_id.0_2);
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  session_id.1_3 = session_id;
+  _4 = pfe_if_db_unlock (session_id.1_3);
+  if (_4 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 55857692]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_16(D) = 61713;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] DB unlock failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_l2br_domains.c", 731, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 7> [local count: 1073741824]:
+  # ret_5 = PHI <22(2), 0(4), ret_18(5), ret_18(6)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  session_id ={v} {CLOBBER};
+  return ret_5;
+
+}
+
+
+process_l2br_command (uint16_t * fci_ret, struct fpp_l2_bd_cmd_t * reply_buf, uint32_t * reply_len, struct fpp_l2_bd_cmd_t * bd_cmd, uint32_t session_id)
+{
+  struct pfe_l2br_domain_t * domain;
+  errno_t ret;
+  struct fpp_l2_bd_cmd_t * bd_cmd.2_1;
+  short unsigned int _2;
+  short unsigned int _3;
+  struct fpp_l2_bd_cmd_t * bd_cmd.4_4;
+  struct pfe_l2br_t * _5;
+  struct pfe_l2br_t * _6;
+  short unsigned int _34;
+
+  <bb 2> [local count: 1073527118]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG domain => 0B
+  # DEBUG BEGIN_STMT
+  bd_cmd.2_1 = bd_cmd;
+  _2 = bd_cmd.2_1->action;
+  switch (_2) <default: <L12> [16.67%], case 0: <L0> [16.67%], case 1: <L3> [16.67%], case 4: <L1> [16.67%], case 6: <L4> [16.67%], case 7: <L15> [16.67%]>
+
+  <bb 3> [local count: 178956970]:
+<L0>:
+  # DEBUG BEGIN_STMT
+  *fci_ret_15(D) = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG D#1 => &context
+  ret_29 = fci_l2br_domain_cmd_register.isra.0 (&MEM[(void *)&context + 6500B], fci_ret_15(D), bd_cmd.2_1);
+  # DEBUG ret => ret_29
+  # DEBUG BEGIN_STMT
+  _3 = *fci_ret_15(D);
+  if (_3 != 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 268435456]:
+<L1>:
+  # DEBUG BEGIN_STMT
+  bd_cmd.4_4 = bd_cmd;
+  ret_32 = fci_l2br_domain_cmd_update (&context, session_id_30(D), fci_ret_15(D), bd_cmd.4_4);
+  # DEBUG ret => ret_32
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 5> [local count: 178956970]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  # DEBUG D#6 => &context
+  _34 = MEM[(short unsigned int *)bd_cmd.2_1 + 2B];
+  # DEBUG D#7 => bd_cmd.2_1
+  ret_26 = fci_l2br_domain_cmd_deregister.isra.0 (&MEM[(void *)&context + 6500B], fci_ret_15(D), _34);
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 178956970]:
+<L4>:
+  # DEBUG BEGIN_STMT
+  _5 = context.l2_bridge;
+  domain_14 = pfe_l2br_get_first_domain (_5, 0, 0B);
+  # DEBUG domain => domain_14
+  # DEBUG BEGIN_STMT
+  if (domain_14 == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 10>; [70.00%]
+
+  <bb 7> [local count: 53687091]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  *fci_ret_15(D) = 61954;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 8> [local count: 178956970]:
+<L15>:
+  # DEBUG domain => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = context.l2_bridge;
+  domain_18 = pfe_l2br_get_next_domain (_6);
+  # DEBUG domain => domain_18
+  # DEBUG BEGIN_STMT
+  if (domain_18 == 0B)
+    goto <bb 9>; [30.00%]
+  else
+    goto <bb 10>; [70.00%]
+
+  <bb 9> [local count: 53687091]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  *fci_ret_15(D) = 61954;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 10> [local count: 250539759]:
+  # domain_8 = PHI <domain_14(6), domain_18(8)>
+  # DEBUG domain => domain_8
+  # DEBUG BEGIN_STMT
+  *reply_len_20(D) = 36;
+  # DEBUG BEGIN_STMT
+  # DEBUG D#12 => &context
+  ret_24 = fci_l2br_domain_cmd_query_cont_build_repply_buf.isra.0 (domain_8, &bd_cmd, fci_ret_15(D), reply_buf_22(D), &MEM[(void *)&context + 6500B]);
+  # DEBUG ret => ret_24
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 178956970]:
+<L12>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_15(D) = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 12> [local count: 1073741824]:
+  # ret_7 = PHI <ret_29(3), ret_32(4), ret_26(5), 0(7), 0(9), ret_24(10), 0(11)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  return ret_7;
+
+}
+
+
+fci_l2br_domain_cmd_update (const struct fci_t * fci_context, uint32_t session_id, uint16_t * fci_ret, struct fpp_l2_bd_cmd_t * bd_cmd)
+{
+  struct pfe_l2br_domain_t * domain;
+  errno_t ret;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+  short unsigned int _5;
+  struct pfe_l2br_domain_t * domain.6_6;
+  struct pfe_l2br_t * _22;
+  struct pfe_if_db_t * const * _23;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  domain = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = bd_cmd_11(D)->ucast_hit;
+  if (_1 > 3)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870911]:
+  _2 = bd_cmd_11(D)->ucast_miss;
+  if (_2 > 3)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 268435456]:
+  _3 = bd_cmd_11(D)->mcast_hit;
+  if (_3 > 3)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 134217728]:
+  _4 = bd_cmd_11(D)->mcast_miss;
+  if (_4 > 3)
+    goto <bb 6>; [67.00%]
+  else
+    goto <bb 7>; [33.00%]
+
+  <bb 6> [local count: 1029449973]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 9>; [100.00%]
+
+  <bb 7> [local count: 44291850]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_12(D) = 0;
+  # DEBUG BEGIN_STMT
+  _22 = MEM[(struct pfe_l2br_t * *)fci_context_14(D) + 6500B];
+  # DEBUG D#5 => fci_context_14(D)
+  ret_16 = fci_l2br_domain_cmd_update_set_action.isra.0 (&domain, _22, fci_ret_12(D), bd_cmd_11(D));
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  _5 = *fci_ret_12(D);
+  if (_5 == 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 8> [local count: 14616311]:
+  # DEBUG BEGIN_STMT
+  domain.6_6 = domain;
+  _23 = &MEM[(struct pfe_if_db_t * *)fci_context_14(D) + 4B];
+  # DEBUG D#11 => fci_context_14(D)
+  ret_19 = fci_l2br_domain_cmd_update_check_if_list.isra.0 (domain.6_6, _23, session_id_17(D), fci_ret_12(D), bd_cmd_11(D));
+  # DEBUG ret => ret_19
+
+  <bb 9> [local count: 1073741824]:
+  # ret_7 = PHI <0(6), ret_16(7), ret_19(8)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  domain ={v} {CLOBBER};
+  return ret_7;
+
+}
+
+
+l2br_static_entry_cmd_fpp_action_deregister (uint16_t * fci_ret, struct fpp_l2_static_ent_cmd_t * br_ent_cmd)
+{
+  struct pfe_l2br_static_entry_t * entry;
+  struct pfe_l2br_t * _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  unsigned int _4;
+  void * _5;
+  uint8_t[6] * _6;
+  struct pfe_l2br_t * _7;
+  int _8;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG entry => 0B
+  # DEBUG BEGIN_STMT
+  _1 = context.l2_bridge;
+  _2 = br_ent_cmd_11(D)->vlan;
+  _3 = _2 r>> 8;
+  _4 = (unsigned int) _3;
+  _5 = (void *) _4;
+  _6 = &br_ent_cmd_11(D)->mac;
+  entry_13 = pfe_l2br_static_entry_get_first (_1, 3, _5, _6);
+  # DEBUG entry => entry_13
+  # DEBUG BEGIN_STMT
+  if (entry_13 == 0B)
+    goto <bb 3>; [46.53%]
+  else
+    goto <bb 4>; [53.47%]
+
+  <bb 3> [local count: 499612071]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_14(D) = 62274;
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_14(D) = 0;
+  # DEBUG BEGIN_STMT
+  _7 = context.l2_bridge;
+  _8 = pfe_l2br_static_entry_destroy (_7, entry_13);
+  if (_8 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 287064877]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_14(D) = 65535;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+l2br_static_entry_cmd_fpp_action_update (uint16_t * fci_ret, struct fpp_l2_static_ent_cmd_t * br_ent_cmd)
+{
+  uint32_t valid_if_list;
+  struct pfe_l2br_static_entry_t * entry;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  struct pfe_l2br_t * _12;
+  short unsigned int _13;
+  short unsigned int _14;
+  unsigned int _15;
+  void * _16;
+  uint8_t[6] * _17;
+  struct pfe_l2br_t * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  int _29;
+  struct pfe_l2br_t * _30;
+  unsigned char _31;
+  int _32;
+  struct pfe_l2br_t * _33;
+  unsigned char _34;
+  int _35;
+  struct pfe_l2br_t * _36;
+  unsigned char _37;
+  int _38;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG entry => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG valid_if_list => 0
+  # DEBUG BEGIN_STMT
+  valid_if_list_45 = fci_l2br_static_entry_get_valid_fw_list ();
+  # DEBUG valid_if_list => valid_if_list_45
+  # DEBUG BEGIN_STMT
+  _1 = br_ent_cmd_46(D)->forward_list;
+  _2 = _1 >> 24;
+  _3 = _1 >> 8;
+  _4 = _3 & 65280;
+  _5 = _2 | _4;
+  _6 = _1 << 8;
+  _7 = _6 & 16711680;
+  _8 = _5 | _7;
+  _9 = _1 << 24;
+  _10 = _8 | _9;
+  _11 = _10 & valid_if_list_45;
+  if (_10 != _11)
+    goto <bb 3>; [79.76%]
+  else
+    goto <bb 4>; [20.24%]
+
+  <bb 3> [local count: 856416480]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_49(D) = 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 14>; [100.00%]
+
+  <bb 4> [local count: 217325345]:
+  # DEBUG BEGIN_STMT
+  _12 = context.l2_bridge;
+  _13 = br_ent_cmd_46(D)->vlan;
+  _14 = _13 r>> 8;
+  _15 = (unsigned int) _14;
+  _16 = (void *) _15;
+  _17 = &br_ent_cmd_46(D)->mac;
+  entry_48 = pfe_l2br_static_entry_get_first (_12, 3, _16, _17);
+  # DEBUG entry => entry_48
+  # DEBUG BEGIN_STMT
+  if (entry_48 == 0B)
+    goto <bb 5>; [46.53%]
+  else
+    goto <bb 6>; [53.47%]
+
+  <bb 5> [local count: 101121483]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_49(D) = 62274;
+  goto <bb 14>; [100.00%]
+
+  <bb 6> [local count: 116203862]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_49(D) = 0;
+  # DEBUG BEGIN_STMT
+  _18 = context.l2_bridge;
+  _19 = br_ent_cmd_46(D)->forward_list;
+  _20 = _19 >> 24;
+  _21 = _19 >> 8;
+  _22 = _21 & 65280;
+  _23 = _20 | _22;
+  _24 = _19 << 8;
+  _25 = _24 & 16711680;
+  _26 = _23 | _25;
+  _27 = _19 << 24;
+  _28 = _26 | _27;
+  _29 = pfe_l2br_static_entry_replace_fw_list (_18, entry_48, _28);
+  if (_29 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 58101931]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_49(D) = 65535;
+
+  <bb 8> [local count: 116203862]:
+  # DEBUG BEGIN_STMT
+  _30 = context.l2_bridge;
+  _31 = br_ent_cmd_46(D)->local;
+  _32 = pfe_l2br_static_entry_set_local_flag (_30, entry_48, _31);
+  if (_32 != 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 9> [local count: 58101931]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_49(D) = 65535;
+
+  <bb 10> [local count: 116203862]:
+  # DEBUG BEGIN_STMT
+  _33 = context.l2_bridge;
+  _34 = br_ent_cmd_46(D)->src_discard;
+  _35 = pfe_l2br_static_entry_set_src_discard_flag (_33, entry_48, _34);
+  if (_35 != 0)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 11> [local count: 58101931]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_49(D) = 65535;
+
+  <bb 12> [local count: 116203862]:
+  # DEBUG BEGIN_STMT
+  _36 = context.l2_bridge;
+  _37 = br_ent_cmd_46(D)->dst_discard;
+  _38 = pfe_l2br_static_entry_set_dst_discard_flag (_36, entry_48, _37);
+  if (_38 != 0)
+    goto <bb 13>; [50.00%]
+  else
+    goto <bb 14>; [50.00%]
+
+  <bb 13> [local count: 58101931]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_49(D) = 65535;
+
+  <bb 14> [local count: 1073741824]:
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+l2br_static_entry_cmd_fpp_action_register (uint16_t * fci_ret, struct fpp_l2_static_ent_cmd_t * br_ent_cmd)
+{
+  uint32_t valid_if_list;
+  uint8_t mac[6];
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  uint8_t[6] * _12;
+  struct pfe_l2br_t * _13;
+  short unsigned int _14;
+  short unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  mac = "\x00";
+  # DEBUG BEGIN_STMT
+  # DEBUG valid_if_list => 0
+  # DEBUG BEGIN_STMT
+  valid_if_list_31 = fci_l2br_static_entry_get_valid_fw_list ();
+  # DEBUG valid_if_list => valid_if_list_31
+  # DEBUG BEGIN_STMT
+  _1 = br_ent_cmd_32(D)->forward_list;
+  _2 = _1 >> 24;
+  _3 = _1 >> 8;
+  _4 = _3 & 65280;
+  _5 = _2 | _4;
+  _6 = _1 << 8;
+  _7 = _6 & 16711680;
+  _8 = _5 | _7;
+  _9 = _1 << 24;
+  _10 = _8 | _9;
+  _11 = _10 & valid_if_list_31;
+  if (_10 != _11)
+    goto <bb 3>; [79.76%]
+  else
+    goto <bb 4>; [20.24%]
+
+  <bb 3> [local count: 856416480]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_36(D) = 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 217325345]:
+  # DEBUG BEGIN_STMT
+  _12 = &br_ent_cmd_32(D)->mac;
+  autolibc_memcpy (&mac, _12, 6);
+  # DEBUG BEGIN_STMT
+  _13 = context.l2_bridge;
+  _14 = br_ent_cmd_32(D)->vlan;
+  _15 = _14 r>> 8;
+  _16 = br_ent_cmd_32(D)->forward_list;
+  _17 = _16 >> 24;
+  _18 = _16 >> 8;
+  _19 = _18 & 65280;
+  _20 = _17 | _19;
+  _21 = _16 << 8;
+  _22 = _21 & 16711680;
+  _23 = _20 | _22;
+  _24 = _16 << 24;
+  _25 = _23 | _24;
+  ret_35 = pfe_l2br_static_entry_create (_13, _15, &mac, _25);
+  # DEBUG ret => ret_35
+  # DEBUG BEGIN_STMT
+  if (ret_35 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 5> [local count: 108662673]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_36(D) = 0;
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 108662673]:
+  # DEBUG BEGIN_STMT
+  if (ret_35 == 115)
+    goto <bb 7>; [21.72%]
+  else
+    goto <bb 8>; [78.28%]
+
+  <bb 7> [local count: 23601532]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_36(D) = 62273;
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 85061140]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_36(D) = 65535;
+
+  <bb 9> [local count: 1073741824]:
+  # ret_26 = PHI <0(3), 0(5), 115(7), ret_35(8)>
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  mac ={v} {CLOBBER};
+  return ret_26;
+
+}
+
+

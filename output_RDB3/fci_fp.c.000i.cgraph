@@ -1,0 +1,968 @@
+Trivially needed symbols: fci_fp_rule_cmd fci_fp_table_cmd
+
+
+Initial Symbol table:
+
+fci_fp_db_create_rule/31 (fci_fp_db_create_rule) @078408c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: register_rule/18 
+  Calls: 
+fci_fp_db_get_next_rule/30 (fci_fp_db_get_next_rule) @07840700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+fci_fp_db_get_first_rule/29 (fci_fp_db_get_first_rule) @07840620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+fci_fp_db_destroy_rule/28 (fci_fp_db_destroy_rule) @07840540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+autolibc_strncpy/27 (autolibc_strncpy) @07840380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_construct_rule_reply/15 fci_fp_construct_rule_reply/15 
+  Calls: 
+fci_fp_db_get_table_next_rule/26 (fci_fp_db_get_table_next_rule) @07840000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_get_table_first_rule/25 (fci_fp_db_get_table_first_rule) @077658c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_remove_rule_from_table/24 (fci_fp_db_remove_rule_from_table) @07765620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_add_rule_to_table/23 (fci_fp_db_add_rule_to_table) @07765380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_destroy_table/22 (fci_fp_db_destroy_table) @077650e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_create_table/21 (fci_fp_db_create_table) @07765ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_rule_cmd/20 (fci_fp_rule_cmd) @07765a80
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: set_rule_reply/17 fci_fp_db_get_next_rule/30 set_rule_reply/17 fci_fp_db_get_first_rule/29 set_fci_ret/16 fci_fp_db_destroy_rule/28 register_rule/18 
+fci_fp_table_cmd/19 (fci_fp_table_cmd) @077657e0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07765a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: set_rule_reply/17 fci_fp_db_get_table_next_rule/26 set_rule_reply/17 fci_fp_db_get_table_first_rule/25 set_fci_ret/16 fci_fp_db_remove_rule_from_table/24 set_fci_ret/16 fci_fp_db_add_rule_to_table/23 set_fci_ret/16 fci_fp_db_destroy_table/22 set_fci_ret/16 fci_fp_db_create_table/21 
+register_rule/18 (register_rule) @07765540
+  Type: function definition analyzed
+  Visibility:
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: set_fci_ret/16 fci_fp_db_create_rule/31 
+set_rule_reply/17 (set_rule_reply) @077652a0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @07765a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: fci_fp_rule_cmd/20 fci_fp_rule_cmd/20 fci_fp_table_cmd/19 fci_fp_table_cmd/19 
+  Calls: fci_fp_construct_rule_reply/15 
+set_fci_ret/16 (set_fci_ret) @07765000
+  Type: function definition analyzed
+  Visibility:
+  Aux: @077652a0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: register_rule/18 fci_fp_rule_cmd/20 fci_fp_table_cmd/19 fci_fp_table_cmd/19 fci_fp_table_cmd/19 fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_construct_rule_reply/15 (fci_fp_construct_rule_reply) @07715ee0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @07765a80
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: set_rule_reply/17 
+  Calls: autolibc_strncpy/27 autolibc_strncpy/27 
+pfe_fci_owner_hif_from_phy_id/14 (pfe_fci_owner_hif_from_phy_id) @076f8b60
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_fci_owner_hif_ids/13 (pfe_fci_owner_hif_ids) @076f5360
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized read-only const-value-known
+fifo_get/12 (fifo_get) @07584620
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fifo_put/11 (fifo_put) @07584380
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+hal_ip_ready_get/10 (hal_ip_ready_get) @07412c40
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+hal_ip_ready_set/9 (hal_ip_ready_set) @074129a0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_is_multi/8 (pfe_emac_is_multi) @073102a0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_is_broad/7 (pfe_emac_is_broad) @07310000
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+pfe_emac_is_zero/6 (pfe_emac_is_zero) @0730ad20
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+find_irq_idx_from_id/5 (find_irq_idx_from_id) @072819a0
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_unlock/4 (oal_mutex_unlock) @07275a80
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+oal_mutex_lock/3 (oal_mutex_lock) @07275e00
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/2 (SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @0726aab0
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID/1 (SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID) @0726a9d8
+  Type: variable definition
+  Visibility:
+  References: 
+  Referring: 
+  Availability: not-ready
+  Varpool flags: initialized
+oal_swap_endian_long/0 (oal_swap_endian_long) @06f68540
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: pfe_fci_owner_hif_from_phy_id pfe_fci_owner_hif_ids fifo_get fifo_put hal_ip_ready_get hal_ip_ready_set pfe_emac_is_multi pfe_emac_is_broad pfe_emac_is_zero find_irq_idx_from_id oal_mutex_unlock oal_mutex_lock SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+fci_fp_db_create_rule/31 (fci_fp_db_create_rule) @078408c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: register_rule/18 
+  Calls: 
+fci_fp_db_get_next_rule/30 (fci_fp_db_get_next_rule) @07840700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+fci_fp_db_get_first_rule/29 (fci_fp_db_get_first_rule) @07840620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+fci_fp_db_destroy_rule/28 (fci_fp_db_destroy_rule) @07840540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+autolibc_strncpy/27 (autolibc_strncpy) @07840380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_construct_rule_reply/15 fci_fp_construct_rule_reply/15 
+  Calls: 
+fci_fp_db_get_table_next_rule/26 (fci_fp_db_get_table_next_rule) @07840000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_get_table_first_rule/25 (fci_fp_db_get_table_first_rule) @077658c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_remove_rule_from_table/24 (fci_fp_db_remove_rule_from_table) @07765620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_add_rule_to_table/23 (fci_fp_db_add_rule_to_table) @07765380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_destroy_table/22 (fci_fp_db_destroy_table) @077650e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_create_table/21 (fci_fp_db_create_table) @07765ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_rule_cmd/20 (fci_fp_rule_cmd) @07765a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: set_rule_reply/17 fci_fp_db_get_next_rule/30 set_rule_reply/17 fci_fp_db_get_first_rule/29 set_fci_ret/16 fci_fp_db_destroy_rule/28 register_rule/18 
+fci_fp_table_cmd/19 (fci_fp_table_cmd) @077657e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: set_rule_reply/17 fci_fp_db_get_table_next_rule/26 set_rule_reply/17 fci_fp_db_get_table_first_rule/25 set_fci_ret/16 fci_fp_db_remove_rule_from_table/24 set_fci_ret/16 fci_fp_db_add_rule_to_table/23 set_fci_ret/16 fci_fp_db_destroy_table/22 set_fci_ret/16 fci_fp_db_create_table/21 
+register_rule/18 (register_rule) @07765540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: set_fci_ret/16 fci_fp_db_create_rule/31 
+set_rule_reply/17 (set_rule_reply) @077652a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: fci_fp_rule_cmd/20 fci_fp_rule_cmd/20 fci_fp_table_cmd/19 fci_fp_table_cmd/19 
+  Calls: fci_fp_construct_rule_reply/15 
+set_fci_ret/16 (set_fci_ret) @07765000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: register_rule/18 fci_fp_rule_cmd/20 fci_fp_table_cmd/19 fci_fp_table_cmd/19 fci_fp_table_cmd/19 fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_construct_rule_reply/15 (fci_fp_construct_rule_reply) @07715ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: set_rule_reply/17 
+  Calls: autolibc_strncpy/27 autolibc_strncpy/27 
+
+
+Initial Symbol table:
+
+fci_fp_db_create_rule/31 (fci_fp_db_create_rule) @078408c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: register_rule/18 
+  Calls: 
+fci_fp_db_get_next_rule/30 (fci_fp_db_get_next_rule) @07840700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+fci_fp_db_get_first_rule/29 (fci_fp_db_get_first_rule) @07840620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+fci_fp_db_destroy_rule/28 (fci_fp_db_destroy_rule) @07840540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+autolibc_strncpy/27 (autolibc_strncpy) @07840380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_construct_rule_reply/15 fci_fp_construct_rule_reply/15 
+  Calls: 
+fci_fp_db_get_table_next_rule/26 (fci_fp_db_get_table_next_rule) @07840000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_get_table_first_rule/25 (fci_fp_db_get_table_first_rule) @077658c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_remove_rule_from_table/24 (fci_fp_db_remove_rule_from_table) @07765620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_add_rule_to_table/23 (fci_fp_db_add_rule_to_table) @07765380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_destroy_table/22 (fci_fp_db_destroy_table) @077650e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_create_table/21 (fci_fp_db_create_table) @07765ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_rule_cmd/20 (fci_fp_rule_cmd) @07765a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: set_rule_reply/17 fci_fp_db_get_next_rule/30 set_rule_reply/17 fci_fp_db_get_first_rule/29 set_fci_ret/16 fci_fp_db_destroy_rule/28 register_rule/18 
+fci_fp_table_cmd/19 (fci_fp_table_cmd) @077657e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: set_rule_reply/17 fci_fp_db_get_table_next_rule/26 set_rule_reply/17 fci_fp_db_get_table_first_rule/25 set_fci_ret/16 fci_fp_db_remove_rule_from_table/24 set_fci_ret/16 fci_fp_db_add_rule_to_table/23 set_fci_ret/16 fci_fp_db_destroy_table/22 set_fci_ret/16 fci_fp_db_create_table/21 
+register_rule/18 (register_rule) @07765540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: set_fci_ret/16 fci_fp_db_create_rule/31 
+set_rule_reply/17 (set_rule_reply) @077652a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: fci_fp_rule_cmd/20 fci_fp_rule_cmd/20 fci_fp_table_cmd/19 fci_fp_table_cmd/19 
+  Calls: fci_fp_construct_rule_reply/15 
+set_fci_ret/16 (set_fci_ret) @07765000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: register_rule/18 fci_fp_rule_cmd/20 fci_fp_table_cmd/19 fci_fp_table_cmd/19 fci_fp_table_cmd/19 fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_construct_rule_reply/15 (fci_fp_construct_rule_reply) @07715ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: set_rule_reply/17 
+  Calls: autolibc_strncpy/27 autolibc_strncpy/27 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+fci_fp_db_create_rule/31 (fci_fp_db_create_rule) @078408c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: register_rule/18 
+  Calls: 
+fci_fp_db_get_next_rule/30 (fci_fp_db_get_next_rule) @07840700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+fci_fp_db_get_first_rule/29 (fci_fp_db_get_first_rule) @07840620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+fci_fp_db_destroy_rule/28 (fci_fp_db_destroy_rule) @07840540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: 
+autolibc_strncpy/27 (autolibc_strncpy) @07840380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_construct_rule_reply/15 fci_fp_construct_rule_reply/15 
+  Calls: 
+fci_fp_db_get_table_next_rule/26 (fci_fp_db_get_table_next_rule) @07840000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_get_table_first_rule/25 (fci_fp_db_get_table_first_rule) @077658c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_remove_rule_from_table/24 (fci_fp_db_remove_rule_from_table) @07765620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_add_rule_to_table/23 (fci_fp_db_add_rule_to_table) @07765380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_destroy_table/22 (fci_fp_db_destroy_table) @077650e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_db_create_table/21 (fci_fp_db_create_table) @07765ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_rule_cmd/20 (fci_fp_rule_cmd) @07765a80
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: set_rule_reply/17 fci_fp_db_get_next_rule/30 set_rule_reply/17 fci_fp_db_get_first_rule/29 set_fci_ret/16 fci_fp_db_destroy_rule/28 register_rule/18 
+fci_fp_table_cmd/19 (fci_fp_table_cmd) @077657e0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: set_rule_reply/17 fci_fp_db_get_table_next_rule/26 set_rule_reply/17 fci_fp_db_get_table_first_rule/25 set_fci_ret/16 fci_fp_db_remove_rule_from_table/24 set_fci_ret/16 fci_fp_db_add_rule_to_table/23 set_fci_ret/16 fci_fp_db_destroy_table/22 set_fci_ret/16 fci_fp_db_create_table/21 
+register_rule/18 (register_rule) @07765540
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: fci_fp_rule_cmd/20 
+  Calls: set_fci_ret/16 fci_fp_db_create_rule/31 
+set_rule_reply/17 (set_rule_reply) @077652a0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: fci_fp_rule_cmd/20 fci_fp_rule_cmd/20 fci_fp_table_cmd/19 fci_fp_table_cmd/19 
+  Calls: fci_fp_construct_rule_reply/15 
+set_fci_ret/16 (set_fci_ret) @07765000
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: register_rule/18 fci_fp_rule_cmd/20 fci_fp_table_cmd/19 fci_fp_table_cmd/19 fci_fp_table_cmd/19 fci_fp_table_cmd/19 
+  Calls: 
+fci_fp_construct_rule_reply/15 (fci_fp_construct_rule_reply) @07715ee0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: set_rule_reply/17 
+  Calls: autolibc_strncpy/27 autolibc_strncpy/27 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+fci_fp_db_create_rule/31 (fci_fp_db_create_rule) @078408c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: register_rule/18 (68048388 (estimated locally),0.06 per call) 
+  Calls: 
+fci_fp_db_get_next_rule/30 (fci_fp_db_get_next_rule) @07840700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 (139586437 (estimated locally),0.13 per call) 
+  Calls: 
+fci_fp_db_get_first_rule/29 (fci_fp_db_get_first_rule) @07840620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 (139586437 (estimated locally),0.13 per call) 
+  Calls: 
+fci_fp_db_destroy_rule/28 (fci_fp_db_destroy_rule) @07840540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_fp_rule_cmd/20 (139586437 (estimated locally),0.13 per call) 
+  Calls: 
+autolibc_strncpy/27 (autolibc_strncpy) @07840380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_fp_construct_rule_reply/15 (574129754 (estimated locally),0.53 per call) fci_fp_construct_rule_reply/15 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+fci_fp_db_get_table_next_rule/26 (fci_fp_db_get_table_next_rule) @07840000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 (99715065 (estimated locally),0.09 per call) 
+  Calls: 
+fci_fp_db_get_table_first_rule/25 (fci_fp_db_get_table_first_rule) @077658c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 (99715065 (estimated locally),0.09 per call) 
+  Calls: 
+fci_fp_db_remove_rule_from_table/24 (fci_fp_db_remove_rule_from_table) @07765620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 (99715065 (estimated locally),0.09 per call) 
+  Calls: 
+fci_fp_db_add_rule_to_table/23 (fci_fp_db_add_rule_to_table) @07765380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 (99715065 (estimated locally),0.09 per call) 
+  Calls: 
+fci_fp_db_destroy_table/22 (fci_fp_db_destroy_table) @077650e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 (99715065 (estimated locally),0.09 per call) 
+  Calls: 
+fci_fp_db_create_table/21 (fci_fp_db_create_table) @07765ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_fp_table_cmd/19 (99715065 (estimated locally),0.09 per call) 
+  Calls: 
+fci_fp_rule_cmd/20 (fci_fp_rule_cmd) @07765a80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: fci_fp_construct_rule_reply/15 (66680441 (estimated locally),0.06 per call) fci_fp_db_get_next_rule/30 (139586437 (estimated locally),0.13 per call) fci_fp_construct_rule_reply/15 (66680441 (estimated locally),0.06 per call) fci_fp_db_get_first_rule/29 (139586437 (estimated locally),0.13 per call) fci_fp_db_destroy_rule/28 (139586437 (estimated locally),0.13 per call) register_rule/18 (inlined) (139586437 (estimated locally),0.13 per call) 
+fci_fp_table_cmd/19 (fci_fp_table_cmd) @077657e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073532486 (estimated locally) body optimize_size
+  Called by: 
+  Calls: fci_fp_construct_rule_reply/15 (47633886 (estimated locally),0.04 per call) fci_fp_db_get_table_next_rule/26 (99715065 (estimated locally),0.09 per call) fci_fp_construct_rule_reply/15 (47633886 (estimated locally),0.04 per call) fci_fp_db_get_table_first_rule/25 (99715065 (estimated locally),0.09 per call) fci_fp_db_remove_rule_from_table/24 (99715065 (estimated locally),0.09 per call) fci_fp_db_add_rule_to_table/23 (99715065 (estimated locally),0.09 per call) fci_fp_db_destroy_table/22 (99715065 (estimated locally),0.09 per call) fci_fp_db_create_table/21 (99715065 (estimated locally),0.09 per call) 
+register_rule/18 (register_rule) @07765540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function register_rule/18 is inline copy in fci_fp_rule_cmd/20
+  Availability: local
+  Function flags: count:139586437 (estimated locally) body local optimize_size
+  Called by: fci_fp_rule_cmd/20 (inlined) (139586437 (estimated locally),0.13 per call) 
+  Calls: fci_fp_db_create_rule/31 (68048388 (estimated locally),0.06 per call) 
+fci_fp_construct_rule_reply/15 (fci_fp_construct_rule_reply) @07715ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: fci_fp_rule_cmd/20 (66680441 (estimated locally),0.06 per call) fci_fp_rule_cmd/20 (66680441 (estimated locally),0.06 per call) fci_fp_table_cmd/19 (47633886 (estimated locally),0.04 per call) fci_fp_table_cmd/19 (47633886 (estimated locally),0.04 per call) 
+  Calls: autolibc_strncpy/27 (574129754 (estimated locally),0.53 per call) autolibc_strncpy/27 (1073741824 (estimated locally),1.00 per call) 
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:fci_fp_construct_rule_reply:0
+Time profile order in expand_all_functions:fci_fp_table_cmd:0
+Time profile order in expand_all_functions:fci_fp_rule_cmd:0
+Trivially needed variables:
+Removing variables:
+
+Final Symbol table:
+
+fci_fp_db_create_rule/31 (fci_fp_db_create_rule) @078408c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_fp_db_get_next_rule/30 (fci_fp_db_get_next_rule) @07840700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_fp_db_get_first_rule/29 (fci_fp_db_get_first_rule) @07840620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_fp_db_destroy_rule/28 (fci_fp_db_destroy_rule) @07840540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+autolibc_strncpy/27 (autolibc_strncpy) @07840380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_fp_db_get_table_next_rule/26 (fci_fp_db_get_table_next_rule) @07840000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_fp_db_get_table_first_rule/25 (fci_fp_db_get_table_first_rule) @077658c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_fp_db_remove_rule_from_table/24 (fci_fp_db_remove_rule_from_table) @07765620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_fp_db_add_rule_to_table/23 (fci_fp_db_add_rule_to_table) @07765380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_fp_db_destroy_table/22 (fci_fp_db_destroy_table) @077650e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_fp_db_create_table/21 (fci_fp_db_create_table) @07765ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+fci_fp_rule_cmd/20 (fci_fp_rule_cmd) @07765a80
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+fci_fp_table_cmd/19 (fci_fp_table_cmd) @077657e0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073532486 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+fci_fp_construct_rule_reply/15 (fci_fp_construct_rule_reply) @07715ee0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly asm_written
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) local optimize_size
+  Called by: 
+  Calls: 

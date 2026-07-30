@@ -1,0 +1,850 @@
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1
+
+Symbols to be put in SSA form
+{ D.12576 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 8
+Number of blocks to update: 7 ( 88%)
+
+
+routes_cmd_action_deregister.constprop (uint16_t * fci_ret, struct fpp_rt_cmd_t * rt_cmd)
+{
+  errno_t ret;
+  struct fci_rt_db_entry_t * rt_entry;
+  struct fci_rt_db_t * route_db;
+  uint32_t * _2;
+
+  <bb 7> [local count: 1073741824]:
+  # DEBUG route_db => &MEM[(void *)&context + 24B]
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG rt_entry => 0B
+  # DEBUG BEGIN_STMT
+  _2 = &rt_cmd_1(D)->id;
+  rt_entry_3 = fci_rt_db_get_first (&MEM[(void *)&context + 24B], 5, _2);
+  # DEBUG rt_entry => rt_entry_3
+  # DEBUG BEGIN_STMT
+  if (rt_entry_3 == 0B)
+    goto <bb 3>; [46.53%]
+  else
+    goto <bb 4>; [53.47%]
+
+  <bb 3> [local count: 499612071]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_4(D) = 201;
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  ret_5 = fci_routes_drop_one (rt_entry_3);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  if (ret_5 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 189462818]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FPP_CMD_IP_ROUTE: Can\'t remove route entry: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_routes.c", 286, ret_5, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_4(D) = 3;
+
+  <bb 6> [local count: 1073741824]:
+  # ret_6 = PHI <0(3), ret_5(4), ret_5(5)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  return ret_6;
+
+}
+
+
+routes_cmd_action_register.isra.0 (void * * ISRA.8, uint16_t * fci_ret, struct fpp_rt_cmd_t * rt_cmd, struct pfe_ip_addr_t * ip, uint8_t[6] * dst_mac)
+{
+  errno_t ret;
+  uint32_t session_id;
+  struct pfe_phy_if_t * phy_if;
+  struct pfe_if_db_entry_t * if_entry;
+  uint8_t src_mac[6];
+  struct pfe_if_db_t * _2;
+  long unsigned int session_id.0_3;
+  char[16] * _5;
+  struct pfe_if_db_entry_t * if_entry.1_6;
+  long unsigned int _9;
+  void * _11;
+  long unsigned int session_id.3_15;
+
+  <bb 14> [local count: 1073741824]:
+  # DEBUG msg s=> msg
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  session_id = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG phy_if => 0B
+  # DEBUG BEGIN_STMT
+  if_entry = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_1 = pfe_if_db_lock (&session_id);
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  if (ret_1 == 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  _2 = context.phy_if_db;
+  session_id.0_3 = session_id;
+  _5 = &rt_cmd_4(D)->output_device;
+  pfe_if_db_get_first (_2, session_id.0_3, 3, _5, &if_entry);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if_entry.1_6 = if_entry;
+  if (if_entry.1_6 == 0B)
+    goto <bb 5>; [46.53%]
+  else
+    goto <bb 6>; [53.47%]
+
+  <bb 5> [local count: 499612071]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_7(D) = 3;
+  goto <bb 11>; [100.00%]
+
+  <bb 6> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  phy_if_8 = pfe_if_db_entry_get_phy_if (if_entry.1_6);
+  # DEBUG phy_if => phy_if_8
+  # DEBUG BEGIN_STMT
+  prepare_mac_src (&src_mac, phy_if_8, rt_cmd_4(D));
+  # DEBUG BEGIN_STMT
+  _9 = rt_cmd_4(D)->id;
+  _11 = *ISRA.8_37(D);
+  ret_14 = fci_rt_db_add (&MEM[(void *)&context + 24B], ip_12(D), &src_mac, dst_mac_13(D), phy_if_8, _9, _11, 0);
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 == 115)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 7> [local count: 195204116]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_7(D) = 200;
+  goto <bb 11>; [100.00%]
+
+  <bb 8> [local count: 378925637]:
+  # DEBUG BEGIN_STMT
+  if (ret_14 != 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 9> [local count: 189462818]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_7(D) = 3;
+  goto <bb 11>; [100.00%]
+
+  <bb 10> [local count: 189462818]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_7(D) = 0;
+
+  <bb 11> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  session_id.3_15 = session_id;
+  ret_16 = pfe_if_db_unlock (session_id.3_15);
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 != 0)
+    goto <bb 12>; [33.00%]
+  else
+    goto <bb 13>; [67.00%]
+
+  <bb 12> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FPP_CMD_IP_ROUTE: DB unlock failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_routes.c", 213, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 13> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  session_id ={v} {CLOBBER};
+  if_entry ={v} {CLOBBER};
+  src_mac ={v} {CLOBBER};
+  return ret_16;
+
+}
+
+
+fci_routes_drop_all_ipv6 ()
+{
+  struct fci_rt_db_entry_t * entry;
+  unsigned char _1;
+
+  <bb 2> [local count: 118111602]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG entry => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_7 = fci_rt_db_get_first (&MEM[(void *)&context + 24B], 0, 0B);
+  # DEBUG entry => entry_7
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _1 = entry_2->dst_ip.is_ipv4;
+  if (_1 == 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 4> [local count: 315357973]:
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_one (entry_2);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_10 = fci_rt_db_get_next (&MEM[(void *)&context + 24B]);
+  # DEBUG entry => entry_10
+
+  <bb 6> [local count: 1073741824]:
+  # entry_2 = PHI <entry_7(2), entry_10(5)>
+  # DEBUG entry => entry_2
+  # DEBUG BEGIN_STMT
+  if (entry_2 != 0B)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 7> [local count: 118111601]:
+  return;
+
+}
+
+
+fci_routes_drop_all_ipv4 ()
+{
+  struct fci_rt_db_entry_t * entry;
+  unsigned char _1;
+
+  <bb 2> [local count: 118111602]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG entry => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_7 = fci_rt_db_get_first (&MEM[(void *)&context + 24B], 0, 0B);
+  # DEBUG entry => entry_7
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _1 = entry_2->dst_ip.is_ipv4;
+  if (_1 != 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 4> [local count: 315357973]:
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_one (entry_2);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+
+  <bb 5> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_10 = fci_rt_db_get_next (&MEM[(void *)&context + 24B]);
+  # DEBUG entry => entry_10
+
+  <bb 6> [local count: 1073741824]:
+  # entry_2 = PHI <entry_7(2), entry_10(5)>
+  # DEBUG entry => entry_2
+  # DEBUG BEGIN_STMT
+  if (entry_2 != 0B)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 7> [local count: 118111601]:
+  return;
+
+}
+
+
+fci_routes_drop_all ()
+{
+  struct fci_rt_db_entry_t * entry;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG entry => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_5 = fci_rt_db_get_first (&MEM[(void *)&context + 24B], 0, 0B);
+  # DEBUG entry => entry_5
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  fci_routes_drop_one (entry_1);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_8 = fci_rt_db_get_next (&MEM[(void *)&context + 24B]);
+  # DEBUG entry => entry_8
+
+  <bb 4> [local count: 1073741824]:
+  # entry_1 = PHI <entry_5(2), entry_8(3)>
+  # DEBUG entry => entry_1
+  # DEBUG BEGIN_STMT
+  if (entry_1 != 0B)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  return;
+
+}
+
+
+fci_routes_drop_one (struct fci_rt_db_entry_t * route)
+{
+  errno_t ret;
+  struct fci_msg_t msg;
+  void * _1;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG rt_cmd => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&msg, 0, 276);
+  # DEBUG BEGIN_STMT
+  msg.type = 4099;
+  # DEBUG BEGIN_STMT
+  msg.msg_cmd.code = 787;
+  # DEBUG BEGIN_STMT
+  # DEBUG rt_cmd => &msg.msg_cmd.payload
+  # DEBUG BEGIN_STMT
+  MEM[(struct fpp_rt_cmd_t *)&msg + 16B].action = 3;
+  # DEBUG BEGIN_STMT
+  _1 = route_10(D)->refptr;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  _2 = route_10(D)->id;
+  MEM[(struct fpp_rt_cmd_t *)&msg + 16B].id = _2;
+  # DEBUG BEGIN_STMT
+  fci_core_client_send (_1, &msg, 0B);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fci_routes_remove_related_connections (route_10(D));
+  # DEBUG BEGIN_STMT
+  ret_15 = fci_rt_db_remove (&MEM[(void *)&context + 24B], route_10(D));
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  if (ret_15 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t remove route: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_routes.c", 473, ret_15, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  msg ={v} {CLOBBER};
+  return ret_15;
+
+}
+
+
+fci_routes_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_rt_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  struct fci_rt_db_entry_t * rt_entry;
+  struct pfe_ip_addr_t ip;
+  uint8_t dst_mac[6];
+  errno_t ret;
+  struct fpp_rt_cmd_t * rt_cmd;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  uint8_t[6] * _12;
+  uint32_t * _13;
+  uint32_t * _14;
+  short unsigned int _15;
+  void * * _48;
+
+  <bb 2> [local count: 1073639251]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG is_ipv6 => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG rt_entry => 0B
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len_22(D);
+  if (_1 <= 91)
+    goto <bb 14>; [52.23%]
+  else
+    goto <bb 3>; [47.77%]
+
+  <bb 3> [local count: 512877470]:
+  # DEBUG BEGIN_STMT
+  *reply_len_22(D) = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf_24(D), 0, 92);
+  # DEBUG BEGIN_STMT
+  rt_cmd_27 = &msg_26(D)->msg_cmd.payload;
+  # DEBUG rt_cmd => rt_cmd_27
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct fpp_rt_cmd_t *)msg_26(D) + 16B].flags;
+  _3 = _2 >> 24;
+  _4 = _2 >> 8;
+  _5 = _4 & 65280;
+  _6 = _3 | _5;
+  _7 = _2 << 8;
+  _8 = _7 & 16711680;
+  _9 = _6 | _8;
+  _10 = _2 << 24;
+  _11 = _9 | _10;
+  # DEBUG D#2 => _11 == 2
+  # DEBUG is_ipv6 => (bool_t) D#2
+  # DEBUG BEGIN_STMT
+  _12 = &MEM[(struct fpp_rt_cmd_t *)msg_26(D) + 16B].dst_mac;
+  autolibc_memcpy (&dst_mac, _12, 6);
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&ip, 0, 22);
+  # DEBUG BEGIN_STMT
+  if (_11 == 2)
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 4> [local count: 174378340]:
+  # DEBUG BEGIN_STMT
+  _13 = &MEM[(struct fpp_rt_cmd_t *)msg_26(D) + 16B].dst_addr[0];
+  autolibc_memcpy (&ip.v6, _13, 16);
+  # DEBUG BEGIN_STMT
+  ip.is_ipv4 = 0;
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 338499130]:
+  # DEBUG BEGIN_STMT
+  _14 = &MEM[(struct fpp_rt_cmd_t *)msg_26(D) + 16B].dst_addr[0];
+  autolibc_memcpy (&ip.v4, _14, 4);
+  # DEBUG BEGIN_STMT
+  ip.is_ipv4 = 1;
+
+  <bb 6> [local count: 512877469]:
+  # DEBUG BEGIN_STMT
+  _15 = MEM[(struct fpp_rt_cmd_t *)msg_26(D) + 16B].action;
+  switch (_15) <default: <L12> [16.67%], case 0: <L5> [16.67%], case 1: <L6> [16.67%], case 4: <L7> [16.67%], case 6: <L8> [16.67%], case 7: <L10> [16.67%]>
+
+  <bb 7> [local count: 85496674]:
+<L5>:
+  # DEBUG BEGIN_STMT
+  _48 = &MEM[(void * *)msg_26(D) + 272B];
+  # DEBUG D#1 => msg_26(D)
+  ret_44 = routes_cmd_action_register.isra.0 (_48, fci_ret_36(D), rt_cmd_27, &ip, &dst_mac);
+  # DEBUG ret => ret_44
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 8> [local count: 85496674]:
+<L6>:
+  # DEBUG BEGIN_STMT
+  ret_42 = routes_cmd_action_deregister (fci_ret_36(D), rt_cmd_27, &MEM[(void *)&context + 24B]);
+  # DEBUG ret => ret_42
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 9> [local count: 85496674]:
+<L7>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_36(D) = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 10> [local count: 85496674]:
+<L8>:
+  # DEBUG BEGIN_STMT
+  rt_entry_35 = fci_rt_db_get_first (&MEM[(void *)&context + 24B], 0, 0B);
+  # DEBUG rt_entry => rt_entry_35
+  # DEBUG BEGIN_STMT
+  if (rt_entry_35 == 0B)
+    goto <bb 11>; [30.00%]
+  else
+    goto <bb 12>; [70.00%]
+
+  <bb 11> [local count: 25649002]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  *fci_ret_36(D) = 201;
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 12> [local count: 145344346]:
+  # rt_entry_17 = PHI <0B(6), rt_entry_35(10)>
+<L10>:
+  # DEBUG rt_entry => rt_entry_17
+  # DEBUG BEGIN_STMT
+  ret_39 = routes_cmd_query_cont (fci_ret_36(D), reply_buf_24(D), reply_len_22(D), rt_entry_17);
+  # DEBUG ret => ret_39
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 13> [local count: 85496674]:
+<L12>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_36(D) = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 14> [local count: 1073741824]:
+  # ret_16 = PHI <22(2), ret_44(7), ret_42(8), 0(9), 0(11), ret_39(12), 0(13)>
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  dst_mac ={v} {CLOBBER};
+  ip ={v} {CLOBBER};
+  return ret_16;
+
+}
+
+
+routes_cmd_query_cont (uint16_t * fci_ret, struct fpp_rt_cmd_t * reply_buf, uint32_t * reply_len, struct fci_rt_db_entry_t * rt_entry)
+{
+  short unsigned int _1;
+  uint8_t[6] * _2;
+  uint8_t[6] * _3;
+  uint8_t[6] * _4;
+  uint8_t[6] * _5;
+  unsigned char _6;
+  uint32_t * _7;
+  union 
+{
+  uint8_t v4[4];
+} * _8;
+  uint32_t * _9;
+  union 
+{
+  uint16_t v6[8];
+} * _10;
+  long unsigned int _11;
+  char[16] * _12;
+  struct pfe_phy_if_t * _13;
+  const char_t * _14;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG break_switch => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  if (rt_entry_17(D) == 0B)
+    goto <bb 4>; [30.00%]
+  else
+    goto <bb 7>; [70.00%]
+
+  <bb 4> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  rt_entry_20 = fci_rt_db_get_next (&MEM[(void *)&context + 24B]);
+  # DEBUG rt_entry => rt_entry_20
+  # DEBUG BEGIN_STMT
+  if (rt_entry_20 == 0B)
+    goto <bb 5>; [30.00%]
+  else
+    goto <bb 7>; [70.00%]
+
+  <bb 5> [local count: 96636764]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  *fci_ret_21(D) = 201;
+  # DEBUG BEGIN_STMT
+  # DEBUG break_switch => 1
+  # DEBUG ret => 0
+  # DEBUG rt_entry => 0B
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [100.00%]
+
+  <bb 7> [local count: 977105061]:
+  # rt_entry_36 = PHI <rt_entry_20(4), rt_entry_17(D)(2)>
+  # DEBUG break_switch => NULL
+  # DEBUG ret => NULL
+  # DEBUG rt_entry => NULL
+  # DEBUG BEGIN_STMT
+  *reply_len_23(D) = 92;
+  # DEBUG BEGIN_STMT
+  _1 = rt_entry_36->mtu;
+  reply_buf_25(D)->mtu = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &reply_buf_25(D)->src_mac;
+  _3 = &rt_entry_36->src_mac;
+  autolibc_memcpy (_2, _3, 6);
+  # DEBUG BEGIN_STMT
+  _4 = &reply_buf_25(D)->dst_mac;
+  _5 = &rt_entry_36->dst_mac;
+  autolibc_memcpy (_4, _5, 6);
+  # DEBUG BEGIN_STMT
+  _6 = rt_entry_36->dst_ip.is_ipv4;
+  if (_6 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 488552530]:
+  # DEBUG BEGIN_STMT
+  _7 = &reply_buf_25(D)->dst_addr[0];
+  _8 = &rt_entry_36->dst_ip.v4;
+  autolibc_memcpy (_7, _8, 4);
+  # DEBUG BEGIN_STMT
+  reply_buf_25(D)->flags = 16777216;
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 488552530]:
+  # DEBUG BEGIN_STMT
+  _9 = &reply_buf_25(D)->dst_addr[0];
+  _10 = &rt_entry_36->dst_ip.v6;
+  autolibc_memcpy (_9, _10, 16);
+  # DEBUG BEGIN_STMT
+  reply_buf_25(D)->flags = 33554432;
+
+  <bb 10> [local count: 977105061]:
+  # DEBUG BEGIN_STMT
+  _11 = rt_entry_36->id;
+  reply_buf_25(D)->id = _11;
+  # DEBUG BEGIN_STMT
+  _12 = &reply_buf_25(D)->output_device;
+  _13 = rt_entry_36->iface;
+  _14 = pfe_phy_if_get_name (_13);
+  autolibc_strncpy (_12, _14, 15);
+  # DEBUG BEGIN_STMT
+  *fci_ret_21(D) = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 11> [local count: 1073741824]:
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
+
+
+prepare_mac_src (uint8_t[6] * src_mac, struct pfe_phy_if_t * phy_if, struct fpp_rt_cmd_t * rt_cmd)
+{
+  pfe_ct_phy_if_id_t phy_if_id;
+  const uint8_t zero_mac[6];
+  uint8_t[6] * _1;
+  long int _2;
+  unsigned char _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  zero_mac = "\x00";
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (src_mac_7(D), 0, 6);
+  # DEBUG BEGIN_STMT
+  _1 = &rt_cmd_9(D)->src_mac;
+  _2 = autolibc_memcmp (_1, &zero_mac, 6);
+  if (_2 == 0)
+    goto <bb 3>; [67.00%]
+  else
+    goto <bb 5>; [33.00%]
+
+  <bb 3> [local count: 719407023]:
+  # DEBUG BEGIN_STMT
+  phy_if_id_13 = pfe_phy_if_get_id (phy_if_12(D));
+  # DEBUG phy_if_id => phy_if_id_13
+  # DEBUG BEGIN_STMT
+  _3 = check_if_hif (phy_if_id_13);
+  if (_3 == 1)
+    goto <bb 6>; [51.12%]
+  else
+    goto <bb 4>; [48.88%]
+
+  <bb 4> [local count: 351646152]:
+  # DEBUG BEGIN_STMT
+  pfe_phy_if_get_mac_addr_first (phy_if_12(D), src_mac_7(D), 3, 3, 6);
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (src_mac_7(D), _1, 6);
+
+  <bb 6> [local count: 1073741824]:
+  zero_mac ={v} {CLOBBER};
+  return;
+
+}
+
+
+check_if_hif (pfe_ct_phy_if_id_t phy_if_id)
+{
+  bool_t result;
+  unsigned char _1;
+  int iftmp.4_2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG result => 0
+  # DEBUG BEGIN_STMT
+  _1 = phy_if_id_3(D) + 250;
+  if (_1 <= 3)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  if (phy_if_id_3(D) == 4)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 4> [local count: 354334802]:
+
+  <bb 5> [local count: 1073741824]:
+  # iftmp.4_2 = PHI <1(3), 0(4), 1(2)>
+  result_4 = (bool_t) iftmp.4_2;
+  # DEBUG result => result_4
+  # DEBUG BEGIN_STMT
+  return result_4;
+
+}
+
+
+fci_routes_remove_related_connections (struct fci_rt_db_entry_t * route)
+{
+  struct pfe_rtable_entry_t * entry;
+  struct pfe_rtable_t * _1;
+  uint32_t * _2;
+  struct pfe_rtable_t * _3;
+  struct pfe_rtable_t * _4;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = context.rtable;
+  _2 = &route_8(D)->id;
+  entry_10 = pfe_rtable_get_first (_1, 4, _2);
+  # DEBUG entry => entry_10
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  fci_connections_drop_one (entry_5);
+  # DEBUG ret => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = context.rtable;
+  pfe_rtable_entry_free (_3, entry_5);
+  # DEBUG BEGIN_STMT
+  _4 = context.rtable;
+  entry_14 = pfe_rtable_get_next (_4);
+  # DEBUG entry => entry_14
+
+  <bb 4> [local count: 1073741824]:
+  # entry_5 = PHI <entry_10(2), entry_14(3)>
+  # DEBUG entry => entry_5
+  # DEBUG BEGIN_STMT
+  if (entry_5 != 0B)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  return;
+
+}
+
+

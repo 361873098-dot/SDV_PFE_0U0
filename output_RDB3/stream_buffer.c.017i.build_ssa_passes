@@ -1,0 +1,1952 @@
+ucStreamBufferGetStreamBufferType (struct StreamBufferDef_t * xStreamBuffer)
+{
+  uint8_t D.6596;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = xStreamBuffer->ucFlags;
+  D.6596 = _1 & 1;
+  return D.6596;
+
+}
+
+
+vStreamBufferSetStreamBufferNumber (struct StreamBufferDef_t * xStreamBuffer, UBaseType_t uxStreamBufferNumber)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  xStreamBuffer->uxStreamBufferNumber = uxStreamBufferNumber;
+  return;
+
+}
+
+
+uxStreamBufferGetStreamBufferNumber (struct StreamBufferDef_t * xStreamBuffer)
+{
+  UBaseType_t D.6594;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  D.6594 = xStreamBuffer->uxStreamBufferNumber;
+  return D.6594;
+
+}
+
+
+prvInitialiseNewStreamBuffer (struct StreamBuffer_t * const pxStreamBuffer, uint8_t * const pucBuffer, size_t xBufferSizeBytes, size_t xTriggerLevelBytes, uint8_t ucFlags)
+{
+  const BaseType_t xWriteValue;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  xWriteValue = 85;
+  # DEBUG BEGIN_STMT
+  _1 = memset (pucBuffer, 85, xBufferSizeBytes);
+  if (pucBuffer != _1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  memset (pxStreamBuffer, 0, 36);
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->pucBuffer = pucBuffer;
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xLength = xBufferSizeBytes;
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xTriggerLevelBytes = xTriggerLevelBytes;
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->ucFlags = ucFlags;
+  return;
+
+}
+
+
+prvBytesInBuffer (const struct StreamBuffer_t * const pxStreamBuffer)
+{
+  size_t xCount;
+  size_t D.6399;
+  unsigned int D.6395;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->xLength;
+  _2 = pxStreamBuffer->xHead;
+  xCount = _1 + _2;
+  # DEBUG BEGIN_STMT
+  D.6395 = pxStreamBuffer->xTail;
+  xCount = xCount - D.6395;
+  # DEBUG BEGIN_STMT
+  _3 = pxStreamBuffer->xLength;
+  if (xCount >= _3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = pxStreamBuffer->xLength;
+  xCount = xCount - _4;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6399 = xCount;
+  return D.6399;
+
+}
+
+
+prvReadBytesFromBuffer (struct StreamBuffer_t * pxStreamBuffer, uint8_t * pucData, size_t xCount, size_t xTail)
+{
+  size_t xFirstLength;
+  size_t D.6531;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xCount == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->xLength;
+  _2 = _1 - xTail;
+  xFirstLength = MIN_EXPR <xCount, _2>;
+  # DEBUG BEGIN_STMT
+  if (xFirstLength > xCount)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = xTail + xFirstLength;
+  _4 = pxStreamBuffer->xLength;
+  if (_3 > _4)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = pxStreamBuffer->pucBuffer;
+  _6 = _5 + xTail;
+  memcpy (pucData, _6, xFirstLength);
+  # DEBUG BEGIN_STMT
+  if (xCount > xFirstLength)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _7 = pucData + xFirstLength;
+  _8 = pxStreamBuffer->pucBuffer;
+  _9 = xCount - xFirstLength;
+  memcpy (_7, _8, _9);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTail = xTail + xCount;
+  # DEBUG BEGIN_STMT
+  _10 = pxStreamBuffer->xLength;
+  if (xTail >= _10)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _11 = pxStreamBuffer->xLength;
+  xTail = xTail - _11;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  D.6531 = xTail;
+  return D.6531;
+
+}
+
+
+prvWriteBytesToBuffer (struct StreamBuffer_t * const pxStreamBuffer, const uint8_t * pucData, size_t xCount, size_t xHead)
+{
+  size_t xFirstLength;
+  size_t D.6460;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xCount == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->xLength;
+  _2 = _1 - xHead;
+  xFirstLength = MIN_EXPR <xCount, _2>;
+  # DEBUG BEGIN_STMT
+  _3 = xHead + xFirstLength;
+  _4 = pxStreamBuffer->xLength;
+  if (_3 > _4)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = pxStreamBuffer->pucBuffer;
+  _6 = _5 + xHead;
+  memcpy (_6, pucData, xFirstLength);
+  # DEBUG BEGIN_STMT
+  if (xCount > xFirstLength)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _7 = xCount - xFirstLength;
+  _8 = pxStreamBuffer->xLength;
+  if (_7 > _8)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _9 = pxStreamBuffer->pucBuffer;
+  _10 = pucData + xFirstLength;
+  _11 = xCount - xFirstLength;
+  memcpy (_9, _10, _11);
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xHead = xHead + xCount;
+  # DEBUG BEGIN_STMT
+  _12 = pxStreamBuffer->xLength;
+  if (xHead >= _12)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _13 = pxStreamBuffer->xLength;
+  xHead = xHead - _13;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6460 = xHead;
+  return D.6460;
+
+}
+
+
+xStreamBufferReceiveCompletedFromISR (struct StreamBufferDef_t * xStreamBuffer, BaseType_t * pxHigherPriorityTaskWoken)
+{
+  UBaseType_t uxSavedInterruptStatus;
+  BaseType_t xReturn;
+  struct StreamBuffer_t * const pxStreamBuffer;
+  BaseType_t D.6592;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  uxSavedInterruptStatus = ulPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->xTaskWaitingToSend;
+  if (_1 != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = pxStreamBuffer->xTaskWaitingToSend;
+  xTaskGenericNotifyFromISR (_2, 0, 0, 0, 0B, pxHigherPriorityTaskWoken);
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xTaskWaitingToSend = 0B;
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (uxSavedInterruptStatus);
+  # DEBUG BEGIN_STMT
+  D.6592 = xReturn;
+  return D.6592;
+
+}
+
+
+xStreamBufferSendCompletedFromISR (struct StreamBufferDef_t * xStreamBuffer, BaseType_t * pxHigherPriorityTaskWoken)
+{
+  UBaseType_t uxSavedInterruptStatus;
+  BaseType_t xReturn;
+  struct StreamBuffer_t * const pxStreamBuffer;
+  BaseType_t D.6585;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  uxSavedInterruptStatus = ulPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->xTaskWaitingToReceive;
+  if (_1 != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = pxStreamBuffer->xTaskWaitingToReceive;
+  xTaskGenericNotifyFromISR (_2, 0, 0, 0, 0B, pxHigherPriorityTaskWoken);
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xTaskWaitingToReceive = 0B;
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (uxSavedInterruptStatus);
+  # DEBUG BEGIN_STMT
+  D.6585 = xReturn;
+  return D.6585;
+
+}
+
+
+xStreamBufferIsFull (struct StreamBufferDef_t * xStreamBuffer)
+{
+  const struct StreamBuffer_t * const pxStreamBuffer;
+  size_t xBytesToStoreMessageLength;
+  BaseType_t xReturn;
+  BaseType_t D.6578;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->ucFlags;
+  _2 = (int) _1;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xBytesToStoreMessageLength = 4;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  xBytesToStoreMessageLength = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _4 = xStreamBufferSpacesAvailable (xStreamBuffer);
+  if (xBytesToStoreMessageLength >= _4)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  D.6578 = xReturn;
+  return D.6578;
+
+}
+
+
+xStreamBufferIsEmpty (struct StreamBufferDef_t * xStreamBuffer)
+{
+  size_t xTail;
+  BaseType_t xReturn;
+  const struct StreamBuffer_t * const pxStreamBuffer;
+  BaseType_t D.6568;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTail = pxStreamBuffer->xTail;
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->xHead;
+  if (xTail == _1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.6568 = xReturn;
+  return D.6568;
+
+}
+
+
+prvReadMessageFromBuffer (struct StreamBuffer_t * pxStreamBuffer, void * pvRxData, size_t xBufferLengthBytes, size_t xBytesAvailable)
+{
+  size_t xNextTail;
+  size_t xTempNextMessageLength;
+  size_t xNextMessageLength;
+  size_t xCount;
+  size_t D.6517;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xNextTail = pxStreamBuffer->xTail;
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->ucFlags;
+  _2 = (int) _1;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  xNextTail = prvReadBytesFromBuffer (pxStreamBuffer, &xTempNextMessageLength, 4, xNextTail);
+  # DEBUG BEGIN_STMT
+  xNextMessageLength = xTempNextMessageLength;
+  # DEBUG BEGIN_STMT
+  xBytesAvailable = xBytesAvailable + 4294967292;
+  # DEBUG BEGIN_STMT
+  if (xNextMessageLength > xBufferLengthBytes)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  xNextMessageLength = 0;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  xNextMessageLength = xBufferLengthBytes;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xCount = MIN_EXPR <xBytesAvailable, xNextMessageLength>;
+  # DEBUG BEGIN_STMT
+  if (xCount != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _4 = prvReadBytesFromBuffer (pxStreamBuffer, pvRxData, xCount, xNextTail);
+  pxStreamBuffer->xTail = _4;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.6517 = xCount;
+  xTempNextMessageLength = {CLOBBER};
+  return D.6517;
+
+}
+
+
+xStreamBufferReceiveFromISR (struct StreamBufferDef_t * xStreamBuffer, void * pvRxData, size_t xBufferLengthBytes, BaseType_t * const pxHigherPriorityTaskWoken)
+{
+  UBaseType_t uxSavedInterruptStatus;
+  size_t xBytesToStoreMessageLength;
+  size_t xBytesAvailable;
+  size_t xReceivedLength;
+  struct StreamBuffer_t * const pxStreamBuffer;
+  size_t D.6561;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  xReceivedLength = 0;
+  # DEBUG BEGIN_STMT
+  if (pvRxData == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->ucFlags;
+  _2 = (int) _1;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  xBytesToStoreMessageLength = 4;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  xBytesToStoreMessageLength = 0;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  xBytesAvailable = prvBytesInBuffer (pxStreamBuffer);
+  # DEBUG BEGIN_STMT
+  if (xBytesAvailable > xBytesToStoreMessageLength)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  xReceivedLength = prvReadMessageFromBuffer (pxStreamBuffer, pvRxData, xBufferLengthBytes, xBytesAvailable);
+  # DEBUG BEGIN_STMT
+  if (xReceivedLength != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  uxSavedInterruptStatus = ulPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  _4 = pxStreamBuffer->xTaskWaitingToSend;
+  if (_4 != 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  _5 = pxStreamBuffer->xTaskWaitingToSend;
+  xTaskGenericNotifyFromISR (_5, 0, 0, 0, 0B, pxHigherPriorityTaskWoken);
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xTaskWaitingToSend = 0B;
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (uxSavedInterruptStatus);
+  # DEBUG BEGIN_STMT
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6561 = xReceivedLength;
+  return D.6561;
+
+}
+
+
+xStreamBufferNextMessageLengthBytes (struct StreamBufferDef_t * xStreamBuffer)
+{
+  size_t xTempReturn;
+  size_t xBytesAvailable;
+  size_t xReturn;
+  struct StreamBuffer_t * const pxStreamBuffer;
+  size_t D.6543;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->ucFlags;
+  _2 = (int) _1;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xBytesAvailable = prvBytesInBuffer (pxStreamBuffer);
+  # DEBUG BEGIN_STMT
+  if (xBytesAvailable > 4)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _4 = pxStreamBuffer->xTail;
+  prvReadBytesFromBuffer (pxStreamBuffer, &xTempReturn, 4, _4);
+  # DEBUG BEGIN_STMT
+  xReturn = xTempReturn;
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (xBytesAvailable != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  D.6543 = xReturn;
+  xTempReturn = {CLOBBER};
+  return D.6543;
+
+}
+
+
+xStreamBufferReceive (struct StreamBufferDef_t * xStreamBuffer, void * pvRxData, size_t xBufferLengthBytes, TickType_t xTicksToWait)
+{
+  size_t xBytesToStoreMessageLength;
+  size_t xBytesAvailable;
+  size_t xReceivedLength;
+  struct StreamBuffer_t * const pxStreamBuffer;
+  size_t D.6507;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  xReceivedLength = 0;
+  # DEBUG BEGIN_STMT
+  if (pvRxData == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->ucFlags;
+  _2 = (int) _1;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  xBytesToStoreMessageLength = 4;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  xBytesToStoreMessageLength = 0;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (xTicksToWait != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  xBytesAvailable = prvBytesInBuffer (pxStreamBuffer);
+  # DEBUG BEGIN_STMT
+  if (xBytesAvailable <= xBytesToStoreMessageLength)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  xTaskGenericNotifyStateClear (0B, 0);
+  # DEBUG BEGIN_STMT
+  _4 = pxStreamBuffer->xTaskWaitingToReceive;
+  if (_4 != 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = xTaskGetCurrentTaskHandle ();
+  pxStreamBuffer->xTaskWaitingToReceive = _5;
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  if (xBytesAvailable <= xBytesToStoreMessageLength)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTaskGenericNotifyWait (0, 0, 0, 0B, xTicksToWait);
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xTaskWaitingToReceive = 0B;
+  # DEBUG BEGIN_STMT
+  xBytesAvailable = prvBytesInBuffer (pxStreamBuffer);
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  xBytesAvailable = prvBytesInBuffer (pxStreamBuffer);
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  if (xBytesAvailable > xBytesToStoreMessageLength)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  xReceivedLength = prvReadMessageFromBuffer (pxStreamBuffer, pvRxData, xBufferLengthBytes, xBytesAvailable);
+  # DEBUG BEGIN_STMT
+  if (xReceivedLength != 0)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vTaskSuspendAll ();
+  # DEBUG BEGIN_STMT
+  _6 = pxStreamBuffer->xTaskWaitingToSend;
+  if (_6 != 0B)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  _7 = pxStreamBuffer->xTaskWaitingToSend;
+  xTaskGenericNotify (_7, 0, 0, 0, 0B);
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xTaskWaitingToSend = 0B;
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  # DEBUG BEGIN_STMT
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6507 = xReceivedLength;
+  return D.6507;
+
+}
+
+
+prvWriteMessageToBuffer (struct StreamBuffer_t * const pxStreamBuffer, const void * pvTxData, size_t xDataLengthBytes, size_t xSpace, size_t xRequiredSpace)
+{
+  size_t xNextHead;
+  size_t D.6446;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  xNextHead = pxStreamBuffer->xHead;
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->ucFlags;
+  _2 = (int) _1;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (xSpace >= xRequiredSpace)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  xNextHead = prvWriteBytesToBuffer (pxStreamBuffer, &xDataLengthBytes, 4, xNextHead);
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  xDataLengthBytes = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xDataLengthBytes.2_4 = xDataLengthBytes;
+  _5 = MIN_EXPR <xSpace, xDataLengthBytes.2_4>;
+  xDataLengthBytes = _5;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  xDataLengthBytes.3_6 = xDataLengthBytes;
+  if (xDataLengthBytes.3_6 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  xDataLengthBytes.4_7 = xDataLengthBytes;
+  _8 = prvWriteBytesToBuffer (pxStreamBuffer, pvTxData, xDataLengthBytes.4_7, xNextHead);
+  pxStreamBuffer->xHead = _8;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  D.6446 = xDataLengthBytes;
+  return D.6446;
+
+}
+
+
+xStreamBufferSendFromISR (struct StreamBufferDef_t * xStreamBuffer, const void * pvTxData, size_t xDataLengthBytes, BaseType_t * const pxHigherPriorityTaskWoken)
+{
+  UBaseType_t uxSavedInterruptStatus;
+  size_t xRequiredSpace;
+  size_t xSpace;
+  size_t xReturn;
+  struct StreamBuffer_t * const pxStreamBuffer;
+  size_t D.6477;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xRequiredSpace = xDataLengthBytes;
+  # DEBUG BEGIN_STMT
+  if (pvTxData == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->ucFlags;
+  _2 = (int) _1;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  xRequiredSpace = xRequiredSpace + 4;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xSpace = xStreamBufferSpacesAvailable (pxStreamBuffer);
+  # DEBUG BEGIN_STMT
+  xReturn = prvWriteMessageToBuffer (pxStreamBuffer, pvTxData, xDataLengthBytes, xSpace, xRequiredSpace);
+  # DEBUG BEGIN_STMT
+  if (xReturn != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _4 = prvBytesInBuffer (pxStreamBuffer);
+  _5 = pxStreamBuffer->xTriggerLevelBytes;
+  if (_4 >= _5)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  uxSavedInterruptStatus = ulPortRaiseBASEPRI ();
+  # DEBUG BEGIN_STMT
+  _6 = pxStreamBuffer->xTaskWaitingToReceive;
+  if (_6 != 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _7 = pxStreamBuffer->xTaskWaitingToReceive;
+  xTaskGenericNotifyFromISR (_7, 0, 0, 0, 0B, pxHigherPriorityTaskWoken);
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xTaskWaitingToReceive = 0B;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  vPortSetBASEPRI (uxSavedInterruptStatus);
+  # DEBUG BEGIN_STMT
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6477 = xReturn;
+  return D.6477;
+
+}
+
+
+xStreamBufferSend (struct StreamBufferDef_t * xStreamBuffer, const void * pvTxData, size_t xDataLengthBytes, TickType_t xTicksToWait)
+{
+  size_t xMaxReportedSpace;
+  struct TimeOut_t xTimeOut;
+  size_t xRequiredSpace;
+  size_t xSpace;
+  size_t xReturn;
+  struct StreamBuffer_t * const pxStreamBuffer;
+  size_t D.6435;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  xSpace = 0;
+  # DEBUG BEGIN_STMT
+  xRequiredSpace = xDataLengthBytes;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xMaxReportedSpace = 0;
+  # DEBUG BEGIN_STMT
+  if (pvTxData == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->xLength;
+  xMaxReportedSpace = _1 + 4294967295;
+  # DEBUG BEGIN_STMT
+  _2 = pxStreamBuffer->ucFlags;
+  _3 = (int) _2;
+  _4 = _3 & 1;
+  if (_4 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  xRequiredSpace = xRequiredSpace + 4;
+  # DEBUG BEGIN_STMT
+  if (xRequiredSpace <= xDataLengthBytes)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xRequiredSpace > xMaxReportedSpace)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  xTicksToWait = 0;
+  goto <bb 16>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  if (xRequiredSpace > xMaxReportedSpace)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  xRequiredSpace = xMaxReportedSpace;
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTicksToWait.0_5 = xTicksToWait;
+  if (xTicksToWait.0_5 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  vTaskSetTimeOutState (&xTimeOut);
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  xSpace = xStreamBufferSpacesAvailable (pxStreamBuffer);
+  # DEBUG BEGIN_STMT
+  if (xSpace < xRequiredSpace)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  xTaskGenericNotifyStateClear (0B, 0);
+  # DEBUG BEGIN_STMT
+  _6 = pxStreamBuffer->xTaskWaitingToSend;
+  if (_6 != 0B)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 21>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _7 = xTaskGetCurrentTaskHandle ();
+  pxStreamBuffer->xTaskWaitingToSend = _7;
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xTicksToWait.1_8 = xTicksToWait;
+  xTaskGenericNotifyWait (0, 0, 0, 0B, xTicksToWait.1_8);
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xTaskWaitingToSend = 0B;
+  # DEBUG BEGIN_STMT
+  _9 = xTaskCheckForTimeOut (&xTimeOut, &xTicksToWait);
+  if (_9 == 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xSpace == 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  # DEBUG BEGIN_STMT
+  xSpace = xStreamBufferSpacesAvailable (pxStreamBuffer);
+
+  <bb 26> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xReturn = prvWriteMessageToBuffer (pxStreamBuffer, pvTxData, xDataLengthBytes, xSpace, xRequiredSpace);
+  # DEBUG BEGIN_STMT
+  if (xReturn != 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 27> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = prvBytesInBuffer (pxStreamBuffer);
+  _11 = pxStreamBuffer->xTriggerLevelBytes;
+  if (_10 >= _11)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 28> :
+  # DEBUG BEGIN_STMT
+  vTaskSuspendAll ();
+  # DEBUG BEGIN_STMT
+  _12 = pxStreamBuffer->xTaskWaitingToReceive;
+  if (_12 != 0B)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 29> :
+  # DEBUG BEGIN_STMT
+  _13 = pxStreamBuffer->xTaskWaitingToReceive;
+  xTaskGenericNotify (_13, 0, 0, 0, 0B);
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xTaskWaitingToReceive = 0B;
+
+  <bb 30> :
+  # DEBUG BEGIN_STMT
+  xTaskResumeAll ();
+  # DEBUG BEGIN_STMT
+
+  <bb 31> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6435 = xReturn;
+  xTimeOut = {CLOBBER};
+  return D.6435;
+
+}
+
+
+xStreamBufferBytesAvailable (struct StreamBufferDef_t * xStreamBuffer)
+{
+  size_t xReturn;
+  const struct StreamBuffer_t * const pxStreamBuffer;
+  size_t D.6393;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xReturn = prvBytesInBuffer (pxStreamBuffer);
+  # DEBUG BEGIN_STMT
+  D.6393 = xReturn;
+  return D.6393;
+
+}
+
+
+xStreamBufferSpacesAvailable (struct StreamBufferDef_t * xStreamBuffer)
+{
+  size_t xOriginalTail;
+  size_t xSpace;
+  const struct StreamBuffer_t * const pxStreamBuffer;
+  size_t D.6389;
+  unsigned int D.6385;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  xOriginalTail = pxStreamBuffer->xTail;
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->xLength;
+  _2 = pxStreamBuffer->xTail;
+  xSpace = _1 + _2;
+  # DEBUG BEGIN_STMT
+  D.6385 = pxStreamBuffer->xHead;
+  xSpace = xSpace - D.6385;
+  # DEBUG BEGIN_STMT
+  _3 = pxStreamBuffer->xTail;
+  if (xOriginalTail != _3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xSpace = xSpace + 4294967295;
+  # DEBUG BEGIN_STMT
+  _4 = pxStreamBuffer->xLength;
+  if (xSpace >= _4)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _5 = pxStreamBuffer->xLength;
+  xSpace = xSpace - _5;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6389 = xSpace;
+  return D.6389;
+
+}
+
+
+xStreamBufferSetTriggerLevel (struct StreamBufferDef_t * xStreamBuffer, size_t xTriggerLevel)
+{
+  BaseType_t xReturn;
+  struct StreamBuffer_t * const pxStreamBuffer;
+  BaseType_t D.6381;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xTriggerLevel == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  xTriggerLevel = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->xLength;
+  if (xTriggerLevel < _1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->xTriggerLevelBytes = xTriggerLevel;
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.6381 = xReturn;
+  return D.6381;
+
+}
+
+
+xStreamBufferReset (struct StreamBufferDef_t * xStreamBuffer)
+{
+  UBaseType_t uxStreamBufferNumber;
+  BaseType_t xReturn;
+  struct StreamBuffer_t * const pxStreamBuffer;
+  BaseType_t D.6372;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  xReturn = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  uxStreamBufferNumber = pxStreamBuffer->uxStreamBufferNumber;
+  # DEBUG BEGIN_STMT
+  vPortEnterCritical ();
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->xTaskWaitingToReceive;
+  if (_1 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = pxStreamBuffer->xTaskWaitingToSend;
+  if (_2 == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _3 = pxStreamBuffer->pucBuffer;
+  _4 = pxStreamBuffer->xLength;
+  _5 = pxStreamBuffer->xTriggerLevelBytes;
+  _6 = pxStreamBuffer->ucFlags;
+  prvInitialiseNewStreamBuffer (pxStreamBuffer, _3, _4, _5, _6);
+  # DEBUG BEGIN_STMT
+  xReturn = 1;
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer->uxStreamBufferNumber = uxStreamBufferNumber;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  vPortExitCritical ();
+  # DEBUG BEGIN_STMT
+  D.6372 = xReturn;
+  return D.6372;
+
+}
+
+
+vStreamBufferDelete (struct StreamBufferDef_t * xStreamBuffer)
+{
+  struct StreamBuffer_t * pxStreamBuffer;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pxStreamBuffer = xStreamBuffer;
+  # DEBUG BEGIN_STMT
+  if (pxStreamBuffer == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pxStreamBuffer->ucFlags;
+  _2 = (int) _1;
+  _3 = _2 & 2;
+  if (_3 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  vPortFree (pxStreamBuffer);
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  memset (pxStreamBuffer, 0, 36);
+
+  <bb 8> :
+  return;
+
+}
+
+
+xStreamBufferGenericCreate (size_t xBufferSizeBytes, size_t xTriggerLevelBytes, BaseType_t xIsMessageBuffer)
+{
+  uint8_t ucFlags;
+  uint8_t * pucAllocatedMemory;
+  struct StreamBufferDef_t * D.6357;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xIsMessageBuffer == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ucFlags = 1;
+  # DEBUG BEGIN_STMT
+  if (xBufferSizeBytes <= 4)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ucFlags = 0;
+  # DEBUG BEGIN_STMT
+  if (xBufferSizeBytes == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xTriggerLevelBytes > xBufferSizeBytes)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  vPortRaiseBASEPRI ();
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (xTriggerLevelBytes == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  xTriggerLevelBytes = 1;
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  if (xBufferSizeBytes <= 4294967258)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  xBufferSizeBytes = xBufferSizeBytes + 1;
+  # DEBUG BEGIN_STMT
+  _1 = xBufferSizeBytes + 36;
+  pucAllocatedMemory = pvPortMalloc (_1);
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  pucAllocatedMemory = 0B;
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  if (pucAllocatedMemory != 0B)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  _2 = pucAllocatedMemory + 36;
+  prvInitialiseNewStreamBuffer (pucAllocatedMemory, _2, xBufferSizeBytes, xTriggerLevelBytes, ucFlags);
+  # DEBUG BEGIN_STMT
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.6357 = pucAllocatedMemory;
+  return D.6357;
+
+}
+
+
+__attribute__((always_inline))
+vPortSetBASEPRI (uint32_t ulNewMaskValue)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	msr basepri, %0	" :  : "r" ulNewMaskValue : "memory");
+  return;
+
+}
+
+
+__attribute__((always_inline))
+ulPortRaiseBASEPRI ()
+{
+  uint32_t ulNewBASEPRI;
+  uint32_t ulOriginalBASEPRI;
+  uint32_t D.6479;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mrs %0, basepri											
+	mov %1, %2												
+	cpsid i													
+	msr basepri, %1											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulOriginalBASEPRI, "=r" ulNewBASEPRI : "i" 16 : "memory");
+  # DEBUG BEGIN_STMT
+  D.6479 = ulOriginalBASEPRI;
+  return D.6479;
+
+}
+
+
+__attribute__((always_inline))
+vPortRaiseBASEPRI ()
+{
+  uint32_t ulNewBASEPRI;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("	mov %0, %1												
+	cpsid i													
+	msr basepri, %0											
+	isb														
+	dsb														
+	cpsie i													
+" : "=r" ulNewBASEPRI : "i" 16 : "memory");
+  return;
+
+}
+
+

@@ -1,0 +1,1129 @@
+
+Marking local functions: ipc_hw_set_irq_idx ipc_hw_set_rx_irq_idx ipc_hw_set_tx_irq_idx ipc_hw_set_core ipc_hw_set_local_core ipc_hw_set_remote_core ipc_hw_get_core_index_a53 ipc_hw_get_core_index_m7
+
+
+Marking externally visible functions: ipc_hw_flush_cache_remote ipc_hw_flush_cache_local ipc_hw_irq_clear ipc_hw_irq_notify ipc_hw_irq_disable ipc_hw_irq_enable ipc_hw_free ipc_hw_init
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+ipc_hw_flush_cache_remote/16 (ipc_hw_flush_cache_remote) @074ae700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_flush_cache_local/15 (ipc_hw_flush_cache_local) @074ae460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_clear/14 (ipc_hw_irq_clear) @074ae1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: ipc_hw_free/10 ipc_hw_init/9 
+  Calls: 
+ipc_hw_irq_notify/13 (ipc_hw_irq_notify) @074a1ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_irq_disable/12 (ipc_hw_irq_disable) @074a19a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: 
+ipc_hw_irq_enable/11 (ipc_hw_irq_enable) @074a1e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+ipc_hw_free/10 (ipc_hw_free) @074a1b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 
+ipc_hw_init/9 (ipc_hw_init) @074a18c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: ipc_hw_priv/0 (write)
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: ipc_hw_irq_clear/14 ipc_hw_irq_disable/12 ipc_hw_set_irq_idx/8 ipc_hw_set_core/5 
+ipc_hw_set_irq_idx/8 (ipc_hw_set_irq_idx) @074a1620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: ipc_hw_set_rx_irq_idx/7 ipc_hw_set_tx_irq_idx/6 
+ipc_hw_set_rx_irq_idx/7 (ipc_hw_set_rx_irq_idx) @074a1380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: ipc_hw_set_irq_idx/8 
+  Calls: 
+ipc_hw_set_tx_irq_idx/6 (ipc_hw_set_tx_irq_idx) @074a10e0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: ipc_hw_set_irq_idx/8 
+  Calls: 
+ipc_hw_set_core/5 (ipc_hw_set_core) @0748de00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)ipc_hw_priv/0 (read)
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: ipc_hw_init/9 
+  Calls: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+ipc_hw_set_local_core/4 (ipc_hw_set_local_core) @0748db60
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: ipc_hw_set_core/5 
+  Calls: ipc_hw_get_core_index_m7/1 ipc_hw_get_core_index_a53/2 
+ipc_hw_set_remote_core/3 (ipc_hw_set_remote_core) @0748d8c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: ipc_hw_priv/0 (write)ipc_hw_priv/0 (write)
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: ipc_hw_set_core/5 
+  Calls: ipc_hw_get_core_index_m7/1 ipc_hw_get_core_index_a53/2 
+ipc_hw_get_core_index_a53/2 (ipc_hw_get_core_index_a53) @0748d620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+  Calls: 
+ipc_hw_get_core_index_m7/1 (ipc_hw_get_core_index_m7) @0748d380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: ipc_hw_set_local_core/4 ipc_hw_set_remote_core/3 
+  Calls: 
+ipc_hw_priv/0 (ipc_hw_priv) @074896c0
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: ipc_hw_init/9 (write)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_core/5 (read)ipc_hw_set_remote_core/3 (write)ipc_hw_set_remote_core/3 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_local_core/4 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_tx_irq_idx/6 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_set_rx_irq_idx/7 (write)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_enable/11 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_disable/12 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_notify/13 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)ipc_hw_irq_clear/14 (read)
+  Availability: available
+  Varpool flags:
+ipc_hw_flush_cache_remote (const uint8 instance)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+ipc_hw_flush_cache_local (const uint8 instance)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+ipc_hw_irq_clear (const uint8 instance)
+{
+  uint8 msi_rx_index;
+  uint8 remote_core;
+  uint8 local_core;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  _2 = ipc_hw_priv[_1].mscm_rx_irq;
+  if (_2 != -1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) instance;
+  local_core = ipc_hw_priv[_3].local_core;
+  # DEBUG BEGIN_STMT
+  _4 = (int) instance;
+  remote_core = ipc_hw_priv[_4].remote_core;
+  # DEBUG BEGIN_STMT
+  _5 = (int) instance;
+  msi_rx_index = ipc_hw_priv[_5].msi_rx_irq;
+  # DEBUG BEGIN_STMT
+  _6 = remote_core + 252;
+  if (_6 <= 3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _7 = (int) remote_core;
+  _8 = 1075415648B;
+  _9 = (int) local_core;
+  _10 = (int) msi_rx_index;
+  _11 = 1 << _7;
+  _8->IRCPnIRx[_9][_10].IPC_ISR = _11;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _12 = 1075415648B;
+  _13 = (int) local_core;
+  _14 = (int) msi_rx_index;
+  _12->IRCPnIRx[_13][_14].IPC_ISR = 3855;
+
+  <bb 6> :
+  return;
+
+}
+
+
+ipc_hw_irq_notify (const uint8 instance)
+{
+  uint8 msi_tx_index;
+  uint8 remote_core;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  _2 = ipc_hw_priv[_1].mscm_tx_irq;
+  if (_2 != -1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) instance;
+  remote_core = ipc_hw_priv[_3].remote_core;
+  # DEBUG BEGIN_STMT
+  _4 = (int) instance;
+  msi_tx_index = ipc_hw_priv[_4].msi_tx_irq;
+  # DEBUG BEGIN_STMT
+  _5 = 1075415648B;
+  _6 = (int) remote_core;
+  _7 = (int) msi_tx_index;
+  _8 = _5->IRCPnIRx[_6][_7].IPC_IGR;
+  _9 = 1075415648B;
+  _10 = (int) remote_core;
+  _11 = (int) msi_tx_index;
+  _12 = _8 | 1;
+  _9->IRCPnIRx[_10][_11].IPC_IGR = _12;
+
+  <bb 4> :
+  return;
+
+}
+
+
+ipc_hw_irq_disable (const uint8 instance)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  _2 = ipc_hw_priv[_1].mscm_rx_irq;
+  if (_2 != -1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = 1075412992B;
+  _4 = (int) instance;
+  _5 = ipc_hw_priv[_4].mscm_rx_irq;
+  _6 = (int) _5;
+  _7 = _3->IRSPRC[_6];
+  _8 = (signed short) _7;
+  _9 = (int) instance;
+  _10 = ipc_hw_priv[_9].local_core;
+  _11 = (unsigned int) _10;
+  _12 = _11 + 4294967293;
+  _13 = 1 << _12;
+  _14 = (signed short) _13;
+  _15 = ~_14;
+  _16 = _8 & _15;
+  _17 = 1075412992B;
+  _18 = (int) instance;
+  _19 = ipc_hw_priv[_18].mscm_rx_irq;
+  _20 = (int) _19;
+  _21 = (short unsigned int) _16;
+  _17->IRSPRC[_20] = _21;
+
+  <bb 4> :
+  return;
+
+}
+
+
+ipc_hw_irq_enable (const uint8 instance)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  _2 = ipc_hw_priv[_1].mscm_rx_irq;
+  if (_2 != -1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = 1075412992B;
+  _4 = (int) instance;
+  _5 = ipc_hw_priv[_4].mscm_rx_irq;
+  _6 = (int) _5;
+  _7 = _3->IRSPRC[_6];
+  _8 = (signed short) _7;
+  _9 = (int) instance;
+  _10 = ipc_hw_priv[_9].local_core;
+  _11 = (unsigned int) _10;
+  _12 = _11 + 4294967293;
+  _13 = 1 << _12;
+  _14 = (signed short) _13;
+  _15 = _8 | _14;
+  _16 = 1075412992B;
+  _17 = (int) instance;
+  _18 = ipc_hw_priv[_17].mscm_rx_irq;
+  _19 = (int) _18;
+  _20 = (short unsigned int) _15;
+  _16->IRSPRC[_19] = _20;
+
+  <bb 4> :
+  return;
+
+}
+
+
+ipc_hw_free (const uint8 instance)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ipc_hw_irq_clear (instance);
+  return;
+
+}
+
+
+ipc_hw_init (const uint8 instance, const struct ipc_shm_cfg * cfg)
+{
+  sint8 err;
+  sint8 D.6456;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  err = 0;
+  # DEBUG BEGIN_STMT
+  err = ipc_hw_set_core (instance, cfg);
+  # DEBUG BEGIN_STMT
+  if (err == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  err = ipc_hw_set_irq_idx (instance, cfg);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (err == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  _2 = cfg->shm_size;
+  ipc_hw_priv[_1].shm_size = _2;
+  # DEBUG BEGIN_STMT
+  ipc_hw_irq_disable (instance);
+  # DEBUG BEGIN_STMT
+  ipc_hw_irq_clear (instance);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  D.6456 = err;
+  return D.6456;
+
+}
+
+
+ipc_hw_set_irq_idx (const uint8 instance, const struct ipc_shm_cfg * cfg)
+{
+  sint8 err;
+  sint8 D.6510;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  err = 0;
+  # DEBUG BEGIN_STMT
+  _1 = cfg->inter_core_rx_irq;
+  _2 = cfg->inter_core_tx_irq;
+  if (_1 == _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _3 = cfg->inter_core_rx_irq;
+  if (_3 != -1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  err = -3;
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  err = ipc_hw_set_tx_irq_idx (instance, cfg);
+  # DEBUG BEGIN_STMT
+  if (err == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  err = ipc_hw_set_rx_irq_idx (instance, cfg);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.6510 = err;
+  return D.6510;
+
+}
+
+
+ipc_hw_set_rx_irq_idx (const uint8 instance, const struct ipc_shm_cfg * cfg)
+{
+  sint8 err;
+  sint8 D.6514;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  err = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  _2 = cfg->inter_core_rx_irq;
+  ipc_hw_priv[_1].mscm_rx_irq = _2;
+  # DEBUG BEGIN_STMT
+  _3 = cfg->inter_core_rx_irq;
+  _4 = (int) _3;
+  switch (_4) <default: <L13> [INV], case -1: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV], case 3: <L3> [INV], case 22: <L4> [INV], case 23: <L5> [INV], case 68: <L6> [INV], case 69: <L7> [INV], case 164: <L8> [INV], case 165: <L9> [INV], case 166: <L10> [INV], case 167: <L11> [INV], case 168: <L12> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _5 = (int) instance;
+  ipc_hw_priv[_5].mscm_rx_irq = -1;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _6 = (int) instance;
+  ipc_hw_priv[_6].msi_rx_irq = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _7 = (int) instance;
+  ipc_hw_priv[_7].msi_rx_irq = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  _8 = (int) instance;
+  ipc_hw_priv[_8].msi_rx_irq = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  _9 = (int) instance;
+  ipc_hw_priv[_9].msi_rx_irq = 5;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  _10 = (int) instance;
+  ipc_hw_priv[_10].msi_rx_irq = 6;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 9> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  _11 = (int) instance;
+  ipc_hw_priv[_11].msi_rx_irq = 7;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 10> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  _12 = (int) instance;
+  ipc_hw_priv[_12].msi_rx_irq = 8;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 11> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  _13 = (int) instance;
+  ipc_hw_priv[_13].msi_rx_irq = 9;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 12> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  _14 = (int) instance;
+  ipc_hw_priv[_14].msi_rx_irq = 10;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 13> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  _15 = (int) instance;
+  ipc_hw_priv[_15].msi_rx_irq = 11;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 14> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  _16 = (int) instance;
+  ipc_hw_priv[_16].msi_rx_irq = 12;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  _17 = (int) instance;
+  ipc_hw_priv[_17].msi_rx_irq = 13;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  err = -3;
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  D.6514 = err;
+  return D.6514;
+
+}
+
+
+ipc_hw_set_tx_irq_idx (const uint8 instance, const struct ipc_shm_cfg * cfg)
+{
+  sint8 err;
+  sint8 D.6512;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  err = 0;
+  # DEBUG BEGIN_STMT
+  _1 = (int) instance;
+  _2 = cfg->inter_core_tx_irq;
+  ipc_hw_priv[_1].mscm_tx_irq = _2;
+  # DEBUG BEGIN_STMT
+  _3 = cfg->inter_core_tx_irq;
+  _4 = (int) _3;
+  switch (_4) <default: <L13> [INV], case -1: <L0> [INV], case 1: <L1> [INV], case 2: <L2> [INV], case 3: <L3> [INV], case 22: <L4> [INV], case 23: <L5> [INV], case 68: <L6> [INV], case 69: <L7> [INV], case 164: <L8> [INV], case 165: <L9> [INV], case 166: <L10> [INV], case 167: <L11> [INV], case 168: <L12> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  _5 = (int) instance;
+  ipc_hw_priv[_5].mscm_tx_irq = -1;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  _6 = (int) instance;
+  ipc_hw_priv[_6].msi_tx_irq = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  _7 = (int) instance;
+  ipc_hw_priv[_7].msi_tx_irq = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  _8 = (int) instance;
+  ipc_hw_priv[_8].msi_tx_irq = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  _9 = (int) instance;
+  ipc_hw_priv[_9].msi_tx_irq = 5;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  _10 = (int) instance;
+  ipc_hw_priv[_10].msi_tx_irq = 6;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 9> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  _11 = (int) instance;
+  ipc_hw_priv[_11].msi_tx_irq = 7;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 10> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  _12 = (int) instance;
+  ipc_hw_priv[_12].msi_tx_irq = 8;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 11> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  _13 = (int) instance;
+  ipc_hw_priv[_13].msi_tx_irq = 9;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 12> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  _14 = (int) instance;
+  ipc_hw_priv[_14].msi_tx_irq = 10;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 13> :
+<L10>:
+  # DEBUG BEGIN_STMT
+  _15 = (int) instance;
+  ipc_hw_priv[_15].msi_tx_irq = 11;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 14> :
+<L11>:
+  # DEBUG BEGIN_STMT
+  _16 = (int) instance;
+  ipc_hw_priv[_16].msi_tx_irq = 12;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 15> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  _17 = (int) instance;
+  ipc_hw_priv[_17].msi_tx_irq = 13;
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+<L13>:
+  # DEBUG BEGIN_STMT
+  err = -3;
+  # DEBUG BEGIN_STMT
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  D.6512 = err;
+  return D.6512;
+
+}
+
+
+ipc_hw_set_core (const uint8 instance, const struct ipc_shm_cfg * cfg)
+{
+  uint8 local_core_idx;
+  sint8 err;
+  sint8 D.6466;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  err = 0;
+  # DEBUG BEGIN_STMT
+  _1 = 1075412992B;
+  _2 = _1->CPXNUM;
+  local_core_idx = (uint8) _2;
+  # DEBUG BEGIN_STMT
+  err = ipc_hw_set_remote_core (instance, cfg);
+  # DEBUG BEGIN_STMT
+  if (err == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  err = ipc_hw_set_local_core (instance, cfg);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (err == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = (int) instance;
+  _4 = ipc_hw_priv[_3].remote_core;
+  _5 = (int) instance;
+  _6 = ipc_hw_priv[_5].local_core;
+  if (_4 != _6)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  _7 = (int) instance;
+  _8 = ipc_hw_priv[_7].local_core;
+  if (local_core_idx == _8)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  err = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  err = -3;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  D.6466 = err;
+  return D.6466;
+
+}
+
+
+ipc_hw_set_local_core (const uint8 instance, const struct ipc_shm_cfg * cfg)
+{
+  sint8 core_idx;
+  sint8 err;
+  sint8 D.6502;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  err = -3;
+  # DEBUG BEGIN_STMT
+  core_idx = 0;
+  # DEBUG BEGIN_STMT
+  _1 = cfg->local_core.type;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = cfg->local_core.index;
+  _3 = _2 + 4294967295;
+  if (_3 <= 127)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = cfg->local_core.index;
+  _5 = (unsigned char) _4;
+  core_idx = ipc_hw_get_core_index_a53 (_5);
+  # DEBUG BEGIN_STMT
+  if (core_idx >= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _6 = (int) instance;
+  core_idx.2_7 = (unsigned char) core_idx;
+  ipc_hw_priv[_6].local_core = core_idx.2_7;
+  # DEBUG BEGIN_STMT
+  err = 0;
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _8 = cfg->local_core.type;
+  if (_8 == 2)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _9 = cfg->local_core.index;
+  _10 = _9 + 4294967295;
+  if (_10 <= 7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _11 = cfg->local_core.index;
+  _12 = (unsigned char) _11;
+  core_idx = ipc_hw_get_core_index_m7 (_12);
+  # DEBUG BEGIN_STMT
+  if (core_idx > 3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _13 = (int) instance;
+  core_idx.3_14 = (unsigned char) core_idx;
+  ipc_hw_priv[_13].local_core = core_idx.3_14;
+  # DEBUG BEGIN_STMT
+  err = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  err = -3;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  D.6502 = err;
+  return D.6502;
+
+}
+
+
+ipc_hw_set_remote_core (const uint8 instance, const struct ipc_shm_cfg * cfg)
+{
+  sint8 core_idx;
+  sint8 err;
+  sint8 D.6482;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  err = -3;
+  # DEBUG BEGIN_STMT
+  core_idx = 0;
+  # DEBUG BEGIN_STMT
+  _1 = cfg->remote_core.type;
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = cfg->remote_core.index;
+  _3 = _2 + 4294967295;
+  if (_3 <= 127)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = cfg->remote_core.index;
+  _5 = (unsigned char) _4;
+  core_idx = ipc_hw_get_core_index_a53 (_5);
+  # DEBUG BEGIN_STMT
+  if (core_idx >= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _6 = (int) instance;
+  core_idx.0_7 = (unsigned char) core_idx;
+  ipc_hw_priv[_6].remote_core = core_idx.0_7;
+  # DEBUG BEGIN_STMT
+  err = 0;
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _8 = cfg->remote_core.type;
+  if (_8 == 2)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _9 = cfg->remote_core.index;
+  _10 = _9 + 4294967295;
+  if (_10 <= 7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _11 = cfg->remote_core.index;
+  _12 = (unsigned char) _11;
+  core_idx = ipc_hw_get_core_index_m7 (_12);
+  # DEBUG BEGIN_STMT
+  if (core_idx > 3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _13 = (int) instance;
+  core_idx.1_14 = (unsigned char) core_idx;
+  ipc_hw_priv[_13].remote_core = core_idx.1_14;
+  # DEBUG BEGIN_STMT
+  err = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  err = -3;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  D.6482 = err;
+  return D.6482;
+
+}
+
+
+ipc_hw_get_core_index_a53 (uint8 index)
+{
+  sint8 core_index;
+  sint8 D.6484;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) index;
+  switch (_1) <default: <L8> [INV], case 1: <L0> [INV], case 2: <L1> [INV], case 4: <L2> [INV], case 8: <L3> [INV], case 16: <L4> [INV], case 32: <L5> [INV], case 64: <L6> [INV], case 128: <L7> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  core_index = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  core_index = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  core_index = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  core_index = 3;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  core_index = 8;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  core_index = 9;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  core_index = 10;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  core_index = 11;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  core_index = -3;
+  # DEBUG BEGIN_STMT
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  D.6484 = core_index;
+  return D.6484;
+
+}
+
+
+ipc_hw_get_core_index_m7 (uint8 index)
+{
+  sint8 core_index;
+  sint8 D.6486;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = (int) index;
+  switch (_1) <default: <L4> [INV], case 1: <L0> [INV], case 2: <L1> [INV], case 4: <L2> [INV], case 8: <L3> [INV]>
+
+  <bb 3> :
+<L0>:
+  # DEBUG BEGIN_STMT
+  core_index = 4;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+<L1>:
+  # DEBUG BEGIN_STMT
+  core_index = 5;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  core_index = 6;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  core_index = 7;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  core_index = -3;
+  # DEBUG BEGIN_STMT
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.6486 = core_index;
+  return D.6486;
+
+}
+
+

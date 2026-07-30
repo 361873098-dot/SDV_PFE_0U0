@@ -1,0 +1,797 @@
+pfe_mirror_get_actions (const struct pfe_mirror_t * mirror, pfe_ct_route_actions_t * actions, struct pfe_ct_route_actions_args_t * args)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  const struct pfe_ct_route_actions_args_t * _3;
+  errno_t _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_5 = 0;
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  _1 = mirror_7(D)->phys.actions;
+  *actions_8(D) = _1;
+  # DEBUG BEGIN_STMT
+  _2 = mirror_7(D)->phys.actions;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = &mirror_7(D)->phys.args;
+  autolibc_memcpy (args_10(D), _3, 60);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _12 = ret_5;
+  return _12;
+
+}
+
+
+pfe_mirror_set_actions (struct pfe_mirror_t * mirror, pfe_ct_route_actions_t actions, const struct pfe_ct_route_actions_args_t * args)
+{
+  errno_t ret;
+  struct pfe_ct_route_actions_args_t * _1;
+  struct pfe_class_t * _2;
+  unsigned int _3;
+  struct pfe_ct_mirror_t * _4;
+  errno_t _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  mirror_7(D)->phys.actions = actions_8(D);
+  # DEBUG BEGIN_STMT
+  if (actions_8(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = &mirror_7(D)->phys.args;
+  autolibc_memcpy (_1, args_10(D), 60);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pfe_mirror_db.class;
+  _3 = mirror_7(D)->phys_addr;
+  _4 = &mirror_7(D)->phys;
+  ret_13 = pfe_class_write_dmem (_2, -1, _3, _4, 72);
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  _14 = ret_13;
+  return _14;
+
+}
+
+
+pfe_mirror_get_filter (const struct pfe_mirror_t * mirror)
+{
+  uint32_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  uint32_t _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = mirror_14(D)->phys.flexible_filter;
+  _2 = _1 >> 24;
+  _3 = mirror_14(D)->phys.flexible_filter;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = mirror_14(D)->phys.flexible_filter;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = mirror_14(D)->phys.flexible_filter;
+  _12 = _11 << 24;
+  ret_15 = _10 | _12;
+  # DEBUG ret => ret_15
+  # DEBUG BEGIN_STMT
+  _16 = ret_15;
+  return _16;
+
+}
+
+
+pfe_mirror_set_filter (struct pfe_mirror_t * mirror, uint32_t filter_address)
+{
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  struct pfe_class_t * _10;
+  unsigned int _11;
+  struct pfe_ct_mirror_t * _12;
+  errno_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = filter_address_13(D) >> 24;
+  _2 = filter_address_13(D) >> 8;
+  _3 = _2 & 65280;
+  _4 = _1 | _3;
+  _5 = filter_address_13(D) << 8;
+  _6 = _5 & 16711680;
+  _7 = _4 | _6;
+  _8 = filter_address_13(D) << 24;
+  _9 = _7 | _8;
+  mirror_15(D)->phys.flexible_filter = _9;
+  # DEBUG BEGIN_STMT
+  _10 = pfe_mirror_db.class;
+  _11 = mirror_15(D)->phys_addr;
+  _12 = &mirror_15(D)->phys;
+  ret_18 = pfe_class_write_dmem (_10, -1, _11, _12, 72);
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _19 = ret_18;
+  return _19;
+
+}
+
+
+pfe_mirror_get_egress_port (const struct pfe_mirror_t * mirror)
+{
+  pfe_ct_phy_if_id_t ret;
+  pfe_ct_phy_if_id_t _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_3 = mirror_2(D)->phys.e_phy_if;
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  _4 = ret_3;
+  return _4;
+
+}
+
+
+pfe_mirror_set_egress_port (struct pfe_mirror_t * mirror, pfe_ct_phy_if_id_t egress)
+{
+  errno_t ret;
+  struct pfe_class_t * _1;
+  unsigned int _2;
+  struct pfe_ct_mirror_t * _3;
+  errno_t _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  mirror_5(D)->phys.e_phy_if = egress_6(D);
+  # DEBUG BEGIN_STMT
+  _1 = pfe_mirror_db.class;
+  _2 = mirror_5(D)->phys_addr;
+  _3 = &mirror_5(D)->phys;
+  ret_9 = pfe_class_write_dmem (_1, -1, _2, _3, 72);
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  _10 = ret_9;
+  return _10;
+
+}
+
+
+pfe_mirror_get_name (const struct pfe_mirror_t * mirror)
+{
+  const char * str;
+  const char * _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  str_2 = &mirror_1(D)->name;
+  # DEBUG str => str_2
+  # DEBUG BEGIN_STMT
+  _3 = str_2;
+  return _3;
+
+}
+
+
+pfe_mirror_get_address (const struct pfe_mirror_t * mirror)
+{
+  uint32_t ret;
+  uint32_t _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_3 = mirror_2(D)->phys_addr;
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  _4 = ret_3;
+  return _4;
+
+}
+
+
+pfe_mirror_put_by_address (addr_t address)
+{
+  struct pfe_mirror_t * mirror;
+  const void * address.1_1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  mirror_2 = 0B;
+  # DEBUG mirror => mirror_2
+  # DEBUG BEGIN_STMT
+  address.1_1 = (const void *) address_3(D);
+  mirror_6 = pfe_mirror_get_first (2, address.1_1);
+  # DEBUG mirror => mirror_6
+  # DEBUG BEGIN_STMT
+  pfe_mirror_put (mirror_6);
+  # DEBUG BEGIN_STMT
+  pfe_mirror_put (mirror_6);
+  return;
+
+}
+
+
+pfe_mirror_put (struct pfe_mirror_t * mirror)
+{
+  _Bool _1;
+  long int _2;
+  long int _3;
+  signed char _4;
+  signed char _5;
+  unsigned char _6;
+  unsigned char _7;
+  signed char _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = mirror_10(D) != 0B;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 1);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = mirror_10(D)->ref_counter;
+  _5 = _4;
+  _6 = (unsigned char) _5;
+  _7 = _6 + 255;
+  _8 = (signed char) _7;
+  mirror_10(D)->ref_counter = _8;
+
+  <bb 4> :
+  return;
+
+}
+
+
+pfe_mirror_destroy (struct pfe_mirror_t * mirror)
+{
+  errno_t ret;
+  signed char _1;
+  struct pfe_class_t * _2;
+  unsigned int _3;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_6 = 0;
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  if (mirror_7(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = mirror_7(D)->ref_counter;
+  if (_1 <= 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pfe_mirror_db.class;
+  _3 = mirror_7(D)->phys_addr;
+  pfe_class_dmem_heap_free (_2, _3);
+  # DEBUG BEGIN_STMT
+  isa_release (&pfe_mirror_db.mirrors, mirror_7(D));
+  # DEBUG BEGIN_STMT
+  ret_12 = 0;
+  # DEBUG ret => ret_12
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_9 = 111;
+  # DEBUG ret => ret_9
+
+  <bb 6> :
+  # ret_4 = PHI <ret_6(2), ret_12(4), ret_9(5)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _13 = ret_4;
+  return _13;
+
+}
+
+
+pfe_mirror_create (const char * name)
+{
+  uint32_t length;
+  struct pfe_mirror_t * mirror;
+  long unsigned int _1;
+  struct pfe_class_t * _2;
+  struct pfe_mirror_t * _3;
+  struct pfe_mirror_t * _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  mirror_6 = 0B;
+  # DEBUG mirror => mirror_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  length_10 = autolibc_strnlen (name_8(D), 16);
+  # DEBUG length => length_10
+  # DEBUG BEGIN_STMT
+  _1 = length_10 + 4294967295;
+  if (_1 > 14)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] PFE mirror name string is invalid\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_mirror.c", 321, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pfe_mirror_db.class;
+  if (_2 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = pfe_mirror_get_first (1, name_8(D));
+  if (_3 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  mirror_13 = isa_reserve (&pfe_mirror_db.mirrors);
+  # DEBUG mirror => mirror_13
+  # DEBUG BEGIN_STMT
+  if (mirror_13 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  mirror_15 = pfe_mirror_allocate_mem (name_8(D), mirror_13);
+  # DEBUG mirror => mirror_15
+
+  <bb 8> :
+  # mirror_4 = PHI <mirror_6(3), mirror_6(4), mirror_13(6), mirror_6(5), mirror_15(7)>
+  # DEBUG mirror => mirror_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = mirror_4;
+  return _18;
+
+}
+
+
+pfe_mirror_allocate_mem (const char * name, struct pfe_mirror_t * mirror)
+{
+  struct pfe_class_t * _1;
+  unsigned int _2;
+  unsigned int _3;
+  char[16] * _4;
+  struct pfe_mirror_t * _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (mirror_8(D), 0, 96);
+  # DEBUG BEGIN_STMT
+  _1 = pfe_mirror_db.class;
+  _2 = pfe_class_dmem_heap_alloc (_1, 72);
+  mirror_8(D)->phys_addr = _2;
+  # DEBUG BEGIN_STMT
+  _3 = mirror_8(D)->phys_addr;
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Not enough DMEM for mirror\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_mirror.c", 279, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  isa_release (&pfe_mirror_db.mirrors, mirror_8(D));
+  # DEBUG BEGIN_STMT
+  mirror_18 = 0B;
+  # DEBUG mirror => mirror_18
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = &mirror_8(D)->name;
+  autolibc_strncpy (_4, name_12(D), 16);
+  # DEBUG BEGIN_STMT
+  mirror_8(D)->ref_counter = 1;
+
+  <bb 5> :
+  # mirror_5 = PHI <mirror_18(3), mirror_8(D)(4)>
+  # DEBUG mirror => mirror_5
+  # DEBUG BEGIN_STMT
+  _19 = mirror_5;
+  return _19;
+
+}
+
+
+pfe_mirror_get_next ()
+{
+  struct pfe_mirror_t * mirror;
+  struct pfe_class_t * _1;
+  signed char _2;
+  signed char _3;
+  unsigned char _4;
+  unsigned char _5;
+  signed char _6;
+  struct pfe_mirror_t * _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  mirror_9 = 0B;
+  # DEBUG mirror => mirror_9
+  # DEBUG BEGIN_STMT
+  _1 = pfe_mirror_db.class;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  mirror_12 = pfe_mirror_db_get_by_crit (0, 0B);
+  # DEBUG mirror => mirror_12
+  # DEBUG BEGIN_STMT
+  if (mirror_12 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = mirror_12->ref_counter;
+  _3 = _2;
+  _4 = (unsigned char) _3;
+  _5 = _4 + 1;
+  _6 = (signed char) _5;
+  mirror_12->ref_counter = _6;
+
+  <bb 5> :
+  # mirror_7 = PHI <mirror_9(2), mirror_12(3), mirror_12(4)>
+  # DEBUG mirror => mirror_7
+  # DEBUG BEGIN_STMT
+  _14 = mirror_7;
+  return _14;
+
+}
+
+
+pfe_mirror_get_first (pfe_mirror_db_crit_t crit, const void * arg)
+{
+  struct pfe_mirror_t * mirror;
+  struct pfe_class_t * _1;
+  signed char _2;
+  signed char _3;
+  unsigned char _4;
+  unsigned char _5;
+  signed char _6;
+  struct pfe_mirror_t * _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  mirror_9 = 0B;
+  # DEBUG mirror => mirror_9
+  # DEBUG BEGIN_STMT
+  _1 = pfe_mirror_db.class;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pfe_mirror_db.next_item = 0;
+  # DEBUG BEGIN_STMT
+  mirror_15 = pfe_mirror_db_get_by_crit (crit_12(D), arg_13(D));
+  # DEBUG mirror => mirror_15
+  # DEBUG BEGIN_STMT
+  if (mirror_15 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = mirror_15->ref_counter;
+  _3 = _2;
+  _4 = (unsigned char) _3;
+  _5 = _4 + 1;
+  _6 = (signed char) _5;
+  mirror_15->ref_counter = _6;
+
+  <bb 5> :
+  # mirror_7 = PHI <mirror_9(2), mirror_15(3), mirror_15(4)>
+  # DEBUG mirror => mirror_7
+  # DEBUG BEGIN_STMT
+  _17 = mirror_7;
+  return _17;
+
+}
+
+
+pfe_mirror_db_get_by_crit (pfe_mirror_db_crit_t crit, const void * arg)
+{
+  bool_t match;
+  struct pfe_mirror_t * mirror;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  char[16] * _4;
+  long int _5;
+  unsigned int _6;
+  unsigned int arg.0_7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  struct pfe_mirror_t * _33;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  match_17 = 0;
+  # DEBUG match => match_17
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = pfe_mirror_db.next_item;
+  mirror_21 = isa_item (&pfe_mirror_db.mirrors, _1);
+  # DEBUG mirror => mirror_21
+  # DEBUG BEGIN_STMT
+  if (mirror_21 == 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pfe_mirror_db.next_item;
+  _3 = _2 + 1;
+  pfe_mirror_db.next_item = _3;
+  # DEBUG BEGIN_STMT
+  switch (crit_23(D)) <default: <L9> [INV], case 0: <L2> [INV], case 1: <L3> [INV], case 2: <L6> [INV]>
+
+  <bb 5> :
+<L2>:
+  # DEBUG BEGIN_STMT
+  match_28 = 1;
+  # DEBUG match => match_28
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+<L3>:
+  # DEBUG BEGIN_STMT
+  _4 = &mirror_21->name;
+  _5 = autolibc_strcmp (_4, arg_24(D));
+  if (_5 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  match_27 = 1;
+  # DEBUG match => match_27
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  _6 = mirror_21->phys_addr;
+  arg.0_7 = (unsigned int) arg_24(D);
+  if (_6 == arg.0_7)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  match_25 = 1;
+  # DEBUG match => match_25
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+<L9>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Wrong criterion %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_mirror.c", 192, crit_23(D), "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _8 = pfe_mirror_db.mirrors.occupied_items_count;
+  pfe_mirror_db.next_item = _8;
+  # DEBUG BEGIN_STMT
+
+  <bb 11> :
+  # mirror_11 = PHI <mirror_18(D)(2), mirror_21(5), mirror_21(7), mirror_21(9), mirror_21(10), mirror_21(6), mirror_21(8)>
+  # match_14 = PHI <match_17(2), match_28(5), match_27(7), match_25(9), match_14(10), match_14(6), match_14(8)>
+  # DEBUG match => match_14
+  # DEBUG mirror => mirror_11
+  # DEBUG BEGIN_STMT
+  _9 = pfe_mirror_db.next_item;
+  _10 = pfe_mirror_db.mirrors.occupied_items_count;
+  if (_9 < _10)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  if (match_14 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  # mirror_12 = PHI <mirror_21(3), mirror_11(11), mirror_11(12)>
+  # DEBUG mirror => mirror_12
+  # DEBUG BEGIN_STMT
+  if (match_14 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  mirror_32 = 0B;
+  # DEBUG mirror => mirror_32
+
+  <bb 15> :
+  # mirror_13 = PHI <mirror_12(13), mirror_32(14)>
+  # DEBUG mirror => mirror_13
+  # DEBUG BEGIN_STMT
+  _33 = mirror_13;
+  return _33;
+
+}
+
+
+pfe_mirror_deinit ()
+{
+  struct pfe_class_t * _1;
+  unsigned char _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = pfe_mirror_db.class;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = isa_isempty (&pfe_mirror_db.mirrors);
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] There are still entries in the database\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_mirror.c", 143, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_mirror_db, 0, 800);
+
+  <bb 6> :
+  return;
+
+}
+
+
+pfe_mirror_init (struct pfe_class_t * class)
+{
+  errno_t ret;
+  struct pfe_class_t * _1;
+  errno_t _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_mirror_db.class;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_10 = 115;
+  # DEBUG ret => ret_10
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&pfe_mirror_db, 0, 800);
+  # DEBUG BEGIN_STMT
+  pfe_mirror_db.class = class_6(D);
+  # DEBUG BEGIN_STMT
+  isa_init (&pfe_mirror_db.mirrors, &pfe_mirror_db_isa_def);
+  # DEBUG BEGIN_STMT
+  ret_9 = 0;
+  # DEBUG ret => ret_9
+
+  <bb 5> :
+  # ret_2 = PHI <ret_10(3), ret_9(4)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _11 = ret_2;
+  return _11;
+
+}
+
+

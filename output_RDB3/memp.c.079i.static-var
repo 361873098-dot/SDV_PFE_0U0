@@ -1,0 +1,722 @@
+callgraph:
+
+do_memp_free_pool.part.0/56 (do_memp_free_pool.part.0) @072698c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function do_memp_free_pool.part.0/56 is inline copy in do_memp_free_pool/51
+  Availability: local
+  Function flags: count:107374 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: do_memp_free_pool/51 (inlined) (107374 (estimated locally),0.50 per call) 
+  Calls: 
+do_memp_malloc_pool.part.0/55 (do_memp_malloc_pool.part.0) @06f47620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  References: 
+  Referring: 
+  Function do_memp_malloc_pool.part.0/55 is inline copy in do_memp_malloc_pool/48
+  Availability: local
+  Function flags: count:28485 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: do_memp_malloc_pool/48 (inlined) (28485 (estimated locally),0.15 per call) 
+  Calls: 
+memp_free/53 (memp_free) @07231460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: memp_pools/45 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: do_memp_free_pool/51 (489336361 (estimated locally),0.46 per call) 
+memp_free_pool/52 (memp_free_pool) @072311c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) body optimize_size
+  Called by: 
+  Calls: do_memp_free_pool/51 (172997 (estimated locally),0.48 per call) 
+do_memp_free_pool/51 (do_memp_free_pool) @07226e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:214748 (estimated locally) body local optimize_size
+  Called by: memp_free/53 (489336361 (estimated locally),0.46 per call) memp_free_pool/52 (172997 (estimated locally),0.48 per call) 
+  Calls: do_memp_free_pool.part.0/56 (inlined) (107374 (estimated locally),0.50 per call) 
+memp_malloc/50 (memp_malloc) @072262a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: memp_pools/45 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: do_memp_malloc_pool/48 (752370897 (estimated locally),0.70 per call) 
+memp_malloc_pool/49 (memp_malloc_pool) @07226d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:230763 (estimated locally) body optimize_size
+  Called by: 
+  Calls: do_memp_malloc_pool/48 (123389 (estimated locally),0.53 per call) 
+do_memp_malloc_pool/48 (do_memp_malloc_pool) @07226a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:191173 (estimated locally) body local optimize_size
+  Called by: memp_malloc/50 (752370897 (estimated locally),0.70 per call) memp_malloc_pool/49 (123389 (estimated locally),0.53 per call) 
+  Calls: do_memp_malloc_pool.part.0/55 (inlined) (28485 (estimated locally),0.15 per call) 
+memp_init/47 (memp_init) @072267e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: memp_pools/45 (read)lwip_stats/54 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:89442694 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: memp_init_pool/46 (984299131 (estimated locally),11.00 per call) 
+memp_init_pool/46 (memp_init_pool) @07226460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: memp_init/47 (984299131 (estimated locally),11.00 per call) 
+  Calls: 
+Clearing variable flags:
+
+Function name:do_memp_free_pool.part.0/56:
+  locals read: 
+  locals written: 
+Function name:do_memp_malloc_pool.part.0/55:
+  locals read: 
+  locals written: 
+Function name:memp_free/53:
+  locals read: 
+  locals written: 
+Function name:memp_free_pool/52:
+  locals read: 
+  locals written: 
+Function name:do_memp_free_pool/51:
+  locals read: 
+  locals written: 
+Function name:memp_malloc/50:
+  locals read: 
+  locals written: 
+Function name:memp_malloc_pool/49:
+  locals read: 
+  locals written: 
+Function name:do_memp_malloc_pool/48:
+  locals read: 
+  locals written: 
+Function name:memp_init/47:
+  locals read: 
+  locals written: 
+Function name:memp_init_pool/46:
+  locals read: 
+  locals written: 
+
+ ordered call graph: reduced
+memp_free/53 (memp_free) @07231460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f1bbd0
+  References: memp_pools/45 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: do_memp_free_pool/51 (489336361 (estimated locally),0.46 per call) 
+memp_free_pool/52 (memp_free_pool) @072311c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f1bc30
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:357913 (estimated locally) body optimize_size
+  Called by: 
+  Calls: do_memp_free_pool/51 (172997 (estimated locally),0.48 per call) 
+do_memp_free_pool/51 (do_memp_free_pool) @07226e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06f1bcb0
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:214748 (estimated locally) body local optimize_size
+  Called by: memp_free/53 (489336361 (estimated locally),0.46 per call) memp_free_pool/52 (172997 (estimated locally),0.48 per call) 
+  Calls: do_memp_free_pool.part.0/56 (inlined) (107374 (estimated locally),0.50 per call) 
+do_memp_free_pool.part.0/56 (do_memp_free_pool.part.0) @072698c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06f1b9d0
+  References: 
+  Referring: 
+  Function do_memp_free_pool.part.0/56 is inline copy in do_memp_free_pool/51
+  Availability: local
+  Function flags: count:107374 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: do_memp_free_pool/51 (inlined) (107374 (estimated locally),0.50 per call) 
+  Calls: 
+memp_malloc/50 (memp_malloc) @072262a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f1b9f0
+  References: memp_pools/45 (read)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: do_memp_malloc_pool/48 (752370897 (estimated locally),0.70 per call) 
+memp_malloc_pool/49 (memp_malloc_pool) @07226d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f1ba10
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:230763 (estimated locally) body optimize_size
+  Called by: 
+  Calls: do_memp_malloc_pool/48 (123389 (estimated locally),0.53 per call) 
+do_memp_malloc_pool/48 (do_memp_malloc_pool) @07226a80
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @06f1bc10
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:191173 (estimated locally) body local optimize_size
+  Called by: memp_malloc/50 (752370897 (estimated locally),0.70 per call) memp_malloc_pool/49 (123389 (estimated locally),0.53 per call) 
+  Calls: do_memp_malloc_pool.part.0/55 (inlined) (28485 (estimated locally),0.15 per call) 
+do_memp_malloc_pool.part.0/55 (do_memp_malloc_pool.part.0) @06f47620
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @06f1bb50
+  References: 
+  Referring: 
+  Function do_memp_malloc_pool.part.0/55 is inline copy in do_memp_malloc_pool/48
+  Availability: local
+  Function flags: count:28485 (estimated locally) first_run:1 body local split_part nonfreeing_fn optimize_size
+  Called by: do_memp_malloc_pool/48 (inlined) (28485 (estimated locally),0.15 per call) 
+  Calls: 
+memp_init/47 (memp_init) @072267e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f1bad0
+  References: memp_pools/45 (read)lwip_stats/54 (write)
+  Referring: 
+  Availability: available
+  Function flags: count:89442694 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: memp_init_pool/46 (984299131 (estimated locally),11.00 per call) 
+memp_init_pool/46 (memp_init_pool) @07226460
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @06f1bd10
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: memp_init/47 (984299131 (estimated locally),11.00 per call) 
+  Calls: 
+
+
+Function name:memp_init_pool/46:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:memp_init/47:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:do_memp_malloc_pool.part.0/55:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:do_memp_malloc_pool/48:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:memp_malloc_pool/49:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:memp_malloc/50:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:do_memp_free_pool.part.0/56:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:do_memp_free_pool/51:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:memp_free_pool/52:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+
+Function name:memp_free/53:
+    locals read: 
+    locals written: 
+  globals read: 
+  globals written: 
+do_memp_free_pool.part.0 (const struct memp_desc * desc, void * mem)
+{
+  struct memp * memp;
+  struct stats_mem * _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  struct memp * * _5;
+  struct memp * _6;
+
+  <bb 3> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG memp => mem_7(D)
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = desc_1(D)->stats;
+  _3 = _2->used;
+  _4 = _3 + 65535;
+  _2->used = _4;
+  # DEBUG BEGIN_STMT
+  _5 = desc_1(D)->tab;
+  _6 = *_5;
+  MEM[(struct memp *)mem_7(D)].next = _6;
+  # DEBUG BEGIN_STMT
+  *_5 = mem_7(D);
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+do_memp_malloc_pool.part.0 (const struct memp_desc * desc)
+{
+  struct memp * memp;
+  struct stats_mem * _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  void * _5;
+
+  <bb 4> [local count: 1073741824]:
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _2 = desc_1(D)->stats;
+  _3 = _2->err;
+  _4 = _3 + 1;
+  _2->err = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 1073741824]:
+  # _5 = PHI <0B(2)>
+  return _5;
+
+}
+
+
+memp_free (memp_t type, void * mem)
+{
+  const struct memp_desc * _1;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (type_3(D) > 10)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 3>; [66.00%]
+
+  <bb 3> [local count: 708669604]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (mem_4(D) == 0B)
+    goto <bb 5>; [30.95%]
+  else
+    goto <bb 4>; [69.05%]
+
+  <bb 4> [local count: 489336361]:
+  # DEBUG BEGIN_STMT
+  _1 = memp_pools[type_3(D)];
+  do_memp_free_pool (_1, mem_4(D));
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+
+memp_free_pool (const struct memp_desc * desc, void * mem)
+{
+  <bb 2> [local count: 357913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (desc_3(D) == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 4>; [70.00%]
+
+  <bb 7> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 250539]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (mem_5(D) == 0B)
+    goto <bb 6>; [30.95%]
+  else
+    goto <bb 5>; [69.05%]
+
+  <bb 5> [local count: 172997]:
+  # DEBUG BEGIN_STMT
+  do_memp_free_pool (desc_3(D), mem_5(D));
+
+  <bb 6> [local count: 250539]:
+  return;
+
+}
+
+
+do_memp_free_pool (const struct memp_desc * desc, void * mem)
+{
+  unsigned int mem.2_1;
+  unsigned int _2;
+
+  <bb 2> [local count: 214748]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  mem.2_1 = (unsigned int) mem_5(D);
+  _2 = mem.2_1 & 3;
+  if (_2 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 5> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 107374]:
+  do_memp_free_pool.part.0 (desc_7(D), mem_5(D));
+  return;
+
+}
+
+
+memp_malloc (memp_t type)
+{
+  void * memp;
+  const struct memp_desc * _1;
+  void * _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (type_4(D) > 10)
+    goto <bb 4>; [29.93%]
+  else
+    goto <bb 3>; [70.07%]
+
+  <bb 3> [local count: 752370897]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = memp_pools[type_4(D)];
+  memp_7 = do_memp_malloc_pool (_1);
+  # DEBUG memp => memp_7
+  # DEBUG BEGIN_STMT
+
+  <bb 4> [local count: 1073741824]:
+  # _2 = PHI <0B(2), memp_7(3)>
+  return _2;
+
+}
+
+
+memp_malloc_pool (const struct memp_desc * desc)
+{
+  void * _5;
+
+  <bb 2> [local count: 230763]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (desc_2(D) == 0B)
+    goto <bb 5>; [46.53%]
+  else
+    goto <bb 4>; [53.47%]
+
+  <bb 5> [local count: 107374]:
+
+  <bb 3> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 6> [local count: 1073741824]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 123389]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = do_memp_malloc_pool (desc_2(D));
+  return _5;
+
+}
+
+
+do_memp_malloc_pool (const struct memp_desc * desc)
+{
+  struct memp * memp;
+  struct memp * * _1;
+  void * _2;
+  struct memp * _3;
+  unsigned int memp.1_4;
+  unsigned int _5;
+  struct stats_mem * _6;
+  short unsigned int _7;
+  short unsigned int _8;
+  short unsigned int _11;
+  void * _12;
+
+  <bb 2> [local count: 191173]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = desc_16(D)->tab;
+  memp_17 = *_1;
+  # DEBUG memp => memp_17
+  # DEBUG BEGIN_STMT
+  if (memp_17 != 0B)
+    goto <bb 3>; [85.10%]
+  else
+    goto <bb 8>; [14.90%]
+
+  <bb 3> [local count: 162688]:
+  # DEBUG BEGIN_STMT
+  _3 = memp_17->next;
+  *_1 = _3;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  memp.1_4 = (unsigned int) memp_17;
+  _5 = memp.1_4 & 3;
+  if (_5 != 0)
+    goto <bb 10>; [66.00%]
+  else
+    goto <bb 5>; [34.00%]
+
+  <bb 10> [local count: 107374]:
+
+  <bb 4> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  __asm__ __volatile__("BKPT #0
+	");
+  # DEBUG BEGIN_STMT
+
+  <bb 11> [local count: 1073741824]:
+  goto <bb 4>; [100.00%]
+
+  <bb 5> [local count: 55314]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _6 = desc_16(D)->stats;
+  _7 = _6->used;
+  _8 = _7 + 1;
+  _6->used = _8;
+  # DEBUG BEGIN_STMT
+  _11 = _6->max;
+  if (_8 > _11)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 27657]:
+  # DEBUG BEGIN_STMT
+  _6->max = _8;
+
+  <bb 7> [local count: 55314]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 28485]:
+  _2 = do_memp_malloc_pool.part.0 (desc_16(D));
+
+  <bb 9> [local count: 83799]:
+  # _12 = PHI <memp_17(7), _2(8)>
+  return _12;
+
+}
+
+
+memp_init ()
+{
+  u16_t i;
+  int _1;
+  const struct memp_desc * _2;
+  struct stats_mem * _3;
+
+  <bb 2> [local count: 89442694]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 984299131]:
+  # DEBUG BEGIN_STMT
+  _1 = (int) i_4;
+  _2 = memp_pools[_1];
+  memp_init_pool (_2);
+  # DEBUG BEGIN_STMT
+  _3 = _2->stats;
+  lwip_stats.memp[_1] = _3;
+  # DEBUG BEGIN_STMT
+  i_9 = i_4 + 1;
+  # DEBUG i => i_9
+
+  <bb 4> [local count: 1073741824]:
+  # i_4 = PHI <0(2), i_9(3)>
+  # DEBUG i => i_4
+  # DEBUG BEGIN_STMT
+  if (i_4 != 11)
+    goto <bb 3>; [91.67%]
+  else
+    goto <bb 5>; [8.33%]
+
+  <bb 5> [local count: 89442694]:
+  return;
+
+}
+
+
+memp_init_pool (const struct memp_desc * desc)
+{
+  struct memp * memp;
+  int i;
+  struct memp * * _1;
+  u8_t * _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  struct memp * _6;
+  short unsigned int _7;
+  sizetype _8;
+  short unsigned int _9;
+  int _10;
+  struct stats_mem * _11;
+  short unsigned int _12;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = desc_17(D)->tab;
+  *_1 = 0B;
+  # DEBUG BEGIN_STMT
+  _2 = desc_17(D)->base;
+  _3 = (unsigned int) _2;
+  _4 = _3 + 3;
+  _5 = _4 & 4294967292;
+  memp_19 = (struct memp *) _5;
+  # DEBUG memp => memp_19
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630223]:
+  # DEBUG BEGIN_STMT
+  _6 = *_1;
+  memp_14->next = _6;
+  # DEBUG BEGIN_STMT
+  *_1 = memp_14;
+  # DEBUG BEGIN_STMT
+  _7 = desc_17(D)->size;
+  _8 = (sizetype) _7;
+  memp_23 = memp_14 + _8;
+  # DEBUG memp => memp_23
+  # DEBUG BEGIN_STMT
+  i_24 = i_13 + 1;
+  # DEBUG i => i_24
+
+  <bb 4> [local count: 1073741824]:
+  # i_13 = PHI <0(2), i_24(3)>
+  # memp_14 = PHI <memp_19(2), memp_23(3)>
+  # DEBUG memp => memp_14
+  # DEBUG i => i_13
+  # DEBUG BEGIN_STMT
+  _9 = desc_17(D)->num;
+  _10 = (int) _9;
+  if (_10 > i_13)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111601]:
+  # _12 = PHI <_9(4)>
+  # DEBUG BEGIN_STMT
+  _11 = desc_17(D)->stats;
+  _11->avail = _12;
+  return;
+
+}
+
+

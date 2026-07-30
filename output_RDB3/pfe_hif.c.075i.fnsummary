@@ -1,0 +1,1442 @@
+
+Analyzing function: pfe_hif_clear_emac_timer_ownership/29
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9
+;;
+;; Loop 2
+;;  header 6, latch 5
+;;  depth 1, outer 0
+;;  nodes: 6 5
+;;
+;; Loop 1
+;;  header 8, latch 7
+;;  depth 1, outer 0
+;;  nodes: 8 7 3
+;; 2 succs { 8 }
+;; 3 succs { 4 7 }
+;; 4 succs { 6 }
+;; 5 succs { 6 }
+;; 6 succs { 5 9 }
+;; 7 succs { 8 }
+;; 8 succs { 3 9 }
+;; 9 succs { 1 }
+
+Analyzing function body size: pfe_hif_clear_emac_timer_ownership
+
+IPA function summary for pfe_hif_clear_emac_timer_ownership/29 inlinable
+  global time:     39.786885
+  self size:       20
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:10.500000, time:26.663935
+    size:3.500000, time:2.270492,  executed if:(not inlined)
+    size:0.500000, time:1.639344,  executed if:(not inlined),  nonconst if:(op0[ref offset: 0] changed) && (not inlined)
+    size:0.500000, time:1.639344,  nonconst if:(op0[ref offset: 0] changed)
+  calls:
+    pfe_hif_chnl_cfg_set_emac_timer_ownership/45 function body not available
+      loop depth: 1 freq:0.54 size: 5 time: 14
+       op1 change 33.330000% of time
+       op3 is compile time invariant
+
+
+Analyzing function: pfe_hif_init_emac_timer_ownership/28
+;; 3 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9
+;;
+;; Loop 2
+;;  header 6, latch 5
+;;  depth 1, outer 0
+;;  nodes: 6 5
+;;
+;; Loop 1
+;;  header 8, latch 7
+;;  depth 1, outer 0
+;;  nodes: 8 7 3
+;; 2 succs { 8 }
+;; 3 succs { 4 7 }
+;; 4 succs { 6 }
+;; 5 succs { 6 }
+;; 6 succs { 5 9 }
+;; 7 succs { 8 }
+;; 8 succs { 3 9 }
+;; 9 succs { 1 }
+
+Analyzing function body size: pfe_hif_init_emac_timer_ownership
+
+IPA function summary for pfe_hif_init_emac_timer_ownership/28 inlinable
+  global time:     39.786885
+  self size:       20
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:10.500000, time:26.663935
+    size:3.500000, time:2.270492,  executed if:(not inlined)
+    size:0.500000, time:1.639344,  executed if:(not inlined),  nonconst if:(op0[ref offset: 0] changed) && (not inlined)
+    size:0.500000, time:1.639344,  nonconst if:(op0[ref offset: 0] changed)
+  calls:
+    pfe_hif_chnl_cfg_set_emac_timer_ownership/45 function body not available
+      loop depth: 1 freq:0.54 size: 5 time: 14
+       op1 change 33.330000% of time
+       op3 is compile time invariant
+
+
+Analyzing function: pfe_hif_set_master_up/27
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8
+;;
+;; Loop 1
+;;  header 7, latch 6
+;;  depth 1, outer 0
+;;  nodes: 7 6 4 5 3
+;; 2 succs { 7 }
+;; 3 succs { 4 5 }
+;; 4 succs { 6 }
+;; 5 succs { 6 }
+;; 6 succs { 7 }
+;; 7 succs { 3 8 }
+;; 8 succs { 1 }
+
+Analyzing function body size: pfe_hif_set_master_up
+
+IPA function summary for pfe_hif_set_master_up/27 inlinable
+  global time:     120.000000
+  self size:       26
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:9.000000, time:35.000000
+    size:5.000000, time:7.000000,  executed if:(not inlined)
+  calls:
+    pfe_hif_chnl_cfg_set_master_up/43 function body not available
+      loop depth: 1 freq:2.00 size: 4 time: 13
+       op2 is compile time invariant
+    pfe_hif_chnl_cfg_set_hif_occupied/44 function body not available
+      loop depth: 1 freq:2.00 size: 4 time: 13
+       op2 is compile time invariant
+    pfe_hif_chnl_cfg_set_master_up/43 function body not available
+      loop depth: 1 freq:2.00 size: 4 time: 13
+       op2 is compile time invariant
+
+
+Analyzing function: pfe_hif_clear_master_up/26
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 1 }
+
+Analyzing function body size: pfe_hif_clear_master_up
+
+IPA function summary for pfe_hif_clear_master_up/26 inlinable
+  global time:     72.000000
+  self size:       11
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.500000, time:16.000000
+    size:3.500000, time:4.000000,  executed if:(not inlined)
+  calls:
+    pfe_hif_chnl_cfg_set_master_up/43 function body not available
+      loop depth: 1 freq:4.00 size: 4 time: 13
+       op2 is compile time invariant
+
+
+Analyzing function: pfe_hif_destroy/25
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9
+;;
+;; Loop 1
+;;  header 7, latch 6
+;;  depth 1, outer 0
+;;  nodes: 7 6 4 5
+;; 2 succs { 3 9 }
+;; 3 succs { 7 }
+;; 4 succs { 5 6 }
+;; 5 succs { 6 }
+;; 6 succs { 7 }
+;; 7 succs { 4 8 }
+;; 8 succs { 9 }
+;; 9 succs { 1 }
+
+Analyzing function body size: pfe_hif_destroy
+
+IPA function summary for pfe_hif_destroy/25 inlinable
+  global time:     45.706600
+  self size:       27
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:2.000000, time:2.000000,  nonconst if:(op0 changed)
+    size:11.000000, time:17.377750,  executed if:(op0 != 0B)
+    size:2.000000, time:1.336750,  executed if:(op0 != 0B) && (not inlined)
+  calls:
+    pfe_hif_cfg_fini/38 function body not available
+      loop depth: 0 freq:0.53 size: 2 time: 11 predicate: (op0 != 0B)
+    pfe_hif_chnl_destroy/37 function body not available
+      loop depth: 1 freq:0.00 size: 2 time: 11 predicate: (op0 != 0B)
+    pfe_hif_cfg_stop_all_chnl_dma/42 function body not available
+      loop depth: 0 freq:0.53 size: 1 time: 10 predicate: (op0 != 0B)
+    pfe_hif_clear_emac_timer_ownership/29 function not considered for inlining
+      loop depth: 0 freq:0.53 size: 2 time: 11callee size:10 stack: 0 predicate: (op0 != 0B)
+    pfe_hif_clear_master_up/26 function not considered for inlining
+      loop depth: 0 freq:0.53 size: 2 time: 11callee size: 5 stack: 0 predicate: (op0 != 0B)
+
+
+Analyzing function: pfe_hif_get_channel_phy/24
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4
+;; 2 succs { 3 4 }
+;; 3 succs { 4 }
+;; 4 succs { 1 }
+
+Analyzing function body size: pfe_hif_get_channel_phy
+
+IPA function summary for pfe_hif_get_channel_phy/24 inlinable
+  global time:     5.710000
+  self size:       7
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:4.000000, time:3.710000,  nonconst if:(op1 changed)
+  calls:
+
+
+Analyzing function: pfe_hif_get_channel/23
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 8 3 4 5 6 7
+;;
+;; Loop 1
+;;  header 6, latch 5
+;;  depth 1, outer 0
+;;  nodes: 6 5 3
+;; 2 succs { 8 7 }
+;; 8 succs { 6 }
+;; 3 succs { 4 5 }
+;; 4 succs { 7 }
+;; 5 succs { 6 }
+;; 6 succs { 3 7 }
+;; 7 succs { 1 }
+
+Analyzing function body size: pfe_hif_get_channel
+
+IPA function summary for pfe_hif_get_channel/23 inlinable
+  global time:     23.330984
+  self size:       14
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:7.000000, time:17.330984
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 0] changed) && (not inlined)
+    size:0.500000, time:0.500000,  nonconst if:(op0[ref offset: 0] changed)
+    size:3.000000, time:3.000000,  nonconst if:(op0[ref offset: 0] changed || op1 changed)
+  calls:
+
+
+Analyzing function: pfe_hif_create/22
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7
+;; 2 succs { 7 3 }
+;; 3 succs { 4 5 }
+;; 4 succs { 7 }
+;; 5 succs { 6 7 }
+;; 6 succs { 7 }
+;; 7 succs { 1 }
+
+Analyzing function body size: pfe_hif_create
+
+IPA function summary for pfe_hif_create/22 inlinable
+  global time:     34.292131
+  self size:       45
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:5.000000, time:2.416414
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:3.000000, time:3.000000,  nonconst if:(op1 changed)
+  calls:
+    oal_util_raise_dem_for_drv_runtime_err/36 function body not available
+      loop depth: 0 freq:0.07 size: 1 time: 10
+    pfe_hm_report/35 function body not available
+      loop depth: 0 freq:0.07 size: 9 time: 18
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op2 is compile time invariant
+       op3 is compile time invariant
+       op4 is compile time invariant
+       op5 is compile time invariant
+       op7 is compile time invariant
+    pfe_hif_create_bind_chnl/21 function not considered for inlining
+      loop depth: 0 freq:0.39 size: 4 time: 13
+       op0 is compile time invariant
+    pfe_hif_destroy_chnl/20 function not considered for inlining
+      loop depth: 0 freq:0.16 size: 3 time: 12
+       op0 is compile time invariant
+       op1 is compile time invariant
+    oal_util_raise_dem_for_drv_runtime_err/36 function body not available
+      loop depth: 0 freq:0.16 size: 1 time: 10
+    pfe_hm_report/35 function body not available
+      loop depth: 0 freq:0.16 size: 9 time: 18
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op2 is compile time invariant
+       op3 is compile time invariant
+       op4 is compile time invariant
+       op5 is compile time invariant
+       op7 is compile time invariant
+    pfe_hif_cfg_init/34 function body not available
+      loop depth: 0 freq:0.55 size: 3 time: 12
+    autolibc_memset/33 function body not available
+      loop depth: 0 freq:0.55 size: 4 time: 13
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op2 is compile time invariant
+
+
+Analyzing function: pfe_hif_create_bind_chnl/21
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7 8 9 10
+;;
+;; Loop 1
+;;  header 9, latch 8
+;;  depth 1, outer 0
+;;  nodes: 9 8 6 7 3 4
+;; 2 succs { 9 }
+;; 3 succs { 4 7 }
+;; 4 succs { 5 6 }
+;; 5 succs { 10 }
+;; 6 succs { 8 }
+;; 7 succs { 8 }
+;; 8 succs { 9 }
+;; 9 succs { 3 10 }
+;; 10 succs { 1 }
+
+Analyzing function body size: pfe_hif_create_bind_chnl
+
+IPA function summary for pfe_hif_create_bind_chnl/21 inlinable
+  global time:     96.000000
+  self size:       45
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:13.000000, time:36.000000
+    size:6.000000, time:8.000000,  executed if:(not inlined)
+  calls:
+    autolibc_memset/33 function body not available
+      loop depth: 1 freq:4.00 size: 4 time: 13
+       op1 is compile time invariant
+       op2 is compile time invariant
+    pfe_hif_chnl_tx_disable/41 function body not available
+      loop depth: 1 freq:0.00 size: 2 time: 11
+    pfe_hif_chnl_rx_disable/40 function body not available
+      loop depth: 1 freq:0.00 size: 2 time: 11
+    pfe_hif_destroy_chnl/20 function not considered for inlining
+      loop depth: 0 freq:0.00 size: 3 time: 12
+    oal_util_raise_dem_for_drv_runtime_err/36 function body not available
+      loop depth: 0 freq:0.00 size: 1 time: 10
+    pfe_hm_report/35 function body not available
+      loop depth: 0 freq:0.00 size: 8 time: 17
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op2 is compile time invariant
+       op3 is compile time invariant
+       op4 is compile time invariant
+       op5 is compile time invariant
+       op6 is compile time invariant
+    pfe_hif_chnl_create_mcal/39 function body not available
+      loop depth: 1 freq:0.00 size: 6 time: 15
+       op3 is compile time invariant
+
+
+Analyzing function: pfe_hif_destroy_chnl/20
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6 7
+;;
+;; Loop 1
+;;  header 6, latch 5
+;;  depth 1, outer 0
+;;  nodes: 6 5 3 4
+;; 2 succs { 6 }
+;; 3 succs { 4 5 }
+;; 4 succs { 5 }
+;; 5 succs { 6 }
+;; 6 succs { 3 7 }
+;; 7 succs { 1 }
+
+Analyzing function body size: pfe_hif_destroy_chnl
+
+IPA function summary for pfe_hif_destroy_chnl/20 inlinable
+  global time:     81.727273
+  self size:       21
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:11.000000, time:63.181819
+    size:5.000000, time:6.545455,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  loop iterations:(op1 changed)
+  calls:
+    pfe_hif_cfg_fini/38 function body not available
+      loop depth: 0 freq:1.00 size: 2 time: 11
+       op0 change 99.990000% of time
+    pfe_hif_chnl_destroy/37 function body not available
+      loop depth: 1 freq:0.00 size: 2 time: 11
+
+
+Analyzing function: pfe_hif_get_master_detect_cfg/19
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: pfe_hif_get_master_detect_cfg
+
+IPA function summary for pfe_hif_get_master_detect_cfg/19 inlinable
+  global time:     4.000000
+  self size:       5
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 2560] changed) && (not inlined)
+    size:1.500000, time:1.500000,  nonconst if:(op0[ref offset: 2560] changed)
+  calls:
+
+
+Analyzing function: pfe_hif_set_master_detect_cfg/18
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: pfe_hif_set_master_detect_cfg
+
+IPA function summary for pfe_hif_set_master_detect_cfg/18 inlinable
+  global time:     4.000000
+  self size:       5
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.500000, time:0.500000
+    size:3.500000, time:2.500000,  executed if:(not inlined)
+    size:1.000000, time:1.000000,  nonconst if:(op1 changed)
+  calls:
+
+
+Analyzing function: pfe_hif_irq_unmask/17
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: pfe_hif_irq_unmask
+
+IPA function summary for pfe_hif_irq_unmask/17 inlinable
+  global time:     14.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 32] changed) && (not inlined)
+    size:0.500000, time:0.500000,  nonconst if:(op0[ref offset: 32] changed)
+  calls:
+    pfe_hif_cfg_irq_unmask/32 function body not available
+      loop depth: 0 freq:1.00 size: 2 time: 11
+
+
+Analyzing function: pfe_hif_irq_mask/16
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: pfe_hif_irq_mask
+
+IPA function summary for pfe_hif_irq_mask/16 inlinable
+  global time:     14.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 32] changed) && (not inlined)
+    size:0.500000, time:0.500000,  nonconst if:(op0[ref offset: 32] changed)
+  calls:
+    pfe_hif_cfg_irq_mask/31 function body not available
+      loop depth: 0 freq:1.00 size: 2 time: 11
+
+
+Analyzing function: pfe_hif_isr/15
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+
+Analyzing function body size: pfe_hif_isr
+
+IPA function summary for pfe_hif_isr/15 inlinable
+  global time:     15.000000
+  self size:       7
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 32] changed) && (not inlined)
+    size:0.500000, time:0.500000,  nonconst if:(op0[ref offset: 32] changed)
+  calls:
+    pfe_hif_cfg_isr/30 function body not available
+      loop depth: 0 freq:1.00 size: 3 time: 12
+
+Symbol table:
+
+pfe_hif_destroy_chnl.constprop.0/47 (pfe_hif_destroy_chnl.constprop) @070929a0
+  Type: function definition analyzed
+  Visibility:
+  References: hif_instance/14 (addr)
+  Referring: 
+  Clone of pfe_hif_destroy_chnl/20
+  Availability: local
+  Function flags: count:118111600 (estimated locally) local optimize_size
+  Called by: pfe_hif_create/22 (170234250 (estimated locally),0.16 per call) pfe_hif_create_bind_chnl.constprop/46 (0 (precise),0.00 per call) 
+  Calls: pfe_hif_chnl_destroy/37 (0 (precise),0.00 per call) pfe_hif_cfg_fini/38 (118111601 (estimated locally),1.00 per call) 
+pfe_hif_create_bind_chnl.constprop.0/46 (pfe_hif_create_bind_chnl.constprop) @06e55d20
+  Type: function definition analyzed
+  Visibility:
+  References: hif_instance/14 (addr)
+  Referring: 
+  Clone of pfe_hif_create_bind_chnl/21
+  Availability: local
+  Function flags: count:214748364 (estimated locally) local optimize_size
+  Called by: pfe_hif_create/22 (416780405 (estimated locally),0.39 per call) 
+  Calls: pfe_hif_chnl_create_mcal/39 (0 (precise),0.00 per call) pfe_hm_report/35 (0 (precise),0.00 per call) oal_util_raise_dem_for_drv_runtime_err/36 (0 (precise),0.00 per call) pfe_hif_destroy_chnl.constprop/47 (0 (precise),0.00 per call) pfe_hif_chnl_rx_disable/40 (0 (precise),0.00 per call) pfe_hif_chnl_tx_disable/41 (0 (precise),0.00 per call) autolibc_memset/33 (858993459 (estimated locally),4.00 per call) 
+pfe_hif_chnl_cfg_set_emac_timer_ownership/45 (pfe_hif_chnl_cfg_set_emac_timer_ownership) @076762a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_clear_emac_timer_ownership/29 (141733921 (estimated locally),0.54 per call) pfe_hif_init_emac_timer_ownership/28 (141733921 (estimated locally),0.54 per call) 
+  Calls: 
+pfe_hif_chnl_cfg_set_hif_occupied/44 (pfe_hif_chnl_cfg_set_hif_occupied) @076760e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_set_master_up/27 (429496729 (estimated locally),2.00 per call) 
+  Calls: 
+pfe_hif_chnl_cfg_set_master_up/43 (pfe_hif_chnl_cfg_set_master_up) @07669ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_set_master_up/27 (429496729 (estimated locally),2.00 per call) pfe_hif_set_master_up/27 (429496729 (estimated locally),2.00 per call) pfe_hif_clear_master_up/26 (858993459 (estimated locally),4.00 per call) 
+  Calls: 
+pfe_hif_cfg_stop_all_chnl_dma/42 (pfe_hif_cfg_stop_all_chnl_dma) @07669d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_destroy/25 (214748364 (estimated locally),0.53 per call) 
+  Calls: 
+pfe_hif_chnl_tx_disable/41 (pfe_hif_chnl_tx_disable) @076699a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_create_bind_chnl.constprop/46 (0 (precise),0.00 per call) 
+  Calls: 
+pfe_hif_chnl_rx_disable/40 (pfe_hif_chnl_rx_disable) @076698c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_create_bind_chnl.constprop/46 (0 (precise),0.00 per call) 
+  Calls: 
+pfe_hif_chnl_create_mcal/39 (pfe_hif_chnl_create_mcal) @076697e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_create_bind_chnl.constprop/46 (0 (precise),0.00 per call) 
+  Calls: 
+pfe_hif_cfg_fini/38 (pfe_hif_cfg_fini) @07669620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_destroy_chnl.constprop/47 (118111601 (estimated locally),1.00 per call) pfe_hif_destroy/25 (214748365 (estimated locally),0.53 per call) 
+  Calls: 
+pfe_hif_chnl_destroy/37 (pfe_hif_chnl_destroy) @07669540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_destroy_chnl.constprop/47 (0 (precise),0.00 per call) pfe_hif_destroy/25 (0 (precise),0.00 per call) 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/36 (oal_util_raise_dem_for_drv_runtime_err) @07669380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_create_bind_chnl.constprop/46 (0 (precise),0.00 per call) pfe_hif_create/22 (69810718 (estimated locally),0.07 per call) pfe_hif_create/22 (170234250 (estimated locally),0.16 per call) 
+  Calls: 
+pfe_hm_report/35 (pfe_hm_report) @076692a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_create_bind_chnl.constprop/46 (0 (precise),0.00 per call) pfe_hif_create/22 (69810718 (estimated locally),0.07 per call) pfe_hif_create/22 (170234250 (estimated locally),0.16 per call) 
+  Calls: 
+pfe_hif_cfg_init/34 (pfe_hif_cfg_init) @076691c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_create/22 (587014656 (estimated locally),0.55 per call) 
+  Calls: 
+autolibc_memset/33 (autolibc_memset) @076690e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_create_bind_chnl.constprop/46 (858993459 (estimated locally),4.00 per call) pfe_hif_create/22 (587014656 (estimated locally),0.55 per call) 
+  Calls: 
+pfe_hif_cfg_irq_unmask/32 (pfe_hif_cfg_irq_unmask) @076400e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_irq_unmask/17 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_hif_cfg_irq_mask/31 (pfe_hif_cfg_irq_mask) @07640e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_irq_mask/16 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_hif_cfg_isr/30 (pfe_hif_cfg_isr) @07640c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: pfe_hif_isr/15 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+pfe_hif_clear_emac_timer_ownership/29 (pfe_hif_clear_emac_timer_ownership) @076407e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:261993004 (estimated locally) body optimize_size
+  Called by: pfe_hif_destroy/25 (214748364 (estimated locally),0.53 per call) 
+  Calls: pfe_hif_chnl_cfg_set_emac_timer_ownership/45 (141733921 (estimated locally),0.54 per call) 
+pfe_hif_init_emac_timer_ownership/28 (pfe_hif_init_emac_timer_ownership) @07640540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:261993004 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_hif_chnl_cfg_set_emac_timer_ownership/45 (141733921 (estimated locally),0.54 per call) 
+pfe_hif_set_master_up/27 (pfe_hif_set_master_up) @076402a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:214748364 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_hif_chnl_cfg_set_master_up/43 (429496729 (estimated locally),2.00 per call) pfe_hif_chnl_cfg_set_hif_occupied/44 (429496729 (estimated locally),2.00 per call) pfe_hif_chnl_cfg_set_master_up/43 (429496729 (estimated locally),2.00 per call) 
+pfe_hif_clear_master_up/26 (pfe_hif_clear_master_up) @07640000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:214748364 (estimated locally) body optimize_size
+  Called by: pfe_hif_destroy/25 (214748364 (estimated locally),0.53 per call) 
+  Calls: pfe_hif_chnl_cfg_set_master_up/43 (858993459 (estimated locally),4.00 per call) 
+pfe_hif_destroy/25 (pfe_hif_destroy) @0759c8c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:401624021 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_hif_cfg_fini/38 (214748365 (estimated locally),0.53 per call) pfe_hif_chnl_destroy/37 (0 (precise),0.00 per call) pfe_hif_cfg_stop_all_chnl_dma/42 (214748364 (estimated locally),0.53 per call) pfe_hif_clear_emac_timer_ownership/29 (214748364 (estimated locally),0.53 per call) pfe_hif_clear_master_up/26 (214748364 (estimated locally),0.53 per call) 
+pfe_hif_get_channel_phy/24 (pfe_hif_get_channel_phy) @0759c2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_hif_get_channel/23 (pfe_hif_get_channel) @0759cee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:369004231 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_hif_create/22 (pfe_hif_create) @0759cc40
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: hif_instance/14 (addr)hif_instance/14 (write)hif_instance/14 (addr)hif_instance/14 (addr)hif_instance/14 (addr)
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/36 (69810718 (estimated locally),0.07 per call) pfe_hm_report/35 (69810718 (estimated locally),0.07 per call) pfe_hif_create_bind_chnl.constprop/46 (416780405 (estimated locally),0.39 per call) pfe_hif_destroy_chnl.constprop/47 (170234250 (estimated locally),0.16 per call) oal_util_raise_dem_for_drv_runtime_err/36 (170234250 (estimated locally),0.16 per call) pfe_hm_report/35 (170234250 (estimated locally),0.16 per call) pfe_hif_cfg_init/34 (587014656 (estimated locally),0.55 per call) autolibc_memset/33 (587014656 (estimated locally),0.55 per call) 
+pfe_hif_create_bind_chnl/21 (pfe_hif_create_bind_chnl) @0759c7e0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:214748364 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_hif_destroy_chnl/20 (pfe_hif_destroy_chnl) @0759c460
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:118111600 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_hif_get_master_detect_cfg/19 (pfe_hif_get_master_detect_cfg) @0759c1c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_hif_set_master_detect_cfg/18 (pfe_hif_set_master_detect_cfg) @07596ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+pfe_hif_irq_unmask/17 (pfe_hif_irq_unmask) @075969a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_hif_cfg_irq_unmask/32 (1073741824 (estimated locally),1.00 per call) 
+pfe_hif_irq_mask/16 (pfe_hif_irq_mask) @07596e00
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_hif_cfg_irq_mask/31 (1073741824 (estimated locally),1.00 per call) 
+pfe_hif_isr/15 (pfe_hif_isr) @07596b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_hif_cfg_isr/30 (1073741824 (estimated locally),1.00 per call) 
+hif_instance/14 (hif_instance) @0754aa68
+  Type: variable definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: pfe_hif_create/22 (addr)pfe_hif_create/22 (write)pfe_hif_create/22 (addr)pfe_hif_create/22 (addr)pfe_hif_create/22 (addr)pfe_hif_create_bind_chnl.constprop.0/46 (addr)pfe_hif_destroy_chnl.constprop.0/47 (addr)
+  Availability: available
+  Varpool flags:
+pfe_hif_clear_emac_timer_ownership (const struct pfe_hif_t * hif)
+{
+  pfe_ct_phy_if_id_t emac_id;
+  uint32_t chnl_id;
+  <unnamed type> _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned int _4;
+
+  <bb 2> [local count: 261993004]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG chnl_id => 0
+  goto <bb 8>; [100.00%]
+
+  <bb 3> [local count: 858993459]:
+  # DEBUG BEGIN_STMT
+  _1 = hif_11(D)->configured_channels_mask;
+  _2 = _1 >> chnl_id_6;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 4>; [5.50%]
+  else
+    goto <bb 7>; [94.50%]
+
+  <bb 4> [local count: 47244640]:
+  # chnl_id_5 = PHI <chnl_id_6(3)>
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 141733921]:
+  # DEBUG BEGIN_STMT
+  _4 = hif_11(D)->cbus_base_va;
+  pfe_hif_chnl_cfg_set_emac_timer_ownership (_4, chnl_id_5, emac_id_7, 0);
+  # DEBUG BEGIN_STMT
+  emac_id_14 = emac_id_7 + 1;
+  # DEBUG emac_id => emac_id_14
+
+  <bb 6> [local count: 188978561]:
+  # emac_id_7 = PHI <emac_id_14(5), 0(4)>
+  # DEBUG emac_id => emac_id_7
+  # DEBUG BEGIN_STMT
+  if (emac_id_7 <= 2)
+    goto <bb 5>; [75.00%]
+  else
+    goto <bb 9>; [25.00%]
+
+  <bb 7> [local count: 811748819]:
+  # DEBUG BEGIN_STMT
+  chnl_id_12 = chnl_id_6 + 1;
+  # DEBUG chnl_id => chnl_id_12
+
+  <bb 8> [local count: 1073741824]:
+  # chnl_id_6 = PHI <0(2), chnl_id_12(7)>
+  # DEBUG chnl_id => chnl_id_6
+  # DEBUG BEGIN_STMT
+  if (chnl_id_6 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 9>; [20.00%]
+
+  <bb 9> [local count: 261993005]:
+  return;
+
+}
+
+
+pfe_hif_init_emac_timer_ownership (const struct pfe_hif_t * hif)
+{
+  pfe_ct_phy_if_id_t emac_id;
+  uint32_t chnl_id;
+  <unnamed type> _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned int _4;
+
+  <bb 2> [local count: 261993004]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG chnl_id => 0
+  goto <bb 8>; [100.00%]
+
+  <bb 3> [local count: 858993459]:
+  # DEBUG BEGIN_STMT
+  _1 = hif_11(D)->configured_channels_mask;
+  _2 = _1 >> chnl_id_6;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 4>; [5.50%]
+  else
+    goto <bb 7>; [94.50%]
+
+  <bb 4> [local count: 47244640]:
+  # chnl_id_5 = PHI <chnl_id_6(3)>
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 141733921]:
+  # DEBUG BEGIN_STMT
+  _4 = hif_11(D)->cbus_base_va;
+  pfe_hif_chnl_cfg_set_emac_timer_ownership (_4, chnl_id_5, emac_id_7, 1);
+  # DEBUG BEGIN_STMT
+  emac_id_14 = emac_id_7 + 1;
+  # DEBUG emac_id => emac_id_14
+
+  <bb 6> [local count: 188978561]:
+  # emac_id_7 = PHI <emac_id_14(5), 0(4)>
+  # DEBUG emac_id => emac_id_7
+  # DEBUG BEGIN_STMT
+  if (emac_id_7 <= 2)
+    goto <bb 5>; [75.00%]
+  else
+    goto <bb 9>; [25.00%]
+
+  <bb 7> [local count: 811748819]:
+  # DEBUG BEGIN_STMT
+  chnl_id_12 = chnl_id_6 + 1;
+  # DEBUG chnl_id => chnl_id_12
+
+  <bb 8> [local count: 1073741824]:
+  # chnl_id_6 = PHI <0(2), chnl_id_12(7)>
+  # DEBUG chnl_id => chnl_id_6
+  # DEBUG BEGIN_STMT
+  if (chnl_id_6 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 9>; [20.00%]
+
+  <bb 9> [local count: 261993005]:
+  return;
+
+}
+
+
+pfe_hif_set_master_up (const struct pfe_hif_t * hif)
+{
+  uint32_t ii;
+  <unnamed type> _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+
+  <bb 2> [local count: 214748364]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 858993459]:
+  # DEBUG BEGIN_STMT
+  _1 = hif_11(D)->configured_channels_mask;
+  _2 = _1 >> ii_7;
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 429496729]:
+  # DEBUG BEGIN_STMT
+  _4 = hif_11(D)->cbus_base_va;
+  pfe_hif_chnl_cfg_set_master_up (_4, ii_7, 1);
+  # DEBUG BEGIN_STMT
+  _5 = hif_11(D)->cbus_base_va;
+  pfe_hif_chnl_cfg_set_hif_occupied (_5, ii_7, 1);
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 429496729]:
+  # DEBUG BEGIN_STMT
+  _6 = hif_11(D)->cbus_base_va;
+  pfe_hif_chnl_cfg_set_master_up (_6, ii_7, 1);
+
+  <bb 6> [local count: 858993459]:
+  # DEBUG BEGIN_STMT
+  ii_15 = ii_7 + 1;
+  # DEBUG ii => ii_15
+
+  <bb 7> [local count: 1073741824]:
+  # ii_7 = PHI <0(2), ii_15(6)>
+  # DEBUG ii => ii_7
+  # DEBUG BEGIN_STMT
+  if (ii_7 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 8>; [20.00%]
+
+  <bb 8> [local count: 214748365]:
+  return;
+
+}
+
+
+pfe_hif_clear_master_up (const struct pfe_hif_t * hif)
+{
+  uint32_t ii;
+  unsigned int _1;
+
+  <bb 2> [local count: 214748364]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 858993459]:
+  # DEBUG BEGIN_STMT
+  _1 = hif_5(D)->cbus_base_va;
+  pfe_hif_chnl_cfg_set_master_up (_1, ii_2, 0);
+  # DEBUG BEGIN_STMT
+  ii_7 = ii_2 + 1;
+  # DEBUG ii => ii_7
+
+  <bb 4> [local count: 1073741824]:
+  # ii_2 = PHI <0(2), ii_7(3)>
+  # DEBUG ii => ii_2
+  # DEBUG BEGIN_STMT
+  if (ii_2 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 5>; [20.00%]
+
+  <bb 5> [local count: 214748365]:
+  return;
+
+}
+
+
+pfe_hif_destroy (struct pfe_hif_t * hif)
+{
+  uint32_t channels_mask;
+  uint32_t ii;
+  <unnamed type> _1;
+  long unsigned int _2;
+  struct pfe_hif_chnl_t * _3;
+  <unnamed type> _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+
+  <bb 2> [local count: 401624021]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG channels_mask => 1
+  # DEBUG BEGIN_STMT
+  if (hif_13(D) != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 9>; [46.53%]
+
+  <bb 3> [local count: 214748364]:
+  # DEBUG BEGIN_STMT
+  pfe_hif_clear_master_up (hif_13(D));
+  # DEBUG BEGIN_STMT
+  pfe_hif_clear_emac_timer_ownership (hif_13(D));
+  # DEBUG BEGIN_STMT
+  pfe_hif_cfg_stop_all_chnl_dma ();
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 858993460]:
+  # DEBUG BEGIN_STMT
+  _1 = hif_13(D)->configured_channels_mask;
+  _2 = _1 & channels_mask_9;
+  if (_2 != 0)
+    goto <bb 5>; [0.00%]
+  else
+    goto <bb 6>; [100.00%]
+
+  <bb 5> [count: 0]:
+  # DEBUG BEGIN_STMT
+  _3 = &hif_13(D)->channels[ii_8];
+  pfe_hif_chnl_destroy (_3);
+  # DEBUG BEGIN_STMT
+  _4 = hif_13(D)->configured_channels_mask;
+  _5 = ~channels_mask_9;
+  _6 = _4 & _5;
+  hif_13(D)->configured_channels_mask = _6;
+
+  <bb 6> [local count: 858993460]:
+  # DEBUG BEGIN_STMT
+  channels_mask_21 = channels_mask_9 << 1;
+  # DEBUG channels_mask => channels_mask_21
+  # DEBUG BEGIN_STMT
+  ii_22 = ii_8 + 1;
+  # DEBUG ii => ii_22
+
+  <bb 7> [local count: 1073741824]:
+  # ii_8 = PHI <0(3), ii_22(6)>
+  # channels_mask_9 = PHI <1(3), channels_mask_21(6)>
+  # DEBUG channels_mask => channels_mask_9
+  # DEBUG ii => ii_8
+  # DEBUG BEGIN_STMT
+  if (ii_8 != 4)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 8>; [20.00%]
+
+  <bb 8> [local count: 214748365]:
+  # DEBUG BEGIN_STMT
+  _7 = hif_13(D)->cbus_base_va;
+  pfe_hif_cfg_fini (_7);
+
+  <bb 9> [local count: 401624022]:
+  return;
+
+}
+
+
+pfe_hif_get_channel_phy (struct pfe_hif_t * hif, pfe_ct_phy_if_id_t phy)
+{
+  struct pfe_hif_chnl_t * ret;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0B
+  # DEBUG BEGIN_STMT
+  _1 = phy_5(D) + 250;
+  if (_1 <= 3)
+    goto <bb 3>; [71.00%]
+  else
+    goto <bb 4>; [29.00%]
+
+  <bb 3> [local count: 762356696]:
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) phy_5(D);
+  _3 = _2 + 4294967290;
+  ret_7 = &hif_6(D)->channels[_3];
+  # DEBUG ret => ret_7
+
+  <bb 4> [local count: 1073741824]:
+  # ret_4 = PHI <0B(2), ret_7(3)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  return ret_4;
+
+}
+
+
+pfe_hif_get_channel (struct pfe_hif_t * hif, pfe_hif_chnl_id_t channel_id)
+{
+  struct pfe_hif_chnl_t * entry;
+  uint32_t ii;
+  <unnamed type> _1;
+  long unsigned int _2;
+  unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> [local count: 369004231]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG entry => 0B
+  # DEBUG BEGIN_STMT
+  _1 = hif_9(D)->configured_channels_mask;
+  _2 = _1 & channel_id_10(D);
+  if (_2 != 0)
+    goto <bb 8>; [71.00%]
+  else
+    goto <bb 7>; [29.00%]
+
+  <bb 8> [local count: 261993004]:
+  goto <bb 6>; [100.00%]
+
+  <bb 3> [local count: 858993460]:
+  # DEBUG BEGIN_STMT
+  _3 = 1 << ii_5;
+  _4 = _3 & channel_id_10(D);
+  if (_4 != 0)
+    goto <bb 4>; [5.50%]
+  else
+    goto <bb 5>; [94.50%]
+
+  <bb 4> [local count: 47244640]:
+  # ii_7 = PHI <ii_5(3)>
+  # DEBUG BEGIN_STMT
+  entry_12 = &hif_9(D)->channels[ii_7];
+  # DEBUG entry => entry_12
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 811748819]:
+  # DEBUG BEGIN_STMT
+  ii_11 = ii_5 + 1;
+  # DEBUG ii => ii_11
+
+  <bb 6> [local count: 1073741824]:
+  # ii_5 = PHI <ii_11(5), 0(8)>
+  # DEBUG ii => ii_5
+  # DEBUG BEGIN_STMT
+  if (ii_5 != 4)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 7>; [20.00%]
+
+  <bb 7> [local count: 369004233]:
+  # entry_6 = PHI <0B(2), entry_12(4), 0B(6)>
+  # DEBUG entry => entry_6
+  # DEBUG BEGIN_STMT
+  return entry_6;
+
+}
+
+
+pfe_hif_create (addr_t cbus_base_va, pfe_hif_chnl_id_t channels_mask)
+{
+  errno_t ret;
+  struct pfe_hif_t * hif;
+  long unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ii => 0
+  # DEBUG BEGIN_STMT
+  _1 = channels_mask_4(D) & 4294967280;
+  if (_1 != 0)
+    goto <bb 7>; [45.33%]
+  else
+    goto <bb 3>; [54.67%]
+
+  <bb 3> [local count: 587014656]:
+  # DEBUG BEGIN_STMT
+  # DEBUG hif => &hif_instance
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&hif_instance, 0, 384);
+  # DEBUG BEGIN_STMT
+  hif_instance.cbus_base_va = cbus_base_va_7(D);
+  # DEBUG BEGIN_STMT
+  ret_10 = pfe_hif_cfg_init (cbus_base_va_7(D));
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 4>; [29.00%]
+  else
+    goto <bb 5>; [71.00%]
+
+  <bb 4> [local count: 170234250]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] HIF configuration failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif.c", 241, ret_10, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hif_destroy_chnl (&hif_instance, 0);
+  # DEBUG BEGIN_STMT
+  # DEBUG hif => 0B
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 416780405]:
+  # DEBUG BEGIN_STMT
+  ret_12 = pfe_hif_create_bind_chnl (&hif_instance, channels_mask_4(D));
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 != 0)
+    goto <bb 6>; [16.75%]
+  else
+    goto <bb 7>; [83.25%]
+
+  <bb 6> [local count: 69810718]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] HIF configuration failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_hif.c", 251, ret_12, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG hif => 0B
+
+  <bb 7> [local count: 1073741824]:
+  # hif_2 = PHI <0B(2), 0B(4), &hif_instance(5), 0B(6)>
+  # DEBUG hif => hif_2
+  # DEBUG BEGIN_STMT
+  return hif_2;
+
+}
+
+
+pfe_hif_get_master_detect_cfg (const struct pfe_hif_t * hif)
+{
+  unsigned char _1;
+  _Bool _2;
+  bool_t _5;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = hif_4(D)->disable_master_detect;
+  _2 = _1 == 0;
+  _5 = (bool_t) _2;
+  return _5;
+
+}
+
+
+pfe_hif_set_master_detect_cfg (struct pfe_hif_t * hif, bool_t on)
+{
+  _Bool _1;
+  unsigned char _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = on_3(D) == 0;
+  _2 = (unsigned char) _1;
+  hif_5(D)->disable_master_detect = _2;
+  return;
+
+}
+
+
+pfe_hif_irq_unmask (struct pfe_hif_t * hif)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = hif_3(D)->cbus_base_va;
+  pfe_hif_cfg_irq_unmask (_1);
+  return;
+
+}
+
+
+pfe_hif_irq_mask (struct pfe_hif_t * hif)
+{
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _1 = hif_3(D)->cbus_base_va;
+  pfe_hif_cfg_irq_mask (_1);
+  return;
+
+}
+
+
+pfe_hif_isr (struct pfe_hif_t * hif)
+{
+  errno_t ret;
+  unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = hif_3(D)->cbus_base_va;
+  ret_5 = pfe_hif_cfg_isr (_1);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  return ret_5;
+
+}
+
+

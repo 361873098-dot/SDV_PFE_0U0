@@ -1,0 +1,963 @@
+pfe_mac_db_find_by_crit (struct pfe_mac_db_t * db, pfe_mac_db_crit_t crit, pfe_mac_type_t type, pfe_drv_id_t owner, struct pfe_mac_db_list_entry_t * match_entry)
+{
+  uint32_t db_idx;
+  const struct pfe_isa_t * isa;
+  const struct pfe_mac_db_list_entry_t * entry;
+  errno_t ret;
+  unsigned char _1;
+  uint8_t[6] * _2;
+  const uint8_t[6] * _3;
+  <unnamed type> _4;
+  long unsigned int _5;
+  errno_t _29;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_12 = 2;
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  entry_13 = 0B;
+  # DEBUG entry => entry_13
+  # DEBUG BEGIN_STMT
+  isa_15 = &db_14(D)->mac_list;
+  # DEBUG isa => isa_15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  db_idx_16 = 0;
+  # DEBUG db_idx => db_idx_16
+  goto <bb 9>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  entry_19 = isa_item (isa_15, db_idx_7);
+  # DEBUG entry => entry_19
+  # DEBUG BEGIN_STMT
+  if (entry_19 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = pfe_mac_db_criterion_eval (entry_19, crit_20(D), type_21(D), owner_22(D));
+  if (_1 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (match_entry_24(D) != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = &match_entry_24(D)->addr;
+  _3 = &entry_19->addr;
+  autolibc_memcpy (_2, _3, 6);
+  # DEBUG BEGIN_STMT
+  _4 = entry_19->owner;
+  match_entry_24(D)->owner = _4;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ret_27 = 0;
+  # DEBUG ret => ret_27
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  db_idx_28 = db_idx_7 + 1;
+  # DEBUG db_idx => db_idx_28
+
+  <bb 9> :
+  # db_idx_7 = PHI <db_idx_16(2), db_idx_28(8)>
+  # DEBUG db_idx => db_idx_7
+  # DEBUG BEGIN_STMT
+  _5 = isa_15->occupied_items_count;
+  if (db_idx_7 < _5)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  # ret_6 = PHI <ret_27(7), ret_12(9)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  _29 = ret_6;
+  return _29;
+
+}
+
+
+pfe_mac_db_get_next_addr (struct pfe_mac_db_t * db, uint8_t * addr)
+{
+  bool_t found;
+  const struct pfe_isa_t * isa;
+  const struct pfe_mac_db_list_entry_t * entry;
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  <unnamed type> _4;
+  <unnamed type> _5;
+  <unnamed type> _6;
+  unsigned char _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  const uint8_t[6] * _10;
+  errno_t _32;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_18 = 0;
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  entry_19 = 0B;
+  # DEBUG entry => entry_19
+  # DEBUG BEGIN_STMT
+  isa_21 = &db_20(D)->mac_list;
+  # DEBUG isa => isa_21
+  # DEBUG BEGIN_STMT
+  found_22 = 0;
+  # DEBUG found => found_22
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = db_20(D)->next_item;
+  entry_25 = isa_item (isa_21, _1);
+  # DEBUG entry => entry_25
+  # DEBUG BEGIN_STMT
+  _2 = db_20(D)->next_item;
+  _3 = _2 + 1;
+  db_20(D)->next_item = _3;
+  # DEBUG BEGIN_STMT
+  if (entry_25 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = db_20(D)->crit.crit;
+  _5 = db_20(D)->crit.type;
+  _6 = db_20(D)->crit.owner;
+  _7 = pfe_mac_db_criterion_eval (entry_25, _4, _5, _6);
+  if (_7 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  found_28 = 1;
+  # DEBUG found => found_28
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # entry_12 = PHI <entry_19(2), entry_25(3), entry_25(4)>
+  # DEBUG entry => entry_12
+  # DEBUG BEGIN_STMT
+  _8 = db_20(D)->next_item;
+  _9 = isa_21->occupied_items_count;
+  if (_8 < _9)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # entry_13 = PHI <entry_25(5), entry_12(6)>
+  # found_14 = PHI <found_28(5), found_22(6)>
+  # DEBUG found => found_14
+  # DEBUG entry => entry_13
+  # DEBUG BEGIN_STMT
+  if (found_14 == 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _10 = &entry_13->addr;
+  autolibc_memcpy (addr_30(D), _10, 6);
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret_29 = 2;
+  # DEBUG ret => ret_29
+
+  <bb 10> :
+  # ret_11 = PHI <ret_18(8), ret_29(9)>
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  _32 = ret_11;
+  return _32;
+
+}
+
+
+pfe_mac_db_get_first_addr (struct pfe_mac_db_t * db, pfe_mac_db_crit_t crit, pfe_mac_type_t type, pfe_drv_id_t owner, uint8_t * addr)
+{
+  bool_t found;
+  const struct pfe_isa_t * isa;
+  const struct pfe_mac_db_list_entry_t * entry;
+  errno_t ret;
+  long unsigned int _1;
+  unsigned char _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  const uint8_t[6] * _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  errno_t _40;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_18 = 2;
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  entry_19 = 0B;
+  # DEBUG entry => entry_19
+  # DEBUG BEGIN_STMT
+  isa_21 = &db_20(D)->mac_list;
+  # DEBUG isa => isa_21
+  # DEBUG BEGIN_STMT
+  found_22 = 0;
+  # DEBUG found => found_22
+  # DEBUG BEGIN_STMT
+  db_20(D)->next_item = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = db_20(D)->next_item;
+  entry_26 = isa_item (isa_21, _1);
+  # DEBUG entry => entry_26
+  # DEBUG BEGIN_STMT
+  if (entry_26 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = pfe_mac_db_criterion_eval (entry_26, crit_27(D), type_28(D), owner_29(D));
+  if (_2 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  found_31 = 1;
+  # DEBUG found => found_31
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = db_20(D)->next_item;
+  _4 = _3 + 1;
+  db_20(D)->next_item = _4;
+
+  <bb 7> :
+  # entry_11 = PHI <entry_19(2), entry_26(6)>
+  # DEBUG entry => entry_11
+  # DEBUG BEGIN_STMT
+  _5 = db_20(D)->next_item;
+  _6 = isa_21->occupied_items_count;
+  if (_5 < _6)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # entry_12 = PHI <entry_26(5), entry_11(7)>
+  # found_13 = PHI <found_31(5), found_22(7)>
+  # DEBUG found => found_13
+  # DEBUG entry => entry_12
+  # DEBUG BEGIN_STMT
+  if (found_13 == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _7 = &entry_12->addr;
+  autolibc_memcpy (addr_33(D), _7, 6);
+  # DEBUG BEGIN_STMT
+  _8 = db_20(D)->next_item;
+  _9 = _8 + 1;
+  db_20(D)->next_item = _9;
+  # DEBUG BEGIN_STMT
+  db_20(D)->crit.crit = crit_27(D);
+  # DEBUG BEGIN_STMT
+  db_20(D)->crit.owner = owner_29(D);
+  # DEBUG BEGIN_STMT
+  db_20(D)->crit.type = type_28(D);
+  # DEBUG BEGIN_STMT
+  ret_39 = 0;
+  # DEBUG ret => ret_39
+
+  <bb 10> :
+  # ret_10 = PHI <ret_18(8), ret_39(9)>
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  _40 = ret_10;
+  return _40;
+
+}
+
+
+pfe_mac_db_flush (struct pfe_mac_db_t * db, pfe_mac_db_crit_t crit, pfe_mac_type_t type, pfe_drv_id_t owner)
+{
+  uint32_t mac_idx;
+  struct pfe_isa_t * isa;
+  const struct pfe_mac_db_list_entry_t * entry;
+  errno_t ret;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_8 = 0;
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  isa_10 = &db_9(D)->mac_list;
+  # DEBUG isa => isa_10
+  # DEBUG BEGIN_STMT
+  mac_idx_11 = 0;
+  # DEBUG mac_idx => mac_idx_11
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  entry_15 = isa_item (isa_10, mac_idx_6);
+  # DEBUG entry => entry_15
+  # DEBUG BEGIN_STMT
+  if (entry_15 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = pfe_mac_db_criterion_eval (entry_15, crit_16(D), type_17(D), owner_18(D));
+  if (_1 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  isa_release_subscript (isa_10, mac_idx_6);
+  # DEBUG BEGIN_STMT
+  _2 = db_9(D)->next_item;
+  if (mac_idx_6 < _2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = db_9(D)->next_item;
+  _4 = _3 + 4294967295;
+  db_9(D)->next_item = _4;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  mac_idx_20 = mac_idx_6 + 1;
+  # DEBUG mac_idx => mac_idx_20
+
+  <bb 8> :
+  # mac_idx_6 = PHI <mac_idx_11(2), mac_idx_6(3), mac_idx_6(6), mac_idx_20(7), mac_idx_6(5)>
+  # DEBUG mac_idx => mac_idx_6
+  # DEBUG BEGIN_STMT
+  _5 = isa_10->occupied_items_count;
+  if (mac_idx_6 < _5)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _13 = ret_8;
+  return _13;
+
+}
+
+
+pfe_mac_db_del_addr (struct pfe_mac_db_t * db, const uint8_t * addr, pfe_drv_id_t owner)
+{
+  const int32_t item_index;
+  struct pfe_isa_t * isa;
+  struct pfe_mac_db_list_entry_t * entry;
+  errno_t ret;
+  long unsigned int _1;
+  long unsigned int item_index.0_2;
+  long unsigned int _3;
+  long unsigned int _4;
+  errno_t _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_8 = 2;
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  isa_10 = &db_9(D)->mac_list;
+  # DEBUG isa => isa_10
+  # DEBUG BEGIN_STMT
+  entry_15 = pfe_mac_db_find_by_addr (db_9(D), addr_12(D), owner_13(D));
+  # DEBUG entry => entry_15
+  # DEBUG BEGIN_STMT
+  if (entry_15 == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  item_index_17 = isa_release (isa_10, entry_15);
+  # DEBUG item_index => item_index_17
+  # DEBUG BEGIN_STMT
+  if (item_index_17 != -1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = db_9(D)->next_item;
+  item_index.0_2 = (long unsigned int) item_index_17;
+  if (_1 > item_index.0_2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = db_9(D)->next_item;
+  _4 = _3 + 4294967295;
+  db_9(D)->next_item = _4;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_19 = 0;
+  # DEBUG ret => ret_19
+
+  <bb 7> :
+  # ret_5 = PHI <ret_8(2), ret_8(3), ret_19(6)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  _20 = ret_5;
+  return _20;
+
+}
+
+
+pfe_mac_db_add_addr (struct pfe_mac_db_t * db, const uint8_t * addr, pfe_drv_id_t owner)
+{
+  struct pfe_mac_db_list_entry_t * entry;
+  errno_t ret;
+  struct pfe_isa_t * _1;
+  uint8_t[6] * _2;
+  errno_t _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_10 = pfe_mac_db_find_by_addr (db_6(D), addr_7(D), owner_8(D));
+  # DEBUG entry => entry_10
+  # DEBUG BEGIN_STMT
+  if (entry_10 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = &db_6(D)->mac_list;
+  entry_13 = isa_reserve (_1);
+  # DEBUG entry => entry_13
+  # DEBUG BEGIN_STMT
+  if (entry_13 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_17 = 11;
+  # DEBUG ret => ret_17
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _2 = &entry_13->addr;
+  autolibc_memcpy (_2, addr_7(D), 6);
+  # DEBUG BEGIN_STMT
+  entry_13->owner = owner_8(D);
+  # DEBUG BEGIN_STMT
+  ret_16 = 0;
+  # DEBUG ret => ret_16
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_11 = 116;
+  # DEBUG ret => ret_11
+
+  <bb 7> :
+  # ret_3 = PHI <ret_16(5), ret_11(6), ret_17(4)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  _18 = ret_3;
+  return _18;
+
+}
+
+
+pfe_mac_db_find_by_addr (const struct pfe_mac_db_t * db, const uint8_t * addr, pfe_drv_id_t owner)
+{
+  uint32_t mac_idx;
+  bool_t found;
+  const struct pfe_isa_t * isa;
+  struct pfe_mac_db_list_entry_t * entry;
+  <unnamed type> _1;
+  uint8_t[6] * _2;
+  long int _3;
+  long unsigned int _4;
+  struct pfe_mac_db_list_entry_t * _27;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  isa_14 = &db_13(D)->mac_list;
+  # DEBUG isa => isa_14
+  # DEBUG BEGIN_STMT
+  found_15 = 0;
+  # DEBUG found => found_15
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  mac_idx_16 = 0;
+  # DEBUG mac_idx => mac_idx_16
+  goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  entry_20 = isa_item (isa_14, mac_idx_9);
+  # DEBUG entry => entry_20
+  # DEBUG BEGIN_STMT
+  if (entry_20 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  _1 = entry_20->owner;
+  if (owner_21(D) == _1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _2 = &entry_20->addr;
+  _3 = autolibc_memcmp (addr_22(D), _2, 6);
+  if (_3 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  found_24 = 1;
+  # DEBUG found => found_24
+  # DEBUG BEGIN_STMT
+  goto <bb 9>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  mac_idx_25 = mac_idx_9 + 1;
+  # DEBUG mac_idx => mac_idx_25
+
+  <bb 8> :
+  # entry_5 = PHI <entry_17(D)(2), entry_20(7)>
+  # mac_idx_9 = PHI <mac_idx_16(2), mac_idx_25(7)>
+  # DEBUG mac_idx => mac_idx_9
+  # DEBUG entry => entry_5
+  # DEBUG BEGIN_STMT
+  _4 = isa_14->occupied_items_count;
+  if (mac_idx_9 < _4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # entry_6 = PHI <entry_20(6), entry_5(8)>
+  # found_8 = PHI <found_24(6), found_15(8)>
+  # DEBUG found => found_8
+  # DEBUG entry => entry_6
+  # DEBUG BEGIN_STMT
+  if (found_8 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  entry_26 = 0B;
+  # DEBUG entry => entry_26
+
+  <bb 11> :
+  # entry_7 = PHI <entry_6(9), entry_26(10)>
+  # DEBUG entry => entry_7
+  # DEBUG BEGIN_STMT
+  _27 = entry_7;
+  return _27;
+
+}
+
+
+pfe_mac_db_create (struct pfe_mac_db_t * db)
+{
+  errno_t ret;
+  pfe_isa_index_t[8] * _1;
+  struct pfe_mac_db_list_entry_t[8] * _2;
+  struct pfe_isa_t * _3;
+  struct pfe_isa_definition_t * _4;
+  errno_t _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (db_6(D), 0, 116);
+  # DEBUG BEGIN_STMT
+  db_6(D)->crit.crit = 4;
+  # DEBUG BEGIN_STMT
+  db_6(D)->next_item = 0;
+  # DEBUG BEGIN_STMT
+  db_6(D)->isa_def.item_count = 8;
+  # DEBUG BEGIN_STMT
+  db_6(D)->isa_def.item_size = 7;
+  # DEBUG BEGIN_STMT
+  db_6(D)->isa_def.flags.ordered = 1;
+  # DEBUG BEGIN_STMT
+  _1 = &db_6(D)->mac_list_idx;
+  db_6(D)->isa_def.item_indexes = _1;
+  # DEBUG BEGIN_STMT
+  _2 = &db_6(D)->mac_list_pool;
+  db_6(D)->isa_def.items = _2;
+  # DEBUG BEGIN_STMT
+  db_6(D)->isa_def.clear_cb = 0B;
+  # DEBUG BEGIN_STMT
+  _3 = &db_6(D)->mac_list;
+  _4 = &db_6(D)->isa_def;
+  isa_init (_3, _4);
+  # DEBUG BEGIN_STMT
+  ret_17 = 0;
+  # DEBUG ret => ret_17
+  # DEBUG BEGIN_STMT
+  _18 = ret_17;
+  return _18;
+
+}
+
+
+pfe_mac_db_criterion_eval (const struct pfe_mac_db_list_entry_t * entry, pfe_mac_db_crit_t crit, pfe_mac_type_t type, pfe_drv_id_t owner)
+{
+  bool_t ret;
+  <unnamed type> _1;
+  const uint8_t[6] * _2;
+  <unnamed type> _3;
+  const uint8_t[6] * _4;
+  bool_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = 0;
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (crit_8(D) == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = entry_11(D)->owner;
+  if (owner_12(D) == _1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_18 = 1;
+  # DEBUG ret => ret_18
+  goto <bb 12>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (crit_8(D) == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _2 = &entry_11(D)->addr;
+  ret_17 = pfe_mac_db_check_crit_by_type (_2, type_13(D));
+  # DEBUG ret => ret_17
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (crit_8(D) == 2)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = entry_11(D)->owner;
+  if (owner_12(D) == _3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _4 = &entry_11(D)->addr;
+  ret_15 = pfe_mac_db_check_crit_by_type (_4, type_13(D));
+  # DEBUG ret => ret_15
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  if (crit_8(D) == 3)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  ret_10 = 1;
+  # DEBUG ret => ret_10
+
+  <bb 12> :
+  # ret_5 = PHI <ret_18(4), ret_17(6), ret_15(9), ret_7(10), ret_10(11), ret_7(3), ret_7(8)>
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _19 = ret_5;
+  return _19;
+
+}
+
+
+pfe_mac_db_check_crit_by_type (const uint8_t * addr, pfe_mac_type_t type)
+{
+  bool_t ret;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  bool_t _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_9 = 0;
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (type_10(D) == 3)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (type_10(D) == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _1 = pfe_emac_is_multi (addr_12(D));
+  if (_1 == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (type_10(D) == 2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _2 = pfe_emac_is_broad (addr_12(D));
+  if (_2 == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  if (type_10(D) == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  _3 = pfe_emac_is_multi (addr_12(D));
+  if (_3 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret_16 = 1;
+  # DEBUG ret => ret_16
+
+  <bb 10> :
+  # ret_4 = PHI <ret_9(7), ret_9(8), ret_16(9)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _17 = ret_4;
+  return _17;
+
+}
+
+
+pfe_emac_is_multi (const uint8_t * addr)
+{
+  bool_t ReVal;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned int _3;
+  unsigned int _4;
+  bool_t _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = pfe_emac_is_broad (addr_7(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _2 = *addr_7(D);
+  _3 = (unsigned int) _2;
+  _4 = _3 & 1;
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ReVal_9 = 1;
+  # DEBUG ReVal => ReVal_9
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ReVal_10 = 0;
+  # DEBUG ReVal => ReVal_10
+
+  <bb 6> :
+  # ReVal_5 = PHI <ReVal_9(4), ReVal_10(5)>
+  # DEBUG ReVal => ReVal_5
+  # DEBUG BEGIN_STMT
+  _11 = ReVal_5;
+  return _11;
+
+}
+
+
+pfe_emac_is_broad (const uint8_t * addr)
+{
+  bool_t ReVal;
+  unsigned char _1;
+  const uint8_t * _2;
+  unsigned char _3;
+  unsigned char _4;
+  const uint8_t * _5;
+  unsigned char _6;
+  unsigned char _7;
+  const uint8_t * _8;
+  unsigned char _9;
+  unsigned char _10;
+  const uint8_t * _11;
+  unsigned char _12;
+  unsigned char _13;
+  const uint8_t * _14;
+  unsigned char _15;
+  unsigned char _16;
+  bool_t _22;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = *addr_19(D);
+  _2 = addr_19(D) + 1;
+  _3 = *_2;
+  _4 = _1 & _3;
+  _5 = addr_19(D) + 2;
+  _6 = *_5;
+  _7 = _4 & _6;
+  _8 = addr_19(D) + 3;
+  _9 = *_8;
+  _10 = _7 & _9;
+  _11 = addr_19(D) + 4;
+  _12 = *_11;
+  _13 = _10 & _12;
+  _14 = addr_19(D) + 5;
+  _15 = *_14;
+  _16 = _13 & _15;
+  if (_16 == 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ReVal_21 = 1;
+  # DEBUG ReVal => ReVal_21
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ReVal_20 = 0;
+  # DEBUG ReVal => ReVal_20
+
+  <bb 5> :
+  # ReVal_17 = PHI <ReVal_21(3), ReVal_20(4)>
+  # DEBUG ReVal => ReVal_17
+  # DEBUG BEGIN_STMT
+  _22 = ReVal_17;
+  return _22;
+
+}
+
+

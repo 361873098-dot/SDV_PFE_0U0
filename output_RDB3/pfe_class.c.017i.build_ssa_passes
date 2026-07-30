@@ -1,0 +1,2044 @@
+pfe_class_update_hw_bridge_lookup (struct pfe_class_t * class, uint32_t if_bitmap, bool_t br_mode)
+{
+  uint32_t if_bitmap_br_modes_before;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (102);
+  # DEBUG BEGIN_STMT
+  if_bitmap_br_modes_before = class->phy_if_bitmap_br_modes;
+  # DEBUG BEGIN_STMT
+  if (br_mode == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = class->phy_if_bitmap_br_modes;
+  _2 = if_bitmap | _1;
+  class->phy_if_bitmap_br_modes = _2;
+  # DEBUG BEGIN_STMT
+  if (if_bitmap_br_modes_before == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = class->cbus_base_va;
+  pfe_class_cfg_bridge_lookup_enable (_3);
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = class->phy_if_bitmap_br_modes;
+  _5 = ~if_bitmap;
+  _6 = _4 & _5;
+  class->phy_if_bitmap_br_modes = _6;
+  # DEBUG BEGIN_STMT
+  if (if_bitmap_br_modes_before != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  _7 = class->phy_if_bitmap_br_modes;
+  if (_7 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _8 = class->cbus_base_va;
+  pfe_class_cfg_bridge_lookup_disable (_8);
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (102);
+  return;
+
+}
+
+
+pfe_class_rtable_lookup_disable (const struct pfe_class_t * class)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (104);
+  # DEBUG BEGIN_STMT
+  _1 = class->cbus_base_va;
+  pfe_class_cfg_rtable_lookup_disable (_1);
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (104);
+  return;
+
+}
+
+
+pfe_class_rtable_lookup_enable (const struct pfe_class_t * class)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (103);
+  # DEBUG BEGIN_STMT
+  _1 = class->cbus_base_va;
+  pfe_class_cfg_rtable_lookup_enable (_1);
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (103);
+  return;
+
+}
+
+
+pfe_class_get_fw_version (const struct pfe_class_t * class, struct pfe_ct_version_t * ver)
+{
+  errno_t ret;
+  union pfe_ct_pe_mmap_t pfe_pe_mmap;
+  errno_t D.12702;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &class->pe[0];
+  ret = pfe_pe_get_mmap (_1, &pfe_pe_mmap);
+  # DEBUG BEGIN_STMT
+  _2 = class->pe_num;
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (ret != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (ver, &pfe_pe_mmap.class_pe.common.version, 108);
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  D.12702 = ret;
+  pfe_pe_mmap = {CLOBBER};
+  return D.12702;
+
+}
+
+
+pfe_class_get_stats (struct pfe_class_t * class, struct pfe_ct_classify_stats_t * stat)
+{
+  errno_t ret;
+  union pfe_ct_pe_mmap_t mmap;
+  errno_t D.12695;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (stat, 0, 184);
+  # DEBUG BEGIN_STMT
+  _1 = &class->pe[0];
+  ret = pfe_pe_get_mmap (_1, &mmap);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Cannot get PE memory map\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 1329, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = mmap.class_pe.classification_stats;
+  _3 = _2 >> 24;
+  _4 = mmap.class_pe.classification_stats;
+  _5 = _4 >> 8;
+  _6 = _5 & 65280;
+  _7 = _3 | _6;
+  _8 = mmap.class_pe.classification_stats;
+  _9 = _8 << 8;
+  _10 = _9 & 16711680;
+  _11 = _7 | _10;
+  _12 = mmap.class_pe.classification_stats;
+  _13 = _12 << 24;
+  _14 = _11 | _13;
+  ret = pfe_class_gather_read_dmem (class, &pfe_class_stats, _14, 1472, 184);
+  # DEBUG BEGIN_STMT
+  pfe_class_cal_total_stats (class, stat, &pfe_class_stats);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.12695 = ret;
+  mmap = {CLOBBER};
+  return D.12695;
+
+}
+
+
+pfe_class_cal_total_stats (struct pfe_class_t * class, struct pfe_ct_classify_stats_t * total_stat, struct pfe_ct_classify_stats_t * stats)
+{
+  uint32_t j;
+  uint32_t i;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  i = 0;
+  j = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = i * 184;
+  _2 = stats + _1;
+  _3 = &_2->flexible_router;
+  pfe_class_alg_stats_endian (_3);
+  # DEBUG BEGIN_STMT
+  _4 = i * 184;
+  _5 = stats + _4;
+  _6 = &_5->ip_router;
+  pfe_class_alg_stats_endian (_6);
+  # DEBUG BEGIN_STMT
+  _7 = i * 184;
+  _8 = stats + _7;
+  _9 = &_8->vlan_bridge;
+  pfe_class_alg_stats_endian (_9);
+  # DEBUG BEGIN_STMT
+  _10 = i * 184;
+  _11 = stats + _10;
+  _12 = &_11->log_if;
+  pfe_class_alg_stats_endian (_12);
+  # DEBUG BEGIN_STMT
+  j = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _13 = i * 184;
+  _14 = stats + _13;
+  _15 = &_14->hif_to_hif[j];
+  pfe_class_ihc_stats_endian (_15);
+  # DEBUG BEGIN_STMT
+  j = j + 1;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (j <= 9)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _16 = &total_stat->flexible_router;
+  _17 = i * 184;
+  _18 = stats + _17;
+  _19 = &_18->flexible_router;
+  pfe_class_sum_pe_algo_stats (_16, _19);
+  # DEBUG BEGIN_STMT
+  _20 = &total_stat->ip_router;
+  _21 = i * 184;
+  _22 = stats + _21;
+  _23 = &_22->ip_router;
+  pfe_class_sum_pe_algo_stats (_20, _23);
+  # DEBUG BEGIN_STMT
+  _24 = &total_stat->vlan_bridge;
+  _25 = i * 184;
+  _26 = stats + _25;
+  _27 = &_26->vlan_bridge;
+  pfe_class_sum_pe_algo_stats (_24, _27);
+  # DEBUG BEGIN_STMT
+  _28 = &total_stat->log_if;
+  _29 = i * 184;
+  _30 = stats + _29;
+  _31 = &_30->log_if;
+  pfe_class_sum_pe_algo_stats (_28, _31);
+  # DEBUG BEGIN_STMT
+  j = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _32 = &total_stat->hif_to_hif[j];
+  _33 = i * 184;
+  _34 = stats + _33;
+  _35 = &_34->hif_to_hif[j];
+  pfe_class_sum_pe_ihc_stats (_32, _35);
+  # DEBUG BEGIN_STMT
+  j = j + 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (j <= 9)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _36 = pfe_class_get_num_of_pes (class);
+  if (i < _36)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  return;
+
+}
+
+
+pfe_class_put_data (struct pfe_class_t * class, struct pfe_ct_buffer_t * buf)
+{
+  errno_t ret;
+  uint32_t tries;
+  uint32_t ii;
+  errno_t D.12690;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 1;
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (26);
+  # DEBUG BEGIN_STMT
+  _1 = &class->pe;
+  pfe_pe_lock_family (_1);
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 11>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  tries = 0;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = &class->pe[ii];
+  ret = pfe_pe_put_data_nolock (_2, buf);
+  # DEBUG BEGIN_STMT
+  if (ret == 118)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  tries = tries + 1;
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (200);
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (ret == 118)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  if (tries <= 9)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Unable to update pe %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 1253, ii, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 111;
+  # DEBUG BEGIN_STMT
+  goto <bb 12>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ii = ii + 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _3 = class->pe_num;
+  if (ii < _3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _4 = &class->pe;
+  pfe_pe_unlock_family (_4);
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (26);
+  # DEBUG BEGIN_STMT
+  D.12690 = ret;
+  return D.12690;
+
+}
+
+
+pfe_class_sum_pe_ihc_stats (struct pfe_ct_class_ihc_stats_t * sum, const struct pfe_ct_class_ihc_stats_t * val)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = sum->rx;
+  _2 = val->rx;
+  _3 = _1 + _2;
+  sum->rx = _3;
+  # DEBUG BEGIN_STMT
+  _4 = sum->tx;
+  _5 = val->tx;
+  _6 = _4 + _5;
+  sum->tx = _6;
+  # DEBUG BEGIN_STMT
+  _7 = sum->discarded;
+  _8 = val->discarded;
+  _9 = _7 + _8;
+  sum->discarded = _9;
+  return;
+
+}
+
+
+pfe_class_sum_pe_algo_stats (struct pfe_ct_class_algo_stats_t * sum, const struct pfe_ct_class_algo_stats_t * val)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = sum->processed;
+  _2 = val->processed;
+  _3 = _1 + _2;
+  sum->processed = _3;
+  # DEBUG BEGIN_STMT
+  _4 = sum->accepted;
+  _5 = val->accepted;
+  _6 = _4 + _5;
+  sum->accepted = _6;
+  # DEBUG BEGIN_STMT
+  _7 = sum->rejected;
+  _8 = val->rejected;
+  _9 = _7 + _8;
+  sum->rejected = _9;
+  # DEBUG BEGIN_STMT
+  _10 = sum->discarded;
+  _11 = val->discarded;
+  _12 = _10 + _11;
+  sum->discarded = _12;
+  return;
+
+}
+
+
+pfe_class_sum_flexi_parser_stats (struct pfe_ct_class_flexi_parser_stats_t * sum, const struct pfe_ct_class_flexi_parser_stats_t * val)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = sum->accepted;
+  _2 = val->accepted;
+  _3 = _1 + _2;
+  sum->accepted = _3;
+  # DEBUG BEGIN_STMT
+  _4 = sum->rejected;
+  _5 = val->rejected;
+  _6 = _4 + _5;
+  sum->rejected = _6;
+  return;
+
+}
+
+
+pfe_class_flexi_parser_stats_endian (struct pfe_ct_class_flexi_parser_stats_t * stats)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = stats->accepted;
+  _2 = _1 >> 24;
+  _3 = stats->accepted;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = stats->accepted;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = stats->accepted;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  stats->accepted = _13;
+  # DEBUG BEGIN_STMT
+  _14 = stats->rejected;
+  _15 = _14 >> 24;
+  _16 = stats->rejected;
+  _17 = _16 >> 8;
+  _18 = _17 & 65280;
+  _19 = _15 | _18;
+  _20 = stats->rejected;
+  _21 = _20 << 8;
+  _22 = _21 & 16711680;
+  _23 = _19 | _22;
+  _24 = stats->rejected;
+  _25 = _24 << 24;
+  _26 = _23 | _25;
+  stats->rejected = _26;
+  return;
+
+}
+
+
+pfe_class_ihc_stats_endian (struct pfe_ct_class_ihc_stats_t * stat)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = stat->rx;
+  _2 = _1 >> 24;
+  _3 = stat->rx;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = stat->rx;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = stat->rx;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  stat->rx = _13;
+  # DEBUG BEGIN_STMT
+  _14 = stat->tx;
+  _15 = _14 >> 24;
+  _16 = stat->tx;
+  _17 = _16 >> 8;
+  _18 = _17 & 65280;
+  _19 = _15 | _18;
+  _20 = stat->tx;
+  _21 = _20 << 8;
+  _22 = _21 & 16711680;
+  _23 = _19 | _22;
+  _24 = stat->tx;
+  _25 = _24 << 24;
+  _26 = _23 | _25;
+  stat->tx = _26;
+  # DEBUG BEGIN_STMT
+  _27 = stat->discarded;
+  _28 = _27 >> 24;
+  _29 = stat->discarded;
+  _30 = _29 >> 8;
+  _31 = _30 & 65280;
+  _32 = _28 | _31;
+  _33 = stat->discarded;
+  _34 = _33 << 8;
+  _35 = _34 & 16711680;
+  _36 = _32 | _35;
+  _37 = stat->discarded;
+  _38 = _37 << 24;
+  _39 = _36 | _38;
+  stat->discarded = _39;
+  return;
+
+}
+
+
+pfe_class_alg_stats_endian (struct pfe_ct_class_algo_stats_t * stat)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = stat->processed;
+  _2 = _1 >> 24;
+  _3 = stat->processed;
+  _4 = _3 >> 8;
+  _5 = _4 & 65280;
+  _6 = _2 | _5;
+  _7 = stat->processed;
+  _8 = _7 << 8;
+  _9 = _8 & 16711680;
+  _10 = _6 | _9;
+  _11 = stat->processed;
+  _12 = _11 << 24;
+  _13 = _10 | _12;
+  stat->processed = _13;
+  # DEBUG BEGIN_STMT
+  _14 = stat->accepted;
+  _15 = _14 >> 24;
+  _16 = stat->accepted;
+  _17 = _16 >> 8;
+  _18 = _17 & 65280;
+  _19 = _15 | _18;
+  _20 = stat->accepted;
+  _21 = _20 << 8;
+  _22 = _21 & 16711680;
+  _23 = _19 | _22;
+  _24 = stat->accepted;
+  _25 = _24 << 24;
+  _26 = _23 | _25;
+  stat->accepted = _26;
+  # DEBUG BEGIN_STMT
+  _27 = stat->rejected;
+  _28 = _27 >> 24;
+  _29 = stat->rejected;
+  _30 = _29 >> 8;
+  _31 = _30 & 65280;
+  _32 = _28 | _31;
+  _33 = stat->rejected;
+  _34 = _33 << 8;
+  _35 = _34 & 16711680;
+  _36 = _32 | _35;
+  _37 = stat->rejected;
+  _38 = _37 << 24;
+  _39 = _36 | _38;
+  stat->rejected = _39;
+  # DEBUG BEGIN_STMT
+  _40 = stat->discarded;
+  _41 = _40 >> 24;
+  _42 = stat->discarded;
+  _43 = _42 >> 8;
+  _44 = _43 & 65280;
+  _45 = _41 | _44;
+  _46 = stat->discarded;
+  _47 = _46 << 8;
+  _48 = _47 & 16711680;
+  _49 = _45 | _48;
+  _50 = stat->discarded;
+  _51 = _50 << 24;
+  _52 = _49 | _51;
+  stat->discarded = _52;
+  return;
+
+}
+
+
+pfe_class_get_feature_next (struct pfe_class_t * class, struct pfe_fw_feature_t * * feature)
+{
+  errno_t ret;
+  errno_t D.12683;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  # DEBUG BEGIN_STMT
+  _1 = class->fw_features_count;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = class->current_feature;
+  _3 = _2 + 1;
+  _4 = class->fw_features_count;
+  if (_3 < _4)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _5 = class->current_feature;
+  _6 = _5 + 1;
+  class->current_feature = _6;
+  # DEBUG BEGIN_STMT
+  _7 = class->current_feature;
+  _8 = &class->fw_features[_7];
+  *feature = _8;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.12683 = ret;
+  return D.12683;
+
+}
+
+
+pfe_class_get_feature_first (struct pfe_class_t * class, struct pfe_fw_feature_t * * feature)
+{
+  errno_t ret;
+  errno_t D.12677;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = class->fw_features_count;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  class->current_feature = 0;
+  # DEBUG BEGIN_STMT
+  _2 = class->current_feature;
+  _3 = &class->fw_features[_2];
+  *feature = _3;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = 2;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.12677 = ret;
+  return D.12677;
+
+}
+
+
+pfe_class_get_feature (struct pfe_class_t * class, struct pfe_fw_feature_t * * feature, const char * name)
+{
+  errno_t ret_val;
+  errno_t ret;
+  const char * fname;
+  uint32_t i;
+  errno_t D.12671;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  # DEBUG BEGIN_STMT
+  ret_val = 0;
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = &class->fw_features[i];
+  ret_val = pfe_fw_feature_get_name (_1, &fname);
+  # DEBUG BEGIN_STMT
+  if (ret_val == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  fname.6_2 = fname;
+  _3 = autolibc_strcmp (fname.6_2, name);
+  if (_3 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = &class->fw_features[i];
+  *feature = _4;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _5 = class->fw_features_count;
+  if (i < _5)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.12671 = ret;
+  fname = {CLOBBER};
+  return D.12671;
+
+}
+
+
+pfe_class_get_num_of_pes (const struct pfe_class_t * class)
+{
+  uint32_t pe_num;
+  uint32_t D.12665;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pe_num = class->pe_num;
+  # DEBUG BEGIN_STMT
+  D.12665 = pe_num;
+  return D.12665;
+
+}
+
+
+pfe_class_set_default_vlan (const struct pfe_class_t * class, uint16_t vlan)
+{
+  errno_t ret;
+  errno_t D.12663;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = class->cbus_base_va;
+  pfe_class_cfg_set_def_vlan (_1, vlan);
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  D.12663 = ret;
+  return D.12663;
+
+}
+
+
+pfe_class_set_rtable (struct pfe_class_t * class, addr_t rtable_pa, uint32_t rtable_len, uint32_t entry_size)
+{
+  errno_t ret;
+  errno_t D.12661;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = class->enabled;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret = 111;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = class->cbus_base_va;
+  ret = pfe_class_cfg_set_rtable (_2, rtable_pa, rtable_len, entry_size);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.12661 = ret;
+  return D.12661;
+
+}
+
+
+pfe_class_destroy (struct pfe_class_t * class)
+{
+  uint32_t ii;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (class != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pfe_class_disable (class);
+  # DEBUG BEGIN_STMT
+  _1 = &class->pe;
+  _2 = class->pe_num;
+  pfe_pe_destroy (_1, _2);
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = &class->fw_features[ii];
+  pfe_fw_feature_destroy (_3);
+  # DEBUG BEGIN_STMT
+  ii = ii + 1;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = class->fw_features_count;
+  if (ii < _4)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  class->fw_features_count = 0;
+  # DEBUG BEGIN_STMT
+  class->pe_num = 0;
+  # DEBUG BEGIN_STMT
+  _5 = class->heap_context;
+  if (_5 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _6 = class->heap_context;
+  blalloc_destroy (_6);
+  # DEBUG BEGIN_STMT
+  class->heap_context = 0B;
+
+  <bb 8> :
+  return;
+
+}
+
+
+pfe_class_gather_read_dmem (struct pfe_class_t * class, void * dst_ptr, addr_t src_addr, uint32_t buffer_len, uint32_t read_len)
+{
+  errno_t ret;
+  errno_t D.12652;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = class->pe_num;
+  _2 = (signed int) _1;
+  # DEBUG BEGIN_STMT
+  _3 = &class->pe;
+  _4 = class->pe_num;
+  _5 = (long int) _4;
+  ret = pfe_pe_gather_memcpy_from_dmem_to_host_32 (_3, _5, dst_ptr, src_addr, buffer_len, read_len);
+  # DEBUG BEGIN_STMT
+  D.12652 = ret;
+  return D.12652;
+
+}
+
+
+pfe_class_read_dmem (void * class_p, int32_t pe_idx, void * dst_ptr, addr_t src_addr, uint32_t len)
+{
+  errno_t ret;
+  struct pfe_class_t * class;
+  errno_t D.12650;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  class = class_p;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = class->pe_num;
+  pe_idx.5_2 = (long unsigned int) pe_idx;
+  if (_1 <= pe_idx.5_2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Wrong PE index\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 726, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = &class->pe[pe_idx];
+  pfe_pe_memcpy_from_dmem_to_host_32 (_3, dst_ptr, src_addr, len);
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.12650 = ret;
+  return D.12650;
+
+}
+
+
+pfe_class_write_dmem (void * class_p, int32_t pe_idx, addr_t dst_addr, const void * src_ptr, uint32_t len)
+{
+  errno_t ret;
+  struct pfe_class_t * class;
+  uint32_t ii;
+  errno_t D.12645;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  class = class_p;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (pe_idx >= 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = class->pe_num;
+  pe_idx.4_2 = (long unsigned int) pe_idx;
+  if (_1 <= pe_idx.4_2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = &class->pe[pe_idx];
+  pfe_pe_memcpy_from_host_to_dmem_32 (_3, dst_addr, src_ptr, len);
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _4 = &class->pe[ii];
+  pfe_pe_memcpy_from_host_to_dmem_32 (_4, dst_addr, src_ptr, len);
+  # DEBUG BEGIN_STMT
+  ii = ii + 1;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _5 = class->pe_num;
+  if (ii < _5)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  D.12645 = ret;
+  return D.12645;
+
+}
+
+
+pfe_class_get_mmap (struct pfe_class_t * class, int32_t pe_idx, struct pfe_ct_class_mmap_t * mmap)
+{
+  union pfe_ct_pe_mmap_t mmap_tmp;
+  errno_t ret;
+  errno_t D.12636;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  mmap_tmp = {};
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = class->pe_num;
+  pe_idx.3_2 = (long unsigned int) pe_idx;
+  if (_1 <= pe_idx.3_2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = &class->pe[pe_idx];
+  ret = pfe_pe_get_mmap (_3, &mmap_tmp);
+  # DEBUG BEGIN_STMT
+  autolibc_memcpy (mmap, &mmap_tmp.class_pe, 188);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.12636 = ret;
+  mmap_tmp = {CLOBBER};
+  return D.12636;
+
+}
+
+
+pfe_class_load_fw_features (struct pfe_class_t * class)
+{
+  errno_t ret;
+  union pfe_ct_pe_mmap_t mmap;
+  errno_t D.12615;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &class->pe[0];
+  ret = pfe_pe_get_mmap (_1, &mmap);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = mmap.common.version.features_count;
+  _3 = _2 >> 24;
+  _4 = mmap.common.version.features_count;
+  _5 = _4 >> 8;
+  _6 = _5 & 65280;
+  _7 = _3 | _6;
+  _8 = mmap.common.version.features_count;
+  _9 = _8 << 8;
+  _10 = _9 & 16711680;
+  _11 = _7 | _10;
+  _12 = mmap.common.version.features_count;
+  _13 = _12 << 24;
+  _14 = _11 | _13;
+  class->fw_features_count = _14;
+  # DEBUG BEGIN_STMT
+  _15 = class->fw_features_count;
+  if (_15 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _16 = class->fw_features_count;
+  if (_16 > 22)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = class->fw_features_count;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Insufficient class features storage for %u entries\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 596, _17, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  class->fw_features_count = 0;
+  # DEBUG BEGIN_STMT
+  ret = 11;
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_class_load_fw_process (class);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Errors during load FW features\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 605, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.12615 = ret;
+  mmap = {CLOBBER};
+  return D.12615;
+
+}
+
+
+pfe_class_load_fw_process (struct pfe_class_t * class)
+{
+  struct pfe_fw_feature_t * fw_features;
+  bool_t val_break;
+  struct pfe_ct_feature_desc_t * entry;
+  uint32_t j;
+  uint32_t i;
+  errno_t ret;
+  errno_t D.12630;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  val_break = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  class->current_feature = 0;
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 21>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = &class->fw_features[i];
+  fw_features = pfe_fw_feature_create (_1);
+  # DEBUG BEGIN_STMT
+  if (fw_features == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed to create feature %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 521, i, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  j = 0;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _2 = &class->fw_features[j];
+  pfe_fw_feature_destroy (_2);
+  # DEBUG BEGIN_STMT
+  j = j + 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (j < i)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ret = 11;
+  # DEBUG BEGIN_STMT
+  val_break = 1;
+  goto <bb 19>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _3 = &class->pe[0];
+  ret = pfe_pe_get_fw_feature_entry (_3, i, &entry);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed get ll data for feature %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 536, i, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  j = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _4 = &class->fw_features[j];
+  pfe_fw_feature_destroy (_4);
+  # DEBUG BEGIN_STMT
+  j = j + 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  if (j < i)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  # DEBUG BEGIN_STMT
+  val_break = 1;
+  goto <bb 19>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  entry.2_5 = entry;
+  _6 = pfe_class_get_num_of_pes (class);
+  _7 = (unsigned char) _6;
+  pfe_fw_feature_set_ll_data (fw_features, entry.2_5, _7);
+  # DEBUG BEGIN_STMT
+  _8 = &class->pe[0];
+  _9 = pfe_pe_get_fw_feature_str_base (_8);
+  ret = pfe_fw_feature_set_string_base (fw_features, _9);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 14> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed to set string base for feature %u\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 553, i, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  j = 0;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _10 = &class->fw_features[j];
+  pfe_fw_feature_destroy (_10);
+  # DEBUG BEGIN_STMT
+  j = j + 1;
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  if (j < i)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  ret = 22;
+  # DEBUG BEGIN_STMT
+  val_break = 1;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  pfe_fw_feature_set_dmem_funcs (fw_features, pfe_class_read_dmem, pfe_class_write_dmem, class);
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  if (val_break == 1)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 20> :
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  _11 = class->fw_features_count;
+  if (i < _11)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 22> :
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 23> :
+  # DEBUG BEGIN_STMT
+  class->fw_features_count = 0;
+
+  <bb 24> :
+  # DEBUG BEGIN_STMT
+  D.12630 = ret;
+  entry = {CLOBBER};
+  return D.12630;
+
+}
+
+
+pfe_class_load_firmware (struct pfe_class_t * class, const void * elf)
+{
+  errno_t ret;
+  errno_t D.12596;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &class->pe;
+  _2 = class->pe_num;
+  ret = pfe_pe_load_firmware (_1, _2, elf);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Classifier firmware loading the PE failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 474, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  class->is_fw_loaded = 1;
+  # DEBUG BEGIN_STMT
+  _3 = &class->pe[0];
+  ret = pfe_pe_check_mmap (_3);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_class_dmem_heap_init (class);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Dmem heap allocator initialization failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 491, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = pfe_class_load_fw_features (class);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed to initialize FW features\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 498, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  D.12596 = ret;
+  return D.12596;
+
+}
+
+
+pfe_class_disable (struct pfe_class_t * class)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = class->cbus_base_va;
+  pfe_class_cfg_disable (_1);
+  return;
+
+}
+
+
+pfe_class_enable (struct pfe_class_t * class)
+{
+  pfe_ct_pe_sw_state_t state;
+  uint16_t timeout;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  timeout = 50;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = class->is_fw_loaded;
+  _2 = _1 == 0;
+  _3 = (long int) _2;
+  _4 = __builtin_expect (_3, 0);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = class->cbus_base_va;
+  pfe_class_cfg_enable (_5);
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (5);
+  # DEBUG BEGIN_STMT
+  timeout.1_6 = timeout;
+  timeout = timeout.1_6 + 65535;
+  # DEBUG BEGIN_STMT
+  _7 = &class->pe[0];
+  state = pfe_pe_get_fw_state (_7);
+  # DEBUG BEGIN_STMT
+  if (state == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  if (timeout != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (timeout == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Time-out waiting for classifier to init\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 424, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  class->enabled = 1;
+
+  <bb 8> :
+  return;
+
+}
+
+
+pfe_class_reset (struct pfe_class_t * class)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  pfe_class_disable (class);
+  # DEBUG BEGIN_STMT
+  _1 = class->cbus_base_va;
+  pfe_class_cfg_reset (_1);
+  # DEBUG BEGIN_STMT
+  class->enabled = 0;
+  return;
+
+}
+
+
+pfe_class_dmem_heap_free (const struct pfe_class_t * class, addr_t addr)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (addr == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = class->dmem_heap_base;
+  if (addr < _1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = class->dmem_heap_base;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Impossible address 0x%x (base is 0x%x)\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 362, addr, _2, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = class->heap_context;
+  _4 = class->dmem_heap_base;
+  _5 = addr - _4;
+  blalloc_free_offs (_3, _5);
+
+  <bb 6> :
+  return;
+
+}
+
+
+pfe_class_dmem_heap_alloc (const struct pfe_class_t * class, uint32_t size)
+{
+  errno_t ret;
+  addr_t addr;
+  addr_t D.12571;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = class->heap_context;
+  ret = blalloc_alloc_offs (_1, size, 0, &addr);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = class->dmem_heap_base;
+  addr.0_3 = addr;
+  _4 = _2 + addr.0_3;
+  addr = _4;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  addr = 0;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  D.12571 = addr;
+  addr = {CLOBBER};
+  return D.12571;
+
+}
+
+
+pfe_class_dmem_heap_init (struct pfe_class_t * class)
+{
+  errno_t ret;
+  union pfe_ct_pe_mmap_t mmap;
+  errno_t D.12603;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &class->pe[0];
+  ret = pfe_pe_get_mmap (_1, &mmap);
+  # DEBUG BEGIN_STMT
+  if (ret == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = mmap.class_pe.dmem_heap_size;
+  _3 = _2 >> 24;
+  _4 = mmap.class_pe.dmem_heap_size;
+  _5 = _4 >> 8;
+  _6 = _5 & 65280;
+  _7 = _3 | _6;
+  _8 = mmap.class_pe.dmem_heap_size;
+  _9 = _8 << 8;
+  _10 = _9 & 16711680;
+  _11 = _7 | _10;
+  _12 = mmap.class_pe.dmem_heap_size;
+  _13 = _12 << 24;
+  _14 = _11 | _13;
+  _15 = blalloc_create (_14, 4);
+  class->heap_context = _15;
+  # DEBUG BEGIN_STMT
+  _16 = class->heap_context;
+  if (_16 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = 11;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _17 = mmap.class_pe.dmem_heap_base;
+  _18 = _17 >> 24;
+  _19 = mmap.class_pe.dmem_heap_base;
+  _20 = _19 >> 8;
+  _21 = _20 & 65280;
+  _22 = _18 | _21;
+  _23 = mmap.class_pe.dmem_heap_base;
+  _24 = _23 << 8;
+  _25 = _24 & 16711680;
+  _26 = _22 | _25;
+  _27 = mmap.class_pe.dmem_heap_base;
+  _28 = _27 << 24;
+  _29 = _26 | _28;
+  class->dmem_heap_base = _29;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  D.12603 = ret;
+  mmap = {CLOBBER};
+  return D.12603;
+
+}
+
+
+pfe_class_create (addr_t cbus_base_va, uint32_t pe_num, const struct pfe_class_cfg_t * cfg)
+{
+  errno_t ret;
+  struct pfe_class_t * class;
+  struct pfe_class_t * D.12562;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  class = &classifier_instance;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (class, 0, 1460);
+  # DEBUG BEGIN_STMT
+  class->cbus_base_va = cbus_base_va;
+  # DEBUG BEGIN_STMT
+  if (pe_num != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret = pfe_class_create_pe (class, cbus_base_va, pe_num);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  pfe_class_destroy (class);
+  # DEBUG BEGIN_STMT
+  class = 0B;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  if (class != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  pfe_class_reset (class);
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (10);
+  # DEBUG BEGIN_STMT
+  pfe_class_disable (class);
+  # DEBUG BEGIN_STMT
+  _1 = class->cbus_base_va;
+  pfe_class_cfg_set_config (_1, cfg);
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  class = 0B;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.12562 = class;
+  return D.12562;
+
+}
+
+
+pfe_class_create_pe (struct pfe_class_t * class, addr_t cbus_base_va, uint32_t pe_num)
+{
+  errno_t ret;
+  uint32_t ii;
+  struct pfe_pe_t * pe;
+  errno_t D.12566;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = (unsigned char) ii;
+  _2 = &class->pe[ii];
+  _3 = &class->miflock_pe;
+  pe = pfe_pe_create (cbus_base_va, 1, _1, _2, _3);
+  # DEBUG BEGIN_STMT
+  if (pe == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret = 2;
+  # DEBUG BEGIN_STMT
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  pfe_pe_set_iaccess (pe, 590084, 590088, 590080);
+  # DEBUG BEGIN_STMT
+  pfe_pe_set_dmem (pe, 536870912, 16384);
+  # DEBUG BEGIN_STMT
+  pfe_pe_set_imem (pe, 2680160256, 32768);
+  # DEBUG BEGIN_STMT
+  pfe_pe_set_lmem (pe, 3221356544, 0);
+  # DEBUG BEGIN_STMT
+  _4 = class->pe_num;
+  _5 = _4 + 1;
+  class->pe_num = _5;
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  ii = ii + 1;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (ii < pe_num)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  D.12566 = ret;
+  return D.12566;
+
+}
+
+
+pfe_class_irq_unmask (const struct pfe_class_t * class)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_class_irq_mask (const struct pfe_class_t * class)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_class_isr (struct pfe_class_t * class)
+{
+  errno_t ret;
+  errno_t D.12540;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  oal_mutex_lock (25);
+  # DEBUG BEGIN_STMT
+  _1 = &class->pe;
+  pfe_pe_lock_family (_1);
+  # DEBUG BEGIN_STMT
+  pfe_class_check_pes (class);
+  # DEBUG BEGIN_STMT
+  _2 = &class->pe;
+  pfe_pe_unlock_family (_2);
+  # DEBUG BEGIN_STMT
+  oal_mutex_unlock (25);
+  # DEBUG BEGIN_STMT
+  ret = 0;
+  # DEBUG BEGIN_STMT
+  D.12540 = ret;
+  return D.12540;
+
+}
+
+
+pfe_class_check_pes (struct pfe_class_t * class)
+{
+  const errno_t ret;
+  struct fci_msg_t msg;
+  struct pfe_ct_buffer_t buf;
+  uint32_t i;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i = 0;
+  goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = &class->pe[i];
+  pfe_pe_get_fw_messages_nolock (_1);
+  # DEBUG BEGIN_STMT
+  _2 = &class->pe[i];
+  pfe_pe_check_stalled_nolock (_2);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = &class->pe[i];
+  _4 = pfe_pe_get_data_nolock (_3, &buf);
+  if (_4 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  msg.msg_cmd.code = 62209;
+  # DEBUG BEGIN_STMT
+  _5 = buf.len;
+  _6 = (long unsigned int) _5;
+  msg.msg_cmd.length = _6;
+  # DEBUG BEGIN_STMT
+  msg.msg_cmd.sender = 0;
+  # DEBUG BEGIN_STMT
+  msg.client = 0B;
+  # DEBUG BEGIN_STMT
+  _7 = msg.msg_cmd.length;
+  if (_7 > 256)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FCI buffer is too small\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 131, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _8 = buf.len;
+  _9 = (long unsigned int) _8;
+  autolibc_memcpy (&msg.msg_cmd.payload, &buf.payload, _9);
+  # DEBUG BEGIN_STMT
+  ret = fci_core_client_send_broadcast (&msg, 0B);
+  # DEBUG BEGIN_STMT
+  if (ret != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] fci_core_client_send_broadcast() failed: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_class.c", 139, ret, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  msg = {CLOBBER};
+
+  <bb 9> :
+  buf = {CLOBBER};
+  # DEBUG BEGIN_STMT
+  i = i + 1;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _10 = class->pe_num;
+  if (i < _10)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  return;
+
+}
+
+
+oal_mutex_unlock (const oal_mutex_t mutex)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Exit_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+oal_mutex_lock (const oal_mutex_t mutex)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  if (mutex <= 105)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = SchM_Enter_Eth_43_PFE_ETH_EXCLUSIVE_AREA_ID[mutex];
+  _1 ();
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+

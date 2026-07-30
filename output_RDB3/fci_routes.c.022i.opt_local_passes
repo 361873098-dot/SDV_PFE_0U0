@@ -1,0 +1,940 @@
+fci_routes_drop_all_ipv6 ()
+{
+  errno_t ret;
+  struct fci_rt_db_entry_t * entry;
+  struct fci_t * fci_context;
+  struct fci_rt_db_t * _1;
+  unsigned char _2;
+  struct fci_rt_db_t * _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_7 = &context;
+  # DEBUG fci_context => fci_context_7
+  # DEBUG BEGIN_STMT
+  entry_8 = 0B;
+  # DEBUG entry => entry_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &fci_context_7->route_db;
+  entry_11 = fci_rt_db_get_first (_1, 0, 0B);
+  # DEBUG entry => entry_11
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = entry_4->dst_ip.is_ipv4;
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_13 = fci_routes_drop_one (entry_4);
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = &fci_context_7->route_db;
+  entry_15 = fci_rt_db_get_next (_3);
+  # DEBUG entry => entry_15
+
+  <bb 6> :
+  # entry_4 = PHI <entry_11(2), entry_15(5)>
+  # DEBUG entry => entry_4
+  # DEBUG BEGIN_STMT
+  if (entry_4 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+
+fci_routes_drop_all_ipv4 ()
+{
+  errno_t ret;
+  struct fci_rt_db_entry_t * entry;
+  struct fci_t * fci_context;
+  struct fci_rt_db_t * _1;
+  unsigned char _2;
+  struct fci_rt_db_t * _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_7 = &context;
+  # DEBUG fci_context => fci_context_7
+  # DEBUG BEGIN_STMT
+  entry_8 = 0B;
+  # DEBUG entry => entry_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &fci_context_7->route_db;
+  entry_11 = fci_rt_db_get_first (_1, 0, 0B);
+  # DEBUG entry => entry_11
+  # DEBUG BEGIN_STMT
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = entry_4->dst_ip.is_ipv4;
+  if (_2 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_13 = fci_routes_drop_one (entry_4);
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = &fci_context_7->route_db;
+  entry_15 = fci_rt_db_get_next (_3);
+  # DEBUG entry => entry_15
+
+  <bb 6> :
+  # entry_4 = PHI <entry_11(2), entry_15(5)>
+  # DEBUG entry => entry_4
+  # DEBUG BEGIN_STMT
+  if (entry_4 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  return;
+
+}
+
+
+fci_routes_drop_all ()
+{
+  errno_t ret;
+  struct fci_rt_db_entry_t * entry;
+  struct fci_t * fci_context;
+  struct fci_rt_db_t * _1;
+  struct fci_rt_db_t * _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_5 = &context;
+  # DEBUG fci_context => fci_context_5
+  # DEBUG BEGIN_STMT
+  entry_6 = 0B;
+  # DEBUG entry => entry_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &fci_context_5->route_db;
+  entry_9 = fci_rt_db_get_first (_1, 0, 0B);
+  # DEBUG entry => entry_9
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_11 = fci_routes_drop_one (entry_3);
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = &fci_context_5->route_db;
+  entry_13 = fci_rt_db_get_next (_2);
+  # DEBUG entry => entry_13
+
+  <bb 4> :
+  # entry_3 = PHI <entry_9(2), entry_13(3)>
+  # DEBUG entry => entry_3
+  # DEBUG BEGIN_STMT
+  if (entry_3 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+fci_routes_drop_one (struct fci_rt_db_entry_t * route)
+{
+  errno_t ret;
+  struct fpp_rt_cmd_t * rt_cmd;
+  struct fci_msg_t msg;
+  struct fci_t * fci_context;
+  void * _1;
+  long unsigned int _2;
+  void * _3;
+  struct fci_rt_db_t * _4;
+  errno_t _24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_7 = &context;
+  # DEBUG fci_context => fci_context_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rt_cmd_8 = 0B;
+  # DEBUG rt_cmd => rt_cmd_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&msg, 0, 276);
+  # DEBUG BEGIN_STMT
+  msg.type = 4099;
+  # DEBUG BEGIN_STMT
+  msg.msg_cmd.code = 787;
+  # DEBUG BEGIN_STMT
+  rt_cmd_13 = &msg.msg_cmd.payload;
+  # DEBUG rt_cmd => rt_cmd_13
+  # DEBUG BEGIN_STMT
+  rt_cmd_13->action = 3;
+  # DEBUG BEGIN_STMT
+  _1 = route_15(D)->refptr;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = route_15(D)->id;
+  rt_cmd_13->id = _2;
+  # DEBUG BEGIN_STMT
+  _3 = route_15(D)->refptr;
+  ret_18 = fci_core_client_send (_3, &msg, 0B);
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fci_routes_remove_related_connections (route_15(D));
+  # DEBUG BEGIN_STMT
+  _4 = &fci_context_7->route_db;
+  ret_21 = fci_rt_db_remove (_4, route_15(D));
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  if (ret_21 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Can\'t remove route: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_routes.c", 473, ret_21, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = ret_21;
+  msg ={v} {CLOBBER};
+  return _24;
+
+}
+
+
+fci_routes_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_rt_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  struct fci_rt_db_entry_t * rt_entry;
+  struct pfe_ip_addr_t ip;
+  uint8_t dst_mac[6];
+  errno_t ret;
+  bool_t is_ipv6;
+  struct fpp_rt_cmd_t * rt_cmd;
+  struct fci_t * fci_context;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  _Bool _15;
+  uint8_t[6] * _16;
+  uint32_t * _17;
+  uint32_t * _18;
+  short unsigned int _19;
+  int _20;
+  struct fci_rt_db_t * _21;
+  struct fci_rt_db_t * _22;
+  errno_t _60;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_28 = &context;
+  # DEBUG fci_context => fci_context_28
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  is_ipv6_29 = 0;
+  # DEBUG is_ipv6 => is_ipv6_29
+  # DEBUG BEGIN_STMT
+  ret_30 = 0;
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  rt_entry_31 = 0B;
+  # DEBUG rt_entry => rt_entry_31
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len_33(D);
+  if (_1 <= 91)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_59 = 22;
+  # DEBUG ret => ret_59
+  goto <bb 15>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *reply_len_33(D) = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf_35(D), 0, 92);
+  # DEBUG BEGIN_STMT
+  rt_cmd_38 = &msg_37(D)->msg_cmd.payload;
+  # DEBUG rt_cmd => rt_cmd_38
+  # DEBUG BEGIN_STMT
+  _2 = rt_cmd_38->flags;
+  _3 = _2 >> 24;
+  _4 = rt_cmd_38->flags;
+  _5 = _4 >> 8;
+  _6 = _5 & 65280;
+  _7 = _3 | _6;
+  _8 = rt_cmd_38->flags;
+  _9 = _8 << 8;
+  _10 = _9 & 16711680;
+  _11 = _7 | _10;
+  _12 = rt_cmd_38->flags;
+  _13 = _12 << 24;
+  _14 = _11 | _13;
+  _15 = _14 == 2;
+  is_ipv6_39 = (bool_t) _15;
+  # DEBUG is_ipv6 => is_ipv6_39
+  # DEBUG BEGIN_STMT
+  _16 = &rt_cmd_38->dst_mac;
+  autolibc_memcpy (&dst_mac, _16, 6);
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&ip, 0, 22);
+  # DEBUG BEGIN_STMT
+  if (is_ipv6_39 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _17 = &rt_cmd_38->dst_addr[0];
+  autolibc_memcpy (&ip.v6, _17, 16);
+  # DEBUG BEGIN_STMT
+  ip.is_ipv4 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _18 = &rt_cmd_38->dst_addr[0];
+  autolibc_memcpy (&ip.v4, _18, 4);
+  # DEBUG BEGIN_STMT
+  ip.is_ipv4 = 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _19 = rt_cmd_38->action;
+  _20 = (int) _19;
+  switch (_20) <default: <L12> [INV], case 0: <L5> [INV], case 1: <L6> [INV], case 4: <L7> [INV], case 6: <L8> [INV], case 7: <L10> [INV]>
+
+  <bb 8> :
+<L5>:
+  # DEBUG BEGIN_STMT
+  ret_57 = routes_cmd_action_register (msg_37(D), fci_ret_49(D), rt_cmd_38, &ip, &dst_mac);
+  # DEBUG ret => ret_57
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 9> :
+<L6>:
+  # DEBUG BEGIN_STMT
+  _21 = &fci_context_28->route_db;
+  ret_55 = routes_cmd_action_deregister (fci_ret_49(D), rt_cmd_38, _21);
+  # DEBUG ret => ret_55
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 10> :
+<L7>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_49(D) = 1;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 11> :
+<L8>:
+  # DEBUG BEGIN_STMT
+  _22 = &fci_context_28->route_db;
+  rt_entry_47 = fci_rt_db_get_first (_22, 0, 0B);
+  # DEBUG rt_entry => rt_entry_47
+  # DEBUG BEGIN_STMT
+  if (rt_entry_47 == 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  ret_48 = 0;
+  # DEBUG ret => ret_48
+  # DEBUG BEGIN_STMT
+  *fci_ret_49(D) = 201;
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 13> :
+  # rt_entry_24 = PHI <rt_entry_31(7), rt_entry_47(11)>
+<L10>:
+  # DEBUG rt_entry => rt_entry_24
+  # DEBUG BEGIN_STMT
+  ret_52 = routes_cmd_query_cont (fci_ret_49(D), reply_buf_35(D), reply_len_33(D), rt_entry_24);
+  # DEBUG ret => ret_52
+  # DEBUG BEGIN_STMT
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+<L12>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_49(D) = 4;
+  # DEBUG BEGIN_STMT
+
+  <bb 15> :
+  # ret_23 = PHI <ret_59(3), ret_57(8), ret_55(9), ret_30(10), ret_48(12), ret_52(13), ret_30(14)>
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  _60 = ret_23;
+  dst_mac ={v} {CLOBBER};
+  ip ={v} {CLOBBER};
+  return _60;
+
+}
+
+
+routes_cmd_action_deregister (uint16_t * fci_ret, struct fpp_rt_cmd_t * rt_cmd, struct fci_rt_db_t * route_db)
+{
+  struct fci_rt_db_entry_t * rt_entry;
+  errno_t ret;
+  uint32_t * _1;
+  errno_t _18;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_4 = 0;
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  rt_entry_5 = 0B;
+  # DEBUG rt_entry => rt_entry_5
+  # DEBUG BEGIN_STMT
+  _1 = &rt_cmd_6(D)->id;
+  rt_entry_10 = fci_rt_db_get_first (route_db_8(D), 5, _1);
+  # DEBUG rt_entry => rt_entry_10
+  # DEBUG BEGIN_STMT
+  if (rt_entry_10 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_15(D) = 201;
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_12 = fci_routes_drop_one (rt_entry_10);
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FPP_CMD_IP_ROUTE: Can\'t remove route entry: %d\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_routes.c", 286, ret_12, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_15(D) = 3;
+
+  <bb 6> :
+  # ret_2 = PHI <ret_4(3), ret_12(4), ret_12(5)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _18 = ret_2;
+  return _18;
+
+}
+
+
+routes_cmd_query_cont (uint16_t * fci_ret, struct fpp_rt_cmd_t * reply_buf, uint32_t * reply_len, struct fci_rt_db_entry_t * rt_entry)
+{
+  struct fci_t * fci_context;
+  bool_t break_switch;
+  errno_t ret;
+  struct fci_rt_db_t * _1;
+  short unsigned int _2;
+  uint8_t[6] * _3;
+  uint8_t[6] * _4;
+  uint8_t[6] * _5;
+  uint8_t[6] * _6;
+  unsigned char _7;
+  uint32_t * _8;
+  union 
+{
+  uint8_t v4[4];
+} * _9;
+  uint32_t * _10;
+  union 
+{
+  uint16_t v6[8];
+} * _11;
+  long unsigned int _12;
+  char[16] * _13;
+  struct pfe_phy_if_t * _14;
+  const char_t * _15;
+  errno_t _48;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_23 = 0;
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  break_switch_24 = 0;
+  # DEBUG break_switch => break_switch_24
+  # DEBUG BEGIN_STMT
+  fci_context_25 = &context;
+  # DEBUG fci_context => fci_context_25
+  # DEBUG BEGIN_STMT
+  if (rt_entry_26(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = &fci_context_25->route_db;
+  rt_entry_29 = fci_rt_db_get_next (_1);
+  # DEBUG rt_entry => rt_entry_29
+  # DEBUG BEGIN_STMT
+  if (rt_entry_29 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_30 = 0;
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  *fci_ret_31(D) = 201;
+  # DEBUG BEGIN_STMT
+  break_switch_33 = 1;
+  # DEBUG break_switch => break_switch_33
+
+  <bb 5> :
+  # rt_entry_16 = PHI <rt_entry_26(D)(2), rt_entry_29(3), rt_entry_29(4)>
+  # ret_17 = PHI <ret_23(2), ret_23(3), ret_30(4)>
+  # break_switch_19 = PHI <break_switch_24(2), break_switch_24(3), break_switch_33(4)>
+  # DEBUG break_switch => break_switch_19
+  # DEBUG ret => ret_17
+  # DEBUG rt_entry => rt_entry_16
+  # DEBUG BEGIN_STMT
+  if (break_switch_19 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  *reply_len_34(D) = 92;
+  # DEBUG BEGIN_STMT
+  _2 = rt_entry_16->mtu;
+  reply_buf_36(D)->mtu = _2;
+  # DEBUG BEGIN_STMT
+  _3 = &reply_buf_36(D)->src_mac;
+  _4 = &rt_entry_16->src_mac;
+  autolibc_memcpy (_3, _4, 6);
+  # DEBUG BEGIN_STMT
+  _5 = &reply_buf_36(D)->dst_mac;
+  _6 = &rt_entry_16->dst_mac;
+  autolibc_memcpy (_5, _6, 6);
+  # DEBUG BEGIN_STMT
+  _7 = rt_entry_16->dst_ip.is_ipv4;
+  if (_7 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _8 = &reply_buf_36(D)->dst_addr[0];
+  _9 = &rt_entry_16->dst_ip.v4;
+  autolibc_memcpy (_8, _9, 4);
+  # DEBUG BEGIN_STMT
+  reply_buf_36(D)->flags = 16777216;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _10 = &reply_buf_36(D)->dst_addr[0];
+  _11 = &rt_entry_16->dst_ip.v6;
+  autolibc_memcpy (_10, _11, 16);
+  # DEBUG BEGIN_STMT
+  reply_buf_36(D)->flags = 33554432;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _12 = rt_entry_16->id;
+  reply_buf_36(D)->id = _12;
+  # DEBUG BEGIN_STMT
+  _13 = &reply_buf_36(D)->output_device;
+  _14 = rt_entry_16->iface;
+  _15 = pfe_phy_if_get_name (_14);
+  autolibc_strncpy (_13, _15, 15);
+  # DEBUG BEGIN_STMT
+  *fci_ret_31(D) = 0;
+  # DEBUG BEGIN_STMT
+  ret_47 = 0;
+  # DEBUG ret => ret_47
+
+  <bb 10> :
+  # ret_18 = PHI <ret_17(5), ret_47(9)>
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  _48 = ret_18;
+  return _48;
+
+}
+
+
+routes_cmd_action_register (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_rt_cmd_t * rt_cmd, struct pfe_ip_addr_t * ip, uint8_t[6] * dst_mac)
+{
+  uint8_t src_mac[6];
+  struct fci_t * fci_context;
+  struct pfe_if_db_entry_t * if_entry;
+  struct pfe_phy_if_t * phy_if;
+  uint32_t session_id;
+  errno_t ret;
+  struct pfe_if_db_t * _1;
+  long unsigned int session_id.0_2;
+  char[16] * _3;
+  struct pfe_if_db_entry_t * if_entry.1_4;
+  struct pfe_if_db_entry_t * if_entry.2_5;
+  struct fci_rt_db_t * _6;
+  long unsigned int _7;
+  void * _8;
+  long unsigned int session_id.3_9;
+  errno_t _40;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_13 = 0;
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  session_id = 0;
+  # DEBUG BEGIN_STMT
+  phy_if_16 = 0B;
+  # DEBUG phy_if => phy_if_16
+  # DEBUG BEGIN_STMT
+  if_entry = 0B;
+  # DEBUG BEGIN_STMT
+  fci_context_18 = &context;
+  # DEBUG fci_context => fci_context_18
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_20 = pfe_if_db_lock (&session_id);
+  # DEBUG ret => ret_20
+  # DEBUG BEGIN_STMT
+  if (ret_20 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = fci_context_18->phy_if_db;
+  session_id.0_2 = session_id;
+  _3 = &rt_cmd_21(D)->output_device;
+  ret_23 = pfe_if_db_get_first (_1, session_id.0_2, 3, _3, &if_entry);
+  # DEBUG ret => ret_23
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if_entry.1_4 = if_entry;
+  if (if_entry.1_4 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_31(D) = 3;
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if_entry.2_5 = if_entry;
+  phy_if_24 = pfe_if_db_entry_get_phy_if (if_entry.2_5);
+  # DEBUG phy_if => phy_if_24
+  # DEBUG BEGIN_STMT
+  prepare_mac_src (&src_mac, phy_if_24, rt_cmd_21(D));
+  # DEBUG BEGIN_STMT
+  _6 = &fci_context_18->route_db;
+  _7 = rt_cmd_21(D)->id;
+  _8 = msg_26(D)->client;
+  ret_30 = fci_rt_db_add (_6, ip_27(D), &src_mac, dst_mac_28(D), phy_if_24, _7, _8, 0);
+  # DEBUG ret => ret_30
+  # DEBUG BEGIN_STMT
+  if (ret_30 == 115)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_31(D) = 200;
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  if (ret_30 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_31(D) = 3;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_31(D) = 0;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  session_id.3_9 = session_id;
+  ret_37 = pfe_if_db_unlock (session_id.3_9);
+  # DEBUG ret => ret_37
+  # DEBUG BEGIN_STMT
+  if (ret_37 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] FPP_CMD_IP_ROUTE: DB unlock failed\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_routes.c", 213, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _40 = ret_37;
+  session_id ={v} {CLOBBER};
+  if_entry ={v} {CLOBBER};
+  src_mac ={v} {CLOBBER};
+  return _40;
+
+}
+
+
+prepare_mac_src (uint8_t[6] * src_mac, struct pfe_phy_if_t * phy_if, struct fpp_rt_cmd_t * rt_cmd)
+{
+  pfe_ct_phy_if_id_t phy_if_id;
+  const uint8_t zero_mac[6];
+  uint8_t[6] * _1;
+  long int _2;
+  unsigned char _3;
+  int _4;
+  uint8_t[6] * _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  zero_mac = "\x00";
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  autolibc_memset (src_mac_9(D), 0, 6);
+  # DEBUG BEGIN_STMT
+  _1 = &rt_cmd_11(D)->src_mac;
+  _2 = autolibc_memcmp (_1, &zero_mac, 6);
+  if (_2 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  phy_if_id_15 = pfe_phy_if_get_id (phy_if_14(D));
+  # DEBUG phy_if_id => phy_if_id_15
+  # DEBUG BEGIN_STMT
+  _3 = check_if_hif (phy_if_id_15);
+  if (_3 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = pfe_phy_if_get_mac_addr_first (phy_if_14(D), src_mac_9(D), 3, 3, 6);
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _5 = &rt_cmd_11(D)->src_mac;
+  autolibc_memcpy (src_mac_9(D), _5, 6);
+
+  <bb 6> :
+  zero_mac ={v} {CLOBBER};
+  return;
+
+}
+
+
+check_if_hif (pfe_ct_phy_if_id_t phy_if_id)
+{
+  bool_t result;
+  unsigned char _1;
+  int iftmp.4_2;
+  int iftmp.4_5;
+  int iftmp.4_6;
+  bool_t _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  result_3 = 0;
+  # DEBUG result => result_3
+  # DEBUG BEGIN_STMT
+  _1 = phy_if_id_4(D) + 250;
+  if (_1 <= 3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (phy_if_id_4(D) == 4)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.4_6 = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.4_5 = 0;
+
+  <bb 6> :
+  # iftmp.4_2 = PHI <iftmp.4_6(4), iftmp.4_5(5)>
+  result_7 = (bool_t) iftmp.4_2;
+  # DEBUG result => result_7
+  # DEBUG BEGIN_STMT
+  _8 = result_7;
+  return _8;
+
+}
+
+
+fci_routes_remove_related_connections (struct fci_rt_db_entry_t * route)
+{
+  errno_t ret;
+  struct pfe_rtable_entry_t * entry;
+  const struct fci_t * fci_context;
+  struct pfe_rtable_t * _1;
+  uint32_t * _2;
+  struct pfe_rtable_t * _3;
+  struct pfe_rtable_t * _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  fci_context_7 = &context;
+  # DEBUG fci_context => fci_context_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = fci_context_7->rtable;
+  _2 = &route_9(D)->id;
+  entry_11 = pfe_rtable_get_first (_1, 4, _2);
+  # DEBUG entry => entry_11
+  # DEBUG BEGIN_STMT
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_13 = fci_connections_drop_one (entry_5);
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = fci_context_7->rtable;
+  pfe_rtable_entry_free (_3, entry_5);
+  # DEBUG BEGIN_STMT
+  _4 = fci_context_7->rtable;
+  entry_16 = pfe_rtable_get_next (_4);
+  # DEBUG entry => entry_16
+
+  <bb 4> :
+  # entry_5 = PHI <entry_11(2), entry_16(3)>
+  # DEBUG entry => entry_5
+  # DEBUG BEGIN_STMT
+  if (entry_5 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+

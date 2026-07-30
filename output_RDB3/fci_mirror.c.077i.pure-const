@@ -1,0 +1,2677 @@
+
+
+ local analysis of fill_reply_buf.isra.0
+   scanning: _2 = pfe_phy_if_get_name (phy_if_1(D));
+  scanning: str = _2;
+  scanning: _4 = *reply_buf_3(D);
+    Indirect ref read is not const
+  scanning: _5 = &_4->egress_phy_if;
+  scanning: autolibc_strncpy (_5, _2, 15);
+  scanning: _6 = *reply_buf_3(D);
+    Indirect ref read is not const
+  scanning: _6->egress_phy_if[15] = 0;
+    Indirect ref write is not const/pure
+  scanning: _8 = *ISRA.35_71(D);
+    Indirect ref read is not const
+  scanning: pfe_if_db_unlock (_8);
+  scanning: _9 = *reply_buf_3(D);
+    Indirect ref read is not const
+  scanning: _10 = &_9->filter_table_name;
+  scanning: autolibc_memset (_10, 0, 16);
+  scanning: addr_12 = pfe_mirror_get_filter (tmp_mirror_11(D));
+  scanning: if (addr_12 != 0)
+  scanning: ret_13 = fci_fp_db_get_table_from_addr (addr_12, &str);
+  scanning: if (ret_13 == 0)
+  scanning: _14 = *reply_buf_3(D);
+    Indirect ref read is not const
+  scanning: _15 = &_14->filter_table_name;
+  scanning: str.19_16 = str;
+  scanning: autolibc_strncpy (_15, str.19_16, 15);
+  scanning: _17 = *reply_buf_3(D);
+    Indirect ref read is not const
+  scanning: _17->filter_table_name[15] = 0;
+    Indirect ref write is not const/pure
+  scanning: autolibc_memset (&m_args, 0, 60);
+  scanning: m_actions = 0;
+  scanning: _18 = *reply_buf_3(D);
+    Indirect ref read is not const
+  scanning: _18->m_actions = 0;
+    Indirect ref write is not const/pure
+  scanning: pfe_mirror_get_actions (tmp_mirror_11(D), &m_actions, &m_args);
+  scanning: m_actions.20_19 = m_actions;
+  scanning: _20 = m_actions.20_19 >> 24;
+  scanning: _21 = m_actions.20_19 >> 8;
+  scanning: _22 = _21 & 65280;
+  scanning: _23 = _20 | _22;
+  scanning: _24 = m_actions.20_19 << 8;
+  scanning: _25 = _24 & 16711680;
+  scanning: _26 = _23 | _25;
+  scanning: _27 = m_actions.20_19 << 24;
+  scanning: _28 = _26 | _27;
+  scanning: m_actions = _28;
+  scanning: _29 = _28 & 2;
+  scanning: if (_29 != 0)
+  scanning: _30 = *reply_buf_3(D);
+    Indirect ref read is not const
+  scanning: _31 = _30->m_actions;
+    Indirect ref read is not const
+  scanning: _32 = _31 | 2;
+  scanning: _30->m_actions = _32;
+    Indirect ref write is not const/pure
+  scanning: _33 = m_args.vlan;
+  scanning: _30->m_args.vlan = _33;
+    Indirect ref write is not const/pure
+  scanning: _34 = *reply_buf_3(D);
+    Indirect ref read is not const
+  scanning: _35 = _34->m_actions;
+    Indirect ref read is not const
+  scanning: _36 = (long unsigned int) _35;
+  scanning: _37 = _36 >> 24;
+  scanning: _38 = _36 >> 8;
+  scanning: _39 = _38 & 65280;
+  scanning: _40 = _37 | _39;
+  scanning: _41 = _36 << 8;
+  scanning: _42 = _41 & 16711680;
+  scanning: _43 = _40 | _42;
+  scanning: _44 = _36 << 24;
+  scanning: _45 = _43 | _44;
+  scanning: _46 = (<unnamed type>) _45;
+  scanning: _34->m_actions = _46;
+    Indirect ref write is not const/pure
+  scanning: return ret_47;
+
+
+ local analysis of fci_mirror_cmd_update_set_filter.isra.0
+   scanning: _2 = mirror_cmd_1(D)->filter_table_name[0];
+    Indirect ref read is not const
+  scanning: if (_2 == 0)
+  scanning: _4 = *mirror_3(D);
+    Indirect ref read is not const
+  scanning: addr_5 = pfe_mirror_get_filter (_4);
+  scanning: ret_7 = remove_fp_filter (0, addr_5, fci_ret_6(D));
+  scanning: if (ret_7 == 0)
+  scanning: _8 = *mirror_3(D);
+    Indirect ref read is not const
+  scanning: ret_9 = pfe_mirror_set_filter (_8, 0);
+  scanning: if (ret_9 != 0)
+  scanning: _10 = *fci_ret_6(D);
+    Indirect ref read is not const
+  scanning: *_10 = 65535;
+    Indirect ref write is not const/pure
+  scanning: _11 = &mirror_cmd_1(D)->filter_table_name;
+  scanning: _12 = fci_fp_db_get_first (1, _11);
+  scanning: if (_12 == 0B)
+  scanning: _13 = *fci_ret_6(D);
+    Indirect ref read is not const
+  scanning: *_13 = 3;
+    Indirect ref write is not const/pure
+  scanning: _14 = *mirror_3(D);
+    Indirect ref read is not const
+  scanning: addr_15 = pfe_mirror_get_filter (_14);
+  scanning: ret_16 = remove_fp_filter (0, addr_15, fci_ret_6(D));
+  scanning: if (ret_16 == 0)
+  scanning: addr_17 = fci_fp_db_get_table_dmem_addr (_11);
+  scanning: if (addr_17 == 0)
+  scanning: _19 = *ISRA.30_45(D);
+    Indirect ref read is not const
+  scanning: fci_fp_db_push_table_to_hw (_19, _11);
+  scanning: addr_20 = fci_fp_db_get_table_dmem_addr (_11);
+  scanning: _21 = *mirror_3(D);
+    Indirect ref read is not const
+  scanning: ret_22 = pfe_mirror_set_filter (_21, addr_20);
+  scanning: if (ret_22 != 0)
+  scanning: _23 = &mirror_cmd_1(D)->name;
+  scanning: pfe_hm_report (1, 2, 1, "[%s:%d] Failed to set filter %s to mirror %s\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 229, _11, _23, "");
+  scanning: oal_util_raise_dem_for_drv_runtime_err ();
+  scanning: _24 = *fci_ret_6(D);
+    Indirect ref read is not const
+  scanning: *_24 = 65535;
+    Indirect ref write is not const/pure
+  scanning: _25 = *fci_ret_6(D);
+    Indirect ref read is not const
+  scanning: *_25 = 3;
+    Indirect ref write is not const/pure
+  scanning: return ret_26;
+
+
+ local analysis of remove_fp_filter.part.0
+   scanning: ret_2 = fci_fp_db_get_table_from_addr (addr_1(D), &str);
+  scanning: if (ret_2 != 0)
+  scanning: pfe_hm_report (1, 2, 1, "[%s:%d] Cannot obtain filter name.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 160, "");
+  scanning: oal_util_raise_dem_for_drv_runtime_err ();
+  scanning: _4 = *fci_ret_3(D);
+    Indirect ref read is not const
+  scanning: *_4 = 65535;
+    Indirect ref write is not const/pure
+  scanning: str.12_5 = str;
+  scanning: fci_fp_db_pop_table_from_hw (str.12_5);
+  scanning: return ret_6;
+
+
+ local analysis of fci_mirror_cmd
+   scanning: mirror = 0B;
+  scanning: break_switch = 0;
+  scanning: *fci_ret_16(D) = 0;
+    Indirect ref write is not const/pure
+  scanning: _1 = *reply_len_18(D);
+    Indirect ref read is not const
+  scanning: if (_1 <= 55)
+  scanning: *fci_ret_16(D) = 65535;
+    Indirect ref write is not const/pure
+  scanning: *reply_len_18(D) = 0;
+    Indirect ref write is not const/pure
+  scanning: autolibc_memset (reply_buf_20(D), 0, 56);
+  scanning: mirror_cmd_23 = &msg_22(D)->msg_cmd.payload;
+  scanning: _2 = MEM[(struct fpp_mirror_cmd_t *)msg_22(D) + 16B].action;
+    Indirect ref read is not const
+  scanning: switch (_2) <default: <L12> [16.67%], case 0: <L2> [16.67%], case 1: <L7> [16.67%], case 4: <L3> [16.67%], case 6: <L8> [16.67%], case 7: <L10> [16.67%]>
+  scanning: <L2>:
+  scanning: ret_33 = mirror_cmd_fpp_action_register (&mirror, fci_ret_16(D), mirror_cmd_23, &break_switch);
+  scanning: break_switch.0_3 = break_switch;
+  scanning: if (break_switch.0_3 == 1)
+  scanning: <L3>:
+  scanning: ret_35 = mirror_cmd_get_mirror (&mirror, fci_ret_16(D), mirror_cmd_23);
+  scanning: if (ret_35 == 0)
+  scanning: ret_37 = mirror_cmd_fpp_action_update (&mirror, fci_ret_16(D), mirror_cmd_23);
+  scanning: mirror.1_4 = mirror;
+  scanning: pfe_mirror_put (mirror.1_4);
+  scanning: <L7>:
+  scanning: ret_31 = mirror_cmd_fpp_action_deregister (fci_ret_16(D), mirror_cmd_23);
+  scanning: <L8>:
+  scanning: _5 = pfe_mirror_get_first (0, 0B);
+  scanning: mirror = _5;
+  scanning: if (_5 == 0B)
+  scanning: *fci_ret_16(D) = 61746;
+    Indirect ref write is not const/pure
+  scanning: <L10>:
+  scanning: ret_28 = mirror_cmd_fpp_query_cont (&mirror, fci_ret_16(D), reply_buf_20(D), reply_len_18(D));
+  scanning: mirror.3_6 = mirror;
+  scanning: pfe_mirror_put (mirror.3_6);
+  scanning: <L12>:
+  scanning: *fci_ret_16(D) = 4;
+    Indirect ref write is not const/pure
+  scanning: return ret_8;
+
+
+ local analysis of mirror_cmd_fpp_query_cont
+   scanning: ret_8 = fci_mirror_cmd_query_cont_get_mirror (&context, mirror_6(D), &fci_ret, &reply_buf);
+  scanning: fci_ret.14_1 = fci_ret;
+  scanning: _2 = *fci_ret.14_1;
+    Indirect ref read is not const
+  scanning: if (_2 == 0)
+  scanning: *reply_len_9(D) = 56;
+    Indirect ref write is not const/pure
+  scanning: return ret_3;
+
+
+ local analysis of mirror_cmd_get_mirror
+   scanning: _1 = *mirror_7(D);
+    Indirect ref read is not const
+  scanning: if (_1 == 0B)
+  scanning: _2 = &mirror_cmd_8(D)->name;
+  scanning: _3 = pfe_mirror_get_first (1, _2);
+  scanning: *mirror_7(D) = _3;
+    Indirect ref write is not const/pure
+  scanning: if (_3 == 0B)
+  scanning: *fci_ret_11(D) = 61746;
+    Indirect ref write is not const/pure
+  scanning: return ret_4;
+
+
+ local analysis of mirror_cmd_fpp_action_deregister
+   scanning: _1 = &mirror_cmd_5(D)->name;
+  scanning: mirror_8 = pfe_mirror_get_first (1, _1);
+  scanning: if (mirror_8 == 0B)
+  scanning: *fci_ret_18(D) = 61746;
+    Indirect ref write is not const/pure
+  scanning: addr_10 = pfe_mirror_get_filter (mirror_8);
+  scanning: ret_12 = pfe_mirror_destroy (mirror_8);
+  scanning: if (ret_12 == 111)
+  scanning: pfe_mirror_put (mirror_8);
+  scanning: *fci_ret_18(D) = 61747;
+    Indirect ref write is not const/pure
+  scanning: if (addr_10 != 0)
+  scanning: ret_14 = fci_fp_db_get_table_from_addr (addr_10, &str);
+  scanning: if (ret_14 != 0)
+  scanning: pfe_hm_report (1, 2, 1, "[%s:%d] Cannot obtain filter name.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 495, "");
+  scanning: oal_util_raise_dem_for_drv_runtime_err ();
+  scanning: *fci_ret_18(D) = 65535;
+    Indirect ref write is not const/pure
+  scanning: str.13_2 = str;
+  scanning: fci_fp_db_pop_table_from_hw (str.13_2);
+  scanning: return ret_3;
+
+
+ local analysis of mirror_cmd_fpp_action_update
+   scanning: fci_context = &context;
+  scanning: ret_36 = fci_mirror_cmd_update_egress_port (&fci_context, mirror_33(D), &fci_ret, mirror_cmd_34(D));
+  scanning: fci_ret.4_1 = fci_ret;
+  scanning: _2 = *fci_ret.4_1;
+    Indirect ref read is not const
+  scanning: if (_2 == 0)
+  scanning: fci_context.5_3 = fci_context;
+  scanning: _54 = &MEM[(struct pfe_class_t * *)fci_context.5_3 + 6516B];
+  scanning: ret_38 = fci_mirror_cmd_update_set_filter.isra.0 (_54, mirror_33(D), &fci_ret, mirror_cmd_34(D));
+  scanning: fci_ret.6_4 = fci_ret;
+  scanning: _5 = *fci_ret.6_4;
+    Indirect ref read is not const
+  scanning: if (_5 == 0)
+  scanning: _6 = mirror_cmd_34(D)->m_actions;
+    Indirect ref read is not const
+  scanning: _7 = (long unsigned int) _6;
+  scanning: _8 = _7 >> 24;
+  scanning: _9 = _7 >> 8;
+  scanning: _10 = _9 & 65280;
+  scanning: _11 = _8 | _10;
+  scanning: _12 = _7 << 8;
+  scanning: _13 = _12 & 16711680;
+  scanning: _14 = _11 | _13;
+  scanning: _15 = _7 << 24;
+  scanning: _16 = _14 | _15;
+  scanning: _17 = (<unnamed type>) _16;
+  scanning: mirror_cmd_34(D)->m_actions = _17;
+    Indirect ref write is not const/pure
+  scanning: if (_17 == 0)
+  scanning: _18 = *mirror_33(D);
+    Indirect ref read is not const
+  scanning: ret_48 = pfe_mirror_set_actions (_18, 0, 0B);
+  scanning: if (ret_48 != 0)
+  scanning: pfe_hm_report (1, 2, 1, "[%s:%d] Failed to set modification action: MODIFY_ACT_NONE.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 419, "");
+  scanning: oal_util_raise_dem_for_drv_runtime_err ();
+  scanning: fci_ret.7_19 = fci_ret;
+  scanning: *fci_ret.7_19 = 65535;
+    Indirect ref write is not const/pure
+  scanning: autolibc_memset (&m_args, 0, 60);
+  scanning: _20 = mirror_cmd_34(D)->m_actions;
+    Indirect ref read is not const
+  scanning: _21 = (long unsigned int) _20;
+  scanning: _22 = _21 & 2;
+  scanning: if (_22 != 0)
+  scanning: _23 = mirror_cmd_34(D)->m_args.vlan;
+    Indirect ref read is not const
+  scanning: m_args.vlan = _23;
+  scanning: _24 = m_actions_28 << 24;
+  scanning: _25 = *mirror_33(D);
+    Indirect ref read is not const
+  scanning: ret_43 = pfe_mirror_set_actions (_25, _24, &m_args);
+  scanning: if (ret_43 != 0)
+  scanning: pfe_hm_report (1, 2, 1, "[%s:%d] Failed to set modification actions.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 441, "");
+  scanning: oal_util_raise_dem_for_drv_runtime_err ();
+  scanning: fci_ret.8_26 = fci_ret;
+  scanning: *fci_ret.8_26 = 65535;
+    Indirect ref write is not const/pure
+  scanning: return ret_27;
+
+
+ local analysis of mirror_cmd_fpp_action_register
+   scanning: *break_switch_7(D) = 0;
+    Indirect ref write is not const/pure
+  scanning: _1 = &mirror_cmd_9(D)->name;
+  scanning: _2 = pfe_mirror_get_first (1, _1);
+  scanning: *mirror_11(D) = _2;
+    Indirect ref write is not const/pure
+  scanning: if (_2 != 0B)
+  scanning: pfe_mirror_put (_2);
+  scanning: *mirror_11(D) = 0B;
+    Indirect ref write is not const/pure
+  scanning: *fci_ret_15(D) = 61745;
+    Indirect ref write is not const/pure
+  scanning: *break_switch_7(D) = 1;
+    Indirect ref write is not const/pure
+  scanning: _3 = pfe_mirror_create (_1);
+  scanning: *mirror_11(D) = _3;
+    Indirect ref write is not const/pure
+  scanning: if (_3 == 0B)
+  scanning: *fci_ret_15(D) = 65535;
+    Indirect ref write is not const/pure
+  scanning: *break_switch_7(D) = 1;
+    Indirect ref write is not const/pure
+  scanning: return ret_4;
+
+
+ local analysis of fci_mirror_cmd_query_cont_get_mirror
+   scanning: entry = 0B;
+  scanning: _1 = *fci_ret_26(D);
+    Indirect ref read is not const
+  scanning: *_1 = 0;
+    Indirect ref write is not const/pure
+  scanning: _2 = *mirror_28(D);
+    Indirect ref read is not const
+  scanning: if (_2 == 0B)
+  scanning: _3 = pfe_mirror_get_next ();
+  scanning: *mirror_28(D) = _3;
+    Indirect ref write is not const/pure
+  scanning: if (_3 == 0B)
+  scanning: _4 = *fci_ret_26(D);
+    Indirect ref read is not const
+  scanning: *_4 = 61746;
+    Indirect ref write is not const/pure
+  scanning: _5 = *fci_ret_26(D);
+    Indirect ref read is not const
+  scanning: _6 = *_5;
+    Indirect ref read is not const
+  scanning: if (_6 == 0)
+  scanning: _7 = *mirror_28(D);
+    Indirect ref read is not const
+  scanning: egress_id_34 = get_egress_interface (reply_buf_32(D), _7);
+  scanning: _8 = &fci_context_35(D)->if_session_id;
+  scanning: ret_37 = pfe_if_db_lock (_8);
+  scanning: if (ret_37 != 0)
+  scanning: _9 = *fci_ret_26(D);
+    Indirect ref read is not const
+  scanning: *_9 = 61712;
+    Indirect ref write is not const/pure
+  scanning: _10 = fci_context_35(D)->phy_if_db;
+    Indirect ref read is not const
+  scanning: _11 = fci_context_35(D)->if_session_id;
+    Indirect ref read is not const
+  scanning: _12 = (unsigned int) egress_id_34;
+  scanning: _13 = (void *) _12;
+  scanning: pfe_if_db_get_single (_10, _11, 1, _13, &entry);
+  scanning: entry.15_14 = entry;
+  scanning: if (entry.15_14 != 0B)
+  scanning: phy_if_39 = pfe_if_db_entry_get_phy_if (entry.15_14);
+  scanning: if (entry.15_14 == 0B)
+  scanning: if (phy_if_21 == 0B)
+  scanning: _15 = fci_context_35(D)->if_session_id;
+    Indirect ref read is not const
+  scanning: pfe_if_db_unlock (_15);
+  scanning: _16 = *mirror_28(D);
+    Indirect ref read is not const
+  scanning: _17 = pfe_mirror_get_name (_16);
+  scanning: pfe_hm_report (1, 2, 1, "[%s:%d] Cannot get egress interface of the mirror \'%s\'.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 347, _17, "");
+  scanning: oal_util_raise_dem_for_drv_runtime_err ();
+  scanning: _18 = *fci_ret_26(D);
+    Indirect ref read is not const
+  scanning: *_18 = 65535;
+    Indirect ref write is not const/pure
+  scanning: _19 = *mirror_28(D);
+    Indirect ref read is not const
+  scanning: ret_41 = fill_reply_buf.isra.0 (reply_buf_32(D), phy_if_21, _19, _8);
+  scanning: return ret_20;
+
+
+ local analysis of get_egress_interface
+   scanning: str_6 = pfe_mirror_get_name (tmp_mirror_4(D));
+  scanning: _1 = *reply_buf_7(D);
+    Indirect ref read is not const
+  scanning: _2 = &_1->name;
+  scanning: autolibc_strncpy (_2, str_6, 15);
+  scanning: _10 = pfe_mirror_get_egress_port (tmp_mirror_4(D));
+  scanning: return _10;
+Function is locally pure.
+
+
+ local analysis of remove_fp_filter
+   scanning: if (addr_2(D) != 0)
+  scanning: ret_6 = remove_fp_filter.part.0 (addr_2(D), fci_ret_5(D));
+  scanning: return ret_1;
+Function is locally const.
+
+
+ local analysis of fci_mirror_cmd_update_egress_port
+   scanning: entry = 0B;
+  scanning: _1 = *fci_context_24(D);
+    Indirect ref read is not const
+  scanning: _2 = &_1->if_session_id;
+  scanning: ret_26 = pfe_if_db_lock (_2);
+  scanning: if (ret_26 != 0)
+  scanning: _3 = *fci_ret_38(D);
+    Indirect ref read is not const
+  scanning: *_3 = 61712;
+    Indirect ref write is not const/pure
+  scanning: _4 = *fci_context_24(D);
+    Indirect ref read is not const
+  scanning: _5 = _4->phy_if_db;
+    Indirect ref read is not const
+  scanning: _6 = _4->if_session_id;
+    Indirect ref read is not const
+  scanning: _7 = &mirror_cmd_27(D)->egress_phy_if;
+  scanning: pfe_if_db_get_first (_5, _6, 3, _7, &entry);
+  scanning: entry.9_8 = entry;
+  scanning: if (entry.9_8 != 0B)
+  scanning: phy_if_29 = pfe_if_db_entry_get_phy_if (entry.9_8);
+  scanning: if (entry.9_8 == 0B)
+  scanning: if (phy_if_20 == 0B)
+  scanning: _9 = *fci_context_24(D);
+    Indirect ref read is not const
+  scanning: _10 = _9->if_session_id;
+    Indirect ref read is not const
+  scanning: pfe_if_db_unlock (_10);
+  scanning: _11 = *fci_ret_38(D);
+    Indirect ref read is not const
+  scanning: *_11 = 61700;
+    Indirect ref write is not const/pure
+  scanning: egress_id_30 = pfe_phy_if_get_id (phy_if_20);
+  scanning: _12 = *mirror_31(D);
+    Indirect ref read is not const
+  scanning: ret_33 = pfe_mirror_set_egress_port (_12, egress_id_30);
+  scanning: if (ret_33 != 0)
+  scanning: _13 = *fci_context_24(D);
+    Indirect ref read is not const
+  scanning: _14 = _13->if_session_id;
+    Indirect ref read is not const
+  scanning: pfe_if_db_unlock (_14);
+  scanning: _15 = &mirror_cmd_27(D)->name;
+  scanning: pfe_hm_report (1, 2, 1, "[%s:%d] Cannot set egress port for \'%s\'\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 137, _15, "");
+  scanning: oal_util_raise_dem_for_drv_runtime_err ();
+  scanning: _16 = *fci_ret_38(D);
+    Indirect ref read is not const
+  scanning: *_16 = 65535;
+    Indirect ref write is not const/pure
+  scanning: _17 = *fci_context_24(D);
+    Indirect ref read is not const
+  scanning: _18 = _17->if_session_id;
+    Indirect ref read is not const
+  scanning: pfe_if_db_unlock (_18);
+  scanning: return ret_19;
+callgraph:
+
+remove_fp_filter.constprop.0/62 (remove_fp_filter.constprop) @072b28c0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 60
+  Aux: @070c0950
+  References: 
+  Referring: 
+  Function remove_fp_filter.constprop/62 is inline copy in fci_mirror_cmd/26
+  Clone of remove_fp_filter.constprop.0/60
+  Availability: local
+  Function flags: count:7727788 (estimated locally) local optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (7727788 (estimated locally),0.01 per call) 
+  Calls: remove_fp_filter.part.0/56 (2550170 (estimated locally),0.00 per call) 
+fci_mirror_cmd_update_egress_port.constprop.0/61 (fci_mirror_cmd_update_egress_port.constprop) @07180540
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070c09d0
+  References: context/31 (addr)
+  Referring: 
+  Function fci_mirror_cmd_update_egress_port.constprop/61 is inline copy in fci_mirror_cmd/26
+  Clone of fci_mirror_cmd_update_egress_port/15
+  Availability: local
+  Function flags: count:46835078 (estimated locally) local optimize_size
+  Called by: mirror_cmd_fpp_action_update/22 (inlined) (46835078 (estimated locally),0.04 per call) 
+  Calls: pfe_if_db_lock/35 (46835078 (estimated locally),0.04 per call) pfe_if_db_get_first/36 (15455576 (estimated locally),0.01 per call) pfe_if_db_entry_get_phy_if/37 (10818903 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (8631911 (estimated locally),0.01 per call) pfe_phy_if_get_id/39 (6823664 (estimated locally),0.01 per call) pfe_mirror_set_egress_port/40 (6823664 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (3411832 (estimated locally),0.00 per call) pfe_hm_report/33 (3411832 (estimated locally),0.00 per call) oal_util_raise_dem_for_drv_runtime_err/34 (3411832 (estimated locally),0.00 per call) pfe_if_db_unlock/38 (3411832 (estimated locally),0.00 per call) 
+remove_fp_filter.constprop.0/60 (remove_fp_filter.constprop) @076a8a80
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 62
+  Aux: @070c0a50
+  References: 
+  Referring: 
+  Function remove_fp_filter.constprop/60 is inline copy in fci_mirror_cmd/26
+  Clone of remove_fp_filter/16
+  Availability: local
+  Function flags: count:4132048 (estimated locally) local optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (4132048 (estimated locally),0.00 per call) 
+  Calls: remove_fp_filter.part.0/56 (1363576 (estimated locally),0.00 per call) 
+fci_mirror_cmd_query_cont_get_mirror.constprop.0/59 (fci_mirror_cmd_query_cont_get_mirror.constprop) @076a87e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070c0ab0
+  References: context/31 (addr)
+  Referring: 
+  Function fci_mirror_cmd_query_cont_get_mirror.constprop/59 is inline copy in fci_mirror_cmd/26
+  Clone of fci_mirror_cmd_query_cont_get_mirror/20
+  Availability: local
+  Function flags: count:145344346 (estimated locally) local optimize_size
+  Called by: mirror_cmd_fpp_query_cont/25 (inlined) (145344346 (estimated locally),0.14 per call) 
+  Calls: pfe_mirror_get_next/49 (25333520 (estimated locally),0.02 per call) get_egress_interface/19 (inlined) (47963634 (estimated locally),0.04 per call) pfe_if_db_lock/35 (47963634 (estimated locally),0.04 per call) pfe_if_db_get_single/50 (15827999 (estimated locally),0.01 per call) pfe_if_db_entry_get_phy_if/37 (11079599 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (6151075 (estimated locally),0.01 per call) pfe_mirror_get_name/51 (6151075 (estimated locally),0.01 per call) pfe_hm_report/33 (6151075 (estimated locally),0.01 per call) oal_util_raise_dem_for_drv_runtime_err/34 (6151075 (estimated locally),0.01 per call) fill_reply_buf.isra.0/58 (inlined) (9676924 (estimated locally),0.01 per call) 
+fill_reply_buf.isra.0/58 (fill_reply_buf.isra.0) @07173c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c0750
+  References: 
+  Referring: 
+  Function fill_reply_buf.isra.0/58 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:9676924 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (9676924 (estimated locally),0.01 per call) 
+  Calls: pfe_mirror_get_actions/55 (9676924 (estimated locally),0.01 per call) autolibc_memset/27 (9676924 (estimated locally),0.01 per call) autolibc_strncpy/52 (1053817 (estimated locally),0.00 per call) fci_fp_db_get_table_from_addr/46 (3193385 (estimated locally),0.00 per call) pfe_mirror_get_filter/41 (9676924 (estimated locally),0.01 per call) autolibc_memset/27 (9676924 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (9676924 (estimated locally),0.01 per call) autolibc_strncpy/52 (9676924 (estimated locally),0.01 per call) pfe_phy_if_get_name/54 (9676924 (estimated locally),0.01 per call) 
+fci_mirror_cmd_update_set_filter.isra.0/57 (fci_mirror_cmd_update_set_filter.isra.0) @071739a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c0890
+  References: 
+  Referring: 
+  Function fci_mirror_cmd_update_set_filter.isra.0/57 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:15455576 (estimated locally) body local optimize_size
+  Called by: mirror_cmd_fpp_action_update/22 (inlined) (15455576 (estimated locally),0.01 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/34 (148493 (estimated locally),0.00 per call) pfe_hm_report/33 (148493 (estimated locally),0.00 per call) pfe_mirror_set_filter/42 (449980 (estimated locally),0.00 per call) fci_fp_db_get_table_dmem_addr/44 (449980 (estimated locally),0.00 per call) fci_fp_db_push_table_to_hw/45 (449980 (estimated locally),0.00 per call) fci_fp_db_get_table_dmem_addr/44 (1363576 (estimated locally),0.00 per call) remove_fp_filter.constprop/60 (inlined) (4132048 (estimated locally),0.00 per call) pfe_mirror_get_filter/41 (4132048 (estimated locally),0.00 per call) fci_fp_db_get_first/43 (7727788 (estimated locally),0.01 per call) pfe_mirror_set_filter/42 (2550170 (estimated locally),0.00 per call) remove_fp_filter.constprop/62 (inlined) (7727788 (estimated locally),0.01 per call) pfe_mirror_get_filter/41 (7727788 (estimated locally),0.01 per call) 
+remove_fp_filter.part.0/56 (remove_fp_filter.part.0) @06e6b540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c0a30
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: remove_fp_filter.constprop/62 (2550170 (estimated locally),0.00 per call) remove_fp_filter.constprop/60 (1363576 (estimated locally),0.00 per call) 
+  Calls: fci_fp_db_get_table_from_addr/46 (1073741824 (estimated locally),1.00 per call) pfe_hm_report/33 (536870913 (estimated locally),0.50 per call) oal_util_raise_dem_for_drv_runtime_err/34 (536870913 (estimated locally),0.50 per call) fci_fp_db_pop_table_from_hw/47 (536870913 (estimated locally),0.50 per call) 
+pfe_mirror_get_actions/55 (pfe_mirror_get_actions) @07790000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_phy_if_get_name/54 (pfe_phy_if_get_name) @07781ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_mirror_get_egress_port/53 (pfe_mirror_get_egress_port) @07781e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: get_egress_interface/19 (47963634 (estimated locally),0.04 per call) 
+  Calls: 
+autolibc_strncpy/52 (autolibc_strncpy) @07781d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fill_reply_buf.isra.0/58 (1053817 (estimated locally),0.00 per call) fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) get_egress_interface/19 (47963634 (estimated locally),0.04 per call) 
+  Calls: 
+pfe_mirror_get_name/51 (pfe_mirror_get_name) @07781b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (6151075 (estimated locally),0.01 per call) get_egress_interface/19 (47963634 (estimated locally),0.04 per call) 
+  Calls: 
+pfe_if_db_get_single/50 (pfe_if_db_get_single) @07781a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (15827999 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_mirror_get_next/49 (pfe_mirror_get_next) @077819a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (25333520 (estimated locally),0.02 per call) 
+  Calls: 
+pfe_mirror_destroy/48 (pfe_mirror_destroy) @07781700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: mirror_cmd_fpp_action_deregister/23 (45715072 (estimated locally),0.04 per call) 
+  Calls: 
+fci_fp_db_pop_table_from_hw/47 (fci_fp_db_pop_table_from_hw) @07781540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: mirror_cmd_fpp_action_deregister/23 (6016286 (estimated locally),0.01 per call) remove_fp_filter.part.0/56 (536870913 (estimated locally),0.50 per call) 
+  Calls: 
+fci_fp_db_get_table_from_addr/46 (fci_fp_db_get_table_from_addr) @07781460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fill_reply_buf.isra.0/58 (3193385 (estimated locally),0.00 per call) mirror_cmd_fpp_action_deregister/23 (12032573 (estimated locally),0.01 per call) remove_fp_filter.part.0/56 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+fci_fp_db_push_table_to_hw/45 (fci_fp_db_push_table_to_hw) @077812a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (449980 (estimated locally),0.00 per call) 
+  Calls: 
+fci_fp_db_get_table_dmem_addr/44 (fci_fp_db_get_table_dmem_addr) @077811c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (449980 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (1363576 (estimated locally),0.00 per call) 
+  Calls: 
+fci_fp_db_get_first/43 (fci_fp_db_get_first) @077810e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (7727788 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_mirror_set_filter/42 (pfe_mirror_set_filter) @07781000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (449980 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (2550170 (estimated locally),0.00 per call) 
+  Calls: 
+pfe_mirror_get_filter/41 (pfe_mirror_get_filter) @07760ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) mirror_cmd_fpp_action_deregister/23 (45715072 (estimated locally),0.04 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (4132048 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (7727788 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_mirror_set_egress_port/40 (pfe_mirror_set_egress_port) @07760d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (6823664 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_phy_if_get_id/39 (pfe_phy_if_get_id) @07760c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (6823664 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_if_db_unlock/38 (pfe_if_db_unlock) @07760b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (8631911 (estimated locally),0.01 per call) fci_mirror_cmd_update_egress_port.constprop/61 (3411832 (estimated locally),0.00 per call) fci_mirror_cmd_update_egress_port.constprop/61 (3411832 (estimated locally),0.00 per call) fci_mirror_cmd_query_cont_get_mirror.constprop/59 (6151075 (estimated locally),0.01 per call) fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_if_db_entry_get_phy_if/37 (pfe_if_db_entry_get_phy_if) @07760a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (10818903 (estimated locally),0.01 per call) fci_mirror_cmd_query_cont_get_mirror.constprop/59 (11079599 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_if_db_get_first/36 (pfe_if_db_get_first) @077609a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (15455576 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_if_db_lock/35 (pfe_if_db_lock) @077608c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (46835078 (estimated locally),0.04 per call) fci_mirror_cmd_query_cont_get_mirror.constprop/59 (47963634 (estimated locally),0.04 per call) 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/34 (oal_util_raise_dem_for_drv_runtime_err) @07760700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (3411832 (estimated locally),0.00 per call) fci_mirror_cmd_query_cont_get_mirror.constprop/59 (6151075 (estimated locally),0.01 per call) mirror_cmd_fpp_action_deregister/23 (6016286 (estimated locally),0.01 per call) mirror_cmd_fpp_action_update/22 (1275085 (estimated locally),0.00 per call) mirror_cmd_fpp_action_update/22 (1275085 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (148493 (estimated locally),0.00 per call) remove_fp_filter.part.0/56 (536870913 (estimated locally),0.50 per call) 
+  Calls: 
+pfe_hm_report/33 (pfe_hm_report) @07760620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (3411832 (estimated locally),0.00 per call) fci_mirror_cmd_query_cont_get_mirror.constprop/59 (6151075 (estimated locally),0.01 per call) mirror_cmd_fpp_action_deregister/23 (6016286 (estimated locally),0.01 per call) mirror_cmd_fpp_action_update/22 (1275085 (estimated locally),0.00 per call) mirror_cmd_fpp_action_update/22 (1275085 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (148493 (estimated locally),0.00 per call) remove_fp_filter.part.0/56 (536870913 (estimated locally),0.50 per call) 
+  Calls: 
+pfe_mirror_set_actions/32 (pfe_mirror_set_actions) @07760540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: mirror_cmd_fpp_action_update/22 (3863894 (estimated locally),0.00 per call) mirror_cmd_fpp_action_update/22 (3863894 (estimated locally),0.00 per call) 
+  Calls: 
+pfe_mirror_create/30 (pfe_mirror_create) @077602a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: mirror_cmd_fpp_action_register/21 (25649002 (estimated locally),0.02 per call) 
+  Calls: 
+pfe_mirror_get_first/29 (pfe_mirror_get_first) @077600e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd/26 (85496674 (estimated locally),0.08 per call) mirror_cmd_fpp_action_deregister/23 (85496674 (estimated locally),0.08 per call) mirror_cmd_fpp_action_register/21 (85496674 (estimated locally),0.08 per call) mirror_cmd_get_mirror/24 (24737437 (estimated locally),0.02 per call) 
+  Calls: 
+pfe_mirror_put/28 (pfe_mirror_put) @07760000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd/26 (145344346 (estimated locally),0.14 per call) fci_mirror_cmd/26 (141924479 (estimated locally),0.13 per call) mirror_cmd_fpp_action_deregister/23 (9252730 (estimated locally),0.01 per call) mirror_cmd_fpp_action_register/21 (59847672 (estimated locally),0.06 per call) 
+  Calls: 
+autolibc_memset/27 (autolibc_memset) @07751d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd/26 (512877469 (estimated locally),0.48 per call) fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) mirror_cmd_fpp_action_update/22 (3863894 (estimated locally),0.00 per call) 
+  Calls: 
+fci_mirror_cmd/26 (fci_mirror_cmd) @07751ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @070c07b0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073639249 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_mirror_put/28 (145344346 (estimated locally),0.14 per call) mirror_cmd_fpp_query_cont/25 (inlined) (145344346 (estimated locally),0.14 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) mirror_cmd_fpp_action_deregister/23 (inlined) (85496674 (estimated locally),0.08 per call) pfe_mirror_put/28 (141924479 (estimated locally),0.13 per call) mirror_cmd_fpp_action_update/22 (inlined) (46835078 (estimated locally),0.04 per call) mirror_cmd_get_mirror/24 (inlined) (141924479 (estimated locally),0.13 per call) mirror_cmd_fpp_action_register/21 (inlined) (85496674 (estimated locally),0.08 per call) autolibc_memset/27 (512877469 (estimated locally),0.48 per call) 
+mirror_cmd_fpp_query_cont/25 (mirror_cmd_fpp_query_cont) @07751c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c08b0
+  References: context/31 (addr)
+  Referring: 
+  Function mirror_cmd_fpp_query_cont/25 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:145344346 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (145344346 (estimated locally),0.14 per call) 
+  Calls: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (145344346 (estimated locally),0.14 per call) 
+mirror_cmd_get_mirror/24 (mirror_cmd_get_mirror) @077519a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0770
+  References: 
+  Referring: 
+  Function mirror_cmd_get_mirror/24 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:141924479 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (141924479 (estimated locally),0.13 per call) 
+  Calls: pfe_mirror_get_first/29 (24737437 (estimated locally),0.02 per call) 
+mirror_cmd_fpp_action_deregister/23 (mirror_cmd_fpp_action_deregister) @07751700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0810
+  References: 
+  Referring: 
+  Function mirror_cmd_fpp_action_deregister/23 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:85496674 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (85496674 (estimated locally),0.08 per call) 
+  Calls: fci_fp_db_pop_table_from_hw/47 (6016286 (estimated locally),0.01 per call) oal_util_raise_dem_for_drv_runtime_err/34 (6016286 (estimated locally),0.01 per call) pfe_hm_report/33 (6016286 (estimated locally),0.01 per call) fci_fp_db_get_table_from_addr/46 (12032573 (estimated locally),0.01 per call) pfe_mirror_put/28 (9252730 (estimated locally),0.01 per call) pfe_mirror_destroy/48 (45715072 (estimated locally),0.04 per call) pfe_mirror_get_filter/41 (45715072 (estimated locally),0.04 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) 
+mirror_cmd_fpp_action_update/22 (mirror_cmd_fpp_action_update) @07751380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c09f0
+  References: context/31 (addr)
+  Referring: 
+  Function mirror_cmd_fpp_action_update/22 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:46835078 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (46835078 (estimated locally),0.04 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/34 (1275085 (estimated locally),0.00 per call) pfe_hm_report/33 (1275085 (estimated locally),0.00 per call) pfe_mirror_set_actions/32 (3863894 (estimated locally),0.00 per call) autolibc_memset/27 (3863894 (estimated locally),0.00 per call) oal_util_raise_dem_for_drv_runtime_err/34 (1275085 (estimated locally),0.00 per call) pfe_hm_report/33 (1275085 (estimated locally),0.00 per call) pfe_mirror_set_actions/32 (3863894 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (15455576 (estimated locally),0.01 per call) fci_mirror_cmd_update_egress_port.constprop/61 (inlined) (46835078 (estimated locally),0.04 per call) 
+mirror_cmd_fpp_action_register/21 (mirror_cmd_fpp_action_register) @076a8e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0830
+  References: 
+  Referring: 
+  Function mirror_cmd_fpp_action_register/21 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:85496674 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (85496674 (estimated locally),0.08 per call) 
+  Calls: pfe_mirror_create/30 (25649002 (estimated locally),0.02 per call) pfe_mirror_put/28 (59847672 (estimated locally),0.06 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) 
+fci_mirror_cmd_query_cont_get_mirror/20 (fci_mirror_cmd_query_cont_get_mirror) @076a88c0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+get_egress_interface/19 (get_egress_interface) @076a8d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0910
+  References: 
+  Referring: 
+  Function get_egress_interface/19 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:47963634 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (47963634 (estimated locally),0.04 per call) 
+  Calls: pfe_mirror_get_egress_port/53 (47963634 (estimated locally),0.04 per call) autolibc_strncpy/52 (47963634 (estimated locally),0.04 per call) pfe_mirror_get_name/51 (47963634 (estimated locally),0.04 per call) 
+remove_fp_filter/16 (remove_fp_filter) @076a8460
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+fci_mirror_cmd_update_egress_port/15 (fci_mirror_cmd_update_egress_port) @076a80e0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced for nothrow
+remove_fp_filter.constprop.0/62 (remove_fp_filter.constprop) @072b28c0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 60
+  Aux: @070c0950
+  References: 
+  Referring: 
+  Function remove_fp_filter.constprop/62 is inline copy in fci_mirror_cmd/26
+  Clone of remove_fp_filter.constprop.0/60
+  Availability: local
+  Function flags: count:7727788 (estimated locally) local optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (7727788 (estimated locally),0.01 per call) 
+  Calls: remove_fp_filter.part.0/56 (2550170 (estimated locally),0.00 per call) 
+fci_mirror_cmd_update_egress_port.constprop.0/61 (fci_mirror_cmd_update_egress_port.constprop) @07180540
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070c09d0
+  References: context/31 (addr)
+  Referring: 
+  Function fci_mirror_cmd_update_egress_port.constprop/61 is inline copy in fci_mirror_cmd/26
+  Clone of fci_mirror_cmd_update_egress_port/15
+  Availability: local
+  Function flags: count:46835078 (estimated locally) local optimize_size
+  Called by: mirror_cmd_fpp_action_update/22 (inlined) (46835078 (estimated locally),0.04 per call) 
+  Calls: pfe_if_db_lock/35 (46835078 (estimated locally),0.04 per call) pfe_if_db_get_first/36 (15455576 (estimated locally),0.01 per call) pfe_if_db_entry_get_phy_if/37 (10818903 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (8631911 (estimated locally),0.01 per call) pfe_phy_if_get_id/39 (6823664 (estimated locally),0.01 per call) pfe_mirror_set_egress_port/40 (6823664 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (3411832 (estimated locally),0.00 per call) pfe_hm_report/33 (3411832 (estimated locally),0.00 per call) oal_util_raise_dem_for_drv_runtime_err/34 (3411832 (estimated locally),0.00 per call) pfe_if_db_unlock/38 (3411832 (estimated locally),0.00 per call) 
+remove_fp_filter.constprop.0/60 (remove_fp_filter.constprop) @076a8a80
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 62
+  Aux: @070c0a50
+  References: 
+  Referring: 
+  Function remove_fp_filter.constprop/60 is inline copy in fci_mirror_cmd/26
+  Clone of remove_fp_filter/16
+  Availability: local
+  Function flags: count:4132048 (estimated locally) local optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (4132048 (estimated locally),0.00 per call) 
+  Calls: remove_fp_filter.part.0/56 (1363576 (estimated locally),0.00 per call) 
+fci_mirror_cmd_query_cont_get_mirror.constprop.0/59 (fci_mirror_cmd_query_cont_get_mirror.constprop) @076a87e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070c0ab0
+  References: context/31 (addr)
+  Referring: 
+  Function fci_mirror_cmd_query_cont_get_mirror.constprop/59 is inline copy in fci_mirror_cmd/26
+  Clone of fci_mirror_cmd_query_cont_get_mirror/20
+  Availability: local
+  Function flags: count:145344346 (estimated locally) local optimize_size
+  Called by: mirror_cmd_fpp_query_cont/25 (inlined) (145344346 (estimated locally),0.14 per call) 
+  Calls: pfe_mirror_get_next/49 (25333520 (estimated locally),0.02 per call) get_egress_interface/19 (inlined) (47963634 (estimated locally),0.04 per call) pfe_if_db_lock/35 (47963634 (estimated locally),0.04 per call) pfe_if_db_get_single/50 (15827999 (estimated locally),0.01 per call) pfe_if_db_entry_get_phy_if/37 (11079599 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (6151075 (estimated locally),0.01 per call) pfe_mirror_get_name/51 (6151075 (estimated locally),0.01 per call) pfe_hm_report/33 (6151075 (estimated locally),0.01 per call) oal_util_raise_dem_for_drv_runtime_err/34 (6151075 (estimated locally),0.01 per call) fill_reply_buf.isra.0/58 (inlined) (9676924 (estimated locally),0.01 per call) 
+fill_reply_buf.isra.0/58 (fill_reply_buf.isra.0) @07173c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c0750
+  References: 
+  Referring: 
+  Function fill_reply_buf.isra.0/58 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:9676924 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (9676924 (estimated locally),0.01 per call) 
+  Calls: pfe_mirror_get_actions/55 (9676924 (estimated locally),0.01 per call) autolibc_memset/27 (9676924 (estimated locally),0.01 per call) autolibc_strncpy/52 (1053817 (estimated locally),0.00 per call) fci_fp_db_get_table_from_addr/46 (3193385 (estimated locally),0.00 per call) pfe_mirror_get_filter/41 (9676924 (estimated locally),0.01 per call) autolibc_memset/27 (9676924 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (9676924 (estimated locally),0.01 per call) autolibc_strncpy/52 (9676924 (estimated locally),0.01 per call) pfe_phy_if_get_name/54 (9676924 (estimated locally),0.01 per call) 
+fci_mirror_cmd_update_set_filter.isra.0/57 (fci_mirror_cmd_update_set_filter.isra.0) @071739a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c0890
+  References: 
+  Referring: 
+  Function fci_mirror_cmd_update_set_filter.isra.0/57 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:15455576 (estimated locally) body local optimize_size
+  Called by: mirror_cmd_fpp_action_update/22 (inlined) (15455576 (estimated locally),0.01 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/34 (148493 (estimated locally),0.00 per call) pfe_hm_report/33 (148493 (estimated locally),0.00 per call) pfe_mirror_set_filter/42 (449980 (estimated locally),0.00 per call) fci_fp_db_get_table_dmem_addr/44 (449980 (estimated locally),0.00 per call) fci_fp_db_push_table_to_hw/45 (449980 (estimated locally),0.00 per call) fci_fp_db_get_table_dmem_addr/44 (1363576 (estimated locally),0.00 per call) remove_fp_filter.constprop/60 (inlined) (4132048 (estimated locally),0.00 per call) pfe_mirror_get_filter/41 (4132048 (estimated locally),0.00 per call) fci_fp_db_get_first/43 (7727788 (estimated locally),0.01 per call) pfe_mirror_set_filter/42 (2550170 (estimated locally),0.00 per call) remove_fp_filter.constprop/62 (inlined) (7727788 (estimated locally),0.01 per call) pfe_mirror_get_filter/41 (7727788 (estimated locally),0.01 per call) 
+remove_fp_filter.part.0/56 (remove_fp_filter.part.0) @06e6b540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c0a30
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: remove_fp_filter.constprop/62 (2550170 (estimated locally),0.00 per call) remove_fp_filter.constprop/60 (1363576 (estimated locally),0.00 per call) 
+  Calls: fci_fp_db_get_table_from_addr/46 (1073741824 (estimated locally),1.00 per call) pfe_hm_report/33 (536870913 (estimated locally),0.50 per call) oal_util_raise_dem_for_drv_runtime_err/34 (536870913 (estimated locally),0.50 per call) fci_fp_db_pop_table_from_hw/47 (536870913 (estimated locally),0.50 per call) 
+fci_mirror_cmd/26 (fci_mirror_cmd) @07751ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @070c07b0
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073639249 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_mirror_put/28 (145344346 (estimated locally),0.14 per call) mirror_cmd_fpp_query_cont/25 (inlined) (145344346 (estimated locally),0.14 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) mirror_cmd_fpp_action_deregister/23 (inlined) (85496674 (estimated locally),0.08 per call) pfe_mirror_put/28 (141924479 (estimated locally),0.13 per call) mirror_cmd_fpp_action_update/22 (inlined) (46835078 (estimated locally),0.04 per call) mirror_cmd_get_mirror/24 (inlined) (141924479 (estimated locally),0.13 per call) mirror_cmd_fpp_action_register/21 (inlined) (85496674 (estimated locally),0.08 per call) autolibc_memset/27 (512877469 (estimated locally),0.48 per call) 
+mirror_cmd_fpp_query_cont/25 (mirror_cmd_fpp_query_cont) @07751c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c08b0
+  References: context/31 (addr)
+  Referring: 
+  Function mirror_cmd_fpp_query_cont/25 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:145344346 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (145344346 (estimated locally),0.14 per call) 
+  Calls: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (145344346 (estimated locally),0.14 per call) 
+mirror_cmd_get_mirror/24 (mirror_cmd_get_mirror) @077519a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0770
+  References: 
+  Referring: 
+  Function mirror_cmd_get_mirror/24 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:141924479 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (141924479 (estimated locally),0.13 per call) 
+  Calls: pfe_mirror_get_first/29 (24737437 (estimated locally),0.02 per call) 
+mirror_cmd_fpp_action_deregister/23 (mirror_cmd_fpp_action_deregister) @07751700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0810
+  References: 
+  Referring: 
+  Function mirror_cmd_fpp_action_deregister/23 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:85496674 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (85496674 (estimated locally),0.08 per call) 
+  Calls: fci_fp_db_pop_table_from_hw/47 (6016286 (estimated locally),0.01 per call) oal_util_raise_dem_for_drv_runtime_err/34 (6016286 (estimated locally),0.01 per call) pfe_hm_report/33 (6016286 (estimated locally),0.01 per call) fci_fp_db_get_table_from_addr/46 (12032573 (estimated locally),0.01 per call) pfe_mirror_put/28 (9252730 (estimated locally),0.01 per call) pfe_mirror_destroy/48 (45715072 (estimated locally),0.04 per call) pfe_mirror_get_filter/41 (45715072 (estimated locally),0.04 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) 
+mirror_cmd_fpp_action_update/22 (mirror_cmd_fpp_action_update) @07751380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c09f0
+  References: context/31 (addr)
+  Referring: 
+  Function mirror_cmd_fpp_action_update/22 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:46835078 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (46835078 (estimated locally),0.04 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/34 (1275085 (estimated locally),0.00 per call) pfe_hm_report/33 (1275085 (estimated locally),0.00 per call) pfe_mirror_set_actions/32 (3863894 (estimated locally),0.00 per call) autolibc_memset/27 (3863894 (estimated locally),0.00 per call) oal_util_raise_dem_for_drv_runtime_err/34 (1275085 (estimated locally),0.00 per call) pfe_hm_report/33 (1275085 (estimated locally),0.00 per call) pfe_mirror_set_actions/32 (3863894 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (15455576 (estimated locally),0.01 per call) fci_mirror_cmd_update_egress_port.constprop/61 (inlined) (46835078 (estimated locally),0.04 per call) 
+mirror_cmd_fpp_action_register/21 (mirror_cmd_fpp_action_register) @076a8e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0830
+  References: 
+  Referring: 
+  Function mirror_cmd_fpp_action_register/21 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:85496674 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (85496674 (estimated locally),0.08 per call) 
+  Calls: pfe_mirror_create/30 (25649002 (estimated locally),0.02 per call) pfe_mirror_put/28 (59847672 (estimated locally),0.06 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) 
+get_egress_interface/19 (get_egress_interface) @076a8d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0910
+  References: 
+  Referring: 
+  Function get_egress_interface/19 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:47963634 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (47963634 (estimated locally),0.04 per call) 
+  Calls: pfe_mirror_get_egress_port/53 (47963634 (estimated locally),0.04 per call) autolibc_strncpy/52 (47963634 (estimated locally),0.04 per call) pfe_mirror_get_name/51 (47963634 (estimated locally),0.04 per call) 
+
+
+
+MALLOC LATTICE Initial:
+remove_fp_filter.constprop: malloc_bottom
+fci_mirror_cmd_update_egress_port.constprop: malloc_bottom
+remove_fp_filter.constprop: malloc_bottom
+fci_mirror_cmd_query_cont_get_mirror.constprop: malloc_bottom
+fill_reply_buf.isra.0: malloc_bottom
+fci_mirror_cmd_update_set_filter.isra.0: malloc_bottom
+remove_fp_filter.part.0: malloc_bottom
+fci_mirror_cmd: malloc_bottom
+mirror_cmd_fpp_query_cont: malloc_bottom
+mirror_cmd_get_mirror: malloc_bottom
+mirror_cmd_fpp_action_deregister: malloc_bottom
+mirror_cmd_fpp_action_update: malloc_bottom
+mirror_cmd_fpp_action_register: malloc_bottom
+fci_mirror_cmd_query_cont_get_mirror: malloc_bottom
+get_egress_interface: malloc_bottom
+remove_fp_filter: malloc_bottom
+fci_mirror_cmd_update_egress_port: malloc_bottom
+
+
+MALLOC LATTICE after propagation:
+remove_fp_filter.constprop: malloc_bottom
+fci_mirror_cmd_update_egress_port.constprop: malloc_bottom
+remove_fp_filter.constprop: malloc_bottom
+fci_mirror_cmd_query_cont_get_mirror.constprop: malloc_bottom
+fill_reply_buf.isra.0: malloc_bottom
+fci_mirror_cmd_update_set_filter.isra.0: malloc_bottom
+remove_fp_filter.part.0: malloc_bottom
+fci_mirror_cmd: malloc_bottom
+mirror_cmd_fpp_query_cont: malloc_bottom
+mirror_cmd_get_mirror: malloc_bottom
+mirror_cmd_fpp_action_deregister: malloc_bottom
+mirror_cmd_fpp_action_update: malloc_bottom
+mirror_cmd_fpp_action_register: malloc_bottom
+fci_mirror_cmd_query_cont_get_mirror: malloc_bottom
+get_egress_interface: malloc_bottom
+remove_fp_filter: malloc_bottom
+fci_mirror_cmd_update_egress_port: malloc_bottom
+callgraph:
+
+remove_fp_filter.constprop.0/62 (remove_fp_filter.constprop) @072b28c0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 60
+  Aux: @070c0870
+  References: 
+  Referring: 
+  Function remove_fp_filter.constprop/62 is inline copy in fci_mirror_cmd/26
+  Clone of remove_fp_filter.constprop.0/60
+  Availability: local
+  Function flags: count:7727788 (estimated locally) local optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (7727788 (estimated locally),0.01 per call) 
+  Calls: remove_fp_filter.part.0/56 (2550170 (estimated locally),0.00 per call) 
+fci_mirror_cmd_update_egress_port.constprop.0/61 (fci_mirror_cmd_update_egress_port.constprop) @07180540
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070c0890
+  References: context/31 (addr)
+  Referring: 
+  Function fci_mirror_cmd_update_egress_port.constprop/61 is inline copy in fci_mirror_cmd/26
+  Clone of fci_mirror_cmd_update_egress_port/15
+  Availability: local
+  Function flags: count:46835078 (estimated locally) local optimize_size
+  Called by: mirror_cmd_fpp_action_update/22 (inlined) (46835078 (estimated locally),0.04 per call) 
+  Calls: pfe_if_db_lock/35 (46835078 (estimated locally),0.04 per call) pfe_if_db_get_first/36 (15455576 (estimated locally),0.01 per call) pfe_if_db_entry_get_phy_if/37 (10818903 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (8631911 (estimated locally),0.01 per call) pfe_phy_if_get_id/39 (6823664 (estimated locally),0.01 per call) pfe_mirror_set_egress_port/40 (6823664 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (3411832 (estimated locally),0.00 per call) pfe_hm_report/33 (3411832 (estimated locally),0.00 per call) oal_util_raise_dem_for_drv_runtime_err/34 (3411832 (estimated locally),0.00 per call) pfe_if_db_unlock/38 (3411832 (estimated locally),0.00 per call) 
+remove_fp_filter.constprop.0/60 (remove_fp_filter.constprop) @076a8a80
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 62
+  Aux: @070c09f0
+  References: 
+  Referring: 
+  Function remove_fp_filter.constprop/60 is inline copy in fci_mirror_cmd/26
+  Clone of remove_fp_filter/16
+  Availability: local
+  Function flags: count:4132048 (estimated locally) local optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (4132048 (estimated locally),0.00 per call) 
+  Calls: remove_fp_filter.part.0/56 (1363576 (estimated locally),0.00 per call) 
+fci_mirror_cmd_query_cont_get_mirror.constprop.0/59 (fci_mirror_cmd_query_cont_get_mirror.constprop) @076a87e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070c0810
+  References: context/31 (addr)
+  Referring: 
+  Function fci_mirror_cmd_query_cont_get_mirror.constprop/59 is inline copy in fci_mirror_cmd/26
+  Clone of fci_mirror_cmd_query_cont_get_mirror/20
+  Availability: local
+  Function flags: count:145344346 (estimated locally) local optimize_size
+  Called by: mirror_cmd_fpp_query_cont/25 (inlined) (145344346 (estimated locally),0.14 per call) 
+  Calls: pfe_mirror_get_next/49 (25333520 (estimated locally),0.02 per call) get_egress_interface/19 (inlined) (47963634 (estimated locally),0.04 per call) pfe_if_db_lock/35 (47963634 (estimated locally),0.04 per call) pfe_if_db_get_single/50 (15827999 (estimated locally),0.01 per call) pfe_if_db_entry_get_phy_if/37 (11079599 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (6151075 (estimated locally),0.01 per call) pfe_mirror_get_name/51 (6151075 (estimated locally),0.01 per call) pfe_hm_report/33 (6151075 (estimated locally),0.01 per call) oal_util_raise_dem_for_drv_runtime_err/34 (6151075 (estimated locally),0.01 per call) fill_reply_buf.isra.0/58 (inlined) (9676924 (estimated locally),0.01 per call) 
+fill_reply_buf.isra.0/58 (fill_reply_buf.isra.0) @07173c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c0a10
+  References: 
+  Referring: 
+  Function fill_reply_buf.isra.0/58 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:9676924 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (9676924 (estimated locally),0.01 per call) 
+  Calls: pfe_mirror_get_actions/55 (9676924 (estimated locally),0.01 per call) autolibc_memset/27 (9676924 (estimated locally),0.01 per call) autolibc_strncpy/52 (1053817 (estimated locally),0.00 per call) fci_fp_db_get_table_from_addr/46 (3193385 (estimated locally),0.00 per call) pfe_mirror_get_filter/41 (9676924 (estimated locally),0.01 per call) autolibc_memset/27 (9676924 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (9676924 (estimated locally),0.01 per call) autolibc_strncpy/52 (9676924 (estimated locally),0.01 per call) pfe_phy_if_get_name/54 (9676924 (estimated locally),0.01 per call) 
+fci_mirror_cmd_update_set_filter.isra.0/57 (fci_mirror_cmd_update_set_filter.isra.0) @071739a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c08d0
+  References: 
+  Referring: 
+  Function fci_mirror_cmd_update_set_filter.isra.0/57 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:15455576 (estimated locally) body local optimize_size
+  Called by: mirror_cmd_fpp_action_update/22 (inlined) (15455576 (estimated locally),0.01 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/34 (148493 (estimated locally),0.00 per call) pfe_hm_report/33 (148493 (estimated locally),0.00 per call) pfe_mirror_set_filter/42 (449980 (estimated locally),0.00 per call) fci_fp_db_get_table_dmem_addr/44 (449980 (estimated locally),0.00 per call) fci_fp_db_push_table_to_hw/45 (449980 (estimated locally),0.00 per call) fci_fp_db_get_table_dmem_addr/44 (1363576 (estimated locally),0.00 per call) remove_fp_filter.constprop/60 (inlined) (4132048 (estimated locally),0.00 per call) pfe_mirror_get_filter/41 (4132048 (estimated locally),0.00 per call) fci_fp_db_get_first/43 (7727788 (estimated locally),0.01 per call) pfe_mirror_set_filter/42 (2550170 (estimated locally),0.00 per call) remove_fp_filter.constprop/62 (inlined) (7727788 (estimated locally),0.01 per call) pfe_mirror_get_filter/41 (7727788 (estimated locally),0.01 per call) 
+remove_fp_filter.part.0/56 (remove_fp_filter.part.0) @06e6b540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c0830
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: remove_fp_filter.constprop/62 (2550170 (estimated locally),0.00 per call) remove_fp_filter.constprop/60 (1363576 (estimated locally),0.00 per call) 
+  Calls: fci_fp_db_get_table_from_addr/46 (1073741824 (estimated locally),1.00 per call) pfe_hm_report/33 (536870913 (estimated locally),0.50 per call) oal_util_raise_dem_for_drv_runtime_err/34 (536870913 (estimated locally),0.50 per call) fci_fp_db_pop_table_from_hw/47 (536870913 (estimated locally),0.50 per call) 
+pfe_mirror_get_actions/55 (pfe_mirror_get_actions) @07790000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_phy_if_get_name/54 (pfe_phy_if_get_name) @07781ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_mirror_get_egress_port/53 (pfe_mirror_get_egress_port) @07781e00
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: get_egress_interface/19 (47963634 (estimated locally),0.04 per call) 
+  Calls: 
+autolibc_strncpy/52 (autolibc_strncpy) @07781d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fill_reply_buf.isra.0/58 (1053817 (estimated locally),0.00 per call) fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) get_egress_interface/19 (47963634 (estimated locally),0.04 per call) 
+  Calls: 
+pfe_mirror_get_name/51 (pfe_mirror_get_name) @07781b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (6151075 (estimated locally),0.01 per call) get_egress_interface/19 (47963634 (estimated locally),0.04 per call) 
+  Calls: 
+pfe_if_db_get_single/50 (pfe_if_db_get_single) @07781a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (15827999 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_mirror_get_next/49 (pfe_mirror_get_next) @077819a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (25333520 (estimated locally),0.02 per call) 
+  Calls: 
+pfe_mirror_destroy/48 (pfe_mirror_destroy) @07781700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: mirror_cmd_fpp_action_deregister/23 (45715072 (estimated locally),0.04 per call) 
+  Calls: 
+fci_fp_db_pop_table_from_hw/47 (fci_fp_db_pop_table_from_hw) @07781540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: mirror_cmd_fpp_action_deregister/23 (6016286 (estimated locally),0.01 per call) remove_fp_filter.part.0/56 (536870913 (estimated locally),0.50 per call) 
+  Calls: 
+fci_fp_db_get_table_from_addr/46 (fci_fp_db_get_table_from_addr) @07781460
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fill_reply_buf.isra.0/58 (3193385 (estimated locally),0.00 per call) mirror_cmd_fpp_action_deregister/23 (12032573 (estimated locally),0.01 per call) remove_fp_filter.part.0/56 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+fci_fp_db_push_table_to_hw/45 (fci_fp_db_push_table_to_hw) @077812a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (449980 (estimated locally),0.00 per call) 
+  Calls: 
+fci_fp_db_get_table_dmem_addr/44 (fci_fp_db_get_table_dmem_addr) @077811c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (449980 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (1363576 (estimated locally),0.00 per call) 
+  Calls: 
+fci_fp_db_get_first/43 (fci_fp_db_get_first) @077810e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (7727788 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_mirror_set_filter/42 (pfe_mirror_set_filter) @07781000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (449980 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (2550170 (estimated locally),0.00 per call) 
+  Calls: 
+pfe_mirror_get_filter/41 (pfe_mirror_get_filter) @07760ee0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) mirror_cmd_fpp_action_deregister/23 (45715072 (estimated locally),0.04 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (4132048 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (7727788 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_mirror_set_egress_port/40 (pfe_mirror_set_egress_port) @07760d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (6823664 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_phy_if_get_id/39 (pfe_phy_if_get_id) @07760c40
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (6823664 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_if_db_unlock/38 (pfe_if_db_unlock) @07760b60
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (8631911 (estimated locally),0.01 per call) fci_mirror_cmd_update_egress_port.constprop/61 (3411832 (estimated locally),0.00 per call) fci_mirror_cmd_update_egress_port.constprop/61 (3411832 (estimated locally),0.00 per call) fci_mirror_cmd_query_cont_get_mirror.constprop/59 (6151075 (estimated locally),0.01 per call) fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_if_db_entry_get_phy_if/37 (pfe_if_db_entry_get_phy_if) @07760a80
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (10818903 (estimated locally),0.01 per call) fci_mirror_cmd_query_cont_get_mirror.constprop/59 (11079599 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_if_db_get_first/36 (pfe_if_db_get_first) @077609a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (15455576 (estimated locally),0.01 per call) 
+  Calls: 
+pfe_if_db_lock/35 (pfe_if_db_lock) @077608c0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (46835078 (estimated locally),0.04 per call) fci_mirror_cmd_query_cont_get_mirror.constprop/59 (47963634 (estimated locally),0.04 per call) 
+  Calls: 
+oal_util_raise_dem_for_drv_runtime_err/34 (oal_util_raise_dem_for_drv_runtime_err) @07760700
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (3411832 (estimated locally),0.00 per call) fci_mirror_cmd_query_cont_get_mirror.constprop/59 (6151075 (estimated locally),0.01 per call) mirror_cmd_fpp_action_deregister/23 (6016286 (estimated locally),0.01 per call) mirror_cmd_fpp_action_update/22 (1275085 (estimated locally),0.00 per call) mirror_cmd_fpp_action_update/22 (1275085 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (148493 (estimated locally),0.00 per call) remove_fp_filter.part.0/56 (536870913 (estimated locally),0.50 per call) 
+  Calls: 
+pfe_hm_report/33 (pfe_hm_report) @07760620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd_update_egress_port.constprop/61 (3411832 (estimated locally),0.00 per call) fci_mirror_cmd_query_cont_get_mirror.constprop/59 (6151075 (estimated locally),0.01 per call) mirror_cmd_fpp_action_deregister/23 (6016286 (estimated locally),0.01 per call) mirror_cmd_fpp_action_update/22 (1275085 (estimated locally),0.00 per call) mirror_cmd_fpp_action_update/22 (1275085 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (148493 (estimated locally),0.00 per call) remove_fp_filter.part.0/56 (536870913 (estimated locally),0.50 per call) 
+  Calls: 
+pfe_mirror_set_actions/32 (pfe_mirror_set_actions) @07760540
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: mirror_cmd_fpp_action_update/22 (3863894 (estimated locally),0.00 per call) mirror_cmd_fpp_action_update/22 (3863894 (estimated locally),0.00 per call) 
+  Calls: 
+pfe_mirror_create/30 (pfe_mirror_create) @077602a0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: mirror_cmd_fpp_action_register/21 (25649002 (estimated locally),0.02 per call) 
+  Calls: 
+pfe_mirror_get_first/29 (pfe_mirror_get_first) @077600e0
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd/26 (85496674 (estimated locally),0.08 per call) mirror_cmd_fpp_action_deregister/23 (85496674 (estimated locally),0.08 per call) mirror_cmd_fpp_action_register/21 (85496674 (estimated locally),0.08 per call) mirror_cmd_get_mirror/24 (24737437 (estimated locally),0.02 per call) 
+  Calls: 
+pfe_mirror_put/28 (pfe_mirror_put) @07760000
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd/26 (145344346 (estimated locally),0.14 per call) fci_mirror_cmd/26 (141924479 (estimated locally),0.13 per call) mirror_cmd_fpp_action_deregister/23 (9252730 (estimated locally),0.01 per call) mirror_cmd_fpp_action_register/21 (59847672 (estimated locally),0.06 per call) 
+  Calls: 
+autolibc_memset/27 (autolibc_memset) @07751d20
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: fci_mirror_cmd/26 (512877469 (estimated locally),0.48 per call) fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) fill_reply_buf.isra.0/58 (9676924 (estimated locally),0.01 per call) mirror_cmd_fpp_action_update/22 (3863894 (estimated locally),0.00 per call) 
+  Calls: 
+fci_mirror_cmd/26 (fci_mirror_cmd) @07751ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @070c0a70
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073639249 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_mirror_put/28 (145344346 (estimated locally),0.14 per call) mirror_cmd_fpp_query_cont/25 (inlined) (145344346 (estimated locally),0.14 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) mirror_cmd_fpp_action_deregister/23 (inlined) (85496674 (estimated locally),0.08 per call) pfe_mirror_put/28 (141924479 (estimated locally),0.13 per call) mirror_cmd_fpp_action_update/22 (inlined) (46835078 (estimated locally),0.04 per call) mirror_cmd_get_mirror/24 (inlined) (141924479 (estimated locally),0.13 per call) mirror_cmd_fpp_action_register/21 (inlined) (85496674 (estimated locally),0.08 per call) autolibc_memset/27 (512877469 (estimated locally),0.48 per call) 
+mirror_cmd_fpp_query_cont/25 (mirror_cmd_fpp_query_cont) @07751c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c07b0
+  References: context/31 (addr)
+  Referring: 
+  Function mirror_cmd_fpp_query_cont/25 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:145344346 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (145344346 (estimated locally),0.14 per call) 
+  Calls: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (145344346 (estimated locally),0.14 per call) 
+mirror_cmd_get_mirror/24 (mirror_cmd_get_mirror) @077519a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0790
+  References: 
+  Referring: 
+  Function mirror_cmd_get_mirror/24 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:141924479 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (141924479 (estimated locally),0.13 per call) 
+  Calls: pfe_mirror_get_first/29 (24737437 (estimated locally),0.02 per call) 
+mirror_cmd_fpp_action_deregister/23 (mirror_cmd_fpp_action_deregister) @07751700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c08b0
+  References: 
+  Referring: 
+  Function mirror_cmd_fpp_action_deregister/23 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:85496674 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (85496674 (estimated locally),0.08 per call) 
+  Calls: fci_fp_db_pop_table_from_hw/47 (6016286 (estimated locally),0.01 per call) oal_util_raise_dem_for_drv_runtime_err/34 (6016286 (estimated locally),0.01 per call) pfe_hm_report/33 (6016286 (estimated locally),0.01 per call) fci_fp_db_get_table_from_addr/46 (12032573 (estimated locally),0.01 per call) pfe_mirror_put/28 (9252730 (estimated locally),0.01 per call) pfe_mirror_destroy/48 (45715072 (estimated locally),0.04 per call) pfe_mirror_get_filter/41 (45715072 (estimated locally),0.04 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) 
+mirror_cmd_fpp_action_update/22 (mirror_cmd_fpp_action_update) @07751380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0a90
+  References: context/31 (addr)
+  Referring: 
+  Function mirror_cmd_fpp_action_update/22 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:46835078 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (46835078 (estimated locally),0.04 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/34 (1275085 (estimated locally),0.00 per call) pfe_hm_report/33 (1275085 (estimated locally),0.00 per call) pfe_mirror_set_actions/32 (3863894 (estimated locally),0.00 per call) autolibc_memset/27 (3863894 (estimated locally),0.00 per call) oal_util_raise_dem_for_drv_runtime_err/34 (1275085 (estimated locally),0.00 per call) pfe_hm_report/33 (1275085 (estimated locally),0.00 per call) pfe_mirror_set_actions/32 (3863894 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (15455576 (estimated locally),0.01 per call) fci_mirror_cmd_update_egress_port.constprop/61 (inlined) (46835078 (estimated locally),0.04 per call) 
+mirror_cmd_fpp_action_register/21 (mirror_cmd_fpp_action_register) @076a8e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0730
+  References: 
+  Referring: 
+  Function mirror_cmd_fpp_action_register/21 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:85496674 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (85496674 (estimated locally),0.08 per call) 
+  Calls: pfe_mirror_create/30 (25649002 (estimated locally),0.02 per call) pfe_mirror_put/28 (59847672 (estimated locally),0.06 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) 
+fci_mirror_cmd_query_cont_get_mirror/20 (fci_mirror_cmd_query_cont_get_mirror) @076a88c0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+get_egress_interface/19 (get_egress_interface) @076a8d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c08f0
+  References: 
+  Referring: 
+  Function get_egress_interface/19 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:47963634 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (47963634 (estimated locally),0.04 per call) 
+  Calls: pfe_mirror_get_egress_port/53 (47963634 (estimated locally),0.04 per call) autolibc_strncpy/52 (47963634 (estimated locally),0.04 per call) pfe_mirror_get_name/51 (47963634 (estimated locally),0.04 per call) 
+remove_fp_filter/16 (remove_fp_filter) @076a8460
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+fci_mirror_cmd_update_egress_port/15 (fci_mirror_cmd_update_egress_port) @076a80e0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: count:1073741823 (estimated locally) body optimize_size
+  Called by: 
+  Calls: 
+
+
+ ordered call graph: reduced
+fci_mirror_cmd/26 (fci_mirror_cmd) @07751ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  Aux: @070c0a70
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073639249 (estimated locally) body optimize_size
+  Called by: 
+  Calls: pfe_mirror_put/28 (145344346 (estimated locally),0.14 per call) mirror_cmd_fpp_query_cont/25 (inlined) (145344346 (estimated locally),0.14 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) mirror_cmd_fpp_action_deregister/23 (inlined) (85496674 (estimated locally),0.08 per call) pfe_mirror_put/28 (141924479 (estimated locally),0.13 per call) mirror_cmd_fpp_action_update/22 (inlined) (46835078 (estimated locally),0.04 per call) mirror_cmd_get_mirror/24 (inlined) (141924479 (estimated locally),0.13 per call) mirror_cmd_fpp_action_register/21 (inlined) (85496674 (estimated locally),0.08 per call) autolibc_memset/27 (512877469 (estimated locally),0.48 per call) 
+mirror_cmd_fpp_query_cont/25 (mirror_cmd_fpp_query_cont) @07751c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c07b0
+  References: context/31 (addr)
+  Referring: 
+  Function mirror_cmd_fpp_query_cont/25 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:145344346 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (145344346 (estimated locally),0.14 per call) 
+  Calls: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (145344346 (estimated locally),0.14 per call) 
+fci_mirror_cmd_query_cont_get_mirror.constprop.0/59 (fci_mirror_cmd_query_cont_get_mirror.constprop) @076a87e0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070c0810
+  References: context/31 (addr)
+  Referring: 
+  Function fci_mirror_cmd_query_cont_get_mirror.constprop/59 is inline copy in fci_mirror_cmd/26
+  Clone of fci_mirror_cmd_query_cont_get_mirror/20
+  Availability: local
+  Function flags: count:145344346 (estimated locally) local optimize_size
+  Called by: mirror_cmd_fpp_query_cont/25 (inlined) (145344346 (estimated locally),0.14 per call) 
+  Calls: pfe_mirror_get_next/49 (25333520 (estimated locally),0.02 per call) get_egress_interface/19 (inlined) (47963634 (estimated locally),0.04 per call) pfe_if_db_lock/35 (47963634 (estimated locally),0.04 per call) pfe_if_db_get_single/50 (15827999 (estimated locally),0.01 per call) pfe_if_db_entry_get_phy_if/37 (11079599 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (6151075 (estimated locally),0.01 per call) pfe_mirror_get_name/51 (6151075 (estimated locally),0.01 per call) pfe_hm_report/33 (6151075 (estimated locally),0.01 per call) oal_util_raise_dem_for_drv_runtime_err/34 (6151075 (estimated locally),0.01 per call) fill_reply_buf.isra.0/58 (inlined) (9676924 (estimated locally),0.01 per call) 
+fill_reply_buf.isra.0/58 (fill_reply_buf.isra.0) @07173c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c0a10
+  References: 
+  Referring: 
+  Function fill_reply_buf.isra.0/58 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:9676924 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (9676924 (estimated locally),0.01 per call) 
+  Calls: pfe_mirror_get_actions/55 (9676924 (estimated locally),0.01 per call) autolibc_memset/27 (9676924 (estimated locally),0.01 per call) autolibc_strncpy/52 (1053817 (estimated locally),0.00 per call) fci_fp_db_get_table_from_addr/46 (3193385 (estimated locally),0.00 per call) pfe_mirror_get_filter/41 (9676924 (estimated locally),0.01 per call) autolibc_memset/27 (9676924 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (9676924 (estimated locally),0.01 per call) autolibc_strncpy/52 (9676924 (estimated locally),0.01 per call) pfe_phy_if_get_name/54 (9676924 (estimated locally),0.01 per call) 
+mirror_cmd_get_mirror/24 (mirror_cmd_get_mirror) @077519a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0790
+  References: 
+  Referring: 
+  Function mirror_cmd_get_mirror/24 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:141924479 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (141924479 (estimated locally),0.13 per call) 
+  Calls: pfe_mirror_get_first/29 (24737437 (estimated locally),0.02 per call) 
+mirror_cmd_fpp_action_deregister/23 (mirror_cmd_fpp_action_deregister) @07751700
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c08b0
+  References: 
+  Referring: 
+  Function mirror_cmd_fpp_action_deregister/23 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:85496674 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (85496674 (estimated locally),0.08 per call) 
+  Calls: fci_fp_db_pop_table_from_hw/47 (6016286 (estimated locally),0.01 per call) oal_util_raise_dem_for_drv_runtime_err/34 (6016286 (estimated locally),0.01 per call) pfe_hm_report/33 (6016286 (estimated locally),0.01 per call) fci_fp_db_get_table_from_addr/46 (12032573 (estimated locally),0.01 per call) pfe_mirror_put/28 (9252730 (estimated locally),0.01 per call) pfe_mirror_destroy/48 (45715072 (estimated locally),0.04 per call) pfe_mirror_get_filter/41 (45715072 (estimated locally),0.04 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) 
+mirror_cmd_fpp_action_update/22 (mirror_cmd_fpp_action_update) @07751380
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0a90
+  References: context/31 (addr)
+  Referring: 
+  Function mirror_cmd_fpp_action_update/22 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:46835078 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (46835078 (estimated locally),0.04 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/34 (1275085 (estimated locally),0.00 per call) pfe_hm_report/33 (1275085 (estimated locally),0.00 per call) pfe_mirror_set_actions/32 (3863894 (estimated locally),0.00 per call) autolibc_memset/27 (3863894 (estimated locally),0.00 per call) oal_util_raise_dem_for_drv_runtime_err/34 (1275085 (estimated locally),0.00 per call) pfe_hm_report/33 (1275085 (estimated locally),0.00 per call) pfe_mirror_set_actions/32 (3863894 (estimated locally),0.00 per call) fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (15455576 (estimated locally),0.01 per call) fci_mirror_cmd_update_egress_port.constprop/61 (inlined) (46835078 (estimated locally),0.04 per call) 
+fci_mirror_cmd_update_egress_port.constprop.0/61 (fci_mirror_cmd_update_egress_port.constprop) @07180540
+  Type: function definition analyzed
+  Visibility:
+  Aux: @070c0890
+  References: context/31 (addr)
+  Referring: 
+  Function fci_mirror_cmd_update_egress_port.constprop/61 is inline copy in fci_mirror_cmd/26
+  Clone of fci_mirror_cmd_update_egress_port/15
+  Availability: local
+  Function flags: count:46835078 (estimated locally) local optimize_size
+  Called by: mirror_cmd_fpp_action_update/22 (inlined) (46835078 (estimated locally),0.04 per call) 
+  Calls: pfe_if_db_lock/35 (46835078 (estimated locally),0.04 per call) pfe_if_db_get_first/36 (15455576 (estimated locally),0.01 per call) pfe_if_db_entry_get_phy_if/37 (10818903 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (8631911 (estimated locally),0.01 per call) pfe_phy_if_get_id/39 (6823664 (estimated locally),0.01 per call) pfe_mirror_set_egress_port/40 (6823664 (estimated locally),0.01 per call) pfe_if_db_unlock/38 (3411832 (estimated locally),0.00 per call) pfe_hm_report/33 (3411832 (estimated locally),0.00 per call) oal_util_raise_dem_for_drv_runtime_err/34 (3411832 (estimated locally),0.00 per call) pfe_if_db_unlock/38 (3411832 (estimated locally),0.00 per call) 
+fci_mirror_cmd_update_set_filter.isra.0/57 (fci_mirror_cmd_update_set_filter.isra.0) @071739a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c08d0
+  References: 
+  Referring: 
+  Function fci_mirror_cmd_update_set_filter.isra.0/57 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:15455576 (estimated locally) body local optimize_size
+  Called by: mirror_cmd_fpp_action_update/22 (inlined) (15455576 (estimated locally),0.01 per call) 
+  Calls: oal_util_raise_dem_for_drv_runtime_err/34 (148493 (estimated locally),0.00 per call) pfe_hm_report/33 (148493 (estimated locally),0.00 per call) pfe_mirror_set_filter/42 (449980 (estimated locally),0.00 per call) fci_fp_db_get_table_dmem_addr/44 (449980 (estimated locally),0.00 per call) fci_fp_db_push_table_to_hw/45 (449980 (estimated locally),0.00 per call) fci_fp_db_get_table_dmem_addr/44 (1363576 (estimated locally),0.00 per call) remove_fp_filter.constprop/60 (inlined) (4132048 (estimated locally),0.00 per call) pfe_mirror_get_filter/41 (4132048 (estimated locally),0.00 per call) fci_fp_db_get_first/43 (7727788 (estimated locally),0.01 per call) pfe_mirror_set_filter/42 (2550170 (estimated locally),0.00 per call) remove_fp_filter.constprop/62 (inlined) (7727788 (estimated locally),0.01 per call) pfe_mirror_get_filter/41 (7727788 (estimated locally),0.01 per call) 
+remove_fp_filter.constprop.0/62 (remove_fp_filter.constprop) @072b28c0
+  Type: function definition analyzed
+  Visibility:
+  next sharing asm name: 60
+  Aux: @070c0870
+  References: 
+  Referring: 
+  Function remove_fp_filter.constprop/62 is inline copy in fci_mirror_cmd/26
+  Clone of remove_fp_filter.constprop.0/60
+  Availability: local
+  Function flags: count:7727788 (estimated locally) local optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (7727788 (estimated locally),0.01 per call) 
+  Calls: remove_fp_filter.part.0/56 (2550170 (estimated locally),0.00 per call) 
+remove_fp_filter.constprop.0/60 (remove_fp_filter.constprop) @076a8a80
+  Type: function definition analyzed
+  Visibility:
+  previous sharing asm name: 62
+  Aux: @070c09f0
+  References: 
+  Referring: 
+  Function remove_fp_filter.constprop/60 is inline copy in fci_mirror_cmd/26
+  Clone of remove_fp_filter/16
+  Availability: local
+  Function flags: count:4132048 (estimated locally) local optimize_size
+  Called by: fci_mirror_cmd_update_set_filter.isra.0/57 (inlined) (4132048 (estimated locally),0.00 per call) 
+  Calls: remove_fp_filter.part.0/56 (1363576 (estimated locally),0.00 per call) 
+remove_fp_filter.part.0/56 (remove_fp_filter.part.0) @06e6b540
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly artificial
+  Aux: @070c0830
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) first_run:1 body local split_part optimize_size
+  Called by: remove_fp_filter.constprop/62 (2550170 (estimated locally),0.00 per call) remove_fp_filter.constprop/60 (1363576 (estimated locally),0.00 per call) 
+  Calls: fci_fp_db_get_table_from_addr/46 (1073741824 (estimated locally),1.00 per call) pfe_hm_report/33 (536870913 (estimated locally),0.50 per call) oal_util_raise_dem_for_drv_runtime_err/34 (536870913 (estimated locally),0.50 per call) fci_fp_db_pop_table_from_hw/47 (536870913 (estimated locally),0.50 per call) 
+mirror_cmd_fpp_action_register/21 (mirror_cmd_fpp_action_register) @076a8e00
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c0730
+  References: 
+  Referring: 
+  Function mirror_cmd_fpp_action_register/21 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:85496674 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd/26 (inlined) (85496674 (estimated locally),0.08 per call) 
+  Calls: pfe_mirror_create/30 (25649002 (estimated locally),0.02 per call) pfe_mirror_put/28 (59847672 (estimated locally),0.06 per call) pfe_mirror_get_first/29 (85496674 (estimated locally),0.08 per call) 
+get_egress_interface/19 (get_egress_interface) @076a8d20
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  Aux: @070c08f0
+  References: 
+  Referring: 
+  Function get_egress_interface/19 is inline copy in fci_mirror_cmd/26
+  Availability: local
+  Function flags: count:47963634 (estimated locally) body local optimize_size
+  Called by: fci_mirror_cmd_query_cont_get_mirror.constprop/59 (inlined) (47963634 (estimated locally),0.04 per call) 
+  Calls: pfe_mirror_get_egress_port/53 (47963634 (estimated locally),0.04 per call) autolibc_strncpy/52 (47963634 (estimated locally),0.04 per call) pfe_mirror_get_name/51 (47963634 (estimated locally),0.04 per call) 
+
+fill_reply_buf.isra.0 (struct fpp_mirror_cmd_t * * reply_buf, struct pfe_phy_if_t * phy_if, struct pfe_mirror_t * tmp_mirror, uint32_t * ISRA.35)
+{
+  errno_t ret;
+  pfe_ct_route_actions_t m_actions;
+  const char * str;
+  uint32_t addr;
+  struct pfe_ct_route_actions_args_t m_args;
+  const char_t * _2;
+  struct fpp_mirror_cmd_t * _4;
+  char[16] * _5;
+  struct fpp_mirror_cmd_t * _6;
+  long unsigned int _8;
+  struct fpp_mirror_cmd_t * _9;
+  char[16] * _10;
+  struct fpp_mirror_cmd_t * _14;
+  char[16] * _15;
+  const char * str.19_16;
+  struct fpp_mirror_cmd_t * _17;
+  struct fpp_mirror_cmd_t * _18;
+  long unsigned int m_actions.20_19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  struct fpp_mirror_cmd_t * _30;
+  <unnamed type> _31;
+  int _32;
+  short unsigned int _33;
+  struct fpp_mirror_cmd_t * _34;
+  <unnamed type> _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  <unnamed type> _46;
+
+  <bb 8> [local count: 1073741824]:
+  # DEBUG fci_context s=> fci_context
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = pfe_phy_if_get_name (phy_if_1(D));
+  str = _2;
+  # DEBUG BEGIN_STMT
+  _4 = *reply_buf_3(D);
+  _5 = &_4->egress_phy_if;
+  autolibc_strncpy (_5, _2, 15);
+  # DEBUG BEGIN_STMT
+  _6 = *reply_buf_3(D);
+  _6->egress_phy_if[15] = 0;
+  # DEBUG BEGIN_STMT
+  _8 = *ISRA.35_71(D);
+  pfe_if_db_unlock (_8);
+  # DEBUG BEGIN_STMT
+  _9 = *reply_buf_3(D);
+  _10 = &_9->filter_table_name;
+  autolibc_memset (_10, 0, 16);
+  # DEBUG BEGIN_STMT
+  addr_12 = pfe_mirror_get_filter (tmp_mirror_11(D));
+  # DEBUG addr => addr_12
+  # DEBUG BEGIN_STMT
+  if (addr_12 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  ret_13 = fci_fp_db_get_table_from_addr (addr_12, &str);
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (ret_13 == 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 4> [local count: 116930485]:
+  # DEBUG BEGIN_STMT
+  _14 = *reply_buf_3(D);
+  _15 = &_14->filter_table_name;
+  str.19_16 = str;
+  autolibc_strncpy (_15, str.19_16, 15);
+  # DEBUG BEGIN_STMT
+  _17 = *reply_buf_3(D);
+  _17->filter_table_name[15] = 0;
+
+  <bb 5> [local count: 1073741824]:
+  # ret_47 = PHI <0(2), ret_13(3), 0(4)>
+  # DEBUG ret => ret_47
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&m_args, 0, 60);
+  # DEBUG BEGIN_STMT
+  m_actions = 0;
+  # DEBUG BEGIN_STMT
+  _18 = *reply_buf_3(D);
+  _18->m_actions = 0;
+  # DEBUG BEGIN_STMT
+  pfe_mirror_get_actions (tmp_mirror_11(D), &m_actions, &m_args);
+  # DEBUG BEGIN_STMT
+  m_actions.20_19 = m_actions;
+  _20 = m_actions.20_19 >> 24;
+  _21 = m_actions.20_19 >> 8;
+  _22 = _21 & 65280;
+  _23 = _20 | _22;
+  _24 = m_actions.20_19 << 8;
+  _25 = _24 & 16711680;
+  _26 = _23 | _25;
+  _27 = m_actions.20_19 << 24;
+  _28 = _26 | _27;
+  m_actions = _28;
+  # DEBUG BEGIN_STMT
+  _29 = _28 & 2;
+  if (_29 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _30 = *reply_buf_3(D);
+  _31 = _30->m_actions;
+  _32 = _31 | 2;
+  _30->m_actions = _32;
+  # DEBUG BEGIN_STMT
+  _33 = m_args.vlan;
+  _30->m_args.vlan = _33;
+
+  <bb 7> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  _34 = *reply_buf_3(D);
+  _35 = _34->m_actions;
+  _36 = (long unsigned int) _35;
+  _37 = _36 >> 24;
+  _38 = _36 >> 8;
+  _39 = _38 & 65280;
+  _40 = _37 | _39;
+  _41 = _36 << 8;
+  _42 = _41 & 16711680;
+  _43 = _40 | _42;
+  _44 = _36 << 24;
+  _45 = _43 | _44;
+  _46 = (<unnamed type>) _45;
+  _34->m_actions = _46;
+  # DEBUG BEGIN_STMT
+  m_actions ={v} {CLOBBER};
+  str ={v} {CLOBBER};
+  m_args ={v} {CLOBBER};
+  return ret_47;
+
+}
+
+
+fci_mirror_cmd_update_set_filter.isra.0 (struct pfe_class_t * * ISRA.30, struct pfe_mirror_t * * mirror, uint16_t * * fci_ret, struct fpp_mirror_cmd_t * mirror_cmd)
+{
+  errno_t ret;
+  uint32_t addr;
+  char _2;
+  struct pfe_mirror_t * _4;
+  struct pfe_mirror_t * _8;
+  uint16_t * _10;
+  char[16] * _11;
+  struct fci_fp_table_t * _12;
+  uint16_t * _13;
+  struct pfe_mirror_t * _14;
+  struct pfe_class_t * _19;
+  struct pfe_mirror_t * _21;
+  char[16] * _23;
+  uint16_t * _24;
+  uint16_t * _25;
+
+  <bb 14> [local count: 1073741824]:
+  # DEBUG fci_context s=> fci_context
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = mirror_cmd_1(D)->filter_table_name[0];
+  if (_2 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _4 = *mirror_3(D);
+  addr_5 = pfe_mirror_get_filter (_4);
+  # DEBUG addr => addr_5
+  # DEBUG BEGIN_STMT
+  ret_7 = remove_fp_filter (0, addr_5, fci_ret_6(D));
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 13>; [67.00%]
+
+  <bb 4> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  _8 = *mirror_3(D);
+  ret_9 = pfe_mirror_set_filter (_8, 0);
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 5> [local count: 88583701]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _10 = *fci_ret_6(D);
+  *_10 = 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 13>; [100.00%]
+
+  <bb 6> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  _11 = &mirror_cmd_1(D)->filter_table_name;
+  _12 = fci_fp_db_get_first (1, _11);
+  if (_12 == 0B)
+    goto <bb 7>; [46.53%]
+  else
+    goto <bb 8>; [53.47%]
+
+  <bb 7> [local count: 249806035]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _13 = *fci_ret_6(D);
+  *_13 = 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 13>; [100.00%]
+
+  <bb 8> [local count: 287064877]:
+  # DEBUG BEGIN_STMT
+  _14 = *mirror_3(D);
+  addr_15 = pfe_mirror_get_filter (_14);
+  # DEBUG addr => addr_15
+  # DEBUG BEGIN_STMT
+  ret_16 = remove_fp_filter (0, addr_15, fci_ret_6(D));
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 == 0)
+    goto <bb 9>; [33.00%]
+  else
+    goto <bb 13>; [67.00%]
+
+  <bb 9> [local count: 94731409]:
+  # DEBUG BEGIN_STMT
+  addr_17 = fci_fp_db_get_table_dmem_addr (_11);
+  # DEBUG addr => addr_17
+  # DEBUG BEGIN_STMT
+  if (addr_17 == 0)
+    goto <bb 10>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 10> [local count: 31261365]:
+  # DEBUG BEGIN_STMT
+  _19 = *ISRA.30_45(D);
+  fci_fp_db_push_table_to_hw (_19, _11);
+  # DEBUG BEGIN_STMT
+  addr_20 = fci_fp_db_get_table_dmem_addr (_11);
+  # DEBUG addr => addr_20
+  # DEBUG BEGIN_STMT
+  _21 = *mirror_3(D);
+  ret_22 = pfe_mirror_set_filter (_21, addr_20);
+  # DEBUG ret => ret_22
+  # DEBUG BEGIN_STMT
+  if (ret_22 != 0)
+    goto <bb 11>; [33.00%]
+  else
+    goto <bb 13>; [67.00%]
+
+  <bb 11> [local count: 10316250]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _23 = &mirror_cmd_1(D)->name;
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed to set filter %s to mirror %s\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 229, _11, _23, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = *fci_ret_6(D);
+  *_24 = 65535;
+  goto <bb 13>; [100.00%]
+
+  <bb 12> [local count: 63470044]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _25 = *fci_ret_6(D);
+  *_25 = 3;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 13> [local count: 1073741824]:
+  # ret_26 = PHI <ret_7(3), ret_9(4), 0(5), 0(7), ret_16(8), ret_22(10), ret_22(11), 0(12)>
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  return ret_26;
+
+}
+
+
+remove_fp_filter.part.0 (uint32_t addr, uint16_t * * fci_ret)
+{
+  const char * str;
+  errno_t ret;
+  uint16_t * _4;
+  const char * str.12_5;
+
+  <bb 6> [local count: 1073741824]:
+  # DEBUG D#2 s=> ret
+  # DEBUG ret => D#2
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  ret_2 = fci_fp_db_get_table_from_addr (addr_1(D), &str);
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  if (ret_2 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Cannot obtain filter name.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 160, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _4 = *fci_ret_3(D);
+  *_4 = 65535;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  str.12_5 = str;
+  fci_fp_db_pop_table_from_hw (str.12_5);
+
+  <bb 5> [local count: 1073741824]:
+  # ret_6 = PHI <ret_2(3), 0(4)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  str ={v} {CLOBBER};
+  return ret_6;
+
+}
+
+
+fci_mirror_cmd (struct fci_msg_t * msg, uint16_t * fci_ret, struct fpp_mirror_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  bool_t break_switch;
+  struct pfe_mirror_t * mirror;
+  errno_t ret;
+  struct fpp_mirror_cmd_t * mirror_cmd;
+  long unsigned int _1;
+  short unsigned int _2;
+  unsigned char break_switch.0_3;
+  struct pfe_mirror_t * mirror.1_4;
+  struct pfe_mirror_t * _5;
+  struct pfe_mirror_t * mirror.3_6;
+
+  <bb 2> [local count: 1073639249]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  mirror = 0B;
+  # DEBUG BEGIN_STMT
+  break_switch = 0;
+  # DEBUG BEGIN_STMT
+  *fci_ret_16(D) = 0;
+  # DEBUG BEGIN_STMT
+  _1 = *reply_len_18(D);
+  if (_1 <= 55)
+    goto <bb 3>; [52.23%]
+  else
+    goto <bb 4>; [47.77%]
+
+  <bb 3> [local count: 560761781]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_16(D) = 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+  goto <bb 14>; [100.00%]
+
+  <bb 4> [local count: 512877469]:
+  # DEBUG BEGIN_STMT
+  *reply_len_18(D) = 0;
+  # DEBUG BEGIN_STMT
+  autolibc_memset (reply_buf_20(D), 0, 56);
+  # DEBUG BEGIN_STMT
+  mirror_cmd_23 = &msg_22(D)->msg_cmd.payload;
+  # DEBUG mirror_cmd => mirror_cmd_23
+  # DEBUG BEGIN_STMT
+  _2 = MEM[(struct fpp_mirror_cmd_t *)msg_22(D) + 16B].action;
+  switch (_2) <default: <L12> [16.67%], case 0: <L2> [16.67%], case 1: <L7> [16.67%], case 4: <L3> [16.67%], case 6: <L8> [16.67%], case 7: <L10> [16.67%]>
+
+  <bb 5> [local count: 85496674]:
+<L2>:
+  # DEBUG BEGIN_STMT
+  ret_33 = mirror_cmd_fpp_action_register (&mirror, fci_ret_16(D), mirror_cmd_23, &break_switch);
+  # DEBUG ret => ret_33
+  # DEBUG BEGIN_STMT
+  break_switch.0_3 = break_switch;
+  if (break_switch.0_3 == 1)
+    goto <bb 14>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 6> [local count: 141924479]:
+<L3>:
+  # DEBUG BEGIN_STMT
+  ret_35 = mirror_cmd_get_mirror (&mirror, fci_ret_16(D), mirror_cmd_23);
+  # DEBUG ret => ret_35
+  # DEBUG BEGIN_STMT
+  if (ret_35 == 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 8>; [67.00%]
+
+  <bb 7> [local count: 46835078]:
+  # DEBUG BEGIN_STMT
+  ret_37 = mirror_cmd_fpp_action_update (&mirror, fci_ret_16(D), mirror_cmd_23);
+  # DEBUG ret => ret_37
+
+  <bb 8> [local count: 141924479]:
+  # ret_7 = PHI <ret_35(6), ret_37(7)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  mirror.1_4 = mirror;
+  pfe_mirror_put (mirror.1_4);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 9> [local count: 85496674]:
+<L7>:
+  # DEBUG BEGIN_STMT
+  ret_31 = mirror_cmd_fpp_action_deregister (fci_ret_16(D), mirror_cmd_23);
+  # DEBUG ret => ret_31
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 10> [local count: 85496674]:
+<L8>:
+  # DEBUG BEGIN_STMT
+  _5 = pfe_mirror_get_first (0, 0B);
+  mirror = _5;
+  # DEBUG BEGIN_STMT
+  if (_5 == 0B)
+    goto <bb 11>; [30.00%]
+  else
+    goto <bb 12>; [70.00%]
+
+  <bb 11> [local count: 25649002]:
+  # DEBUG BEGIN_STMT
+  *fci_ret_16(D) = 61746;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 12> [local count: 145344346]:
+<L10>:
+  # DEBUG BEGIN_STMT
+  ret_28 = mirror_cmd_fpp_query_cont (&mirror, fci_ret_16(D), reply_buf_20(D), reply_len_18(D));
+  # DEBUG ret => ret_28
+  # DEBUG BEGIN_STMT
+  mirror.3_6 = mirror;
+  pfe_mirror_put (mirror.3_6);
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 14>; [100.00%]
+
+  <bb 13> [local count: 85496674]:
+<L12>:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_16(D) = 4;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 14> [local count: 1073741824]:
+  # ret_8 = PHI <22(3), ret_33(5), ret_7(8), ret_31(9), 0(11), ret_28(12), 0(13)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  mirror ={v} {CLOBBER};
+  break_switch ={v} {CLOBBER};
+  return ret_8;
+
+}
+
+
+mirror_cmd_fpp_query_cont (struct pfe_mirror_t * * mirror, uint16_t * fci_ret, struct fpp_mirror_cmd_t * reply_buf, uint32_t * reply_len)
+{
+  errno_t ret;
+  uint16_t * fci_ret.14_1;
+  short unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG fci_context => &context
+  # DEBUG BEGIN_STMT
+  ret_8 = fci_mirror_cmd_query_cont_get_mirror (&context, mirror_6(D), &fci_ret, &reply_buf);
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  fci_ret.14_1 = fci_ret;
+  _2 = *fci_ret.14_1;
+  if (_2 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870913]:
+  # DEBUG BEGIN_STMT
+  *reply_len_9(D) = 56;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+
+  <bb 4> [local count: 1073741824]:
+  # ret_3 = PHI <ret_8(2), 0(3)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  return ret_3;
+
+}
+
+
+mirror_cmd_get_mirror (struct pfe_mirror_t * * mirror, uint16_t * fci_ret, struct fpp_mirror_cmd_t * mirror_cmd)
+{
+  errno_t ret;
+  struct pfe_mirror_t * _1;
+  char[16] * _2;
+  struct pfe_mirror_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  _1 = *mirror_7(D);
+  if (_1 == 0B)
+    goto <bb 3>; [17.43%]
+  else
+    goto <bb 5>; [82.57%]
+
+  <bb 3> [local count: 187153200]:
+  # DEBUG BEGIN_STMT
+  _2 = &mirror_cmd_8(D)->name;
+  _3 = pfe_mirror_get_first (1, _2);
+  *mirror_7(D) = _3;
+  # DEBUG BEGIN_STMT
+  if (_3 == 0B)
+    goto <bb 4>; [18.75%]
+  else
+    goto <bb 5>; [81.25%]
+
+  <bb 4> [local count: 35091225]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_11(D) = 61746;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 22
+
+  <bb 5> [local count: 1073741824]:
+  # ret_4 = PHI <0(2), 0(3), 22(4)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  return ret_4;
+
+}
+
+
+mirror_cmd_fpp_action_deregister (uint16_t * fci_ret, struct fpp_mirror_cmd_t * mirror_cmd)
+{
+  uint32_t addr;
+  const char * str;
+  struct pfe_mirror_t * mirror;
+  errno_t ret;
+  char[16] * _1;
+  const char * str.13_2;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG mirror => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = &mirror_cmd_5(D)->name;
+  mirror_8 = pfe_mirror_get_first (1, _1);
+  # DEBUG mirror => mirror_8
+  # DEBUG BEGIN_STMT
+  if (mirror_8 == 0B)
+    goto <bb 3>; [46.53%]
+  else
+    goto <bb 4>; [53.47%]
+
+  <bb 3> [local count: 499612071]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_18(D) = 61746;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 10>; [100.00%]
+
+  <bb 4> [local count: 574129754]:
+  # DEBUG BEGIN_STMT
+  addr_10 = pfe_mirror_get_filter (mirror_8);
+  # DEBUG addr => addr_10
+  # DEBUG BEGIN_STMT
+  ret_12 = pfe_mirror_destroy (mirror_8);
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 == 111)
+    goto <bb 5>; [20.24%]
+  else
+    goto <bb 6>; [79.76%]
+
+  <bb 5> [local count: 116203862]:
+  # DEBUG BEGIN_STMT
+  pfe_mirror_put (mirror_8);
+  # DEBUG BEGIN_STMT
+  # DEBUG mirror => 0B
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_18(D) = 61747;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  goto <bb 10>; [100.00%]
+
+  <bb 6> [local count: 457925891]:
+  # DEBUG BEGIN_STMT
+  # DEBUG mirror => 0B
+  # DEBUG BEGIN_STMT
+  if (addr_10 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 10>; [67.00%]
+
+  <bb 7> [local count: 151115544]:
+  # DEBUG BEGIN_STMT
+  ret_14 = fci_fp_db_get_table_from_addr (addr_10, &str);
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 75557772]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Cannot obtain filter name.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 495, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_18(D) = 65535;
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 75557772]:
+  # DEBUG BEGIN_STMT
+  str.13_2 = str;
+  fci_fp_db_pop_table_from_hw (str.13_2);
+
+  <bb 10> [local count: 1073741824]:
+  # ret_3 = PHI <0(3), 0(5), ret_12(6), ret_14(8), 0(9)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  str ={v} {CLOBBER};
+  return ret_3;
+
+}
+
+
+mirror_cmd_fpp_action_update (struct pfe_mirror_t * * mirror, uint16_t * fci_ret, struct fpp_mirror_cmd_t * mirror_cmd)
+{
+  pfe_ct_route_actions_t m_actions;
+  struct pfe_ct_route_actions_args_t m_args;
+  struct fci_t * fci_context;
+  errno_t ret;
+  uint16_t * fci_ret.4_1;
+  short unsigned int _2;
+  struct fci_t * fci_context.5_3;
+  uint16_t * fci_ret.6_4;
+  short unsigned int _5;
+  <unnamed type> _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  <unnamed type> _17;
+  struct pfe_mirror_t * _18;
+  uint16_t * fci_ret.7_19;
+  <unnamed type> _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  short unsigned int _23;
+  long unsigned int _24;
+  struct pfe_mirror_t * _25;
+  uint16_t * fci_ret.8_26;
+  struct pfe_class_t * * _54;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  fci_context = &context;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_36 = fci_mirror_cmd_update_egress_port (&fci_context, mirror_33(D), &fci_ret, mirror_cmd_34(D));
+  # DEBUG ret => ret_36
+  # DEBUG BEGIN_STMT
+  fci_ret.4_1 = fci_ret;
+  _2 = *fci_ret.4_1;
+  if (_2 == 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 3> [local count: 354334802]:
+  # DEBUG BEGIN_STMT
+  fci_context.5_3 = fci_context;
+  _54 = &MEM[(struct pfe_class_t * *)fci_context.5_3 + 6516B];
+  # DEBUG D#3 => fci_context.5_3
+  ret_38 = fci_mirror_cmd_update_set_filter.isra.0 (_54, mirror_33(D), &fci_ret, mirror_cmd_34(D));
+  # DEBUG ret => ret_38
+  # DEBUG BEGIN_STMT
+  fci_ret.6_4 = fci_ret;
+  _5 = *fci_ret.6_4;
+  if (_5 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 4> [local count: 177167401]:
+  # DEBUG BEGIN_STMT
+  _6 = mirror_cmd_34(D)->m_actions;
+  _7 = (long unsigned int) _6;
+  _8 = _7 >> 24;
+  _9 = _7 >> 8;
+  _10 = _9 & 65280;
+  _11 = _8 | _10;
+  _12 = _7 << 8;
+  _13 = _12 & 16711680;
+  _14 = _11 | _13;
+  _15 = _7 << 24;
+  _16 = _14 | _15;
+  _17 = (<unnamed type>) _16;
+  mirror_cmd_34(D)->m_actions = _17;
+  # DEBUG BEGIN_STMT
+  if (_17 == 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 5> [local count: 88583701]:
+  # DEBUG BEGIN_STMT
+  _18 = *mirror_33(D);
+  ret_48 = pfe_mirror_set_actions (_18, 0, 0B);
+  # DEBUG ret => ret_48
+  # DEBUG BEGIN_STMT
+  if (ret_48 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 6> [local count: 29232621]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed to set modification action: MODIFY_ACT_NONE.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 419, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fci_ret.7_19 = fci_ret;
+  *fci_ret.7_19 = 65535;
+  goto <bb 11>; [100.00%]
+
+  <bb 7> [local count: 88583701]:
+  # DEBUG BEGIN_STMT
+  autolibc_memset (&m_args, 0, 60);
+  # DEBUG BEGIN_STMT
+  # DEBUG m_actions => 0
+  # DEBUG BEGIN_STMT
+  _20 = mirror_cmd_34(D)->m_actions;
+  _21 = (long unsigned int) _20;
+  _22 = _21 & 2;
+  if (_22 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 44291850]:
+  # DEBUG BEGIN_STMT
+  _23 = mirror_cmd_34(D)->m_args.vlan;
+  m_args.vlan = _23;
+  # DEBUG BEGIN_STMT
+  # DEBUG m_actions => 2
+
+  <bb 9> [local count: 88583701]:
+  # m_actions_28 = PHI <0(7), 2(8)>
+  # DEBUG m_actions => m_actions_28
+  # DEBUG BEGIN_STMT
+  _24 = m_actions_28 << 24;
+  # DEBUG m_actions => _24
+  # DEBUG BEGIN_STMT
+  _25 = *mirror_33(D);
+  ret_43 = pfe_mirror_set_actions (_25, _24, &m_args);
+  # DEBUG ret => ret_43
+  # DEBUG BEGIN_STMT
+  if (ret_43 != 0)
+    goto <bb 10>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 10> [local count: 29232621]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Failed to set modification actions.\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/fci_mirror.c", 441, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  fci_ret.8_26 = fci_ret;
+  *fci_ret.8_26 = 65535;
+
+  <bb 11> [local count: 1073741824]:
+  # ret_27 = PHI <ret_36(2), ret_38(3), ret_48(6), ret_43(9), ret_43(10), ret_48(5)>
+  # DEBUG ret => ret_27
+  # DEBUG BEGIN_STMT
+  fci_context ={v} {CLOBBER};
+  m_args ={v} {CLOBBER};
+  return ret_27;
+
+}
+
+
+mirror_cmd_fpp_action_register (struct pfe_mirror_t * * mirror, uint16_t * fci_ret, struct fpp_mirror_cmd_t * mirror_cmd, bool_t * break_switch)
+{
+  errno_t ret;
+  char[16] * _1;
+  struct pfe_mirror_t * _2;
+  struct pfe_mirror_t * _3;
+
+  <bb 2> [local count: 1073741823]:
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  *break_switch_7(D) = 0;
+  # DEBUG BEGIN_STMT
+  _1 = &mirror_cmd_9(D)->name;
+  _2 = pfe_mirror_get_first (1, _1);
+  *mirror_11(D) = _2;
+  # DEBUG BEGIN_STMT
+  if (_2 != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 4>; [30.00%]
+
+  <bb 3> [local count: 751619277]:
+  # DEBUG BEGIN_STMT
+  pfe_mirror_put (_2);
+  # DEBUG BEGIN_STMT
+  *mirror_11(D) = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_15(D) = 61745;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 0
+  # DEBUG BEGIN_STMT
+  *break_switch_7(D) = 1;
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 322122547]:
+  # DEBUG BEGIN_STMT
+  _3 = pfe_mirror_create (_1);
+  *mirror_11(D) = _3;
+  # DEBUG BEGIN_STMT
+  if (_3 == 0B)
+    goto <bb 5>; [18.75%]
+  else
+    goto <bb 6>; [81.25%]
+
+  <bb 5> [local count: 60397977]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *fci_ret_15(D) = 65535;
+  # DEBUG BEGIN_STMT
+  # DEBUG ret => 115
+  # DEBUG BEGIN_STMT
+  *break_switch_7(D) = 1;
+
+  <bb 6> [local count: 1073741824]:
+  # ret_4 = PHI <0(3), 0(4), 115(5)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  return ret_4;
+
+}
+
+
+get_egress_interface (struct fpp_mirror_cmd_t * * reply_buf, struct pfe_mirror_t * tmp_mirror)
+{
+  const char * str;
+  struct fpp_mirror_cmd_t * _1;
+  char[16] * _2;
+  pfe_ct_phy_if_id_t _10;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  str_6 = pfe_mirror_get_name (tmp_mirror_4(D));
+  # DEBUG str => str_6
+  # DEBUG BEGIN_STMT
+  _1 = *reply_buf_7(D);
+  _2 = &_1->name;
+  autolibc_strncpy (_2, str_6, 15);
+  # DEBUG BEGIN_STMT
+  _10 = pfe_mirror_get_egress_port (tmp_mirror_4(D));
+  return _10;
+
+}
+
+

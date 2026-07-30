@@ -1,0 +1,3917 @@
+pfe_gpi_get_special_stats (const struct pfe_gpi_t * gpi, struct pfe_gpi_special_stats_t * special_stats)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_2 = 0;
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _1 = gpi_4(D)->gpi_base_va;
+  pfe_gpi_cfg_get_special_stats (_1, special_stats_5(D));
+  # DEBUG BEGIN_STMT
+  _7 = ret_2;
+  return _7;
+
+}
+
+
+pfe_gpi_get_stat_value (const struct pfe_gpi_t * gpi, uint32_t stat_id)
+{
+  uint32_t stat_value;
+  unsigned int _1;
+  uint32_t _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = gpi_3(D)->gpi_base_va;
+  stat_value_6 = pfe_gpi_cfg_get_stat_value (_1, stat_id_4(D));
+  # DEBUG stat_value => stat_value_6
+  # DEBUG BEGIN_STMT
+  _7 = stat_value_6;
+  return _7;
+
+}
+
+
+pfe_gpi_shp_get_drop_cnt (const struct pfe_gpi_t * gpi, uint8_t id, uint32_t * cnt)
+{
+  errno_t ret;
+  unsigned int _1;
+  long unsigned int _2;
+  errno_t _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_8 = pfe_gpi_shp_args_checks (gpi_5(D), id_6(D));
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  if (ret_8 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  _2 = pfe_gpi_cfg_shp_get_drop_cnt (_1, id_6(D));
+  *cnt_10(D) = _2;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _12 = ret_8;
+  return _12;
+
+}
+
+
+pfe_gpi_shp_get_limits (const struct pfe_gpi_t * gpi, uint8_t id, int32_t * max_credit, int32_t * min_credit)
+{
+  errno_t ret;
+  uint32_t abs_min_cred;
+  uint32_t abs_max_cred;
+  unsigned int _1;
+  long unsigned int abs_max_cred.10_2;
+  signed int abs_max_cred.11_3;
+  long unsigned int abs_min_cred.12_4;
+  signed int abs_min_cred.13_5;
+  long unsigned int abs_max_cred.14_6;
+  long int abs_max_cred.15_7;
+  long unsigned int abs_min_cred.16_8;
+  long int abs_min_cred.17_9;
+  long int _10;
+  errno_t _24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  abs_max_cred = 0;
+  abs_min_cred = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_18 = pfe_gpi_shp_args_checks (gpi_15(D), id_16(D));
+  # DEBUG ret => ret_18
+  # DEBUG BEGIN_STMT
+  if (ret_18 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_15(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_get_limits (_1, id_16(D), &abs_max_cred, &abs_min_cred);
+  # DEBUG BEGIN_STMT
+  abs_max_cred.10_2 = abs_max_cred;
+  abs_max_cred.11_3 = (signed int) abs_max_cred.10_2;
+  # DEBUG BEGIN_STMT
+  abs_min_cred.12_4 = abs_min_cred;
+  abs_min_cred.13_5 = (signed int) abs_min_cred.12_4;
+  # DEBUG BEGIN_STMT
+  abs_max_cred.14_6 = abs_max_cred;
+  abs_max_cred.15_7 = (long int) abs_max_cred.14_6;
+  *max_credit_20(D) = abs_max_cred.15_7;
+  # DEBUG BEGIN_STMT
+  abs_min_cred.16_8 = abs_min_cred;
+  abs_min_cred.17_9 = (long int) abs_min_cred.16_8;
+  _10 = -abs_min_cred.17_9;
+  *min_credit_22(D) = _10;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _24 = ret_18;
+  abs_max_cred ={v} {CLOBBER};
+  abs_min_cred ={v} {CLOBBER};
+  return _24;
+
+}
+
+
+pfe_gpi_shp_set_limits (const struct pfe_gpi_t * gpi, uint8_t id, int32_t max_credit, int32_t min_credit)
+{
+  errno_t ret;
+  unsigned int max_credit.7_1;
+  unsigned int min_credit.8_2;
+  unsigned int _3;
+  unsigned int _4;
+  long unsigned int max_credit.9_5;
+  long int _6;
+  long unsigned int _7;
+  errno_t _24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_14 = pfe_gpi_shp_args_checks (gpi_11(D), id_12(D));
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  max_credit.7_1 = (unsigned int) max_credit_15(D);
+  if (max_credit.7_1 > 4194303)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Max credit value exceeded\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_gpi.c", 1470, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_23 = 22;
+  # DEBUG ret => ret_23
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  min_credit.8_2 = (unsigned int) min_credit_16(D);
+  _3 = min_credit.8_2 + 4194303;
+  if (_3 > 4194303)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] Min credit value exceeded\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_gpi.c", 1475, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_20 = 22;
+  # DEBUG ret => ret_20
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _4 = gpi_11(D)->gpi_base_va;
+  max_credit.9_5 = (long unsigned int) max_credit_15(D);
+  _6 = -min_credit_16(D);
+  _7 = (long unsigned int) _6;
+  pfe_gpi_cfg_shp_set_limits (_4, id_12(D), max_credit.9_5, _7);
+
+  <bb 8> :
+  # ret_8 = PHI <ret_14(2), ret_23(4), ret_20(6), ret_14(7)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _24 = ret_8;
+  return _24;
+
+}
+
+
+pfe_gpi_shp_get_idle_slope (const struct pfe_gpi_t * gpi, uint8_t id, uint32_t * isl)
+{
+  errno_t ret;
+  bool_t is_bps;
+  uint32_t weight;
+  pfe_iqos_shp_rate_mode_t mode;
+  unsigned int _1;
+  <unnamed type> mode.5_2;
+  unsigned int _3;
+  long unsigned int weight.6_4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  errno_t _24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  mode = 0;
+  # DEBUG BEGIN_STMT
+  weight = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_16 = pfe_gpi_shp_args_checks (gpi_13(D), id_14(D));
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_13(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_get_mode (_1, id_14(D), &mode);
+  # DEBUG BEGIN_STMT
+  mode.5_2 = mode;
+  if (mode.5_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  is_bps_19 = 1;
+  # DEBUG is_bps => is_bps_19
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  is_bps_18 = 0;
+  # DEBUG is_bps => is_bps_18
+
+  <bb 6> :
+  # is_bps_8 = PHI <is_bps_19(4), is_bps_18(5)>
+  # DEBUG is_bps => is_bps_8
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _3 = gpi_13(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_get_isl_weight (_3, id_14(D), &weight);
+  # DEBUG BEGIN_STMT
+  weight.6_4 = weight;
+  _5 = gpi_13(D)->clk_div_log2;
+  _6 = gpi_13(D)->sys_clk_mhz;
+  _7 = igqos_convert_weight_to_isl (weight.6_4, _5, _6, is_bps_8);
+  *isl_22(D) = _7;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _24 = ret_16;
+  mode ={v} {CLOBBER};
+  weight ={v} {CLOBBER};
+  return _24;
+
+}
+
+
+pfe_gpi_shp_set_idle_slope (struct pfe_gpi_t * gpi, uint8_t id, uint32_t isl)
+{
+  errno_t ret;
+  bool_t is_bps;
+  uint32_t weight;
+  pfe_iqos_shp_rate_mode_t mode;
+  unsigned int _1;
+  <unnamed type> mode.3_2;
+  long unsigned int _3;
+  long unsigned int _4;
+  unsigned int _5;
+  long unsigned int _6;
+  long unsigned int weight.4_7;
+  errno_t _24;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  mode = 0;
+  # DEBUG BEGIN_STMT
+  weight = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_16 = pfe_gpi_shp_args_checks (gpi_13(D), id_14(D));
+  # DEBUG ret => ret_16
+  # DEBUG BEGIN_STMT
+  if (ret_16 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = gpi_13(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_get_mode (_1, id_14(D), &mode);
+  # DEBUG BEGIN_STMT
+  mode.3_2 = mode;
+  if (mode.3_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  is_bps_19 = 1;
+  # DEBUG is_bps => is_bps_19
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  is_bps_18 = 0;
+  # DEBUG is_bps => is_bps_18
+
+  <bb 6> :
+  # is_bps_8 = PHI <is_bps_19(4), is_bps_18(5)>
+  # DEBUG is_bps => is_bps_8
+  # DEBUG BEGIN_STMT
+  _3 = gpi_13(D)->sys_clk_mhz;
+  _4 = igqos_find_optimal_weight (isl_20(D), _3, is_bps_8, &weight);
+  gpi_13(D)->clk_div_log2 = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _5 = gpi_13(D)->gpi_base_va;
+  _6 = gpi_13(D)->clk_div_log2;
+  weight.4_7 = weight;
+  pfe_gpi_cfg_shp_set_isl_weight (_5, id_14(D), _6, weight.4_7);
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _24 = ret_16;
+  mode ={v} {CLOBBER};
+  weight ={v} {CLOBBER};
+  return _24;
+
+}
+
+
+pfe_gpi_shp_get_type (const struct pfe_gpi_t * gpi, uint8_t id, pfe_iqos_shp_type_t * type)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_shp_args_checks (gpi_4(D), id_5(D));
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_4(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_get_type (_1, id_5(D), type_8(D));
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _10 = ret_7;
+  return _10;
+
+}
+
+
+pfe_gpi_shp_set_type (const struct pfe_gpi_t * gpi, uint8_t id, pfe_iqos_shp_type_t type)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_8 = pfe_gpi_shp_args_checks (gpi_5(D), id_6(D));
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  if (ret_8 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (type_9(D) > 2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_11 = 22;
+  # DEBUG ret => ret_11
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_set_type (_1, id_6(D), type_9(D));
+
+  <bb 6> :
+  # ret_2 = PHI <ret_8(2), ret_11(4), ret_8(5)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _12 = ret_2;
+  return _12;
+
+}
+
+
+pfe_gpi_shp_get_mode (const struct pfe_gpi_t * gpi, uint8_t id, pfe_iqos_shp_rate_mode_t * mode)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_shp_args_checks (gpi_4(D), id_5(D));
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_4(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_get_mode (_1, id_5(D), mode_8(D));
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _10 = ret_7;
+  return _10;
+
+}
+
+
+pfe_gpi_shp_set_mode (const struct pfe_gpi_t * gpi, uint8_t id, pfe_iqos_shp_rate_mode_t mode)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_8 = pfe_gpi_shp_args_checks (gpi_5(D), id_6(D));
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  if (ret_8 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (mode_9(D) > 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_11 = 22;
+  # DEBUG ret => ret_11
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_set_mode (_1, id_6(D), mode_9(D));
+
+  <bb 6> :
+  # ret_2 = PHI <ret_8(2), ret_11(4), ret_8(5)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _12 = ret_2;
+  return _12;
+
+}
+
+
+pfe_gpi_shp_disable (const struct pfe_gpi_t * gpi, uint8_t id)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_shp_args_checks (gpi_4(D), id_5(D));
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_4(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_disable (_1, id_5(D));
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _9 = ret_7;
+  return _9;
+
+}
+
+
+pfe_gpi_shp_enable (struct pfe_gpi_t * gpi, uint8_t id)
+{
+  errno_t ret;
+  unsigned int _1;
+  unsigned char _2;
+  unsigned int _3;
+  long unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  errno_t _19;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_12 = pfe_gpi_shp_args_checks (gpi_9(D), id_10(D));
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_9(D)->gpi_base_va;
+  _2 = pfe_gpi_cfg_shp_is_enabled (_1, id_10(D));
+  if (_2 != 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = gpi_9(D)->cbus_base_va;
+  _4 = pfe_gpi_cfg_get_sys_clk_mhz (_3);
+  gpi_9(D)->sys_clk_mhz = _4;
+  # DEBUG BEGIN_STMT
+  gpi_9(D)->clk_div_log2 = 0;
+  # DEBUG BEGIN_STMT
+  _5 = gpi_9(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_default_init (_5, id_10(D));
+  # DEBUG BEGIN_STMT
+  _6 = gpi_9(D)->gpi_base_va;
+  pfe_gpi_cfg_shp_enable (_6, id_10(D));
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _19 = ret_12;
+  return _19;
+
+}
+
+
+pfe_gpi_shp_is_enabled (const struct pfe_gpi_t * gpi, uint8_t id)
+{
+  errno_t ret;
+  bool_t is_enabled;
+  unsigned int _1;
+  bool_t _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  is_enabled_4 = 0;
+  # DEBUG is_enabled => is_enabled_4
+  # DEBUG BEGIN_STMT
+  ret_9 = pfe_gpi_shp_args_checks (gpi_6(D), id_7(D));
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_6(D)->gpi_base_va;
+  is_enabled_11 = pfe_gpi_cfg_shp_is_enabled (_1, id_7(D));
+  # DEBUG is_enabled => is_enabled_11
+
+  <bb 4> :
+  # is_enabled_2 = PHI <is_enabled_4(2), is_enabled_11(3)>
+  # DEBUG is_enabled => is_enabled_2
+  # DEBUG BEGIN_STMT
+  _12 = is_enabled_2;
+  return _12;
+
+}
+
+
+pfe_gpi_wred_get_thr (const struct pfe_gpi_t * gpi, pfe_iqos_queue_t queue, pfe_iqos_wred_thr_t thr, uint16_t * val)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_null_arg_check_return (gpi_5(D), 22);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (queue_8(D) > 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (thr_9(D) > 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_12 = 22;
+  # DEBUG ret => ret_12
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  pfe_gpi_cfg_wred_get_thr (_1, queue_8(D), thr_9(D), val_10(D));
+
+  <bb 7> :
+  # ret_2 = PHI <ret_7(2), ret_12(5), ret_7(6)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _13 = ret_2;
+  return _13;
+
+}
+
+
+pfe_gpi_wred_set_thr (const struct pfe_gpi_t * gpi, pfe_iqos_queue_t queue, pfe_iqos_wred_thr_t thr, uint16_t val)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_null_arg_check_return (gpi_5(D), 22);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (queue_8(D) > 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (thr_9(D) > 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_14 = 22;
+  # DEBUG ret => ret_14
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (queue_8(D) == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  if (val_10(D) > 8192)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  ret_11 = 22;
+  # DEBUG ret => ret_11
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  if (queue_8(D) != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  if (val_10(D) > 512)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  ret_12 = 22;
+  # DEBUG ret => ret_12
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  pfe_gpi_cfg_wred_set_thr (_1, queue_8(D), thr_9(D), val_10(D));
+
+  <bb 13> :
+  # ret_2 = PHI <ret_7(2), ret_14(5), ret_11(8), ret_12(11), ret_7(12)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _15 = ret_2;
+  return _15;
+
+}
+
+
+pfe_gpi_wred_get_prob (const struct pfe_gpi_t * gpi, pfe_iqos_queue_t queue, pfe_iqos_wred_zone_t zone, uint8_t * val)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_null_arg_check_return (gpi_5(D), 22);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (queue_8(D) > 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (zone_9(D) > 3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_12 = 22;
+  # DEBUG ret => ret_12
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  pfe_gpi_cfg_wred_get_prob (_1, queue_8(D), zone_9(D), val_10(D));
+
+  <bb 7> :
+  # ret_2 = PHI <ret_7(2), ret_12(5), ret_7(6)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _13 = ret_2;
+  return _13;
+
+}
+
+
+pfe_gpi_wred_set_prob (const struct pfe_gpi_t * gpi, pfe_iqos_queue_t queue, pfe_iqos_wred_zone_t zone, uint8_t val)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_null_arg_check_return (gpi_5(D), 22);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (queue_8(D) > 2)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (zone_9(D) > 3)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (val_10(D) > 15)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_12 = 22;
+  # DEBUG ret => ret_12
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  pfe_gpi_cfg_wred_set_prob (_1, queue_8(D), zone_9(D), val_10(D));
+
+  <bb 8> :
+  # ret_2 = PHI <ret_7(2), ret_12(6), ret_7(7)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _13 = ret_2;
+  return _13;
+
+}
+
+
+pfe_gpi_wred_disable (const struct pfe_gpi_t * gpi, pfe_iqos_queue_t queue)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_null_arg_check_return (gpi_5(D), 22);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (queue_8(D) > 2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_10 = 22;
+  # DEBUG ret => ret_10
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  pfe_gpi_cfg_wred_disable (_1, queue_8(D));
+
+  <bb 6> :
+  # ret_2 = PHI <ret_7(2), ret_10(4), ret_7(5)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _11 = ret_2;
+  return _11;
+
+}
+
+
+pfe_gpi_wred_enable (const struct pfe_gpi_t * gpi, pfe_iqos_queue_t queue)
+{
+  errno_t ret;
+  unsigned int _1;
+  unsigned char _2;
+  unsigned int _3;
+  errno_t _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_9 = pfe_gpi_null_arg_check_return (gpi_7(D), 22);
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (queue_10(D) > 2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_14 = 22;
+  # DEBUG ret => ret_14
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_7(D)->gpi_base_va;
+  _2 = pfe_gpi_cfg_wred_is_enabled (_1, queue_10(D));
+  if (_2 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_13 = 0;
+  # DEBUG ret => ret_13
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _3 = gpi_7(D)->gpi_base_va;
+  pfe_gpi_cfg_wred_enable (_3, queue_10(D));
+
+  <bb 8> :
+  # ret_4 = PHI <ret_9(2), ret_14(4), ret_13(6), ret_9(7)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _15 = ret_4;
+  return _15;
+
+}
+
+
+pfe_gpi_wred_is_enabled (const struct pfe_gpi_t * gpi, pfe_iqos_queue_t queue)
+{
+  errno_t ret;
+  bool_t is_enabled;
+  unsigned int _1;
+  bool_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_null_arg_check_return (gpi_5(D), 22);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  is_enabled_12 = 0;
+  # DEBUG is_enabled => is_enabled_12
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  if (queue_8(D) > 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  is_enabled_11 = 0;
+  # DEBUG is_enabled => is_enabled_11
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  is_enabled_10 = pfe_gpi_cfg_wred_is_enabled (_1, queue_8(D));
+  # DEBUG is_enabled => is_enabled_10
+
+  <bb 7> :
+  # is_enabled_2 = PHI <is_enabled_12(3), is_enabled_11(5), is_enabled_10(6)>
+  # DEBUG is_enabled => is_enabled_2
+  # DEBUG BEGIN_STMT
+  _13 = is_enabled_2;
+  return _13;
+
+}
+
+
+pfe_gpi_qos_get_next_flow (struct pfe_gpi_t * gpi, uint8_t * id, struct pfe_iqos_flow_spec_t * flow)
+{
+  uint8_t entry_id;
+  errno_t ret;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_id_6 = igqos_class_get_next_active (gpi_4(D));
+  # DEBUG entry_id => entry_id_6
+  # DEBUG BEGIN_STMT
+  if (entry_id_6 == 64)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_12 = 75;
+  # DEBUG ret => ret_12
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *id_7(D) = entry_id_6;
+  # DEBUG BEGIN_STMT
+  ret_11 = pfe_gpi_qos_get_flow (gpi_4(D), entry_id_6, flow_9(D));
+  # DEBUG ret => ret_11
+
+  <bb 5> :
+  # ret_1 = PHI <ret_12(3), ret_11(4)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  _13 = ret_1;
+  return _13;
+
+}
+
+
+pfe_gpi_qos_get_first_flow (struct pfe_gpi_t * gpi, uint8_t * id, struct pfe_iqos_flow_spec_t * flow)
+{
+  uint8_t entry_id;
+  errno_t ret;
+  errno_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  entry_id_6 = igqos_class_get_first_active (gpi_4(D));
+  # DEBUG entry_id => entry_id_6
+  # DEBUG BEGIN_STMT
+  if (entry_id_6 == 64)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_12 = 75;
+  # DEBUG ret => ret_12
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  *id_7(D) = entry_id_6;
+  # DEBUG BEGIN_STMT
+  ret_11 = pfe_gpi_qos_get_flow (gpi_4(D), entry_id_6, flow_9(D));
+  # DEBUG ret => ret_11
+
+  <bb 5> :
+  # ret_1 = PHI <ret_12(3), ret_11(4)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  _13 = ret_1;
+  return _13;
+
+}
+
+
+pfe_gpi_qos_add_flow (struct pfe_gpi_t * gpi, uint8_t id, struct pfe_iqos_flow_spec_t * flow)
+{
+  errno_t ret;
+  uint8_t entry_id;
+  uint32_t class_table_entry[8];
+  unsigned char _1;
+  int _2;
+  unsigned int _3;
+  long unsigned int _4;
+  errno_t _25;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = id_9(D) + 192;
+  if (_1 <= 190)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_24 = 22;
+  # DEBUG ret => ret_24
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = igqos_flow_entry_validate (flow_11(D));
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_23 = 22;
+  # DEBUG ret => ret_23
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  igqos_flow_entry_fixup (flow_11(D));
+  # DEBUG BEGIN_STMT
+  if (id_9(D) == 255)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  entry_id_17 = igqos_class_find_first_free (gpi_15(D));
+  # DEBUG entry_id => entry_id_17
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  entry_id_14 = id_9(D);
+  # DEBUG entry_id => entry_id_14
+
+  <bb 9> :
+  # entry_id_5 = PHI <entry_id_17(7), entry_id_14(8)>
+  # DEBUG entry_id => entry_id_5
+  # DEBUG BEGIN_STMT
+  igqos_convert_flow_to_entry (flow_11(D), &class_table_entry);
+  # DEBUG BEGIN_STMT
+  _3 = gpi_15(D)->gpi_base_va;
+  _4 = (long unsigned int) entry_id_5;
+  pfe_gpi_cfg_qos_write_flow_entry_req (_3, _4, &class_table_entry);
+  # DEBUG BEGIN_STMT
+  ret_21 = igqos_entry_ready_timeout (gpi_15(D));
+  # DEBUG ret => ret_21
+  # DEBUG BEGIN_STMT
+  if (ret_21 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  igqos_class_set_active (gpi_15(D), entry_id_5);
+
+  <bb 11> :
+  # ret_6 = PHI <ret_24(3), ret_23(5), ret_21(9), ret_21(10)>
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  _25 = ret_6;
+  class_table_entry ={v} {CLOBBER};
+  return _25;
+
+}
+
+
+pfe_gpi_qos_rem_flow (struct pfe_gpi_t * gpi, uint8_t id)
+{
+  errno_t ret;
+  unsigned char _1;
+  unsigned int _2;
+  long unsigned int _3;
+  errno_t _16;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (id_6(D) > 63)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_15 = 22;
+  # DEBUG ret => ret_15
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = igqos_class_is_active (gpi_8(D), id_6(D));
+  if (_1 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _2 = gpi_8(D)->gpi_base_va;
+  _3 = (long unsigned int) id_6(D);
+  pfe_gpi_cfg_qos_clear_flow_entry_req (_2, _3);
+  # DEBUG BEGIN_STMT
+  ret_13 = igqos_entry_ready_timeout (gpi_8(D));
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (ret_13 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  igqos_class_clear_active (gpi_8(D), id_6(D));
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  ret_10 = 22;
+  # DEBUG ret => ret_10
+
+  <bb 8> :
+  # ret_4 = PHI <ret_15(3), ret_13(6), ret_10(7), ret_13(5)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _16 = ret_4;
+  return _16;
+
+}
+
+
+pfe_gpi_qos_get_flow (const struct pfe_gpi_t * gpi, uint8_t id, struct pfe_iqos_flow_spec_t * flow)
+{
+  errno_t ret;
+  uint32_t class_table_entry[8];
+  unsigned int _1;
+  long unsigned int _2;
+  unsigned int _3;
+  errno_t _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  class_table_entry = {};
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (id_8(D) > 63)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_16 = 22;
+  # DEBUG ret => ret_16
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_9(D)->gpi_base_va;
+  _2 = (long unsigned int) id_8(D);
+  pfe_gpi_cfg_qos_rd_fl_entry_req (_1, _2);
+  # DEBUG BEGIN_STMT
+  ret_12 = igqos_entry_ready_timeout (gpi_9(D));
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = gpi_9(D)->gpi_base_va;
+  pfe_gpi_cfg_qos_rd_fl_entry_resp (_3, &class_table_entry);
+  # DEBUG BEGIN_STMT
+  igqos_convert_entry_to_flow (&class_table_entry, flow_14(D));
+
+  <bb 6> :
+  # ret_4 = PHI <ret_16(3), ret_12(4), ret_12(5)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _17 = ret_4;
+  class_table_entry ={v} {CLOBBER};
+  return _17;
+
+}
+
+
+pfe_gpi_qos_disable (const struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_6 = pfe_gpi_null_arg_check_return (gpi_4(D), 22);
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  if (ret_6 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_4(D)->gpi_base_va;
+  pfe_gpi_cfg_qos_disable (_1);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _8 = ret_6;
+  return _8;
+
+}
+
+
+pfe_gpi_qos_enable (struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  unsigned int _1;
+  unsigned char _2;
+  unsigned int _3;
+  errno_t _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_9 = pfe_gpi_null_arg_check_return (gpi_7(D), 22);
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_7(D)->gpi_base_va;
+  _2 = pfe_gpi_cfg_qos_is_enabled (_1);
+  if (_2 != 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_12 = pfe_gpi_qos_reset (gpi_7(D));
+  # DEBUG ret => ret_12
+  # DEBUG BEGIN_STMT
+  if (ret_12 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = gpi_7(D)->gpi_base_va;
+  pfe_gpi_cfg_qos_enable (_3);
+
+  <bb 6> :
+  # ret_4 = PHI <ret_9(2), ret_9(3), ret_12(4), ret_12(5)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _14 = ret_4;
+  return _14;
+
+}
+
+
+pfe_gpi_qos_reset (struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_null_arg_check_return (gpi_5(D), 22);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_9 = igqos_class_clear_flow_entry_table (gpi_5(D));
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_11 = igqos_class_clear_lru_entry_table (gpi_5(D));
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  if (ret_11 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  pfe_gpi_cfg_qos_default_init (_1);
+  # DEBUG BEGIN_STMT
+  igqos_class_clear_active_all (gpi_5(D));
+
+  <bb 6> :
+  # ret_2 = PHI <ret_7(2), ret_9(3), ret_11(4), ret_11(5)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  _14 = ret_2;
+  return _14;
+
+}
+
+
+pfe_gpi_qos_is_enabled (const struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  bool_t is_enabled;
+  unsigned int _1;
+  bool_t _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_null_arg_check_return (gpi_5(D), 22);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  is_enabled_10 = pfe_gpi_cfg_qos_is_enabled (_1);
+  # DEBUG is_enabled => is_enabled_10
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  is_enabled_8 = 0;
+  # DEBUG is_enabled => is_enabled_8
+
+  <bb 5> :
+  # is_enabled_2 = PHI <is_enabled_10(3), is_enabled_8(4)>
+  # DEBUG is_enabled => is_enabled_2
+  # DEBUG BEGIN_STMT
+  _11 = is_enabled_2;
+  return _11;
+
+}
+
+
+pfe_gpi_destroy (struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (gpi_6(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  pfe_gpi_disable (gpi_6(D));
+  # DEBUG BEGIN_STMT
+  _1 = gpi_6(D)->gpi_base_offset;
+  if (_1 == 704512)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _2 = gpi_6(D)->gpi_base_offset;
+  if (_2 == 720896)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _3 = gpi_6(D)->gpi_base_offset;
+  if (_3 == 737280)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_10 = pfe_gpi_qos_reset (gpi_6(D));
+  # DEBUG ret => ret_10
+  # DEBUG BEGIN_STMT
+  if (ret_10 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] GPI QOS reset timed-out\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_gpi.c", 910, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ret_14 = pfe_gpi_reset (gpi_6(D));
+  # DEBUG ret => ret_14
+  # DEBUG BEGIN_STMT
+  if (ret_14 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] GPI reset timed-out\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_gpi.c", 917, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  return;
+
+}
+
+
+pfe_gpi_disable (const struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  unsigned int _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_6 = pfe_gpi_null_arg_check_return (gpi_4(D), 22);
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  if (ret_6 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_4(D)->gpi_base_va;
+  pfe_gpi_cfg_disable (_1);
+
+  <bb 4> :
+  return;
+
+}
+
+
+pfe_gpi_enable (const struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  unsigned int _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_6 = pfe_gpi_null_arg_check_return (gpi_4(D), 22);
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  if (ret_6 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_4(D)->gpi_base_va;
+  pfe_gpi_cfg_enable (_1);
+
+  <bb 4> :
+  return;
+
+}
+
+
+pfe_gpi_reset (const struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  unsigned int _1;
+  errno_t _12;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_7 = pfe_gpi_null_arg_check_return (gpi_5(D), 22);
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  if (ret_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_5(D)->gpi_base_va;
+  ret_9 = pfe_gpi_cfg_reset (_1);
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  if (ret_9 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] GPI reset timed-out\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_gpi.c", 861, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+
+  <bb 5> :
+  # ret_2 = PHI <ret_7(2), ret_9(3), ret_9(4)>
+  # DEBUG ret => ret_2
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _12 = ret_2;
+  return _12;
+
+}
+
+
+pfe_gpi_create (addr_t cbus_base_va, addr_t gpi_base, const struct pfe_gpi_cfg_t * cfg, pfe_xxgpi_id_t xxgpi_id)
+{
+  errno_t ret;
+  struct pfe_gpi_t * gpi;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  int _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  long unsigned int _8;
+  unsigned int _9;
+  struct pfe_gpi_t * _39;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = xxgpi_id_14(D) > 6;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] xxGPI id out of range\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_gpi.c", 796, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  gpi_38 = 0B;
+  # DEBUG gpi => gpi_38
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = (int) xxgpi_id_14(D);
+  gpi_15 = &xxgpi_instance[_4];
+  # DEBUG gpi => gpi_15
+  # DEBUG BEGIN_STMT
+  autolibc_memset (gpi_15, 0, 32);
+  # DEBUG BEGIN_STMT
+  gpi_15->cbus_base_va = cbus_base_va_18(D);
+  # DEBUG BEGIN_STMT
+  gpi_15->gpi_base_offset = gpi_base_20(D);
+  # DEBUG BEGIN_STMT
+  _5 = gpi_15->cbus_base_va;
+  _6 = gpi_15->gpi_base_offset;
+  _7 = _5 + _6;
+  gpi_15->gpi_base_va = _7;
+  # DEBUG BEGIN_STMT
+  _8 = pfe_gpi_cfg_get_sys_clk_mhz (cbus_base_va_18(D));
+  gpi_15->sys_clk_mhz = _8;
+  # DEBUG BEGIN_STMT
+  ret_26 = pfe_gpi_reset (gpi_15);
+  # DEBUG ret => ret_26
+  # DEBUG BEGIN_STMT
+  if (ret_26 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  gpi_35 = 0B;
+  # DEBUG gpi => gpi_35
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  switch (gpi_base_20(D)) <default: <L16> [INV], case 704512: <L4> [INV], case 720896: <L4> [INV], case 737280: <L4> [INV]>
+
+  <bb 7> :
+<L4>:
+  # DEBUG BEGIN_STMT
+  ret_28 = pfe_gpi_qos_reset (gpi_15);
+  # DEBUG ret => ret_28
+  # DEBUG BEGIN_STMT
+  if (ret_28 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  pfe_hm_report (1, 2, 1, "[%s:%d] GPI QOS reset timed-out\n", "./tools/tresos_mcore_bsw/plugins/Eth_43_PFE_TS_T40D11M14I0R0/src/pfe_gpi.c", 827, "");
+  # DEBUG BEGIN_STMT
+  oal_util_raise_dem_for_drv_runtime_err ();
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  gpi_31 = 0B;
+  # DEBUG gpi => gpi_31
+
+  <bb 9> :
+  # gpi_10 = PHI <gpi_31(8), gpi_15(6), gpi_15(7)>
+<L16>:
+  # DEBUG gpi => gpi_10
+  # DEBUG BEGIN_STMT
+  if (gpi_10 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  pfe_gpi_disable (gpi_10);
+  # DEBUG BEGIN_STMT
+  _9 = gpi_10->gpi_base_va;
+  pfe_gpi_cfg_init (_9, cfg_33(D));
+
+  <bb 11> :
+  # gpi_11 = PHI <gpi_38(3), gpi_35(5), gpi_10(9), gpi_10(10)>
+  # DEBUG gpi => gpi_11
+  # DEBUG BEGIN_STMT
+  _39 = gpi_11;
+  return _39;
+
+}
+
+
+igqos_find_optimal_weight (uint32_t isl, uint32_t sys_clk_mhz, bool_t is_bps, uint32_t * wgt)
+{
+  uint32_t ret;
+  uint32_t k;
+  uint32_t r;
+  uint32_t l;
+  uint32_t w;
+  const uint32_t w_max;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  uint32_t _37;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  w_max_10 = 2047;
+  # DEBUG w_max => w_max_10
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  r_11 = 15;
+  # DEBUG r => r_11
+  # DEBUG BEGIN_STMT
+  l_12 = 0;
+  # DEBUG l => l_12
+  # DEBUG BEGIN_STMT
+  w_18 = igqos_convert_isl_to_weight (isl_14(D), l_12, sys_clk_mhz_15(D), is_bps_16(D));
+  # DEBUG w => w_18
+  # DEBUG BEGIN_STMT
+  if (w_18 > 2047)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *wgt_23(D) = w_18;
+  # DEBUG BEGIN_STMT
+  ret_36 = l_12;
+  # DEBUG ret => ret_36
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  w_20 = igqos_convert_isl_to_weight (isl_14(D), r_11, sys_clk_mhz_15(D), is_bps_16(D));
+  # DEBUG w => w_20
+  # DEBUG BEGIN_STMT
+  if (w_20 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  *wgt_23(D) = w_20;
+  # DEBUG BEGIN_STMT
+  ret_34 = r_11;
+  # DEBUG ret => ret_34
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  if (w_20 <= 2047)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  *wgt_23(D) = w_20;
+  # DEBUG BEGIN_STMT
+  ret_32 = r_11;
+  # DEBUG ret => ret_32
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _1 = l_5 + r_6;
+  k_26 = _1 / 2;
+  # DEBUG k => k_26
+  # DEBUG BEGIN_STMT
+  w_28 = igqos_convert_isl_to_weight (isl_14(D), k_26, sys_clk_mhz_15(D), is_bps_16(D));
+  # DEBUG w => w_28
+  # DEBUG BEGIN_STMT
+  if (w_28 <= 2047)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  l_30 = k_26;
+  # DEBUG l => l_30
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  r_29 = k_26;
+  # DEBUG r => r_29
+
+  <bb 11> :
+  # l_5 = PHI <l_12(6), l_30(9), l_5(10)>
+  # r_6 = PHI <r_11(6), r_6(9), r_29(10)>
+  # DEBUG r => r_6
+  # DEBUG l => l_5
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = r_6 - l_5;
+  if (_2 > 1)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  _3 = l_5 + r_6;
+  k_21 = _3 / 2;
+  # DEBUG k => k_21
+  # DEBUG BEGIN_STMT
+  _4 = igqos_convert_isl_to_weight (isl_14(D), k_21, sys_clk_mhz_15(D), is_bps_16(D));
+  *wgt_23(D) = _4;
+  # DEBUG BEGIN_STMT
+  ret_25 = k_21;
+  # DEBUG ret => ret_25
+
+  <bb 13> :
+  # ret_7 = PHI <ret_36(3), ret_34(5), ret_32(7), ret_25(12)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  _37 = ret_7;
+  return _37;
+
+}
+
+
+igqos_convert_weight_to_isl (uint32_t wgt, uint32_t clk_div_log2, uint32_t sys_clk_mhz, bool_t is_bps)
+{
+  uint64_t isl;
+  uint64_t clk_div;
+  long unsigned int _1;
+  long long unsigned int _2;
+  long long unsigned int _3;
+  uint32_t _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = igqos_clk_div (clk_div_log2_6(D));
+  clk_div_8 = (uint64_t) _1;
+  # DEBUG clk_div => clk_div_8
+  # DEBUG BEGIN_STMT
+  isl_10 = (uint64_t) wgt_9(D);
+  # DEBUG isl => isl_10
+  # DEBUG BEGIN_STMT
+  if (is_bps_11(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  isl_12 = isl_10 * 8;
+  # DEBUG isl => isl_12
+
+  <bb 4> :
+  # isl_4 = PHI <isl_10(2), isl_12(3)>
+  # DEBUG isl => isl_4
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = (long long unsigned int) sys_clk_mhz_13(D);
+  _3 = isl_4 * _2;
+  isl_14 = _3 * 1000000;
+  # DEBUG isl => isl_14
+  # DEBUG BEGIN_STMT
+  isl_15 = isl_14 / 256;
+  # DEBUG isl => isl_15
+  # DEBUG BEGIN_STMT
+  isl_16 = isl_15 / clk_div_8;
+  # DEBUG isl => isl_16
+  # DEBUG BEGIN_STMT
+  _17 = (uint32_t) isl_16;
+  return _17;
+
+}
+
+
+igqos_convert_isl_to_weight (uint32_t isl, uint32_t clk_div_log2, uint32_t sys_clk_mhz, bool_t is_bps)
+{
+  uint64_t wgt;
+  long long unsigned int _1;
+  long unsigned int _2;
+  long long unsigned int _3;
+  long long unsigned int _4;
+  long long unsigned int _5;
+  uint32_t _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = (long long unsigned int) isl_7(D);
+  _2 = igqos_clk_div (clk_div_log2_9(D));
+  _3 = (long long unsigned int) _2;
+  wgt_11 = _1 * _3;
+  # DEBUG wgt => wgt_11
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  wgt_12 = wgt_11 * 256;
+  # DEBUG wgt => wgt_12
+  # DEBUG BEGIN_STMT
+  _4 = (long long unsigned int) sys_clk_mhz_13(D);
+  _5 = _4 * 1000000;
+  wgt_14 = wgt_12 / _5;
+  # DEBUG wgt => wgt_14
+  # DEBUG BEGIN_STMT
+  if (is_bps_15(D) == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  wgt_16 = wgt_14 / 8;
+  # DEBUG wgt => wgt_16
+
+  <bb 4> :
+  # wgt_6 = PHI <wgt_14(2), wgt_16(3)>
+  # DEBUG wgt => wgt_6
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _17 = (uint32_t) wgt_6;
+  return _17;
+
+}
+
+
+igqos_clk_div (uint32_t clk_div_log2)
+{
+  long unsigned int _1;
+  uint32_t _3;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = clk_div_log2_2(D) + 1;
+  _3 = 1 << _1;
+  return _3;
+
+}
+
+
+pfe_gpi_shp_args_checks (const struct pfe_gpi_t * gpi, uint8_t id)
+{
+  errno_t ret;
+  errno_t _8;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_5 = pfe_gpi_null_arg_check_return (gpi_3(D), 22);
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  if (ret_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  if (id_6(D) > 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ret_7 = 22;
+  # DEBUG ret => ret_7
+
+  <bb 5> :
+  # ret_1 = PHI <ret_5(2), ret_5(3), ret_7(4)>
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  _8 = ret_1;
+  return _8;
+
+}
+
+
+igqos_convert_flow_to_entry (const struct pfe_iqos_flow_spec_t * flow, uint32_t * entry)
+{
+  uint32_t val;
+  const struct pfe_iqos_flow_args_t * args;
+  short unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned char _4;
+  unsigned char _5;
+  long unsigned int _6;
+  short unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned char _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  short unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned char _16;
+  unsigned char _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  unsigned char _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  short unsigned int _23;
+  unsigned int _24;
+  unsigned int _25;
+  unsigned char _26;
+  unsigned char _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  unsigned char _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  short unsigned int _33;
+  unsigned int _34;
+  unsigned int _35;
+  short unsigned int _36;
+  unsigned int _37;
+  unsigned int _38;
+  <unnamed type> _39;
+  <unnamed type> _40;
+  uint32_t * _41;
+  uint32_t * _42;
+  long unsigned int _62;
+  long unsigned int _65;
+  long unsigned int _68;
+  long unsigned int _71;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  args_53 = &flow_52(D)->args;
+  # DEBUG args => args_53
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  igqos_convert_flow_to_entry_reg0123 (flow_52(D), entry_55(D));
+  # DEBUG BEGIN_STMT
+  igqos_convert_flow_to_entry_reg45 (flow_52(D), entry_55(D));
+  # DEBUG BEGIN_STMT
+  val_58 = 0;
+  # DEBUG val => val_58
+  # DEBUG BEGIN_STMT
+  _1 = flow_52(D)->arg_type_mask;
+  _2 = (unsigned int) _1;
+  _3 = _2 & 2;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = args_53->tos_m;
+  _5 = _4 >> 3;
+  _6 = (long unsigned int) _5;
+  val_59 = val_58 | _6;
+  # DEBUG val => val_59
+
+  <bb 4> :
+  # val_43 = PHI <val_58(2), val_59(3)>
+  # DEBUG val => val_43
+  # DEBUG BEGIN_STMT
+  _7 = flow_52(D)->arg_type_mask;
+  _8 = (unsigned int) _7;
+  _9 = _8 & 4;
+  if (_9 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _10 = args_53->l4proto_m;
+  _11 = (long unsigned int) _10;
+  _12 = _11 << 5;
+  val_60 = val_43 | _12;
+  # DEBUG val => val_60
+
+  <bb 6> :
+  # val_44 = PHI <val_43(4), val_60(5)>
+  # DEBUG val => val_44
+  # DEBUG BEGIN_STMT
+  _13 = flow_52(D)->arg_type_mask;
+  _14 = (unsigned int) _13;
+  _15 = _14 & 8;
+  if (_15 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _16 = args_53->sip_m;
+  _17 = igqos_ip_mask_hw_encode (_16);
+  _18 = (long unsigned int) _17;
+  _19 = _18 << 13;
+  _65 = _19 & 516096;
+  val_66 = _65 | val_44;
+  # DEBUG val => val_66
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _20 = igqos_ip_mask_hw_encode (0);
+  _21 = (long unsigned int) _20;
+  _22 = _21 << 13;
+  _62 = _22 & 516096;
+  val_63 = _62 | val_44;
+  # DEBUG val => val_63
+
+  <bb 9> :
+  # val_45 = PHI <val_66(7), val_63(8)>
+  # DEBUG val => val_45
+  # DEBUG BEGIN_STMT
+  _23 = flow_52(D)->arg_type_mask;
+  _24 = (unsigned int) _23;
+  _25 = _24 & 16;
+  if (_25 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  _26 = args_53->dip_m;
+  _27 = igqos_ip_mask_hw_encode (_26);
+  _28 = (long unsigned int) _27;
+  _29 = _28 << 19;
+  _71 = _29 & 33030144;
+  val_72 = _71 | val_45;
+  # DEBUG val => val_72
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _30 = igqos_ip_mask_hw_encode (0);
+  _31 = (long unsigned int) _30;
+  _32 = _31 << 19;
+  _68 = _32 & 33030144;
+  val_69 = _68 | val_45;
+  # DEBUG val => val_69
+
+  <bb 12> :
+  # val_46 = PHI <val_72(10), val_69(11)>
+  # DEBUG val => val_46
+  # DEBUG BEGIN_STMT
+  _33 = flow_52(D)->arg_type_mask;
+  _34 = (unsigned int) _33;
+  _35 = _34 & 32;
+  if (_35 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  val_73 = val_46 | 33554432;
+  # DEBUG val => val_73
+
+  <bb 14> :
+  # val_47 = PHI <val_46(12), val_73(13)>
+  # DEBUG val => val_47
+  # DEBUG BEGIN_STMT
+  _36 = flow_52(D)->arg_type_mask;
+  _37 = (unsigned int) _36;
+  _38 = _37 & 64;
+  if (_38 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  val_74 = val_47 | 67108864;
+  # DEBUG val => val_74
+
+  <bb 16> :
+  # val_48 = PHI <val_47(14), val_74(15)>
+  # DEBUG val => val_48
+  # DEBUG BEGIN_STMT
+  _39 = flow_52(D)->action;
+  if (_39 == 1)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  val_76 = val_48 | 134217728;
+  # DEBUG val => val_76
+  goto <bb 20>; [INV]
+
+  <bb 18> :
+  # DEBUG BEGIN_STMT
+  _40 = flow_52(D)->action;
+  if (_40 == 2)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  val_75 = val_48 | 268435456;
+  # DEBUG val => val_75
+
+  <bb 20> :
+  # val_49 = PHI <val_76(17), val_48(18), val_75(19)>
+  # DEBUG val => val_49
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _41 = entry_55(D) + 24;
+  *_41 = val_49;
+  # DEBUG BEGIN_STMT
+  _42 = entry_55(D) + 28;
+  *_42 = 0;
+  return;
+
+}
+
+
+igqos_convert_flow_to_entry_reg45 (const struct pfe_iqos_flow_spec_t * flow, uint32_t * entry)
+{
+  const struct pfe_iqos_flow_args_t * args;
+  uint32_t val;
+  short unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  long unsigned int _6;
+  short unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  short unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  short unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  uint32_t * _16;
+  short unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  short unsigned int _21;
+  unsigned int _22;
+  unsigned int _23;
+  short unsigned int _24;
+  short unsigned int _25;
+  long unsigned int _26;
+  short unsigned int _27;
+  unsigned int _28;
+  unsigned int _29;
+  short unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  short unsigned int _34;
+  unsigned int _35;
+  unsigned int _36;
+  unsigned char _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  uint32_t * _40;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  args_47 = &flow_46(D)->args;
+  # DEBUG args => args_47
+  # DEBUG BEGIN_STMT
+  val_48 = 0;
+  # DEBUG val => val_48
+  # DEBUG BEGIN_STMT
+  _1 = flow_46(D)->arg_type_mask;
+  _2 = (unsigned int) _1;
+  _3 = _2 & 32;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = args_47->sport_max;
+  _5 = _4 >> 10;
+  _6 = (long unsigned int) _5;
+  val_50 = val_48 | _6;
+  # DEBUG val => val_50
+
+  <bb 4> :
+  # val_41 = PHI <val_48(2), val_50(3)>
+  # DEBUG val => val_41
+  # DEBUG BEGIN_STMT
+  _7 = flow_46(D)->arg_type_mask;
+  _8 = (unsigned int) _7;
+  _9 = _8 & 64;
+  if (_9 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _10 = args_47->dport_min;
+  _11 = (long unsigned int) _10;
+  _12 = _11 << 6;
+  val_51 = val_41 | _12;
+  # DEBUG val => val_51
+  # DEBUG BEGIN_STMT
+  _13 = args_47->dport_max;
+  _14 = (long unsigned int) _13;
+  _15 = _14 << 22;
+  val_52 = val_51 | _15;
+  # DEBUG val => val_52
+
+  <bb 6> :
+  # val_42 = PHI <val_41(4), val_52(5)>
+  # DEBUG val => val_42
+  # DEBUG BEGIN_STMT
+  _16 = entry_53(D) + 16;
+  *_16 = val_42;
+  # DEBUG BEGIN_STMT
+  val_55 = 64;
+  # DEBUG val => val_55
+  # DEBUG BEGIN_STMT
+  _17 = flow_46(D)->type_mask;
+  _18 = (long unsigned int) _17;
+  _19 = _18 << 7;
+  _20 = _19 & 130944;
+  val_56 = val_55 | _20;
+  # DEBUG val => val_56
+  # DEBUG BEGIN_STMT
+  _21 = flow_46(D)->arg_type_mask;
+  _22 = (unsigned int) _21;
+  _23 = _22 & 64;
+  if (_23 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _24 = args_47->dport_max;
+  _25 = _24 >> 10;
+  _26 = (long unsigned int) _25;
+  val_57 = val_56 | _26;
+  # DEBUG val => val_57
+
+  <bb 8> :
+  # val_43 = PHI <val_56(6), val_57(7)>
+  # DEBUG val => val_43
+  # DEBUG BEGIN_STMT
+  _27 = flow_46(D)->arg_type_mask;
+  _28 = (unsigned int) _27;
+  _29 = _28 & 1;
+  if (_29 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _30 = args_47->vlan_m;
+  _31 = (long unsigned int) _30;
+  _32 = _31 << 17;
+  _33 = _32 & 536739840;
+  val_58 = val_43 | _33;
+  # DEBUG val => val_58
+
+  <bb 10> :
+  # val_44 = PHI <val_43(8), val_58(9)>
+  # DEBUG val => val_44
+  # DEBUG BEGIN_STMT
+  _34 = flow_46(D)->arg_type_mask;
+  _35 = (unsigned int) _34;
+  _36 = _35 & 2;
+  if (_36 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _37 = args_47->tos_m;
+  _38 = (long unsigned int) _37;
+  _39 = _38 << 29;
+  val_59 = val_44 | _39;
+  # DEBUG val => val_59
+
+  <bb 12> :
+  # val_45 = PHI <val_44(10), val_59(11)>
+  # DEBUG val => val_45
+  # DEBUG BEGIN_STMT
+  _40 = entry_53(D) + 20;
+  *_40 = val_45;
+  return;
+
+}
+
+
+igqos_convert_flow_to_entry_reg0123 (const struct pfe_iqos_flow_spec_t * flow, uint32_t * entry)
+{
+  uint32_t val;
+  const struct pfe_iqos_flow_args_t * args;
+  short unsigned int _1;
+  long unsigned int _2;
+  short unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  short unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  short unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned char _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  short unsigned int _16;
+  unsigned int _17;
+  unsigned int _18;
+  unsigned char _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  short unsigned int _22;
+  unsigned int _23;
+  unsigned int _24;
+  unsigned char _25;
+  unsigned char _26;
+  long unsigned int _27;
+  short unsigned int _28;
+  unsigned int _29;
+  unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  uint32_t * _33;
+  short unsigned int _34;
+  unsigned int _35;
+  unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  short unsigned int _39;
+  unsigned int _40;
+  unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  uint32_t * _44;
+  short unsigned int _45;
+  unsigned int _46;
+  unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  short unsigned int _50;
+  unsigned int _51;
+  unsigned int _52;
+  short unsigned int _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  short unsigned int _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  uint32_t * _59;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  args_70 = &flow_69(D)->args;
+  # DEBUG args => args_70
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = flow_69(D)->type_mask;
+  _2 = (long unsigned int) _1;
+  val_72 = _2 & 1023;
+  # DEBUG val => val_72
+  # DEBUG BEGIN_STMT
+  _3 = flow_69(D)->arg_type_mask;
+  _4 = (unsigned int) _3;
+  _5 = _4 & 1;
+  if (_5 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _6 = args_70->vlan;
+  _7 = (long unsigned int) _6;
+  _8 = _7 << 10;
+  _9 = _8 & 4193280;
+  val_73 = val_72 | _9;
+  # DEBUG val => val_73
+
+  <bb 4> :
+  # val_60 = PHI <val_72(2), val_73(3)>
+  # DEBUG val => val_60
+  # DEBUG BEGIN_STMT
+  _10 = flow_69(D)->arg_type_mask;
+  _11 = (unsigned int) _10;
+  _12 = _11 & 2;
+  if (_12 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _13 = args_70->tos;
+  _14 = (long unsigned int) _13;
+  _15 = _14 << 22;
+  val_74 = val_60 | _15;
+  # DEBUG val => val_74
+
+  <bb 6> :
+  # val_61 = PHI <val_60(4), val_74(5)>
+  # DEBUG val => val_61
+  # DEBUG BEGIN_STMT
+  _16 = flow_69(D)->arg_type_mask;
+  _17 = (unsigned int) _16;
+  _18 = _17 & 4;
+  if (_18 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _19 = args_70->l4proto;
+  _20 = (long unsigned int) _19;
+  _21 = _20 << 30;
+  val_75 = val_61 | _21;
+  # DEBUG val => val_75
+
+  <bb 8> :
+  # val_62 = PHI <val_61(6), val_75(7)>
+  # DEBUG val => val_62
+  # DEBUG BEGIN_STMT
+  *entry_76(D) = val_62;
+  # DEBUG BEGIN_STMT
+  val_78 = 0;
+  # DEBUG val => val_78
+  # DEBUG BEGIN_STMT
+  _22 = flow_69(D)->arg_type_mask;
+  _23 = (unsigned int) _22;
+  _24 = _23 & 4;
+  if (_24 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  _25 = args_70->l4proto;
+  _26 = _25 >> 2;
+  _27 = (long unsigned int) _26;
+  val_79 = val_78 | _27;
+  # DEBUG val => val_79
+
+  <bb 10> :
+  # val_63 = PHI <val_78(8), val_79(9)>
+  # DEBUG val => val_63
+  # DEBUG BEGIN_STMT
+  _28 = flow_69(D)->arg_type_mask;
+  _29 = (unsigned int) _28;
+  _30 = _29 & 8;
+  if (_30 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  _31 = args_70->sip;
+  _32 = _31 << 6;
+  val_80 = val_63 | _32;
+  # DEBUG val => val_80
+
+  <bb 12> :
+  # val_64 = PHI <val_63(10), val_80(11)>
+  # DEBUG val => val_64
+  # DEBUG BEGIN_STMT
+  _33 = entry_76(D) + 4;
+  *_33 = val_64;
+  # DEBUG BEGIN_STMT
+  val_82 = 0;
+  # DEBUG val => val_82
+  # DEBUG BEGIN_STMT
+  _34 = flow_69(D)->arg_type_mask;
+  _35 = (unsigned int) _34;
+  _36 = _35 & 8;
+  if (_36 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _37 = args_70->sip;
+  _38 = _37 >> 26;
+  val_83 = val_82 | _38;
+  # DEBUG val => val_83
+
+  <bb 14> :
+  # val_65 = PHI <val_82(12), val_83(13)>
+  # DEBUG val => val_65
+  # DEBUG BEGIN_STMT
+  _39 = flow_69(D)->arg_type_mask;
+  _40 = (unsigned int) _39;
+  _41 = _40 & 16;
+  if (_41 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _42 = args_70->dip;
+  _43 = _42 << 6;
+  val_84 = val_65 | _43;
+  # DEBUG val => val_84
+
+  <bb 16> :
+  # val_66 = PHI <val_65(14), val_84(15)>
+  # DEBUG val => val_66
+  # DEBUG BEGIN_STMT
+  _44 = entry_76(D) + 8;
+  *_44 = val_66;
+  # DEBUG BEGIN_STMT
+  val_86 = 0;
+  # DEBUG val => val_86
+  # DEBUG BEGIN_STMT
+  _45 = flow_69(D)->arg_type_mask;
+  _46 = (unsigned int) _45;
+  _47 = _46 & 16;
+  if (_47 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  # DEBUG BEGIN_STMT
+  _48 = args_70->dip;
+  _49 = _48 >> 26;
+  val_87 = val_86 | _49;
+  # DEBUG val => val_87
+
+  <bb 18> :
+  # val_67 = PHI <val_86(16), val_87(17)>
+  # DEBUG val => val_67
+  # DEBUG BEGIN_STMT
+  _50 = flow_69(D)->arg_type_mask;
+  _51 = (unsigned int) _50;
+  _52 = _51 & 32;
+  if (_52 != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  _53 = args_70->sport_min;
+  _54 = (long unsigned int) _53;
+  _55 = _54 << 6;
+  val_88 = val_67 | _55;
+  # DEBUG val => val_88
+  # DEBUG BEGIN_STMT
+  _56 = args_70->sport_max;
+  _57 = (long unsigned int) _56;
+  _58 = _57 << 22;
+  val_89 = val_88 | _58;
+  # DEBUG val => val_89
+
+  <bb 20> :
+  # val_68 = PHI <val_67(18), val_89(19)>
+  # DEBUG val => val_68
+  # DEBUG BEGIN_STMT
+  _59 = entry_76(D) + 12;
+  *_59 = val_68;
+  return;
+
+}
+
+
+igqos_flow_entry_validate (const struct pfe_iqos_flow_spec_t * flow)
+{
+  errno_t ret;
+  short unsigned int _1;
+  short unsigned int _2;
+  <unnamed type> _3;
+  errno_t _11;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_6 = 22;
+  # DEBUG ret => ret_6
+  # DEBUG BEGIN_STMT
+  _1 = flow_8(D)->type_mask;
+  if (_1 <= 511)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  _2 = flow_8(D)->arg_type_mask;
+  if (_2 <= 127)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  _3 = flow_8(D)->action;
+  if (_3 <= 2)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_10 = igqos_flow_entry_validate_args (flow_8(D));
+  # DEBUG ret => ret_10
+
+  <bb 6> :
+  # ret_4 = PHI <ret_6(2), ret_6(3), ret_6(4), ret_10(5)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _11 = ret_4;
+  return _11;
+
+}
+
+
+igqos_flow_entry_validate_args (const struct pfe_iqos_flow_spec_t * flow)
+{
+  uint16_t arg_invalid_mask;
+  const struct pfe_iqos_flow_args_t * args;
+  short unsigned int _1;
+  short unsigned int _2;
+  unsigned char _3;
+  unsigned char _4;
+  short unsigned int _5;
+  short unsigned int _6;
+  unsigned char _7;
+  short unsigned int _8;
+  short unsigned int _9;
+  unsigned char _10;
+  short unsigned int _11;
+  short unsigned int _12;
+  errno_t iftmp.0_18;
+  errno_t iftmp.0_30;
+  errno_t iftmp.0_31;
+  errno_t _32;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  args_20 = &flow_19(D)->args;
+  # DEBUG args => args_20
+  # DEBUG BEGIN_STMT
+  arg_invalid_mask_21 = 0;
+  # DEBUG arg_invalid_mask => arg_invalid_mask_21
+  # DEBUG BEGIN_STMT
+  _1 = args_20->vlan;
+  if (_1 > 4095)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _2 = args_20->vlan_m;
+  if (_2 > 4095)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  arg_invalid_mask_23 = arg_invalid_mask_21 | 1;
+  # DEBUG arg_invalid_mask => arg_invalid_mask_23
+
+  <bb 5> :
+  # arg_invalid_mask_13 = PHI <arg_invalid_mask_21(3), arg_invalid_mask_23(4)>
+  # DEBUG arg_invalid_mask => arg_invalid_mask_13
+  # DEBUG BEGIN_STMT
+  _3 = args_20->sip_m;
+  if (_3 > 63)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  arg_invalid_mask_24 = arg_invalid_mask_13 | 8;
+  # DEBUG arg_invalid_mask => arg_invalid_mask_24
+
+  <bb 7> :
+  # arg_invalid_mask_14 = PHI <arg_invalid_mask_13(5), arg_invalid_mask_24(6)>
+  # DEBUG arg_invalid_mask => arg_invalid_mask_14
+  # DEBUG BEGIN_STMT
+  _4 = args_20->dip_m;
+  if (_4 > 63)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  arg_invalid_mask_25 = arg_invalid_mask_14 | 16;
+  # DEBUG arg_invalid_mask => arg_invalid_mask_25
+
+  <bb 9> :
+  # arg_invalid_mask_15 = PHI <arg_invalid_mask_14(7), arg_invalid_mask_25(8)>
+  # DEBUG arg_invalid_mask => arg_invalid_mask_15
+  # DEBUG BEGIN_STMT
+  _5 = args_20->sport_min;
+  _6 = args_20->sport_max;
+  _7 = igqos_l4_port_range_is_valid (_5, _6);
+  if (_7 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  arg_invalid_mask_27 = arg_invalid_mask_15 | 32;
+  # DEBUG arg_invalid_mask => arg_invalid_mask_27
+
+  <bb 11> :
+  # arg_invalid_mask_16 = PHI <arg_invalid_mask_15(9), arg_invalid_mask_27(10)>
+  # DEBUG arg_invalid_mask => arg_invalid_mask_16
+  # DEBUG BEGIN_STMT
+  _8 = args_20->dport_min;
+  _9 = args_20->dport_max;
+  _10 = igqos_l4_port_range_is_valid (_8, _9);
+  if (_10 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  arg_invalid_mask_29 = arg_invalid_mask_16 | 64;
+  # DEBUG arg_invalid_mask => arg_invalid_mask_29
+
+  <bb 13> :
+  # arg_invalid_mask_17 = PHI <arg_invalid_mask_16(11), arg_invalid_mask_29(12)>
+  # DEBUG arg_invalid_mask => arg_invalid_mask_17
+  # DEBUG BEGIN_STMT
+  _11 = flow_19(D)->arg_type_mask;
+  _12 = arg_invalid_mask_17 & _11;
+  if (_12 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  iftmp.0_31 = 22;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  iftmp.0_30 = 0;
+
+  <bb 16> :
+  # iftmp.0_18 = PHI <iftmp.0_31(14), iftmp.0_30(15)>
+  _32 = iftmp.0_18;
+  return _32;
+
+}
+
+
+igqos_flow_entry_fixup (struct pfe_iqos_flow_spec_t * flow)
+{
+  short unsigned int _1;
+  unsigned char _2;
+  unsigned char _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  short unsigned int _6;
+  short unsigned int _7;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = flow_12(D)->args.vlan_m;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  flow_12(D)->args.vlan_m = 4095;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _2 = flow_12(D)->args.tos_m;
+  if (_2 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  flow_12(D)->args.tos_m = 255;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _3 = flow_12(D)->args.l4proto_m;
+  if (_3 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  flow_12(D)->args.l4proto_m = 255;
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _4 = flow_12(D)->args.sport_max;
+  _5 = _4 >> 1;
+  flow_12(D)->args.sport_max = _5;
+  # DEBUG BEGIN_STMT
+  _6 = flow_12(D)->args.dport_max;
+  _7 = _6 >> 1;
+  flow_12(D)->args.dport_max = _7;
+  return;
+
+}
+
+
+igqos_l4_port_range_is_valid (uint16_t min, uint16_t max)
+{
+  bool_t ret;
+  signed short min.1_1;
+  unsigned int _2;
+  unsigned int _3;
+  bool_t _13;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_5 = 1;
+  # DEBUG ret => ret_5
+  # DEBUG BEGIN_STMT
+  if (min_6(D) > max_7(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_10 = 0;
+  # DEBUG ret => ret_10
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  min.1_1 = (signed short) min_6(D);
+  if (min.1_1 < 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  ret_9 = 0;
+  # DEBUG ret => ret_9
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ret_8 = 1;
+  # DEBUG ret => ret_8
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  if (max_7(D) > 32766)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  _2 = (unsigned int) max_7(D);
+  _3 = _2 & 1;
+  if (_3 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  ret_12 = 0;
+  # DEBUG ret => ret_12
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ret_11 = 1;
+  # DEBUG ret => ret_11
+
+  <bb 11> :
+  # ret_4 = PHI <ret_12(9), ret_11(10)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _13 = ret_4;
+  return _13;
+
+}
+
+
+igqos_convert_entry_to_flow (const uint32_t * entry, struct pfe_iqos_flow_spec_t * flow)
+{
+  uint32_t val;
+  struct pfe_iqos_flow_args_t * args;
+  short unsigned int _1;
+  short unsigned int _2;
+  long unsigned int _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  long unsigned int _6;
+  unsigned char _7;
+  long unsigned int _8;
+  unsigned char _9;
+  unsigned char _10;
+  unsigned char _11;
+  unsigned char _12;
+  unsigned char _13;
+  unsigned char _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  short unsigned int _24;
+  long unsigned int _25;
+  short unsigned int _26;
+  short unsigned int _27;
+  short unsigned int _28;
+  short unsigned int _29;
+  short unsigned int _30;
+  short unsigned int _31;
+  long unsigned int _32;
+  short unsigned int _33;
+  long unsigned int _34;
+  short unsigned int _35;
+  short unsigned int _36;
+  short unsigned int _37;
+  short unsigned int _38;
+  short unsigned int _39;
+  short unsigned int _40;
+  long unsigned int _41;
+  short unsigned int _42;
+  short unsigned int _43;
+  long unsigned int _44;
+  unsigned char _45;
+  unsigned char _46;
+  unsigned char _47;
+  unsigned char _48;
+  unsigned char _49;
+  unsigned char _50;
+  long unsigned int _51;
+  unsigned char _52;
+  long unsigned int _53;
+  unsigned char _54;
+  unsigned char _55;
+  unsigned char _56;
+  long unsigned int _57;
+  unsigned char _58;
+  unsigned char _59;
+  unsigned char _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  long unsigned int _64;
+  short unsigned int _65;
+  short unsigned int _66;
+  short unsigned int _67;
+  short unsigned int _68;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  args_72 = &flow_71(D)->args;
+  # DEBUG args => args_72
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  val_75 = *entry_74(D);
+  # DEBUG val => val_75
+  # DEBUG BEGIN_STMT
+  _1 = (short unsigned int) val_75;
+  _2 = _1 & 1023;
+  flow_71(D)->type_mask = _2;
+  # DEBUG BEGIN_STMT
+  _3 = val_75 >> 10;
+  _4 = (short unsigned int) _3;
+  _5 = _4 & 4095;
+  args_72->vlan = _5;
+  # DEBUG BEGIN_STMT
+  _6 = val_75 >> 22;
+  _7 = (unsigned char) _6;
+  args_72->tos = _7;
+  # DEBUG BEGIN_STMT
+  _8 = val_75 >> 30;
+  _9 = (unsigned char) _8;
+  _10 = _9 & 3;
+  args_72->l4proto = _10;
+  # DEBUG BEGIN_STMT
+  val_80 = MEM[(const uint32_t *)entry_74(D) + 4B];
+  # DEBUG val => val_80
+  # DEBUG BEGIN_STMT
+  _11 = args_72->l4proto;
+  _12 = (unsigned char) val_80;
+  _13 = _12 << 2;
+  _14 = _11 | _13;
+  args_72->l4proto = _14;
+  # DEBUG BEGIN_STMT
+  _15 = val_80 >> 6;
+  args_72->sip = _15;
+  # DEBUG BEGIN_STMT
+  val_83 = MEM[(const uint32_t *)entry_74(D) + 8B];
+  # DEBUG val => val_83
+  # DEBUG BEGIN_STMT
+  _16 = args_72->sip;
+  _17 = val_83 << 26;
+  _18 = _16 | _17;
+  args_72->sip = _18;
+  # DEBUG BEGIN_STMT
+  _19 = val_83 >> 6;
+  args_72->dip = _19;
+  # DEBUG BEGIN_STMT
+  val_86 = MEM[(const uint32_t *)entry_74(D) + 12B];
+  # DEBUG val => val_86
+  # DEBUG BEGIN_STMT
+  _20 = args_72->dip;
+  _21 = val_86 << 26;
+  _22 = _20 | _21;
+  args_72->dip = _22;
+  # DEBUG BEGIN_STMT
+  _23 = val_86 >> 6;
+  _24 = (short unsigned int) _23;
+  args_72->sport_min = _24;
+  # DEBUG BEGIN_STMT
+  _25 = val_86 >> 22;
+  _26 = (short unsigned int) _25;
+  _27 = _26 & 1023;
+  args_72->sport_max = _27;
+  # DEBUG BEGIN_STMT
+  val_90 = MEM[(const uint32_t *)entry_74(D) + 16B];
+  # DEBUG val => val_90
+  # DEBUG BEGIN_STMT
+  _28 = args_72->sport_max;
+  _29 = (short unsigned int) val_90;
+  _30 = _29 << 10;
+  _31 = _28 | _30;
+  args_72->sport_max = _31;
+  # DEBUG BEGIN_STMT
+  _32 = val_90 >> 6;
+  _33 = (short unsigned int) _32;
+  args_72->dport_min = _33;
+  # DEBUG BEGIN_STMT
+  _34 = val_90 >> 22;
+  _35 = (short unsigned int) _34;
+  _36 = _35 & 1023;
+  args_72->dport_max = _36;
+  # DEBUG BEGIN_STMT
+  val_94 = MEM[(const uint32_t *)entry_74(D) + 20B];
+  # DEBUG val => val_94
+  # DEBUG BEGIN_STMT
+  _37 = args_72->dport_max;
+  _38 = (short unsigned int) val_94;
+  _39 = _38 << 10;
+  _40 = _37 | _39;
+  args_72->dport_max = _40;
+  # DEBUG BEGIN_STMT
+  _41 = val_94 >> 17;
+  _42 = (short unsigned int) _41;
+  _43 = _42 & 4095;
+  args_72->vlan_m = _43;
+  # DEBUG BEGIN_STMT
+  _44 = val_94 >> 29;
+  _45 = (unsigned char) _44;
+  _46 = _45 & 7;
+  args_72->tos_m = _46;
+  # DEBUG BEGIN_STMT
+  val_98 = MEM[(const uint32_t *)entry_74(D) + 24B];
+  # DEBUG val => val_98
+  # DEBUG BEGIN_STMT
+  _47 = args_72->tos_m;
+  _48 = (unsigned char) val_98;
+  _49 = _48 << 3;
+  _50 = _47 | _49;
+  args_72->tos_m = _50;
+  # DEBUG BEGIN_STMT
+  _51 = val_98 >> 5;
+  _52 = (unsigned char) _51;
+  args_72->l4proto_m = _52;
+  # DEBUG BEGIN_STMT
+  _53 = val_98 >> 13;
+  _54 = (unsigned char) _53;
+  _55 = _54 & 63;
+  _56 = igqos_ip_mask_hw_decode (_55);
+  args_72->sip_m = _56;
+  # DEBUG BEGIN_STMT
+  _57 = val_98 >> 19;
+  _58 = (unsigned char) _57;
+  _59 = _58 & 63;
+  _60 = igqos_ip_mask_hw_decode (_59);
+  args_72->dip_m = _60;
+  # DEBUG BEGIN_STMT
+  _61 = val_98 >> 27;
+  _62 = _61 & 1;
+  if (_62 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  flow_71(D)->action = 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _63 = val_98 >> 28;
+  _64 = _63 & 1;
+  if (_64 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  flow_71(D)->action = 2;
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _65 = args_72->sport_max;
+  _66 = _65 << 1;
+  args_72->sport_max = _66;
+  # DEBUG BEGIN_STMT
+  _67 = args_72->dport_max;
+  _68 = _67 << 1;
+  args_72->dport_max = _68;
+  return;
+
+}
+
+
+igqos_ip_mask_hw_decode (uint8_t ip_m)
+{
+  uint8_t hw_decoded;
+  uint8_t _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ip_m_2(D) <= 31)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  hw_decoded_4 = ip_m_2(D) + 1;
+  # DEBUG hw_decoded => hw_decoded_4
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  hw_decoded_3 = 0;
+  # DEBUG hw_decoded => hw_decoded_3
+
+  <bb 5> :
+  # hw_decoded_1 = PHI <hw_decoded_4(3), hw_decoded_3(4)>
+  # DEBUG hw_decoded => hw_decoded_1
+  # DEBUG BEGIN_STMT
+  _5 = hw_decoded_1;
+  return _5;
+
+}
+
+
+igqos_ip_mask_hw_encode (uint8_t ip_m)
+{
+  uint8_t hw_encoded;
+  uint8_t _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (ip_m_2(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  hw_encoded_4 = ip_m_2(D) + 255;
+  # DEBUG hw_encoded => hw_encoded_4
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  hw_encoded_3 = 32;
+  # DEBUG hw_encoded => hw_encoded_3
+
+  <bb 5> :
+  # hw_encoded_1 = PHI <hw_encoded_4(3), hw_encoded_3(4)>
+  # DEBUG hw_encoded => hw_encoded_1
+  # DEBUG BEGIN_STMT
+  _5 = hw_encoded_1;
+  return _5;
+
+}
+
+
+igqos_class_get_next_active (struct pfe_gpi_t * gpi)
+{
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  unsigned char _4;
+  uint8_t _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_6(D)->igqos_entry_iter;
+  # DEBUG BEGIN_STMT
+  _2 = gpi_6(D)->igqos_entry_iter;
+  _3 = _2 + 1;
+  _4 = igqos_class_find_entry (gpi_6(D), _3, 1);
+  gpi_6(D)->igqos_entry_iter = _4;
+  # DEBUG BEGIN_STMT
+  _9 = gpi_6(D)->igqos_entry_iter;
+  return _9;
+
+}
+
+
+igqos_class_get_first_active (struct pfe_gpi_t * gpi)
+{
+  unsigned char _1;
+  uint8_t _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = igqos_class_find_entry (gpi_3(D), 0, 1);
+  gpi_3(D)->igqos_entry_iter = _1;
+  # DEBUG BEGIN_STMT
+  _6 = gpi_3(D)->igqos_entry_iter;
+  return _6;
+
+}
+
+
+igqos_class_find_first_free (const struct pfe_gpi_t * gpi)
+{
+  uint8_t _4;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _4 = igqos_class_find_entry (gpi_2(D), 0, 0);
+  return _4;
+
+}
+
+
+igqos_class_find_entry (const struct pfe_gpi_t * gpi, uint8_t start, bool_t is_active)
+{
+  uint8_t ret;
+  uint8_t ii;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  unsigned char _4;
+  unsigned char ii.2_5;
+  uint8_t _20;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = start_11(D) > 64;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_19 = 64;
+  # DEBUG ret => ret_19
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ii_12 = start_11(D);
+  # DEBUG ii => ii_12
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = igqos_class_is_active (gpi_14(D), ii_6);
+  if (is_active_16(D) == _4)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ii.2_5 = ii_6;
+  ii_17 = ii.2_5 + 1;
+  # DEBUG ii => ii_17
+
+  <bb 7> :
+  # ii_6 = PHI <ii_12(4), ii_17(6)>
+  # DEBUG ii => ii_6
+  # DEBUG BEGIN_STMT
+  if (ii_6 <= 63)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  ret_18 = ii_6;
+  # DEBUG ret => ret_18
+
+  <bb 9> :
+  # ret_7 = PHI <ret_19(3), ret_18(8)>
+  # DEBUG ret => ret_7
+  # DEBUG BEGIN_STMT
+  _20 = ret_7;
+  return _20;
+
+}
+
+
+igqos_class_is_active (const struct pfe_gpi_t * gpi, uint8_t id)
+{
+  bool_t ret;
+  unsigned char _1;
+  unsigned int _2;
+  long unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  bool_t _14;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_9 = 1;
+  # DEBUG ret => ret_9
+  # DEBUG BEGIN_STMT
+  _1 = id_10(D) / 32;
+  _2 = (unsigned int) _1;
+  _3 = gpi_12(D)->igqos_active_entries[_2];
+  _4 = (unsigned int) id_10(D);
+  _5 = _4 & 31;
+  _6 = _3 >> _5;
+  _7 = _6 & 1;
+  if (_7 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ret_13 = 0;
+  # DEBUG ret => ret_13
+
+  <bb 4> :
+  # ret_8 = PHI <ret_9(2), ret_13(3)>
+  # DEBUG ret => ret_8
+  # DEBUG BEGIN_STMT
+  _14 = ret_8;
+  return _14;
+
+}
+
+
+igqos_class_clear_active (struct pfe_gpi_t * gpi, uint8_t id)
+{
+  unsigned int _1;
+  long unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  long unsigned int _8;
+  unsigned char _10;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _10 = id_9(D) / 32;
+  _1 = (unsigned int) _10;
+  _2 = gpi_12(D)->igqos_active_entries[_1];
+  _3 = (unsigned int) id_9(D);
+  _4 = _3 & 31;
+  _5 = 1 << _4;
+  _6 = ~_5;
+  _7 = (unsigned int) _10;
+  _8 = _2 & _6;
+  gpi_12(D)->igqos_active_entries[_7] = _8;
+  return;
+
+}
+
+
+igqos_class_set_active (struct pfe_gpi_t * gpi, uint8_t id)
+{
+  unsigned int _1;
+  long unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  long unsigned int _5;
+  unsigned int _6;
+  long unsigned int _7;
+  unsigned char _9;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _9 = id_8(D) / 32;
+  _1 = (unsigned int) _9;
+  _2 = gpi_11(D)->igqos_active_entries[_1];
+  _3 = (unsigned int) id_8(D);
+  _4 = _3 & 31;
+  _5 = 1 << _4;
+  _6 = (unsigned int) _9;
+  _7 = _2 | _5;
+  gpi_11(D)->igqos_active_entries[_6] = _7;
+  return;
+
+}
+
+
+igqos_class_clear_lru_entry_table (const struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  uint32_t ii;
+  unsigned int _1;
+  errno_t _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_7 = 0;
+  # DEBUG ii => ii_7
+  goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_10(D)->gpi_base_va;
+  pfe_gpi_cfg_qos_clear_lru_entry_req (_1, ii_2);
+  # DEBUG BEGIN_STMT
+  ret_13 = igqos_entry_ready_timeout (gpi_10(D));
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (ret_13 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ii_14 = ii_2 + 1;
+  # DEBUG ii => ii_14
+
+  <bb 5> :
+  # ii_2 = PHI <ii_7(2), ii_14(4)>
+  # ret_3 = PHI <ret_8(D)(2), ret_13(4)>
+  # DEBUG ret => ret_3
+  # DEBUG ii => ii_2
+  # DEBUG BEGIN_STMT
+  if (ii_2 <= 63)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # ret_4 = PHI <ret_13(3), ret_3(5)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _15 = ret_4;
+  return _15;
+
+}
+
+
+igqos_class_clear_flow_entry_table (const struct pfe_gpi_t * gpi)
+{
+  errno_t ret;
+  uint32_t ii;
+  unsigned int _1;
+  errno_t _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii_7 = 0;
+  # DEBUG ii => ii_7
+  goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_10(D)->gpi_base_va;
+  pfe_gpi_cfg_qos_clear_flow_entry_req (_1, ii_2);
+  # DEBUG BEGIN_STMT
+  ret_13 = igqos_entry_ready_timeout (gpi_10(D));
+  # DEBUG ret => ret_13
+  # DEBUG BEGIN_STMT
+  if (ret_13 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  ii_14 = ii_2 + 1;
+  # DEBUG ii => ii_14
+
+  <bb 5> :
+  # ii_2 = PHI <ii_7(2), ii_14(4)>
+  # ret_3 = PHI <ret_8(D)(2), ret_13(4)>
+  # DEBUG ret => ret_3
+  # DEBUG ii => ii_2
+  # DEBUG BEGIN_STMT
+  if (ii_2 <= 63)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # ret_4 = PHI <ret_13(3), ret_3(5)>
+  # DEBUG ret => ret_4
+  # DEBUG BEGIN_STMT
+  _15 = ret_4;
+  return _15;
+
+}
+
+
+igqos_entry_ready_timeout (const struct pfe_gpi_t * gpi)
+{
+  bool_t ready;
+  uint32_t timeout;
+  errno_t ret;
+  unsigned int _1;
+  unsigned int _2;
+  errno_t _23;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_11 = 0;
+  # DEBUG ret => ret_11
+  # DEBUG BEGIN_STMT
+  timeout_12 = 200;
+  # DEBUG timeout => timeout_12
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  goto <bb 5>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = gpi_15(D)->gpi_base_va;
+  ready_17 = pfe_gpi_cfg_qos_entry_ready (_1);
+  # DEBUG ready => ready_17
+  # DEBUG BEGIN_STMT
+  if (ready_17 == 1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  oal_time_usleep (5);
+  # DEBUG BEGIN_STMT
+  timeout_19 = timeout_4 + 4294967295;
+  # DEBUG timeout => timeout_19
+
+  <bb 5> :
+  # timeout_4 = PHI <timeout_12(2), timeout_19(4)>
+  # ready_5 = PHI <ready_13(D)(2), ready_17(4)>
+  # DEBUG ready => ready_5
+  # DEBUG timeout => timeout_4
+  # DEBUG BEGIN_STMT
+  if (timeout_4 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # ready_6 = PHI <ready_17(3), ready_5(5)>
+  # DEBUG ready => ready_6
+  # DEBUG BEGIN_STMT
+  if (timeout_4 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  if (ready_6 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _2 = gpi_15(D)->gpi_base_va;
+  ready_21 = pfe_gpi_cfg_qos_entry_ready (_2);
+  # DEBUG ready => ready_21
+
+  <bb 9> :
+  # ready_7 = PHI <ready_6(6), ready_6(7), ready_21(8)>
+  # DEBUG ready => ready_7
+  # DEBUG BEGIN_STMT
+  if (ready_7 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  ret_22 = 110;
+  # DEBUG ret => ret_22
+
+  <bb 11> :
+  # ret_3 = PHI <ret_11(9), ret_22(10)>
+  # DEBUG ret => ret_3
+  # DEBUG BEGIN_STMT
+  _23 = ret_3;
+  return _23;
+
+}
+
+
+igqos_class_clear_active_all (struct pfe_gpi_t * gpi)
+{
+  uint32_t i;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  i_3 = 0;
+  # DEBUG i => i_3
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  gpi_5(D)->igqos_active_entries[i_1] = 0;
+  # DEBUG BEGIN_STMT
+  i_8 = i_1 + 1;
+  # DEBUG i => i_8
+
+  <bb 4> :
+  # i_1 = PHI <i_3(2), i_8(3)>
+  # DEBUG i => i_1
+  # DEBUG BEGIN_STMT
+  if (i_1 <= 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  gpi_5(D)->igqos_entry_iter = 0;
+  return;
+
+}
+
+
+pfe_gpi_null_arg_check_return (const struct pfe_gpi_t * gpi, errno_t err)
+{
+  errno_t ret;
+  errno_t _2;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  ret_1 = 0;
+  # DEBUG ret => ret_1
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _2 = ret_1;
+  return _2;
+
+}
+
+

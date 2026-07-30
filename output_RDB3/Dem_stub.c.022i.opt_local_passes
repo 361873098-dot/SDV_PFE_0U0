@@ -1,0 +1,505 @@
+Dem_BufferOverflow ()
+{
+  uint32 u32CoreId;
+  unsigned char _1;
+  unsigned char _2;
+  boolean _6;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_5 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_5
+  # DEBUG BEGIN_STMT
+  _2 = Dem_OverflowEvent[u32CoreId_5];
+  _6 = _2 != 0;
+  return _6;
+
+}
+
+
+Dem_GetEventCount ()
+{
+  uint32 u32CoreId;
+  unsigned char _1;
+  uint32 _5;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_4 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_4
+  # DEBUG BEGIN_STMT
+  _5 = Dem_numEventErrors[u32CoreId_4];
+  return _5;
+
+}
+
+
+Dem_GetEvent (uint32 IndexNumber, Dem_EventIdType * EventId, Dem_EventStatusType * EventStatus)
+{
+  uint32 u32CoreId;
+  boolean result;
+  unsigned char _1;
+  long unsigned int _2;
+  short unsigned int _3;
+  unsigned char _4;
+  boolean _17;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  result_7 = 0;
+  # DEBUG result => result_7
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_10 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_10
+  # DEBUG BEGIN_STMT
+  _2 = Dem_numEventErrors[u32CoreId_10];
+  if (IndexNumber_11(D) < _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = Dem_EventId[u32CoreId_10][IndexNumber_11(D)];
+  *EventId_13(D) = _3;
+  # DEBUG BEGIN_STMT
+  _4 = Dem_EventStatus[u32CoreId_10][IndexNumber_11(D)];
+  *EventStatus_15(D) = _4;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  result_12 = 1;
+  # DEBUG result => result_12
+
+  <bb 5> :
+  # result_5 = PHI <result_7(3), result_12(4)>
+  # DEBUG result => result_5
+  # DEBUG BEGIN_STMT
+  _17 = result_5;
+  return _17;
+
+}
+
+
+Dem_ClearEvents ()
+{
+  uint32 u32CoreId;
+  unsigned char _1;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_4 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_4
+  # DEBUG BEGIN_STMT
+  Dem_numEventErrors[u32CoreId_4] = 0;
+  return;
+
+}
+
+
+Dem_TestLastReportErrorStatusPreExtData (Dem_EventIdType Dem_EventIdRaw, Dem_EventStatusType Dem_EventStatusRaw, uint8 * Dem_pui8_PreExtData, uint8 Dem_PreExtDataSize)
+{
+  uint32 u32CoreId;
+  uint8 u8Counter;
+  uint32 counterUp;
+  sint32 counterDown;
+  boolean bRetValue;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  short unsigned int _4;
+  unsigned char _5;
+  sizetype _6;
+  uint8 * _7;
+  unsigned char _8;
+  sizetype _9;
+  uint8 * _10;
+  unsigned char _11;
+  int _12;
+  unsigned char _13;
+  unsigned char u8Counter.0_14;
+  long unsigned int _15;
+  short unsigned int _16;
+  long unsigned int _17;
+  unsigned char _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  int _23;
+  unsigned char u8Counter.1_24;
+  boolean _54;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  bRetValue_35 = 1;
+  # DEBUG bRetValue => bRetValue_35
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_38 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_38
+  # DEBUG BEGIN_STMT
+  _2 = Dem_numEventErrors[u32CoreId_38];
+  _3 = _2 + 4294967295;
+  counterDown_39 = (sint32) _3;
+  # DEBUG counterDown => counterDown_39
+  goto <bb 17>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = Dem_EventId[u32CoreId_38][counterDown_28];
+  if (Dem_EventIdRaw_40(D) == _4)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 4> :
+  _5 = Dem_EventStatus[u32CoreId_38][counterDown_28];
+  if (Dem_EventStatusRaw_41(D) == _5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  u8Counter_42 = 0;
+  # DEBUG u8Counter => u8Counter_42
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _6 = (sizetype) u8Counter_30;
+  _7 = Dem_pui8_PreExtData_49(D) + _6;
+  _8 = *_7;
+  if (_8 == 165)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  // predicted unlikely by continue predictor.
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _9 = (sizetype) u8Counter_30;
+  _10 = Dem_pui8_PreExtData_49(D) + _9;
+  _11 = *_10;
+  _12 = (int) u8Counter_30;
+  _13 = Dem_au8ExtendedData[u32CoreId_38][_12];
+  if (_11 != _13)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  bRetValue_50 = 0;
+  # DEBUG bRetValue => bRetValue_50
+
+  <bb 10> :
+  # bRetValue_25 = PHI <bRetValue_26(7), bRetValue_26(8), bRetValue_50(9)>
+  # DEBUG bRetValue => bRetValue_25
+  # DEBUG BEGIN_STMT
+  u8Counter.0_14 = u8Counter_30;
+  u8Counter_51 = u8Counter.0_14 + 1;
+  # DEBUG u8Counter => u8Counter_51
+
+  <bb 11> :
+  # bRetValue_26 = PHI <bRetValue_35(5), bRetValue_25(10)>
+  # u8Counter_30 = PHI <u8Counter_42(5), u8Counter_51(10)>
+  # DEBUG u8Counter => u8Counter_30
+  # DEBUG bRetValue => bRetValue_26
+  # DEBUG BEGIN_STMT
+  if (u8Counter_30 < Dem_PreExtDataSize_43(D))
+    goto <bb 6>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # DEBUG BEGIN_STMT
+  counterUp_44 = (uint32) counterDown_28;
+  # DEBUG counterUp => counterUp_44
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  # DEBUG BEGIN_STMT
+  _15 = counterUp_29 + 1;
+  _16 = Dem_EventId[u32CoreId_38][_15];
+  Dem_EventId[u32CoreId_38][counterUp_29] = _16;
+  # DEBUG BEGIN_STMT
+  _17 = counterUp_29 + 1;
+  _18 = Dem_EventStatus[u32CoreId_38][_17];
+  Dem_EventStatus[u32CoreId_38][counterUp_29] = _18;
+  # DEBUG BEGIN_STMT
+  counterUp_48 = counterUp_29 + 1;
+  # DEBUG counterUp => counterUp_48
+
+  <bb 14> :
+  # counterUp_29 = PHI <counterUp_44(12), counterUp_48(13)>
+  # DEBUG counterUp => counterUp_29
+  # DEBUG BEGIN_STMT
+  _19 = Dem_numEventErrors[u32CoreId_38];
+  _20 = _19 + 4294967295;
+  if (counterUp_29 < _20)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  # DEBUG BEGIN_STMT
+  _21 = Dem_numEventErrors[u32CoreId_38];
+  _22 = _21 + 4294967295;
+  Dem_numEventErrors[u32CoreId_38] = _22;
+  # DEBUG BEGIN_STMT
+  goto <bb 18>; [INV]
+
+  <bb 16> :
+  # DEBUG BEGIN_STMT
+  counterDown_52 = counterDown_28 + -1;
+  # DEBUG counterDown => counterDown_52
+
+  <bb 17> :
+  # counterDown_28 = PHI <counterDown_39(2), counterDown_52(16)>
+  # DEBUG counterDown => counterDown_28
+  # DEBUG BEGIN_STMT
+  if (counterDown_28 >= 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  # bRetValue_27 = PHI <bRetValue_26(15), bRetValue_35(17)>
+  # DEBUG bRetValue => bRetValue_27
+  # DEBUG BEGIN_STMT
+  u8Counter_53 = 0;
+  # DEBUG u8Counter => u8Counter_53
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  # DEBUG BEGIN_STMT
+  _23 = (int) u8Counter_31;
+  Dem_au8ExtendedData[u32CoreId_38][_23] = 0;
+  # DEBUG BEGIN_STMT
+  u8Counter.1_24 = u8Counter_31;
+  u8Counter_56 = u8Counter.1_24 + 1;
+  # DEBUG u8Counter => u8Counter_56
+
+  <bb 20> :
+  # u8Counter_31 = PHI <u8Counter_53(18), u8Counter_56(19)>
+  # DEBUG u8Counter => u8Counter_31
+  # DEBUG BEGIN_STMT
+  if (u8Counter_31 <= 99)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  # DEBUG BEGIN_STMT
+  _54 = bRetValue_27;
+  return _54;
+
+}
+
+
+Dem_TestNoError ()
+{
+  uint32 u32CoreId;
+  uint32 counter;
+  boolean result;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  long unsigned int _4;
+  boolean _15;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  result_7 = 1;
+  # DEBUG result => result_7
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_10 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_10
+  # DEBUG BEGIN_STMT
+  counter_11 = 0;
+  # DEBUG counter => counter_11
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = Dem_EventStatus[u32CoreId_10][counter_6];
+  if (_2 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _3 = Dem_EventStatus[u32CoreId_10][counter_6];
+  if (_3 == 3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  result_13 = 0;
+  # DEBUG result => result_13
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  counter_12 = counter_6 + 1;
+  # DEBUG counter => counter_12
+
+  <bb 7> :
+  # counter_6 = PHI <counter_11(2), counter_12(6)>
+  # DEBUG counter => counter_6
+  # DEBUG BEGIN_STMT
+  _4 = Dem_numEventErrors[u32CoreId_10];
+  if (counter_6 < _4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # result_5 = PHI <result_13(5), result_7(7)>
+  # DEBUG result => result_5
+  # DEBUG BEGIN_STMT
+  Dem_numEventErrors[u32CoreId_10] = 0;
+  # DEBUG BEGIN_STMT
+  _15 = result_5;
+  return _15;
+
+}
+
+
+Dem_TestLastReportErrorStatus (Dem_EventIdType EventId, Dem_EventStatusType EventStatus)
+{
+  uint32 u32CoreId;
+  uint32 counterUp;
+  sint32 counterDown;
+  boolean result;
+  unsigned char _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  short unsigned int _4;
+  unsigned char _5;
+  long unsigned int _6;
+  short unsigned int _7;
+  long unsigned int _8;
+  unsigned char _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  boolean _33;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  result_19 = 0;
+  # DEBUG result => result_19
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = Sys_GetCoreID ();
+  u32CoreId_22 = (uint32) _1;
+  # DEBUG u32CoreId => u32CoreId_22
+  # DEBUG BEGIN_STMT
+  _2 = Dem_numEventErrors[u32CoreId_22];
+  _3 = _2 + 4294967295;
+  counterDown_23 = (sint32) _3;
+  # DEBUG counterDown => counterDown_23
+  goto <bb 10>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _4 = Dem_EventId[u32CoreId_22][counterDown_15];
+  if (EventId_24(D) == _4)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 4> :
+  _5 = Dem_EventStatus[u32CoreId_22][counterDown_15];
+  if (EventStatus_25(D) == _5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  result_26 = 1;
+  # DEBUG result => result_26
+  # DEBUG BEGIN_STMT
+  counterUp_27 = (uint32) counterDown_15;
+  # DEBUG counterUp => counterUp_27
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _6 = counterUp_16 + 1;
+  _7 = Dem_EventId[u32CoreId_22][_6];
+  Dem_EventId[u32CoreId_22][counterUp_16] = _7;
+  # DEBUG BEGIN_STMT
+  _8 = counterUp_16 + 1;
+  _9 = Dem_EventStatus[u32CoreId_22][_8];
+  Dem_EventStatus[u32CoreId_22][counterUp_16] = _9;
+  # DEBUG BEGIN_STMT
+  counterUp_31 = counterUp_16 + 1;
+  # DEBUG counterUp => counterUp_31
+
+  <bb 7> :
+  # counterUp_16 = PHI <counterUp_27(5), counterUp_31(6)>
+  # DEBUG counterUp => counterUp_16
+  # DEBUG BEGIN_STMT
+  _10 = Dem_numEventErrors[u32CoreId_22];
+  _11 = _10 + 4294967295;
+  if (counterUp_16 < _11)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _12 = Dem_numEventErrors[u32CoreId_22];
+  _13 = _12 + 4294967295;
+  Dem_numEventErrors[u32CoreId_22] = _13;
+  # DEBUG BEGIN_STMT
+  goto <bb 11>; [INV]
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  counterDown_32 = counterDown_15 + -1;
+  # DEBUG counterDown => counterDown_32
+
+  <bb 10> :
+  # counterDown_15 = PHI <counterDown_23(2), counterDown_32(9)>
+  # DEBUG counterDown => counterDown_15
+  # DEBUG BEGIN_STMT
+  if (counterDown_15 >= 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  # result_14 = PHI <result_26(8), result_19(10)>
+  # DEBUG result => result_14
+  # DEBUG BEGIN_STMT
+  _33 = result_14;
+  return _33;
+
+}
+
+

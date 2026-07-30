@@ -1,0 +1,544 @@
+Trivially needed symbols: inet_chksum_pbuf inet_chksum ip_chksum_pseudo_partial inet_chksum_pseudo_partial ip_chksum_pseudo inet_chksum_pseudo lwip_standard_chksum
+
+
+Initial Symbol table:
+
+lwip_htons/10 (lwip_htons) @070d2380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_base/2 inet_cksum_pseudo_base/2 
+  Calls: 
+inet_chksum_pbuf/9 (inet_chksum_pbuf) @0707d700
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @01733ea0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: lwip_standard_chksum/1 
+inet_chksum/8 (inet_chksum) @0707db60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0707d700
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: lwip_standard_chksum/1 
+ip_chksum_pseudo_partial/7 (ip_chksum_pseudo_partial) @0707d8c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0707db60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: inet_chksum_pseudo_partial/6 
+inet_chksum_pseudo_partial/6 (inet_chksum_pseudo_partial) @0707d620
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0707d8c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ip_chksum_pseudo_partial/7 
+  Calls: inet_cksum_pseudo_partial_base/5 
+inet_cksum_pseudo_partial_base/5 (inet_cksum_pseudo_partial_base) @0707d1c0
+  Type: function definition analyzed
+  Visibility:
+  Aux: @0707d8c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pseudo_partial/6 
+  Calls: lwip_htons/10 lwip_htons/10 lwip_standard_chksum/1 
+ip_chksum_pseudo/4 (ip_chksum_pseudo) @07075b60
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0707d620
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: inet_chksum_pseudo/3 
+inet_chksum_pseudo/3 (inet_chksum_pseudo) @070758c0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @07075b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ip_chksum_pseudo/4 
+  Calls: inet_cksum_pseudo_base/2 
+inet_cksum_pseudo_base/2 (inet_cksum_pseudo_base) @07075460
+  Type: function definition analyzed
+  Visibility:
+  Aux: @07075b60
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pseudo/3 
+  Calls: lwip_htons/10 lwip_htons/10 lwip_standard_chksum/1 
+lwip_standard_chksum/1 (lwip_standard_chksum) @07069d20
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @070758c0
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pbuf/9 inet_chksum/8 inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_base/2 
+  Calls: 
+oal_swap_endian_long/0 (oal_swap_endian_long) @06efb620
+  Type: function definition
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+
+Removing unused symbols: oal_swap_endian_long
+
+Reclaimed Symbol table:
+
+lwip_htons/10 (lwip_htons) @070d2380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_base/2 inet_cksum_pseudo_base/2 
+  Calls: 
+inet_chksum_pbuf/9 (inet_chksum_pbuf) @0707d700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: lwip_standard_chksum/1 
+inet_chksum/8 (inet_chksum) @0707db60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: lwip_standard_chksum/1 
+ip_chksum_pseudo_partial/7 (ip_chksum_pseudo_partial) @0707d8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: inet_chksum_pseudo_partial/6 
+inet_chksum_pseudo_partial/6 (inet_chksum_pseudo_partial) @0707d620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ip_chksum_pseudo_partial/7 
+  Calls: inet_cksum_pseudo_partial_base/5 
+inet_cksum_pseudo_partial_base/5 (inet_cksum_pseudo_partial_base) @0707d1c0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pseudo_partial/6 
+  Calls: lwip_htons/10 lwip_htons/10 lwip_standard_chksum/1 
+ip_chksum_pseudo/4 (ip_chksum_pseudo) @07075b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: inet_chksum_pseudo/3 
+inet_chksum_pseudo/3 (inet_chksum_pseudo) @070758c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ip_chksum_pseudo/4 
+  Calls: inet_cksum_pseudo_base/2 
+inet_cksum_pseudo_base/2 (inet_cksum_pseudo_base) @07075460
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pseudo/3 
+  Calls: lwip_htons/10 lwip_htons/10 lwip_standard_chksum/1 
+lwip_standard_chksum/1 (lwip_standard_chksum) @07069d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pbuf/9 inet_chksum/8 inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_base/2 
+  Calls: 
+
+
+Initial Symbol table:
+
+lwip_htons/10 (lwip_htons) @070d2380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_base/2 inet_cksum_pseudo_base/2 
+  Calls: 
+inet_chksum_pbuf/9 (inet_chksum_pbuf) @0707d700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: lwip_standard_chksum/1 
+inet_chksum/8 (inet_chksum) @0707db60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: lwip_standard_chksum/1 
+ip_chksum_pseudo_partial/7 (ip_chksum_pseudo_partial) @0707d8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: inet_chksum_pseudo_partial/6 
+inet_chksum_pseudo_partial/6 (inet_chksum_pseudo_partial) @0707d620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ip_chksum_pseudo_partial/7 
+  Calls: inet_cksum_pseudo_partial_base/5 
+inet_cksum_pseudo_partial_base/5 (inet_cksum_pseudo_partial_base) @0707d1c0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pseudo_partial/6 
+  Calls: lwip_htons/10 lwip_htons/10 lwip_standard_chksum/1 
+ip_chksum_pseudo/4 (ip_chksum_pseudo) @07075b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: inet_chksum_pseudo/3 
+inet_chksum_pseudo/3 (inet_chksum_pseudo) @070758c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ip_chksum_pseudo/4 
+  Calls: inet_cksum_pseudo_base/2 
+inet_cksum_pseudo_base/2 (inet_cksum_pseudo_base) @07075460
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pseudo/3 
+  Calls: lwip_htons/10 lwip_htons/10 lwip_standard_chksum/1 
+lwip_standard_chksum/1 (lwip_standard_chksum) @07069d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pbuf/9 inet_chksum/8 inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_base/2 
+  Calls: 
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+lwip_htons/10 (lwip_htons) @070d2380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Function flags: optimize_size
+  Called by: inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_base/2 inet_cksum_pseudo_base/2 
+  Calls: 
+inet_chksum_pbuf/9 (inet_chksum_pbuf) @0707d700
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: lwip_standard_chksum/1 
+inet_chksum/8 (inet_chksum) @0707db60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: lwip_standard_chksum/1 
+ip_chksum_pseudo_partial/7 (ip_chksum_pseudo_partial) @0707d8c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: inet_chksum_pseudo_partial/6 
+inet_chksum_pseudo_partial/6 (inet_chksum_pseudo_partial) @0707d620
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ip_chksum_pseudo_partial/7 
+  Calls: inet_cksum_pseudo_partial_base/5 
+inet_cksum_pseudo_partial_base/5 (inet_cksum_pseudo_partial_base) @0707d1c0
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pseudo_partial/6 
+  Calls: lwip_htons/10 lwip_htons/10 lwip_standard_chksum/1 
+ip_chksum_pseudo/4 (ip_chksum_pseudo) @07075b60
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: 
+  Calls: inet_chksum_pseudo/3 
+inet_chksum_pseudo/3 (inet_chksum_pseudo) @070758c0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: ip_chksum_pseudo/4 
+  Calls: inet_cksum_pseudo_base/2 
+inet_cksum_pseudo_base/2 (inet_cksum_pseudo_base) @07075460
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pseudo/3 
+  Calls: lwip_htons/10 lwip_htons/10 lwip_standard_chksum/1 
+lwip_standard_chksum/1 (lwip_standard_chksum) @07069d20
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body optimize_size
+  Called by: inet_chksum_pbuf/9 inet_chksum/8 inet_cksum_pseudo_partial_base/5 inet_cksum_pseudo_base/2 
+  Calls: 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+lwip_htons/10 (lwip_htons) @070d2380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: inet_cksum_pseudo_partial_base/5 (729087759 (estimated locally),0.68 per call) inet_cksum_pseudo_partial_base/5 (729087759 (estimated locally),0.68 per call) inet_cksum_pseudo_base/2 (1073741833 (estimated locally),1.00 per call) inet_cksum_pseudo_base/2 (1073741833 (estimated locally),1.00 per call) 
+  Calls: 
+inet_chksum_pbuf/9 (inet_chksum_pbuf) @0707d700
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: lwip_standard_chksum/1 (955630223 (estimated locally),8.09 per call) 
+inet_chksum/8 (inet_chksum) @0707db60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: 
+  Calls: lwip_standard_chksum/1 (1073741824 (estimated locally),1.00 per call) 
+ip_chksum_pseudo_partial/7 (ip_chksum_pseudo_partial) @0707d8c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: inet_chksum_pseudo_partial/6 (1073741824 (estimated locally),1.00 per call) 
+inet_chksum_pseudo_partial/6 (inet_chksum_pseudo_partial) @0707d620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: ip_chksum_pseudo_partial/7 (1073741824 (estimated locally),1.00 per call) 
+  Calls: inet_cksum_pseudo_partial_base/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+inet_cksum_pseudo_partial_base/5 (inet_cksum_pseudo_partial_base) @0707d1c0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function inet_cksum_pseudo_partial_base/5 is inline copy in inet_chksum_pseudo_partial/6
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: inet_chksum_pseudo_partial/6 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: lwip_htons/10 (729087759 (estimated locally),0.68 per call) lwip_htons/10 (729087759 (estimated locally),0.68 per call) lwip_standard_chksum/1 (9416778228 (estimated locally),8.77 per call) 
+ip_chksum_pseudo/4 (ip_chksum_pseudo) @07075b60
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: 
+  Calls: inet_chksum_pseudo/3 (1073741824 (estimated locally),1.00 per call) 
+inet_chksum_pseudo/3 (inet_chksum_pseudo) @070758c0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) body optimize_size
+  Called by: ip_chksum_pseudo/4 (1073741824 (estimated locally),1.00 per call) 
+  Calls: inet_cksum_pseudo_base/2 (inlined) (1073741824 (estimated locally),1.00 per call) 
+inet_cksum_pseudo_base/2 (inet_cksum_pseudo_base) @07075460
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Function inet_cksum_pseudo_base/2 is inline copy in inet_chksum_pseudo/3
+  Availability: local
+  Function flags: count:1073741824 (estimated locally) body local optimize_size
+  Called by: inet_chksum_pseudo/3 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: lwip_htons/10 (1073741833 (estimated locally),1.00 per call) lwip_htons/10 (1073741833 (estimated locally),1.00 per call) lwip_standard_chksum/1 (8687547529 (estimated locally),8.09 per call) 
+lwip_standard_chksum/1 (lwip_standard_chksum) @07069d20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) body nonfreeing_fn optimize_size
+  Called by: inet_chksum_pbuf/9 (955630223 (estimated locally),8.09 per call) inet_chksum/8 (1073741824 (estimated locally),1.00 per call) inet_cksum_pseudo_partial_base/5 (9416778228 (estimated locally),8.77 per call) inet_cksum_pseudo_base/2 (8687547529 (estimated locally),8.09 per call) 
+  Calls: 
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Time profile order in expand_all_functions:lwip_standard_chksum:0
+Time profile order in expand_all_functions:inet_chksum_pseudo:0
+Time profile order in expand_all_functions:ip_chksum_pseudo:0
+Time profile order in expand_all_functions:inet_chksum_pseudo_partial:0
+Time profile order in expand_all_functions:ip_chksum_pseudo_partial:0
+Time profile order in expand_all_functions:inet_chksum:0
+Time profile order in expand_all_functions:inet_chksum_pbuf:0
+Trivially needed variables:
+Removing variables:
+
+Final Symbol table:
+
+lwip_htons/10 (lwip_htons) @070d2380
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: 
+  Calls: 
+inet_chksum_pbuf/9 (inet_chksum_pbuf) @0707d700
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+inet_chksum/8 (inet_chksum) @0707db60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 
+ip_chksum_pseudo_partial/7 (ip_chksum_pseudo_partial) @0707d8c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+inet_chksum_pseudo_partial/6 (inet_chksum_pseudo_partial) @0707d620
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+ip_chksum_pseudo/4 (ip_chksum_pseudo) @07075b60
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+inet_chksum_pseudo/3 (inet_chksum_pseudo) @070758c0
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:1073741824 (estimated locally) optimize_size
+  Called by: 
+  Calls: 
+lwip_standard_chksum/1 (lwip_standard_chksum) @07069d20
+  Type: function definition analyzed
+  Visibility: externally_visible asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: count:118111600 (estimated locally) nonfreeing_fn optimize_size
+  Called by: 
+  Calls: 

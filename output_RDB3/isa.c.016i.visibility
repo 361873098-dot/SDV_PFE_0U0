@@ -1,0 +1,570 @@
+
+Marking local functions: isa_init_index isa_item_internal
+
+
+Marking externally visible functions: isa_occupiedcount isa_isempty isa_find isa_release isa_release_subscript isa_reserve isa_item isa_clear isa_init
+
+
+Marking externally visible variables:
+
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Symbol table:
+
+autolibc_memcpy/19 (autolibc_memcpy) @070a9620
+  Type: function
+  Visibility: external public
+  References: 
+  Referring: 
+  Availability: not_available
+  Function flags: optimize_size
+  Called by: isa_release_subscript/14 
+  Calls: 
+isa_occupiedcount/18 (isa_occupiedcount) @0709d620
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+isa_isempty/17 (isa_isempty) @0709d0e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: 
+isa_find/16 (isa_find) @0709dd20
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_item/12 
+   Indirect call
+isa_release/15 (isa_release) @0709da80
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_release_subscript/14 isa_item_internal/8 
+isa_release_subscript/14 (isa_release_subscript) @0709d7e0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: isa_release/15 
+  Calls: autolibc_memcpy/19 isa_item_internal/8 
+   Indirect call
+isa_reserve/13 (isa_reserve) @0709d540
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_item_internal/8 
+isa_item/12 (isa_item) @0709d2a0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: isa_find/16 
+  Calls: isa_item_internal/8 
+isa_clear/11 (isa_clear) @0709d000
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_init_index/9 isa_item_internal/8 
+   Indirect call
+isa_init/10 (isa_init) @07096ee0
+  Type: function definition analyzed
+  Visibility: externally_visible public
+  References: 
+  Referring: 
+  Availability: available
+  Function flags: body optimize_size
+  Called by: 
+  Calls: isa_init_index/9 
+isa_init_index/9 (isa_init_index) @07096c40
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: isa_clear/11 isa_init/10 
+  Calls: 
+isa_item_internal/8 (isa_item_internal) @070969a0
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Availability: local
+  Function flags: body local optimize_size
+  Called by: isa_release/15 isa_release_subscript/14 isa_reserve/13 isa_item/12 isa_clear/11 
+  Calls: 
+isa_occupiedcount (const struct pfe_isa_t * isa)
+{
+  uint32_t result;
+  uint32_t D.7402;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  result = isa->occupied_items_count;
+  # DEBUG BEGIN_STMT
+  D.7402 = result;
+  return D.7402;
+
+}
+
+
+isa_isempty (const struct pfe_isa_t * isa)
+{
+  bool_t result;
+  bool_t D.7400;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = isa->occupied_items_count;
+  _2 = _1 == 0;
+  result = (bool_t) _2;
+  # DEBUG BEGIN_STMT
+  D.7400 = result;
+  return D.7400;
+
+}
+
+
+isa_find (const struct pfe_isa_t * isa, const void * match_item, bool_t (*pfe_isa_items_compare_cb_t) (const void *, const void *) compare_cb)
+{
+  const void * item;
+  int32_t find_index;
+  uint32_t ii;
+  int32_t D.7398;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  find_index = -1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  if (compare_cb != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  item = isa_item (isa, ii);
+  # DEBUG BEGIN_STMT
+  _1 = compare_cb (item, match_item);
+  if (_1 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  find_index = (int32_t) ii;
+  # DEBUG BEGIN_STMT
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ii = ii + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _2 = isa->occupied_items_count;
+  if (ii < _2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.7398 = find_index;
+  return D.7398;
+
+}
+
+
+isa_release (struct pfe_isa_t * isa, const void * item)
+{
+  uint32_t ii;
+  int32_t index_subscript;
+  int32_t D.7392;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  index_subscript = -1;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = isa->props;
+  _2 = isa_item_internal (_1, ii);
+  if (item == _2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _3 = isa_release_subscript (isa, ii);
+  if (_3 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  index_subscript = (int32_t) ii;
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  ii = ii + 1;
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _4 = isa->occupied_items_count;
+  if (ii < _4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  D.7392 = index_subscript;
+  return D.7392;
+
+}
+
+
+isa_release_subscript (struct pfe_isa_t * isa, uint32_t index_subscript)
+{
+  void * item;
+  const struct pfe_isa_definition_t * props;
+  bool_t result;
+  pfe_isa_index_t * last_index_ptr;
+  pfe_isa_index_t * remove_index_ptr;
+  pfe_isa_index_t liberated_index_value;
+  bool_t D.7386;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  result = 0;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = isa->occupied_items_count;
+  if (index_subscript < _1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  props = isa->props;
+  # DEBUG BEGIN_STMT
+  _2 = props->clear_cb;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  item = isa_item_internal (props, index_subscript);
+  # DEBUG BEGIN_STMT
+  _3 = props->clear_cb;
+  _3 (item);
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _4 = isa->occupied_items_count;
+  _5 = _4 + 4294967295;
+  isa->occupied_items_count = _5;
+  # DEBUG BEGIN_STMT
+  _6 = isa->occupied_items_count;
+  if (index_subscript < _6)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  _7 = props->item_indexes;
+  _8 = index_subscript * 2;
+  remove_index_ptr = _7 + _8;
+  # DEBUG BEGIN_STMT
+  _9 = props->item_indexes;
+  _10 = isa->occupied_items_count;
+  _11 = _10 * 2;
+  last_index_ptr = _9 + _11;
+  # DEBUG BEGIN_STMT
+  liberated_index_value = *remove_index_ptr;
+  # DEBUG BEGIN_STMT
+  _12 = VIEW_CONVERT_EXPR<unsigned char>(props->flags);
+  _13 = _12 & 1;
+  if (_13 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  # DEBUG BEGIN_STMT
+  _14 = remove_index_ptr + 2;
+  _15 = isa->occupied_items_count;
+  _16 = _15 - index_subscript;
+  _17 = _16 * 2;
+  autolibc_memcpy (remove_index_ptr, _14, _17);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  # DEBUG BEGIN_STMT
+  _18 = *last_index_ptr;
+  *remove_index_ptr = _18;
+
+  <bb 9> :
+  # DEBUG BEGIN_STMT
+  *last_index_ptr = liberated_index_value;
+
+  <bb 10> :
+  # DEBUG BEGIN_STMT
+  result = 1;
+
+  <bb 11> :
+  # DEBUG BEGIN_STMT
+  D.7386 = result;
+  return D.7386;
+
+}
+
+
+isa_reserve (struct pfe_isa_t * isa)
+{
+  const struct pfe_isa_definition_t * props;
+  void * item;
+  void * D.7375;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  item = 0B;
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  props = isa->props;
+  # DEBUG BEGIN_STMT
+  _1 = isa->occupied_items_count;
+  _2 = props->item_count;
+  if (_1 < _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _3 = isa->occupied_items_count;
+  item = isa_item_internal (props, _3);
+  # DEBUG BEGIN_STMT
+  _4 = isa->occupied_items_count;
+  _5 = _4 + 1;
+  isa->occupied_items_count = _5;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  D.7375 = item;
+  return D.7375;
+
+}
+
+
+isa_item (const struct pfe_isa_t * isa, uint32_t index_subscript)
+{
+  void * item;
+  void * D.7371;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  item = 0B;
+  # DEBUG BEGIN_STMT
+  _1 = isa->occupied_items_count;
+  if (index_subscript < _1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _2 = isa->props;
+  item = isa_item_internal (_2, index_subscript);
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  D.7371 = item;
+  return D.7371;
+
+}
+
+
+isa_clear (struct pfe_isa_t * isa)
+{
+  const struct pfe_isa_definition_t * props;
+  void * item;
+  uint32_t ii;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  props = isa->props;
+  # DEBUG BEGIN_STMT
+  _1 = props->clear_cb;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  item = isa_item_internal (props, ii);
+  # DEBUG BEGIN_STMT
+  _2 = props->clear_cb;
+  _2 (item);
+  # DEBUG BEGIN_STMT
+  ii = ii + 1;
+
+  <bb 5> :
+  # DEBUG BEGIN_STMT
+  _3 = isa->occupied_items_count;
+  if (ii < _3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # DEBUG BEGIN_STMT
+  isa->occupied_items_count = 0;
+  # DEBUG BEGIN_STMT
+  isa_init_index (props);
+  return;
+
+}
+
+
+isa_init (struct pfe_isa_t * isa, const struct pfe_isa_definition_t * props)
+{
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  isa->occupied_items_count = 0;
+  # DEBUG BEGIN_STMT
+  isa->props = props;
+  # DEBUG BEGIN_STMT
+  isa_init_index (props);
+  return;
+
+}
+
+
+isa_init_index (const struct pfe_isa_definition_t * props)
+{
+  pfe_isa_index_t * item_indexes;
+  uint32_t ii;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  item_indexes = props->item_indexes;
+  # DEBUG BEGIN_STMT
+  ii = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  # DEBUG BEGIN_STMT
+  _1 = ii * 2;
+  _2 = item_indexes + _1;
+  _3 = (short unsigned int) ii;
+  *_2 = _3;
+  # DEBUG BEGIN_STMT
+  ii = ii + 1;
+
+  <bb 4> :
+  # DEBUG BEGIN_STMT
+  _4 = props->item_count;
+  if (ii < _4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+isa_item_internal (const struct pfe_isa_definition_t * props, uint32_t index_subscript)
+{
+  const uint32_t item_index;
+  uint8_t * items;
+  void * D.7367;
+
+  <bb 2> :
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _1 = props->item_size;
+  _2 = props->item_indexes;
+  _3 = index_subscript * 2;
+  _4 = _2 + _3;
+  _5 = *_4;
+  _6 = (long unsigned int) _5;
+  item_index = _1 * _6;
+  # DEBUG BEGIN_STMT
+  items = props->items;
+  # DEBUG BEGIN_STMT
+  D.7367 = items + item_index;
+  return D.7367;
+
+}
+
+

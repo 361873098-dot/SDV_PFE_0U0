@@ -82,7 +82,7 @@ extern "C"{
 * @brief			IPCF memory size per instance
 * @details          Note: The define is not used in driver code and it is used only for reference info
 */
-#define IPC_SHM_MEM_SIZE_IPCF_INSTANCE0       0x00022030
+#define IPC_SHM_MEM_SIZE_IPCF_INSTANCE0       0x00017f90
 
 /*
 * @brief			Maximum number of shared memory channels defined in configuration

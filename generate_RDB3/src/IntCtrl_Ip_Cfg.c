@@ -8,9 +8,9 @@
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
 *   SW Version           : 4.0.2
-*   Build Version        : S32_RTD_4_0_2_P04_D2312_ASR_REL_4_4_REV_0000_20231219
+*   Build Version        : S32_RTD_4_0_2_D2306_ASR_REL_4_4_REV_0000_20230630
 *
-*   Copyright 2020-2023 NXP
+*   Copyright 2020-2023 NXP Semiconductors
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
 *   used strictly in accordance with the applicable license terms. By expressly
@@ -73,7 +73,7 @@ static const IntCtrl_Ip_IrqConfigType aIrqConfiguration[] = {
     {MSCM_Pcie_1_MSI_IRQn, (boolean)FALSE, 0U, undefined_handler},
     {MSCM_INT0_IRQn, (boolean)FALSE, 0U, undefined_handler},
     {MSCM_INT1_IRQn, (boolean)FALSE, 0U, undefined_handler},
-    {MSCM_INT2_IRQn, (boolean)TRUE, 0U, ipc_shm_hardirq},
+    {MSCM_INT2_IRQn, (boolean)TRUE, 4U, ipc_shm_hardirq},
     {MSCM_Pcie_0_MSI_IRQn, (boolean)FALSE, 0U, undefined_handler},
     {CTI_INT0_IRQn, (boolean)FALSE, 0U, undefined_handler},
     {CTI_INT1_IRQn, (boolean)FALSE, 0U, undefined_handler},

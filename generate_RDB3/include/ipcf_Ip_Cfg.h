@@ -47,11 +47,11 @@ extern "C"{
 extern struct ipc_shm_instances_cfg ipcf_shm_instances_cfg;
 
 /* Unmanaged channel callback functions */
-void ctrl_chan_rx_cb(void *arg, const uint8 instance, uint8 chan_id, void *mem);
+void PICC_data_unmng_rx_cb(void *arg, const uint8 instance, uint8 chan_id, void *mem);
 
 
 /* Mananged channel callback functions */
-void data_chan_rx_cb(void *arg, const uint8 instance, uint8 chan_id, void *buf, uint32 size);
+void PICC_data_mng_rx_cb(void *arg, const uint8 instance, uint8 chan_id, void *buf, uint32 size);
 
 #ifdef USING_OS_AUTOSAROS
 #define IPCF_START_SEC_CONFIG_DATA_UNSPECIFIED
@@ -60,10 +60,10 @@ void data_chan_rx_cb(void *arg, const uint8 instance, uint8 chan_id, void *buf, 
 
 
 /* Unmanaged channel callback function arguments */
-extern const void* rx_cb_arg;
+extern const void* rx_unmg_cb_arg;
 
 /* Managed channel callback functions arguments */
-extern const void* rx_cb_arg;
+extern const void* rx_mng_cb_arg;
 
 #ifdef USING_OS_AUTOSAROS
 #define IPCF_STOP_SEC_CONFIG_DATA_UNSPECIFIED

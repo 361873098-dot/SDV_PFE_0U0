@@ -1,0 +1,816 @@
+/********************************************************************************
+* COPYRIGHT (C) Vitesco Technologies 2025
+* ALL RIGHTS RESERVED.
+*
+* The reproduction, transmission or use of this document or its
+* contents is not permitted without express written authority.
+* Offenders will be liable for damages. All rights, including rights
+* created by patent grant or registration of a utility model or design,
+* are reserved.
+*********************************************************************************
+*
+*  File name:           $Source: stm_nvm.c $
+*  Revision:            $Revision: 1.0 $
+*  Author:              $Author: weizhichun (uix08649)  $
+*  Module acronym:      STM
+*  Specification:
+*  Date:                $Date: 2026/05/25  $
+*
+*  Description:     Storage Middleware NVM management implementation
+*                   EEPROM persistence + RAM mirror with EEPROM driver page splitting
+*
+*  Architecture:
+*    - Each data item has a RAM mirror (Stm_NvmBlock_t) for zero-latency reads.
+*    - EEPROM stores persistent data at computed offsets within the data area.
+*    - EEPROM layout per block: [valid(1B)][len(1B)][data(maxDataLen)]
+*    - EEPROM page boundary splitting is handled by the EEPROM driver.
+*    - On init, EEPROM magic byte (0xA5) is checked. If invalid, the entire
+*      EEPROM data area is formatted (all zeros) and RAM mirror is cleared.
+*
+*********************************************************************************/
+
+/***********************************************************************************************************************
+*  include files
+***********************************************************************************************************************/
+#include "Platform.h"
+#include "stm_nvm.h"
+#include "eeprom.h"
+#include "OsIf.h"
+#include <string.h>
+
+/***********************************************************************************************************************
+*  local variable definitions
+***********************************************************************************************************************/
+
+/** RAM mirror: one block per configured data item.
+ *  Each block holds the current data, its length, validity flag,
+ *  dirty flag (needs sync to A-core), and computed EEPROM offset. */
+static Stm_NvmBlock_t g_nvmBlocks[STM_MAX_DATA_ITEMS];
+
+/** NVM readiness flag. Set to TRUE only after successful StmNvm_Init(). */
+static boolean g_nvmReady = FALSE;
+
+/**
+ * @brief Asynchronous EEPROM write state machine states
+ *
+ * Driven by StmNvm_AsyncProcess() once per 10ms task cycle. Exactly one EEPROM
+ * page chunk is written per cycle; the natural 10ms gap between cycles provides
+ * the EEPROM internal write-cycle time (t_WR), so no busy-wait is needed.
+ */
+typedef enum {
+    ASYNC_IDLE = 0U,    /**< Idle: scan for a block with eepromPending */
+    ASYNC_WRITE_HEADER, /**< Writing the 2-byte header (valid + len) */
+    ASYNC_WRITE_DATA    /**< Writing the data payload, one page chunk per cycle */
+} StmNvm_AsyncState_e;
+
+/**
+ * @brief Asynchronous EEPROM write context
+ *
+ * Tracks which block is being flushed and how far the header/data writes have
+ * progressed. headerOffset and dataOffset advance by the bytes actually written
+ * each cycle (a header or data write may be split when it straddles an EEPROM
+ * page boundary).
+ */
+static struct {
+    StmNvm_AsyncState_e state; /**< Current state machine state */
+    uint16 blockIndex;         /**< Block index currently being written */
+    uint16 headerOffset;       /**< Progress within the 2-byte header (0..2) */
+    uint16 dataOffset;         /**< Progress within the block data (0..dataLen) */
+} g_asyncEeprom;
+
+/***********************************************************************************************************************
+*  static helper functions
+***********************************************************************************************************************/
+
+/**
+ * @brief Find block index by dataId
+ *
+ * Linear search through the config table to map a dataId to its
+ * internal array index. Used by all public NVM functions.
+ *
+ * @param dataId  Data item identifier to look up
+ * @return Index 0..STM_MAX_DATA_ITEMS-1 on success, 0xFFFF if not found
+ */
+static uint16 StmNvm_FindIndex(uint16 dataId)
+{
+    uint16 i;
+    for (i = 0U; i < STM_MAX_DATA_ITEMS; i++)
+    {
+        if (g_StmDataItemCfg[i].dataId == dataId)
+        {
+            return i;
+        }
+    }
+    return 0xFFFFU;
+}
+
+/**
+ * @brief Compute EEPROM offsets for all data blocks at init time
+ *
+ * Walks through the config table and assigns a contiguous EEPROM offset
+ * to each block. The offset is relative to STM_EEPROM_DATA_START_ADDR.
+ *
+ * EEPROM layout within data area (0x11~0x50):
+ *   Block 0: [valid(1B)][len(1B)][data(maxDataLen_0)]
+ *   Block 1: [valid(1B)][len(1B)][data(maxDataLen_1)]
+ *   ...
+ *   Block N: ...
+ *
+ * If the total size exceeds STM_EEPROM_DATA_SIZE (64 bytes), the NVM
+ * layer is marked as not ready (g_nvmReady = FALSE) as a safety measure.
+ */
+static void StmNvm_ComputeOffsets(void)
+{
+    uint16 offset = 0U;
+    uint16 i;
+
+    for (i = 0U; i < STM_MAX_DATA_ITEMS; i++)
+    {
+        g_nvmBlocks[i].eepromOffset = offset;
+        /* Each block in EEPROM: 1B valid + 1B len + maxDataLen bytes of data */
+        offset += (2U + g_StmDataItemCfg[i].maxDataLen);
+    }
+
+    /* Safety check: total must fit in EEPROM data area */
+    if (offset > STM_EEPROM_DATA_SIZE)
+    {
+        /* Configuration exceeds EEPROM capacity - should never happen
+         * if config table is validated. Disable NVM. */
+        g_nvmReady = FALSE;
+    }
+}
+
+/**
+ * @brief Read one data block from EEPROM to RAM mirror
+ *
+ * Reads the 2-byte header (valid + len) first, then reads the actual
+ * data payload if the block is marked valid and has non-zero length.
+ *
+ * EEPROM format at computed offset:
+ *   [0]     valid flag (TRUE/FALSE)
+ *   [1]     data length (0..maxDataLen)
+ *   [2..]   data bytes
+ *
+ * @param index  Block index in g_nvmBlocks array
+ * @return E_OK on success, E_NOT_OK on EEPROM read failure or invalid data
+ */
+static Std_ReturnType StmNvm_ReadBlockFromEeprom(uint16 index)
+{
+    Std_ReturnType ret;
+    uint8 headerBuf[2U];
+    uint8 eepromAddr;
+    uint16 dataOffset;
+
+    dataOffset = g_nvmBlocks[index].eepromOffset;
+    eepromAddr = (uint8)(STM_EEPROM_DATA_START_ADDR + dataOffset);
+
+    /* Step 1: Read valid + len header (2 bytes) */
+    ret = Eeprom_ReadBytes(eepromAddr, headerBuf, 2U);
+    if (ret != E_OK)
+    {
+        return E_NOT_OK;
+    }
+
+    g_nvmBlocks[index].valid = headerBuf[0];
+    g_nvmBlocks[index].dataLen = (uint16)headerBuf[1];
+
+    /* Validate data length against configured maximum */
+    if (g_nvmBlocks[index].dataLen > g_StmDataItemCfg[index].maxDataLen)
+    {
+        /* Corrupted length field - mark block as invalid */
+        g_nvmBlocks[index].valid = FALSE;
+        g_nvmBlocks[index].dataLen = 0U;
+        return E_NOT_OK;
+    }
+
+    /* Step 2: Read actual data if block is valid and has data */
+    if ((g_nvmBlocks[index].valid == TRUE) && (g_nvmBlocks[index].dataLen > 0U))
+    {
+        eepromAddr = (uint8)(STM_EEPROM_DATA_START_ADDR + dataOffset + 2U);
+        ret = Eeprom_ReadBytes(eepromAddr, g_nvmBlocks[index].data, g_nvmBlocks[index].dataLen);
+        if (ret != E_OK)
+        {
+            /* EEPROM read failure - mark block as invalid to prevent stale data usage */
+            g_nvmBlocks[index].valid = FALSE;
+            return E_NOT_OK;
+        }
+    }
+
+    /* Clear dirty flag since this data was just read from EEPROM (no pending changes) */
+    g_nvmBlocks[index].dirty = FALSE;
+    return E_OK;
+}
+
+/***********************************************************************************************************************
+*  public function definitions
+***********************************************************************************************************************/
+
+/**
+ * Initialize NVM layer:
+ * 1. Clear all RAM mirror blocks
+ * 2. Compute EEPROM offsets from config table
+ * 3. Check EEPROM magic byte (0xA5 at address 0x10)
+ *    - If valid: read all data blocks from EEPROM to RAM mirror
+ *    - If invalid: format EEPROM (write magic byte + clear data area)
+ * 4. Mark NVM as ready
+ */
+Std_ReturnType StmNvm_Init(void)
+{
+    Std_ReturnType ret;
+    uint8 magicVal;
+    uint16 i;
+
+    /* Step 1: Clear all RAM mirror blocks to zero */
+    (void)memset(g_nvmBlocks, 0, sizeof(g_nvmBlocks));
+
+    /* Step 2: Compute EEPROM offsets from config table */
+    StmNvm_ComputeOffsets();
+
+    /* Step 3: Read magic byte from EEPROM to determine if data area is formatted */
+    ret = Eeprom_ReadBytes(STM_EEPROM_MAGIC_ADDR, &magicVal, 1U);
+    if (ret != E_OK)
+    {
+        g_nvmReady = FALSE;
+        return E_NOT_OK;
+    }
+
+    if (magicVal != STM_EEPROM_MAGIC_VALUE)
+    {
+        /* EEPROM not formatted (first boot or corrupted) - format it now */
+        ret = StmNvm_FormatEeprom();
+        if (ret != E_OK)
+        {
+            g_nvmReady = FALSE;
+            return E_NOT_OK;
+        }
+    }
+    else
+    {
+        /* EEPROM is formatted - read all data blocks from EEPROM to RAM mirror */
+        for (i = 0U; i < STM_MAX_DATA_ITEMS; i++)
+        {
+            (void)StmNvm_ReadBlockFromEeprom(i);
+        }
+    }
+
+    g_nvmReady = TRUE;
+    return E_OK;
+}
+
+boolean StmNvm_IsReady(void)
+{
+    return g_nvmReady;
+}
+
+/**
+ * Read data from RAM mirror by dataId.
+ * Returns the smaller of dataLen and maxLen bytes to prevent buffer overflow.
+ */
+Std_ReturnType StmNvm_Read(uint16 dataId, uint8 *data, uint16 maxLen, uint16 *actualLen)
+{
+    uint16 idx;
+
+    /* Guard: NVM must be initialized */
+    if (g_nvmReady == FALSE)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Guard: output buffer must not be NULL */
+    if (data == NULL)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Look up block index by dataId */
+    idx = StmNvm_FindIndex(dataId);
+    if (idx == 0xFFFFU)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Block must be valid (previously written) */
+    if (g_nvmBlocks[idx].valid == FALSE)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Return actual data length if caller requested it */
+    if (actualLen != NULL)
+    {
+        *actualLen = g_nvmBlocks[idx].dataLen;
+    }
+
+    /* Copy min(dataLen, maxLen) bytes to prevent buffer overflow in caller */
+    if (g_nvmBlocks[idx].dataLen > 0U)
+    {
+        uint16 copyLen = (g_nvmBlocks[idx].dataLen > maxLen) ? maxLen : g_nvmBlocks[idx].dataLen;
+        (void)memcpy(data, g_nvmBlocks[idx].data, copyLen);
+    }
+
+    return E_OK;
+}
+
+/**
+ * Read data directly from EEPROM (bypasses RAM mirror).
+ *
+ * Reads the header (valid + len) and data from EEPROM hardware,
+ * copies data to caller's buffer. Does NOT update the RAM mirror.
+ * Used for debug verification to compare EEPROM vs RAM contents.
+ *
+ * @param dataId    Data item identifier
+ * @param data      Destination buffer
+ * @param maxLen    Buffer capacity
+ * @param actualLen Actual data length read from EEPROM (may be NULL)
+ * @return E_OK on success, E_NOT_OK on failure
+ */
+Std_ReturnType StmNvm_ReadFromEeprom(uint16 dataId, uint8 *data, uint16 maxLen, uint16 *actualLen)
+{
+    uint16 idx;
+    uint8 headerBuf[2U];
+    uint8 eepromAddr;
+    uint16 dataOffset;
+    uint16 eepromDataLen;
+    uint16 copyLen;
+    Std_ReturnType ret;
+
+    /* Guard: NVM must be initialized (EEPROM driver ready) */
+    if (g_nvmReady == FALSE)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Guard: output buffer must not be NULL */
+    if (data == NULL)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Look up block index by dataId */
+    idx = StmNvm_FindIndex(dataId);
+    if (idx == 0xFFFFU)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Compute EEPROM offset from init-time computed value */
+    dataOffset = g_nvmBlocks[idx].eepromOffset;
+
+    /* Step 1: Read valid + len header directly from EEPROM */
+    eepromAddr = (uint8)(STM_EEPROM_DATA_START_ADDR + dataOffset);
+    ret = Eeprom_ReadBytes(eepromAddr, headerBuf, 2U);
+    if (ret != E_OK)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Validate header: valid flag and data length */
+    if (headerBuf[0] == (uint8)FALSE)
+    {
+        /* EEPROM says block is not valid */
+        return E_NOT_OK;
+    }
+
+    eepromDataLen = (uint16)headerBuf[1];
+    if (eepromDataLen > g_StmDataItemCfg[idx].maxDataLen)
+    {
+        /* Corrupted length field */
+        return E_NOT_OK;
+    }
+
+    /* Return actual data length if caller requested it */
+    if (actualLen != NULL)
+    {
+        *actualLen = eepromDataLen;
+    }
+
+    /* Step 2: Read actual data directly from EEPROM */
+    if (eepromDataLen > 0U)
+    {
+        eepromAddr = (uint8)(STM_EEPROM_DATA_START_ADDR + dataOffset + 2U);
+        copyLen = (eepromDataLen > maxLen) ? maxLen : eepromDataLen;
+        ret = Eeprom_ReadBytes(eepromAddr, data, copyLen);
+        if (ret != E_OK)
+        {
+            return E_NOT_OK;
+        }
+    }
+
+    return E_OK;
+}
+
+/**
+ * Write data to RAM mirror and immediately sync to EEPROM.
+ *
+ * Steps:
+ * 1. Validate dataId and input parameters
+ * 2. Copy data to RAM mirror and mark as valid + dirty
+ * 3. Write to EEPROM (page splitting is handled by the EEPROM driver)
+ * 4. Clear dirty flag after successful EEPROM write
+ */
+Std_ReturnType StmNvm_Write(uint16 dataId, const uint8 *data, uint16 len)
+{
+    uint16 idx;
+
+    /* Guard: NVM must be initialized */
+    if (g_nvmReady == FALSE)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Guard: source data must not be NULL */
+    if (data == NULL)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Look up block index by dataId */
+    idx = StmNvm_FindIndex(dataId);
+    if (idx == 0xFFFFU)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Guard: length must not exceed configured maximum */
+    if (len > g_StmDataItemCfg[idx].maxDataLen)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Step 1: Update RAM mirror */
+    if (len > 0U)
+    {
+        (void)memcpy(g_nvmBlocks[idx].data, data, len);
+    }
+    g_nvmBlocks[idx].dataLen = len;
+    g_nvmBlocks[idx].valid = TRUE;
+
+    /* Mark as dirty for A-core sync only if stm_Enable is active.
+     * Items with stm_Enable == 0 are local-only and skip A-core interaction. */
+    if (g_StmDataItemCfg[idx].stm_Enable != 0U)
+    {
+        g_nvmBlocks[idx].dirty = TRUE;
+    }
+
+    /* Step 2: Mark block for asynchronous EEPROM flush (non-blocking).
+     * StmNvm_AsyncProcess() persists the RAM mirror to EEPROM over the next
+     * few 10ms cycles, using the cycle gap as the EEPROM t_WR delay. */
+    g_nvmBlocks[idx].eepromPending = TRUE;
+
+    /* If the async state machine is currently mid-write on THIS same block
+     * (e.g. header already written, data in progress), restart it from the
+     * header so the freshly updated RAM data is persisted as a whole. This
+     * guarantees the EEPROM image always matches the latest RAM content. */
+    if ((g_asyncEeprom.state != ASYNC_IDLE) &&
+        (g_asyncEeprom.blockIndex == idx))
+    {
+        g_asyncEeprom.headerOffset = 0U;
+        g_asyncEeprom.dataOffset = 0U;
+        g_asyncEeprom.state = ASYNC_WRITE_HEADER;
+    }
+
+    /* RAM is updated and persistence is queued. Dirty flag (if set) stays TRUE
+     * until A-core confirms the Method 0x04 sync via StmNvm_ClearDirty(). */
+    return E_OK;
+}
+
+/**
+ * Drive the asynchronous EEPROM write state machine. Call once per 10ms cycle.
+ *
+ * One EEPROM page chunk (<= EEPROM_PAGE_SIZE bytes, microsecond-range I2C
+ * transfer) is written per invocation. The 10ms spacing between calls supplies
+ * the EEPROM internal write-cycle time (t_WR), so no busy-wait is needed.
+ *
+ * Sequence for one block:
+ *   ASYNC_IDLE          -> find pending block, return (1 cycle = t_WR gap)
+ *   ASYNC_WRITE_HEADER  -> write [valid][len] (split if it straddles a page)
+ *   ASYNC_WRITE_DATA    -> write data, one page chunk per cycle
+ *   -> clear eepromPending, back to ASYNC_IDLE
+ *
+ * On I2C failure the same step is retried on the next cycle (no offset advance).
+ */
+void StmNvm_AsyncProcess(void)
+{
+    uint16 i;
+    uint16 idx;
+    uint16 dataOffset;
+    uint8  eepromAddr;
+    uint8  headerBuf[2U];
+    uint16 writtenLen;
+
+    if (g_nvmReady == FALSE)
+    {
+        return;
+    }
+
+    switch (g_asyncEeprom.state)
+    {
+    case ASYNC_IDLE:
+        /* Scan for the next block that needs flushing to EEPROM */
+        for (i = 0U; i < STM_MAX_DATA_ITEMS; i++)
+        {
+            if (g_nvmBlocks[i].eepromPending == TRUE)
+            {
+                g_asyncEeprom.blockIndex = i;
+                g_asyncEeprom.headerOffset = 0U;
+                g_asyncEeprom.dataOffset = 0U;
+                g_asyncEeprom.state = ASYNC_WRITE_HEADER;
+                /* Start the actual write on the NEXT cycle, providing a clean
+                 * t_WR gap before the first I2C transfer. */
+                return;
+            }
+        }
+        break;
+
+    case ASYNC_WRITE_HEADER:
+        idx = g_asyncEeprom.blockIndex;
+        dataOffset = g_nvmBlocks[idx].eepromOffset;
+
+        headerBuf[0] = g_nvmBlocks[idx].valid;
+        headerBuf[1] = (uint8)g_nvmBlocks[idx].dataLen;
+
+        eepromAddr = (uint8)(STM_EEPROM_DATA_START_ADDR + dataOffset
+                             + g_asyncEeprom.headerOffset);
+
+        if (Eeprom_WriteOnePage(eepromAddr,
+                                &headerBuf[g_asyncEeprom.headerOffset],
+                                (uint16)(2U - g_asyncEeprom.headerOffset),
+                                &writtenLen) == E_OK)
+        {
+            g_asyncEeprom.headerOffset += writtenLen;
+            if (g_asyncEeprom.headerOffset >= 2U)
+            {
+                /* Header fully written. Move on to data, or finish if none. */
+                if (g_nvmBlocks[idx].dataLen > 0U)
+                {
+                    g_asyncEeprom.dataOffset = 0U;
+                    g_asyncEeprom.state = ASYNC_WRITE_DATA;
+                }
+                else
+                {
+                    g_nvmBlocks[idx].eepromPending = FALSE;
+                    g_asyncEeprom.state = ASYNC_IDLE;
+                }
+            }
+            /* else: header straddled a page boundary - finish it next cycle */
+        }
+        /* else: I2C failure - retry the same chunk next cycle */
+        break;
+
+    case ASYNC_WRITE_DATA:
+        idx = g_asyncEeprom.blockIndex;
+        dataOffset = g_nvmBlocks[idx].eepromOffset;
+
+        /* Defensive: nothing (more) to write -> done */
+        if (g_asyncEeprom.dataOffset >= g_nvmBlocks[idx].dataLen)
+        {
+            g_nvmBlocks[idx].eepromPending = FALSE;
+            g_asyncEeprom.state = ASYNC_IDLE;
+            break;
+        }
+
+        eepromAddr = (uint8)(STM_EEPROM_DATA_START_ADDR + dataOffset
+                             + 2U + g_asyncEeprom.dataOffset);
+
+        if (Eeprom_WriteOnePage(eepromAddr,
+                                &g_nvmBlocks[idx].data[g_asyncEeprom.dataOffset],
+                                (uint16)(g_nvmBlocks[idx].dataLen - g_asyncEeprom.dataOffset),
+                                &writtenLen) == E_OK)
+        {
+            g_asyncEeprom.dataOffset += writtenLen;
+            if (g_asyncEeprom.dataOffset >= g_nvmBlocks[idx].dataLen)
+            {
+                /* All data written - block fully persisted */
+                g_nvmBlocks[idx].eepromPending = FALSE;
+                g_asyncEeprom.state = ASYNC_IDLE;
+            }
+            /* else: more chunks on the next cycles (natural t_WR delay) */
+        }
+        /* else: I2C failure - retry the same chunk next cycle */
+        break;
+
+    default:
+        g_asyncEeprom.state = ASYNC_IDLE;
+        break;
+    }
+}
+
+boolean StmNvm_IsDirty(uint16 dataId)
+{
+    uint16 idx;
+
+    idx = StmNvm_FindIndex(dataId);
+    if (idx == 0xFFFFU)
+    {
+        return FALSE;
+    }
+
+    return (g_nvmBlocks[idx].dirty == TRUE) ? TRUE : FALSE;
+}
+
+void StmNvm_ClearDirty(uint16 dataId)
+{
+    uint16 idx;
+
+    idx = StmNvm_FindIndex(dataId);
+    if (idx != 0xFFFFU)
+    {
+        g_nvmBlocks[idx].dirty = FALSE;
+    }
+}
+
+/**
+ * Find the next data block that is dirty (modified) and needs to be
+ * synced to A-core. Starts searching from startIndex for round-robin fairness.
+ *
+ * Returns the dataId, a pointer to the RAM data buffer, and the data length.
+ * Note: The returned data pointer points directly into the RAM mirror,
+ * so the caller must process the data before the next write to this block.
+ */
+Std_ReturnType StmNvm_GetSyncableItem(uint16 startIndex, uint16 *outDataId,
+                                        const uint8 **outData, uint16 *outLen)
+{
+    uint16 i;
+    uint16 idx;
+
+    if ((outDataId == NULL) || (outData == NULL) || (outLen == NULL))
+    {
+        return E_NOT_OK;
+    }
+
+    /* Circular scan: search all items starting from startIndex, wrapping around.
+     * This ensures any dirty block is found in a single call regardless of
+     * startIndex position, avoiding the 1-2 cycle delay of the old linear scan. */
+    for (i = 0U; i < STM_MAX_DATA_ITEMS; i++)
+    {
+        idx = (startIndex + i) % STM_MAX_DATA_ITEMS;
+        /* Only sync blocks that are valid, dirty, AND enabled for A-core interaction */
+        if ((g_nvmBlocks[idx].valid == TRUE) && (g_nvmBlocks[idx].dirty == TRUE) &&
+            (g_StmDataItemCfg[idx].stm_Enable != 0U))
+        {
+            *outDataId = g_StmDataItemCfg[idx].dataId;
+            *outData = g_nvmBlocks[idx].data;   /* Direct pointer to RAM mirror */
+            *outLen = g_nvmBlocks[idx].dataLen;
+            return E_OK;
+        }
+    }
+
+    /* No dirty blocks found in entire table */
+    return E_NOT_OK;
+}
+
+Std_ReturnType StmNvm_WriteFromA(uint16 dataId, const uint8 *data, uint16 len)
+{
+    Std_ReturnType ret;
+    uint16 idx;
+
+    /* Guard: reject writes from A-core for items with stm_Enable == 0.
+     * These items are local-only and must not participate in A-core interaction. */
+    idx = StmNvm_FindIndex(dataId);
+    if (idx == 0xFFFFU)
+    {
+        return E_NOT_OK;
+    }
+    if (g_StmDataItemCfg[idx].stm_Enable == 0U)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Delegate to StmNvm_Write for RAM mirror + EEPROM persistence */
+    ret = StmNvm_Write(dataId, data, len);
+    if (ret == E_OK)
+    {
+        /* Data received FROM A-core does NOT need to be synced BACK to A-core.
+         * Clear dirty immediately to prevent unnecessary Method 0x04 round-trip. */
+        StmNvm_ClearDirty(dataId);
+    }
+    return ret;
+}
+
+/**
+ * Format EEPROM data area:
+ * 1. Write magic byte (0xA5) at address 0x10
+ * 2. Clear all data blocks in EEPROM (write zeros using segmented writes)
+ * 3. Clear all RAM mirror blocks
+ *
+ * This is called on first boot (no valid magic byte) or when
+ * EEPROM data corruption is detected.
+ */
+Std_ReturnType StmNvm_FormatEeprom(void)
+{
+    Std_ReturnType ret;
+    uint16 i;
+    uint8 eepromAddr;
+    uint16 dataOffset;
+    uint16 totalBytes;
+
+    /* Zero buffer for clearing EEPROM blocks.
+     * Static to avoid stack overflow (max block = 2 + STM_NVM_BLOCK_MAX_SIZE). */
+    static uint8 zeroBuf[STM_NVM_BLOCK_MAX_SIZE + 2U];
+
+    /* Step 1: Write magic byte to mark EEPROM as formatted */
+    uint8 magicVal = STM_EEPROM_MAGIC_VALUE;
+    ret = Eeprom_WriteBytes(STM_EEPROM_MAGIC_ADDR, &magicVal, 1U);
+    if (ret != E_OK)
+    {
+        return E_NOT_OK;
+    }
+
+    /* Step 2: Clear all data blocks in EEPROM (write zeros).
+     * Eeprom_WriteBytes() handles page boundary splitting internally,
+     * so no manual segmented loop is needed. */
+    (void)memset(zeroBuf, 0, sizeof(zeroBuf));
+
+    for (i = 0U; i < STM_MAX_DATA_ITEMS; i++)
+    {
+        dataOffset = g_nvmBlocks[i].eepromOffset;
+        /* Total EEPROM bytes for this block: 2 (header) + maxDataLen */
+        totalBytes = 2U + g_StmDataItemCfg[i].maxDataLen;
+        eepromAddr = (uint8)(STM_EEPROM_DATA_START_ADDR + dataOffset);
+
+        ret = Eeprom_WriteBytes(eepromAddr, zeroBuf, totalBytes);
+        if (ret != E_OK)
+        {
+            return E_NOT_OK;
+        }
+
+        /* Step 3: Clear corresponding RAM mirror block */
+        (void)memset(g_nvmBlocks[i].data, 0, sizeof(g_nvmBlocks[i].data));
+        g_nvmBlocks[i].dataLen = 0U;
+        g_nvmBlocks[i].valid = FALSE;
+        g_nvmBlocks[i].dirty = FALSE;
+        /* EEPROM was just written synchronously and authoritatively; any
+         * queued async flush for this block is now obsolete. */
+        g_nvmBlocks[i].eepromPending = FALSE;
+    }
+
+    /* Cancel any in-flight async write: format has overwritten the EEPROM. */
+    g_asyncEeprom.state = ASYNC_IDLE;
+    g_asyncEeprom.headerOffset = 0U;
+    g_asyncEeprom.dataOffset = 0U;
+
+    return E_OK;
+}
+
+/**
+ * Reset NVM state on link disconnect.
+ *
+ * Per protocol requirement:
+ * - Clear dirty flags (pending syncs are abandoned since A-core may have restarted)
+ * - Keep data in RAM mirror and EEPROM intact (data is still valid locally)
+ * - CRC/send counter is NOT reset (handled by PICC layer, persists across disconnects)
+ */
+void StmNvm_ResetOnDisconnect(void)
+{
+    uint16 i;
+
+    for (i = 0U; i < STM_MAX_DATA_ITEMS; i++)
+    {
+        g_nvmBlocks[i].dirty = FALSE;
+    }
+}
+
+/**
+ * Mark all valid NVM blocks as dirty for A-core sync.
+ *
+ * Called when A-core consistency check (Method 0x01 with dataId=0x0000)
+ * passes successfully. This triggers a full sync cycle where M-core will
+ * send all its current data to A-core via Method 0x04.
+ *
+ * Only blocks with valid==TRUE are marked dirty - invalid blocks have
+ * no data worth syncing. The dirty flag only exists in RAM mirror,
+ * no EEPROM write is needed here.
+ */
+void StmNvm_SetAllValidDirty(void)
+{
+    uint16 i;
+
+    for (i = 0U; i < STM_MAX_DATA_ITEMS; i++)
+    {
+        /* Only mark dirty for items that are valid AND enabled for A-core interaction */
+        if ((g_nvmBlocks[i].valid == TRUE) && (g_StmDataItemCfg[i].stm_Enable != 0U))
+        {
+            g_nvmBlocks[i].dirty = TRUE;
+        }
+    }
+}
+
+/**
+ * Check if a data item is enabled for A-core interaction.
+ *
+ * Returns TRUE if the item exists in the config table and its
+ * stm_Enable field is non-zero. Returns FALSE if the item is
+ * disabled (stm_Enable == 0) or the dataId is not found.
+ */
+boolean StmNvm_IsStmEnabled(uint16 dataId)
+{
+    uint16 idx;
+
+    idx = StmNvm_FindIndex(dataId);
+    if (idx == 0xFFFFU)
+    {
+        return FALSE;
+    }
+
+    return (g_StmDataItemCfg[idx].stm_Enable != 0U) ? TRUE : FALSE;
+}

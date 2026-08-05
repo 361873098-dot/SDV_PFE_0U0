@@ -4,7 +4,7 @@
 *
 *   @brief   AUTOSAR Eth_43_PFE driver Post-Build configuration file
 *   @details File containing the configuration for the Ethernet driver
-*   @note    This file was generated on 2026-07-30.
+*   @note    This file was generated on 2026-08-05.
 *
 *   @addtogroup ETH_43_PFE_DRIVER_CONFIGURATION
 *   @{

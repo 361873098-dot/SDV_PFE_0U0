@@ -8,9 +8,9 @@
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
 *   SW Version           : 4.0.2
-*   Build Version        : S32_RTD_4_0_2_P04_D2312_ASR_REL_4_4_REV_0000_20231219
+*   Build Version        : S32_RTD_4_0_2_D2306_ASR_REL_4_4_REV_0000_20230630
 *
-*   Copyright 2020-2023 NXP
+*   Copyright 2020-2023 NXP Semiconductors
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
 *   used strictly in accordance with the applicable license terms. By expressly
@@ -133,11 +133,11 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
 
         0U,                                 /* ircoscsCount */
         0U,                                 /* xoscsCount */
-        3U,                                 /* pllsCount */
-        9U,                                /* selectorsCount */
-        17U,                                /* dividersCount */
+        2U,                                 /* pllsCount */
+        8U,                                /* selectorsCount */
+        13U,                                /* dividersCount */
         3U,                                 /* dividerTriggersCount */
-        1U,                                /* fracDivsCount */
+        0U,                                /* fracDivsCount */
         24U,                                /* extClksCount */
         0U,                                 /* gatesCount */
         0U,                                 /* pcfsCount */
@@ -194,30 +194,6 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
         {
             #if CLOCK_IP_PLLS_NO > 0U
             {
-                COREPLL_CLK,                  /*!<     name;                    */
-                1U,                           /*!<     enable;                  */
-                FXOSC_CLK,                    /*!<     inputReference           */
-                0U,                           /*!<     bypass;                  */
-                1U,                           /*!<     predivider;              */
-                0U,                           /*!<     numeratorFracLoopDiv;    */
-                65U,                          /*!<     mulFactorDiv;            */
-                1U,                           /*!<     ModulationBypass;              */
-                0U,                           /*!<     modulationType;          */
-                0U,                           /*!<     modulationPeriod;        */
-                1U,                           /*!<     incrementStep;           */
-                1U,                           /*!<     sigmaDelta;              */
-                0U,                           /*!<     ditherControl;           */
-                0U,                           /*!<     ditherControlValue;      */
-                0U,                           /*!<     Monitor type */
-                {                             /*!<     Dividers */
-                        0U,
-                        0U,
-                        0U,
-                },
-            },
-            #endif
-            #if CLOCK_IP_PLLS_NO > 1U
-            {
                 PERIPHPLL_CLK,                  /*!<     name;                    */
                 1U,                           /*!<     enable;                  */
                 FXOSC_CLK,                    /*!<     inputReference           */
@@ -240,7 +216,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
                 },
             },
             #endif
-            #if CLOCK_IP_PLLS_NO > 2U
+            #if CLOCK_IP_PLLS_NO > 1U
             {
                 ACCELPLL_CLK,                  /*!<     name;                    */
                 1U,                           /*!<     enable;                  */
@@ -286,6 +262,28 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
                         0U,
                 },
             },
+            {
+                RESERVED_CLK,           /* name */
+                0U,                     /* enable */
+                RESERVED_CLK,           /* inputReference */
+                0U,                     /* Bypass */
+                0U,                     /* predivider */
+                0U,                     /* numeratorFracLoopDiv */
+                0U,                     /* mulFactorDiv */
+                0U,                     /* ModulationBypass */
+                0U,                     /* Modulaton type: Spread spectrum modulation bypassed */
+                0U,                     /* modulationPeriod */
+                0U,                     /* incrementStep */
+                0U,                     /* sigmaDelta */
+                0U,                     /* ditherControl */
+                0U,                     /* ditherControlValue */
+                0U,                     /* monitor type */
+                {                             /*!< Dividers */
+                        0U,
+                        0U,
+                        0U,
+                },
+            },
 
         },
 
@@ -295,66 +293,64 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
 
             #if CLOCK_IP_SELECTORS_NO > 0U
             {
-                XBAR_2X_CLK,                     /* Clock name associated to selector */
-                CORE_PLL_DFS1_CLK,                       /* Name of the selected input source */
-            },
-            #endif
-        
-            #if CLOCK_IP_SELECTORS_NO > 1U
-            {
                 PFE_PE_CLK,                     /* Clock name associated to selector */
                 ACCEL_PLL_PHI1_CLK,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 2U
+            #if CLOCK_IP_SELECTORS_NO > 1U
             {
                 PFEMAC0_TX_DIV_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_0_TX,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 3U
+            #if CLOCK_IP_SELECTORS_NO > 2U
             {
                 PFEMAC1_TX_DIV_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_1_TX,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 4U
+            #if CLOCK_IP_SELECTORS_NO > 3U
             {
                 PFEMAC0_RX_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_0_CDR,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 5U
+            #if CLOCK_IP_SELECTORS_NO > 4U
             {
                 PFEMAC1_RX_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_1_CDR,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 6U
+            #if CLOCK_IP_SELECTORS_NO > 5U
             {
                 PFEMAC0_TX_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_0_TX,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 7U
+            #if CLOCK_IP_SELECTORS_NO > 6U
             {
                 PFEMAC1_TX_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_1_TX,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 8U
+            #if CLOCK_IP_SELECTORS_NO > 7U
             {
                 PFEMAC2_TX_CLK,                     /* Clock name associated to selector */
                 PFEMAC2_TX_DIV_CLK,                       /* Name of the selected input source */
             },
             #endif
+        
+            {
+                RESERVED_CLK,           /* Clock name associated to selector */
+                RESERVED_CLK,           /* Name of the selected input source */
+            },
         
             {
                 RESERVED_CLK,           /* Clock name associated to selector */
@@ -478,26 +474,6 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
         
             #if CLOCK_IP_DIVIDERS_NO > 0U
             {
-                CORE_PLL_PHI0_CLK,
-                2U,
-                {
-                    0U,
-                }
-            },
-            #endif
-                    
-            #if CLOCK_IP_DIVIDERS_NO > 1U
-            {
-                CORE_PLL_PHI1_CLK,
-                0U,
-                {
-                    0U,
-                }
-            },
-            #endif
-                    
-            #if CLOCK_IP_DIVIDERS_NO > 2U
-            {
                 PERIPH_PLL_PHI0_CLK,
                 20U,
                 {
@@ -506,7 +482,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                     
-            #if CLOCK_IP_DIVIDERS_NO > 3U
+            #if CLOCK_IP_DIVIDERS_NO > 1U
             {
                 PERIPH_PLL_PHI1_CLK,
                 25U,
@@ -516,7 +492,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                     
-            #if CLOCK_IP_DIVIDERS_NO > 4U
+            #if CLOCK_IP_DIVIDERS_NO > 2U
             {
                 PERIPH_PLL_PHI2_CLK,
                 25U,
@@ -526,7 +502,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                     
-            #if CLOCK_IP_DIVIDERS_NO > 5U
+            #if CLOCK_IP_DIVIDERS_NO > 3U
             {
                 PERIPH_PLL_PHI3_CLK,
                 16U,
@@ -536,7 +512,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                     
-            #if CLOCK_IP_DIVIDERS_NO > 6U
+            #if CLOCK_IP_DIVIDERS_NO > 4U
             {
                 PERIPH_PLL_PHI4_CLK,
                 10U,
@@ -546,7 +522,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                     
-            #if CLOCK_IP_DIVIDERS_NO > 7U
+            #if CLOCK_IP_DIVIDERS_NO > 5U
             {
                 PERIPH_PLL_PHI5_CLK,
                 16U,
@@ -556,7 +532,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                     
-            #if CLOCK_IP_DIVIDERS_NO > 8U
+            #if CLOCK_IP_DIVIDERS_NO > 6U
             {
                 PERIPH_PLL_PHI6_CLK,
                 0U,
@@ -566,7 +542,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                     
-            #if CLOCK_IP_DIVIDERS_NO > 9U
+            #if CLOCK_IP_DIVIDERS_NO > 7U
             {
                 PERIPH_PLL_PHI7_CLK,
                 20U,
@@ -576,7 +552,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                     
-            #if CLOCK_IP_DIVIDERS_NO > 10U
+            #if CLOCK_IP_DIVIDERS_NO > 8U
             {
                 ACCEL_PLL_PHI0_CLK,
                 0U,
@@ -586,7 +562,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                     
-            #if CLOCK_IP_DIVIDERS_NO > 11U
+            #if CLOCK_IP_DIVIDERS_NO > 9U
             {
                 ACCEL_PLL_PHI1_CLK,
                 3U,
@@ -596,27 +572,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                     
-            #if CLOCK_IP_DIVIDERS_NO > 12U
-            {
-                LBIST_CLK,
-                0U,
-                {
-                    0U,
-                }
-            },
-            #endif
-                        
-            #if CLOCK_IP_DIVIDERS_NO > 13U
-            {
-                DAPB_CLK,
-                6U,
-                {
-                    0U,
-                }
-            },
-            #endif
-                        
-            #if CLOCK_IP_DIVIDERS_NO > 14U
+            #if CLOCK_IP_DIVIDERS_NO > 10U
             {
                 PFE_PE_CLK,
                 1U,
@@ -626,7 +582,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                         
-            #if CLOCK_IP_DIVIDERS_NO > 15U
+            #if CLOCK_IP_DIVIDERS_NO > 11U
             {
                 PFEMAC0_TX_DIV_CLK,
                 1U,
@@ -636,7 +592,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                         
-            #if CLOCK_IP_DIVIDERS_NO > 16U
+            #if CLOCK_IP_DIVIDERS_NO > 12U
             {
                 PFEMAC1_TX_DIV_CLK,
                 1U,
@@ -646,6 +602,38 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
             },
             #endif
                         
+            {
+                RESERVED_CLK,
+                0U,
+                {
+                    0U,
+                },
+            },
+        
+            {
+                RESERVED_CLK,
+                0U,
+                {
+                    0U,
+                },
+            },
+        
+            {
+                RESERVED_CLK,
+                0U,
+                {
+                    0U,
+                },
+            },
+        
+            {
+                RESERVED_CLK,
+                0U,
+                {
+                    0U,
+                },
+            },
+        
             {
                 RESERVED_CLK,
                 0U,
@@ -831,17 +819,14 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
 
         /* FRACTIONAL DIVIDER initialization. */
         {
-            #if CLOCK_IP_FRACTIONAL_DIVIDERS_NO  > 0U
             {
-                CORE_PLL_DFS1_CLK,
-                1U,
+                RESERVED_CLK,
+                0U,
                 {
-                    1U,
-                    23U,
+                    0U,
+                    0U,
                 },
             },
-            #endif
-
             {
                 RESERVED_CLK,
                 0U,

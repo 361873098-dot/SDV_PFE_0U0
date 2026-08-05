@@ -8,10 +8,10 @@
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
 *   SW Version           : 4.0.2
-*   Build Version        : S32_RTD_4_0_2_P04_D2312_ASR_REL_4_4_REV_0000_20231219
+*   Build Version        : S32_RTD_4_0_2_D2306_ASR_REL_4_4_REV_0000_20230630
 *
-*   (c) Copyright 2020-2023 NXP
-*   All Rights Reserved.
+*   Copyright 2020-2023 NXP Semiconductors
+
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
 *   used strictly in accordance with the applicable license terms. By expressly
@@ -23,12 +23,11 @@
 ==================================================================================================*/
 
 /**
-*   @file       Serdes_Ipw_PBCfg.c
+*   @file
 *   @internal
-*   @addtogroup Serdes_IPW
+*   @addtogroup Serdes
 *   @{
 */
-
 
 #ifdef __cplusplus
 extern "C"

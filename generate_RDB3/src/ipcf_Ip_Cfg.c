@@ -113,7 +113,7 @@ static struct ipc_shm_pool_cfg ipcf_ipcf_instance0_cfg_buf_pools1[3] = {
 
 /* IpcfBuffer_2 configuration */
 {
-    .num_bufs = 20,
+    .num_bufs = 10,
     .buf_size = 4096,
 },
 
@@ -126,8 +126,8 @@ static struct ipc_shm_channel_cfg ipcf_cfg_channels0[3] = {
     .ch = {
         .unmanaged = {
             .size = 64,
-            .rx_cb = ctrl_chan_rx_cb,
-            .cb_arg = &rx_cb_arg,
+            .rx_cb = PICC_data_unmng_rx_cb,
+            .cb_arg = &rx_unmg_cb_arg,
         },
     },
 },
@@ -137,8 +137,8 @@ static struct ipc_shm_channel_cfg ipcf_cfg_channels0[3] = {
         .managed = {
             .num_pools = 3,
             .pools = ipcf_ipcf_instance0_cfg_buf_pools0,
-            .rx_cb = data_chan_rx_cb,
-            .cb_arg = &rx_cb_arg,
+            .rx_cb = PICC_data_mng_rx_cb,
+            .cb_arg = &rx_mng_cb_arg,
         },
     },
 },
@@ -148,8 +148,8 @@ static struct ipc_shm_channel_cfg ipcf_cfg_channels0[3] = {
         .managed = {
             .num_pools = 3,
             .pools = ipcf_ipcf_instance0_cfg_buf_pools1,
-            .rx_cb = data_chan_rx_cb,
-            .cb_arg = &rx_cb_arg,
+            .rx_cb = PICC_data_mng_rx_cb,
+            .cb_arg = &rx_mng_cb_arg,
         },
     },
 },
@@ -160,7 +160,7 @@ struct ipc_shm_cfg ipcf_cfg_instances[1] = {
     .local_shm_addr = 0x34200000,
     .remote_shm_addr = 0x34100000,
     .shm_size = 0x100000,
-    .inter_core_tx_irq = MSCM_INT0_IRQn,
+    .inter_core_tx_irq = MSCM_INT1_IRQn,
     .inter_core_rx_irq = MSCM_INT2_IRQn,
     .local_core = {
         .type = IPC_CORE_M7,

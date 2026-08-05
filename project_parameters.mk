@@ -12,22 +12,23 @@
 
 #The path to the compiler instalation dir
 #GHS_DIR ?= c:/ghs/comp_202014
-GCC_DIR ?= ./tools/build_tool/gcc_v9.2/gcc-9.2-arm32-eabi
+GCC_DIR ?= D:/Tools/gcc_v9.2/gcc-9.2-arm32-eabi
 #DIAB_DIR ?= c:/WindRiver/compilers/diab-7.0.3.0
 
 #The path to the Tresos plugins directory
-TRESOS_DIR ?= ./tools/tresos_mcore_bsw
+TRESOS_DIR ?= D:/work/SDV_PFE/Hpc_m7_prj/tools/tresos_mcore_bsw
 PLUGINS_DIR ?= $(TRESOS_DIR)/plugins
 TRESOS_WORKSPACE_DIR ?= $(TRESOS_DIR)/workspace
 FW_DIR ?= ./work/driver/pfe_firmware
 LWIP_DIR ?= ./work/lwip
+MIDDLEWARE_DIR ?= ./work/middleware
 FREERTOS_DIR ?= ./work/freertos
 FREERTOS_PORT_DIR ?= $(FREERTOS_DIR)/portable/GCC/ARM_CM7/r0p1
 FREERTOS_HEAP_DIR ?= $(FREERTOS_DIR)/portable/MemMang
 PRJ_CNF_DIR ?= ./work/prj/
 IPCF_DIR ?= ./work/driver/ipcf
 #MCAL modules used
-MCAL_MODULE_LIST :=  BaseNXP Det Dio Dem Gpt Mcu Mcl Rte Port Platform EthSwt EthTrcv
+MCAL_MODULE_LIST :=  BaseNXP Can CanIf Det Dio Dem Gpt Mcu Mcl Rte Port Platform EthSwt EthTrcv
 
 #The package name for the MCAL release
 AR_MCAL_PKG_NAME = TS_T40D11M40I2R0

@@ -1,0 +1,38 @@
+1. Example Description
+    The example performs basic functionality of Ocotp driver.
+    1.1 The application software functionality
+            - Init clock
+            - Setup pin
+            - Init Ocotp
+            - Write to GP6_127_96 , GP6_159_128 Shadow registers.
+            - Write to eFuse GP6_127_96.
+
+2. Installation steps
+    2.1 Hardware installation
+        2.1.1 Supported boards
+            - S32G-VNP-RDB2 PCB 47440 RevX2 SCH RevC1
+        2.2.2 Connections
+        2.2.3 Debugger
+            The debugger must be connected to J48 20-pin JTAG Cortex Debug connector.
+    2.2 Software installation
+        2.2.1 Importing the S32 Design Studio project
+            After opening S32 Design Studio, go to "File -> New -> S32DS Project From Example" and select this example. Then click on "Finish".
+            The project should now be copied into your current workspace.
+
+3. Generating, building and running the example application
+    3.1 Generating the S32 configuration
+        Before running the example a configuration needs to be generated.  First go to Project Explorer View in S32 DS and select the current project. Select the "S32 Configuration Tool" menu then click on the desired configuration tool (Pins, Clocks, Peripherals etc...). Clicking on any one of those will generate all the components. Make the desired changes(if any) then click on the "S32 Configuration Tool->Update Code" button.
+    3.2 Compiling the application
+        Select the configuration to be built: RAM (Debug_RAM) by left clicking on the downward arrow corresponding to the build button in eclipse.
+        Use Project > Build to build the project.
+        Wait for the build action to be completed before continuing to the next step. Check the compiler console for error messages; upon completion, the *.elf binary file
+        should be created.
+    3.3 Running the application on the board
+        Go to Run and select Debug Configurations. There will be a debug configuration for this project:
+
+        Configuration Name                                Description
+        -------------------------------                   -----------------------
+        Ocotp_AUTOSAR_Example_Debug_RAM_S32Debug          Debug the RAM configuration using S32Debugger
+
+        Select the desired debug configuration and click on Launch. Now the perspective will change to the Debug Perspective.
+        Use the controls to control the program flow.

@@ -1,0 +1,220 @@
+;=============================================================================
+; diag_stm_deep_dive.cmm
+; Deep-dive diagnostic: LPI2C hardware + STM RAM mirror + retry state
+;=============================================================================
+
+LOCAL &flag &result &readlen &writeval &stmState
+LOCAL &rDataId &rRetry &rTick &rActive &rSid
+LOCAL &b0v &b0d &b0l &b1v &b1d &b1l &b2v &b2d &b2l
+LOCAL &b3v &b3d &b3l &b4v &b4d &b4l
+LOCAL &b1eoff &b1datalen
+LOCAL &linkCli &linkSrv &chanL0 &chanL1
+LOCAL &i2cStat0 &i2cStat1 &i2cHwMap0 &i2cHwMap1
+LOCAL &i &val
+LOCAL &lpi2c0_mcr &lpi2c0_msr &lpi2c0_mfsr &lpi2c0_mfcr
+LOCAL &lpi2c1_mcr &lpi2c1_msr &lpi2c1_mfsr &lpi2c1_mfcr
+LOCAL &addr0_mcr &addr0_msr &addr0_mfsr &addr0_mfcr
+LOCAL &addr1_mcr &addr1_msr &addr1_mfsr &addr1_mfcr
+
+; ===== Prepare single AREA window =====
+AREA.Reset
+AREA.View
+
+; ===== Read STM test variables =====
+&flag=Var.VALUE(NVM_test_flag)
+&result=Var.VALUE(NVM_test_result)
+&readlen=Var.VALUE(NVM_test_read_len)
+&writeval=Var.VALUE(NVM_test_write_val)
+&stmState=Var.VALUE(Stm_State)
+
+; ===== Read retry state =====
+&rDataId=Var.VALUE(Stm_RetryState.dataId)
+&rRetry=Var.VALUE(Stm_RetryState.retryCount)
+&rTick=Var.VALUE(Stm_RetryState.tickCounter)
+&rActive=Var.VALUE(Stm_RetryState.active)
+&rSid=Var.VALUE(Stm_RetryState.sessionId)
+
+; ===== Read NVM block key fields =====
+&b0v=Var.VALUE(g_nvmBlocks[0].valid)
+&b0d=Var.VALUE(g_nvmBlocks[0].dirty)
+&b0l=Var.VALUE(g_nvmBlocks[0].dataLen)
+&b1v=Var.VALUE(g_nvmBlocks[1].valid)
+&b1d=Var.VALUE(g_nvmBlocks[1].dirty)
+&b1l=Var.VALUE(g_nvmBlocks[1].dataLen)
+&b1eoff=Var.VALUE(g_nvmBlocks[1].eepromOffset)
+&b2v=Var.VALUE(g_nvmBlocks[2].valid)
+&b2d=Var.VALUE(g_nvmBlocks[2].dirty)
+&b2l=Var.VALUE(g_nvmBlocks[2].dataLen)
+&b3v=Var.VALUE(g_nvmBlocks[3].valid)
+&b3d=Var.VALUE(g_nvmBlocks[3].dirty)
+&b3l=Var.VALUE(g_nvmBlocks[3].dataLen)
+&b4v=Var.VALUE(g_nvmBlocks[4].valid)
+&b4d=Var.VALUE(g_nvmBlocks[4].dirty)
+&b4l=Var.VALUE(g_nvmBlocks[4].dataLen)
+
+; ===== Read I2C driver state =====
+&i2cStat0=Var.VALUE(I2c_aeChannelStatus[0])
+&i2cStat1=Var.VALUE(I2c_aeChannelStatus[1])
+&i2cHwMap0=Var.VALUE(I2c_as8ChannelHardwareMap[0])
+&i2cHwMap1=Var.VALUE(I2c_as8ChannelHardwareMap[1])
+
+; ===== Read LPI2C hardware registers directly =====
+; Channel0=I2C_IIC_4 -> need to check which physical LPI2C instance
+; Channel1=I2C_IIC_0 -> LPI2C_0 base=0x40350000
+; We read both LPI2C_0 and LPI2C_1 for completeness
+
+; LPI2C_0 @ 0x40350000 - store addresses as LOCAL variables first
+&addr0_mcr=0x40350010
+&addr0_msr=0x40350014
+&addr0_mfsr=0x40350058
+&addr0_mfcr=0x4035005C
+&lpi2c0_mcr=Data.LONG(D:&addr0_mcr)
+&lpi2c0_msr=Data.LONG(D:&addr0_msr)
+&lpi2c0_mfsr=Data.LONG(D:&addr0_mfsr)
+&lpi2c0_mfcr=Data.LONG(D:&addr0_mfcr)
+
+; LPI2C_1 @ 0x40354000
+&addr1_mcr=0x40354010
+&addr1_msr=0x40354014
+&addr1_mfsr=0x40354058
+&addr1_mfcr=0x4035405C
+&lpi2c1_mcr=Data.LONG(D:&addr1_mcr)
+&lpi2c1_msr=Data.LONG(D:&addr1_msr)
+&lpi2c1_mfsr=Data.LONG(D:&addr1_mfsr)
+&lpi2c1_mfcr=Data.LONG(D:&addr1_mfcr)
+
+; ===== Read PICC link states =====
+&linkCli=Var.VALUE(g_diagRecord_Debug.appLinkState[3])
+&linkSrv=Var.VALUE(g_diagRecord_Debug.appLinkState[4])
+&chanL0=Var.VALUE(g_diagRecord_Debug.channelLinkState[0])
+&chanL1=Var.VALUE(g_diagRecord_Debug.channelLinkState[1])
+
+; ===== PRINT ALL TO SINGLE WINDOW =====
+
+PRINT "================================================================"
+PRINT "== STM Deep-Dive: LPI2C HW + RAM Mirror + Method 0x04 Retry =="
+PRINT "================================================================"
+
+PRINT ""
+PRINT "--- [1] STM Test Variables ---"
+PRINT "  NVM_test_flag      = " &flag
+PRINT "  NVM_test_result    = " &result "  (0=E_OK 1=E_NOT_OK)"
+PRINT "  NVM_test_read_len  = " &readlen
+PRINT "  NVM_test_write_val = 0x" &writeval
+
+PRINT ""
+PRINT "--- [2] STM State Machine ---"
+PRINT "  Stm_State = " &stmState "  (0=UNINIT 1=WAIT_LINK 2=WAIT_CONSISTENCY 3=SYNC_TO_A 4=RUNNING)"
+
+PRINT ""
+PRINT "--- [3] Method 0x04 Retry State ---"
+PRINT "  Stm_RetryState.dataId      = " &rDataId
+PRINT "  Stm_RetryState.retryCount  = " &rRetry "  (max=4)"
+PRINT "  Stm_RetryState.tickCounter = " &rTick
+PRINT "  Stm_RetryState.active      = " &rActive
+PRINT "  Stm_RetryState.sessionId   = " &rSid
+
+PRINT ""
+PRINT "--- [4] NVM Block RAM Mirror ---"
+PRINT "  Idx  valid dirty dataLen eepromOffset"
+PRINT "  [0]  " &b0v "     " &b0d "     " &b0l
+PRINT "  [1]  " &b1v "     " &b1d "     " &b1l "     " &b1eoff "  <-- CASE 5 target"
+PRINT "  [2]  " &b2v "     " &b2d "     " &b2l
+PRINT "  [3]  " &b3v "     " &b3d "     " &b3l
+PRINT "  [4]  " &b4v "     " &b4d "     " &b4l
+
+PRINT ""
+PRINT "--- [5] Block[1] (dataId=0x0002) Data Bytes ---"
+PRINT "  Expected after Case 5: 0xAA 0xAB 0xAC 0xAD 0xAE 0xAF 0xB0 0xB1 0xB2 0xB3 0xB4 0xB5 0xB6 0xB7 0xB8 0xB9"
+&i=0
+WHILE &i<16
+  &val=Var.VALUE(g_nvmBlocks[1].data[&i])
+  PRINT "  data[" &i "] = " &val
+  &i=&i+1
+ENDWHILE
+
+PRINT ""
+PRINT "--- [6] I2C Driver State (software) ---"
+PRINT "  NOTE: I2c_aeChannelStatus stays SEND/RECEIVE after SyncTransmit completes."
+PRINT "  This is an RTD design quirk - NOT necessarily a bus hang."
+PRINT "  I2c_aeChannelStatus[0] = " &i2cStat0 "  (0=IDLE 1=SEND 2=RECEIVE)"
+PRINT "  I2c_aeChannelStatus[1] = " &i2cStat1 "  (EEPROM ch)"
+PRINT "  I2c_as8ChannelHardwareMap[0] = " &i2cHwMap0 "  (hwUnit for LPI2C0)"
+PRINT "  I2c_as8ChannelHardwareMap[1] = " &i2cHwMap1 "  (hwUnit for LPI2C1)"
+
+PRINT ""
+PRINT "--- [7] LPI2C_0 Hardware Registers (base=0x40350000) ---"
+PRINT "  EEPROM I2cChannel_1 -> I2C_IIC_0 -> LPI2C_0"
+PRINT "  MCR  (0x10) = 0x" &lpi2c0_mcr "  bit0=MEN, bit16=RST"
+PRINT "  MSR  (0x14) = 0x" &lpi2c0_msr "  bit0=TDF, bit1=RDF, bit9=MBF, bit10=BBF"
+PRINT "  MFSR (0x58) = 0x" &lpi2c0_mfsr "  TXCOUNT[31:16] RXCOUNT[15:0]"
+PRINT "  MFCR (0x5C) = 0x" &lpi2c0_mfcr
+
+PRINT ""
+PRINT "--- [8] LPI2C_1 Hardware Registers (base=0x40354000) ---"
+PRINT "  I2cChannel_0 -> I2C_IIC_4 -> LPI2C_1 (or other)"
+PRINT "  MCR  (0x10) = 0x" &lpi2c1_mcr
+PRINT "  MSR  (0x14) = 0x" &lpi2c1_msr
+PRINT "  MFSR (0x58) = 0x" &lpi2c1_mfsr
+PRINT "  MFCR (0x5C) = 0x" &lpi2c1_mfcr
+
+PRINT ""
+PRINT "--- [9] PICC Link State ---"
+PRINT "  appLinkState[3] STM_CLI = " &linkCli "  (0=DISC 1=CONN_ING 2=CONN_ED)"
+PRINT "  appLinkState[4] STORAGE  = " &linkSrv
+PRINT "  channelLinkState[0] Ch1  = " &chanL0
+PRINT "  channelLinkState[1] Ch2  = " &chanL1
+
+PRINT ""
+PRINT "================================================================"
+PRINT "== ANALYSIS =="
+PRINT "================================================================"
+PRINT ""
+
+; --- Check LPI2C_0 MSR for bus busy ---
+IF (&lpi2c0_msr & 0x400)!=0
+  PRINT "  LPI2C_0: Bus Busy (BBF=1)! I2C bus may be physically stuck."
+ELSE
+  PRINT "  LPI2C_0: Bus NOT busy (BBF=0). I2C bus is physically free."
+ENDIF
+
+IF (&lpi2c0_msr & 0x200)!=0
+  PRINT "  LPI2C_0: Master Busy (MBF=1)! A master transfer is in progress."
+ELSE
+  PRINT "  LPI2C_0: Master NOT busy (MBF=0). No master transfer active."
+ENDIF
+
+IF (&lpi2c0_msr & 0x1)!=0
+  PRINT "  LPI2C_0: TX Data Flag (TDF=1). TX FIFO has space."
+ELSE
+  PRINT "  LPI2C_0: TX FIFO full or no data to send."
+ENDIF
+
+IF (&lpi2c0_msr & 0x2)!=0
+  PRINT "  LPI2C_0: RX Data Flag (RDF=1). RX FIFO has data available."
+ELSE
+  PRINT "  LPI2C_0: RX FIFO empty."
+ENDIF
+
+PRINT ""
+PRINT "  I2c_aeChannelStatus interpretation:"
+PRINT "  These software flags are NOT reset after I2c_SyncTransmit completes."
+PRINT "  They remain SEND/RECEIVE until the next call or I2c_DeInit."
+PRINT "  So I2c_aeChannelStatus[1]=2(RECEIVE) is expected after last EEPROM read."
+PRINT "  The real hardware status is above (BBF, MBF)."
+
+PRINT ""
+PRINT "  PROBLEM 2 (Method 0x04 retry):"
+PRINT "  Stm_RetryState: dataId=" &rDataId " retryCount=" &rRetry " active=" &rActive
+PRINT "  STM_CLI link = " &linkCli " (CONNECTED)"
+PRINT "  => A-core is connected but not responding to Method 0x04"
+PRINT "  => A-core PICC Daemon may not have Method 0x04 handler registered"
+PRINT "  => Or the RESPONSE was lost on IPCF channel"
+
+PRINT ""
+PRINT "  Block[1] dataLen=" &b1l " eepromOffset=" &b1eoff
+PRINT "  Case 5 writes 16 bytes. If dataLen!=16, data may be stale/wrong."
+
+PRINT "================================================================"
+
+ENDDO

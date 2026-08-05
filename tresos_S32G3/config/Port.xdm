@@ -1,12 +1,13 @@
 <?xml version='1.0'?>
-<datamodel version="7.0" 
-           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
-           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
            xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
            xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
 
   <d:ctr type="AUTOSAR" factory="autosar" 
          xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
          xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
          xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
          xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
@@ -72,7 +73,7 @@
                   <a:a name="IMPORTER_INFO" value="fdsf"/>
                   <d:ctr name="PortContainer_0" type="IDENTIFIABLE">
                     <a:a name="IMPORTER_INFO" value="fdsf"/>
-                    <d:var name="PortNumberOfPortPins" type="INTEGER" value="15"/>
+                    <d:var name="PortNumberOfPortPins" type="INTEGER" value="27"/>
                     <d:lst name="PortPin" type="MAP">
                       <d:ctr name="PortPin_PFE_MAC2_MDIO" type="IDENTIFIABLE">
                         <d:var name="PortPinPue" type="BOOLEAN" value="false">
@@ -8291,6 +8292,2388 @@
                         </d:var>
                         <d:lst name="PortPinEcucPartitionRef"/>
                       </d:ctr>
+                      <d:ctr name="I2C4_CLK" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_0">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="16">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="34">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_INOUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="I2C_4_I2C4_SCL_INOUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_NOTCHANGED">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="I2C4_SDA" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_0">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="17">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="33">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_INOUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="I2C_4_I2C4_SDA_INOUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_LOW">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="IGN_KEY" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_0">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="18">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="57">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_IN">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="GPIO">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_NOTCHANGED">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_100MHZ_1_8V_83MHZ_3_3V">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="VR5510_PWRON2" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_1">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="19">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="167">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_OUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="GPIO">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_HIGH">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="CAN0_Rxd_PC_11" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_0">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="20">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="43">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_IN">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="FLEXCAN_0_CAN0_RX">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_HIGH">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="CAN0_Txd_PC_12" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_0">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="21">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="44">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_OUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="FLEXCAN_0_CAN0_TX">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_HIGH">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="DSPI_5_CS0_PK_11" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_1">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="22">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="171">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_OUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="DSPI_5_DSPI5_PCS0_OUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_HIGH">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="DSPI_5_SCLK_PK_15" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="false">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_1">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="23">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="175">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_OUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="DSPI_5_DSPI5_SCK_OUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_LOW">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="DSPI_5_SOUT_PK_13" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="false">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_1">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="24">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="173">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_OUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="DSPI_5_DSPI5_SOUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_HIGH">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="DSPI_5_SIN_PK_14" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_1">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="25">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="174">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_IN">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="DSPI_5_DSPI5_SIN">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_HIGH">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="I2C0_SDA_PB_00" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_0">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="26">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="16">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_INOUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="I2C_0_I2C0_SDA_INOUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_LOW">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
+                      <d:ctr name="I2C0_SCL_PB_01" type="IDENTIFIABLE">
+                        <d:var name="PortPinPue" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPus" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSafeMode" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinOde" type="BOOLEAN" value="true">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinWithReadBack" type="BOOLEAN" 
+                               value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinRcvr" type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirectionChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinModeChangeable" type="BOOLEAN" 
+                               value="true">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
+                               value="SIUL2_0">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinId" type="INTEGER" value="27">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinPcr" type="INTEGER" value="17">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinDirection" type="ENUMERATION" 
+                               value="PORT_PIN_INOUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinInitialMode" type="ENUMERATION" 
+                               value="PORT_GPIO_MODE">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinMode" type="ENUMERATION" 
+                               value="I2C_0_I2C0_SCL_INOUT">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinLevelValue" type="ENUMERATION" 
+                               value="PORT_PIN_LEVEL_NOTCHANGED">
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:var name="PortPinSlewRate" type="ENUMERATION" 
+                               value="SRE_3_3V_50MHZ_b100">
+                          <a:a name="IMPORTER_INFO">
+                            <a:v>@DEF</a:v>
+                            <a:v>@CALC</a:v>
+                          </a:a>
+                          <a:a name="VARIANTS" type="Variant">
+                            <variant:pbvcond>
+                              <variant:criterion 
+                                                 value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                              <variant:cond>
+                                <variant:tst expr="0"/>
+                              </variant:cond>
+                            </variant:pbvcond>
+                          </a:a>
+                        </d:var>
+                        <d:lst name="PortPinEcucPartitionRef"/>
+                      </d:ctr>
                     </d:lst>
                   </d:ctr>
                 </d:lst>
@@ -8504,36 +10887,6 @@
                       </a:a>
                     </d:var>
                     <d:var name="PortPinPcr" type="INTEGER" value="15">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                  </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_16" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_0">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                    <d:var name="PortPinPcr" type="INTEGER" value="16">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                  </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_17" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_0">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                    <d:var name="PortPinPcr" type="INTEGER" value="17">
                       <a:a name="IMPORTER_INFO">
                         <a:v>@DEF</a:v>
                         <a:v>@CALC</a:v>
@@ -8759,36 +11112,6 @@
                       </a:a>
                     </d:var>
                     <d:var name="PortPinPcr" type="INTEGER" value="32">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                  </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_33" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_0">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                    <d:var name="PortPinPcr" type="INTEGER" value="33">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                  </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_34" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_0">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                    <d:var name="PortPinPcr" type="INTEGER" value="34">
                       <a:a name="IMPORTER_INFO">
                         <a:v>@DEF</a:v>
                         <a:v>@CALC</a:v>
@@ -9089,21 +11412,6 @@
                       </a:a>
                     </d:var>
                     <d:var name="PortPinPcr" type="INTEGER" value="56">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                  </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_57" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_0">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                    <d:var name="PortPinPcr" type="INTEGER" value="57">
                       <a:a name="IMPORTER_INFO">
                         <a:v>@DEF</a:v>
                         <a:v>@CALC</a:v>
@@ -9805,11 +12113,6 @@
                            value="SIUL2_1"/>
                     <d:var name="PortPinPcr" type="INTEGER" value="166"/>
                   </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_151" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_1"/>
-                    <d:var name="PortPinPcr" type="INTEGER" value="167"/>
-                  </d:ctr>
                   <d:ctr name="UnTouchedPortPin_152" type="IDENTIFIABLE">
                     <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
                            value="SIUL2_1"/>
@@ -9825,30 +12128,10 @@
                            value="SIUL2_1"/>
                     <d:var name="PortPinPcr" type="INTEGER" value="170"/>
                   </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_155" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_1"/>
-                    <d:var name="PortPinPcr" type="INTEGER" value="171"/>
-                  </d:ctr>
                   <d:ctr name="UnTouchedPortPin_156" type="IDENTIFIABLE">
                     <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
                            value="SIUL2_1"/>
                     <d:var name="PortPinPcr" type="INTEGER" value="172"/>
-                  </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_157" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_1"/>
-                    <d:var name="PortPinPcr" type="INTEGER" value="173"/>
-                  </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_158" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_1"/>
-                    <d:var name="PortPinPcr" type="INTEGER" value="174"/>
-                  </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_159" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_1"/>
-                    <d:var name="PortPinPcr" type="INTEGER" value="175"/>
                   </d:ctr>
                   <d:ctr name="UnTouchedPortPin_160" type="IDENTIFIABLE">
                     <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
@@ -9914,11 +12197,6 @@
                     <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
                            value="SIUL2_1"/>
                     <d:var name="PortPinPcr" type="INTEGER" value="188"/>
-                  </d:ctr>
-                  <d:ctr name="UnTouchedPortPin_173" type="IDENTIFIABLE">
-                    <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_1"/>
-                    <d:var name="PortPinPcr" type="INTEGER" value="189"/>
                   </d:ctr>
                   <d:ctr name="UnTouchedPortPin_174" type="IDENTIFIABLE">
                     <d:var name="PortPinSiul2Instance" type="ENUMERATION" 
@@ -10435,21 +12713,6 @@
                       </a:a>
                     </d:var>
                   </d:ctr>
-                  <d:ctr name="UntouchedIMCR_34" type="IDENTIFIABLE">
-                    <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_0">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                    <d:var name="UntouchedPortPinImcr" type="INTEGER" value="34">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                  </d:ctr>
                   <d:ctr name="UntouchedIMCR_35" type="IDENTIFIABLE">
                     <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
                            value="SIUL2_0">
@@ -10685,36 +12948,6 @@
                       </a:a>
                     </d:var>
                   </d:ctr>
-                  <d:ctr name="UntouchedIMCR_53" type="IDENTIFIABLE">
-                    <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_0">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                    <d:var name="UntouchedPortPinImcr" type="INTEGER" value="53">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                  </d:ctr>
-                  <d:ctr name="UntouchedIMCR_54" type="IDENTIFIABLE">
-                    <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_0">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                    <d:var name="UntouchedPortPinImcr" type="INTEGER" value="54">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                  </d:ctr>
                   <d:ctr name="UntouchedIMCR_55" type="IDENTIFIABLE">
                     <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
                            value="SIUL2_0">
@@ -10914,16 +13147,6 @@
                         <a:v>@CALC</a:v>
                       </a:a>
                     </d:var>
-                  </d:ctr>
-                  <d:ctr name="UntouchedIMCR_69" type="IDENTIFIABLE">
-                    <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_0">
-                      <a:a name="IMPORTER_INFO">
-                        <a:v>@DEF</a:v>
-                        <a:v>@CALC</a:v>
-                      </a:a>
-                    </d:var>
-                    <d:var name="UntouchedPortPinImcr" type="INTEGER" value="1"/>
                   </d:ctr>
                   <d:ctr name="UntouchedIMCR_70" type="IDENTIFIABLE">
                     <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
@@ -11284,18 +13507,6 @@
                            value="SIUL2_1"/>
                     <d:var name="UntouchedPortPinImcr" type="INTEGER" 
                            value="210"/>
-                  </d:ctr>
-                  <d:ctr name="UntouchedIMCR_103" type="IDENTIFIABLE">
-                    <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_1"/>
-                    <d:var name="UntouchedPortPinImcr" type="INTEGER" 
-                           value="211"/>
-                  </d:ctr>
-                  <d:ctr name="UntouchedIMCR_104" type="IDENTIFIABLE">
-                    <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_1"/>
-                    <d:var name="UntouchedPortPinImcr" type="INTEGER" 
-                           value="212"/>
                   </d:ctr>
                   <d:ctr name="UntouchedIMCR_105" type="IDENTIFIABLE">
                     <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
@@ -12238,12 +14449,6 @@
                            value="SIUL2_1"/>
                     <d:var name="UntouchedPortPinImcr" type="INTEGER" 
                            value="494"/>
-                  </d:ctr>
-                  <d:ctr name="UntouchedIMCR_281" type="IDENTIFIABLE">
-                    <d:var name="IMCRSiul2Instance" type="ENUMERATION" 
-                           value="SIUL2_1"/>
-                    <d:var name="UntouchedPortPinImcr" type="INTEGER" 
-                           value="495"/>
                   </d:ctr>
                   <d:ctr name="UntouchedIMCR_107" type="IDENTIFIABLE">
                     <d:var name="IMCRSiul2Instance" type="ENUMERATION" 

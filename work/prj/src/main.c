@@ -39,7 +39,7 @@ extern "C"{
 #include "Dio.h"
 #include "Serdes.h"
 #include "SchM_Serdes.h"
-
+#include "udpecho_raw.h"
 
 #ifdef PING_TEST
 #include "eth_queue.h"
@@ -246,6 +246,7 @@ static Eth_43_PFE_BmuStatsType pfeStatsBmu[PFE_BMU_INSTANCES];
 /* Trigger for reading controller statistics. */
 /* Set it with the debugger to the index of required controller. */
 volatile uint8 getStatisticsFromCtrl = NUM_CONTROLLER_USED;
+volatile uint8 test_step = 0;
 
 #define ETH_43_PFE_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
 #include "Eth_43_PFE_MemMap.h"
@@ -486,13 +487,11 @@ void rx_callback(uint8 ctrl_idx, Eth_FrameType frame_type, boolean is_broadcast,
 
 int main(void)
 {
+#if 1
     Std_ReturnType ret = E_OK;
-#if defined(PING_TEST)
-    queue_elm_info_t queue_data;
-#endif
-#ifdef LWIP
+
     uint32_t last_tick = 0;
-#endif
+
     /* Fully configure the MPU. This needs to be disabled in startup code and done here
          as the startup code for MPU configuration is not compatible with new memory map */
 #if (STD_ON == ETH_43_PFE_ENABLE_USER_MODE_SUPPORT)
@@ -507,11 +506,6 @@ int main(void)
     {
         ;
     }
-//    Sys_Init();
-#if defined(PING_TEST)
-    /* Init queue */
-    queue_init();
-#endif
 
 #if defined(CONFIG_MINIHIF)
     configure_minihif_hw();
@@ -528,13 +522,6 @@ int main(void)
     /* Init the shared debug information */
     autolibc_memset((void *)app_debug_info_ptr, 0, sizeof(app_debug_info_t));
     app_debug_info_ptr->version = 1U;
-#ifdef NXP_LOG_ENABLED
-    app_debug_info_ptr->debug_buf.addr = (addr_t)&debug_buff;
-    app_debug_info_ptr->debug_buf.line_write_addr = (addr_t)&debug_line;
-    app_debug_info_ptr->debug_buf.line_len = NXP_LOG_ASR_CFG_LINE_SIZE;
-    app_debug_info_ptr->debug_buf.line_num = NXP_LOG_ASR_CFG_LINE_COUNT;
-#endif
-
     /* Make the app use counters in shared debug info */
     pfeRxCtr = app_debug_info_ptr->counter.rxCtr;
     pfeTxCtr = app_debug_info_ptr->counter.txCtr;
@@ -543,16 +530,17 @@ int main(void)
 
     app_debug_info_ptr->initialized = TRUE;
 
-#ifdef LWIP
     demo_lwip_init();
-#endif
 
+    udpecho_raw_init();
     creat_tasks_m7();
 
     while (1)
     {
         /* code */
     }
+
+#endif
 #if 0    
     while (E_OK == ret)
     {
@@ -580,12 +568,12 @@ int main(void)
 #endif
         if (pfeMainFunction == 1U)
         {
-          //  Eth_43_PFE_MainFunction();
+            Eth_43_PFE_MainFunction();
             pfeMainFunction = 0U;
         }
         if (sendFrames == 1U)
         {
-          //  ret = SampleAppTask2();
+            ret = SampleAppTask2();
             sendFrames = 0U;
         }
 #ifdef NXP_LOG_ENABLED

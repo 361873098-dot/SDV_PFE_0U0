@@ -1,0 +1,1093 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>TS_T40D12M2302I0R0</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="ECUC:aa293537-43fd-3434-b6a4-f8c4da265866">
+          <SHORT-NAME>Bootloader</SHORT-NAME>
+          <DESC>
+            <L-2 L="EN">&lt;html&gt;
+                                        Configuration of the Generic integration application components.
+                                    &lt;/html&gt;</L-2>
+          </DESC>
+          <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD</SUPPORTED-CONFIG-VARIANT>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD-SELECTABLE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>BootloaderGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                                    &lt;html&gt;
+                                    This container holds global configuration flags
+                                       - SBC Watchdog handle
+                                       - unchecked: SBC Watchdog enabled.
+                                       &lt;/html&gt;</L-2>
+              </DESC>
+              <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+              <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:2810d48b-c07e-46f0-b111-100148be101d">
+                  <SHORT-NAME>InTarget_debug_flag</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                   &lt;html&gt;
+                                   This flag indicates whether the bootloader shall execute a wait-for-T32 loop or not.
+                                   This needs to be configured when the bootloader is running from flash.
+                                   &lt;br&gt;    - checked:   wait for debugger;
+                                   &lt;br&gt;    - unchecked: do not wait for debugger.
+                                   &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:281ad480-ce7e-46f0-b111-10034bb5191d">
+                  <SHORT-NAME>A53LockstepEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                   &lt;html&gt;
+                                   This flag indicates whether the A53 cluster 1 operates in lockstep mode or not.
+                                   As a consequence, it will make cores CA53_2 and CA53_3, CA53_6, CA53_7 unavailable for user code execution, as they are used as supervisors.
+                                   &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:2810d48b-c07e-4cf0-b131-140148de101d">
+                  <SHORT-NAME>Safety_flag</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                   &lt;html&gt;
+                                   This flag indicates whether the bootloader shall be executed in a safety context
+                                   using Safety SDK
+                                   &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:d4eb51d2-c84c-435f-86ed-74fcfd826e74">
+                  <SHORT-NAME>Bl_SynchronizedBoot</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                   &lt;html&gt;
+                                   This flag indicates whether the bootloader shall start execution after all applications have been loaded.
+                                   &lt;br&gt;    - checked:   execute all applications at the same time;
+                                   &lt;br&gt;    - unchecked: execute each application after it has loaded.
+								   &lt;br&gt; Warning:
+								   &lt;br&gt;   In case of disabling &quot;Start Applications Synchronously&quot; in Tresos
+  								   &lt;br&gt;   and if the user runs both the bootloader and another application
+  								   &lt;br&gt;   (E.g.: Uboot / ATF) which configures the platform cores clocks,
+  								   &lt;br&gt;   a race condition might occur, which subsequently can interfered
+  								   &lt;br&gt;   with the boot flow and prevents the platform to boot properly.
+  								   &lt;br&gt;   This concept can be extended to other resources or peripherals as well.
+  								   &lt;br&gt;   It is up to each application to consider these aspects.
+                                   &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:2810d48b-c07e-46f0-b111-100148bc101d">
+                  <SHORT-NAME>Bl_ConfigureDDR</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                   &lt;html&gt;
+                                   This flag indicates whether the bootloader shall initialize the DDR memory
+                                   &lt;br&gt;    - checked:   Enable DDR memory
+                                   &lt;br&gt;    - unchecked: Disable DDR memory initialization
+                                   &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:f4084f6e-cb5d-4dc0-b18c-e8fbe39a5570">
+                  <SHORT-NAME>Bl_EnableSecBoot</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                            &lt;html&gt;
+                                            This flag indicates whether the secure boot sequence shall be activated or not
+                                            &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:b73fe480-09ba-11ed-861d-0242ac120002">
+                  <SHORT-NAME>Bl_EnableFlexNoc</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                            &lt;html&gt;
+                                            This flag indicates whether the FlexNoC Registers will be initialized or not
+                                            &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:43dbb255-2f4b-1291-391a-927c9fdddc23">
+                  <SHORT-NAME>SysImageStorageAddr</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                            &lt;html&gt;
+                                                System Image Storage Address. At this flash address Bootloader will save the HSE system image
+                                            &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_T40D12M2302I0R0/Bootloader/BootloaderGeneral/SysImageStorageAddr: ENABLE(XPath: (node:value(../Bl_EnableSecBoot) = &apos;true&apos;))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DEFAULT-VALUE>0xB0000</DEFAULT-VALUE>
+                  <MAX>4194304</MAX>
+                  <MIN>1024</MIN>
+                </ECUC-INTEGER-PARAM-DEF>
+              </PARAMETERS>
+              <REFERENCES>
+                <ECUC-REFERENCE-DEF UUID="ECUC:56651463-43db-4ba0-95a3-a184480cdc28">
+                  <SHORT-NAME>Bl_SecBootKeyRef</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                   &lt;html&gt;
+                                   This flag indicates whether the secure boot sequence shall be activated or not
+                                   &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_T40D12M2302I0R0/Bootloader/BootloaderGeneral/Bl_SecBootKeyRef: ENABLE(XPath: (node:value(../Bl_EnableSecBoot) = &apos;true&apos;))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/CryptoDal/CryptoDalBswConfig/CryptoDescriptors</DESTINATION-REF>
+                </ECUC-REFERENCE-DEF>
+              </REFERENCES>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>BootloaderAcceptedResetReasons</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                                        &lt;html&gt;
+                                            This container holds the accepted reset reasons, for which the boot flow
+                                            shall be allowed to execute.
+                                       &lt;/html&gt;</L-2>
+              </DESC>
+              <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+              <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:7f16036b-0908-4460-ada2-2e2e2b19a1dd">
+                  <SHORT-NAME>Bl_POR</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                            &lt;html&gt;
+                                                This flag indicates that POR (power-on reset) is an accepted reset reason.
+                                            &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:34ee62df-7df8-45f5-b2bd-b432124a17e5">
+                  <SHORT-NAME>Bl_DestructiveReset</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                            &lt;html&gt;
+                                                This flag indicates that destructive reset is an accepted reset reason.
+                                            &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:dedcb6ab-b3da-44ae-aad3-83d0d3073369">
+                  <SHORT-NAME>Bl_FunctionalReset</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                            &lt;html&gt;
+                                                This flag indicates that functional reset is an accepted reset reason.
+                                            &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:1d6179e9-02bb-4fe0-8b84-820376c9cee4">
+                  <SHORT-NAME>Bl_StandbyReset</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                            &lt;html&gt;
+                                                This flag indicates that functional reset is an accepted reset reason.
+                                            &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:96add524-39fa-42b8-8c5c-77dd69673705">
+                  <SHORT-NAME>Bl_UnknownReset</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                            &lt;html&gt;
+                                                This flag indicates that unknown reset is an accepted reset reason.&lt;br&gt;
+                                                An unkown reset is considered when no other reset reason could be identified.
+                                            &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>BootloaderConsoleLog</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                                    &lt;html&gt;
+                                    This container holds the configuration for console log.
+                                       &lt;/html&gt;</L-2>
+              </DESC>
+              <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+              <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:35454a39-add3-497f-be56-535eec2ba15a">
+                  <SHORT-NAME>Bl_ConsoleLog</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                   &lt;html&gt;
+                                   This flag indicates whether the bootloader should have console log active.
+                                   &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <REFERENCES>
+                <ECUC-REFERENCE-DEF UUID="ECUC:a5ccfcab-e56f-443a-993f-8886dae271a3">
+                  <SHORT-NAME>Bl_ConsoleComChannelRef</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL"></L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_T40D12M2302I0R0/Bootloader/BootloaderConsoleLog/Bl_ConsoleComChannelRef: ENABLE(XPath: (node:value(../Bl_ConsoleLog) = &apos;true&apos;))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/ComDal/ComDalBswConfig/ComDescriptors</DESTINATION-REF>
+                </ECUC-REFERENCE-DEF>
+              </REFERENCES>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:5ce51b69-fffb-4b87-863d-7463e09aaab1">
+              <SHORT-NAME>CoreConfiguration</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                                        &lt;html&gt;
+                                             This container links the application details for a specific core.
+                                        &lt;/html&gt;</L-2>
+              </DESC>
+              <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+              <UPPER-MULTIPLICITY>7</UPPER-MULTIPLICITY>
+              <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+              <PARAMETERS>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:42ecb255-1f4b-9d91-391a-977c9fcdcb23">
+                  <SHORT-NAME>CoreID</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                         &lt;html&gt;
+                                            Core identification based on the platform capabilities
+                                         &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DEFAULT-VALUE>M7_1</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>M7_0</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>M7_1</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>M7_2</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>M7_3</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>A53_0</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>A53_1</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>A53_2</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>A53_3</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>A53_4</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>A53_5</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>A53_6</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>A53_7</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:5ce51b69-fffb-4b87-863d-7463e09aa5cd">
+                  <SHORT-NAME>IsCriticalApplication</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                               &lt;html&gt;
+                                               Flag that marks if this is a critical application and the system can not function without this.
+                                               &lt;br&gt;&lt;strong&gt;Checked&lt;/strong&gt; = is a critical application
+                                               &lt;br&gt;&lt;strong&gt;Unchecked&lt;/strong&gt; = is not a critical application
+                                               &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:5ce51b69-fffb-4b87-863d-7463ced7a5cd">
+                  <SHORT-NAME>StartCore</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                               &lt;html&gt;
+                                               Bootloader has the option to start the core after the application image was loaded.&lt;br&gt;
+                                               If you want to skip this and leave the responsibility to a system manager application, then uncheck this option.
+                                               &lt;br&gt;&lt;strong&gt;Checked&lt;/strong&gt; = bootloader will start this core
+                                               &lt;br&gt;&lt;strong&gt;Unchecked&lt;/strong&gt; = bootloader will not start this core
+                                               &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <REFERENCES>
+                <ECUC-REFERENCE-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa00c">
+                  <SHORT-NAME>BootSourcesCfg</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                               &lt;html&gt;
+                                               Reference to a Boot Source configuration which defines the list of images to be loaded.
+                                               &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Bootloader/BootSources</DESTINATION-REF>
+                </ECUC-REFERENCE-DEF>
+              </REFERENCES>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa001">
+              <SHORT-NAME>BootSources</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                                        &lt;html&gt;
+                                             List of application images for different cores.
+                                        &lt;/html&gt;</L-2>
+              </DESC>
+              <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+              <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+              <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+              <PARAMETERS>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa004">
+                  <SHORT-NAME>BootSource</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                                &lt;html&gt;
+                                                    Image storage source.
+                                                &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DEFAULT-VALUE>QSPI</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>QSPI</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>SDMMC</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa005">
+                  <SHORT-NAME>AuthenticationAlgorithm</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                                &lt;html&gt;
+                                                    Authentication method to be used while bootloader loads application:
+                                                    &lt;br&gt;    NONE - load without validation;
+                                                    &lt;br&gt;    SHA1 - SHA1 validation;
+                                                    &lt;br&gt;    SHA256 - SHA256 validation;
+                                                    &lt;br&gt;    CRC32 - CRC validation;
+                                                &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DEFAULT-VALUE>NONE</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>NONE</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>SHA1</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>SHA256</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRC32</SHORT-NAME>
+                      <ORIGIN>NXP</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa00b">
+                  <SHORT-NAME>ApplicationResetHandler</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                                &lt;html&gt; The address of the application Reset Handler.
+                                                This address must be contained in one of the listed fragmented images, and must not exceed image boundaries: RAM address + image size.
+                                                &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+              </PARAMETERS>
+              <REFERENCES>
+                <ECUC-REFERENCE-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa006">
+                  <SHORT-NAME>EncryptionRef</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                               &lt;html&gt;
+                                               Decryption key descriptor, this field references the assigned cryptodal descriptor for current image,
+                                               containing information about algorithm and key value
+                                               &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/CryptoDal/CryptoDalBswConfig/CryptoDescriptors</DESTINATION-REF>
+                </ECUC-REFERENCE-DEF>
+              </REFERENCES>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa002">
+                  <SHORT-NAME>ImageFragments</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                                &lt;html&gt;
+                                                    This container implements all the fragments of an appication image.
+                                                &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>4</UPPER-MULTIPLICITY>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa003">
+                      <SHORT-NAME>SourceAddressQspi</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">
+                                                        &lt;html&gt;Source address in the QSPI memory of the fragmented image.
+                                                        &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <ORIGIN>NXP</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <!-- @Calculated /TS_T40D12M2302I0R0/Bootloader/BootSources/ImageFragments/SourceAddressQspi: INVALID(XPath: (((node:value(../../../AuthenticationAlgorithm) = &apos;CRC32&apos;) and (num:mod(node:value(.),8) = 0)) or                                                                  ((node:value(../../../AuthenticationAlgorithm) = &apos;SHA1&apos;) and (num:mod(node:value(.),64) = 0)) or                                                                  ((node:value(../../../AuthenticationAlgorithm) = &apos;SHA256&apos;) and (num:mod(node:value(.),64) = 0)) or                                                                  ((node:value(../../../AuthenticationAlgorithm) = &apos;NONE&apos;) and (num:mod(node:value(.),64) = 0))))-->
+                      <MAX>9223372036854775807</MAX>
+                      <MIN>-9223372036854775808</MIN>
+                      <!-- @CalculatedEnd -->
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa007">
+                      <SHORT-NAME>LoadAddressRam</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">
+                                                        &lt;html&gt; The address to load the image into RAM.
+                                                        &lt;br&gt;&lt;font color=&quot;red&quot;&gt;NOTE !:&lt;/font&gt; The start address must be multiple of 8 if you choose CRC32 authentication method,
+                                                                                            otherwise must be multiple of 64.
+                                                        &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <ORIGIN>NXP</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <!-- @Calculated /TS_T40D12M2302I0R0/Bootloader/BootSources/ImageFragments/LoadAddressRam: INVALID(XPath: (((node:value(../../../AuthenticationAlgorithm) = &apos;CRC32&apos;) and (num:mod(node:value(.),8) = 0)) or                                                                 ((node:value(../../../AuthenticationAlgorithm) = &apos;SHA1&apos;) and (num:mod(node:value(.),64) = 0))or                                                                 ((node:value(../../../AuthenticationAlgorithm) = &apos;SHA256&apos;) and (num:mod(node:value(.),64) = 0))or                                                                 ((node:value(../../../AuthenticationAlgorithm) = &apos;NONE&apos;) and (num:mod(node:value(.),64) = 0))))-->
+                      <MAX>9223372036854775807</MAX>
+                      <MIN>-9223372036854775808</MIN>
+                      <!-- @CalculatedEnd -->
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa009">
+                      <SHORT-NAME>ImageSize</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">
+                                                        &lt;html&gt;
+                                                            The fragment image size in bytes.
+                                                            For images loaded from SDMMC the application size is provided by MemDal block descriptor.
+                                                        &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <ORIGIN>NXP</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:ed1cff6a-569b-11ed-9b6a-0242ac120002">
+                      <SHORT-NAME>SmrIndex</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">
+                                                        &lt;html&gt;
+                                                            The HSE SMR table index if Secure Boot is enabled.
+															If 0 the SMR entry is disabled for current image fragment.
+															Only available for QSPI boot source and without image authentication.
+                                                        &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <ORIGIN>NXP</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa00a">
+                      <SHORT-NAME>CrcValue</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">
+                                                        &lt;html&gt; The CRC value of the image.
+                                                        &lt;br&gt;&lt;font color=&quot;red&quot;&gt;NOTE !:&lt;/font&gt; To compute the CRC it must be used the same CRC algorithm as DMA uses when
+                                                                    transfer the application image which is Ethernet (IEEE 802,3) CCITT32 CRC-32.
+                                                        &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <ORIGIN>NXP</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <!-- @Calculated /TS_T40D12M2302I0R0/Bootloader/BootSources/ImageFragments/CrcValue: INVALID(XPath: (node:value(../../../BootSource) = &apos;QSPI&apos;) and                                                                  (node:value(../../../AuthenticationAlgorithm) = &apos;CRC32&apos;) and                                                                  (node:empty(.) or node:value(.) = 0))-->
+                      <MAX>9223372036854775807</MAX>
+                      <MIN>-9223372036854775808</MIN>
+                      <!-- @CalculatedEnd -->
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa008">
+                      <SHORT-NAME>MemoryBlockId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">
+                                                        &lt;html&gt;
+                                                        Reference to the MemDal block containing application image
+                                                        &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <ORIGIN>NXP</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/MemDal/MemDalSdhcBlocks</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-REFERENCE-DEF UUID="ECUC:5ce51b69-fffb-4a07-8b1d-7463e09aa00d">
+                      <SHORT-NAME>ComManagerSessionReference</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">
+                                                        &lt;html&gt; Reference to the ComManager session which will handle the external image transfer.
+                                                        &lt;/html&gt;</L-2>
+                      </DESC>
+                      <!-- @Calculated /TS_T40D12M2302I0R0/Bootloader/BootSources/ImageFragments/ComManagerSessionReference: ENABLE(XPath: node:value(../../../BootSource) = &apos;COM&apos;)-->
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <!-- @CalculatedEnd -->
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <ORIGIN>NXP</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/ComManager/ComManagerSessionsConfig/ComSessions</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:98e1662b-c143-4573-9ad8-2ebccc32b277">
+              <SHORT-NAME>Boot_Triggers</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">This container holds the general, pre-compile configuration parameters for supporting communication.</L-2>
+              </DESC>
+              <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+              <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:2812d58a-c07f-41f0-b191-100148be101d">
+                  <SHORT-NAME>BootTriggerSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                        &lt;html&gt;
+                                        This flag enables upon a specific message received over CAN interface (configured in ComDal). The configured channel
+                                        must set the corresponding Notification Function.
+                                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:b17e2b31-742b-e3fa-9616-7c8a3a6f36ac">
+                  <SHORT-NAME>ComTimeoutTime</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                                &lt;html&gt;
+                                                Timeout trigger time. Bootloader waits for this period, in milliseconds until continuing normal execution.
+                                                If a CAN message is received in this period of time, bootloader breaks directly into normal execution.
+                                                &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_T40D12M2302I0R0/Bootloader/Boot_Triggers/ComTimeoutTime: ENABLE(XPath: node:value(../BootTriggerSupport) = &apos;true&apos;)-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DEFAULT-VALUE>10000</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+              </PARAMETERS>
+              <REFERENCES>
+                <ECUC-REFERENCE-DEF UUID="ECUC:a1fa39c7-1ca5-4fb1-8c19-3460c4a323ab">
+                  <SHORT-NAME>GptTimeoutChannel</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                                             &lt;html&gt;
+                                              Reference to the configured General Purpose Timer channel used for measuring the timeout until a can message can be received.
+                                             &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_T40D12M2302I0R0/Bootloader/Boot_Triggers/GptTimeoutChannel: ENABLE(XPath: node:value(../BootTriggerSupport) = &apos;true&apos;)-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>NXP</ORIGIN>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/Gpt/GptChannelConfigSet/GptChannelConfiguration</DESTINATION-REF>
+                </ECUC-REFERENCE-DEF>
+              </REFERENCES>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

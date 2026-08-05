@@ -56,7 +56,7 @@
                       <a:a name="IMPORTER_INFO" value="@DEF"/>
                     </d:var>
                     <d:var name="IpcInterCoreTxIrq" type="ENUMERATION" 
-                           value="MSCM_INT0_IRQn"/>
+                           value="MSCM_INT1_IRQn"/>
                     <d:var name="IpcInterCoreRxIrq" type="ENUMERATION" 
                            value="MSCM_INT2_IRQn"/>
                     <d:var name="IpcLocalCore" type="ENUMERATION" 
@@ -88,13 +88,9 @@
                           <a:a name="IMPORTER_INFO" value="@DEF"/>
                         </d:var>
                         <d:var name="ReceiveCallback" type="STRING" 
-                               value="ctrl_chan_rx_cb">
-                          <a:a name="IMPORTER_INFO" value="@DEF"/>
-                        </d:var>
+                               value="PICC_data_unmng_rx_cb"/>
                         <d:var name="ReceiveCallbackArgument" type="STRING" 
-                               value="rx_cb_arg">
-                          <a:a name="IMPORTER_INFO" value="@DEF"/>
-                        </d:var>
+                               value="rx_unmg_cb_arg"/>
                       </d:ctr>
                     </d:lst>
                     <d:lst name="ManagedChannel" type="MAP">
@@ -104,13 +100,9 @@
                           <a:a name="IMPORTER_INFO" value="@DEF"/>
                         </d:var>
                         <d:var name="ReceiveCallback" type="STRING" 
-                               value="data_chan_rx_cb">
-                          <a:a name="IMPORTER_INFO" value="@DEF"/>
-                        </d:var>
+                               value="PICC_data_mng_rx_cb"/>
                         <d:var name="ReceiveCallbackArgument" type="STRING" 
-                               value="rx_cb_arg">
-                          <a:a name="IMPORTER_INFO" value="@DEF"/>
-                        </d:var>
+                               value="rx_mng_cb_arg"/>
                         <d:lst name="IpcfBuffer" type="MAP">
                           <d:ctr name="IpcfBuffer_0" type="IDENTIFIABLE">
                             <d:var name="NumberOfBuffers" type="INTEGER" 
@@ -135,13 +127,9 @@
                           <a:a name="IMPORTER_INFO" value="@DEF"/>
                         </d:var>
                         <d:var name="ReceiveCallback" type="STRING" 
-                               value="data_chan_rx_cb">
-                          <a:a name="IMPORTER_INFO" value="@DEF"/>
-                        </d:var>
+                               value="PICC_data_mng_rx_cb"/>
                         <d:var name="ReceiveCallbackArgument" type="STRING" 
-                               value="rx_cb_arg">
-                          <a:a name="IMPORTER_INFO" value="@DEF"/>
-                        </d:var>
+                               value="rx_mng_cb_arg"/>
                         <d:lst name="IpcfBuffer" type="MAP">
                           <d:ctr name="IpcfBuffer_0" type="IDENTIFIABLE">
                             <d:var name="NumberOfBuffers" type="INTEGER" 
@@ -155,7 +143,7 @@
                           </d:ctr>
                           <d:ctr name="IpcfBuffer_2" type="IDENTIFIABLE">
                             <d:var name="NumberOfBuffers" type="INTEGER" 
-                                   value="20"/>
+                                   value="10"/>
                             <d:var name="BufferSize" type="INTEGER" value="4096"/>
                           </d:ctr>
                         </d:lst>

@@ -14,12 +14,18 @@
 
 #include <lwip/sys.h>
 #include <lwip/sio.h>
-
+#include "FreeRTOS.h"
+#include "task.h"
 extern u32_t g_sys_milliseconds;
 
 u32_t sys_now(void)
 {
-    return g_sys_milliseconds;
+        /*
+     * configTICK_RATE_HZ = 1000 Hz:
+     * 1 FreeRTOS tick = 1 ms
+     */
+    return (u32_t)xTaskGetTickCount();
+    //return g_sys_milliseconds;
 }
 
 sio_fd_t sio_open(u8_t devnum)

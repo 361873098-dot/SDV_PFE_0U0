@@ -62,6 +62,21 @@
 #include "sample_app_ethswt_task_2_send_frames.h"
 /* include the port-dependent configuration */
 //#include "lwipcfg.h"
+#include "pwsm.h"
+#include "picc_stack.h"
+#include "picc_heartbeat.h"
+#include "picc_link.h"
+#include "picc_main.h"
+#include "diag_mgmt.h"
+
+#if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
+#include "soa_adapter_main.h"
+#include "hm.h"
+#endif
+
+#if (HPC_PFE_ENABLE_STM_APPLICATION == 1U)
+#include "stm_main.h"
+#endif
 /***********************************************************************************************************************
 *  local type definitions (STRUCT, TYPEDEF, ...)
 ***********************************************************************************************************************/
@@ -84,13 +99,17 @@
 void task_m7_core0_1ms(void *pvParameters)
 {
     (void)pvParameters;
+    TickType_t lastWakeTime = xTaskGetTickCount();
+
     for ( ;; )
     {
         OS_TASKCOUNT_INC_CTR(M7_Core0_1ms);
         /*  Add user application code here  */
+        
+        /* Cyclic lwIP timers check */
+        sys_check_timeouts();
 
-
-        vTaskDelay(pdMS_TO_TICKS(1));
+      vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(1));
     } 
     
    
@@ -109,13 +128,14 @@ void task_m7_core0_1ms(void *pvParameters)
 void task_m7_core0_5ms(void *pvParameters)
 {
     (void)pvParameters;
+    TickType_t lastWakeTime = xTaskGetTickCount();
 
     for ( ;; )
     {
         OS_TASKCOUNT_INC_CTR(M7_Core0_5ms);
         /*  Add user application code here  */
 
-        vTaskDelay(pdMS_TO_TICKS(5));
+        vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(5));
     }
    
 }
@@ -133,13 +153,32 @@ void task_m7_core0_5ms(void *pvParameters)
 void task_m7_core0_10ms(void *pvParameters)
 {
     (void)pvParameters;
+    TickType_t lastWakeTime = xTaskGetTickCount();
     for ( ;; )
-        {
-            OS_TASKCOUNT_INC_CTR(M7_Core0_10ms);
-            /*  Add user application code here  */
+    {
+        OS_TASKCOUNT_INC_CTR(M7_Core0_10ms);
+        /* Ported periodic task dispatch from original Ostask_main TASK_M0_10MS bucket. */
+        PICC_StackProcess();
+        PICC_HeartbeatProcess();
+        PICC_LinkProcess();
+    #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
+        SoaAdapter_Main();
+    #endif
+        Pwsm_Main();
+        DiagMgmt_Main();
+    #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
+        Hm_Main();
+    #endif
+    #if (HPC_PFE_ENABLE_STM_APPLICATION == 1U)
+        Stm_Main();
+    #endif
 
-            vTaskDelay(pdMS_TO_TICKS(10));
-        }
+#if (PICC_DIAG_RECORD_ENABLE == 1U)
+        PICC_DiagUpdateLinkState();
+#endif
+
+        vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(10));
+    }
 
 }
 
@@ -156,13 +195,12 @@ void task_m7_core0_10ms(void *pvParameters)
 void task_m7_core0_100ms(void *pvParameters)
 {
     (void)pvParameters;
+    TickType_t lastWakeTime = xTaskGetTickCount();
     for ( ;; )
     {
         OS_TASKCOUNT_INC_CTR(M7_Core0_100ms);
-        /*  Add user application code here  */
 
-
-        vTaskDelay(pdMS_TO_TICKS(100));
+        vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(100));
     }
 }
 
@@ -179,15 +217,15 @@ void task_m7_core0_100ms(void *pvParameters)
 void task_m7_core0_1000ms(void *pvParameters)
 {
     (void)pvParameters;
+    TickType_t lastWakeTime = xTaskGetTickCount();
     for( ;; )
     {
         OS_TASKCOUNT_INC_CTR(M7_Core0_1000ms);
-        /*  Add user application code here  */
 
         //llce_dummy();
 //         Eth_43_PFE_MainFunction();
 //         SampleAppTask2();
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(1000));
     }
 }   
 
@@ -203,10 +241,36 @@ void task_m7_core0_1000ms(void *pvParameters)
  ***********************************************************************************************************************/
 void creat_tasks_m7(void)
 {
+    PICC_PreOS_Init();
+    Pwsm_Init();
+    DiagMgmt_Init();
+#if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
+    SoaAdapter_Init();
+    Hm_Init();
+#endif
+#if (HPC_PFE_ENABLE_STM_APPLICATION == 1U)
+    Stm_Init();
+#endif
+
     xTaskCreate((TaskFunction_t)task_m7_core0_1ms, "task_m7_core0_1ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL );
     xTaskCreate((TaskFunction_t)task_m7_core0_5ms, "task_m7_core0_5ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+2, NULL );
     xTaskCreate((TaskFunction_t)task_m7_core0_10ms, "task_m7_core0_10ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+3, NULL );
     xTaskCreate((TaskFunction_t)task_m7_core0_100ms, "task_m7_core0_100ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+4, NULL );
     xTaskCreate((TaskFunction_t)task_m7_core0_1000ms, "task_m7_core0_1000ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+5, NULL );
+
+    /* PICC RX message processing task.
+     * The IPCF RX callback PICC_data_mng_rx_cb() (ISR context) pushes every
+     * received frame into g_rxQueue. This task is the ONLY consumer of that
+     * queue: it drains it and runs PICC_ProcessRxData(), which replies heartbeat
+     * Pongs and link CONNECT responses and consumes A-core's Pongs.
+     * Without this task the queue fills up (10/10), every further RX hits the
+     * xQueueSendFromISR-failed branch (ipc_shm_release_buf + error_count++),
+     * no Pong/response is ever sent, and the heartbeat missCount times out ->
+     * PICC_LinkGetState() returns DISCONNECTED -> all app links stay
+     * DISCONNECTED. (Priority +4 so RX is processed promptly.) */
+    xTaskCreate((TaskFunction_t)PICC_Rx_Msg_10ms_Task, "RxMsgTask",
+                (unsigned short)(configMINIMAL_STACK_SIZE * 2), NULL,
+                tskIDLE_PRIORITY + 4, NULL );
+
     vTaskStartScheduler();
 }

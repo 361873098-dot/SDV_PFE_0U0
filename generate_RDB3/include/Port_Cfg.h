@@ -8,9 +8,9 @@
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
 *   SW Version           : 4.0.2
-*   Build Version        : S32_RTD_4_0_2_P04_D2312_ASR_REL_4_4_REV_0000_20231219
+*   Build Version        : S32_RTD_4_0_2_D2306_ASR_REL_4_4_REV_0000_20230630
 *
-*   Copyright 2020-2023 NXP
+*   Copyright 2020-2023 NXP Semiconductors
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
 *   used strictly in accordance with the applicable license terms. By expressly
@@ -1624,16 +1624,28 @@ PORT_CONFIG_VS_0_PB \
 #define PortConf_PortPin_PortPin_PFE_MAC2_TX_CLK  0
 #define PortConf_PortPin_PortPin_PFE_MAC2_TX_EN  1
 #define PortConf_PortPin_EthSwitchRst_PA_13  14
+#define PortConf_PortPin_I2C4_CLK  15
+#define PortConf_PortPin_I2C4_SDA  16
+#define PortConf_PortPin_IGN_KEY  17
+#define PortConf_PortPin_VR5510_PWRON2  18
+#define PortConf_PortPin_CAN0_Rxd_PC_11  19
+#define PortConf_PortPin_CAN0_Txd_PC_12  20
+#define PortConf_PortPin_DSPI_5_CS0_PK_11  21
+#define PortConf_PortPin_DSPI_5_SCLK_PK_15  22
+#define PortConf_PortPin_DSPI_5_SOUT_PK_13  23
+#define PortConf_PortPin_DSPI_5_SIN_PK_14  24
+#define PortConf_PortPin_I2C0_SDA_PB_00  25
+#define PortConf_PortPin_I2C0_SCL_PB_01  26
 
 /**
 * @brief The maximum number of configured pins
 */
-#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)15)
+#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)27)
 
 /**
 * @brief Number of UnUsed pin array
 */
-#define PORT_MAX_UNUSED_PADS_U16    (4U)
+#define PORT_MAX_UNUSED_PADS_U16    (3U)
 
 /**
 * @brief Port driver Pre-Compile configuration switch

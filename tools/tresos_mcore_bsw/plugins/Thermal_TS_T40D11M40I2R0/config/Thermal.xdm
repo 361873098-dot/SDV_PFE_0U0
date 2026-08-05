@@ -1,0 +1,1089 @@
+<?xml version='1.0'?>
+<datamodel version="3.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+<!--
+*   @file    Thermal.xdm
+*   @version 4.0.2
+*
+*   @brief   AUTOSAR Thermal - Tresos Studio plugin schema file
+*   @details This file contains the schema configuration for and Thermal Tresos Studio
+*            plugin.
+-->
+<!--
+====================================================================================================
+*   Project              : RTD AUTOSAR 4.4
+*   Platform             : CORTEXM
+*   Peripheral           : TMU
+*   Dependencies         : none
+*
+*   Autosar Version      : 4.4.0
+*   Autosar Revision     : ASR_REL_4_4_REV_0000
+*   Autosar Conf.Variant :
+*   SW Version           : 4.0.2
+*   Build Version        : S32_RTD_4_0_2_D2306_ASR_REL_4_4_REV_0000_20230630
+
+*   Copyright 2020-2023 NXP Semiconductors
+*   All Rights Reserved.
+====================================================================================================
+-->
+    <d:ctr  type="AUTOSAR" factory="autosar"
+            xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+            xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+            xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+        <d:lst type="TOP-LEVEL-PACKAGES">
+            <d:ctr name="TS_T40D11M40I2R0" type="AR-PACKAGE">
+                <a:a name="UUID" value="ECUC:86b36511-1da3-43b9-9687-64190e0ae1e1"/>
+                <d:lst type="ELEMENTS">
+                    <!-- @implements Thermal_Object -->
+                    <d:chc name="Thermal" type="AR-ELEMENT" value="MODULE-DEF">
+                        <v:ctr type="MODULE-DEF">
+                            <a:a name="RELEASE" value="asc:4.4"/>
+                            <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                                <ad:ADMIN-DATA>
+                                <ad:DOC-REVISIONS>
+                                    <ad:DOC-REVISION>
+                                    <ad:REVISION-LABEL>4.6.0</ad:REVISION-LABEL>
+                                    <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                                    <ad:DATE>2014-10-31</ad:DATE>
+                                    </ad:DOC-REVISION>
+                                </ad:DOC-REVISIONS>
+                                </ad:ADMIN-DATA>
+                            </a:a>
+                            <a:a name="POSTBUILDVARIANTSUPPORT" value="true"/>
+                            <a:a name="DESC"
+                                 value="EN: Thermal config set"/>
+                            <a:a name="LOWER-MULTIPLICITY" value="1"/>
+                            <a:a name="UPPER-MULTIPLICITY" value="1"/>
+                            <a:a name="UUID" value="ECUC:e209b42a-d115-487a-a618-da9b62435c94"/>
+                            <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                                <a:a name="DESC"
+                                     value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                     <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                     <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                </a:a>
+                                <a:a name="LABEL" value="Post Build Variant Used"/>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:da name="DEFAULT" value="false"/>
+                                <a:da name="READONLY" value="FALSE"/>
+                                <a:da name="TOOLTIP"
+                                      value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                            </v:var>
+
+                            <!-- IMPLEMENTATION_CONFIG_VARIANT_Object  -->
+                            <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:<html><p>
+                                        Configuration classes.
+                                        Enable the parameters that are editable for specific configuration classes
+                                        </p></html>]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                </a:a>
+                                <a:a name="LABEL" value="Config Variant"/>
+                                <a:a name="UUID" value="ECUC:764babe9-0099-4db0-9716-8e8136a56d6b"/>
+                                <a:da name="DEFAULT" value="VariantPostBuild"/>
+                                <a:da name="RANGE">
+                                    <a:v>VariantPostBuild</a:v>
+                                    <a:v>VariantPreCompile</a:v>
+                                </a:da>
+                            </v:var>
+
+                            <!-- @implements ThermalGeneral_Object -->
+                            <v:ctr name="ThermalGeneral" type="IDENTIFIABLE">
+                                <a:a name="LABEL" value="ThermalGeneral"/>
+                                <a:a name="DESC">
+                                <a:v><![CDATA[EN:<html><p>General configuration (parameters) of the Thermal Driver software module.</p></html>]]></a:v>
+                                </a:a>
+                                <a:a name="UUID" value="ECUC:a840d01b-4967-4e98-8e41-b89fd1272780"/>
+                                <!-- ThermalDevErrorDetect_Object -->
+                                <v:var name="ThermalDevErrorDetect" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Thermal Dev Error Detect"/>
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>Enables/disables development error detection for Thermal module</p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:55426ced-9131-4adf-a3e5-82c6db809171"/>
+                                    <a:da name="DEFAULT" value="false"/>
+                                </v:var>
+
+                                <!-- @implements TmuIpDevErrorDetect_Object -->
+                                <v:var name="TmuIpDevErrorDetect" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Tmu Ip Dev Error Detect"/>
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>Enables/disables development error detection for Tmu Ip</p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:55426ced-9131-4adf-a3e5-82c6db909171"/>
+                                    <a:da name="DEFAULT" value="false"/>
+                                </v:var>
+
+                                <!-- TmuTimeoutMethod -->
+                                <v:var name="TmuTimeoutMethod" type="ENUMERATION">
+                                    <a:a name="LABEL" value="Tmu Timeout Method"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+
+                                            <![CDATA[EN:
+                                                <html>
+                                                    <p>Configures the timeout method. Based on this selection, a certain timeout method from OsIf will be used in the driver.</p>
+                                                    <p>Note: If OSIF_COUNTER_SYSTEM or OSIF_COUNTER_CUSTOM are selected make sure the corresponding timer is enabled in OsIf General configuration.</p>
+                                                </html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:7218a325-4003-4639-8e1a-bb3d9f762a7b"/>
+                                    <a:a name="DEFAULT" value="OSIF_COUNTER_DUMMY"/>
+                                    <a:da name="INVALID" type="XPath">
+                                        <a:tst expr="(node:refs('ASPathDataOfSchema:/TS_T40D11M40I2R0/BaseNXP/OsIfGeneral/OsIfUseCustomTimer') = 'false') and (node:value(.) = 'OSIF_COUNTER_CUSTOM')" true="Custom Timer is not enabled in OsIf (OsIfGeneral/OsIfUseCustomTimer checkbox)"/>
+                                        <a:tst expr="(node:refs('ASPathDataOfSchema:/TS_T40D11M40I2R0/BaseNXP/OsIfGeneral/OsIfUseSystemTimer') = 'false') and (node:value(.) = 'OSIF_COUNTER_SYSTEM')" true="System Timer is not enabled in OsIf (OsIfGeneral/OsIfUseSystemTimer checkbox)"/>
+                                    </a:da>
+                                    <a:da name="RANGE">
+                                        <a:v>OSIF_COUNTER_DUMMY</a:v>
+                                        <a:v>OSIF_COUNTER_SYSTEM</a:v>
+                                        <a:v>OSIF_COUNTER_CUSTOM</a:v>
+                                    </a:da>
+                                </v:var>
+
+                                <!-- TmuTimeoutVal -->
+                                <v:var name="TmuTimeoutVal" type="INTEGER">
+                                    <a:a name="LABEL" value="Tmu Timeout Value"/>
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>Tmu timeout value</p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:33cfe352-1233-43a5-b6d2-54239cb433f1b"/>
+                                    <a:da name="DEFAULT" value="3000"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=4294967295" />
+                                        <a:tst expr="&gt;=0" />
+                                    </a:da>
+                                </v:var>
+
+                                <!-- @implements ThermalEnableUserModeSupport_Object -->
+                                <v:var name="ThermalEnableUserModeSupport" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Enable Thermal User Mode Support"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:<html>
+                                                When this parameter is enabled, the Thermal module will adapt to run from User Mode, by configuring  REG_PROT for Thermal IPs <p/>
+                                                Note: The Thermal driver code can be executed at any time from both supervisor and user mode.
+                                            </html>]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:6d78d92b-c387-4656-ba8c-8123fdef7061"/>
+                                    <a:da name="DEFAULT" value="false"/>
+                                </v:var>
+
+                                <!-- ThermalLoadDacTrimFromOcotp -->
+                                <v:var name="ThermalLoadDacTrimFromOcotp" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Enable Thermal Load Dac Trim From Ocotp"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:<html>
+                                                When this parameter is enabled, the module will load DAC_TRIM value from Ocotp and add it to default Sensor values.
+                                            </html>]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:6d78d92b-c387-7512-ba8c-8123fdef7061"/>
+                                    <a:da name="DEFAULT" value="false"/>
+                                    <a:da name="INVALID" type="XPath">
+                                        <a:tst expr="(node:value(.) = 'true') and
+                                                     (node:refs('ASPathDataOfSchema:/TS_T40D11M40I2R0/Ocotp/OcotpGeneral/OcotpReadEFuseApi') != 'true')"
+                                                true="Ocotp Read eFuse Api is not enabled in Ocotp (OcotpGeneral/OcotpReadEFuseApi checkbox)."/>
+                                        <a:tst expr="(node:value(.) = 'true') and
+                                                     (ecu:get(&apos;Thermal.TmuCfgDacTrim.Count&apos;) = 0)"
+                                                true="DAC Trim fuses are not supported."/>
+                                    </a:da>
+                                </v:var>
+                            </v:ctr><!-- End ThermalGeneral_Object -->
+
+                            <!-- ThermalConfigSet_Object -->
+                            <v:ctr name="ThermalConfigSet"  type="IDENTIFIABLE">
+                                <a:a name="LABEL" value="ThermalConfigSet"/>
+                                <a:a name="DESC">
+                                    <a:v><![CDATA[EN:<html><p>This is the base container that contains the post-build selectable configuration parameters</p></html>]]></a:v>
+                                </a:a>
+                                <a:a name="UUID" value="ECUC:205feb81-b786-4bda-a5cb-b6e6d828b5fc"/>
+
+                                <v:lst name="TmuHwUnit" type="MAP">
+                                    <a:da name="MIN" value="1"/>
+                                    <a:da name="MAX" value="2"/>
+                                    <a:da name="INVALID" type="XPath">
+                                        <a:tst expr="num:i(count(node:current()/*)) &gt;1"
+                                               true="Maximum Thermal Hw Unit available for the selected derivative was exceeded."/>
+                                    </a:da>
+                                    <!-- TmuHwUnit_Object -->
+                                    <v:ctr name="TmuHwUnit" type="IDENTIFIABLE">
+                                        <a:a name="DESC">
+                                            <a:v><![CDATA[EN:<html><p>TMU Configuration Array</p></html>]]></a:v>
+                                        </a:a>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                             type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                            <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                        </a:a>
+                                        <a:a name="UUID" value="ECUC:d9d0ce36-e2f7-48be-8a49-b525ced3ff20"/>
+
+                                        <v:lst name="TmuMonitoringSite" type="MAP">
+                                            <a:da name="MIN" value="1"/>
+                                            <a:da name="MAX" value="3"/>
+                                            <a:da name="INVALID" type="XPath">
+                                                <a:tst expr="num:i(count(node:current()/*[(TmuEnableSite = 'true')])) &gt; 0"
+                                                       false="There must be at least one monitoring site enabled."/>
+                                            </a:da>
+                                            <!-- TmuMonitoringSite_Object -->
+                                            <v:ctr name="TmuMonitoringSite" type="IDENTIFIABLE">
+                                                <a:a name="DESC">
+                                                    <a:v><![CDATA[EN:<html><p>Monitoring sites array</p></html>]]></a:v>
+                                                </a:a>
+                                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                                    <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                                                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                                </a:a>
+                                                <a:a name="UUID" value="ECUC:d9d0ce36-e2f7-48be-5a49-b515ced3ff20"/>
+
+                                                <!-- Sensor placement -->
+                                                <v:var name="TmuSitePlacement" type="ENUMERATION">
+                                                    <a:a name="LABEL" value="Site placement"/>
+                                                    <a:a name="DESC">
+                                                        <a:v><![CDATA[EN:<html><p>This parameter defines the physical placement for the Tmu sensor. For example, DDR_INTERNAL_RAM means
+                                                             the sensor is placed between the DDR and the Internal RAM. A53_CORE means the sensor is near A53 Core.</p></html>]]>
+                                                        </a:v>
+                                                    </a:a>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:16426534-24ba-2d05-a6f6-30f6179cb9d2"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="ecu:list('Thermal.TmuConfigSet.TmuHwUnit.MonitoringSitePlacement')[position()-1=node:fallback(node:current()/../@index,0)]"></a:da>
+                                                    <a:da name="RANGE" type="XPath" expr="ecu:list('Thermal.TmuConfigSet.TmuHwUnit.MonitoringSitePlacement')"/>
+                                                    <a:da name="INVALID" type="XPath">
+                                                        <a:tst expr="text:uniq(../../*/TmuSitePlacement, .)" false="Duplicate monitoring site!"/>
+                                                    </a:da>
+                                                </v:var>
+
+                                                <v:var name="TmuEnableSite" type="BOOLEAN">
+                                                    <a:a name="DESC">
+                                                    <a:v><![CDATA[EN:<html><p>Enable monitoring site.
+                                                         Depending on which sites are enabled, the site mask will be computed.Zero or more TMU_IP_MONITORING_SITE_ values, OR-ed together.</p></html>]]></a:v>
+                                                    </a:a>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                        type="IMPLEMENTATIONCONFIGCLASS">
+                                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                    </a:a>
+                                                    <a:a name="LABEL" value="Enable"/>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:0ff4134f-90dc-439c-b464-cdccd861499d"/>
+                                                    <a:da name="DEFAULT" value="true"/>
+                                                </v:var>
+                                            </v:ctr> <!-- End TmuMonitoringSite_Object -->
+                                        </v:lst>
+
+                                        <!-- Average Low Pass Filter -->
+                                        <v:var name="ThermalAverageLowPassFilterType" type="ENUMERATION">
+                                            <a:a name="LABEL" value="Average low pass filter"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>This is used to set the average low pass filter. The average temperature is calculated using this formula: ALPF x Current_Temp + (1 - ALPF) x Average_Temp.
+                                                Note: TMU_IP_AVERAGE_LOW_PASS_FILTER_0_xx means ALPF = 0.xx. For example, TMU_IP_AVERAGE_LOW_PASS_FILTER_0_25 means ALPF = 0.25.
+                                                </p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:b0b8ac0e-dc1d-4661-b49f-6b03c25dd8ce"/>
+                                            <a:da name="DEFAULT" value="TMU_IP_AVERAGE_LOW_PASS_FILTER_1"/>
+                                            <a:da name="RANGE">
+                                                <a:v>TMU_IP_AVERAGE_LOW_PASS_FILTER_1</a:v>
+                                                <a:v>TMU_IP_AVERAGE_LOW_PASS_FILTER_0_5</a:v>
+                                                <a:v>TMU_IP_AVERAGE_LOW_PASS_FILTER_0_25</a:v>
+                                                <a:v>TMU_IP_AVERAGE_LOW_PASS_FILTER_0_125</a:v>
+                                            </a:da>
+                                        </v:var>
+
+                                        <!-- Central module disable -->
+                                        <v:var name="ThermalCentralModuleDisable" type="BOOLEAN">
+                                            <a:a name="LABEL" value="Central module disable"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>The configuration of central module mode,  false/true - enable/disable</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:55426ced-9131-4adf-a3e5-91c6db909171"/>
+                                            <a:da name="DEFAULT" value="false"/>
+                                        </v:var>
+
+                                        <!-- Offset cancellation mode -->
+                                        <v:var name="ThermalOffsetCancellation" type="BOOLEAN">
+                                            <a:a name="LABEL" value="Offset cancellation mode"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>The configuration of offset cancellation mode, false/true - disable/enable</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:55426ced-9131-4adf-a3e5-92c6db809171"/>
+                                            <a:da name="DEFAULT" value="true"/>
+                                        </v:var>
+
+                                        <!-- Dynamic element match averaging mode -->
+                                        <v:var name="ThermalDynamicMatchAvg" type="BOOLEAN">
+                                            <a:a name="LABEL" value="Dynamic element match averaging mode"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>The configuration of dynamic averaging mode, false/true - disable/enable</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:55426ced-9131-4adf-a3e5-92c6db909071"/>
+                                            <a:da name="DEFAULT" value="true"/>
+                                        </v:var>
+
+                                        <!-- Temperature monitoring interval -->
+                                        <v:var name="ThermalMeasurementInterval" type="ENUMERATION">
+                                            <a:a name="LABEL" value="Temperature monitoring interval"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>This enum is used to set temperature monitoring interval in seconds. The time interval depends on TMU clock frequency
+                                                        and is determined using this formula: [2 ^ (23 + TMI)] x TMU clock period in seconds, where TMI is Temperature Monitoring Interval
+                                                        TMU_IP_TEMP_MONITORING_INTERVAL_CONTINUOUS       -->   Disable temperature monitoring interval in seconds, monitoring is continuous</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:b0b8ac0e-dc1d-4661-b49f-6b03c25dd9be"/>
+                                            <a:da name="DEFAULT" value="TMU_IP_TEMP_MONITORING_INTERVAL_CONTINUOUS"/>
+                                            <a:da name="RANGE">
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_0</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_1</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_2</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_3</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_4</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_5</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_6</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_7</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_8</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_9</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_10</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_11</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_12</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_13</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_SECOND_SELECT_14</a:v>
+                                                <a:v>TMU_IP_TEMP_MONITORING_INTERVAL_CONTINUOUS</a:v>
+                                            </a:da>
+                                        </v:var>
+
+                                        <!-- ThermalImmHighNotif -->
+                                        <v:var name="ThermalImmHighNotif" type="FUNCTION-NAME">
+                                            <a:a name="LABEL" value="Immediate High Temp Notification"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>This function pointer is called whenever the high temperature immediate threshold issues an interrupt.</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:c06c3744-e56b-44e7-87e3-71f384a58183"/>
+                                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                                        </v:var>
+
+                                        <!-- ThermalAvgHighNotif -->
+                                        <v:var name="ThermalAvgHighNotif" type="FUNCTION-NAME">
+                                            <a:a name="LABEL" value="Average High Temp Notification"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>This function pointer is called whenever the high temperature average threshold issues an interrupt.</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:c06c3744-e56b-44e7-87e3-71f394a58182"/>
+                                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                                        </v:var>
+
+                                        <!-- ThermalAvgHighCriticalNotif -->
+                                        <v:var name="ThermalAvgHighCriticalNotif" type="FUNCTION-NAME">
+                                            <a:a name="LABEL" value="Average High Temp Critical Notification"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>This function pointer is called whenever the high temperature average critical threshold issues an interrupt.</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:c06c3744-e56b-44e7-87e3-71f393a58183"/>
+                                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                                        </v:var>
+
+                                        <!-- ThermalImmLowNotif -->
+                                        <v:var name="ThermalImmLowNotif" type="FUNCTION-NAME">
+                                            <a:a name="LABEL" value="Immediate Low Temp Notification"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>This function pointer is called whenever the low temperature immediate threshold issues an interrupt.</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:b06c3744-e56b-44e7-87e3-71f394a58183"/>
+                                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                                        </v:var>
+
+                                        <!-- ThermalAvgLowNotif -->
+                                        <v:var name="ThermalAvgLowNotif" type="FUNCTION-NAME">
+                                            <a:a name="LABEL" value="Average Low Temp Notification"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>This function pointer is called whenever the low temperature average threshold issues an interrupt.</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:c06c3744-e56b-44e7-77e3-71f394a58183"/>
+                                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                                        </v:var>
+
+                                        <!-- ThermalAvgLowCriticalNotif -->
+                                        <v:var name="ThermalAvgLowCriticalNotif" type="FUNCTION-NAME">
+                                            <a:a name="LABEL" value="Average Low Temp Critical Notification"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>This function pointer is called whenever the low temperature average critical threshold issues an interrupt.</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:c06c3744-e56b-44e7-87e3-71f194a58183"/>
+                                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                                        </v:var>
+
+                                        <!-- ThermalRisingRateNotif -->
+                                        <v:var name="ThermalRisingRateNotif" type="FUNCTION-NAME">
+                                            <a:a name="LABEL" value="Rising Temp Rate Critical Notification"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>This function pointer is called whenever the The rising temperature difference between two measurements issues an interrupt.</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:c06c3744-e56b-34e7-87e3-71f394a58183"/>
+                                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                                        </v:var>
+
+                                        <!-- ThermalFallingRateNotif -->
+                                        <v:var name="ThermalFallingRateNotif" type="FUNCTION-NAME">
+                                            <a:a name="LABEL" value="Falling Temp Rate Critical Notification"/>
+                                            <a:a name="DESC">
+                                                <a:v><![CDATA[EN:<html><p>This function pointer is called whenever the falling temperature difference between two measurements issues an interrupt.</p></html>]]></a:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ECUC:c06c3744-e56b-44e7-87e3-71f278a58183"/>
+                                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                                        </v:var>
+
+                                        <v:lst name="TmuCalibConfig" type="MAP">
+                                            <a:da name="MIN" value="0"/>
+                                            <a:da name="MAX" value="16"/><!-- TODO: take from resources -->
+                                            <!-- Calibration_Object -->
+                                            <v:ctr name="TmuCalibConfig" type="IDENTIFIABLE">
+                                                <a:a name="DESC">
+                                                    <a:v><![CDATA[EN:<html><p>This container allows configuring the calibration configuration points.
+                                                        Driver Init function configures the sensor calibration values for the temperature sensor.
+                                                        If this list is empty (resulting in pointer to calibration config NULL_PTR), the driver will use the default calibration points specified by peripheral hardware documentation.
+
+                                                        IMPORTANT NOTE: For default calibration values, this array must be empty. Configure this container ONLY if application requires custom calibration points, to override the default calibration points.
+                                                        .</p></html>]]></a:v>
+                                                </a:a>
+                                                <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                                    <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                                </a:a>
+                                                <a:a name="UUID" value="ECUC:d9d0ce36-e2f7-48be-8a49-b515ced3ff20"/>
+
+                                                <!-- Sensor Value -->
+                                                <v:var name="ThermalSensorValue" type="INTEGER">
+                                                    <a:a name="LABEL" value="Sensor Value"/>
+                                                    <a:a name="DESC">
+                                                        <a:v><![CDATA[EN:<html><p>The sensor value</p></html>]]></a:v>
+                                                    </a:a>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:16426534-24ba-4d05-a6f6-30f6179cb9d2"/>
+                                                    <a:da name="DEFAULT" value="41"/>
+                                                    <a:da name="INVALID" type="Range">
+                                                        <a:tst expr="&gt;=0"/>
+                                                        <a:tst expr="&lt;=511"/>
+                                                    </a:da>
+                                                </v:var>
+
+                                                <!-- Temperature Value -->
+                                                <v:var name="ThermalTempRange" type="INTEGER">
+                                                    <a:a name="LABEL" value="Temperature Value [K]"/>
+                                                    <a:a name="DESC">
+                                                        <a:v><![CDATA[EN:<html><p>The temperature range. The value is expressed in Kelvin unit.</p></html>]]></a:v>
+                                                    </a:a>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:16426534-25ba-4d05-a6f6-30f6169cb9d2"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="num:i(ecu:get(&apos;Thermal.MinTempAvailable&apos;))"/>
+                                                    <a:da name="INVALID" type="Range">
+                                                        <a:tst expr="&gt;=num:i(ecu:get(&apos;Thermal.MinTempAvailable&apos;))"/>
+                                                        <a:tst expr="&lt;=num:i(ecu:get(&apos;Thermal.MaxTempAvailable&apos;))"/>
+                                                    </a:da>
+                                                </v:var>
+                                            </v:ctr> <!-- End Calibration_Object -->
+                                        </v:lst>
+
+                                        <v:lst name="TmuThresholdConfig" type="MAP">
+                                            <a:da name="MIN" value="1"/>
+                                            <a:da name="MAX" value="8"/>
+                                            <!-- TmuThresholdConfig_Object -->
+                                            <v:ctr name="TmuThresholdConfig" type="IDENTIFIABLE">
+                                                <a:a name="DESC">
+                                                    <a:v><![CDATA[EN:<html><p>This array contains the Threshold configuration (parameters).</p></html>]]></a:v>
+                                                </a:a>
+                                                <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                                    <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                                </a:a>
+                                                <a:a name="UUID" value="ECUC:d9d0ce36-e2f7-48be-8a49-b326ced3ff20"/>
+
+                                                <!-- Threshold Type -->
+                                                <v:var name="ThermalThresholdType" type="ENUMERATION">
+                                                    <a:a name="LABEL" value="Threshold Type"/>
+                                                    <a:a name="DESC">
+                                                        <a:v><![CDATA[EN:<html><p>Type of threshold value</p></html>]]></a:v>
+                                                    </a:a>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:b0b8ac0e-dc1d-4661-b49f-6b03c23dd9ce"/>
+                                                    <a:da name="DEFAULT" value="TMU_IP_THRESHOLD_LOW_TEMP_AVERAGE"/>
+                                                    <a:da name="RANGE">
+                                                        <a:v>TMU_IP_THRESHOLD_HIGH_TEMP_IMMEDIATE</a:v>
+                                                        <a:v>TMU_IP_THRESHOLD_HIGH_TEMP_AVERAGE</a:v>
+                                                        <a:v>TMU_IP_THRESHOLD_HIGH_TEMP_AVERAGE_CRITICAL</a:v>
+                                                        <a:v>TMU_IP_THRESHOLD_LOW_TEMP_IMMEDIATE</a:v>
+                                                        <a:v>TMU_IP_THRESHOLD_LOW_TEMP_AVERAGE</a:v>
+                                                        <a:v>TMU_IP_THRESHOLD_LOW_TEMP_AVERAGE_CRITICAL</a:v>
+                                                        <a:v>TMU_IP_THRESHOLD_RISING_TEMP_RATE_CRITICAL</a:v>
+                                                        <a:v>TMU_IP_THRESHOLD_FALLING_TEMP_RATE_CRITICAL</a:v>
+                                                    </a:da>
+                                                    <a:da name="INVALID" type="XPath">
+                                                        <a:tst expr="text:uniq(../../*/ThermalThresholdType, .)" false="Duplicate threshold."/>
+                                                    </a:da>
+                                                </v:var>
+
+                                                <!-- Threshold Value -->
+                                                <v:var name="ThermalThresholdValue" type="INTEGER">
+                                                    <a:a name="LABEL" value="Temperature Value"/>
+                                                    <a:a name="DESC">
+                                                        <a:v><![CDATA[EN:<html><p>Temperature threshold value. The value is expressed in Kelvin unit</p></html>]]></a:v>
+                                                    </a:a>
+                                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                    </a:a>
+                                                    <a:a name="ORIGIN" value="NXP"/>
+                                                    <a:a name="SCOPE" value="LOCAL"/>
+                                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                    <a:a name="UUID" value="ECUC:16426534-25ba-4d05-a6f6-30f5189cb9d2"/>
+                                                    <a:da name="DEFAULT" type="XPath" expr="num:i(ecu:get(&apos;Thermal.MinTempAvailable&apos;))"/>
+                                                    <a:da name="INVALID" type="Range">
+                                                        <a:tst expr="&gt;=0"/>
+                                                        <a:tst expr="&lt;=ecu:get(&apos;Thermal.MaxTempAvailable&apos;)"/>
+                                                    </a:da>
+                                                    <a:da name="INVALID" type="XPath">
+                                                        <a:tst expr="((. &lt; num:i(ecu:get(&apos;Thermal.MinTempAvailable&apos;))) and
+                                                                    ((../ThermalThresholdType = 'TMU_IP_THRESHOLD_HIGH_TEMP_IMMEDIATE') or
+                                                                    (../ThermalThresholdType = 'TMU_IP_THRESHOLD_HIGH_TEMP_AVERAGE') or
+                                                                    (../ThermalThresholdType = 'TMU_IP_THRESHOLD_HIGH_TEMP_AVERAGE_CRITICAL') or
+                                                                    (../ThermalThresholdType = 'TMU_IP_THRESHOLD_LOW_TEMP_IMMEDIATE') or
+                                                                    (../ThermalThresholdType = 'TMU_IP_THRESHOLD_LOW_TEMP_AVERAGE') or
+                                                                    (../ThermalThresholdType = 'TMU_IP_THRESHOLD_LOW_TEMP_AVERAGE_CRITICAL')))"
+                                                                true="Threshold value is out of supported range! Temperature threshold must be between platform dependent min - platform dependent max. value"/>
+
+                                                        <a:tst expr="((. &gt; 200) and
+                                                                    ((../ThermalThresholdType = 'TMU_IP_THRESHOLD_RISING_TEMP_RATE_CRITICAL') or
+                                                                    (../ThermalThresholdType = 'TMU_IP_THRESHOLD_FALLING_TEMP_RATE_CRITICAL')))"
+                                                               true="Threshold value is out of supported range! Rate change must a positive number between 0K - 200K"/>
+                                                    </a:da>
+                                                </v:var>
+
+                                                <!-- Threshold Enable -->
+                                                    <v:var name="ThermalThrEnable" type="BOOLEAN">
+                                                        <a:a name="LABEL" value="Threshold Enable"/>
+                                                        <a:a name="DESC">
+                                                            <a:v><![CDATA[EN:<html><p>Enable or disable threshold</p></html>]]></a:v>
+                                                        </a:a>
+                                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                             type="IMPLEMENTATIONCONFIGCLASS">
+                                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        </a:a>
+                                                        <a:a name="ORIGIN" value="NXP"/>
+                                                        <a:a name="SCOPE" value="LOCAL"/>
+                                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                        <a:a name="UUID" value="ECUC:55426ced-9121-4adf-a3e5-92c6db909171"/>
+                                                        <a:da name="DEFAULT" value="true"/>
+                                                    </v:var>
+
+                                                    <!-- Interrupt Enable -->
+                                                    <v:var name="ThermalInterruptEnable" type="BOOLEAN">
+                                                        <a:a name="LABEL" value="Interrupt Enable"/>
+                                                        <a:a name="DESC">
+                                                            <a:v><![CDATA[EN:<html><p>Interrupt enable configuration</p></html>]]></a:v>
+                                                        </a:a>
+                                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                             type="IMPLEMENTATIONCONFIGCLASS">
+                                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                        </a:a>
+                                                        <a:a name="ORIGIN" value="NXP"/>
+                                                        <a:a name="SCOPE" value="LOCAL"/>
+                                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                                        <a:a name="UUID" value="ECUC:55426ced-9131-4adf-a3e5-91c6db907171"/>
+                                                        <a:da name="DEFAULT" value="true"/>
+                                                    </v:var>
+                                            </v:ctr><!-- End TmuThresholdConfig_Object -->
+                                        </v:lst>
+                                    </v:ctr><!-- End TmuHwUnit_Object -->
+                                </v:lst>
+                            </v:ctr><!-- End ThermalConfigSet_Object -->
+
+                            <!-- @implements CommonPublishedInformation_Object -->
+                            <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                                <a:a name="DESC">
+                                    <a:v><![CDATA[EN:<html><p>Common container, aggregated by all modules. It contains published information about vendor and versions.</p></html>]]></a:v>
+                                </a:a>
+                                <a:a name="UUID" value="ECUC:d9d0ce36-e2f7-48be-8a49-b526cbd3ff20"/>
+
+                               <!-- @implements ArReleaseMajorVersion_Object -->
+                                <v:var name="ArReleaseMajorVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>
+                                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                                        </p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:fda4ea31-11db-4bcc-bcbd-8c3507f8b0f5"/>
+                                    <a:da name="DEFAULT" value="4"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&gt;=4"/>
+                                        <a:tst expr="&lt;=4"/>
+                                    </a:da>
+                                </v:var>
+
+                                <!-- @implements ArReleaseMinorVersion_Object -->
+                                <v:var name="ArReleaseMinorVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>
+                                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                                        </p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:0626f834-0a47-4b1b-b6f3-74c427d9f3ca"/>
+                                    <a:da name="DEFAULT" value="4"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&gt;=4"/>
+                                        <a:tst expr="&lt;=4"/>
+                                    </a:da>
+                                </v:var>
+
+                                <!-- @implements ArReleaseRevisionVersion_Object -->
+                                <v:var name="ArReleaseRevisionVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>
+                                        Revision version number of AUTOSAR specification on which the appropriate implementation is based on.
+                                        </p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:fd4a5223-f6f7-4de7-b91f-f561d10c919f"/>
+                                    <a:da name="DEFAULT" value="0"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&gt;=0"/>
+                                        <a:tst expr="&lt;=0"/>
+                                    </a:da>
+                                </v:var>
+
+                                <!-- @implements ModuleId_Object -->
+                                <v:var name="ModuleId" type="INTEGER_LABEL">
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>
+                                        Module ID of this module from Module List.
+                                        </p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:dd03f1ea-8869-45ad-8950-f520fbb2d8a9"/>
+                                    <a:da name="DEFAULT" value="255"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&gt;=255"/>
+                                        <a:tst expr="&lt;=255"/>
+                                    </a:da>
+                                </v:var>
+
+                                <!-- @implements SwMajorVersion_Object -->
+                                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>
+                                        Major version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                                        </p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:d573ae14-6adf-4a88-bcf5-b3734c2c209e"/>
+                                    <a:da name="DEFAULT" value="4"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&gt;=4"/>
+                                        <a:tst expr="&lt;=4"/>
+                                    </a:da>
+                                </v:var>
+
+                                <!-- @implements SwMinorVersion_Object -->
+                                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>
+                                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                                        </p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:72273f10-5242-493f-8a12-e8217da60671"/>
+                                    <a:da name="DEFAULT" value="0"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&gt;=0"/>
+                                        <a:tst expr="&lt;=0"/>
+                                    </a:da>
+                                </v:var>
+
+                                <!-- @implements SwPatchVersion_Object -->
+                                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>
+                                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                                        </p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:dc7bd1d8-12a5-4f13-aa3e-0159e0e4ac88"/>
+                                    <a:da name="DEFAULT" value="2"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&gt;=2"/>
+                                        <a:tst expr="&lt;=2"/>
+                                    </a:da>
+                                </v:var>
+
+                                <!-- @implements VendorApiInfix_Object -->
+                                <v:var name="VendorApiInfix" type="STRING_LABEL">
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>
+                                        In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. 
+                                        This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+                                        &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+                                        E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456Write. 
+                                        This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:b9a82eb5-9994-4054-a60e-fdc9ca66babc"/>
+                                    <a:da name="DEFAULT" value=""/>
+                                    <a:da name="READONLY" value="true"/>
+                                </v:var>
+
+                                <!-- @implements VendorId_Object -->
+                                <v:var name="VendorId" type="INTEGER_LABEL">
+                                    <a:a name="DESC">
+                                        <a:v><![CDATA[EN:<html><p>
+                                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list.
+                                        </p></html>]]></a:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:59ee01f9-9acf-46f8-8f19-c044f31cca4f"/>
+                                    <a:da name="DEFAULT" value="43"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&gt;=43"/>
+                                        <a:tst expr="&lt;=43"/>
+                                    </a:da>
+                                </v:var>
+                            </v:ctr><!--End CommonPublishedInformation_Object -->
+                        </v:ctr>
+                    </d:chc>
+                    <d:chc name="Thermal_EcuParameterDefinition"
+                           type="AR-ELEMENT" value="ECU_PARAMETER_DEFINITION">
+                        <d:ctr type="AR-ELEMENT">
+                          <a:a name="UUID" value="ECUC:65d8add0-b8a8-43ea-b9da-c40209e11939"/>
+                          <a:a name="DEF"
+                               value="ASPath:/AR_PACKAGE_SCHEMA/ECU_PARAMETER_DEFINITION"/>
+                          <d:lst name="MODULE_REF">
+                            <d:ref type="MODULE_REF" value="ASPath:/TS_T40D11M40I2R0/Thermal"/>
+                          </d:lst>
+                        </d:ctr>
+                    </d:chc>
+                    <d:chc name="Thermal_ModuleDescription"
+                        type="AR-ELEMENT" value="BSW_MODULE_DESCRIPTION">
+                        <d:ctr type="AR-ELEMENT">
+                          <a:a name="DEF"
+                               value="ASPath:/AR_PACKAGE_SCHEMA/BSW_MODULE_DESCRIPTION"/>
+                          <d:var name="MODULE_ID" type="INTEGER" >
+                            <a:a name="EDITABLE" value="false"/>
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:ref type="RECOMMENDED_CONFIGURATION" >
+                            <a:a name="EDITABLE" value="false"/>
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:ref>
+                          <d:ref type="PRE_CONFIGURED_CONF" >
+                            <a:a name="EDITABLE" value="false"/>
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:ref>
+                          <d:ref type="VENDOR_SPECIFIC_MODULE_DEF"
+                                 value="ASPath:/TS_T40D11M40I2R0/Thermal"/>
+                        </d:ctr>
+                    </d:chc>
+                </d:lst>
+            </d:ctr>
+        </d:lst>
+    </d:ctr>
+</datamodel>

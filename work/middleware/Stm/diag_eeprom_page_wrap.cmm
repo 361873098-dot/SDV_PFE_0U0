@@ -1,0 +1,77 @@
+;======================================================================
+; EEPROM Page Boundary Corruption Bug - Verification Script
+;
+; PURPOSE: Confirm that StmNvm_FormatEeprom() overwrites the magic
+;          byte at 0x10 due to EEPROM page wrapping.
+;
+; EEPROM PAGE WRAPPING RULE (hardware):
+;   When writing N bytes starting at address A via I2C:
+;   - If (A % 16) + N > 16, the EEPROM internal address counter
+;     wraps within the 16-byte page boundary.
+;   - Example: write 16 bytes at 0x1B:
+;     0x1B-0x1F (5 bytes OK), then wraps to 0x10-0x1A (11 bytes)
+;     This overwrites the magic byte at 0x10!
+;
+; TEST PROCEDURE:
+;   Step 1: Read current magic byte (should be 0xA5 if EEPROM OK)
+;   Step 2: Trigger format (NVM_test_flag=4)
+;   Step 3: Wait for format to complete
+;   Step 4: Read magic byte again
+;           If magic != 0xA5, BUG IS CONFIRMED
+;======================================================================
+
+SYMBOL.RESET
+DATA.RESET
+
+; --- Step 1: Read current state before format ---
+PRINT "================================================================"
+PRINT "== EEPROM Page Wrap Bug Verification =="
+PRINT "================================================================"
+
+PRINT ""
+PRINT "--- Step 1: Current State (before format) ---"
+
+; Read magic byte directly
+Var.VALUE(&NVM_test_result) NVM_test_result
+Var.VALUE(&NVM_test_read_len) NVM_test_read_len
+Var.VALUE(&NVM_test_flag) NVM_test_flag
+Var.VALUE(&g_nvmReady) g_nvmReady
+
+; Trigger test case 8: read raw magic byte
+&NVM_test_flag=8
+PRINT "  Set NVM_test_flag=8 (read magic byte)..."
+PRINT "  >>> Wait at least 100ms for task cycle, then run Step 2 <<<"
+PRINT ""
+PRINT "  After waiting, execute these commands manually:"
+PRINT "    Var.VALUE(&NVM_test_read_len) NVM_test_read_len"
+PRINT "    ; NVM_test_read_len = 0xA500 | magic_value"
+PRINT "    ; 0xA5A5 = magic OK, 0xA500 = magic CORRUPTED (bug confirmed)"
+PRINT ""
+PRINT "--- Step 2: Trigger Format ---"
+PRINT "  &NVM_test_flag=4"
+PRINT "  ; Wait 500ms for format to complete (5 blocks x ~30ms each)"
+PRINT ""
+PRINT "--- Step 3: Read Magic Byte After Format ---"
+PRINT "  &NVM_test_flag=8"
+PRINT "  ; Wait 100ms, then:"
+PRINT "  Var.VALUE(&NVM_test_read_len) NVM_test_read_len"
+PRINT "  ; If NVM_test_read_len = 0xA500 => magic=0x00 => BUG CONFIRMED"
+PRINT "  ; If NVM_test_read_len = 0xA5A5 => magic=0xA5 => bug not triggered"
+PRINT ""
+
+; Auto-execute: read magic byte now
+PRINT "--- Auto-reading current magic byte ---"
+&NVM_test_flag=8
+
+PRINT ""
+PRINT "================================================================"
+PRINT "== Wait 100ms, then check NVM_test_read_len =="
+PRINT "== 0xA5A5 = OK, 0xA500 = BUG CONFIRMED =="
+PRINT "================================================================"
+PRINT ""
+PRINT "To continue verification after checking, run:"
+PRINT "  &NVM_test_flag=4    (trigger format)"
+PRINT "  ...wait 500ms..."
+PRINT "  &NVM_test_flag=8    (read magic after format)"
+PRINT "  ...wait 100ms..."
+PRINT "  Var.VALUE(&NVM_test_read_len) NVM_test_read_len"

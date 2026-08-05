@@ -37,6 +37,7 @@ SLAVE_DRIVER ?= FALSE
 MISRA_SCAN ?= FALSE
 CERT_C ?= FALSE
 CALL_GRAPH ?=FALSE
+CONFIGURE_SOC ?= TRUE
 
 
 ifeq ($(PING_TEST),TRUE)
@@ -65,7 +66,7 @@ TEXT_STATS ?= TRUE
 ifeq ($(SLAVE_DRIVER), TRUE)
     CONFIGURE_SOC ?= FALSE
 else
-    CONFIGURE_SOC ?= TRUE
+#    CONFIGURE_SOC ?= TRUE
 endif
 
 # If the USER_MODE=TRUE, user needs to turn on each module's user_mode_support=true and re-generate the sources
@@ -147,14 +148,21 @@ endif
 
 ODIR := $(ODIR)_$(TARGET_BOARD)
 GDIR := $(GDIR)_$(TARGET_BOARD)
+DEBUGRAM_DIR := DebugRAM
 PROJ_CONFIG_NAME := $(PROJ_CONFIG_NAME)_$(TARGET_BOARD)
+TRESOS_PROJECT_DIR := tresos_S32G3
+TRESOS_PROJECT_NAME := HPC_M7_Prj
+TRESOS_DIR_CMD := $(patsubst ./%,%,$(TRESOS_DIR))
+TRESOS_WORKSPACE_DIR_CMD := $(patsubst ./%,%,$(TRESOS_WORKSPACE_DIR))
+TRESOS_CMD_WIN := "$(subst /,\,$(TRESOS_DIR_CMD))\bin\tresos_cmd.bat"
+TRESOS_WORKSPACE_WIN := "$(subst /,\,$(TRESOS_WORKSPACE_DIR_CMD))"
 #APP_NAME := $(APP_NAME)_$(TARGET_BOARD)
 
 # Copy ETH_43_PFE.xdm to config project
 ifeq ($(FCI_L2BR_TEST), TRUE)
-    PRE_GENERATE_CMD = cp eth_pfe_configs/00_pfe_fci_l2br_test/$(PROJ_CONFIG_NAME)/Eth_1.xdm $(PROJ_CONFIG_NAME)/config
+    PRE_GENERATE_CMD = cp work/driver/eth_pfe_configs/00_pfe_fci_l2br_test/$(PROJ_CONFIG_NAME)/Eth_1.xdm $(TRESOS_PROJECT_DIR)/config/Eth_1.xdm
 else
-    PRE_GENERATE_CMD = cp eth_pfe_configs/01_pfe_normal/$(PROJ_CONFIG_NAME)/Eth_1.xdm $(PROJ_CONFIG_NAME)/config
+    PRE_GENERATE_CMD = cp work/driver/eth_pfe_configs/01_pfe_normal/$(PROJ_CONFIG_NAME)/Eth_1.xdm $(TRESOS_PROJECT_DIR)/config/Eth_1.xdm
 endif
 
 ################################################################################
@@ -401,6 +409,9 @@ INCLUDE_DIRS += $(PFE_INCLUDE_DIRS) \
                 $(FREERTOS_PORT_DIR) \
                 $(PRJ_CNF_DIR)/include \
                 $(SHM_DRIVER_INCLUDES_DIRS) \
+                $(MIDDLEWARE_DIR)/Pwsm/include \
+                $(MIDDLEWARE_DIR)/PICC/Picc_Deamon \
+                $(MIDDLEWARE_DIR)/DM \
                 $(foreach mod,$(MCAL_MODULE_LIST),$(PLUGINS_DIR)/$(mod)_$(AR_MCAL_PKG_NAME)/include)
 
 SRC_DIRS     += $(GDIR)/src \
@@ -412,6 +423,9 @@ SRC_DIRS     += $(GDIR)/src \
                 $(FREERTOS_HEAP_DIR) \
                 $(PRJ_CNF_DIR)/src \
                 $(SHM_DRIVER_SRC_DIR) \
+                $(MIDDLEWARE_DIR)/Pwsm/src \
+                $(MIDDLEWARE_DIR)/PICC/Picc_Deamon \
+                $(MIDDLEWARE_DIR)/DM \
                 $(foreach mod,$(MCAL_MODULE_LIST),$(PLUGINS_DIR)/$(mod)_$(AR_MCAL_PKG_NAME)/src)
 
 ifeq ($(SLAVE_DRIVER),FALSE)
@@ -421,6 +435,10 @@ endif
 
 ifeq ($(LWIP),TRUE)
     LWIPDIR := $(LWIP_DIR)/src
+    LWIPAPPSDIR := $(LWIP_DIR)/apps
+    LWIP_APPS_FILES := $(wildcard $(LWIPAPPSDIR)/*/*.c)
+    LWIP_APPS_DIRS := $(sort $(dir $(LWIP_APPS_FILES)))
+    
     include $(LWIPDIR)/Filelists.mk
     LWIP_SOURCE_PATHS    += $(COREFILES) \
                             $(CORE4FILES) \
@@ -428,8 +446,11 @@ ifeq ($(LWIP),TRUE)
                             $(NETIFFILES) \
                             $(HTTPFILES) \
                             $(LWIPERFFILES)
-    INCLUDE_DIRS += $(LWIPDIR)/include
-    SRC_DIRS += $(sort $(foreach PATH,$(LWIP_SOURCE_PATHS), $(dir $(PATH))))
+    INCLUDE_DIRS += $(LWIPDIR)/include \
+                    $(LWIP_APPS_DIRS)
+    
+    SRC_DIRS += $(sort $(foreach PATH,$(LWIP_SOURCE_PATHS), $(dir $(PATH)))) \
+                $(LWIP_APPS_DIRS)
 endif
 
 ifeq ($(USE_SJA1105P_DRIVER),TRUE)
@@ -474,6 +495,8 @@ CCOPT += \
         -DD_CACHE_ENABLE \
         -DI_CACHE_ENABLE \
         -DENABLE_FPU \
+    -DHPC_PFE_ENABLE_CAN_APPLICATION=0U \
+        -DHPC_PFE_ENABLE_STM_APPLICATION=0U \
         -DPFE_CFG_VERBOSITY_LEVEL=$(VERBOSITY_LEVEL) \
         -DTARGET_$(TARGET_BOARD)
 
@@ -687,6 +710,10 @@ SOURCE_FILES_EXC +=Serdes_Cfg.c \
 SOURCE_FILES := $(filter-out $(SOURCE_FILES_EXC), $(SOURCE_FILES))
 endif
 
+SOURCE_FILES_EXC += Can_Ipw_VS_0_PBcfg.c \
+                    Can_VS_0_PBcfg.c
+SOURCE_FILES := $(filter-out $(SOURCE_FILES_EXC), $(SOURCE_FILES))
+
 ################################################################################
 # Object files
 ################################################################################
@@ -696,11 +723,18 @@ OUT_FILES := $(OUT_FILES:.S=.o)
 
 OUT_FILES := $(addprefix $(ODIR)/, $(OUT_FILES))
 
+# Generated headers must exist before any compilation starts (important for parallel builds).
+$(OUT_FILES): prepare_generated
+
 ################################################################################
 # Targets
 ################################################################################
 .PHONY: build
-build: $(ODIR) $(OUT_FILES) $(ODIR)/$(APP_NAME).elf $(ODIR)/$(APP_NAME).bin
+build: prepare_generated $(ODIR) $(OUT_FILES) $(ODIR)/$(APP_NAME).elf $(ODIR)/$(APP_NAME).bin \
+    $(DEBUGRAM_DIR)/$(APP_NAME).elf $(DEBUGRAM_DIR)/$(APP_NAME).bin $(DEBUGRAM_DIR)/$(APP_NAME).map
+
+.PHONY: prepare_generated
+prepare_generated: ; @if [ ! -f "$(GDIR)/include/pfe_cfg.h" ]; then echo "Generated config missing, running make generate..."; $(MAKE) generate HW=$(HW); fi
 
 vpath %.c $(addsuffix :, $(SRC_DIRS) $(PFE_SRC_DIRS))
 
@@ -729,28 +763,30 @@ $(ODIR)/$(APP_NAME).bin: $(ODIR)/$(APP_NAME).elf
 	@echo OBJCOPY $@
 	$(OBJCOPY) -O binary $< $@
 
-$(ODIR):
-	mkdir -p $(ODIR)
+$(ODIR): ; mkdir -p $(ODIR)
+
+$(DEBUGRAM_DIR): ; mkdir -p $(DEBUGRAM_DIR)
+
+$(DEBUGRAM_DIR)/$(APP_NAME).elf: $(ODIR)/$(APP_NAME).elf | $(DEBUGRAM_DIR) ; cp $< $@
+
+$(DEBUGRAM_DIR)/$(APP_NAME).bin: $(ODIR)/$(APP_NAME).bin | $(DEBUGRAM_DIR) ; cp $< $@
+
+$(DEBUGRAM_DIR)/$(APP_NAME).map: $(ODIR)/$(APP_NAME).elf | $(DEBUGRAM_DIR) ; cp $(ODIR)/$(APP_NAME).map $@
 
 .PHONY : clean_all
-clean_all: clean_gen clean
+clean_all: clean clean_debugram clean_gen
 
 .PHONY: clean_gen
-clean_gen:
-	rm -fr $(GDIR)
-	-$(TRESOS_DIR)/bin/tresos_cmd.bat -data $(TRESOS_WORKSPACE_DIR) deleteProject $(PROJ_CONFIG_NAME) 2>&1
+clean_gen: ; @if [ -d "$(GDIR)" ]; then rm -fr "$(GDIR)"/* "$(GDIR)"/.[!.]* "$(GDIR)"/..?*; fi; mkdir -p "$(GDIR)"
 
 .PHONY: clean
-clean:
-	rm -fr $(ODIR)
+clean: ; @if [ -d "$(ODIR)" ]; then rm -fr "$(ODIR)"/* "$(ODIR)"/.[!.]* "$(ODIR)"/..?*; fi; mkdir -p "$(ODIR)"
+
+.PHONY: clean_debugram
+clean_debugram: ; @if [ -d "$(DEBUGRAM_DIR)" ]; then rm -fr "$(DEBUGRAM_DIR)"/* "$(DEBUGRAM_DIR)"/.[!.]* "$(DEBUGRAM_DIR)"/..?*; fi; mkdir -p "$(DEBUGRAM_DIR)"
 
 .PHONY: generate
-generate:
-	$(PRE_GENERATE_CMD)
-	-$(TRESOS_DIR)/bin/tresos_cmd.bat -data $(TRESOS_WORKSPACE_DIR) importProject $(shell cygpath -m $(abspath $(PROJ_CONFIG_NAME))) 2>&1
-	$(TRESOS_DIR)/bin/tresos_cmd.bat -data $(TRESOS_WORKSPACE_DIR) autoconfigure $(PROJ_CONFIG_NAME) GenerateAllVariants 2>&1
-	$(TRESOS_DIR)/bin/tresos_cmd.bat -data $(TRESOS_WORKSPACE_DIR) make generate_swcd $(PROJ_CONFIG_NAME) 2>&1
-	$(TRESOS_DIR)/bin/tresos_cmd.bat -data $(TRESOS_WORKSPACE_DIR) make verify_swcd $(PROJ_CONFIG_NAME) 2>&1
+generate: ; $(PRE_GENERATE_CMD); $(TRESOS_CMD_WIN) -data $(TRESOS_WORKSPACE_WIN) importProject "$(CURDIR)/$(TRESOS_PROJECT_DIR)" 2>&1 || true; $(TRESOS_CMD_WIN) -data $(TRESOS_WORKSPACE_WIN) autoconfigure $(TRESOS_PROJECT_NAME) GenerateAllVariants 2>&1; $(TRESOS_CMD_WIN) -data $(TRESOS_WORKSPACE_WIN) make generate_swcd $(TRESOS_PROJECT_NAME) 2>&1; $(TRESOS_CMD_WIN) -data $(TRESOS_WORKSPACE_WIN) make verify_swcd $(TRESOS_PROJECT_NAME) 2>&1
 #	$(TRESOS_DIR)/bin/tresos_cmd.bat -data $(TRESOS_WORKSPACE_DIR) import $(PROJ_CONFIG_NAME) bswmd 2>&1
 .PHONY : help
 help :

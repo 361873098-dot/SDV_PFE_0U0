@@ -1,40 +1,44 @@
 /*==================================================================================================
-*   Project              : RTD AUTOSAR 4.4
-*   Platform             : CORTEXM
-*   Peripheral           : SERDES_SS
-*   Dependencies         : none
+* Project : RTD AUTOSAR 4.4
+* Platform : CORTEXM
+* Peripheral : SERDES_SS
+* Dependencies : none
 *
-*   Autosar Version      : 4.4.0
-*   Autosar Revision     : ASR_REL_4_4_REV_0000
-*   Autosar Conf.Variant :
-*   SW Version           : 4.0.2
-*   Build Version        : S32_RTD_4_0_2_P04_D2312_ASR_REL_4_4_REV_0000_20231219
+* Autosar Version : 4.4.0
+* Autosar Revision : ASR_REL_4_4_REV_0000
+* Autosar Conf.Variant :
+* SW Version : 4.0.2
+* Build Version : S32_RTD_4_0_2_D2306_ASR_REL_4_4_REV_0000_20230630
 *
-*   (c) Copyright 2020-2023 NXP
-*   All Rights Reserved.
+* Copyright 2020-2023 NXP Semiconductors
+
 *
-*   NXP Confidential. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms. By expressly
-*   accepting such terms or by downloading, installing, activating and/or otherwise
-*   using the software, you are agreeing that you have read, and that you agree to
-*   comply with and are bound by, such license terms. If you do not agree to be
-*   bound by the applicable license terms, then you may not retain, install,
-*   activate or otherwise use the software.
+* NXP Confidential. This software is owned or controlled by NXP and may only be
+* used strictly in accordance with the applicable license terms. By expressly
+* accepting such terms or by downloading, installing, activating and/or otherwise
+* using the software, you are agreeing that you have read, and that you agree to
+* comply with and are bound by, such license terms. If you do not agree to be
+* bound by the applicable license terms, then you may not retain, install,
+* activate or otherwise use the software.
 ==================================================================================================*/
 
 #ifndef SERDES_IP_CFG_H
 #define SERDES_IP_CFG_H
 
+
 /**
-*   @file       Serdes_Ip_Cfg.h
-*   @addtogroup Serdes_IPL
+*   @file
+*   @internal
+*   @addtogroup Serdes
 *   @{
 */
+
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
+
 
 /*==================================================================================================
                                          INCLUDE FILES
@@ -82,7 +86,7 @@ extern "C"
 #define SERDES_1_XPCS0_ENABLED   (STD_ON)
 
 /*XPCS1 enabled */
-#define SERDES_1_XPCS1_ENABLED   (STD_OFF)
+#define SERDES_1_XPCS1_ENABLED   (STD_ON)
 
 
 

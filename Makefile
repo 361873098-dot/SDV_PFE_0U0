@@ -711,7 +711,8 @@ SOURCE_FILES := $(filter-out $(SOURCE_FILES_EXC), $(SOURCE_FILES))
 endif
 
 SOURCE_FILES_EXC += Can_Ipw_VS_0_PBcfg.c \
-                    Can_VS_0_PBcfg.c
+                    Can_VS_0_PBcfg.c \
+                    FlexCAN_Ip_VS_0_PBcfg.c
 SOURCE_FILES := $(filter-out $(SOURCE_FILES_EXC), $(SOURCE_FILES))
 
 ################################################################################

@@ -55,7 +55,7 @@ goto MENU_SELECTION
 echo.
 echo [INFO] Cleaning %ODIR% and DebugRAM ...
 pushd "%ROOT%"
-"%CYGWIN_BASH%" -c "cd \"$(cygpath -u '%ROOT%')\" && export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && /usr/bin/make clean_all"
+"%CYGWIN_BASH%" -c "export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && cd \"$(cygpath -u '%ROOT%')\" && /usr/bin/make clean_all"
 set "RC=%ERRORLEVEL%"
 popd
 if not "%RC%"=="0" (
@@ -75,7 +75,7 @@ echo [INFO] Parallel jobs: %JOBS%
 echo [INFO] Output dir:   %ODIR%
 echo.
 pushd "%ROOT%"
-"%CYGWIN_BASH%" -c "cd \"$(cygpath -u '%ROOT%')\" && export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && /usr/bin/make build -j%JOBS%"
+"%CYGWIN_BASH%" -c "export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && cd \"$(cygpath -u '%ROOT%')\" && /usr/bin/make build -j%JOBS%"
 set "BUILD_RC=%ERRORLEVEL%"
 popd
 goto CHECK_RESULT
@@ -88,7 +88,7 @@ echo [INFO] Parallel jobs: %JOBS%
 echo [INFO] Output dir:   %ODIR%
 echo.
 pushd "%ROOT%"
-"%CYGWIN_BASH%" -c "cd \"$(cygpath -u '%ROOT%')\" && export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && /usr/bin/make clean clean_debugram && /usr/bin/make build -j%JOBS%"
+"%CYGWIN_BASH%" -c "export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && cd \"$(cygpath -u '%ROOT%')\" && /usr/bin/make clean clean_debugram && /usr/bin/make build -j%JOBS%"
 set "BUILD_RC=%ERRORLEVEL%"
 popd
 goto CHECK_RESULT

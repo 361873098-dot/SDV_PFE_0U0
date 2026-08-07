@@ -28,7 +28,7 @@ FREERTOS_HEAP_DIR ?= $(FREERTOS_DIR)/portable/MemMang
 PRJ_CNF_DIR ?= ./work/prj/
 IPCF_DIR ?= ./work/driver/ipcf
 #MCAL modules used
-MCAL_MODULE_LIST :=  BaseNXP Det Dio Dem Gpt Mcu Mcl Rte Port Platform EthSwt EthTrcv
+MCAL_MODULE_LIST :=  BaseNXP Det Dio Dem Gpt Mcu Mcl Rte Port Platform EthSwt EthTrcv I2c
 
 #The package name for the MCAL release
 AR_MCAL_PKG_NAME = TS_T40D11M40I2R0

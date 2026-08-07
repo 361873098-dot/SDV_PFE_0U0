@@ -392,6 +392,9 @@ else
     PFE_SOURCE_FILES := $(notdir $(wildcard $(PFE_SRC_DIRS)/*.c))
 endif
 
+# Build IPCF from the source maintained in this workspace. The package makefile
+# is retained only as the common source/include directory definition.
+# SHM_DRIVER_PATH := $(IPCF_DIR)
 include $(PLUGINS_DIR)/Ipcf_$(AR_IPCF_PKG_NAME)/src/ipc-shm-rtos.mk
 
 SRC_DIRS      = src
@@ -412,7 +415,8 @@ INCLUDE_DIRS += $(PFE_INCLUDE_DIRS) \
                 $(MIDDLEWARE_DIR)/Pwsm/include \
                 $(MIDDLEWARE_DIR)/PICC/Picc_Deamon \
                 $(MIDDLEWARE_DIR)/DM \
-                $(MIDDLEWARE_DIR)/Stm \
+				$(MIDDLEWARE_DIR)/Stm \
+                $(MIDDLEWARE_DIR)/Nm/include \
                 work/driver/EEPROM \
                 work/System \
                 $(foreach mod,$(MCAL_MODULE_LIST),$(PLUGINS_DIR)/$(mod)_$(AR_MCAL_PKG_NAME)/include) \
@@ -430,7 +434,8 @@ SRC_DIRS     += $(GDIR)/src \
                 $(MIDDLEWARE_DIR)/Pwsm/src \
                 $(MIDDLEWARE_DIR)/PICC/Picc_Deamon \
                 $(MIDDLEWARE_DIR)/DM \
-                $(MIDDLEWARE_DIR)/Stm \
+				$(MIDDLEWARE_DIR)/Stm \
+                $(MIDDLEWARE_DIR)/Nm/src \
                 work/driver/EEPROM \
                 work/System \
                 $(foreach mod,$(MCAL_MODULE_LIST),$(PLUGINS_DIR)/$(mod)_$(AR_MCAL_PKG_NAME)/src)

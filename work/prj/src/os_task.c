@@ -77,6 +77,8 @@
 #include "hm.h"
 #endif
 #include "stm_main.h"
+#include "Nm.h"
+
 /***********************************************************************************************************************
 *  local type definitions (STRUCT, TYPEDEF, ...)
 ***********************************************************************************************************************/
@@ -204,6 +206,7 @@ void task_m7_core0_100ms(void *pvParameters)
     for ( ;; )
     {
         OS_TASKCOUNT_INC_CTR(M7_Core0_100ms);
+        /*  Add user application code here  */
 
         vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(100));
     }
@@ -226,6 +229,7 @@ void task_m7_core0_1000ms(void *pvParameters)
     for( ;; )
     {
         OS_TASKCOUNT_INC_CTR(M7_Core0_1000ms);
+        /*  Add user application code here  */
 
         //llce_dummy();
 //         Eth_43_PFE_MainFunction();
@@ -248,8 +252,8 @@ void creat_tasks_m7(void)
 {
     PICC_PreOS_Init();
     Pwsm_Init();
+    Nm_Init();
     DiagMgmt_Init();
-    I2c_Init(&I2c_Config_VS_0);
 #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
     SoaAdapter_Init();
     Hm_Init();

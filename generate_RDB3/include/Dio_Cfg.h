@@ -231,6 +231,22 @@ extern "C" {
 
 /* ========== DioConfig ========== */
 
+/* ---------- DioPort_Pmic ---------- */
+
+/**
+* @brief          Symbolic name for the port DioPort_Pmic.
+*
+*/
+#define DioConf_DioPort_DioPort_Pmic  ((uint8)0x02U)
+
+
+
+/**
+* @brief          Symbolic name for the channel DioChannel_Pmic.
+*
+*/
+#define  DioConf_DioChannel_DioChannel_Pmic ((uint16)0x0022U)
+
 /* ---------- DioPort_0 ---------- */
 
 /**

@@ -48,7 +48,7 @@ void PICC_PreOS_Init(void);
  * @brief RX message processing task (event-driven, queue blocking)
  *
  * This task blocks on the RX queue waiting for IPCF messages.
- * Created by OsTask_Creation_All() in Ostask_main.c.
+ * Created by creat_tasks_m7() in os_task.c.
  *
  * @param[in] params  FreeRTOS task parameter (unused)
  */

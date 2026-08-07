@@ -222,8 +222,8 @@ static void PICC_DiagRecordAdd(PICC_DiagRecord_t *record, const uint8 *data, uin
          * 1. M-Core Server role: ProviderID == 41U (0x29) AND ConsumerID == 46U (0x2E)
          * 2. M-Core Client role: ProviderID == 47U (0x2F) AND ConsumerID == 42U (0x2A) */
         boolean isStmMsg = FALSE;
-        if (((msgPtr[0] == 41U) && (msgPtr[2] == 46U)) ||
-            ((msgPtr[0] == 47U) && (msgPtr[2] == 42U))) {
+        if (((msgPtr[0] == 21U) && (msgPtr[2] == 26U)) ||
+            ((msgPtr[0] == 81U) && (msgPtr[2] == 91U))) {
             isStmMsg = TRUE;
         }
 
@@ -664,13 +664,13 @@ static sint8 PICC_ProcessRxData(const uint8 instance, uint8 chan_id,
 
 /**
  * @brief RX message processing task (event-driven, queue blocking)
- * 
+ *
  * Handles received messages from IPCF.
  * This task blocks on the RX queue waiting for messages.
- * 
+ *
  * @note This task MUST remain as an independent FreeRTOS task because it uses
  *       xQueueReceive with portMAX_DELAY (infinite blocking).
- *       It is created by OsTask_Creation_All() in Ostask_main.c.
+ *       It is created by creat_tasks_m7() in os_task.c.
  */
 void PICC_Rx_Msg_10ms_Task(void *params)
 {
@@ -681,10 +681,10 @@ void PICC_Rx_Msg_10ms_Task(void *params)
     /* Main loop - process received messages */
     while (1) {
         if (xQueueReceive(g_rxQueue, &rxMsg, portMAX_DELAY) == pdPASS) {
-            
+
             /* Process received message */
             (void)PICC_ProcessRxData(rxMsg.instance, rxMsg.chanId, rxMsg.buf, rxMsg.size);
-            
+
             /* Release buffer (Managed channel only) */
             if (rxMsg.isManaged != FALSE) {
                 err = ipc_shm_release_buf(rxMsg.instance, rxMsg.chanId, rxMsg.buf);
@@ -692,7 +692,7 @@ void PICC_Rx_Msg_10ms_Task(void *params)
                     /* Log release error */
                 }
             }
-            
+
             g_appData.tx_count++;
         }
     }

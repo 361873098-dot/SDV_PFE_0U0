@@ -1,49 +1,71 @@
 #ifndef NM_H
 #define NM_H
+#include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#define NM_UDP_PORT 30010
 
-#include "Std_Types.h"
-
-#define NM_UDP_LISTEN_PORT              5000U
-#define NM_UDP_RX_BUFFER_SIZE           1472U
-#define NM_PDU_LENGTH                   8U
-#define NM_EXPECTED_NID                 0xCFU
-
-typedef struct
+/*  NID */
+typedef union Nm_NidUnion
 {
-    uint8 sourceNodeIdentifier;
+    uint8_t Value;
+} Nm_Nid_t;
 
-    boolean activeWakeup;
-    boolean partialNetworkInformation;
+typedef union Nm_ControlVectorUnion
+{
+    uint8_t Value;
+    struct
+    {
+        uint8_t reserved0 : 4;
+        uint8_t ActiveWakeupBit : 1;
+        uint8_t reserved1 : 1;
+        uint8_t PartialNetworkInfo  : 1;
+        uint8_t reserved2 : 1;
+    } bits;
+} Nm_ControlBitVector_t;
 
-    boolean pncGlobal;
-    boolean pncDownload;
-    boolean wakeupSource;
+typedef union Nm_PncInfoUnion
+{
+    uint8_t Value;
+    struct
+    {
+        uint8_t PncGlobal : 1;
+        uint8_t reserved0 : 1;
+        uint8_t reserved1 : 1;
+        uint8_t PncDownload : 1;
+        uint8_t reserved2 : 3;
+        uint8_t WakeupSource : 1;
+    } bits;
+} Nm_PncInfo_t;
 
-    boolean otaClient;
+typedef union Nm_AppInfoUnion
+{
+    uint8_t Value;
+    struct
+    {
+        uint8_t reserved0 : 3;
+        uint8_t OTACLT : 1;
+        uint8_t reserved1 : 4;
+    } bits;
+} Nm_AppInfo_t;
 
-    uint32 remoteAddress;
-    uint16 remotePort;
-} Nm_RxPduType;
 
-/* 可在 Trace32 中监视 */
-extern volatile Nm_RxPduType Nm_LastRxPdu;
-extern volatile uint32 Nm_ValidRxCount;
-extern volatile uint32 Nm_InvalidLengthCount;
-extern volatile uint32 Nm_InvalidContentCount;
+typedef union
+{
+    uint8_t Byte[8];
+    struct
+    {
+        Nm_Nid_t Nid;
+        Nm_ControlBitVector_t ControlBitVector;
+        uint8_t reserved0;
+        Nm_PncInfo_t PncInfo;
+        uint8_t reserved1;
+        uint8_t reserved2;
+        Nm_AppInfo_t AppInfo;
+        uint8_t reserved3;
+    } fields;
+}Nm_UDPPayload_t;
 
-Std_ReturnType Nm_Init(void);
 
-void Nm_UdpRxIndication(const uint8 *data,
-                        uint16 length,
-                        uint32 remoteAddress,
-                        uint16 remotePort);
-
-#ifdef __cplusplus
-}
-#endif
+void Nm_Init(void);
 
 #endif /* NM_H */

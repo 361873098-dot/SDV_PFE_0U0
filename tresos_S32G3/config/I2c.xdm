@@ -1,13 +1,12 @@
 <?xml version='1.0'?>
-<datamodel version="8.0" 
-           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
-           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
            xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
            xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
 
   <d:ctr type="AUTOSAR" factory="autosar" 
          xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
-         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
          xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
          xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
          xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
@@ -19,21 +18,15 @@
           <d:chc name="I2c" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
             <d:ctr type="MODULE-CONFIGURATION">
               <a:a name="DEF" value="ASPath:/TS_T40D11M40I2R0/I2c"/>
-              <d:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN" value="false">
-                <a:a name="IMPORTER_INFO" value="@DEF"/>
-              </d:var>
+              <d:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN" value="true"/>
               <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" 
-                     value="VariantPostBuild">
-                <a:a name="IMPORTER_INFO" value="@DEF"/>
-              </d:var>
+                     value="VariantPreCompile"/>
               <d:ctr name="GeneralConfiguration" type="IDENTIFIABLE">
-                <d:var name="I2cDevErrorDetect" type="BOOLEAN" value="true">
+                <d:var name="I2cDevErrorDetect" type="BOOLEAN" value="false">
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>
                 <d:var name="I2cTimeoutMethod" type="ENUMERATION" 
-                       value="OSIF_COUNTER_DUMMY">
-                  <a:a name="IMPORTER_INFO" value="@DEF"/>
-                </d:var>
+                       value="OSIF_COUNTER_DUMMY"/>
                 <d:var name="I2cDmaUsed" type="BOOLEAN" value="false">
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>
@@ -42,22 +35,18 @@
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>
                 <d:var name="I2cDisableDemReportErrorStatus" type="BOOLEAN" 
-                       value="false">
+                       value="true">
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>
-                <d:var name="I2cMulticoreSupport" type="BOOLEAN" value="false">
-                  <a:a name="IMPORTER_INFO" value="@DEF"/>
-                </d:var>
-                <d:var name="I2cEnableUserModeSupport" type="BOOLEAN" 
-                       value="false">
-                  <a:a name="IMPORTER_INFO" value="@DEF"/>
-                </d:var>
-                <d:var name="I2cTimeoutDuration" type="INTEGER" value="1000">
+                <d:var name="I2cMulticoreSupport" type="BOOLEAN" value="false"/>
+                <d:var name="I2cTimeoutDuration" type="INTEGER" value="65535">
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>
                 <d:var name="I2cVersionInfoApi" type="BOOLEAN" value="true">
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>
+                <d:var name="I2cEnableUserModeSupport" type="BOOLEAN" 
+                       value="false"/>
                 <d:var name="I2c_Callback" type="BOOLEAN" value="false">
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>
@@ -88,20 +77,17 @@
                            type="ENUMERATION" value="MASTER_MODE">
                       <a:a name="IMPORTER_INFO" value="@DEF"/>
                     </d:var>
-                    <d:ref name="I2cChannelEcucPartitionRef" type="REFERENCE" >
+                    <d:ref name="I2cChannelEcucPartitionRef" type="REFERENCE" 
+                           value="ASPath:/EcuC/EcuC/EcucPartitionCollection_0/EcucPartition_4">
                       <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
                     </d:ref>
                     <d:ctr name="I2cMasterConfiguration" type="IDENTIFIABLE">
-                      <a:a name="SHORT-NAME" value="I2c_IICMasterChannel0"/>
                       <d:ref name="I2cClockRef" type="REFERENCE" 
                              value="ASPath:/Mcu/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/McuClockReferencePoint_2">
                         <a:a name="ENABLE" value="true"/>
                       </d:ref>
                       <d:var name="I2cAsyncMethod" type="ENUMERATION" 
-                             value="I2C_USING_INTERRUPTS">
-                        <a:a name="IMPORTER_INFO" value="@DEF"/>
-                      </d:var>
+                             value="I2C_USING_INTERRUPTS"/>
                       <d:var name="I2cMasterGlitchFilter" type="BOOLEAN" 
                              value="false">
                         <a:a name="IMPORTER_INFO" value="@DEF"/>
@@ -168,24 +154,69 @@
                         <a:v>@CALC</a:v>
                       </a:a>
                     </d:var>
-                    <d:var name="I2cHwChannel" type="ENUMERATION" value="IIC_0"/>
+                    <d:var name="I2cHwChannel" type="ENUMERATION" value="IIC_0">
+                      <a:a name="VARIANTS" type="Variant">
+                        <variant:pbvcond>
+                          <variant:criterion 
+                                             value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                          <variant:cond>
+                            <variant:tst expr="0"/>
+                          </variant:cond>
+                        </variant:pbvcond>
+                      </a:a>
+                    </d:var>
                     <d:var name="I2cMasterSlaveConfiguration" 
                            type="ENUMERATION" value="MASTER_MODE">
                       <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      <a:a name="VARIANTS" type="Variant">
+                        <variant:pbvcond>
+                          <variant:criterion 
+                                             value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                          <variant:cond>
+                            <variant:tst expr="0"/>
+                          </variant:cond>
+                        </variant:pbvcond>
+                      </a:a>
                     </d:var>
                     <d:ref name="I2cChannelEcucPartitionRef" type="REFERENCE" >
                       <a:a name="ENABLE" value="false"/>
                       <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      <a:a name="VARIANTS" type="Variant">
+                        <variant:pbvcond>
+                          <variant:criterion 
+                                             value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                          <variant:cond>
+                            <variant:tst expr="0"/>
+                          </variant:cond>
+                        </variant:pbvcond>
+                      </a:a>
                     </d:ref>
                     <d:ctr name="I2cMasterConfiguration" type="IDENTIFIABLE">
-                      <a:a name="SHORT-NAME" value="I2c_IICMasterChannel1"/>
                       <d:ref name="I2cClockRef" type="REFERENCE" 
                              value="ASPath:/Mcu/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/McuClockReferencePoint_2">
                         <a:a name="ENABLE" value="true"/>
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
+                        </a:a>
                       </d:ref>
                       <d:var name="I2cAsyncMethod" type="ENUMERATION" 
                              value="I2C_USING_INTERRUPTS">
                         <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
+                        </a:a>
                       </d:var>
                       <d:var name="I2cMasterGlitchFilter" type="BOOLEAN" 
                              value="false">
@@ -194,16 +225,53 @@
                       <d:ref name="I2cTxDmaChannel" type="REFERENCE" >
                         <a:a name="ENABLE" value="false"/>
                         <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
+                        </a:a>
                       </d:ref>
                       <d:ref name="I2cRxDmaChannel" type="REFERENCE" >
                         <a:a name="ENABLE" value="false"/>
                         <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
+                        </a:a>
                       </d:ref>
-                      <d:var name="I2cIbcValue" type="INTEGER" value="48"/>
+                      <d:var name="I2cIbcValue" type="INTEGER" value="48">
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
+                        </a:a>
+                      </d:var>
                       <d:var name="I2cSCLDivider" type="INTEGER" value="640">
                         <a:a name="IMPORTER_INFO">
                           <a:v>@CALC</a:v>
                           <a:v>@DEF</a:v>
+                        </a:a>
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
                         </a:a>
                       </d:var>
                       <d:var name="I2cSDAHoldDelay" type="INTEGER" value="65">
@@ -211,17 +279,44 @@
                           <a:v>@CALC</a:v>
                           <a:v>@DEF</a:v>
                         </a:a>
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
+                        </a:a>
                       </d:var>
                       <d:var name="I2cSCLHoldStart" type="INTEGER" value="318">
                         <a:a name="IMPORTER_INFO">
                           <a:v>@CALC</a:v>
                           <a:v>@DEF</a:v>
                         </a:a>
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
+                        </a:a>
                       </d:var>
                       <d:var name="I2cSCLHoldStop" type="INTEGER" value="321">
                         <a:a name="IMPORTER_INFO">
                           <a:v>@CALC</a:v>
                           <a:v>@DEF</a:v>
+                        </a:a>
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
                         </a:a>
                       </d:var>
                       <d:var name="I2cBaudRate" type="FLOAT" 
@@ -230,11 +325,29 @@
                           <a:v>@CALC</a:v>
                           <a:v>@DEF</a:v>
                         </a:a>
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
+                        </a:a>
                       </d:var>
                     </d:ctr>
                     <d:ctr name="I2cSlaveConfiguration" type="IDENTIFIABLE">
                       <d:var name="I2cSlaveAddress" type="INTEGER" value="0">
                         <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        <a:a name="VARIANTS" type="Variant">
+                          <variant:pbvcond>
+                            <variant:criterion 
+                                               value="ASPath:/EB/PostBuildSelectable/PostBuildSelectableCriterion"/>
+                            <variant:cond>
+                              <variant:tst expr="0"/>
+                            </variant:cond>
+                          </variant:pbvcond>
+                        </a:a>
                       </d:var>
                       <d:var name="I2cSlaveListening" type="BOOLEAN" 
                              value="false">
@@ -268,15 +381,9 @@
                 <d:var name="ModuleId" type="INTEGER" value="255">
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>
-                <d:var name="SwMajorVersion" type="INTEGER" value="4">
-                  <a:a name="IMPORTER_INFO" value="@DEF"/>
-                </d:var>
-                <d:var name="SwMinorVersion" type="INTEGER" value="0">
-                  <a:a name="IMPORTER_INFO" value="@DEF"/>
-                </d:var>
-                <d:var name="SwPatchVersion" type="INTEGER" value="2">
-                  <a:a name="IMPORTER_INFO" value="@DEF"/>
-                </d:var>
+                <d:var name="SwMajorVersion" type="INTEGER" value="4"/>
+                <d:var name="SwMinorVersion" type="INTEGER" value="0"/>
+                <d:var name="SwPatchVersion" type="INTEGER" value="2"/>
                 <d:var name="VendorApiInfix" type="STRING" value="">
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>

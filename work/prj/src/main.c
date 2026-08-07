@@ -39,6 +39,9 @@ extern "C"{
 #include "Dio.h"
 #include "Serdes.h"
 #include "SchM_Serdes.h"
+#include "CDD_Pmic.h"
+#include "CDD_I2c.h"
+#include "Nm.h"
 #include "udpecho_raw.h"
 #include "System_Cpuload.h"
 
@@ -54,6 +57,10 @@ extern "C"{
 #endif /* PFE_CFG_FCI_ENABLE */
 
 #include "mpu_configuration.h"
+
+
+
+
 
 #if STD_ON == ETH_43_GET_PFE_STATISTIC_API
 #include "pfe_platform.h"
@@ -486,12 +493,12 @@ void rx_callback(uint8 ctrl_idx, Eth_FrameType frame_type, boolean is_broadcast,
 }
 #endif
 
+uint16 read_m_deviceid;
+
 int main(void)
 {
 #if 1
     Std_ReturnType ret = E_OK;
-
-    uint32_t last_tick = 0;
 
     /* Fully configure the MPU. This needs to be disabled in startup code and done here
          as the startup code for MPU configuration is not compatible with new memory map */
@@ -507,6 +514,15 @@ int main(void)
     {
         ;
     }
+
+/* Initialize I2c driver */
+    I2c_Init(NULL_PTR);
+
+/* Initialize Pmic driver */  
+ Pmic_Init(NULL_PTR);
+
+/* Initialize Vr5510 device */
+Pmic_InitDevice(PmicConf_PmicDevice_PmicDevice_0); 
 
 #if defined(CONFIG_MINIHIF)
     configure_minihif_hw();

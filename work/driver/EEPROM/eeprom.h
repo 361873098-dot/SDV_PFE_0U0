@@ -30,7 +30,7 @@
 ***********************************************************************************************************************/
 
 
-#define EEPROM_I2C_CHANNEL          (I2cChannel_1)  /* I2cChannel_1 -> I2C0 */
+#define EEPROM_I2C_CHANNEL          (I2cChannel_0)  /* Generated I2C logical channel 0 */
 #define EEPROM_I2C_SLAVE_ADDR_7BIT  (0x50U)         /* CMM 0xA0 >> 1 */
 #define EEPROM_8BYTE_LEN            (8U)
 #define EEPROM_WRITE_MAX_LEN       (16U)          /* Maximum number of bytes to write in one I2C transfer, depends on the EEPROM device capability */

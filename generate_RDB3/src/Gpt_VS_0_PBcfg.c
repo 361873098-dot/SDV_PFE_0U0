@@ -141,7 +141,10 @@ extern void EthSwt_Tst_PitNotification(void);
 #include "Gpt_MemMap.h"
 
 
-/*Gpt_Ipw_PluginMacros.m*/
+
+
+
+ /*Gpt_Ipw_PluginMacros.m*/
 /** @} */
 
 
@@ -205,6 +208,7 @@ static const Gpt_ChannelConfigType Gpt_InitChannelPB_VS_0[GPT_CONF_CHANNELS_PB_V
 };
 
     
+
 /* VariantPreCompile/LinkTime and at most 1 configured variant */
 /**
 * @brief        Gpt configuration type does not existing GptEcucPartitionRef 

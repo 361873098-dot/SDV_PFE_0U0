@@ -25,7 +25,7 @@ extern "C" {
 
 /** Global trace switch: 0=disabled, 1=enabled */
 #ifndef PICC_TRACE_ENABLE
-#define PICC_TRACE_ENABLE    (0U)
+#define PICC_TRACE_ENABLE    (1U)
 #endif
 
 /** Maximum data columns per trace entry (increased to capture full stacked packets) */

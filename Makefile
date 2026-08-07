@@ -412,7 +412,11 @@ INCLUDE_DIRS += $(PFE_INCLUDE_DIRS) \
                 $(MIDDLEWARE_DIR)/Pwsm/include \
                 $(MIDDLEWARE_DIR)/PICC/Picc_Deamon \
                 $(MIDDLEWARE_DIR)/DM \
-                $(foreach mod,$(MCAL_MODULE_LIST),$(PLUGINS_DIR)/$(mod)_$(AR_MCAL_PKG_NAME)/include)
+                $(MIDDLEWARE_DIR)/Stm \
+                work/driver/EEPROM \
+                work/System \
+                $(foreach mod,$(MCAL_MODULE_LIST),$(PLUGINS_DIR)/$(mod)_$(AR_MCAL_PKG_NAME)/include) \
+                $(foreach mod,$(EXTRA_INCLUDE_MODULES),$(PLUGINS_DIR)/$(mod)_$(AR_MCAL_PKG_NAME)/include)
 
 SRC_DIRS     += $(GDIR)/src \
                 $(PLUGINS_DIR)/Platform_$(AR_MCAL_PKG_NAME)/startup/src \
@@ -426,6 +430,9 @@ SRC_DIRS     += $(GDIR)/src \
                 $(MIDDLEWARE_DIR)/Pwsm/src \
                 $(MIDDLEWARE_DIR)/PICC/Picc_Deamon \
                 $(MIDDLEWARE_DIR)/DM \
+                $(MIDDLEWARE_DIR)/Stm \
+                work/driver/EEPROM \
+                work/System \
                 $(foreach mod,$(MCAL_MODULE_LIST),$(PLUGINS_DIR)/$(mod)_$(AR_MCAL_PKG_NAME)/src)
 
 ifeq ($(SLAVE_DRIVER),FALSE)
@@ -492,11 +499,10 @@ endif
 CCOPT += \
         -DS32XX \
         -DUSE_SW_VECTOR_MODE \
-        -DD_CACHE_ENABLE \
-        -DI_CACHE_ENABLE \
-        -DENABLE_FPU \
+    -DD_CACHE_ENABLE \
+    -DI_CACHE_ENABLE \
+    -DENABLE_FPU \
     -DHPC_PFE_ENABLE_CAN_APPLICATION=0U \
-        -DHPC_PFE_ENABLE_STM_APPLICATION=0U \
         -DPFE_CFG_VERBOSITY_LEVEL=$(VERBOSITY_LEVEL) \
         -DTARGET_$(TARGET_BOARD)
 
@@ -710,11 +716,6 @@ SOURCE_FILES_EXC +=Serdes_Cfg.c \
 SOURCE_FILES := $(filter-out $(SOURCE_FILES_EXC), $(SOURCE_FILES))
 endif
 
-SOURCE_FILES_EXC += Can_Ipw_VS_0_PBcfg.c \
-                    Can_VS_0_PBcfg.c \
-                    FlexCAN_Ip_VS_0_PBcfg.c
-SOURCE_FILES := $(filter-out $(SOURCE_FILES_EXC), $(SOURCE_FILES))
-
 ################################################################################
 # Object files
 ################################################################################
@@ -741,7 +742,7 @@ vpath %.c $(addsuffix :, $(SRC_DIRS) $(PFE_SRC_DIRS))
 
 $(ODIR)/%.o: %.c $(INCLUDE_FILES)
 	@echo CC $<
-	@$(CC) $(CCOPT) $(if $(findstring Eth_43_PFE, $<),$(CFLAGS_WERROR),) $(CCINCLUDES) $< -o $@
+	$(CC) $(CCOPT) $(if $(findstring Eth_43_PFE, $<),$(CFLAGS_WERROR),) $(CCINCLUDES) $< -o $@
 
 vpath %.s $(addsuffix :, $(SRC_DIRS))
 vpath %.S $(addsuffix :, $(SRC_DIRS))

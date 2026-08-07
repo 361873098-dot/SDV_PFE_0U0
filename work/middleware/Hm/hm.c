@@ -164,8 +164,8 @@ static void Hm_BuildFaultEvent(PICCHealthInfo_st *healthInfo, uint32 faultBitmap
 void Hm_Init(void)
 {
     static const PICC_AppConfig_t heal_man_hb_cfg = {
-        .localId                = HEAL_MAN_HB_PROVIDER_ID,   /* M-Core Server */
-        .remoteId               = HEAL_MAN_HB_CONSUMER_ID,   /* A-Core Client */
+        .localId                = HEAL_MAN_HB_PROVIDER_ID,   /* M-Core Server 21*/
+        .remoteId               = HEAL_MAN_HB_CONSUMER_ID,   /* A-Core Client 26*/
         .role                   = PICC_ROLE_SERVER,
         .channelId              = HM_CHANNEL_ID,    /* 1 (HP) */
         .Client_linkReq_PeriodMs = 0U, /* Ignored for SERVER role */
@@ -174,8 +174,8 @@ void Hm_Init(void)
     };
 
     static const PICC_AppConfig_t heal_man_reporter_cfg = {
-        .localId                = HEAL_MAN_REPORTER_PROVIDER_ID,   /* M-Core Server */
-        .remoteId               = HEAL_MAN_REPORTER_CONSUMER_ID,   /* A-Core Client */
+        .localId                = HEAL_MAN_REPORTER_PROVIDER_ID,   /* M-Core Server 81*/
+        .remoteId               = HEAL_MAN_REPORTER_CONSUMER_ID,   /* A-Core Client 91*/
         .role                   = PICC_ROLE_SERVER,
         .channelId              = HM_CHANNEL_ID,    /* 1 (HP) */
         .Client_linkReq_PeriodMs = 0U, /* Ignored for SERVER role */

@@ -68,15 +68,15 @@
 #include "picc_link.h"
 #include "picc_main.h"
 #include "diag_mgmt.h"
+#include "CDD_I2c.h"
+#include "CDD_I2c_VS_0_PBcfg.h"
+#include "System_Cpuload.h"
 
 #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
 #include "soa_adapter_main.h"
 #include "hm.h"
 #endif
-
-#if (HPC_PFE_ENABLE_STM_APPLICATION == 1U)
 #include "stm_main.h"
-#endif
 /***********************************************************************************************************************
 *  local type definitions (STRUCT, TYPEDEF, ...)
 ***********************************************************************************************************************/
@@ -152,6 +152,7 @@ void task_m7_core0_5ms(void *pvParameters)
  ***********************************************************************************************************************/
 void task_m7_core0_10ms(void *pvParameters)
 {
+    static uint16 diagUpdateCounter = 0U;
     (void)pvParameters;
     TickType_t lastWakeTime = xTaskGetTickCount();
     for ( ;; )
@@ -169,13 +170,17 @@ void task_m7_core0_10ms(void *pvParameters)
     #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
         Hm_Main();
     #endif
-    #if (HPC_PFE_ENABLE_STM_APPLICATION == 1U)
         Stm_Main();
-    #endif
 
 #if (PICC_DIAG_RECORD_ENABLE == 1U)
         PICC_DiagUpdateLinkState();
 #endif
+
+    diagUpdateCounter++;
+    if (diagUpdateCounter >= (ECUM_DIAG_UPDATE_PERIOD_MS / 10U)) {
+        EcuM_Diag_Update();
+        diagUpdateCounter = 0U;
+    }
 
         vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(10));
     }
@@ -244,13 +249,12 @@ void creat_tasks_m7(void)
     PICC_PreOS_Init();
     Pwsm_Init();
     DiagMgmt_Init();
+    I2c_Init(&I2c_Config_VS_0);
 #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
     SoaAdapter_Init();
     Hm_Init();
 #endif
-#if (HPC_PFE_ENABLE_STM_APPLICATION == 1U)
     Stm_Init();
-#endif
 
     xTaskCreate((TaskFunction_t)task_m7_core0_1ms, "task_m7_core0_1ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL );
     xTaskCreate((TaskFunction_t)task_m7_core0_5ms, "task_m7_core0_5ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+2, NULL );

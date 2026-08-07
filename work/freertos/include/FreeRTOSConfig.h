@@ -83,9 +83,9 @@ PRIORITY THAN THIS! (higher priorities are lower numeric values. */
 #define configUSE_DAEMON_TASK_STARTUP_HOOK          0
 
 /* Run time and task stats gathering related definitions. */
-#define configGENERATE_RUN_TIME_STATS               0
-#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()    
-#define portGET_RUN_TIME_COUNTER_VALUE()            xTaskGetTickCount()
+#define configGENERATE_RUN_TIME_STATS               1
+#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()    vMainConfigureTimerForRunTimeStats()
+#define portGET_RUN_TIME_COUNTER_VALUE()            ulMainGetRunTimeCounterValue()
 #define configUSE_TRACE_FACILITY                    1
 #define configUSE_STATS_FORMATTING_FUNCTIONS        1
 
@@ -122,7 +122,7 @@ PRIORITY THAN THIS! (higher priorities are lower numeric values. */
 #define INCLUDE_xTaskGetCurrentTaskHandle           1
 #define INCLUDE_uxTaskGetStackHighWaterMark         1
 #define INCLUDE_uxTaskGetStackHighWaterMark2        0
-#define INCLUDE_xTaskGetIdleTaskHandle              0
+#define INCLUDE_xTaskGetIdleTaskHandle              1
 #define INCLUDE_eTaskGetState                       1
 #define INCLUDE_xEventGroupSetBitFromISR            1
 #define INCLUDE_xTimerPendFunctionCall              1

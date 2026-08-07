@@ -23,7 +23,14 @@ extern "C" {
 /*==================================================================================================
  *                                         Global Variables
  *==================================================================================================*/
-#define TX_RX_FILETER    1
+#define PICC_PWR_PROVIDER_ID             0x01U
+#define PICC_HEALTH_PROVIDER_ID          0x15U
+#define PICC_STM_CLIENT_CONSUMER_ID      0x2AU
+#define PICC_STORAGE_PROVIDER_ID         0x29U
+#define PICC_DIAG_PROVIDER_ID            0x02U
+#define PICC_SOA_PROVIDER_ID             0x47U
+#define PICC_RSV0_PROVIDER_ID            0x34U
+#define PICC_RSV1_PROVIDER_ID            0x51U
 /**
  * @brief Global trace data - accessible in TRACE32
  * 
@@ -39,6 +46,31 @@ extern "C" {
  *   g_piccTrace.rx.writeIndex = last written row
  */
 PICC_ChannelTrace_t g_piccTrace = {0};
+volatile uint8 picc_test_flag = PICC_TRACE_TEST_FLAG_MIN;
+
+static boolean PICC_TraceIsSelectedMessage(const uint8 *msgPtr)
+{
+    switch (picc_test_flag) {
+        case 1U:
+            return (msgPtr[0] == PICC_PWR_PROVIDER_ID);
+        case 2U:
+            return (msgPtr[0] == PICC_HEALTH_PROVIDER_ID);
+        case 3U:
+            return (msgPtr[2] == PICC_STM_CLIENT_CONSUMER_ID);
+        case 4U:
+            return (msgPtr[0] == PICC_STORAGE_PROVIDER_ID);
+        case 5U:
+            return (msgPtr[0] == PICC_DIAG_PROVIDER_ID);
+        case 6U:
+            return (msgPtr[0] == PICC_SOA_PROVIDER_ID);
+        case 7U:
+            return (msgPtr[0] == PICC_RSV0_PROVIDER_ID);
+        case 8U:
+            return (msgPtr[0] == PICC_RSV1_PROVIDER_ID);
+        default:
+            return FALSE;
+    }
+}
 
 /*==================================================================================================
  *                                         Public Functions
@@ -107,10 +139,9 @@ void PICC_TraceTx(uint8 channelId, const uint8 *data, uint32 len)
     while (offset + PICC_HEADER_SIZE <= (len - 4U)) {
         msgPtr = &data[offset];
         
-        /* [USER REQUEST] Filter only ping/pong messages (ProviderID=0xFF or MethodID=0xFF)
-         * Keep all other messages including Link (MethodID=0x00) and all application messages. */
-        if ((msgPtr[0] == 0xFFU) || (msgPtr[1] == 0xFFU)) {
-            /* Skip ping/pong message: parse its length and move to next */
+        /* Keep only the application selected by picc_test_flag. */
+        if (PICC_TraceIsSelectedMessage(msgPtr) == FALSE) {
+            /* Skip the unselected message while preserving stacked packet parsing. */
             payloadLen = ((uint16)msgPtr[6] << 8U) | (uint16)msgPtr[7];
             offset += PICC_HEADER_SIZE + payloadLen;
             continue;
@@ -201,10 +232,9 @@ void PICC_TraceRx(uint8 channelId, const uint8 *data, uint32 len)
     while (offset + PICC_HEADER_SIZE <= (len - 4U)) {
         msgPtr = &data[offset];
         
-        /* [USER REQUEST] Filter only ping/pong messages (ProviderID=0xFF or MethodID=0xFF)
-         * Keep all other messages including Link (MethodID=0x00) and all application messages. */
-        if ((msgPtr[0] == 0xFFU) || (msgPtr[1] == 0xFFU)) {
-            /* Skip ping/pong message: parse its length and move to next */
+        /* Keep only the application selected by picc_test_flag. */
+        if (PICC_TraceIsSelectedMessage(msgPtr) == FALSE) {
+            /* Skip the unselected message while preserving stacked packet parsing. */
             payloadLen = ((uint16)msgPtr[6] << 8U) | (uint16)msgPtr[7];
             offset += PICC_HEADER_SIZE + payloadLen;
             continue;

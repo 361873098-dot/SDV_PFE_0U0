@@ -35,8 +35,7 @@
 #include "Mcu.h"
 
 /* The ONLY PICC header needed by the application layer */
-//#include "picc_api.h"
-//#include "nm.h"
+#include "picc_api.h"
 
 
 /***********************************************************************************************************************
@@ -67,7 +66,7 @@ uint16 len;
  ***********************************************************************************************************************/
 void Pwsm_Init(void)
 {
-    #if 0
+
     static const PICC_AppConfig_t cfg = {
         .localId           = PWR_PROVIDER_ID,     /* 0x01 */
         .remoteId          = PWR_CONSUMER_ID,     /* 0x06 */
@@ -89,7 +88,7 @@ void Pwsm_Init(void)
 
     (void)PICC_Init(PICC_APP_PWR, &cfg);
     (void)PICC_Init(PICC_APP_DIAG, &dm_cfg);
-    #endif
+
 
 }
 
@@ -101,7 +100,7 @@ void Pwsm_Init(void)
  ***********************************************************************************************************************/
 void Pwsm_CommEvent(void)
 {
-    #if 0
+
 
     switch (Pwsm_MsgState)
     {
@@ -112,7 +111,7 @@ void Pwsm_CommEvent(void)
         {
         	Pwsm_MsgState = PWSM_STATE_MSG_TX_ID1;
         }
-        else if ((PICC_GetMethodData(PICC_APP_DIAG, PWR_METHOD_RST, buf, sizeof(buf), &len, NULL, NULL, NULL) == PICC_E_OK) && (GetNm_SleepMode() == ALLOWED_SLEEP))
+        else if (PICC_GetMethodData(PICC_APP_DIAG, PWR_METHOD_RST, buf, sizeof(buf), &len, NULL, NULL, NULL) == PICC_E_OK)
     	{
     		if (len == 2U && buf[0] == PWR_CORE_A &&  buf[1] == PWR_STATE_RESET)
     		{
@@ -199,7 +198,6 @@ void Pwsm_CommEvent(void)
     default:
         break;
     }
-        #endif
 }
 
 /***********************************************************************************************************************

@@ -42,8 +42,7 @@ extern "C"
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-
- /*Gpt_Ipw_PluginMacros.m*/
+/*Gpt_Ipw_PluginMacros.m*/
 /** @} */
 
 #include "Gpt_Ipw.h"

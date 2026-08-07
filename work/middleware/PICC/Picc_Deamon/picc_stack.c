@@ -145,8 +145,13 @@ static sint8 PICC_StackDoSendForChannel(uint8 channelId)
     shmBuf[counterOffset + PICC_STACK_COUNTER_SIZE]      = (uint8)(crc >> 8U);
     shmBuf[counterOffset + PICC_STACK_COUNTER_SIZE + 1U] = (uint8)(crc & 0xFFU);
 
-    /* [DEBUG] Record TX data for TRACE32 observation (before send attempt) */
-    PICC_TraceTx(inst->config.channelId, shmBuf, totalLen);
+    /* [DEBUG] Record the TRACE32-selected application before send attempt. */
+#if (PICC_TRACE_ENABLE == 1U)
+    if ((picc_test_flag >= PICC_TRACE_TEST_FLAG_MIN) &&
+        (picc_test_flag <= PICC_TRACE_TEST_FLAG_MAX)) {
+        PICC_TraceTx(inst->config.channelId, shmBuf, totalLen);
+    }
+#endif
 
 #if (PICC_DIAG_RECORD_ENABLE == 1U)
     /* Record TX data to diagnostic buffer (excludes heartbeat) */
@@ -394,8 +399,13 @@ sint8 PICC_StackProcessRx(const uint8 *data, uint32 len,
         return -2;
     }
 
-    /* [DEBUG] Record RX data for TRACE32 observation */
-    PICC_TraceRx(channelId, data, len);
+    /* [DEBUG] Record the TRACE32-selected application. */
+#if (PICC_TRACE_ENABLE == 1U)
+    if ((picc_test_flag >= PICC_TRACE_TEST_FLAG_MIN) &&
+        (picc_test_flag <= PICC_TRACE_TEST_FLAG_MAX)) {
+        PICC_TraceRx(channelId, data, len);
+    }
+#endif
 
     /* [Byte 0] Parse CRC enable flag */
     crcEnableFlag = data[0];

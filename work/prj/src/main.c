@@ -40,6 +40,7 @@ extern "C"{
 #include "Serdes.h"
 #include "SchM_Serdes.h"
 #include "udpecho_raw.h"
+#include "System_Cpuload.h"
 
 #ifdef PING_TEST
 #include "eth_queue.h"
@@ -533,6 +534,7 @@ int main(void)
     demo_lwip_init();
 
     udpecho_raw_init();
+    EcuM_Diag_Init();
     creat_tasks_m7();
 
     while (1)

@@ -34,6 +34,10 @@ extern "C" {
 /** Maximum trace entries (rows) for periodic observation */
 #define PICC_TRACE_MAX_ROWS    (10U)
 
+/** Valid TRACE32 application filter values for picc_test_flag. */
+#define PICC_TRACE_TEST_FLAG_MIN    (1U)
+#define PICC_TRACE_TEST_FLAG_MAX    (8U)
+
 /*==================================================================================================
  *                                         Type Definitions
  *==================================================================================================*/
@@ -81,6 +85,14 @@ typedef struct {
 /* Trace storage is only exposed when trace is enabled. */
 #if (PICC_TRACE_ENABLE == 1U)
 extern PICC_ChannelTrace_t g_piccTrace;
+
+/**
+ * @brief TRACE32-selectable trace filter.
+ *
+ * Set to 1=PWR, 2=HEALTH, 3=STM client, 4=STORAGE, 5=DIAG,
+ * 6=SOA, 7=RSV0, or 8=RSV1. Values outside this range record nothing.
+ */
+extern volatile uint8 picc_test_flag;
 #endif
 
 /*==================================================================================================

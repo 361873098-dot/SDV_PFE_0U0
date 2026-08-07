@@ -332,10 +332,62 @@
         <d:var name="Autoconfigure" value="FALSE"/>
       </d:ctr>
     </d:lst>
-    <d:lst name="WizardConfigurations" type="MAP"/>
+    <d:lst name="WizardConfigurations" type="MAP">
+      <d:ctr name="GenerateAllVariants">
+        <d:var name="TriggerId" value="MultiTask"/>
+      </d:ctr>
+    </d:lst>
+    <d:lst name="ImportersExporters" type="MAP">
+      <d:ctr name="bswmd">
+        <d:var name="Id" value="SysdImporter"/>
+        <d:var name="Mode" value="import"/>
+      </d:ctr>
+      <d:ctr name="fd">
+        <d:var name="Id" value="AutosarImporterExporter"/>
+        <d:var name="Mode" value="import"/>
+      </d:ctr>
+    </d:lst>
   </d:ctr>
   <d:ctr name="ImporterExporterAdditions">
     <a:a name="DEF" value="XPath:/PreferencesSchema/ImporterExporterAdditions"/>
+    <d:lst name="ComImportersExporters" type="MAP">
+      <d:ctr name="bswmd">
+        <d:var name="FileName" value=""/>
+        <d:var name="preTransformHook" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="overwriteSystemModel" value="TRUE"/>
+        <d:var name="useAtpSplitableSystemModelMerge" value="TRUE"/>
+        <d:var name="packageName" value=""/>
+        <d:lst name="CustomParameters"/>
+      </d:ctr>
+    </d:lst>
+    <d:lst name="SystemDescriptionExporters" type="MAP"/>
+    <d:lst name="OilImportersExporters" type="MAP"/>
+    <d:lst name="SystemDescriptionImporters" type="MAP">
+      <d:ctr name="bswmd">
+        <d:var name="InputType" value=""/>
+        <d:var name="MetaModelVersion" value="ASC30">
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:lst name="InputFiles" type="MAP">
+          <d:ctr name="inputfiles1">
+            <d:var name="FileName" 
+                   value="..\..\mcal_eth_integration_app\generate_RDB3\swcd\Eth_43_PFE_Bswmd.arxml"/>
+            <d:var name="Timestamp" value="-1"/>
+          </d:ctr>
+        </d:lst>
+        <d:var name="EcuInstance" value=""/>
+        <d:var name="schemaValidation" value="TRUE"/>
+        <d:var name="autoDetect" value="TRUE"/>
+        <d:var name="System" value=""/>
+        <d:var name="EnableVariants" value="FALSE"/>
+        <d:var name="PredefinedVariant" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="validationVariant" value="standard"/>
+      </d:ctr>
+    </d:lst>
     <d:var name="Version_AutosarImporter" value="2">
       <a:a name="IMPORTER_INFO" value="@DEF"/>
     </d:var>
@@ -345,6 +397,26 @@
     <d:var name="Version_SystemDescriptionExporter" value="1">
       <a:a name="IMPORTER_INFO" value="@DEF"/>
     </d:var>
+    <d:lst name="AutosarImportersExporters" type="MAP">
+      <d:ctr name="fd">
+        <d:var name="FileName" 
+               value="C:\Users\nxa06512\Desktop\S32G274\generate\output\EthSwt.epc"/>
+        <d:var name="ContentType" value="asc:4.2.2"/>
+        <d:var name="Validation" value="FALSE"/>
+        <d:var name="pathMapping" value="FALSE"/>
+        <d:var name="pathMappingAuto" value="FALSE"/>
+        <d:lst name="pathMappings" type="MAP"/>
+        <d:var name="Strategy" value="Replace"/>
+        <d:var name="ConfigClassPreCompile" value="FALSE"/>
+        <d:var name="ConfigClassLink" value="FALSE"/>
+        <d:var name="ConfigClassPostBuild" value="FALSE"/>
+        <d:var name="ConfigClassPostBuildSelectable" value="FALSE">
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="OverwriteMode" value="FALSE"/>
+        <d:var name="AllVariants" value="FALSE"/>
+      </d:ctr>
+    </d:lst>
   </d:ctr>
   <d:ctr name="ComTransformer">
     <a:a name="DEF" value="XPath:/PreferencesSchema/ComTransformer"/>

@@ -31,8 +31,7 @@
 /*==================================================================================================
  *                              GENERATION MACRO DEFINTION
  *================================================================================================*/
-
- /*Gpt_Ipw_PluginMacros.m*/
+/*Gpt_Ipw_PluginMacros.m*/
 /** @} */
 
 
@@ -199,7 +198,6 @@ Gpt_Ipw_HwInstanceConfigType Gpt_Ipw_HwInstanceConfig_PB_VS_0[1U]=
 
 
 /*channels*/
-
 /** 
  * @brief   Gpt channels IP related configuration array
  */

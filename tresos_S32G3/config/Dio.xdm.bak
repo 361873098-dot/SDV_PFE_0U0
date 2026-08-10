@@ -1,13 +1,12 @@
 <?xml version='1.0'?>
-<datamodel version="8.0" 
-           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
-           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
            xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
            xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
 
   <d:ctr type="AUTOSAR" factory="autosar" 
          xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
-         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
          xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
          xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
          xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
@@ -28,6 +27,17 @@
               </d:var>
               <d:ctr name="DioConfig" type="IDENTIFIABLE">
                 <d:lst name="DioPort" type="MAP">
+                  <d:ctr name="DioPort_Pmic" type="IDENTIFIABLE">
+                    <d:var name="DioPortId" type="INTEGER" value="2"/>
+                    <d:lst name="DioChannel" type="MAP">
+                      <d:ctr name="DioChannel_Pmic" type="IDENTIFIABLE">
+                        <d:var name="DioChannelId" type="INTEGER" value="2"/>
+                        <d:lst name="DioChannelEcucPartitionRef"/>
+                      </d:ctr>
+                    </d:lst>
+                    <d:lst name="DioChannelGroup" type="MAP"/>
+                    <d:lst name="DioPortEcucPartitionRef"/>
+                  </d:ctr>
                   <d:ctr name="DioPort_0" type="IDENTIFIABLE">
                     <d:var name="DioPortId" type="INTEGER" value="0">
                       <a:a name="IMPORTER_INFO" value="@DEF"/>

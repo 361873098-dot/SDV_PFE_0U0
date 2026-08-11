@@ -45,9 +45,7 @@ extern "C"{
 #include "udpecho_raw.h"
 #include "System_Cpuload.h"
 
-#if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
 #include "HpcCan_Driver.h"
-#endif
 
 #ifdef PING_TEST
 #include "eth_queue.h"
@@ -533,11 +531,9 @@ int main(void)
 /* Initialize Vr5510 device */
 Pmic_InitDevice(PmicConf_PmicDevice_PmicDevice_0); 
 
-#if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
     /* Mcu/Port are ready at this point. Initialize the EB-generated Can
      * driver and then place the TJA1145A transceiver in active mode. */
     (void)HpcCan_Init();
-#endif
 
 #if defined(CONFIG_MINIHIF)
     configure_minihif_hw();

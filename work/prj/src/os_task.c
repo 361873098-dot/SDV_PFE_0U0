@@ -76,11 +76,9 @@
 #include "CDD_I2c_VS_0_PBcfg.h"
 #include "System_Cpuload.h"
 
-#if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
 #include "HpcCan_Driver.h"
 #include "soa_adapter_main.h"
 #include "hm.h"
-#endif
 #include "stm_main.h"
 #include "Nm.h"
 
@@ -167,22 +165,16 @@ void task_m7_core0_10ms(void *pvParameters)
         OS_TASKCOUNT_INC_CTR(M7_Core0_10ms);
         /* Process CAN first so the SOA getters/notifiers see the newest
          * values, matching the original reference task order. */
-    #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
         HpcCan_MainFunction_10ms();
-    #endif
 
         /* Ported periodic task dispatch from original Ostask_main TASK_M0_10MS bucket. */
         PICC_StackProcess();
         PICC_HeartbeatProcess();
         PICC_LinkProcess();
-    #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
         SoaAdapter_Main();
-    #endif
         Pwsm_Main();
         DiagMgmt_Main();
-    #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
         Hm_Main();
-    #endif
         Stm_Main();
 
 #if (PICC_DIAG_RECORD_ENABLE == 1U)
@@ -267,10 +259,8 @@ void creat_tasks_m7(void)
     Pwsm_Init();
     Nm_Init();
     DiagMgmt_Init();
-#if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
     SoaAdapter_Init();
     Hm_Init();
-#endif
     Stm_Init();
 
     taskCreateStatus = xTaskCreate((TaskFunction_t)task_m7_core0_1ms,

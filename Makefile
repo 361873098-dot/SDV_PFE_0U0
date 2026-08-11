@@ -38,7 +38,6 @@ MISRA_SCAN ?= FALSE
 CERT_C ?= FALSE
 CALL_GRAPH ?=FALSE
 CONFIGURE_SOC ?= TRUE
-CAN_APPLICATION ?= TRUE
 
 
 ifeq ($(PING_TEST),TRUE)
@@ -447,20 +446,18 @@ ifeq ($(SLAVE_DRIVER),FALSE)
     SRC_DIRS        +=  $(FW_DIR)
 endif
 
-ifeq ($(CAN_APPLICATION),TRUE)
-    INCLUDE_DIRS +=  work/COM/HpcCan \
-                     work/COM/FlexCAN_Ip \
-                     work/driver/TJA145A_Spi_Ip \
-                     work/driver/PMIC_Driver \
-                     $(MIDDLEWARE_DIR)/Soa_Adapter \
-                     $(MIDDLEWARE_DIR)/Hm
+INCLUDE_DIRS +=  work/COM/HpcCan \
+                 work/COM/FlexCAN_Ip \
+                 work/driver/TJA145A_Spi_Ip \
+                 work/driver/PMIC_Driver \
+                 $(MIDDLEWARE_DIR)/Soa_Adapter \
+                 $(MIDDLEWARE_DIR)/Hm
 
-    SRC_DIRS     +=  work/COM/HpcCan \
-                     work/COM/FlexCAN_Ip \
-                     work/driver/TJA145A_Spi_Ip \
-                     $(MIDDLEWARE_DIR)/Soa_Adapter \
-                     $(MIDDLEWARE_DIR)/Hm
-endif
+SRC_DIRS     +=  work/COM/HpcCan \
+                 work/COM/FlexCAN_Ip \
+                 work/driver/TJA145A_Spi_Ip \
+                 $(MIDDLEWARE_DIR)/Soa_Adapter \
+                 $(MIDDLEWARE_DIR)/Hm
 
 ifeq ($(LWIP),TRUE)
     LWIPDIR := $(LWIP_DIR)/src
@@ -526,12 +523,6 @@ CCOPT += \
     -DENABLE_FPU \
         -DPFE_CFG_VERBOSITY_LEVEL=$(VERBOSITY_LEVEL) \
         -DTARGET_$(TARGET_BOARD)
-
-ifeq ($(CAN_APPLICATION),TRUE)
-    CCOPT += -DHPC_PFE_ENABLE_CAN_APPLICATION=1U
-else
-    CCOPT += -DHPC_PFE_ENABLE_CAN_APPLICATION=0U
-endif
 
 ifeq ($(LOCAL_BUILD),TRUE)
     # supply expanded M4 macros via CCOPT

@@ -1,0 +1,1443 @@
+<?xml version='1.0'?>
+<datamodel version="4.0"
+        xmlns="http://www.tresos.de/_projects/DataModel2/10/root.xsd"
+        xmlns:a="http://www.tresos.de/_projects/DataModel2/10/attribute.xsd"
+        xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+        xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+<!--
+*   @file    Wdg_Vr5510.xdm
+*   @version 4.0.2
+*
+*   @brief   AUTOSAR Wdg_43_VR5510 - Tresos Studio plugin schema file
+*   @details This file contains the schema configuration for and Wdg_43_VR5510 plugin.
+-->
+<!--
+====================================================================================================
+*   Project              : RTD AUTOSAR 4.4
+*   Platform             : CORTEXM
+*   Peripheral           : VR5510
+*   Dependencies         : none
+*
+*   Autosar Version      : 4.4.0
+*   Autosar Revision     : ASR_REL_4_4_REV_0000
+*   Autosar Conf.Variant :
+*   SW Version           : 4.0.2
+*   Build Version        : S32_RTD_4_0_2_D2306_ASR_REL_4_4_REV_0000_20230630
+*   (c) Copyright 2020-2023 NXP Semiconductors
+*   All Rights Reserved.
+====================================================================================================
+====================================================================================================
+====================================================================================================
+-->
+    <d:ctr type="AUTOSAR" factory="autosar"
+                            xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+                            xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+                            xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+        <d:lst type="TOP-LEVEL-PACKAGES">
+            <!--  @implements Wdg_Object  -->
+            <d:ctr name="Wdg_43_VR5510_TS_T40D11M40I2R0" type="AR-PACKAGE">
+                <a:a name="UUID" value="ECUC:c5ca6b7f-a136-49a4-99b5-d8f61f724978"/>
+                <d:lst type="ELEMENTS">
+                    <d:chc name="Wdg" type="AR-ELEMENT" value="MODULE-DEF">
+                        <v:ctr type="MODULE-DEF">
+                            <a:a name="RELEASE" value="asc:4.4"/>
+                            <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                                <ad:ADMIN-DATA>
+                                    <ad:DOC-REVISIONS>
+                                        <ad:DOC-REVISION>
+                                            <ad:REVISION-LABEL>4.6.0</ad:REVISION-LABEL>
+                                            <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                                            <ad:DATE>2014-10-31</ad:DATE>
+                                        </ad:DOC-REVISION>
+                                    </ad:DOC-REVISIONS>
+                                </ad:ADMIN-DATA>
+                            </a:a>
+                            <a:a name="DESC">
+                                <a:v><![CDATA[EN:
+                                    <html>
+                                    <h1>Wdg</h1><p>
+                                    Configuration of the Wdg (Watchdog driver) module
+                                    </p></html>
+                                    ]]>
+                                </a:v>
+                            </a:a>
+                            <a:a name="LOWER-MULTIPLICITY" value="1"/>
+                            <a:a name="UPPER-MULTIPLICITY" value="*"/>
+                            <a:a name="POSTBUILDVARIANTSUPPORT" value="true"/>
+                            <a:a name="UUID" value="ECUC:029c9492-5018-4ff3-9b25-daac0f8c9213"/>
+                            <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                                <a:a name="DESC"
+                                    value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                    type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                </a:a>
+                                <a:a name="LABEL" value="Post Build Variant Used"/>
+                                <a:a name="ORIGIN" value="EB"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:da name="DEFAULT" value="false"/>
+                                <a:da name="READONLY" value="FALSE"/>
+                                <a:da name="TOOLTIP"
+                                    value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                            </v:var>
+                            <!--  @implements IMPLEMENTATION_CONFIG_VARIANT_Object  -->
+                            <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                                <a:a name="LABEL" value="Config Variant"/>
+                                <a:a name="UUID" value="ECUC:cf7cd573-46b1-4b06-b21b-a84d74309dd4"/>
+                                <a:da name="DEFAULT" value="VariantLinkTime"/>
+                                <a:da name="RANGE">
+                                    <a:v>VariantLinkTime</a:v>
+                                    <a:v>VariantPostBuild</a:v>
+                                    <a:v>VariantPreCompile</a:v>
+                                </a:da>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                </a:a>
+                            </v:var>
+                            <!--  @implements   WdgDemEventParameterRefs_Object  -->
+                            <v:ctr name="WdgDemEventParameterRefs" type="IDENTIFIABLE">
+                                <a:a name="REQUIRES-INDEX" value="true"/>
+                                <a:a name="DESC"
+                                     value="EN: Container for the references to DemEventParameter elements which shall be invoked using the API Dem_SetEventStatus in case the corresponding error occurs. The EventId is taken from the referenced DemEventParameter&apos;s DemEventId value."/>
+                                <a:a name="OPTIONAL" value="true"/>
+                                <a:a name="UUID" value="ECUC:783e7d09-0e62-43c3-9336-674e172b7910"/>
+                                <a:da name="EDITABLE" value="true"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v mclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                </a:a>
+                                <v:ref name="WDG_E_DISABLE_REJECTED" type="REFERENCE">
+                                    <a:a name="DESC"
+                                         value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;Initialization or mode switch failed because it would disable the watchdog&quot; has occurred."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="OPTIONAL" value="true"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE" value="true"/>
+                                    <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="UUID" value="ECUC:7F845F72-6C00-1014-976E-B8DCD726FFFF"/>
+                                    <a:da name="EDITABLE" value="true"/>
+                                    <a:da name="INVALID" type="XPath">
+                                        <a:tst expr="node:refvalid(.)" false="Invalid or empty reference."/>
+                                    </a:da>
+                                    <a:da name="REF"
+                                          value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                                </v:ref>
+                                <v:ref name="WDG_E_MODE_FAILED" type="REFERENCE">
+                                    <a:a name="DESC"
+                                         value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;Setting a watchdog mode failed (during initialization or mode switch)&quot; has occurred."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="OPTIONAL" value="true"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                                    <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE" value="true"/>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="UUID" value="ECUC:6d6c7c9c-419b-4912-996e-6d452aabcf3b"/>
+                                    <a:da name="EDITABLE" value="true"/>
+                                    <a:da name="INVALID" type="XPath">
+                                        <a:tst expr="node:refvalid(.)" false="Invalid or empty reference."/>
+                                    </a:da>
+                                    <a:da name="REF"
+                                          value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                                </v:ref>
+                            </v:ctr>
+                            <!--  @implements   WdgGeneral_Object  -->
+                            <v:ctr name="WdgGeneral" type="IDENTIFIABLE">
+                                <a:a name="REQUIRES-INDEX" value="true"/>
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:
+                                        <html>
+                                        <h1>WdgGeneral</h1><p>
+                                        All general parameters of the watchdog external driver are collected here.
+                                        </p></html>
+                                        ]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="UUID" value="ECUC:223fef97-7745-4c31-9434-4be11ca200f5"/>
+                                <!-- /** @implements WdgEcucPartitionRef_Object */ -->
+                                <v:ref name="WdgEcucPartitionRef" type="REFERENCE">
+                                    <a:a name="DESC">
+                                    <a:v>Maps the Wdg driver to zero or one ECUC partition to make the driver API available in this partition.</a:v>
+                                    <a:v>Tags: atp.Status=draft</a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                        type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v mclass="PreCompile">VariantLinkTime</icc:v>
+                                    <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                    </a:a>
+                                    <a:a name="OPTIONAL" value="true"/>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="SCOPE" value="ECU"/>
+                                    <a:a name="UUID" value="ECUC:f2e64199-f23e-4d01-9dcf-dbd71f71927f"/>
+                                    <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                                    <a:da name="EDITABLE" value="false"/>
+                                </v:ref>
+                                <!--  @implements   WdgDisableDemReportErrorStatus_Object  -->
+                                <v:var name="WdgDisableDemReportErrorStatus" type="BOOLEAN">
+                                      <a:a name="DESC">
+                                      <a:v><![CDATA[EN:<html><p>Enable/Disable Dem error reporting.</p></html>]]></a:v>
+                                      </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                </a:a>
+                                      <a:a name="LABEL" value="Wdg Disable Production Error Reporting"/>
+                                      <a:a name="SCOPE" value="LOCAL"/>
+                                      <a:a name="ORIGIN" value="NXP"/>
+                                      <a:a name="SYMBOLICNAMEVALUE" value="false" />
+                                      <a:a name="UUID" value="ECUC:f50cefbb-aa18-45b8-ae8e-fe758533efdf" />
+                                      <a:da name="DEFAULT" value="false" />
+                                </v:var>
+                                <!--  @implements   WdgDevErrorDetect_Object  -->
+                                <v:var name="WdgDevErrorDetect" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Development Error Detection"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            <h1>Wdg Development Error Detect</h1><p>
+                                            Compile switch to enable / disable development error detection for this module.
+                                            <b>True</b>: Development error detection enabled
+                                            <b>False</b>: Development error detection disabled
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:69f7f05c-dda1-4466-90e5-24ad48834a3e"/>
+                                    <a:da name="DEFAULT" value="true"/>
+                                </v:var>
+                                <!--  @implements   WdgDisableAllowed_Object  -->
+                                <v:var name="WdgDisableAllowed" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Wdg Disable Allowed"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            <h1>Wdg Disable Allowed</h1><p>
+                                            Compile switch to allow / forbid disabling the watchdog driver during runtime.
+                                            <b>True</b>: Disabling the watchdog driver at runtime is allowed
+                                            <b>False</b>:Disabling the watchdog driver at runtime is not allowed
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:7D96240E-6C00-1014-9A80-FF42C75FFFFF"/>
+                                    <a:da name="DEFAULT" value="false"/>
+                                </v:var>
+                                <!--  @implements   WdgTimeoutDuration_Object  -->
+                                <v:var name="WdgTimeoutDuration" type="INTEGER">
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:<html>
+                                                This Timeout is used to wait Pmic go to FS_INIT state<p/>
+                                            </html>]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:9825a4d7-ce31-4871-8d06-5b420b8c691d"/>
+                                    <a:da name="DEFAULT" value="50000"/>
+                                    <a:a name="LABEL" value="Wdg Timeout Duration"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&gt;=1"/>
+                                        <a:tst expr="&lt;=4294967295"/>
+                                    </a:da>
+                                </v:var>
+
+                                <v:var name="WdgIndex" type="INTEGER">
+                                    <a:a name="LABEL" value="Wdg Instance Index"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            <h1>Wdg Instance Index</h1><p>
+                                            Represents the watchdog driver's ID for Instance so that it can be referenced by the watchdog interface.
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                                    <a:a name="UUID" value="ECUC:7db34272-308e-48fd-aa9d-8bcc64f116a5"/>
+                                    <a:da name="DEFAULT" value="0"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=255"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:a name="READONLY" value="true"/>
+                                </v:var>
+                                <!--  @implements   WdgInitialTimeout_Object  -->
+                                <v:var name="WdgInitialTimeout" type="FLOAT">
+                                    <a:a name="LABEL" value="Watchdog Initial Timeout [s]"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            <h1>Wdg Initial Timeout</h1><p>
+                                            The initial timeout (sec) for the trigger condition to be initialized during Init function. It shall be not larger than WdgMaxTimeout.
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:5cb9f7d5-58cf-4da3-8943-7087c5a007e2"/>
+                                    <a:da name="DEFAULT" value="0"/>
+                                    <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&lt;=65.535"/>
+                                    <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:da name="RANGE" type="XPath">
+                                        <a:tst expr="(. &gt; ../WdgMaxTimeout)" true="WdgInitialTimeout should be less than WdgMaxTimeout."/>
+                                    </a:da>
+                                </v:var>
+                                <!--  @implements   WdgMaxTimeout_Object  -->
+                                <v:var name="WdgMaxTimeout" type="FLOAT">
+                                    <a:a name="LABEL" value="Watchdog Max Timeout [s]"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            <h1>Wdg Max Timeout</h1><p>
+                                            The maximum timeout (sec) to which the watchdog external trigger condition can be initialized.
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:a55d32dc-f9d3-4811-a9fb-17700ef435dd"/>
+                                    <a:da name="DEFAULT" value="0"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=65.535"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                </v:var>
+                                <v:var name="WdgTimeoutMethod" type="ENUMERATION">
+                                    <a:a name="LABEL" value="Wdg Timeout Method"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                                <html>
+                                                    <p>WdgTimeoutMethod</p>
+                                                    <p>Configures the timeout method.</p>
+                                                    <p>Based on this selection a certain timeout method from OsIf will be used in the driver.</p>
+                                                    <p>Note: If SystemTimer or CustomTimer are selected make sure the corresponding timer is enabled in OsIf General configuration. </p>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:7728a3B5-4C03-4639-8e1a-bb0d9f762a9b"/>
+                                    <a:a name="DEFAULT" value="OSIF_COUNTER_SYSTEM"/>
+                                    <a:da name="INVALID" type="XPath">
+                                        <a:tst expr="(node:refs('ASPathDataOfSchema:/TS_T40D11M40I2R0/BaseNXP/OsIfGeneral/OsIfUseCustomTimer') = 'false') and (node:value(.) = 'OSIF_COUNTER_CUSTOM')" true="Custom Timer is not enabled in OsIf (OsIfGeneral/OsIfUseCustomTimer checkbox)"/>
+                                        <a:tst expr="(node:refs('ASPathDataOfSchema:/TS_T40D11M40I2R0/BaseNXP/OsIfGeneral/OsIfUseSystemTimer') = 'false') and (node:value(.) = 'OSIF_COUNTER_SYSTEM')" true="System Timer is not enabled in OsIf (OsIfGeneral/OsIfUseSystemTimer checkbox)"/>
+                                    </a:da>
+                                    <a:da name="RANGE">
+                                        <a:v>OSIF_COUNTER_DUMMY</a:v>
+                                        <a:v>OSIF_COUNTER_SYSTEM</a:v>
+                                        <a:v>OSIF_COUNTER_CUSTOM</a:v>
+                                    </a:da>
+                                </v:var>
+                                <!--  @implements   WdgRunArea_Object  -->
+                                <v:var name="WdgRunArea" type="ENUMERATION">
+                                    <a:a name="LABEL" value="Wdg Run Area"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            <h1>Wdg Run Area</h1><p>
+                                            Represents the watchdog External driver execution area is either from ROM(Flash) or RAM as required with the particular microcontroller.
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:dedd8130-2429-4b00-9131-1e21f0d545d6"/>
+                                    <a:da name="DEFAULT" value="ROM"/>
+                                    <a:da name="RANGE">
+                                        <a:v>RAM</a:v>
+                                        <a:v>ROM</a:v>
+                                    </a:da>
+                                </v:var>
+                                <v:var name="WdgTriggerLocation" type="FUNCTION-NAME">
+                                    <a:a name="LABEL" value="Wdg Trigger Location"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            <h1>Wdg Trigger Location</h1><p>
+                                            Location (memory address) of the watchdog trigger routine.
+                                            <b>Note:</b>Not supported by the current hardware.
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:a3237654-b9f0-49cf-816a-b25d071040bf"/>
+                                    <a:da name="DEFAULT" value="NULL_PTR"/>
+                                    <a:a name="READONLY" value="true"/>
+                                </v:var>
+                                <!--  @implements   WdgType_Object  -->
+                                <v:var name="WdgType" type="ENUMERATION">
+                                  <a:a name="DESC">
+                                      <a:v>
+                                          <![CDATA[EN:
+                                              <html>
+                                              Configures the type of watchdog (WD_SELECTION_OTP). <p/>
+                                              The watchdog can be either a simple watchdog or a challenger watchdog. <p/>
+                                              The simple watchdog monitoring is based on a single configurable watchdog key. <p/>
+                                              The challenger watchdog monitoring is based on a 16-bits pseudo-random word
+                                              generated by a LFSR, whose seed is configurable. <p/>
+                                              Note: Implementation Specific Parameter. <p/>
+                                              </html>
+                                          ]]>
+                                      </a:v>
+                                  </a:a>
+                                  <a:a name="LABEL" value="Watchdog Type Selection" />
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="NXP"/>
+                                  <a:a name="SCOPE" value="LOCAL"/>
+                                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                  <a:a name="UUID" value="ECUC:658def3d-9676-41ed-a065-fdad60178b85"/>
+                                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('WdgVr5510.WatchdogType.Default')"/>
+                                  <a:da name="RANGE" type="XPath" expr="ecu:list('WdgVr5510.WatchdogType.List')"/>
+                                </v:var>
+                                <!--  @implements   WdgVersionInfoApi_Object  -->
+                                <v:var name="WdgVersionInfoApi" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Provide Version Info API"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            <h1>Wdg VersionInfo Api</h1><p>
+                                            Compile switch to enable or disable the version information API.
+                                            <b>True</b>: API enabled
+                                            <b>False</b>:API disabled
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:831e6746-d758-48e6-a083-50514670e425"/>
+                                    <a:da name="DEFAULT" value="true"/>
+                                </v:var>
+                                <!--  @implements   WdgEnableUserModeSupport_Object  -->
+                                <v:var name="WdgEnableUserModeSupport" type="BOOLEAN">
+                                    <a:a name="LABEL" value="Wdg Enable User Mode Support"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            Enable/Disable user mode support.
+                                            <b>True</b>: Enabled
+                                            <b>False</b>: Disabled
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:831e6726-d758-48e6-a083-50514670e425"/>
+                                    <a:da name="DEFAULT" value="false"/>
+                                    <a:a name="READONLY" value="true"/>
+                                </v:var>
+                                <v:var name="WdgCheckFaultStatusNotification" type="FUNCTION-NAME">
+                                    <a:a name="LABEL" value="Wdg Check Fault Status Notification"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:<html>
+                                                This function will be called in the Wdg_VR5510_Cbk_GptNotification0 after each watchdog refresh. <p/>
+                                                If this notification is enabled, the driver will use this function to receive the PMIC FS_G_FLAG register value and handle the error report. </p>
+                                                The content of notification depends on the user application. User should not integrate too many thing in this, because it will impact directly the watchdog refresh timming. </p>
+                                                Note: Implementation Specific Parameter.
+                                            </html>]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="Link">VariantLinkTime</icc:v>
+                                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                        <icc:v class="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="NXP"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="UUID" value="ECUC:8c7cba30-17c2-48bd-ae5f-9aec0171b524"/>
+                                    <a:a name="OPTIONAL" value="true"/>
+                                    <a:da name="DEFAULT" value="NULL_PTR"/>
+                                    <a:da name="INVALID" type="XPath">
+                                        <a:tst expr="(text:toupper(normalize-space(node:fallback(., ''))) = '&quot;NULL_PTR&quot;') or
+                                                     (text:toupper(normalize-space(node:fallback(., ''))) = 'NULL_PTR') or
+                                                     (text:toupper(normalize-space(node:fallback(., ''))) = '&quot;NULL&quot;') or
+                                                     (text:toupper(normalize-space(node:fallback(., ''))) = 'NULL') or not
+                                                     (text:match(normalize-space(.),'^[_a-zA-Z]+[_0-9a-zA-Z]*$'))"
+                                           true="Invalid identifier. The field must specify a valid C function identifier (i.e. an arbitrarily long sequence of digits, underscores, lowercase and uppercase Latin letters, that must begin with a non-digit character)"/>
+                                    </a:da>
+                                </v:var>
+                                </v:ctr>
+                                <!--  @implements   WdgSettingsConfig_Object  -->
+                                <v:ctr name="WdgSettingsConfig" type="IDENTIFIABLE">
+                                    <a:a name="REQUIRES-INDEX" value="true"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            <h1>WdgSettingsConfig</h1><p>
+                                            Configuration items for the different watchdog settings, including those for external watchdog hardware.
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="UUID" value="ECUC:26b2a4be-b31a-406e-9178-f2679d2cc0de"/>
+                                    <!--  @implements WdgDefaultMode_Object  -->
+                                    <v:var name="WdgDefaultMode" type="ENUMERATION">
+                                        <a:a name="LABEL" value="Wdg Default Mode"/>
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:
+                                                <html>
+                                                <h1>Wdg Default Mode</h1><p>
+                                                Default mode for watchdog driver initialization.
+                                                </p></html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                             type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="Link">VariantLinkTime</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                        <a:a name="SCOPE" value="LOCAL"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="UUID" value="ECUC:4b4331ca-a166-4b89-b054-a6fe8e883ea0"/>
+                                        <a:da name="DEFAULT" value="WDGIF_SLOW_MODE"/>
+                                        <a:da name="RANGE">
+                                            <a:v>WDGIF_OFF_MODE</a:v>
+                                            <a:v>WDGIF_SLOW_MODE</a:v>
+                                            <a:v>WDGIF_FAST_MODE</a:v>
+                                        </a:da>
+                                    </v:var>
+                                    <v:ref name="WdgPmicdeviceRef" type="CHOICE-REFERENCE">
+                                        <a:a name="LABEL" value="Wdg external Pmic device"/>
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:
+                                                <html>
+                                                Vendor specific:
+                                                <h1>Wdg External Pmic device</h1><p>
+                                                Reference to the Pmicdevice configuration which set for the watchdog servicing routine implementation.
+                                                </p></html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                             type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="Link">VariantLinkTime</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="SCOPE" value="LOCAL"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:dc9b8826-61dd-4093-a43f-9496a3c87098"/>
+                                        <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="node:refvalid(.)" false="Invalid or empty reference."/>
+                                        </a:da>
+                                        <a:da name="REF"
+                                          value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Pmic/PmicGlobalConfig/PmicDevice"/>
+                                    </v:ref>
+                                    <v:ref name="WdgExternalTriggerCounterRef" type="CHOICE-REFERENCE">
+                                        <a:a name="LABEL" value="Wdg External Trigger Counter"/>
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:
+                                                <html>
+                                                Vendor specific:
+                                                <h1>Wdg External Trigger Counter</h1><p>
+                                                Reference to the GptChannel configuration which set for the watchdog servicing routine implementation.
+                                                </p></html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                             type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="Link">VariantLinkTime</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="SCOPE" value="LOCAL"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:d02fd956-14bd-45dd-94b8-60f2a5e32f6d"/>
+                                        <a:da name="INVALID" type="XPath">
+                                            <a:tst expr="node:refvalid(.)" false="Invalid or empty reference."/>
+                                        </a:da>
+                                        <a:da name="REF"
+                                          value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Gpt/GptChannelConfigSet/GptChannelConfiguration"/>
+                                    </v:ref>
+                                    <v:var name="WdgErrorCounterLimit" type="ENUMERATION">
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:<html>
+                                                    Controls the Watchdog Error Counter Limit (FS_I_WD_CFG[WD_ERR_LIMIT]). <p/>
+                                                    The Watchdog Error Counter is incremented by 2 after each bad Watchdog
+                                                    refresh and decremented by 1 after each good Watchdog refresh. <p/>
+                                                    When the Watchdog Error Counter reaches this limit, the Fault Error
+                                                    Counter will be incremented by 1 and will trigger a Fail-Safe reaction
+                                                    configured by FS_I_WD_CFG[WD_FS_IMPACT] (PmicWatchdogErrorImpact). <p/>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="LABEL" value="Watchdog Error Counter Limit"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="SCOPE" value="LOCAL"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:c7b55bfc-e068-415e-8436-0606e704f244"/>
+                                        <a:da name="DEFAULT" type="XPath" expr="ecu:get('WdgVr5510.ErrorCounter.Limit.Default')"/>
+                                        <a:da name="RANGE" type="XPath" expr="ecu:list('WdgVr5510.ErrorCounter.Limit.List')"/>
+                                    </v:var>
+                                    <v:var name="WdgRefreshCounterLimit" type="ENUMERATION">
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:<html>
+                                                    Controls the Watchdog Refresh Counter Limit (FS_I_WD_CFG[WD_RFR_LIMIT]). <p/>
+                                                    The Watchdog Refresh Counter is incremented by 1 after each good Watchdog
+                                                    refresh, but is reset to 0 every time there is a bad Watchdog refresh. <p/>
+                                                    When the Watchdog Refresh Counter reaches this limit, and if the next
+                                                    Watchdog refresh is also good, the Fault Error Counter is decremented
+                                                    by 1. <p/>
+                                                    Note: This field is editable only when the Watchdog Monitoring is enabled
+                                                    by OTP (i.e. PmicOtpFailSafeUnitConfiguration/PmicOtpSafetyIOConfiguration/
+                                                    PmicWatchdogEnable = 'true') <p/>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="LABEL" value="Watchdog Refresh Counter Limit"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="SCOPE" value="LOCAL"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:15bfcd31-a3f5-4a90-afb5-a7151e36752e"/>
+                                        <a:da name="DEFAULT" type="XPath" expr="ecu:get('WdgVr5510.RefreshCounter.Limit.Default')"/>
+                                        <a:da name="RANGE" type="XPath" expr="ecu:list('WdgVr5510.RefreshCounter.Limit.List')"/>
+                                    </v:var>
+                                    <v:var name="WdgErrorImpact" type="ENUMERATION">
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:<html>
+                                                    Configures the Fail-Safe reaction on RSTB and/or FS0B when the Watchdog
+                                                    Error Counter reaches its maximum value (FS_I_WD_CFG[WD_FS_IMPACT]). <p/>
+                                                    Note: This field is editable only when the Watchdog Monitoring is enabled
+                                                    by OTP (i.e. PmicOtpFailSafeUnitConfiguration/PmicOtpSafetyIOConfiguration/
+                                                    PmicWatchdogEnable = 'true') <p/>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="LABEL" value="Watchdog Error Impact"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="SCOPE" value="LOCAL"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:36a91cf7-2db6-41c3-bd9d-a5b5fa347730"/>
+                                        <a:da name="DEFAULT" type="XPath" expr="ecu:get('WdgVr5510.ErrorImpact.Default')"/>
+                                        <a:da name="RANGE" type="XPath" expr="ecu:list('WdgVr5510.ErrorImpact.List')"/>
+                                    </v:var>
+                                    <v:var name="WdgWindowPeriodEnable" type="BOOLEAN">
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:
+                                                    <html>
+                                                    This field is used to enable/disable the Watchdog Window Period (FS_WD_WINDOW_DUR[WD_WINDOW] = DISABLED). <p/>
+                                                    The Watchdog Window Period is derived from the Fail-Safe oscillator with a +/-5% accuracy. <p/>
+                                                        0 - Watchdog Window Period is Disabled <p/>
+                                                        1 - Watchdog Window Period is Enabled <p/>
+                                                    Note: This field is editable only when the Watchdog Monitoring is enabled
+                                                    by OTP (i.e. PmicOtpFailSafeUnitConfiguration/PmicOtpSafetyIOConfiguration/
+                                                    PmicWatchdogEnable = 'true') <p/>
+                                                    If this is disabled, WD_WINDOW will use default value (3ms) without any value in watchdog window period of Fast/Slow mode. <p/>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                    </html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="LABEL" value="Watchdog Window Period Enable" />
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="SCOPE" value="LOCAL"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="UUID" value="ECUC:f1f4255c-c20b-4f62-be8b-69300448c7a7"/>
+                                        <a:da name="DEFAULT" value="true"/>
+                                        <a:a name="EDITABLE" value="true"/>
+                                    </v:var>
+                                    <v:var name="WdgRecoveryWindowPeriod" type="ENUMERATION">
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:<html>
+                                                    Controls the Watchdog Window Duration when the device is in Fault Recovery Strategy (FS_WD_WINDOW_DUR[WDW_RECOVERY]). <p/>
+                                                    When a fault is triggered by the MCU via its FCCU pins, the FS0B is asserted by the device and the
+                                                    watchdog window duration becomes automatically an open window (no more duty cycle), whose duration
+                                                    is given by this field. <p/>
+                                                    The transition from the normal watchdog window duration to this new open window duration happens
+                                                    when the FCCU pin indicates an error and FS0B is asserted. If the MCU sends a good watchdog
+                                                    refresh before the end of the open window duration, the device switches bask to the normal
+                                                    watchdog window duration and associated duty cycle if the FCCU pins do not indicate an
+                                                    error anymore. Otherwise, a new open window period is started. If the MCU does not send
+                                                    a good watchdog refresh before the end of this second open window duration, then a reset
+                                                    pulse is generated and the Fail-Safe State Machine moves back to INIT_FS. <p/>
+                                                    Note: This field is editable only when the Watchdog Monitoring is enabled
+                                                    by OTP (i.e. PmicOtpFailSafeUnitConfiguration/PmicOtpSafetyIOConfiguration/
+                                                    PmicWatchdogEnable = 'true') <p/>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="LABEL" value="Watchdog Recovery Window Period (ms)"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="SCOPE" value="LOCAL"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="ECUC:e4e6ed22-79b2-4798-b036-b9fa696c595a"/>
+                                        <a:da name="DEFAULT" type="XPath" expr="ecu:get('WdgVr5510.WindowRecoveryPeriod.Default')"/>
+                                        <a:da name="RANGE" type="XPath" expr="ecu:list('WdgVr5510.WindowRecoveryPeriod.List')"/>
+                                    </v:var>
+                                    <v:var name="WdgServiceKeyValue" type="INTEGER">
+                                      <a:a name="LABEL" value="Wdg Service Key Value (1 -> 65534)"/>
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:<html>
+                                                    Configures the Watchdog Seed (FS_WD_SEED[WD_SEED]). <p/>
+                                                    This value is used to calculate the value to be written in the WD_ANSWER
+                                                    register during the OPEN watchdog window.<p/>
+                                                    Note: Implementation Specific Parameter. <p/>
+                                                </html>]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="NXP"/>
+                                        <a:a name="SCOPE" value="LOCAL"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="UUID" value="ECUC:ed8227bd-0479-4a73-b1c5-5c18217713c8"/>
+                                        <a:da name="DEFAULT" type="XPath" expr="num:hextoint('0x5AB2')"/>
+                                        <a:da name="INVALID" type="Range">
+                                            <a:tst expr="&lt;=65534"/>
+                                            <a:tst expr="&gt;=1"/>
+                                        </a:da>
+                                    </v:var>
+                                    <v:ctr name="WdgExternalConfiguration" type="IDENTIFIABLE">
+                                        <a:a name="REQUIRES-INDEX" value="true"/>
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:
+                                                <html>
+                                                <h1>WdgExternalConfiguration</h1><p>
+                                                Configuration items for an external watchdog hardware
+                                                </p></html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v mclass="PreCompile">VariantLinkTime</icc:v>
+                                                <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                                            </a:a>
+                                        <a:a name="OPTIONAL" value="true"/>
+                                        <a:da name="READONLY" value="true"/>
+                                        <a:a name="UUID" value="ECUC:1c7ace36-6a53-4d9e-8be6-c3a0d0ba08d0"/>
+                                        <v:ref name="WdgExternalContainerRef" type="CHOICE-REFERENCE">
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:
+                                                    <html>
+                                                    <h1>WdgExternalContainerRef</h1><p>
+                                                    Reference to either
+                                                    <b>- a DioChannelGroup</b> container in case the hardware watchdog is connected via DIO pins
+                                                    <b>- a SpiSequenceConfiguration</b> container in case the watchdog hardware is accessed via SPI
+                                                    <b>Note:</b>This parameter is not used by current implementation
+                                                    </p></html>
+                                                    ]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="Link">VariantLinkTime</icc:v>
+                                                <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v class="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="OPTIONAL" value="true"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                            <a:a name="UUID" value="ECUC:defac248-9f8e-4d29-b795-d4c55f3bd0dd"/>
+                                            <a:da name="REF">
+                                                <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dio/DioConfig/DioPort/DioChannelGroup</a:v>
+                                                <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Spi/SpiDriver/SpiSequence</a:v>
+                                            </a:da>
+                                            <a:a name="READONLY" value="true"/>
+                                        </v:ref>
+                                    </v:ctr>
+                                    <!--  @implements   WdgSettingsFast_Object  -->
+                                    <v:ctr name="WdgSettingsFast" type="IDENTIFIABLE">
+                                        <a:a name="REQUIRES-INDEX" value="true"/>
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:
+                                                <html>
+                                                <h1>WdgSettingsFast</h1><p>
+                                                Hardware dependent settings for the watchdog driver's fast mode.
+                                                </p></html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="UUID" value="ECUC:80efa663-2318-48c7-b4bb-f8a69f7ae94d"/>
+                                        <v:var name="WdgWindowPeriod" type="ENUMERATION">
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html>
+                                                        Controls the Watchdog Window Period (FS_WD_WINDOW_DUR[WD_WINDOW]). <p/>
+                                                        This new watchdog window period is effective after the next
+                                                        watchdog refresh. <p/>
+                                                        Note: Implementation Specific Parameter.
+                                                              If the WdgWindowPeriodEnable is disabled and WdgDefaultMode is WDGIF_FAST_MODE mode, this value will not impact,
+                                                              And WD_WINDOW will use default value (3ms) after FS_INIT phase is closed.<p/>
+                                                    </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="LABEL" value="Watchdog Window Period (ms)"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:d7ba7d5c-b100-4e2b-b105-4de71032d93e"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('WdgVr5510.WindowPeriod.Default')"/>
+                                            <a:da name="RANGE" type="XPath" expr="ecu:list('WdgVr5510.WindowPeriod.List')"/>
+                                        </v:var>
+                                        <v:var name="WdgClosedWindowDutyCycle" type="ENUMERATION">
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html>
+                                                        Controls the Watchdog Window Duty Cycle (FS_WD_WINDOW_DUR[WDW_DC]). <p/>
+                                                        This new duty cycle is effective after the next watchdog refresh. <p/>
+                                                        The first half of the window is said CLOSED and the second half is
+                                                        said OPEN. A good watchdog refresh is a good watchdog answer during
+                                                        the OPEN window. A bad watchdog refresh is a bad watchdog answer
+                                                        during the OPEN window, no watchdog refresh during the OPEN window
+                                                        or a good watchdog answer during the CLOSED window. After a good
+                                                        or bad watchdog refresh, a new window period starts immediately
+                                                        for the MCU to keep the synchronization with the windowed watchdog. <p/>
+                                                        Note: The OPEN window duty cycle is equal to (100 - PmicWatchdogClosedWindowDutyCycle)%. <p/>
+                                                        Note: Implementation Specific Parameter. <p/>
+                                                    </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="LABEL" value="Watchdog Closed Window Duty Cycle (%)"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:f4de62be-9a39-4d13-a414-37058ac7ef19"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('WdgVr5510.OpenWindowDutyCycle.Default')"/>
+                                            <a:da name="RANGE" type="XPath" expr="ecu:list('WdgVr5510.OpenWindowDutyCycle.List')"/>
+                                        </v:var>
+                                    </v:ctr>
+                                    <!--  @implements WdgSettingsSlow_Object  -->
+                                    <v:ctr name="WdgSettingsSlow" type="IDENTIFIABLE">
+                                        <a:a name="REQUIRES-INDEX" value="true"/>
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:
+                                                <html>
+                                                <h1>WdgSettingsSlow</h1><p>
+                                                Hardware dependent settings for the watchdog driver's slow mode.
+                                                </p></html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="UUID" value="ECUC:db59479c-25e1-4bf7-a81d-d2de0716ea11"/>
+                                        <v:var name="WdgWindowPeriod" type="ENUMERATION">
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html>
+                                                        Controls the Watchdog Window Period (FS_WD_WINDOW_DUR[WD_WINDOW]). <p/>
+                                                        This new watchdog window period is effective after the next
+                                                        watchdog refresh. <p/>
+                                                        Note: Implementation Specific Parameter.
+                                                              If the WdgWindowPeriodEnable is disabled and WdgDefaultMode is WDGIF_SLOW_MODE mode, this value will not impact,
+                                                              And WD_WINDOW will use default value (3ms) after FS_INIT phase is closed.<p/>
+                                                    </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="LABEL" value="Watchdog Window Period (ms)"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:b2cba33d-eb88-4f2c-bba9-eaa373151944"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('WdgVr5510.WindowPeriod.Default')"/>
+                                            <a:da name="RANGE" type="XPath" expr="ecu:list('WdgVr5510.WindowPeriod.List')"/>
+                                        </v:var>
+                                        <v:var name="WdgClosedWindowDutyCycle" type="ENUMERATION">
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html>
+                                                        Controls the Watchdog Window Duty Cycle (FS_WD_WINDOW_DUR[WDW_DC]). <p/>
+                                                        This new duty cycle is effective after the next watchdog refresh. <p/>
+                                                        The first half of the window is said CLOSED and the second half is
+                                                        said OPEN. A good watchdog refresh is a good watchdog answer during
+                                                        the OPEN window. A bad watchdog refresh is a bad watchdog answer
+                                                        during the OPEN window, no watchdog refresh during the OPEN window
+                                                        or a good watchdog answer during the CLOSED window. After a good
+                                                        or bad watchdog refresh, a new window period starts immediately
+                                                        for the MCU to keep the synchronization with the windowed watchdog. <p/>
+                                                        Note: The OPEN window duty cycle is equal to (100 - PmicWatchdogClosedWindowDutyCycle)%. <p/>
+                                                        Note: Implementation Specific Parameter. <p/>
+                                                    </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="LABEL" value="Watchdog Closed Window Duty Cycle (%)"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:333e35e1-bc44-49ba-907b-514ff0122169"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('WdgVr5510.OpenWindowDutyCycle.Default')"/>
+                                            <a:da name="RANGE" type="XPath" expr="ecu:list('WdgVr5510.OpenWindowDutyCycle.List')"/>
+                                        </v:var>
+                                    </v:ctr>
+                                    <!--  @implements WdgSettingsOff_Object  -->
+                                    <v:ctr name="WdgSettingsOff" type="IDENTIFIABLE">
+                                        <a:a name="REQUIRES-INDEX" value="true"/>
+                                        <a:a name="DESC">
+                                            <a:v>
+                                                <![CDATA[EN:
+                                                <html>
+                                                <h1>WdgSettingsOff</h1><p>
+                                                Hardware dependent settings for the watchdog driver's off mode.
+                                                </p></html>
+                                                ]]>
+                                            </a:v>
+                                        </a:a>
+                                        <a:a name="UUID" value="ECUC:db59479c-25e1-4bf7-a17d-d2de0466ea11"/>
+                                        <v:var name="WdgWindowPeriod" type="STRING">
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html>
+                                                        Controls the Watchdog Window Period (FS_WD_WINDOW_DUR[WD_WINDOW]). <p/>
+                                                        The watchdog window is disable (0 ms) after the next watchdog refresh. <p/>
+                                                        Note: Implementation Specific Parameter.
+                                                    </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="LABEL" value="Watchdog Window Period (ms)"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:b2cba33d-eb88-4f2c-bba9-eaa373331944"/>
+                                            <a:da name="DEFAULT" value="DISABLE"/>
+                                            <a:a name="READONLY" value="true"/>
+                                        </v:var>
+                                        <v:var name="WdgClosedWindowDutyCycle" type="ENUMERATION">
+                                            <a:a name="DESC">
+                                                <a:v>
+                                                    <![CDATA[EN:<html>
+                                                        Controls the Watchdog Window Duty Cycle (FS_WD_WINDOW_DUR[WDW_DC]). <p/>
+                                                        This new duty cycle is effective after the next watchdog refresh. <p/>
+                                                        The first half of the window is said CLOSED and the second half is
+                                                        said OPEN. A good watchdog refresh is a good watchdog answer during
+                                                        the OPEN window. A bad watchdog refresh is a bad watchdog answer
+                                                        during the OPEN window, no watchdog refresh during the OPEN window
+                                                        or a good watchdog answer during the CLOSED window. After a good
+                                                        or bad watchdog refresh, a new window period starts immediately
+                                                        for the MCU to keep the synchronization with the windowed watchdog. <p/>
+                                                        Note: The OPEN window duty cycle is equal to (100 - PmicWatchdogClosedWindowDutyCycle)%. <p/>
+                                                        Note: Implementation Specific Parameter. <p/>
+                                                    </html>]]>
+                                                </a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="NXP"/>
+                                            <a:a name="LABEL" value="Watchdog Closed Window Duty Cycle (%)"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="SCOPE" value="LOCAL"/>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                            <a:a name="UUID" value="ECUC:333e35e1-bc44-49ba-907b-e14ff01de169"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('WdgVr5510.OpenWindowDutyCycle.Default')"/>
+                                            <a:da name="RANGE" type="XPath" expr="ecu:list('WdgVr5510.OpenWindowDutyCycle.List')"/>
+                                            <a:da name="READONLY" value="true"/>
+                                        </v:var>
+                                    </v:ctr>
+                                </v:ctr>
+                            <!--  @implements   WdgPublishedInformation_Object  -->
+                            <v:ctr name="WdgPublishedInformation" type="IDENTIFIABLE">
+                                <a:a name="REQUIRES-INDEX" value="true"/>
+                                <a:a name="DESC">
+                                    <a:v>
+                                        <![CDATA[EN:
+                                        <html>
+                                        <h1>WdgPublishedInformation</h1><p>
+                                        Container holding all Wdg specific published information parameters
+                                        </p></html>
+                                        ]]>
+                                    </a:v>
+                                </a:a>
+                                <a:a name="UUID" value="ECUC:3f8b4765-ccf4-4905-91a8-232ddffcb0fe"/>
+                                <!--  @implements   WdgTriggerMode_Object  -->
+                                <v:var name="WdgTriggerMode" type="ENUMERATION_LABEL">
+                                    <a:a name="LABEL" value="Wdg Trigger Mode"/>
+                                    <a:a name="DESC">
+                                        <a:v>
+                                            <![CDATA[EN:
+                                            <html>
+                                            <h1>Wdg Trigger Mode</h1><p>
+                                            Watchdog trigger mode (toggle/window/both).
+                                            </p></html>
+                                            ]]>
+                                        </a:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="ECUC:b1a202cd-3f82-4b1d-a63b-26b4c4e75b68"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:da name="DEFAULT" value="WDG_WINDOW"/>
+                                    <a:da name="RANGE">
+                                        <a:v>WDG_WINDOW</a:v>
+                                    </a:da>
+                                </v:var>
+                            </v:ctr>
+                            <!--  @implements CommonPublishedInformation_Object  -->
+                            <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                                <a:a name="REQUIRES-INDEX" value="true"/>
+                                <a:a name="DESC">
+                                  <a:v><![CDATA[EN: <html>
+                                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                                  </html>]]></a:v>
+                                </a:a>
+                                <a:a name="UUID" value="ECUC:81fa92b7-2a53-4070-b57f-4ce6345e1a38"/>
+                            <v:var name="ArReleaseMajorVersion" type="INTEGER_LABEL">
+                              <a:a name="DESC">
+                                  <a:v><![CDATA[EN: <html>
+                                  Vendor specific:
+                                  Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                                  </html>]]></a:v>
+                              </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                              <a:a name="ORIGIN" value="NXP"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" value="ECUC:a23c85d6-adf1-418b-a1a4-241e10170b00"/>
+                              <a:da name="DEFAULT" value="4"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&gt;=4"/>
+                                <a:tst expr="&lt;=4"/>
+                              </a:da>
+                            </v:var>
+                            <v:var name="ArReleaseMinorVersion" type="INTEGER_LABEL">
+                              <a:a name="DESC">
+                                  <a:v><![CDATA[EN: <html>
+                                  Vendor specific:
+                                  Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                                  </html>]]></a:v>
+                              </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                              <a:a name="ORIGIN" value="NXP"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" value="ECUC:9338549a-6e69-4f6d-9e41-a9eff58e36a9"/>
+                              <a:da name="DEFAULT" value="4"/>
+                              <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&gt;=4"/>
+                                  <a:tst expr="&lt;=4"/>
+                              </a:da>
+                            </v:var>
+                            <v:var name="ArReleaseRevisionVersion" type="INTEGER_LABEL">
+                              <a:a name="DESC">
+                                  <a:v><![CDATA[EN: <html>
+                                  Vendor specific:
+                                  Revision version number of AUTOSAR specification on which the appropriate implementation is based on.
+                                  </html>]]></a:v>
+                              </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                              <a:a name="ORIGIN" value="NXP"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" value="ECUC:b252db22-a76b-43f7-a74a-b6665c41e781"/>
+                              <a:da name="DEFAULT" value="0"/>
+                              <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&gt;=0"/>
+                                  <a:tst expr="&lt;=0"/>
+                              </a:da>
+                            </v:var>
+                            <v:var name="ModuleId" type="INTEGER_LABEL">
+                              <a:a name="DESC">
+                                  <a:v><![CDATA[EN: <html>
+                                  Vendor specific:
+                                  Module ID of this module from Module List.
+                                  </html>]]></a:v>
+                              </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                              <a:a name="ORIGIN" value="NXP"/>
+                               <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" value="ECUC:561d8cd4-5426-4162-8e6b-07b9d28a0958"/>
+                              <a:da name="DEFAULT" value="102"/>
+                              <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&gt;=102"/>
+                                  <a:tst expr="&lt;=102"/>
+                              </a:da>
+                            </v:var>
+                            <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                              <a:a name="DESC">
+                                  <a:v><![CDATA[EN: <html>
+                                  Vendor specific:
+                                  Major version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                                  </html>]]></a:v>
+                              </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                              <a:a name="ORIGIN" value="NXP"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" value="ECUC:5beca9e9-cba1-4349-9336-f16cd09fa429"/>
+                              <a:da name="DEFAULT" value="4"/>
+                              <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&gt;=4"/>
+                                  <a:tst expr="&lt;=4"/>
+                              </a:da>
+                            </v:var>
+                            <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                              <a:a name="DESC">
+                                <a:v><![CDATA[EN: <html>
+                                Vendor specific:
+                                Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                                </html>]]></a:v>
+                              </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                              <a:a name="ORIGIN" value="NXP"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" value="ECUC:a3e63e26-16b3-49d7-93f6-2baf09dc667b"/>
+                              <a:da name="DEFAULT" value="0"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&gt;=0"/>
+                                <a:tst expr="&lt;=0"/>
+                              </a:da>
+                            </v:var>
+                            <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                              <a:a name="DESC">
+                                <a:v><![CDATA[EN: <html>
+                                Vendor specific:
+                                Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                                </html>]]></a:v>
+                              </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                              <a:a name="ORIGIN" value="NXP"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" value="ECUC:4ec3cc27-c43c-4503-986a-3b25ddf7888b"/>
+                              <a:da name="DEFAULT" value="2"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&gt;=2"/>
+                                <a:tst expr="&lt;=2"/>
+                              </a:da>
+                            </v:var>
+                            <!--  @implements   VendorApiInfix_Object  -->
+                            <v:var name="VendorApiInfix" type="STRING_LABEL">
+                              <a:a name="DESC">
+                                  <a:v><![CDATA[EN: <html>
+                                  <p>In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name. </p>
+                                  <p>This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:</p>
+                                  <p>
+                                  &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;_&lt;Api name from SWS&gt; </p>
+                                  <p>E.g.  assuming that the VendorId of the implementor is 123 and the implementer chose a VendorApiInfix of &quot;v11r456&quot; a api name Can_Write defined in the SWS will translate to Can_123_v11r456_Write. </p>
+                                  <p>This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</p></html>]]></a:v>
+                              </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                        <icc:v mclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v mclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v mclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                              <a:a name="ORIGIN" value="NXP"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" value="ECUC:f047e29f-c7bc-4186-a5aa-c45ae10a9449"/>
+                              <a:da name="DEFAULT" value="VR5510"/>
+                              <a:a name="OPTIONAL" value="true"/>
+                              <a:a name="READONLY" value="true"/>
+                            </v:var>
+                            <v:var name="VendorId" type="INTEGER_LABEL">
+                                <a:a name="DESC">
+                                    <a:v><![CDATA[EN: <html>
+                                      Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list.
+                                    </html>]]></a:v>
+                                </a:a>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantLinkTime</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                <a:a name="ORIGIN" value="NXP"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" value="ECUC:599a85c0-a112-4c2a-b775-1b893630fc2c"/>
+                                <a:da name="DEFAULT" value="43"/>
+                                <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&gt;=43"/>
+                                    <a:tst expr="&lt;=43"/>
+                                </a:da>
+                            </v:var>
+                            </v:ctr>
+                          <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Wdg"/>
+                        </v:ctr>
+                    </d:chc>
+                    <d:chc name="Wdg_43_VR5510_EcuParameterDefinition" type="AR-ELEMENT" value="ECU_PARAMETER_DEFINITION">
+                        <d:ctr type="AR-ELEMENT">
+                            <a:a name="UUID" value="ECUC:fbaf7633-cc29-4c01-a1ea-509b208293b1"/>
+                            <a:a name="DEF"
+                                 value="ASPath:/AR_PACKAGE_SCHEMA/ECU_PARAMETER_DEFINITION"/>
+                            <d:lst name="MODULE_REF">
+                                <d:ref type="MODULE_REF" value="ASPath:/Wdg_43_VR5510_TS_T40D11M40I2R0/Wdg"/>
+                            </d:lst>
+                        </d:ctr>
+                    </d:chc>
+                    <d:chc name="Wdg_43_VR5510_ModuleDescription" type="AR-ELEMENT" value="BSW_MODULE_DESCRIPTION">
+                        <d:ctr type="AR-ELEMENT">
+                            <a:a name="DEF"
+                                value="ASPath:/AR_PACKAGE_SCHEMA/BSW_MODULE_DESCRIPTION"/>
+                            <d:var name="MODULE_ID" type="INTEGER" >
+                                <a:a name="READONLY" value="true"/>
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:ref type="RECOMMENDED_CONFIGURATION" >
+                                <a:a name="READONLY" value="true"/>
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:ref>
+                            <d:ref type="PRE_CONFIGURED_CONF" >
+                                <a:a name="READONLY" value="true"/>
+                                <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:ref>
+                            <d:ref type="VENDOR_SPECIFIC_MODULE_DEF"
+                                value="ASPath:/Wdg_43_VR5510_TS_T40D11M40I2R0/Wdg"/>
+                        </d:ctr>
+                    </d:chc>
+                </d:lst>
+            </d:ctr>
+        </d:lst>
+    </d:ctr>
+</datamodel>

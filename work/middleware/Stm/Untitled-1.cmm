@@ -1,0 +1,180 @@
+;=============================================================================
+; diag_stm_eeprom_sync.cmm
+; Single-window diagnostic for:
+;   ISSUE-1: EEPROM write failure (NVM_test_read_len=401)
+;   ISSUE-2: Method 0x04 retry exhaustion (retryCount=4)
+;=============================================================================
+
+LOCAL &flag &result &readlen &writeval &stmState
+LOCAL &rDataId &rRetry &rTick &rActive &rSid
+LOCAL &b0v &b0d &b0l &b1v &b1d &b1l &b2v &b2d &b2l
+LOCAL &b3v &b3d &b3l &b4v &b4d &b4l
+LOCAL &i2cStat0 &i2cStat1
+LOCAL &linkCli &linkSrv &chanL0 &chanL1
+LOCAL &appErr &appLastErr
+LOCAL &i &byteVal &addr
+LOCAL &b1data0 &b1data1 &b1data2 &b1data3 &b1data4 &b1data5 &b1data6 &b1data7
+LOCAL &b1data8 &b1data9 &b1dataA &b1dataB &b1dataC &b1dataD &b1dataE &b1dataF
+
+; ===== Prepare single AREA window =====
+AREA.Reset
+AREA.View
+
+; ===== Read all variables =====
+
+; --- STM test variables (global, in stm_cnf.c) ---
+&flag=Var.VALUE(NVM_test_flag)
+&result=Var.VALUE(NVM_test_result)
+&readlen=Var.VALUE(NVM_test_read_len)
+&writeval=Var.VALUE(NVM_test_write_val)
+&stmState=Var.VALUE(Stm_State)
+
+; --- Retry state (static in stm_main.c, but confirmed accessible) ---
+&rDataId=Var.VALUE(Stm_RetryState.dataId)
+&rRetry=Var.VALUE(Stm_RetryState.retryCount)
+&rTick=Var.VALUE(Stm_RetryState.tickCounter)
+&rActive=Var.VALUE(Stm_RetryState.active)
+&rSid=Var.VALUE(Stm_RetryState.sessionId)
+
+; --- NVM block key fields (static in stm_nvm.c, confirmed accessible) ---
+&b0v=Var.VALUE(g_nvmBlocks[0].valid)
+&b0d=Var.VALUE(g_nvmBlocks[0].dirty)
+&b0l=Var.VALUE(g_nvmBlocks[0].dataLen)
+&b1v=Var.VALUE(g_nvmBlocks[1].valid)
+&b1d=Var.VALUE(g_nvmBlocks[1].dirty)
+&b1l=Var.VALUE(g_nvmBlocks[1].dataLen)
+&b2v=Var.VALUE(g_nvmBlocks[2].valid)
+&b2d=Var.VALUE(g_nvmBlocks[2].dirty)
+&b2l=Var.VALUE(g_nvmBlocks[2].dataLen)
+&b3v=Var.VALUE(g_nvmBlocks[3].valid)
+&b3d=Var.VALUE(g_nvmBlocks[3].dirty)
+&b3l=Var.VALUE(g_nvmBlocks[3].dataLen)
+&b4v=Var.VALUE(g_nvmBlocks[4].valid)
+&b4d=Var.VALUE(g_nvmBlocks[4].dirty)
+&b4l=Var.VALUE(g_nvmBlocks[4].dataLen)
+
+; --- Block[1] data bytes (the CASE 5 target) ---
+&b1data0=Var.VALUE(g_nvmBlocks[1].data[0])
+&b1data1=Var.VALUE(g_nvmBlocks[1].data[1])
+&b1data2=Var.VALUE(g_nvmBlocks[1].data[2])
+&b1data3=Var.VALUE(g_nvmBlocks[1].data[3])
+&b1data4=Var.VALUE(g_nvmBlocks[1].data[4])
+&b1data5=Var.VALUE(g_nvmBlocks[1].data[5])
+&b1data6=Var.VALUE(g_nvmBlocks[1].data[6])
+&b1data7=Var.VALUE(g_nvmBlocks[1].data[7])
+&b1data8=Var.VALUE(g_nvmBlocks[1].data[8])
+&b1data9=Var.VALUE(g_nvmBlocks[1].data[9])
+&b1dataA=Var.VALUE(g_nvmBlocks[1].data[10])
+&b1dataB=Var.VALUE(g_nvmBlocks[1].data[11])
+&b1dataC=Var.VALUE(g_nvmBlocks[1].data[12])
+&b1dataD=Var.VALUE(g_nvmBlocks[1].data[13])
+&b1dataE=Var.VALUE(g_nvmBlocks[1].data[14])
+&b1dataF=Var.VALUE(g_nvmBlocks[1].data[15])
+
+; --- I2C channel status (global in RTD CDD_I2c.c) ---
+&i2cStat0=Var.VALUE(I2c_aeChannelStatus[0])
+&i2cStat1=Var.VALUE(I2c_aeChannelStatus[1])
+
+; --- PICC link states (global g_diagRecord_Debug in picc_main.c) ---
+&linkCli=Var.VALUE(g_diagRecord_Debug.appLinkState[3])
+&linkSrv=Var.VALUE(g_diagRecord_Debug.appLinkState[4])
+&chanL0=Var.VALUE(g_diagRecord_Debug.channelLinkState[0])
+&chanL1=Var.VALUE(g_diagRecord_Debug.channelLinkState[1])
+
+; --- PICC error counters (static g_appData in picc_main.c) ---
+&appErr=Var.VALUE(g_appData.error_count)
+&appLastErr=Var.VALUE(g_appData.last_error)
+
+; ===== PRINT ALL TO SINGLE WINDOW =====
+
+PRINT "================================================================"
+PRINT "== STM Diagnostic: EEPROM Write + Method 0x04 Sync Failure =="
+PRINT "================================================================"
+
+PRINT ""
+PRINT "--- [1] STM Test Variables (global, stm_cnf.c) ---"
+PRINT "  NVM_test_flag      = " &flag
+PRINT "  NVM_test_result    = " &result "  (0=E_OK, 1=E_NOT_OK)"
+PRINT "  NVM_test_read_len  = " &readlen
+PRINT "  NVM_test_write_val = 0x" &writeval
+
+PRINT ""
+PRINT "--- [2] STM State Machine ---"
+PRINT "  Stm_State = " &stmState "  (0=UNINIT 1=WAIT_LINK 2=WAIT_CONSISTENCY 3=SYNC_TO_A 4=RUNNING)"
+
+PRINT ""
+PRINT "--- [3] Method 0x04 Retry State ---"
+PRINT "  Stm_RetryState.dataId      = " &rDataId
+PRINT "  Stm_RetryState.retryCount  = " &rRetry "  (max=4)"
+PRINT "  Stm_RetryState.tickCounter = " &rTick
+PRINT "  Stm_RetryState.active      = " &rActive
+PRINT "  Stm_RetryState.sessionId   = " &rSid
+
+PRINT ""
+PRINT "--- [4] NVM Block RAM Mirror ---"
+PRINT "  Idx  dataId  valid dirty dataLen"
+PRINT "  [0]  0x0001  " &b0v "     " &b0d "     " &b0l
+PRINT "  [1]  0x0002  " &b1v "     " &b1d "     " &b1l "  <-- CASE 5 target"
+PRINT "  [2]  0x0003  " &b2v "     " &b2d "     " &b2l
+PRINT "  [3]  0x0004  " &b3v "     " &b3d "     " &b3l
+PRINT "  [4]  0x0005  " &b4v "     " &b4d "     " &b4l
+
+PRINT ""
+PRINT "--- [5] Block[1] (dataId=0x0002) Data Bytes from RAM ---"
+PRINT "  Expected after Case 5: 0xAA 0xAB 0xAC ... 0xB9"
+PRINT "  data[0..7]  = " &b1data0 &b1data1 &b1data2 &b1data3 &b1data4 &b1data5 &b1data6 &b1data7
+PRINT "  data[8..15] = " &b1data8 &b1data9 &b1dataA &b1dataB &b1dataC &b1dataD &b1dataE &b1dataF
+
+PRINT ""
+PRINT "--- [6] I2C Driver Status (global, RTD CDD_I2c.c) ---"
+PRINT "  I2c_aeChannelStatus[0] = " &i2cStat0
+PRINT "  I2c_aeChannelStatus[1] = " &i2cStat1 "  (EEPROM uses I2C ch1)"
+PRINT "  Values: 0=IDLE 1=SEND 2=RECEIVE"
+
+PRINT ""
+PRINT "--- [7] PICC Link State (g_diagRecord_Debug, global) ---"
+PRINT "  appLinkState[3] STM_CLI   = " &linkCli "  (0=DISCONNECTED 1=CONNECTING 2=CONNECTED)"
+PRINT "  appLinkState[4] STORAGE   = " &linkSrv "  (0=DISCONNECTED 1=CONNECTING 2=CONNECTED)"
+PRINT "  channelLinkState[0] Ch1   = " &chanL0
+PRINT "  channelLinkState[1] Ch2   = " &chanL1
+
+PRINT ""
+PRINT "--- [8] PICC Error Counters (g_appData, static picc_main.c) ---"
+PRINT "  g_appData.error_count = " &appErr
+PRINT "  g_appData.last_error  = " &appLastErr
+
+PRINT ""
+PRINT "================================================================"
+PRINT "== DIAGNOSIS SUMMARY =="
+PRINT "================================================================"
+PRINT ""
+PRINT "PROBLEM 1: EEPROM write Phase 2 (data segment) FAILED"
+PRINT "  Evidence: NVM_test_read_len=" &readlen " (= 400+1 => block[1] data write fail)"
+PRINT "  But RAM mirror g_nvmBlocks[1]: valid=" &b1v " dataLen=" &b1l
+PRINT "  => StmNvm_Write() updated RAM but EEPROM write returned E_NOT_OK"
+PRINT "  => RAM/EEPROM data INCONSISTENT (RAM=NEW, EEPROM=OLD)"
+PRINT "  Root cause: I2c_SyncTransmit() failed for EEPROM data segment"
+PRINT "  Check: I2c_aeChannelStatus[1]=" &i2cStat1
+IF &i2cStat1!=0
+  PRINT "  WARNING: I2C channel 1 is NOT IDLE! May indicate bus hang."
+ELSE
+  PRINT "  I2C channel 1 is IDLE now (failure may be transient)."
+ENDIF
+PRINT ""
+PRINT "PROBLEM 2: Method 0x04 sync retry exhausted"
+PRINT "  Stm_RetryState: dataId=" &rDataId " retryCount=" &rRetry " active=" &rActive
+PRINT "  STM_CLI link state = " &linkCli
+IF &linkCli==2
+  PRINT "  => Link CONNECTED but A-core not responding to Method 0x04"
+  PRINT "     Possible: A-core PICC Daemon running but Method 0x04 handler not registered"
+ELSEIF &linkCli==1
+  PRINT "  => Link CONNECTING - A-core Daemon likely NOT running yet"
+ELSE
+  PRINT "  => Link DISCONNECTED - A-core Daemon NOT running or IPCF not ready"
+ENDIF
+PRINT ""
+PRINT "BUG: StmNvm_Write() does NOT rollback RAM mirror on EEPROM failure!"
+PRINT "  => After power cycle, Block[1] data reverts to old EEPROM values"
+PRINT "================================================================"
+
+ENDDO

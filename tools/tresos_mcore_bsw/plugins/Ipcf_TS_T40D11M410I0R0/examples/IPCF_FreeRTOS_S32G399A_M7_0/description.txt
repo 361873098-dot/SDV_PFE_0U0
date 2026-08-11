@@ -1,0 +1,180 @@
+=====================================
+IPCF Shared Memory Sample Application
+=====================================
+
+:Copyright: 2022-2023 NXP
+
+Application description
+=======================
+This is the IPCF Shared Memory driver sample application for NXP S32 RTD running
+on Cortex-M7 core of NXP S32G399A platform. It demonstrates a ping-pong message
+communication with a Linux kernel application, using the shared memory driver.
+The application initializes the driver and does an echo reply for every message
+received from Linux application.
+
+Prerequisites
+=============
+To run the example you will need to have the following items:
+- 1 S32G-PROCEVB-S
+- 1 Power Adapter 12V (if the board cannot be powered from the USB port)
+- 1 Personal Computer
+
+Boards supported
+================
+The following boards are supported by this application:
+- S32G-PROCEVB-S
+
+How to run
+==========
+1. Software installation
+
+  The following procedure requires that the user has EB Tresos Studio installed
+  and it is only needed for viewing, updating and generating the driver's
+  configuration.
+
+  Procedure::
+    1. Make sure that all RTD plugins are already installed in the Tresos Studio
+       plugins directory
+    2. Open Tresos Studio
+    3. Import example application project:
+        a. Click on "File" and select "Import"
+        b. Select "Existing Projects into Workspace" and click on "Next" button
+        c. Select "Select root directory" and click on "Browse"
+        d. Select the location of the [project] folder in the installed example
+           application package folder
+        e. Optional* - Select "Copy projects into workspace"
+        f. Click on "Finish" button
+
+2. Example configuration
+
+  The following procedure requires that the user has EB Tresos Studio installed
+  and the toolchains versions specified in the Release Notes.
+  The toolchain that will be used needs to be installed for correct operation
+  and the path to the installation location shall be added into the system
+  environment variable(s)::
+
+    - TRESOS_DIR the installation path of Electrobit Tresos (used for generating
+      the project from command line)
+
+        Ex: TRESOS_DIR = C:/EB/tresos27
+
+    - GCC_DIR The path to the GCC instalation dir
+
+        Ex: GCC_DIR = C:/NXP/S32DS.3.4/S32DS/build_tools/gcc_v9.2/gcc-9.2-arm32-eabi
+
+    - PLUGINS_DIR The path to the Tresos plugins directory
+
+        Ex: PLUGINS_DIR = C:/EB/tresos27/plugins
+
+    - SHM_DRIVER_PATH The path to the IPCF driver plugin directory
+
+        Ex: SHM_DRIVER_PATH = C:/NXP/SW32G_IPCF_0.0.0_D0000/eclipse/plugins/Ipcf_TS_T40D00M00I0R0
+
+    - FREERTOS_DIR The path to the FreeRTOS source directory
+
+        Ex: FREERTOS_DIR = C:/NXP/FreeRTOS
+
+  Open project_parameters.mk file in a text editor and update the variables
+  mentioned above with the correct paths
+
+3. Building the application::
+
+  1. Open the Windows command prompt window
+  2. Change the current directory to the example application folder
+  3. To build the example, execute the following command to build:
+     **make compiler=gcc build**
+  4. The object files and linker output file (main.elf) shall be generated in
+     the /out subdirectory
+
+4. Modifying the configuration in Tresos and generating the code::
+
+  Users may change the application configuration according to their needs.
+
+  Procedure::
+
+    1. Open the EB Tresos Studio GUI
+    2. Open previously imported Example Application project
+    3. Use the Tresos Studio GUI to modify configuration parameter values and
+       save the changes.
+    4. Select the Example Application project and click on "Generate" button to
+       generate the configuration files.
+
+  After build the file main.bin must be created. User must rename it to
+  **IPCF_FreeRTOS_S32G399A_M7_0.bin**
+
+5. Running the project::
+
+  1. How to load the IPCF sample with s32xx.cmm::
+
+      1. Open Lauterbach Trace application
+      2. Load "s32xx.cmm" file form debug folder
+      3. Set path to the IPCF_FreeRTOS_S32G399A_M7_0 file
+      4. Execute cmm script to load IPCF_FreeRTOS_S32G399A_M7_0 file into the board
+      5. After loading the IPCF sample establish the serial connection
+      with S32G399A board and start booting the linux.
+
+  2. How to load the IPCF sample from u-boot console::
+
+      1. Copy the stripped binary (IPCF_FreeRTOS_S32G399A_M7_0.bin) to a FAT partition
+      on a SD-card
+      2. Establish a serial connection with the S32G399A board and power it on
+      3. Hit any key to stop in the u-boot console
+      4. Disable Data Cache from uboot::
+
+            dcache off
+
+      5. Zero-set SRAM shared memory used by both sample apps::
+
+            mw.q 0x34100000 0x0 0x40000
+
+      6. Load binary in DDRAM and after is SRAM::
+
+            fatload mmc 0:1 0x80000000 IPCF_FreeRTOS_S32G399A_M7_0.bin
+            cp.b 0x80000000 0x34300000 0x300000
+
+      7. Start M7 core (the argument is the address of the Interrupt Vector)::
+
+            startm7 0x34500400
+
+      8. Boot Linux ::
+
+            boot
+
+  3. How to load IPCF sample in linux::
+
+      1. Login with root and run linux sample app::
+
+            insmod /lib/modules/`uname -r`/extra/ipc-shm-dev.ko
+            insmod /lib/modules/`uname -r`/extra/ipc-shm-sample.ko
+            echo 10 > /sys/kernel/ipc-shm-sample/ping
+
+      2. Result must appear like this::
+
+            [ timestamp ] ipc-shm-sample: ipc-shm-sample: starting demo...
+            [ timestamp ] ipc-shm-sample: ipc-shm-sample: ch 0 >> 20 bytes: SENDING MESSAGES: 10
+            [ timestamp ] ipc-shm-sample: ch 1 >> 32 bytes: #0 HELLO WORLD! from KERNEL
+            [ timestamp ] ipc-shm-sample: ch 1 << 32 bytes: #0 HELLO WORLD! from CORE 4
+            [ timestamp ] ipc-shm-sample: ch 2 >> 32 bytes: #1 HELLO WORLD! from KERNEL
+            [ timestamp ] ipc-shm-sample: ch 2 << 32 bytes: #1 HELLO WORLD! from CORE 4
+            [ timestamp ] ipc-shm-sample: ch 1 >> 32 bytes: #2 HELLO WORLD! from KERNEL
+            [ timestamp ] ipc-shm-sample: ch 1 << 32 bytes: #2 HELLO WORLD! from CORE 4
+            [ timestamp ] ipc-shm-sample: ch 2 >> 32 bytes: #3 HELLO WORLD! from KERNEL
+            [ timestamp ] ipc-shm-sample: ch 2 << 32 bytes: #3 HELLO WORLD! from CORE 4
+            [ timestamp ] ipc-shm-sample: ch 1 >> 32 bytes: #4 HELLO WORLD! from KERNEL
+            [ timestamp ] ipc-shm-sample: ch 1 << 32 bytes: #4 HELLO WORLD! from CORE 4
+            [ timestamp ] ipc-shm-sample: ch 2 >> 32 bytes: #5 HELLO WORLD! from KERNEL
+            [ timestamp ] ipc-shm-sample: ch 2 << 32 bytes: #5 HELLO WORLD! from CORE 4
+            [ timestamp ] ipc-shm-sample: ch 1 >> 32 bytes: #6 HELLO WORLD! from KERNEL
+            [ timestamp ] ipc-shm-sample: ch 1 << 32 bytes: #6 HELLO WORLD! from CORE 4
+            [ timestamp ] ipc-shm-sample: ch 2 >> 32 bytes: #7 HELLO WORLD! from KERNEL
+            [ timestamp ] ipc-shm-sample: ch 2 << 32 bytes: #7 HELLO WORLD! from CORE 4
+            [ timestamp ] ipc-shm-sample: ch 1 >> 32 bytes: #8 HELLO WORLD! from KERNEL
+            [ timestamp ] ipc-shm-sample: ch 1 << 32 bytes: #8 HELLO WORLD! from CORE 4
+            [ timestamp ] ipc-shm-sample: ch 2 >> 32 bytes: #9 HELLO WORLD! from KERNEL
+            [ timestamp ] ipc-shm-sample: ch 0 << 20 bytes: REPLIED MESSAGES: 10
+            [ timestamp ] ipc-shm-sample: ch 2 << 32 bytes: #9 HELLO WORLD! from CORE 4
+            [ timestamp ] ipc-shm-sample: exit demo
+
+      3. Unload the modules::
+
+            rmmod ipc_shm_sample ipc_shm_dev

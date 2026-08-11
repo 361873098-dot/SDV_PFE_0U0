@@ -1,0 +1,55 @@
+1. Example Description
+        Transmit and receive the frame between two nodes.
+        The hardware setup for this example is two boards connected together with a Flexray cable. One board will run example for node 1, the other board will run example for node 2. This is because Flexray does not support loopbacking.
+        This example uses for a board (Node 2).
+    1.1 The application software functionality.
+        - Initialize clock to Tx, Rx signals via the function Clock_Ip_Init.
+        - Initialize pins to provide the external clock to Tx, Rx signals via the function Siul2_Port_Ip_Init.
+        - Initialize OsIf_Init to use timeout feature.
+        - Initialize Flexray module Flexray_Ip_Init.
+	- Wait POC status is FLEXRAY_STATE_READY via the function Flexray_Ip_GetCurrentState and check in the loop.
+        - Send protocol control run command via the function Flexray_Ip_SendCHICommand to start communication.
+        - Wait POC status is FR_POCSTATE_NORMAL_ACTIVE via the function Flexray_Ip_GetCurrentState and check in the loop.
+        - Transmit the frame via the function Flexray_Ip_Send use repeat transmission feature.
+	- Receive a frame via the function Flexray_Ip_ReceiveInd.
+        - Waiting for the receive is complete and check state of buffer is FLEXRAY_STATUS_SUCCESS via the function Flexray_Ip_GetTransferStatus.
+        - De-initialize Flexray module via the function Flexray_Ip_Deinit.
+2. Installation steps
+    2.1 Hardware installation
+        2.1.1 Supported boards
+            - S32G-PROCEVB-S PCB RevX3 SCH RevB1 (Mini-module)
+            - S32GRV-PLATEVB PCB Rev A SCH RevB (Mother-board)
+        2.2.2 Connections
+            In the schematic of S32G, Module FR don't have the pins output directly from board to the transceiver, we must be use Jumps to connect from Headers to Transceiver, we connect pins like below:
+                - PB_11 (J169_4, miniboard) connect to PIN4 - J44 (FlexRay Transmit Enable channel A)
+                - PB_12 (J169_3, miniboard) connect to PIN2 - J44 (FlexRay Transmit channel A)
+                - PB_13 (J56_1, motherboard) connect to PIN6 - J44 (FlexRay Receive channel A)
+                - PB_14 (J56_3, motherboard) connect to PIN4 - J43 (FlexRay Transmit Enable channel B)
+                - PB_15 (J104_1, miniboard) connect to PIN2 - J43 (FlexRay Transmit channel B)
+                - PC_00 (J101_2, miniboard) connect to PIN6 - J43 (FlexRay Receive channel B)
+            Using female Connector Housing cable to connect port Flexray between two boards.
+        2.2.3 Debugger
+            The debugger must be connected to J48 20-pin JTAG Cortex Debug connector.
+    2.2 Software installation
+        2.2.1 Importing the S32 Design Studio project
+            After opening S32 Design Studio, go to "File -> New -> S32DS Project From Example" and select "Flexray_Ip_Example_...". Then click on "Finish".
+            The project should now be copied into you current workspace.
+
+3. Generating, building and running the example application
+    3.1 Generating the S32 configuration
+        Before running the example a configuration needs to be generated.  First go to Project Explorer View in S32 DS and select the current project. Select the "S32 Configuration Tool" menu then click on the desired configuration tool (Pins, Cocks, Peripherals etc...). Clicking on any one of those will generate all the components. Make the desired changes(if any) then click on the "S32 Configuration Tool->Update Code" button.
+    3.2 Compiling the application
+        Select the configuration to be built: RAM (Debug_RAM), or FLASH (Debug_FLASH) by left clicking on the downward arrow corresponding to the build button in eclipse. 
+        Use Project > Build to build the project.
+        Wait for the build action to be completed before continuing to the next step. Check the compiler console for error messages; upon completion, the *.elf binary file
+        should be created.
+    3.2 Running the application on the board
+        Go to Run and select Debug Configurations. There will be a debug configuration for this project:
+        
+        Configuration Name                  Description
+        -------------------------------     -----------------------
+        $(example)_Debug_Ram                Debug the RAM configuration using S32Debugger
+        
+        Select the desired debug configuration and click on Launch. Now the perspective will change to the Debug Perspective.
+        Use the controls to control the program flow.
+        

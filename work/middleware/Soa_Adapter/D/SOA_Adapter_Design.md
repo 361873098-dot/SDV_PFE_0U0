@@ -39,7 +39,7 @@ CAN Bus <-> DBC Structs <-> SOA Adapter <-> PICC API <-> IPCF <-> A-Core
 | Dependency Module | Purpose |
 |-------------------|---------|
 | `picc_api.h` | PICC driver public API (Init, SendEvent, MethodResponse, GetMethodData, etc.) |
-| `FlexCAN_Ip_main.h` | CAN transmit/receive interface |
+| `HpcCan_Driver.h` | AUTOSAR CAN transmit/receive interface |
 | `SOA_CANdbc_Generated.h` | DBC-generated CAN signal global structs |
 | `Platform.h` | Platform base type definitions (uint8, uint16, sint8, boolean, etc.) |
 
@@ -445,7 +445,7 @@ PICC_SendEvent(PICC_APP_SOA, 3, payload, 14, PICC_EVENT_WITHOUT_ACK);
 
 ```
 1. PICC_PreOS_Init()          // IPCF driver + PICC infrastructure
-2. FlexCAN_Process_Init()     // CAN driver initialization
+2. HpcCan_Init()              // CAN driver initialization
 3. SoaAdapter_Init()          // SOA Adapter registration (in App_Init_All())
 4. vTaskStartScheduler()      // Start RTOS
 ```

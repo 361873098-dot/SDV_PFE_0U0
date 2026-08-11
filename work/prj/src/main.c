@@ -45,6 +45,10 @@ extern "C"{
 #include "udpecho_raw.h"
 #include "System_Cpuload.h"
 
+#if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
+#include "HpcCan_Driver.h"
+#endif
+
 #ifdef PING_TEST
 #include "eth_queue.h"
 #endif
@@ -507,6 +511,11 @@ int main(void)
 #else
     Mpu_Configuration();
 #endif /* STD_ON == ETH_43_PFE_ENABLE_USER_MODE_SUPPORT */
+
+    /* Enables the DWT cycle counter required by the DSPI/TJA1145A
+     * microsecond delays. It must run before CAN transceiver initialization. */
+    EcuM_Diag_Init();
+
     /* Initialize MCAL drivers */
     ret = SampleAppInitTask();
     /* Trap the application when there was an error during init */
@@ -523,6 +532,12 @@ int main(void)
 
 /* Initialize Vr5510 device */
 Pmic_InitDevice(PmicConf_PmicDevice_PmicDevice_0); 
+
+#if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
+    /* Mcu/Port are ready at this point. Initialize the EB-generated Can
+     * driver and then place the TJA1145A transceiver in active mode. */
+    (void)HpcCan_Init();
+#endif
 
 #if defined(CONFIG_MINIHIF)
     configure_minihif_hw();
@@ -550,7 +565,6 @@ Pmic_InitDevice(PmicConf_PmicDevice_PmicDevice_0);
     demo_lwip_init();
 
     udpecho_raw_init();
-    EcuM_Diag_Init();
     creat_tasks_m7();
 
     while (1)

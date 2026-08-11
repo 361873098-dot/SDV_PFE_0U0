@@ -35,7 +35,7 @@ extern "C"{
  *
  * Prerequisites:
  *   - PICC_PreOS_Init() must have been called.
- *   - FlexCAN_Process_Init() must have been called.
+ *   - HpcCan_Init() must have completed successfully.
  *
  * Called from: App_Init_All() in EcuM_main_init.c
  */

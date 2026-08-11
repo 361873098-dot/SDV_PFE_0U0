@@ -16,7 +16,7 @@
  *                                          INCLUDES
  *==================================================================================================*/
 #include "TJA1145A_Spi_Baremetal.h"
-#include "FlexCAN_Ip.h" /* For FlexCAN_Ip_SetStopMode/SetStartMode */
+#include "Can.h"
 
 /*==================================================================================================
  *                                     GLOBAL VARIABLES
@@ -84,6 +84,11 @@ void Spi_Baremetal_Init(uint8 baudrate_div) {
   uint32 ctar_value;
   uint32 sr;
 
+  /* Do not retain a previous boot/transfer result when DSPI5 is
+   * re-initialized. init_ok is asserted only after the register checks. */
+  g_Spi_Baremetal_Debug.init_ok = 0U;
+  g_Spi_Baremetal_Debug.error_code = 0U;
+
   /* Step 1: Disable module completely (MDIS=1, HALT=1) for clean reset */
   DSPI5_REG(DSPI_MCR_OFFSET) = DSPI_MCR_MDIS_MASK | DSPI_MCR_HALT_MASK;
   Spi_Baremetal_NopDelay(20); /* ~50ns: allow register write to propagate */
@@ -136,7 +141,9 @@ void Spi_Baremetal_Init(uint8 baudrate_div) {
   g_Spi_Baremetal_Debug.dspi_mcr = DSPI5_REG(DSPI_MCR_OFFSET);
   g_Spi_Baremetal_Debug.dspi_sr = sr;
   g_Spi_Baremetal_Debug.dspi_ctar0 = DSPI5_REG(DSPI_CTAR0_OFFSET);
-  g_Spi_Baremetal_Debug.init_ok = 1U;
+  if (g_Spi_Baremetal_Debug.error_code == 0U) {
+    g_Spi_Baremetal_Debug.init_ok = 1U;
+  }
 }
 
 /**
@@ -286,6 +293,7 @@ static void Spi_Baremetal_Tja1145_ClearEventsAndDisableWakeup(void) {
 uint8 Spi_Baremetal_Tja1145_Init(void) {
   uint8 device_id;
   uint8 main_status;
+  uint8 device_id_valid;
   uint8 i;
   uint32 poll;
 
@@ -296,8 +304,11 @@ uint8 Spi_Baremetal_Tja1145_Init(void) {
   g_Spi_Baremetal_Debug.tja_R7E_device_id = device_id;
 
   if ((device_id != 0x70U) && (device_id != 0x74U) && (device_id != 0x80U)) {
+    device_id_valid = 0U;
     g_Spi_Baremetal_Debug.tja_error_code = 2U;
     /* Continue anyway to try recovery */
+  } else {
+    device_id_valid = 1U;
   }
 
   /* Step 2: Read Main Status */
@@ -392,9 +403,13 @@ uint8 Spi_Baremetal_Tja1145_Init(void) {
   Spi_Baremetal_Tja1145_WriteReg(TJA1145_REG_CAN_CONTROL, 0x01U);
   Spi_Baremetal_DelayUs(250);
 
-  if ((main_status & TJA1145_MAIN_STATUS_NMS) == 0U) {
+  if (((main_status & TJA1145_MAIN_STATUS_NMS) == 0U) &&
+      (device_id_valid != 0U)) {
     g_Spi_Baremetal_Debug.tja_error_code = 0U;
     return 0U; /* Success */
+  } else if (device_id_valid == 0U) {
+    g_Spi_Baremetal_Debug.tja_error_code = 2U;
+    return 2U; /* Failed - SPI response/device ID is invalid */
   } else {
     g_Spi_Baremetal_Debug.tja_error_code = 1U;
     return 1U; /* Failed - NMS still set */
@@ -479,8 +494,8 @@ void Spi_Baremetal_Tja1145_PeriodicTest(void) {
 
   /* CTS=0 means CAN transceiver NOT active -> re-toggle CMC */
   if ((trans_status & 0x80U) == 0U) {
-    /* Freeze FlexCAN so TXD goes recessive (HIGH) */
-    FlexCAN_Ip_SetStopMode(0U);
+    /* Stop through the AUTOSAR Can driver so its software state stays valid. */
+    (void)Can_SetControllerMode(CanController_0, CAN_CS_STOPPED);
     Spi_Baremetal_DelayUs(10); /* Allow FlexCAN to enter freeze */
 
     /* CMC: Offline -> Active */
@@ -489,8 +504,8 @@ void Spi_Baremetal_Tja1145_PeriodicTest(void) {
     Spi_Baremetal_Tja1145_WriteReg(TJA1145_REG_CAN_CONTROL, 0x01U);
     Spi_Baremetal_DelayUs(250); /* t_startup(CAN) max 220µs */
 
-    /* Unfreeze FlexCAN */
-    FlexCAN_Ip_SetStartMode(0U);
+    /* Restart through the AUTOSAR Can driver. */
+    (void)Can_SetControllerMode(CanController_0, CAN_CS_STARTED);
 
     /* Re-read status */
     g_Spi_Baremetal_Debug.tja_R22_trans_status =

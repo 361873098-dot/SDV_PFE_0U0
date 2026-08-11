@@ -49,8 +49,8 @@
 | `TJA145A_Spi_Ip/TJA1145A_Spi_Baremetal.h` | Header | DSPI5 与 TJA1145A 的接口声明、关键寄存器和调试结构定义 |
 | `TJA145A_Spi_Ip/TJA1145A_Spi_Baremetal.c` | Source | SPI 初始化、寄存器读写、TJA 初始化、恢复和周期检测主实现 |
 | `src/Ecum_Init_Main/EcuM_main_init.c` | Source | 系统启动阶段对 SPI、TJA 和 FlexCAN 的调用入口 |
-| `FlexCAN_Ip/FlexCAN_Ip_main.c` | Source | 10 ms 周期任务和 TJA 周期检测触发点 |
-| `FlexCAN_Ip/FlexCAN_Ip_main.h` | Header | 当前 CAN 模块接口、MB 分配与业务定义 |
+| `HpcCan/HpcCan_Driver.c` | Source | AUTOSAR CAN 适配、10 ms 周期任务和 TJA 周期检测触发点 |
+| `HpcCan/HpcCan_Driver.h` | Header | 当前 CAN 模块接口、逻辑邮箱分配与诊断定义 |
 | `S32G3_reference_manual/TJA1145A.md` | Reference | TJA1145A 模式、寄存器和唤醒约束的手册依据 |
 
 ---
@@ -257,7 +257,7 @@ sequenceDiagram
 
     EcuM->>CAN: FlexCAN_Ip_Init(...)
     EcuM->>CAN: FlexCAN_Ip_SetStartMode(...)
-    EcuM->>CAN: FlexCAN_Process_Init()
+    EcuM->>CAN: HpcCan_Init()
     EcuM->>TJA: Spi_Baremetal_Tja1145_SetCanActive()
 ```
 

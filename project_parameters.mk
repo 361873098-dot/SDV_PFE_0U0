@@ -28,7 +28,13 @@ FREERTOS_HEAP_DIR ?= $(FREERTOS_DIR)/portable/MemMang
 PRJ_CNF_DIR ?= ./work/prj/
 IPCF_DIR ?= ./work/driver/ipcf
 #MCAL modules used
-MCAL_MODULE_LIST :=  BaseNXP Det Dio Dem Gpt Mcu Mcl Rte Port Platform EthSwt EthTrcv I2c Pmic
+MCAL_MODULE_LIST :=  BaseNXP Det Dio Dem Gpt Mcu Mcl Rte Port Platform EthSwt EthTrcv I2c Pmic Can
+
+# Can uses the standard CanIf callback contract. Only the CanIf interface
+# headers are needed because the project provides the four callbacks in
+# work/COM/HpcCan/HpcCan_Driver.c instead of configuring the complete
+# CanIf BSW.
+EXTRA_INCLUDE_MODULES := CanIf
 
 #The package name for the MCAL release
 AR_MCAL_PKG_NAME = TS_T40D11M40I2R0
@@ -41,4 +47,3 @@ AR_IPCF_PKG_NAME = TS_T40D11M410I0R0
 SHM_PLATFORM ?= s32g3xx
 SHM_OS_TARGET ?= freertos
 SHM_DRIVER_PATH ?= $(PLUGINS_DIR)/Ipcf_$(AR_IPCF_PKG_NAME)
-

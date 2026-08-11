@@ -23,7 +23,7 @@ extern "C"{
 
 #include "soa_adapter_main.h"
 #include "soa_adapter_cnf.h"
-#include "FlexCAN_Ip_main.h"
+#include "HpcCan_Driver.h"
 #include "CANdbc_Generated.h"
 #include "picc_api.h"
 
@@ -139,31 +139,77 @@ static uint8 SOA_FindService(uint16 serviceId, uint16 methodId, uint16 instanceI
  *==================================================================================================*/
 
 /**
- * @brief Build a single Notifier SOA message and send via PICC Event
+ * @brief Read one Notifier value through its configured service callback
+ *
+ * Keeps all accesses to SOA_ServiceConfig_t::readFunc behind one helper so
+ * both initial synchronization and cyclic change detection use the same
+ * validation and sampling rules.
+ *
+ * @param[in]  svcIdx  Index into g_soaServiceTable
+ * @param[out] data    Destination buffer for the serialized signal value
+ * @param[in]  maxLen  Available bytes in data
+ * @return Number of bytes read, or 0 on invalid configuration/read failure
+ */
+static uint16 SOA_ReadNotifierValue(uint8 svcIdx, uint8 *data, uint16 maxLen)
+{
+    const SOA_ServiceConfig_t *svc;
+    uint16 readLimit = maxLen;
+
+    if ((svcIdx >= SOA_SERVICE_TABLE_COUNT) ||
+        (data == NULL_PTR) || (maxLen == 0U))
+    {
+        return 0U;
+    }
+
+    svc = &g_soaServiceTable[svcIdx];
+
+    if ((svc->readFunc == NULL_PTR) ||
+        (svc->serviceType != SOA_SERVICE_NOTIFIER))
+    {
+        return 0U;
+    }
+
+    if (readLimit > SOA_MAX_DATA_SIZE)
+    {
+        readLimit = SOA_MAX_DATA_SIZE;
+    }
+
+    return svc->readFunc(data, readLimit);
+}
+
+/**
+ * @brief Build and send a single Notifier from an already sampled value
  *
  * Constructs: SOA Header (12B) + signal data, then calls PICC_SendEvent.
  *
  * @param[in] svcIdx  Index into g_soaServiceTable
+ * @param[in] data    Signal value returned by SOA_ReadNotifierValue()
+ * @param[in] dataLen Number of signal-value bytes
  * @return PICC_E_OK on success
  */
-static sint8 SOA_SendNotifier(uint8 svcIdx)
+static sint8 SOA_SendNotifierData(uint8 svcIdx, const uint8 *data, uint16 dataLen)
 {
-    const SOA_ServiceConfig_t *svc = &g_soaServiceTable[svcIdx];
+    const SOA_ServiceConfig_t *svc;
     SOA_Header_t hdr;
-    uint16 dataLen;
     uint16 totalLen;
 
-    if ((svc->readFunc == NULL_PTR) || (svc->serviceType != SOA_SERVICE_NOTIFIER))
+    if ((svcIdx >= SOA_SERVICE_TABLE_COUNT) ||
+        (data == NULL_PTR) || (dataLen == 0U) ||
+        (dataLen > SOA_MAX_DATA_SIZE) ||
+        ((SOA_HEADER_SIZE + dataLen) > SOA_MAX_MSG_SIZE))
     {
         return PICC_E_PARAM;
     }
 
-    /* Read current signal value into buffer after header area */
-    dataLen = svc->readFunc(&s_soaTxBuf[SOA_HEADER_SIZE], SOA_MAX_DATA_SIZE);
-    if (dataLen == 0U)
+    svc = &g_soaServiceTable[svcIdx];
+    if (svc->serviceType != SOA_SERVICE_NOTIFIER)
     {
         return PICC_E_PARAM;
     }
+
+    /* Use the value already sampled by the change detector. This guarantees
+     * that the transmitted value and the value committed to the cache match. */
+    (void)memcpy(&s_soaTxBuf[SOA_HEADER_SIZE], data, dataLen);
 
     /* Build SOA header */
     hdr.SOA_ServiceID  = svc->SOA_ServiceID;
@@ -198,6 +244,7 @@ static void SOA_SendAllNotifierInitValues(void)
 {
     uint8 i;
     uint16 batchOffset = 0U;
+    boolean notifierBuilt[SOA_NOTIFIER_COUNT] = { FALSE };
 
     /* Phase 1: Build batched SOA payload — concatenate all Notifiers */
     for (i = 0U; i < SOA_NOTIFIER_COUNT; i++)
@@ -219,8 +266,10 @@ static void SOA_SendAllNotifierInitValues(void)
             break; /* Safety: no room for another header */
         }
 
-        dataLen = svc->readFunc(&s_soaBatchBuf[batchOffset + SOA_HEADER_SIZE],
-                                (uint16)(SOA_MAX_MSG_SIZE - batchOffset - SOA_HEADER_SIZE));
+        dataLen = SOA_ReadNotifierValue(
+            svcIdx,
+            &s_soaBatchBuf[batchOffset + SOA_HEADER_SIZE],
+            (uint16)(SOA_MAX_MSG_SIZE - batchOffset - SOA_HEADER_SIZE));
         if (dataLen == 0U)
         {
             continue;
@@ -237,19 +286,33 @@ static void SOA_SendAllNotifierInitValues(void)
         SOA_SerializeHeader(&s_soaBatchBuf[batchOffset], &hdr);
 
         msgLen = SOA_HEADER_SIZE + dataLen;
-        batchOffset += msgLen;
 
-        /* Initialize change-detection cache for this Notifier */
-        s_soaState.notifCache[i].prevLen =
-            svc->readFunc(s_soaState.notifCache[i].prevData, SOA_MAX_DATA_SIZE);
-        s_soaState.notifCache[i].isValid = TRUE;
+        /* Keep the exact value included in the batch, but do not make the
+         * cache valid until PICC confirms that the batch was accepted. */
+        (void)memcpy(s_soaState.notifCache[i].prevData,
+                     &s_soaBatchBuf[batchOffset + SOA_HEADER_SIZE], dataLen);
+        s_soaState.notifCache[i].prevLen = dataLen;
+        s_soaState.notifCache[i].isValid = FALSE;
+        notifierBuilt[i] = TRUE;
+
+        batchOffset += msgLen;
     }
 
     /* Phase 2: Send the entire batch in ONE PICC_SendEvent call */
     if (batchOffset > 0U)
     {
-        (void)PICC_SendEvent(PICC_APP_SOA, SOA_IPC_EVENT_ID_FOR_NOTIF,
-                             s_soaBatchBuf, batchOffset, PICC_EVENT_WITHOUT_ACK);
+        if (PICC_SendEvent(PICC_APP_SOA, SOA_IPC_EVENT_ID_FOR_NOTIF,
+                           s_soaBatchBuf, batchOffset,
+                           PICC_EVENT_WITHOUT_ACK) == PICC_E_OK)
+        {
+            for (i = 0U; i < SOA_NOTIFIER_COUNT; i++)
+            {
+                if (notifierBuilt[i] != FALSE)
+                {
+                    s_soaState.notifCache[i].isValid = TRUE;
+                }
+            }
+        }
     }
 }
 
@@ -264,15 +327,9 @@ static void SOA_CheckAndSendNotifiers(void)
     for (i = 0U; i < SOA_NOTIFIER_COUNT; i++)
     {
         uint8 svcIdx = g_soaNotifierIndices[i];
-        const SOA_ServiceConfig_t *svc = &g_soaServiceTable[svcIdx];
         uint16 curLen;
 
-        if (svc->readFunc == NULL_PTR)
-        {
-            continue;
-        }
-
-        curLen = svc->readFunc(tmpBuf, SOA_MAX_DATA_SIZE);
+        curLen = SOA_ReadNotifierValue(svcIdx, tmpBuf, SOA_MAX_DATA_SIZE);
         if (curLen == 0U)
         {
             continue;
@@ -287,13 +344,14 @@ static void SOA_CheckAndSendNotifiers(void)
             continue;
         }
 
-        /* Value changed — send Notifier */
-        (void)SOA_SendNotifier(svcIdx);
-
-        /* Update cache */
-        (void)memcpy(s_soaState.notifCache[i].prevData, tmpBuf, curLen);
-        s_soaState.notifCache[i].prevLen = curLen;
-        s_soaState.notifCache[i].isValid = TRUE;
+        /* Commit the cache only after PICC accepts the event. A temporary
+         * link/buffer failure is therefore retried on the next 10ms cycle. */
+        if (SOA_SendNotifierData(svcIdx, tmpBuf, curLen) == PICC_E_OK)
+        {
+            (void)memcpy(s_soaState.notifCache[i].prevData, tmpBuf, curLen);
+            s_soaState.notifCache[i].prevLen = curLen;
+            s_soaState.notifCache[i].isValid = TRUE;
+        }
     }
 }
 
@@ -473,9 +531,8 @@ void SoaAdapter_Init(void)
     (void)memset(&s_soaState, 0, sizeof(s_soaState));
     s_soaState.prevLinkState = PICC_LINK_STATE_DISCONNECTED;
 
-    (void)PICC_Init(PICC_APP_SOA, &soa_cfg);
-
-    s_soaState.isInitialized = TRUE;
+    s_soaState.isInitialized =
+        (PICC_Init(PICC_APP_SOA, &soa_cfg) == PICC_E_OK) ? TRUE : FALSE;
 }
 
 /**
@@ -535,7 +592,7 @@ void SoaAdapter_Main(void)
  */
 void SoaAdapter_CanRxProcess(void)
 {
-    (void)FlexCAN_Message_Rx_unpack(STANDARD_200_RX_ID, &g_rx_Standard_200_Rx);
+    (void)HpcCan_ReceiveDecoded(STANDARD_200_RX_ID, &g_rx_Standard_200_Rx);
 }
 
 /**
@@ -543,7 +600,7 @@ void SoaAdapter_CanRxProcess(void)
  */
 void SoaAdapter_CanTxProcess(void)
 {
-    (void)FlexCAN_Message_Tx_pack(STANDARD_100_TX_ID, &g_tx_Standard_100_Tx);
+    (void)HpcCan_TransmitEncoded(STANDARD_100_TX_ID, &g_tx_Standard_100_Tx);
 }
 
 #if defined(__cplusplus)

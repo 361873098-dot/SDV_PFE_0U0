@@ -48,6 +48,10 @@
 #include "lwip/api.h"
 #include "lwip/arch.h"
 
+/* The 10ms task runs CAN, PICC, SOA, HM and STM on one stack. Match the
+ * validated reference allocation instead of the 90-word minimal stack. */
+#define HPC_TASK_10MS_STACK_SIZE    (320U)
+
 #include "lwip/tcp.h"
 #include "lwip/udp.h"
 #include "lwip/dns.h"
@@ -73,6 +77,7 @@
 #include "System_Cpuload.h"
 
 #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
+#include "HpcCan_Driver.h"
 #include "soa_adapter_main.h"
 #include "hm.h"
 #endif
@@ -107,7 +112,7 @@ void task_m7_core0_1ms(void *pvParameters)
     {
         OS_TASKCOUNT_INC_CTR(M7_Core0_1ms);
         /*  Add user application code here  */
-        
+
         /* Cyclic lwIP timers check */
         sys_check_timeouts();
 
@@ -160,6 +165,12 @@ void task_m7_core0_10ms(void *pvParameters)
     for ( ;; )
     {
         OS_TASKCOUNT_INC_CTR(M7_Core0_10ms);
+        /* Process CAN first so the SOA getters/notifiers see the newest
+         * values, matching the original reference task order. */
+    #if (HPC_PFE_ENABLE_CAN_APPLICATION == 1U)
+        HpcCan_MainFunction_10ms();
+    #endif
+
         /* Ported periodic task dispatch from original Ostask_main TASK_M0_10MS bucket. */
         PICC_StackProcess();
         PICC_HeartbeatProcess();
@@ -250,6 +261,8 @@ void task_m7_core0_1000ms(void *pvParameters)
  ***********************************************************************************************************************/
 void creat_tasks_m7(void)
 {
+    BaseType_t taskCreateStatus;
+
     PICC_PreOS_Init();
     Pwsm_Init();
     Nm_Init();
@@ -260,11 +273,50 @@ void creat_tasks_m7(void)
 #endif
     Stm_Init();
 
-    xTaskCreate((TaskFunction_t)task_m7_core0_1ms, "task_m7_core0_1ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL );
-    xTaskCreate((TaskFunction_t)task_m7_core0_5ms, "task_m7_core0_5ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+2, NULL );
-    xTaskCreate((TaskFunction_t)task_m7_core0_10ms, "task_m7_core0_10ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+3, NULL );
-    xTaskCreate((TaskFunction_t)task_m7_core0_100ms, "task_m7_core0_100ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+4, NULL );
-    xTaskCreate((TaskFunction_t)task_m7_core0_1000ms, "task_m7_core0_1000ms", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+5, NULL );
+    taskCreateStatus = xTaskCreate((TaskFunction_t)task_m7_core0_1ms,
+                                   "task_m7_core0_1ms",
+                                   configMINIMAL_STACK_SIZE, NULL,
+                                   tskIDLE_PRIORITY + 1, NULL);
+    if (taskCreateStatus != pdPASS) {
+        taskDISABLE_INTERRUPTS();
+        while (1) { /* Task creation failed */ }
+    }
+
+    taskCreateStatus = xTaskCreate((TaskFunction_t)task_m7_core0_5ms,
+                                   "task_m7_core0_5ms",
+                                   configMINIMAL_STACK_SIZE, NULL,
+                                   tskIDLE_PRIORITY + 2, NULL);
+    if (taskCreateStatus != pdPASS) {
+        taskDISABLE_INTERRUPTS();
+        while (1) { /* Task creation failed */ }
+    }
+
+    taskCreateStatus = xTaskCreate((TaskFunction_t)task_m7_core0_10ms,
+                                   "task_m7_core0_10ms",
+                                   HPC_TASK_10MS_STACK_SIZE, NULL,
+                                   tskIDLE_PRIORITY + 3, NULL);
+    if (taskCreateStatus != pdPASS) {
+        taskDISABLE_INTERRUPTS();
+        while (1) { /* Task creation failed */ }
+    }
+
+    taskCreateStatus = xTaskCreate((TaskFunction_t)task_m7_core0_100ms,
+                                   "task_m7_core0_100ms",
+                                   configMINIMAL_STACK_SIZE, NULL,
+                                   tskIDLE_PRIORITY + 4, NULL);
+    if (taskCreateStatus != pdPASS) {
+        taskDISABLE_INTERRUPTS();
+        while (1) { /* Task creation failed */ }
+    }
+
+    taskCreateStatus = xTaskCreate((TaskFunction_t)task_m7_core0_1000ms,
+                                   "task_m7_core0_1000ms",
+                                   configMINIMAL_STACK_SIZE, NULL,
+                                   tskIDLE_PRIORITY + 5, NULL);
+    if (taskCreateStatus != pdPASS) {
+        taskDISABLE_INTERRUPTS();
+        while (1) { /* Task creation failed */ }
+    }
 
     /* PICC RX message processing task.
      * The IPCF RX callback PICC_data_mng_rx_cb() (ISR context) pushes every
@@ -276,9 +328,14 @@ void creat_tasks_m7(void)
      * no Pong/response is ever sent, and the heartbeat missCount times out ->
      * PICC_LinkGetState() returns DISCONNECTED -> all app links stay
      * DISCONNECTED. (Priority +4 so RX is processed promptly.) */
-    xTaskCreate((TaskFunction_t)PICC_Rx_Msg_10ms_Task, "RxMsgTask",
-                (unsigned short)(configMINIMAL_STACK_SIZE * 2), NULL,
-                tskIDLE_PRIORITY + 4, NULL );
+    taskCreateStatus = xTaskCreate((TaskFunction_t)PICC_Rx_Msg_10ms_Task,
+                                   "RxMsgTask",
+                                   (unsigned short)(configMINIMAL_STACK_SIZE * 2),
+                                   NULL, tskIDLE_PRIORITY + 4, NULL);
+    if (taskCreateStatus != pdPASS) {
+        taskDISABLE_INTERRUPTS();
+        while (1) { /* Task creation failed */ }
+    }
 
     vTaskStartScheduler();
 }

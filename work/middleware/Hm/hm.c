@@ -31,14 +31,13 @@
 #include "picc_api.h"
 #include "hm.h"
 #include "hm_cnf.h"
-#include "FlexCAN_Ip_main.h"
+#include "HpcCan_Driver.h"
 #include "TJA1145A_Spi_Baremetal.h"
 
 #include <string.h>
 #include "Pmic_driver_main.h"
 #include "CDD_Pmic.h"
 #include "CDD_I2c.h"
-#include "FlexCAN_Ip_HwAccess.h"
 /***********************************************************************************************************************
 *  local variable definitions (module local variables)
 ***********************************************************************************************************************/
@@ -92,8 +91,14 @@ static boolean Hm_IsKl30UnderVoltage(void)
  ***********************************************************************************************************************/
 static boolean Hm_IsCan0BusOff(void)
 {
-	 uint32 errorStatus = FlexCAN_Ip_GetErrorStatus(0U);
-	 return ((errorStatus & FLEXCAN_IP_ESR1_FLTCONF_BUS_OFF) != 0U) ? TRUE : FALSE;
+	HpcCan_DiagnosticInfoType canDiag;
+
+	if (HpcCan_GetBusDiagnostics(&canDiag) != HPC_CAN_STATUS_OK)
+	{
+		return FALSE;
+	}
+
+	return (canDiag.busState == HPC_CAN_BUS_STATE_BUS_OFF) ? TRUE : FALSE;
 }
 
 /***********************************************************************************************************************
@@ -355,9 +360,9 @@ void Hm_Main(void)
 
 	if (Hm_ReportFault_CycleCnt++ >= HM_REPORT_FAULT_CYCLE_TICKS)
 	{
-		Pmic_ReadRegister(PmicConf_PmicDevice_PmicDevice_0, PMIC_MAIN_UNIT, PMIC_VR55XX_M_FLAG1_ADDR8, &M_Flag1RegData);
-		Pmic_ReadRegister(PmicConf_PmicDevice_PmicDevice_0, PMIC_MAIN_UNIT, PMIC_VR55XX_M_FLAG2_ADDR8, &M_Flag2RegData);
-		Pmic_ReadRegister(PmicConf_PmicDevice_PmicDevice_0, PMIC_MAIN_UNIT, PMIC_VR55XX_M_FLAG3_ADDR8, &M_Flag3RegData);
+		Pmic_ReadRegister(PmicConf_PmicDevice_PmicDevice_0, PMIC_MAIN_UNIT, PMIC_VR55XX_M_FLAG1_ADDR8, &M_Flag1RegData.Value);
+		Pmic_ReadRegister(PmicConf_PmicDevice_PmicDevice_0, PMIC_MAIN_UNIT, PMIC_VR55XX_M_FLAG2_ADDR8, &M_Flag2RegData.Value);
+		Pmic_ReadRegister(PmicConf_PmicDevice_PmicDevice_0, PMIC_MAIN_UNIT, PMIC_VR55XX_M_FLAG3_ADDR8, &M_Flag3RegData.Value);
 		
 		Hm_ReportFault_Task();
 

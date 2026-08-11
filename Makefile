@@ -300,6 +300,7 @@ ifeq ($(COMPILER),GCC)
         -mfloat-abi=hard  \
         -ggdb3 \
         -Wl,-Map,$(ODIR)/$(APP_NAME).map \
+        -Wl,--print-memory-usage \
         -lc \
         -lm \
         -lgcc \
@@ -761,6 +762,11 @@ $(OUT_FILES): prepare_generated
 build: prepare_generated $(ODIR) $(OUT_FILES) $(ODIR)/$(APP_NAME).elf $(ODIR)/$(APP_NAME).bin \
     $(DEBUGRAM_DIR)/$(APP_NAME).elf $(DEBUGRAM_DIR)/$(APP_NAME).bin $(DEBUGRAM_DIR)/$(APP_NAME).map
 
+# Relink on every explicit build so the linker memory-usage table is always
+# refreshed in the console and the build log, even when no source changed.
+.PHONY: FORCE_LINK
+FORCE_LINK:
+
 .PHONY: prepare_generated
 prepare_generated: ; @if [ ! -f "$(GDIR)/include/pfe_cfg.h" ]; then echo "Generated config missing, running make generate..."; $(MAKE) generate HW=$(HW); fi
 
@@ -782,9 +788,18 @@ $(ODIR)/%.o : %.S
 	@$(AS) $(ASOPT) $< -o $@
 
 # Link all the object files to become one elf file
-$(ODIR)/$(APP_NAME).elf: $(OUT_FILES) $(LINKER_DEF)
+$(ODIR)/$(APP_NAME).elf: $(OUT_FILES) $(LINKER_DEF) FORCE_LINK
 	@echo LD $@
-	$(LD) $(LDOPT) $(OUT_FILES) -o $@
+	@$(LD) $(LDOPT) $(OUT_FILES) -o $@ \
+		> $(ODIR)/$(APP_NAME)_memory_usage_raw.log \
+		2> $(ODIR)/$(APP_NAME)_link_warnings.log; \
+		RC=$$?; \
+		awk -f scripts/format_memory_usage.awk \
+			$(ODIR)/$(APP_NAME)_memory_usage_raw.log \
+			> $(ODIR)/$(APP_NAME)_memory_usage.log; \
+		cat $(ODIR)/$(APP_NAME)_memory_usage.log; \
+		cat $(ODIR)/$(APP_NAME)_link_warnings.log >&2; \
+		exit $$RC
 
 # Convert the ELF file to a binary file
 $(ODIR)/$(APP_NAME).bin: $(ODIR)/$(APP_NAME).elf

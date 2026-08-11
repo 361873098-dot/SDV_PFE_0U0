@@ -23,6 +23,8 @@ if "%JOBS%"=="" set "JOBS=4"
 set "TARGET_BOARD=RDB3"
 set "ODIR=output_%TARGET_BOARD%"
 set "APP_NAME=hpc_m7"
+set "LOG_DIR=build_logs"
+set "LATEST_LOG=%LOG_DIR%\build_latest.log"
 set "RUN_ONCE=FALSE"
 
 if /i "%~1"=="--build" set "RUN_ONCE=TRUE" & goto BUILD
@@ -75,7 +77,7 @@ echo [INFO] Parallel jobs: %JOBS%
 echo [INFO] Output dir:   %ODIR%
 echo.
 pushd "%ROOT%"
-"%CYGWIN_BASH%" -c "export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && cd \"$(cygpath -u '%ROOT%')\" && /usr/bin/make build -j%JOBS%"
+"%CYGWIN_BASH%" -c "export PATH=/usr/local/bin:/usr/bin:/bin:$PATH; cd \"$(cygpath -u '%ROOT%')\" || exit $?; mkdir -p '%LOG_DIR%' || exit $?; LOG_FILE=%LOG_DIR%/build_$(date +%%Y%%m%%d_%%H%%M%%S).log; set -o pipefail; /usr/bin/make build -j%JOBS% 2>&1 | tee \"$LOG_FILE\"; RC=${PIPESTATUS[0]}; cp \"$LOG_FILE\" '%LATEST_LOG%'; exit $RC"
 set "BUILD_RC=%ERRORLEVEL%"
 popd
 goto CHECK_RESULT
@@ -88,7 +90,7 @@ echo [INFO] Parallel jobs: %JOBS%
 echo [INFO] Output dir:   %ODIR%
 echo.
 pushd "%ROOT%"
-"%CYGWIN_BASH%" -c "export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && cd \"$(cygpath -u '%ROOT%')\" && /usr/bin/make clean clean_debugram && /usr/bin/make build -j%JOBS%"
+"%CYGWIN_BASH%" -c "export PATH=/usr/local/bin:/usr/bin:/bin:$PATH; cd \"$(cygpath -u '%ROOT%')\" || exit $?; /usr/bin/make clean clean_debugram || exit $?; mkdir -p '%LOG_DIR%' || exit $?; LOG_FILE=%LOG_DIR%/build_$(date +%%Y%%m%%d_%%H%%M%%S).log; set -o pipefail; /usr/bin/make build -j%JOBS% 2>&1 | tee \"$LOG_FILE\"; RC=${PIPESTATUS[0]}; cp \"$LOG_FILE\" '%LATEST_LOG%'; exit $RC"
 set "BUILD_RC=%ERRORLEVEL%"
 popd
 goto CHECK_RESULT
@@ -105,6 +107,7 @@ echo [INFO] Build finished successfully
 echo [INFO] ELF: %ROOT%\%ODIR%\%APP_NAME%.elf
 echo [INFO] BIN: %ROOT%\%ODIR%\%APP_NAME%.bin
 echo [INFO] MAP: %ROOT%\%ODIR%\%APP_NAME%.map
+echo [INFO] LOG: %ROOT%\%LATEST_LOG%
 if "%RUN_ONCE%"=="TRUE" exit /b 0
 pause
 goto MENU

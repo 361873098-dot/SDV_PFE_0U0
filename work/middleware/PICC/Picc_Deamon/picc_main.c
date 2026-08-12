@@ -222,8 +222,8 @@ static void PICC_DiagRecordAdd(PICC_DiagRecord_t *record, const uint8 *data, uin
          * 1. M-Core Server role: ProviderID == 41U (0x29) AND ConsumerID == 46U (0x2E)
          * 2. M-Core Client role: ProviderID == 47U (0x2F) AND ConsumerID == 42U (0x2A) */
         boolean isStmMsg = FALSE;
-        if (((msgPtr[0] == 21U) && (msgPtr[2] == 26U)) ||
-            ((msgPtr[0] == 81U) && (msgPtr[2] == 91U))) {
+        if (((msgPtr[0] == 71U) && (msgPtr[2] == 76U)) ||
+            ((msgPtr[0] == 3U) && (msgPtr[2] == 9U))) {
             isStmMsg = TRUE;
         }
 

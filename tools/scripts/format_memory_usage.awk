@@ -1,4 +1,4 @@
-# Convert GNU ld --print-memory-usage output into a more readable table.
+# Build helper: convert GNU ld --print-memory-usage output into a readable table.
 # Region Size in the original output is the total size of the region.
 
 function to_bytes(value, unit)

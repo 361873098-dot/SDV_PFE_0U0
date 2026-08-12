@@ -785,7 +785,7 @@ $(ODIR)/$(APP_NAME).elf: $(OUT_FILES) $(LINKER_DEF) FORCE_LINK
 		> $(ODIR)/$(APP_NAME)_memory_usage_raw.log \
 		2> $(ODIR)/$(APP_NAME)_link_warnings.log; \
 		RC=$$?; \
-		awk -f scripts/format_memory_usage.awk \
+		awk -f tools/scripts/format_memory_usage.awk \
 			$(ODIR)/$(APP_NAME)_memory_usage_raw.log \
 			> $(ODIR)/$(APP_NAME)_memory_usage.log; \
 		cat $(ODIR)/$(APP_NAME)_memory_usage.log; \

@@ -27,9 +27,23 @@ set "LOG_DIR=build_logs"
 set "LATEST_LOG=%LOG_DIR%\build_latest.log"
 set "RUN_ONCE=FALSE"
 
-if /i "%~1"=="--build" set "RUN_ONCE=TRUE" & goto BUILD
-if /i "%~1"=="--clean" set "RUN_ONCE=TRUE" & goto CLEAN
-if /i "%~1"=="--rebuild" set "RUN_ONCE=TRUE" & goto CLEAN_REBUILD
+if /i "%~1"=="--build" (
+    set "RUN_ONCE=TRUE"
+    goto BUILD
+)
+if /i "%~1"=="--clean" (
+    set "RUN_ONCE=TRUE"
+    goto CLEAN
+)
+if /i "%~1"=="--rebuild" (
+    set "RUN_ONCE=TRUE"
+    goto CLEAN_REBUILD
+)
+if /i "%~1"=="--axivion" (
+    set "RUN_ONCE=TRUE"
+    set "AXIVION_INPUT=%~2"
+    goto AXIVION
+)
 
 :MENU
 cls
@@ -40,18 +54,56 @@ echo.
 echo   1. Build all          (compile + link, no clean)
 echo   2. Clean all          (clear %ODIR%, DebugRAM, and generate_RDB3 contents)
 echo   3. Clean and rebuild  (clear %ODIR% and DebugRAM, then build)
-echo   4. Exit
+echo   4. Axivion analysis   (select a .c file or a directory)
+echo   5. Exit
 echo.
 echo ------------------------------------------------------------
 :MENU_SELECTION
 set "MENU_SELECTION="
-set /p "MENU_SELECTION=Please select (1-4), then press Enter: "
-if "%MENU_SELECTION%"=="4" goto EXIT
+set /p "MENU_SELECTION=Please select (1-5), then press Enter: "
+if "%MENU_SELECTION%"=="5" goto EXIT
+if "%MENU_SELECTION%"=="4" goto AXIVION
 if "%MENU_SELECTION%"=="3" goto CLEAN_REBUILD
 if "%MENU_SELECTION%"=="2" goto CLEAN
 if "%MENU_SELECTION%"=="1" goto BUILD
-echo [ERROR] Invalid selection. Enter a number from 1 to 4.
+echo [ERROR] Invalid selection. Enter a number from 1 to 5.
 goto MENU_SELECTION
+
+:AXIVION
+echo.
+if not defined AXIVION_INPUT (
+    echo Enter a .c file path or a directory path.
+    echo A directory selection recursively analyzes all .c files below it.
+    set /p "AXIVION_INPUT=Axivion input path: "
+)
+if not defined AXIVION_INPUT (
+    echo [ERROR] Axivion input path cannot be empty.
+    if "%RUN_ONCE%"=="TRUE" exit /b 1
+    pause
+    goto MENU
+)
+if not "%RUN_ONCE%"=="TRUE" (
+    echo.
+    set "AXIVION_CONFIRM="
+    set /p "AXIVION_CONFIRM=Path accepted. Press Enter to start Axivion analysis: "
+)
+echo.
+echo [INFO] Starting Axivion analysis ...
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%ROOT%\tools\scripts\run_axivion.ps1" -ProjectRoot "%ROOT%" -InputPath "%AXIVION_INPUT%" -Jobs %JOBS%
+set "AXIVION_RC=%ERRORLEVEL%"
+echo.
+if not "%AXIVION_RC%"=="0" (
+    echo [ERROR] Axivion analysis failed with code %AXIVION_RC%
+) else (
+    echo [INFO] Axivion analysis finished successfully
+    echo [INFO] Latest Axivion CSV: %ROOT%\%LOG_DIR%\axivion_latest.csv
+    echo [INFO] Latest Axivion AXV: %ROOT%\%LOG_DIR%\axivion_latest.axv
+)
+echo [INFO] Latest Axivion log: %ROOT%\%LOG_DIR%\axivion_latest.log
+set "AXIVION_INPUT="
+if "%RUN_ONCE%"=="TRUE" exit /b %AXIVION_RC%
+pause
+goto MENU
 
 :CLEAN
 echo.

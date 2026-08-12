@@ -447,14 +447,12 @@ ifeq ($(SLAVE_DRIVER),FALSE)
 endif
 
 INCLUDE_DIRS +=  work/COM/HpcCan \
-                 work/COM/FlexCAN_Ip \
                  work/driver/TJA145A_Spi_Ip \
                  work/driver/PMIC_Driver \
                  $(MIDDLEWARE_DIR)/Soa_Adapter \
                  $(MIDDLEWARE_DIR)/Hm
 
 SRC_DIRS     +=  work/COM/HpcCan \
-                 work/COM/FlexCAN_Ip \
                  work/driver/TJA145A_Spi_Ip \
                  $(MIDDLEWARE_DIR)/Soa_Adapter \
                  $(MIDDLEWARE_DIR)/Hm

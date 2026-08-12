@@ -48,10 +48,6 @@
 #include "lwip/api.h"
 #include "lwip/arch.h"
 
-/* The 10ms task runs CAN, PICC, SOA, HM and STM on one stack. Match the
- * validated reference allocation instead of the 90-word minimal stack. */
-#define HPC_TASK_10MS_STACK_SIZE    (320U)
-
 #include "lwip/tcp.h"
 #include "lwip/udp.h"
 #include "lwip/dns.h"
@@ -83,8 +79,11 @@
 #include "Nm.h"
 
 /***********************************************************************************************************************
-*  local type definitions (STRUCT, TYPEDEF, ...)
+*  local macro definitions
 ***********************************************************************************************************************/
+/** 10ms periodic task stack depth in StackType_t words (320 words = 1280 bytes on Cortex-M7). */
+#define OSTASK_10MS_STACK_SIZE             (320U)
+
 #define main_TASK_PRIORITY                ( tskIDLE_PRIORITY + 2 )
 
 /***********************************************************************************************************************
@@ -283,7 +282,7 @@ void creat_tasks_m7(void)
 
     taskCreateStatus = xTaskCreate((TaskFunction_t)task_m7_core0_10ms,
                                    "task_m7_core0_10ms",
-                                   HPC_TASK_10MS_STACK_SIZE, NULL,
+                                   OSTASK_10MS_STACK_SIZE, NULL,
                                    tskIDLE_PRIORITY + 3, NULL);
     if (taskCreateStatus != pdPASS) {
         taskDISABLE_INTERRUPTS();

@@ -141,7 +141,10 @@ extern "C"{
 #include "Gpt_MemMap.h"
 
 
-/*Gpt_Ipw_PluginMacros.m*/
+
+
+
+ /*Gpt_Ipw_PluginMacros.m*/
 /** @} */
 
 
@@ -193,6 +196,7 @@ static const Gpt_ChannelConfigType Gpt_InitChannelPB[GPT_CONF_CHANNELS_PB] =
 };
 
     
+
 /* VariantPostBuild or more than 1 configured variant */
 
     /**

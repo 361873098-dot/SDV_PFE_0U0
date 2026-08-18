@@ -40,7 +40,7 @@ static Bl_BootImageFragmentType ipcp_freertos[1] =
         /* u32DestinationAddress */
         0x34400000,
         /* u32Size */
-        2621440,
+        2445312,
 		/* u8SMRIndex */
         0,
         /* u32CrcValue */
@@ -60,7 +60,7 @@ static Bl_BootImageFragmentType linux_bsp_atf[1] =
         /* u16MemBlockId */
         BL_INVALID_MEMBLOCK_ID,
         /* u32DestinationAddress */
-        0x342f9a00,
+        0x342f7200,
         /* u32Size */
         262144,
 		/* u8SMRIndex */

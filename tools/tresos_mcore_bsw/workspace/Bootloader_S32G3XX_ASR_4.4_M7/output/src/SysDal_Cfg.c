@@ -31,7 +31,6 @@ extern "C"{
 #define SYSDAL_CFG_SW_PATCH_VERSION_C                0
 #include "Port.h"
 #include "Mcl.h"
-#include "Fls.h"
 #include "SysDal_Rtm.h"
 #include "Gpt.h"
 #include "Qspi_Ip.h"
@@ -89,7 +88,6 @@ FUNC (void, SYSDAL_APP_CODE)SysDal_InitBlockOne(void)
 {
     Port_Init(&Port_Config);
     Mcl_Init(&Mcl_Config);
-    Fls_Init(NULL_PTR);
     SysDal_Rtm_Init();
     Gpt_Init(&Gpt_Config);
 }

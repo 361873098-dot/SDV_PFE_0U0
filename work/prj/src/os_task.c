@@ -77,6 +77,7 @@
 #include "hm.h"
 #include "stm_main.h"
 #include "Nm.h"
+#include "time_sync.h"
 
 /***********************************************************************************************************************
 *  local macro definitions
@@ -175,6 +176,7 @@ void task_m7_core0_10ms(void *pvParameters)
         DiagMgmt_Main();
         Hm_Main();
         Stm_Main();
+        TimeSync_Main();
 
 #if (PICC_DIAG_RECORD_ENABLE == 1U)
         PICC_DiagUpdateLinkState();
@@ -261,6 +263,7 @@ void creat_tasks_m7(void)
     SoaAdapter_Init();
     Hm_Init();
     Stm_Init();
+    TimeSync_Init();
 
     taskCreateStatus = xTaskCreate((TaskFunction_t)task_m7_core0_1ms,
                                    "task_m7_core0_1ms",

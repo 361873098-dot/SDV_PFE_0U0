@@ -416,7 +416,8 @@ INCLUDE_DIRS += $(PFE_INCLUDE_DIRS) \
                 $(MIDDLEWARE_DIR)/Pwsm/include \
                 $(MIDDLEWARE_DIR)/PICC/Picc_Deamon \
                 $(MIDDLEWARE_DIR)/DM \
-				$(MIDDLEWARE_DIR)/Stm \
+                $(MIDDLEWARE_DIR)/Stm \
+                $(MIDDLEWARE_DIR)/TimeSync \
                 $(MIDDLEWARE_DIR)/Nm/include \
                 work/driver/EEPROM \
                 work/System \
@@ -436,6 +437,7 @@ SRC_DIRS     += $(GDIR)/src \
                 $(MIDDLEWARE_DIR)/PICC/Picc_Deamon \
                 $(MIDDLEWARE_DIR)/DM \
 				$(MIDDLEWARE_DIR)/Stm \
+                $(MIDDLEWARE_DIR)/TimeSync \
                 $(MIDDLEWARE_DIR)/Nm/src \
                 work/driver/EEPROM \
                 work/System \

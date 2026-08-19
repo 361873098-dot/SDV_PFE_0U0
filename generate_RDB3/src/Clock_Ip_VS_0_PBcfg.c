@@ -134,7 +134,7 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
         0U,                                 /* ircoscsCount */
         0U,                                 /* xoscsCount */
         2U,                                 /* pllsCount */
-        8U,                                /* selectorsCount */
+        9U,                                /* selectorsCount */
         13U,                                /* dividersCount */
         3U,                                 /* dividerTriggersCount */
         0U,                                /* fracDivsCount */
@@ -293,64 +293,66 @@ const Clock_Ip_ClockConfigType Mcu_aClockConfigPB_VS_0[3U] = {
 
             #if CLOCK_IP_SELECTORS_NO > 0U
             {
+                FLEXCAN_CLK,                     /* Clock name associated to selector */
+                FIRC_CLK,                       /* Name of the selected input source */
+            },
+            #endif
+        
+            #if CLOCK_IP_SELECTORS_NO > 1U
+            {
                 PFE_PE_CLK,                     /* Clock name associated to selector */
                 ACCEL_PLL_PHI1_CLK,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 1U
+            #if CLOCK_IP_SELECTORS_NO > 2U
             {
                 PFEMAC0_TX_DIV_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_0_TX,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 2U
+            #if CLOCK_IP_SELECTORS_NO > 3U
             {
                 PFEMAC1_TX_DIV_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_1_TX,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 3U
+            #if CLOCK_IP_SELECTORS_NO > 4U
             {
                 PFEMAC0_RX_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_0_CDR,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 4U
+            #if CLOCK_IP_SELECTORS_NO > 5U
             {
                 PFEMAC1_RX_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_1_CDR,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 5U
+            #if CLOCK_IP_SELECTORS_NO > 6U
             {
                 PFEMAC0_TX_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_0_TX,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 6U
+            #if CLOCK_IP_SELECTORS_NO > 7U
             {
                 PFEMAC1_TX_CLK,                     /* Clock name associated to selector */
                 SERDES_1_XPCS_1_TX,                       /* Name of the selected input source */
             },
             #endif
         
-            #if CLOCK_IP_SELECTORS_NO > 7U
+            #if CLOCK_IP_SELECTORS_NO > 8U
             {
                 PFEMAC2_TX_CLK,                     /* Clock name associated to selector */
                 PFEMAC2_TX_DIV_CLK,                       /* Name of the selected input source */
             },
             #endif
-        
-            {
-                RESERVED_CLK,           /* Clock name associated to selector */
-                RESERVED_CLK,           /* Name of the selected input source */
-            },
         
             {
                 RESERVED_CLK,           /* Clock name associated to selector */

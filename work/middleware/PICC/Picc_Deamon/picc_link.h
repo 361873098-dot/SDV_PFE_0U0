@@ -31,7 +31,7 @@ extern "C" {
 #define PICC_MAX_CHANNELS               (2U)
 
 /** Maximum supported link app contexts (per-app, matches PICC_APP_MAX) */
-#define PICC_MAX_LINK_APPS              (10U)
+#define PICC_MAX_LINK_APPS              (11U)
 
 /*==================================================================================================
  *                                         Enum Types

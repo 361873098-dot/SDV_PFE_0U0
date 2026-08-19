@@ -55,11 +55,13 @@ typedef enum {
     PICC_APP_STM_CLI  = 3U,   /**< STM Client Role     (ConsumerID: 0x2A) */
     PICC_APP_STORAGE  = 4U,   /**< Storage Module      (ProviderID: 0x41) */
     PICC_APP_DIAG     = 5U,   /**< Diagnostic Module   (ProviderID: 0x51) */
-    PICC_APP_TIMESYNC = 6U,   /**< Time Synchronization(ProviderID: 0x61) */
+    PICC_APP_TIMESYNC_CLIENT = 6U, /**< Time sync client (ConsumerID: 0x3D) */
+    PICC_APP_TIMESYNC = PICC_APP_TIMESYNC_CLIENT, /**< Backward-compatible alias */
     PICC_APP_SOA      = 7U,   /**< SOA Module          (ProviderID: 0x71) */
     PICC_APP_RSV0     = 8U,   /**< Reserved 0 */
     PICC_APP_RSV1     = 9U,   /**< Reserved 1 */
-    PICC_APP_MAX      = 10U   /**< Max count (array size) */
+    PICC_APP_TIMESYNC_SERVER = 10U, /**< Wakeup/time server (ProviderID: 0x3F) */
+    PICC_APP_MAX      = 11U   /**< Max count (array size) */
 } PICC_AppIndex_e;
 
 /*==================================================================================================

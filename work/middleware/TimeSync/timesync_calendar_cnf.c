@@ -9,14 +9,14 @@
 * are reserved.
 *********************************************************************************
 *
-*  File name:           $Source: calendar_cnf.h $
+*  File name:           $Source: timesync_calendar_cnf.c $
 *  Revision:            $Revision: 1.0 $
 *  Author:              $Author: Li Song (uic59152)  $
-*  Module acronym:      CALENDAR
+*  Module acronym:      TIMESYNC_CALENDAR_CNF
 *  Specification:
 *  Date:                $Date: 2026/05/12  $
 *
-*  Description:     This Unit processes the Calendar configuration module
+*  Description:     This unit configures the TimeSync calendar module.
 *
 *********************************************************************************
 *
@@ -24,28 +24,22 @@
 *
 *
 *********************************************************************************/
-#ifndef CALENDAR_CNF_H
-#define CALENDAR_CNF_H  
 
 /***********************************************************************************************************************
 *  include files
 ***********************************************************************************************************************/
-#include "calendar.h"
+#include "timesync_calendar_cnf.h"
 
 /***********************************************************************************************************************
-*  define macros
+*  local variable definitions 
 ***********************************************************************************************************************/
-#define APPOINTMENT_LIST_NUM    (3U)
+
 /***********************************************************************************************************************
-*  global variable declarations
+*  global variable definitions
 ***********************************************************************************************************************/
-extern Appt_st g_appointment_list[APPOINTMENT_LIST_NUM];
+TimeSync_Appointment_t
+    g_TimeSyncAppointmentList[TIMESYNC_APPOINTMENT_LIST_SIZE] = {0};
 
 /***********************************************************************************************************************
 *  local function definitions
 ***********************************************************************************************************************/
-
-
-
-
-#endif

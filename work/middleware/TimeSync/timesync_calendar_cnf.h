@@ -9,14 +9,14 @@
 * are reserved.
 *********************************************************************************
 *
-*  File name:           $Source: time_sync_cnf.c $
+*  File name:           $Source: timesync_calendar_cnf.h $
 *  Revision:            $Revision: 1.0 $
 *  Author:              $Author: Li Song (uic59152)  $
-*  Module acronym:      TIME_SYNC_CNF
+*  Module acronym:      TIMESYNC_CALENDAR_CNF
 *  Specification:
 *  Date:                $Date: 2026/05/12  $
 *
-*  Description:     This Unit processes the TimeSync configuration module
+*  Description:     This unit configures the TimeSync calendar module.
 *
 *********************************************************************************
 *
@@ -24,18 +24,29 @@
 *
 *
 *********************************************************************************/
+#ifndef TIMESYNC_CALENDAR_CNF_H
+#define TIMESYNC_CALENDAR_CNF_H
 
 /***********************************************************************************************************************
 *  include files
 ***********************************************************************************************************************/
-#include "time_sync_cnf.h"
+#include "timesync_calendar.h"
 
 /***********************************************************************************************************************
-*  local variable definitions (module local variables)
+*  define macros
 ***********************************************************************************************************************/
+#define TIMESYNC_APPOINTMENT_LIST_SIZE    (3U)
+/***********************************************************************************************************************
+*  global variable declarations
+***********************************************************************************************************************/
+extern TimeSync_Appointment_t
+    g_TimeSyncAppointmentList[TIMESYNC_APPOINTMENT_LIST_SIZE];
 
 /***********************************************************************************************************************
-*  global function definitions
+*  local function definitions
 ***********************************************************************************************************************/
 
 
+
+
+#endif /* TIMESYNC_CALENDAR_CNF_H */

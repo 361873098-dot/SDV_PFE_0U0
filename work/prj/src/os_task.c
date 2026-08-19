@@ -77,7 +77,7 @@
 #include "hm.h"
 #include "stm_main.h"
 #include "Nm.h"
-#include "time_sync.h"
+#include "timesync.h"
 
 /***********************************************************************************************************************
 *  local macro definitions

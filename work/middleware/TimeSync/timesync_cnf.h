@@ -9,10 +9,10 @@
 * are reserved.
 *********************************************************************************
 *
-*  File name:           $Source: time_sync_cnf.h $
+*  File name:           $Source: timesync_cnf.h $
 *  Revision:            $Revision: 1.0 $
 *  Author:              $Author: Li Song (uic59152)  $
-*  Module acronym:      TIME_SYNC_CNF
+*  Module acronym:      TIMESYNC_CNF
 *  Specification:
 *  Date:                $Date: 2026/05/12  $
 *
@@ -24,13 +24,13 @@
 *
 *********************************************************************************/
 
-#ifndef TIME_SYNC_CNF_H
-#define TIME_SYNC_CNF_H
+#ifndef TIMESYNC_CNF_H
+#define TIMESYNC_CNF_H
 
 /***********************************************************************************************************************
 *  include files
 ***********************************************************************************************************************/
-#include "calendar_cnf.h"
+#include "timesync_calendar_cnf.h"
 
 /***********************************************************************************************************************
 *  define macros
@@ -59,7 +59,7 @@
 #define TIMESYNC_APPOINTMENT_RESPONSE_LEN    (8U)
 #define TIMESYNC_LIST_REQUEST_LEN            (2U)
 #define TIMESYNC_LIST_ITEM_LEN               (16U)
-#define TIMESYNC_LIST_TX_MAX_LEN             (APPOINTMENT_LIST_NUM * TIMESYNC_LIST_ITEM_LEN)
+#define TIMESYNC_LIST_TX_MAX_LEN             (TIMESYNC_APPOINTMENT_LIST_SIZE * TIMESYNC_LIST_ITEM_LEN)
 
 #define TIMESYNC_LIST_EMPTY                  (0x01U)
 #define TIMESYNC_LIST_NOT_EMPTY              (0x02U)
@@ -79,4 +79,4 @@
 
 
 
-#endif /* TIME_SYNC_CNF_H */
+#endif /* TIMESYNC_CNF_H */

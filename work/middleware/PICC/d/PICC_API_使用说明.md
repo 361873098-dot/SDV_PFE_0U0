@@ -4,7 +4,7 @@
 
 ```c
 // 只需传递 appIndex，驱动自动从 PICC_Init() 配置中获取 ID 和 channelId
-PICC_SendEvent(PICC_APP_TIMESYNC, 0x02U, data, len, PICC_EVENT_WITHOUT_ACK);
+PICC_SendEvent(PICC_APP_TIMESYNC_CLI, 0x02U, data, len, PICC_EVENT_WITHOUT_ACK);
 PICC_MethodRequest(PICC_APP_OTA, 0x02U, data, 2U, PICC_METHOD_WITH_RESPONSE);
 PICC_MethodResponse(PICC_APP_PWR, 2U, sessionId, 0x00, rspData, 1);
 ```
@@ -103,14 +103,15 @@ typedef enum {
     PICC_APP_PWR      = 0U,   /* 电源管理    (ProviderID: 0x01) */
     PICC_APP_OTA      = 1U,   /* OTA         (ProviderID: 0x11) */
     PICC_APP_HEALTH   = 2U,   /* 健康管理    (ProviderID: 0x21) */
-    PICC_APP_COMM     = 3U,   /* 通信管理    (ProviderID: 0x31) */
+    PICC_APP_STM_CLI  = 3U,   /* STM Client  (ConsumerID: 0x2A) */
     PICC_APP_STORAGE  = 4U,   /* 存储模块    (ProviderID: 0x41) */
     PICC_APP_DIAG     = 5U,   /* 诊断模块    (ProviderID: 0x51) */
-    PICC_APP_TIMESYNC = 6U,   /* 时间同步    (ProviderID: 0x61) */
-    PICC_APP_SOA      = 7U,   /* SOA 模块    (ProviderID: 0x71) */
-    PICC_APP_RSV0     = 8U,   /* 预留 0 */
-    PICC_APP_RSV1     = 9U,   /* 预留 1 */
-    PICC_APP_MAX      = 10U   /* 最大数量（数组大小） */
+    PICC_APP_TIMESYNC_CLI = 6U, /* TimeSync Client (ConsumerID: 0x3D) */
+    PICC_APP_TIMESYNC_SRV = 7U, /* TimeSync Server (ProviderID: 0x3F) */
+    PICC_APP_SOA      = 8U,   /* SOA 模块    (ProviderID: 0x71) */
+    PICC_APP_RSV0     = 9U,   /* 预留 0 */
+    PICC_APP_RSV1     = 10U,  /* 预留 1 */
+    PICC_APP_MAX      = 11U   /* 最大数量（数组大小） */
 } PICC_AppIndex_e;
 ```
 
@@ -306,7 +307,7 @@ void TimeSync_Init(void)
         .methodHandler     = NULL,
         .eventHandler      = TimeSync_EventHandler   /* 注册即时回调 */
     };
-    (void)PICC_Init(PICC_APP_TIMESYNC, &cfg);
+    (void)PICC_Init(PICC_APP_TIMESYNC_CLI, &cfg);
 }
 
 void TimeSync_Main(void)  /* 10ms 周期任务 */
@@ -316,7 +317,7 @@ void TimeSync_Main(void)  /* 10ms 周期任务 */
 
     /* 【提取通知：A ➡ M】（EVENT 接收通知） */
     /* 只需这 1 个 API（无需查全局变量），就能同时提取远端包裹和刚才顺手记录的本地时间戳！ */
-    if (PICC_GetEventData(PICC_APP_TIMESYNC, TIMESYNC_EVENT_SYNC_REQUEST,
+    if (PICC_GetEventData(PICC_APP_TIMESYNC_CLI, TIMESYNC_EVENT_SYNC_REQUEST,
                           remoteData, sizeof(remoteData), &remoteLen,
                           cbResult, &cbLen) == PICC_E_OK)
     {
@@ -331,7 +332,7 @@ void TimeSync_Main(void)  /* 10ms 周期任务 */
         /* 【主动发送通知：M ➡ A】（EVENT 发送单向通知） */
         /* 同步计算完成后，如果想立刻反向报喜给 A核，因为是 EVENT，发出去就不管了 */
         uint8 syncDoneMsg[1] = { 0x01 };
-        (void)PICC_SendEvent(PICC_APP_TIMESYNC, TIMESYNC_EVENT_SYNC_DONE,
+        (void)PICC_SendEvent(PICC_APP_TIMESYNC_CLI, TIMESYNC_EVENT_SYNC_DONE,
                              syncDoneMsg, 1, PICC_EVENT_WITHOUT_ACK);
     }
 }

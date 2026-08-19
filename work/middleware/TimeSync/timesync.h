@@ -9,90 +9,95 @@
 * are reserved.
 *********************************************************************************
 *
-*  File name:           $Source: Calendar.h $
+*  File name:           $Source: timesync.h $
 *  Revision:            $Revision: 1.0 $
 *  Author:              $Author: Li Song (uic59152)  $
-*  Module acronym:      CALENDAR
+*  Module acronym:      TIMESYNC
 *  Specification:
 *  Date:                $Date: 2026/05/12  $
 *
-*  Description:     This Unit processes the Calendar module
-*
+*  Description:     This Unit processes the TimeSync module
 *********************************************************************************
 *
 *  Changes:
 *
 *
 *********************************************************************************/
-#ifndef CALENDAR_H
-#define CALENDAR_H
+
+#ifndef TIMESYNC_H
+#define TIMESYNC_H
 
 /***********************************************************************************************************************
 *  include files
 ***********************************************************************************************************************/
 #include "Platform.h"
+#include "timesync_calendar.h"
+
 
 /***********************************************************************************************************************
-*  variable definitions 
-***********************************************************************************************************************/
-typedef struct
-{
-    uint16 Year;
-    uint8 Month;
-    uint8 Day;
-    uint8 Hour;
-    uint8 Minute;
-    uint8 Second;
-}DateTime_st;
-
-
-typedef struct
-{
-    uint32 App_Id;
-    uint8 ClockType;
-    boolean IsValid;
-    DateTime_st DateTime;
-    uint32 RelativeSeconds;
-}Appt_st;
-
-/***********************************************************************************************************************
-*  define macros
+*  local variable definitions (module local variables)
 ***********************************************************************************************************************/
 
-#define TIMESYNC_SECONDS_PER_MINUTE     (60ULL)
-#define TIMESYNC_SECONDS_PER_HOUR       (3600ULL)
-#define TIMESYNC_SECONDS_PER_DAY        (86400ULL)
-#define TIMESYNC_EPOCH_YEAR             (1970U)
 
 
 /***********************************************************************************************************************
 *  global function definitions
 ***********************************************************************************************************************/
+typedef struct __attribute__((packed))
+{
+    uint64 seconds;      /* Seconds since 1970/1/1 00:00:00 */
+    uint32 nanoseconds;  /* Nanoseconds part */
+    uint8 globalTimeValid;  /* 0x01: valid, 0x02/0x98/0x99: invalid */
+    uint8 localZone;  /* Local time zone offset from UTC in hours */
+    uint8 localZoneDecimals;  /* 0:00, 0:30, 0:45 */
+    uint8 localZoneSign;  /* 0: '+' or 1: '-' */
+    uint8 daylightSavingTime;  /* 0: inactive, 1: active */
+} TimeSync_Info_t;
+
+/** Runtime state intended for TRACE32 observation during IPCF tests. */
+typedef struct
+{
+    sint8 clientInitResult;
+    sint8 serverInitResult;
+    uint8 timeValid;
+    uint8 lastMethodId;
+    uint8 lastSessionId;
+    uint8 lastResult;
+    uint16 lastRxLength;
+    uint16 lastTxLength;
+    uint32 timeNoticeCount;
+    uint32 timestampRequestCount;
+    uint32 appointmentSetCount;
+    uint32 appointmentListCount;
+} TimeSync_Debug_t;
+
+extern TimeSync_Info_t g_TimeSyncInfo;
+extern TimeSync_DateTime_t g_TimeSyncDateTime;
+extern volatile TimeSync_Debug_t g_TimeSyncDebug;
+
 
 /***********************************************************************************************************************
- *  Function name    : TimeSync_ConvertSecondsToDateTime()
+ *  Function name    : TimeSync_Init()
  *
- *  Description      : Convert a given number of seconds since the epoch to a date and time.
+ *  Description      : Initialize the TimeSync module.
  *
- *  List of arguments: seconds - The number of seconds since the epoch.
- *                     dateTime - Pointer to a DateTime_st structure to store the result.
-
- *  Return value     : E_OK if the conversion was successful, E_NOT_OK otherwise.
+ *  List of arguments: none
+ *
+ *  Return value     : none
  *
  ***********************************************************************************************************************/
-extern Std_ReturnType TimeSync_ConvertSecondsToDateTime(const uint64 seconds, DateTime_st *dateTime);
+extern void TimeSync_Init(void);
 
 /***********************************************************************************************************************
- *  Function name    : TimeSync_ConvertDateTimeToSeconds()
+ *  Function name    : TimeSync_Main()
  *
- *  Description      : Convert a date and time to seconds since the epoch.
+ *  Description      : Main function for the TimeSync module.
  *
- *  List of arguments: dateTime - Pointer to a DateTime_st structure containing the date and time.
- *                     seconds - Pointer to store the seconds since the epoch.
+ *  List of arguments: none
  *
- *  Return value     : E_OK if the conversion was successful, E_NOT_OK otherwise.
+ *  Return value     : none
  *
  ***********************************************************************************************************************/
-extern Std_ReturnType TimeSync_ConvertDateTimeToSeconds(const DateTime_st dateTime, uint64 *seconds);
+extern void TimeSync_Main(void);
 
-#endif /* CALENDAR_H */
+#endif /* TIMESYNC_H */

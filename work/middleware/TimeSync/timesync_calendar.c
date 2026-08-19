@@ -9,14 +9,14 @@
 * are reserved.
 *********************************************************************************
 *
-*  File name:           $Source: Calendar.c $
+*  File name:           $Source: timesync_calendar.c $
 *  Revision:            $Revision: 1.0 $
 *  Author:              $Author: Li Song (uic59152)  $
-*  Module acronym:      CALENDAR
+*  Module acronym:      TIMESYNC_CALENDAR
 *  Specification:
 *  Date:                $Date: 2026/05/12  $
 *
-*  Description:     This Unit processes the Calendar module
+*  Description:     This unit processes the TimeSync calendar module.
 *
 *********************************************************************************
 *
@@ -29,8 +29,7 @@
 /***********************************************************************************************************************
 *  include files
 ***********************************************************************************************************************/
-#include "calendar.h"
-#include "calendar_cnf.h"
+#include "timesync_calendar.h"
 
 /***********************************************************************************************************************
 *  local variable definitions (module local variables)
@@ -117,12 +116,13 @@ static uint8 TimeSync_GetDaysInMonth(const uint16 year, const uint8 month)
  *  Description      : Convert a given number of seconds since the epoch to a date and time.
  *
  *  List of arguments: seconds - The number of seconds since the epoch.
- *                     dateTime - Pointer to a DateTime_st structure to store the result.
+ *                     dateTime - Pointer to a TimeSync_DateTime_t structure to store the result.
 
  *  Return value     : E_OK if the conversion was successful, E_NOT_OK otherwise.
  *
  ***********************************************************************************************************************/
-Std_ReturnType TimeSync_ConvertSecondsToDateTime(const uint64 seconds, DateTime_st *dateTime)
+Std_ReturnType TimeSync_ConvertSecondsToDateTime(uint64 seconds,
+                                                TimeSync_DateTime_t *dateTime)
 {
     uint64 days;
     uint64 secondsOfDay;
@@ -137,11 +137,11 @@ Std_ReturnType TimeSync_ConvertSecondsToDateTime(const uint64 seconds, DateTime_
     days = seconds / TIMESYNC_SECONDS_PER_DAY;
     secondsOfDay = seconds % TIMESYNC_SECONDS_PER_DAY;
 
-    dateTime->Hour = (uint8)(secondsOfDay / TIMESYNC_SECONDS_PER_HOUR);
+    dateTime->hour = (uint8)(secondsOfDay / TIMESYNC_SECONDS_PER_HOUR);
     secondsOfDay %= TIMESYNC_SECONDS_PER_HOUR;
 
-    dateTime->Minute = (uint8)(secondsOfDay / TIMESYNC_SECONDS_PER_MINUTE);
-    dateTime->Second = (uint8)(secondsOfDay % TIMESYNC_SECONDS_PER_MINUTE);
+    dateTime->minute = (uint8)(secondsOfDay / TIMESYNC_SECONDS_PER_MINUTE);
+    dateTime->second = (uint8)(secondsOfDay % TIMESYNC_SECONDS_PER_MINUTE);
 
     year = TIMESYNC_EPOCH_YEAR;
     while (days >= (uint64)TimeSync_GetDaysInYear(year))
@@ -156,9 +156,9 @@ Std_ReturnType TimeSync_ConvertSecondsToDateTime(const uint64 seconds, DateTime_
         days -= (uint64)TimeSync_GetDaysInMonth(year, month);
         month++;
     }
-        dateTime->Year = year;
-    dateTime->Month = month;
-    dateTime->Day = (uint8)(days + 1U);
+    dateTime->year = year;
+    dateTime->month = month;
+    dateTime->day = (uint8)(days + 1U);
 
     return E_OK;
 }
@@ -169,50 +169,51 @@ Std_ReturnType TimeSync_ConvertSecondsToDateTime(const uint64 seconds, DateTime_
  *
  *  Description      : Convert a date and time to seconds since the epoch.
  *
- *  List of arguments: dateTime - Pointer to a DateTime_st structure containing the date and time.
+ *  List of arguments: dateTime - TimeSync_DateTime_t value containing the date and time.
  *                     seconds - Pointer to store the seconds since the epoch.
  *
  *  Return value     : E_OK if the conversion was successful, E_NOT_OK otherwise.
  *
  ***********************************************************************************************************************/
-Std_ReturnType TimeSync_ConvertDateTimeToSeconds(const DateTime_st dateTime, uint64 *seconds)
+Std_ReturnType TimeSync_ConvertDateTimeToSeconds(TimeSync_DateTime_t dateTime,
+                                                 uint64 *seconds)
 {
     uint16 year;
     uint8 month;
     uint64 totalDays = 0U;
 
     if ((seconds == NULL_PTR) ||
-        (dateTime.Year < TIMESYNC_EPOCH_YEAR) ||
-        (dateTime.Month < 1U) || (dateTime.Month > 12U) ||
-        (dateTime.Day < 1U) ||
-        (dateTime.Hour > 23U) ||
-        (dateTime.Minute > 59U) ||
-        (dateTime.Second > 59U))
+        (dateTime.year < TIMESYNC_EPOCH_YEAR) ||
+        (dateTime.month < 1U) || (dateTime.month > 12U) ||
+        (dateTime.day < 1U) ||
+        (dateTime.hour > 23U) ||
+        (dateTime.minute > 59U) ||
+        (dateTime.second > 59U))
     {
         return E_NOT_OK;
     }
 
-    if (dateTime.Day > TimeSync_GetDaysInMonth(dateTime.Year, dateTime.Month))
+    if (dateTime.day > TimeSync_GetDaysInMonth(dateTime.year, dateTime.month))
     {
         return E_NOT_OK;
     }
 
-    for (year = TIMESYNC_EPOCH_YEAR; year < dateTime.Year; year++)
+    for (year = TIMESYNC_EPOCH_YEAR; year < dateTime.year; year++)
     {
         totalDays += (uint64)TimeSync_GetDaysInYear(year);
     }
 
-    for (month = 1U; month < dateTime.Month; month++)
+    for (month = 1U; month < dateTime.month; month++)
     {
-        totalDays += (uint64)TimeSync_GetDaysInMonth(dateTime.Year, month);
+        totalDays += (uint64)TimeSync_GetDaysInMonth(dateTime.year, month);
     }
 
-    totalDays += (uint64)(dateTime.Day - 1U);
+    totalDays += (uint64)(dateTime.day - 1U);
 
     *seconds = (totalDays * TIMESYNC_SECONDS_PER_DAY) +
-               ((uint64)dateTime.Hour * TIMESYNC_SECONDS_PER_HOUR) +
-               ((uint64)dateTime.Minute * TIMESYNC_SECONDS_PER_MINUTE) +
-               (uint64)dateTime.Second;
+               ((uint64)dateTime.hour * TIMESYNC_SECONDS_PER_HOUR) +
+               ((uint64)dateTime.minute * TIMESYNC_SECONDS_PER_MINUTE) +
+               (uint64)dateTime.second;
 
     return E_OK;
 }
